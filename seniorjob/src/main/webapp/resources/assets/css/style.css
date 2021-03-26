@@ -313,7 +313,7 @@ input[type="search"]::-webkit-search-decoration {
 .search-form {
     background-color: #fff;
     border-radius: 5px;
-    padding: 20px 0;
+    padding: 50px 0;
     border: 1px solid #E6E6E6;
     box-sizing: border-box;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -1019,7 +1019,6 @@ label small{
     position: absolute;
     top: 20%;
     text-align: center;
-    color: #FFF;
     width: 100%;
 }
 .slider-content h2 {
@@ -1107,7 +1106,7 @@ page-header
     letter-spacing: 2px;
 }
 .content-area{
-    background-color: #FCFCFC; padding-bottom: 55px;
+    padding-bottom: 55px;
 }
 .layout-switcher a{
     font-size: 25px;
@@ -2484,9 +2483,14 @@ count-area
     padding: 15px;
 }
 .search-form .form-inline .form-group { 
-    width: 235px;
+    width: 80px;
     text-align: left;
     letter-spacing: 0.5px;
+}
+
+.form-search-location{
+	width:235px;
+	text-align: left;
 }
 .slider-selection { 
     background: #FDC600;
@@ -2696,7 +2700,7 @@ padding-bottom: 15px;
     float: left;
     width: 24px;
     height: 24px;
-    content: "";
+    content: "�겎";
     color: #FDC600;
     font-size: 16px;
     line-height: 24px;

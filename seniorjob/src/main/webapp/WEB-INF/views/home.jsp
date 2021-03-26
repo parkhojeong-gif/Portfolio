@@ -1,16 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
-<html class="no-js"> <!--<![endif]-->
     <head>
- <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | 404 page</title>
-        <meta name="description" content="company is a real-estate template">
+        <title>GARO ESTATE | Home page</title>
+        <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,32 +38,6 @@
         </div>
         <!-- Body content -->
 
-        <div class="header-connect">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-8  col-xs-12">
-                        <div class="header-half header-call">
-                            <p>
-                                <span><i class="pe-7s-call"></i> +1 234 567 7890</span>
-                                <span><i class="pe-7s-mail"></i> your@company.com</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-12">
-                        <div class="header-half header-social">
-                            <ul class="list-inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-vine"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>           
         <!--End top header -->
 
         <nav class="navbar navbar-default ">
@@ -82,14 +50,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="resources/assets/img/logo.png" alt=""></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.4s">Login</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.5s">Submit</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.45s">로그인</button>
+                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">회원가입</button>
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -111,10 +79,10 @@
                             </ul>
                         </li>
 
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.html">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="property.html">Property</a></li>
-                        <li class="dropdown yamm-fw" data-wow-delay="0.1s">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="Job/jobList.jsp">채용공고</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="Mentor/mentorList.jsp">멘토리스트</a></li>
+                        <li class="dropdown yamm-fw" data-wow-delay="0.4s">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">커뮤니티 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="yamm-content">
@@ -191,26 +159,286 @@
                             </ul>
                         </li>
 
-                        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="contact.html">고객센터</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <!-- End of nav bar -->
-      
-        <div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                        <h2 class="error-title">404</h2>
-                        <p>Sorry, the page you requested may have been moved or deleted</p>
-                        <a href="index.html" class="btn btn-default">Home</a>                        
-                    </div>
-                </div> 
-            </div>
-        </div> 
 
-    <!-- Footer area-->
+        <div class="slider-area" style="background-color: #FFFFFF; padding-bottom: 55px;">
+            <div class="slider-content">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                        <h2>어떤 멘토를 찾고 싶으세요?</h2>
+                        <div class="search-form wow pulse" data-wow-delay="0.8s">
+
+                            <form action="" class=" form-inline">
+
+                                <div class="btn-group bootstrap-select">    
+                                <h3>지역</h3>                               
+                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
+
+                                        <option>서울특별시</option>
+                                        <option>부산광역시</option>
+                                        <option>대구광역시</option>
+                                        <option>인천광역시</option>
+                                        <option>광주광역시</option>
+                                        <option>대전광역시</option>
+                                        <option>울산광역시</option>
+                                        <option>세종특별자치시</option>
+                                    </select>
+                                </div>
+                                <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+                                
+                                
+								<!-- 직무 선택 체크박스 -->	
+                                <div class="content-area">
+								<h3>직무</h3>
+
+									<br>
+                                    <div class="search-row">  
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 영업
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  -->  
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 인사
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 총무
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                    
+
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 마케팅
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  -->  
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 광고
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 회계
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 재무
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  -->  
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 해외
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 유통
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                     </div>   
+                                     <div class="search-row">    
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 무역
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 전략
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 기획
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 생산
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 공기업
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> IT
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 디자인
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 교육
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> 컨설팅
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- End of  --> 
+                                        <br>
+                                        <hr>
+                                    </div>                             
+                                </div>                    
+								<button type="submit" name="wholeSearch">전체리스트</button>
+								<button type="submit" name="certainSearch">검색</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-form-bottom">
+
+		<!-- 키워드로 검색 -->
+	<div class="search-form wow pulse" data-wow-delay="0.8s">
+	<h3>키워드로 검색</h3>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Key word">
+		</div>
+	</div>
+
+
+
+
+	<!-- 연령별 검색 -->
+        <div class="boy-sale-area">
+            <div class="container">
+			<div class="row">
+                    <div class="col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12">
+                        <div class="asks-first">
+                            <div class="pe-7s-users">
+                                <span class="fa fa-search"></span>
+                            </div>
+                            <div class="asks-first-info">
+                                <h2>40대 대상자</h2>
+                            </div>
+                            <div class="asks-first-arrow">
+                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
+                        <div  class="asks-first">
+                            <div class="pe-7s-users">
+                                <span class="fa fa-usd"></span>
+                            </div>
+                            <div class="asks-first-info">
+                                <h2>50대 대상자</h2>
+                            </div>
+                            <div class="asks-first-arrow">
+                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
+                        <div  class="asks-first">
+                            <div class="pe-7s-users">
+                                <span class="fa fa-usd"></span>
+                            </div>
+                            <div class="asks-first-info">
+                                <h2>60대 대상자</h2>
+                            </div>
+                            <div class="asks-first-arrow">
+                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <!-- End of search-form-bottom -->
+
+        <!-- Footer area-->
         <div class="footer-area">
 
             <div class=" footer">
@@ -367,6 +595,4 @@
         <script src="resources/assets/js/main.js"></script>
 
     </body>
-</html>
-</body>
 </html>
