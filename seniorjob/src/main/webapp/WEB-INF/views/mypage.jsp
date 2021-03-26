@@ -55,9 +55,6 @@
 	<!-- Body content -->
 
 
-
-
-
 	<!-- property area -->
 	<div class="properties-area recent-property"
 		style="background-color: #FFF;">
@@ -86,7 +83,7 @@
 						
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
-								<h3 class="panel-title">이력서 관리</h3>
+								<h3 class="panel-title"><a href="resumeList">이력서 관리</a></h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">

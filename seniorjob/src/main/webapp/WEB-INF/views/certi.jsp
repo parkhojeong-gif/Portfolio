@@ -55,7 +55,7 @@
                             <div align="center"><h2>이력서 등록</h2></div>
                             <h5>이력서 항목</h5>
                             <a href="">자격증</a>
-                            <button type="button" onclick="location='certi'">추가+</button><br>
+                            <button type="button" onsubmit="">추가+</button><br>
                             <a href="">포트폴리오</a>
                             <button type="button">추가+</button><br>
                             <a href="">자기소개서</a>
@@ -63,65 +63,40 @@
                             <hr>
                             <form>
                                 <div class="row">
-                           		  <h3>필수기입 항목</h3>
+                           		  <h3>자격증</h3>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstname">이름</label>
-                                            <input type="text" class="form-control" id="firstname">
+                                            <label for="firstname">항목</label>
+                                            <input type="radio" id="firstname" name="certi">세무/회계
+                                            <input type="radio" id="firstname" name="certi">IT
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="lastname">생년월일</label>
-                                            <input type="date" class="form-control" id="lastname">
+                                            <label for="lastname">자격증명</label>
+                                            <input type="text" class="form-control" id="lastname">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="email">Email</label>
+                                            <label for="email">발행처/기관</label>
                                             <input type="text" class="form-control" id="email">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="subject">휴대폰 번호</label>
+                                            <label for="subject">합격구분</label>
                                             <input type="text" class="form-control" id="subject">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="subject">주소</label>
-                                            <input type="text" class="form-control" id="subject">
+                                            <label for="subject">취득일</label>
+                                            <input type="date" class="form-control" id="subject">
                                         </div>
                                     </div>
-									<br><br><br><br><br><br><br><br><br><br><br>
-                                    <h3>학력사항</h3>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="subject">학교명</label>
-                                            <input type="text" class="form-control" id="subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="subject">지역</label>
-                                            <input type="text" class="form-control" id="subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="subject">입학일</label>
-                                            <input type="date" class="form-control" id="subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="subject">졸업일</label>
-                                            <input type="date" class="form-control" id="subject">
-                                        </div>
-                                    </div>
 <!--                                     <div class="col-sm-12"> -->
 <!--                                         <div class="form-group"> -->
 <!--                                             <label for="message">Message</label> -->

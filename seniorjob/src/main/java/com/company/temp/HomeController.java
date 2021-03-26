@@ -46,4 +46,14 @@ public class HomeController {
 		return "resumeInsert";
 	}
 	
+	@RequestMapping("/resumeList")
+	public String resumeList() {
+		return "resumeList";
+	}
+	
+	@RequestMapping("/certi")
+	public String certi() {
+		return "certi";
+	}
+	
 }
