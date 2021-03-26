@@ -1,6 +1,7 @@
 /.classpath
 /.project
-/.springBeans
+#/.springBeans
 /.settings/
 /target/
 *.class
+/Dev/
