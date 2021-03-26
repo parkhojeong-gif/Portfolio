@@ -11,5 +11,6 @@ a<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
 홈
 <a href="mypage">마이페이지</a>
+<a href="resumeInsert">이력서 등록 폼</a>
 </body>
 </html></html>

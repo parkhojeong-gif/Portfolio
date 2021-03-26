@@ -41,4 +41,9 @@ public class HomeController {
 		return "mypage";
 	}
 	
+	@RequestMapping("/resumeInsert")
+	public String resumeInsert() {
+		return "resumeInsert";
+	}
+	
 }
