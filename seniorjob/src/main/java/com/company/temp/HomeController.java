@@ -46,4 +46,12 @@ public class HomeController {
 		return "resumeInsert";
 	}
 	
+
+	@RequestMapping("/businessPlanInsert")
+	public String businessPlanInsert() {
+		return "businessPlanInsert";
+	}
+	
+	
+	
 }
