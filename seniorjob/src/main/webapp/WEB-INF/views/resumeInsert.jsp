@@ -198,17 +198,6 @@
         </nav>
         <!-- End of nav bar -->
 
-        <div class="page-head"> 
-            <div class="container">
-                <div class="row">
-                    <div class="page-head-content">
-                        <h1 class="page-title">Contact page</h1>               
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End page header -->
-
         <!-- property area -->
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
             <div class="container">  
@@ -216,18 +205,16 @@
                     <div class="col-md-8 col-md-offset-2"> 
                         <div class="" id="contact1">                        
                             <!-- /.row -->
-                            <hr>
-                            <div id="map"></div>
-                            <hr>
-                            <h2>Contact form</h2>
+                            <h2>이력서 등록</h2>
                             <form>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstname">Firstname</label>
+                                            <label for="firstname">이름</label>
                                             <input type="text" class="form-control" id="firstname">
                                         </div>
                                     </div>
+
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastname">Lastname</label>

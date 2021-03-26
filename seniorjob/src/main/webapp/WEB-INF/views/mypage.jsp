@@ -220,7 +220,7 @@
 								<h3 class="panel-title">My Home</h3>
 							</div>
 						</div>
-					
+						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
 								<h3 class="panel-title">이력서</h3>
@@ -229,9 +229,10 @@
 
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
-								<h3 class="panel-title">이력서 등록</h3>
+								<h3 class="panel-title"><a href="resumeInsert">이력서 등록</a></h3>
 							</div>
 						</div>
+						
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
 								<h3 class="panel-title">이력서 관리</h3>
@@ -252,16 +253,19 @@
 								<h3 class="panel-title">사업계획서 관리</h3>
 							</div>
 						</div>
+						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
 								<h3 class="panel-title">멘토링 현황</h3>
 							</div>
 						</div>
+						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
 								<h3 class="panel-title">결제내역</h3>
 							</div>
 						</div>
+						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
 								<h3 class="panel-title">개인정보/경력 수정</h3>
