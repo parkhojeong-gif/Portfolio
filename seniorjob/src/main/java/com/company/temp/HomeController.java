@@ -35,5 +35,53 @@ public class HomeController {
 		
 		return "home";
 	}
+	//회원관리
+	@RequestMapping("/user")
+	public String user() {
+		
+		return "user"; 
+	}
+	//멘토관리
+	@RequestMapping("/mentor")
+	public String mentor() {
+		
+		return "mentor"; 
+	}
+	//신고관리
+	@RequestMapping("/declaration")
+	public String declaration() {
+		
+		return "dec/declaration"; 
+	}
+	//신고조치
+	@RequestMapping("/dec_mes")
+	public String dec_mes() {
+		
+		return "dec/dec_mes"; 
+	}
+	//매출종합관리
+	@RequestMapping("/sum")
+	public String sum() {
+		
+		return "sum"; 
+	}
+	//커뮤니티(공지사항)
+	@RequestMapping("/community")
+	public String community() {
+		
+		return "com/community"; 
+	}
+	//커뮤니티(후기)
+	@RequestMapping("/com_later")
+	public String com_later() {
+		
+		return "com/com_later"; 
+	}
+	//고객센터
+	@RequestMapping("/service")
+	public String service() {
+		
+		return "service"; 
+	}
 	
 }
