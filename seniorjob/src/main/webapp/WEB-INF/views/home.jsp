@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>GARO ESTATE | Home page</title>
+        <title>Senior Job</title>
         <meta name="description" content="GARO is a real-estate template">
         <meta name="author" content="Kimarotec">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
@@ -435,8 +435,15 @@
             </div>
             </div>
         </div>
+        <!-- End of 연령별 검색 -->
         </div>
         <!-- End of search-form-bottom -->
+        
+        <!-- 지역별 검색(구글 지도 api) -->
+
+			<div id="geochart-colors" style="width: 700px; height: 433px;"></div>
+
+	<!-- End of 지역별 검색(구글 지도 api) -->
 
         <!-- Footer area-->
         <div class="footer-area">
@@ -594,5 +601,37 @@
 
         <script src="resources/assets/js/main.js"></script>
 
-    </body>
+	<!-- 지역별 검색 구현 자바 스크립트 -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {
+			'packages' : [ 'geochart' ],
+			// Note: you will need to get a mapsApiKey for your project.
+			// See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+			'mapsApiKey' : 'AIzaSyAbScl3M1kehlYP67hrvA3B0i0T-tj5mZ4' // Google Cloud Platform에서 발급된 API키
+		});
+		google.charts.setOnLoadCallback(drawRegionsMap);
+
+		function drawRegionsMap() {
+			var data = google.visualization.arrayToDataTable([
+					[ 'Country', 'Latitude' ], [ 'Korea (Republic of)', 36 ] ]);
+
+			var options = {
+				region : 'KR', // 한국 국가 코드
+				colorAxis : {
+					colors : [ '#00853f', 'black', '#e31b23' ]
+				},
+				backgroundColor : '#81d4fa',
+				datalessRegionColor : '#f8bbd0',
+				defaultColor : '#2DB400',
+			};
+
+			var chart = new google.visualization.GeoChart(document
+					.getElementById('geochart-colors'));
+			chart.draw(data, options);
+		};
+	</script>
+	<!-- 지역별 검색 구현 자바 스크립트 -->
+
+</body>
 </html>
