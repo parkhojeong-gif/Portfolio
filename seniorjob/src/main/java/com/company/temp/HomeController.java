@@ -36,4 +36,22 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/mypage")
+	public String mypage() {
+		return "mypage";
+	}
+	
+	@RequestMapping("/resumeInsert")
+	public String resumeInsert() {
+		return "resumeInsert";
+	}
+	
+
+	@RequestMapping("/businessPlanInsert")
+	public String businessPlanInsert() {
+		return "businessPlanInsert";
+	}
+	
+	
+	
 }
