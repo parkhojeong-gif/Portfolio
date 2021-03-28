@@ -43,17 +43,51 @@ public class HomeController {
 	
 	@RequestMapping("/resumeInsert")
 	public String resumeInsert() {
-		return "resumeInsert";
+		return "resume/resumeInsert";
 	}
 	
 	@RequestMapping("/resumeList")
 	public String resumeList() {
-		return "resumeList";
+		return "resume/resumeList";
 	}
 	
 	@RequestMapping("/certi")
 	public String certi() {
-		return "certi";
+		return "resume/certi";
+	}
+	
+	@RequestMapping("/portfolio")
+	public String portfolio() {
+		return "resume/portfolio";
+	}
+	@RequestMapping("/selfInfo")
+	public String selfInfo() {
+		return "resume/selfInfo";
+	}
+	
+	@RequestMapping("/preview")
+	public String preview() {
+		return "preview";
+	}
+	
+	@RequestMapping("/resumeUpdate")
+	public String resumeUpdate() {
+		return "resume/resumeUpdate";
+	}
+	
+	@RequestMapping("/collection")
+	public String collection() {
+		return "resume/collection";
+	}
+	
+	@RequestMapping("/following")
+	public String following() {
+		return "following";
+	}
+	
+	@RequestMapping("/serviceCenter")
+	public String serviceCenter() {
+		return "serviceCenter";
 	}
 	
 }
