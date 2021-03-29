@@ -21,7 +21,7 @@ public class Inquire_AnswerController {
 	public String insertInquire(Inquire_AnswerVO vo) {
 		return "/inquire_answer/insertInquire_Answer";
 	}
-	@RequestMapping("/insertInquire_Answer") //답변 등록
+	@RequestMapping("/insertInquire_AnswerProc") //답변 등록
 	public String insertInquireProc(Inquire_AnswerVO vo) {
 		inquire_AnswerMapper.insertInquire_Answer(vo);
 		return "redirect:/getInquire_AnswerList";
@@ -31,7 +31,7 @@ public class Inquire_AnswerController {
 		model.addAttribute("list", inquire_AnswerMapper.getInquire_Answer(vo));
 		return "/inquire_answer/updateInquire_Answer";
 	}
-	@RequestMapping("/updateInquire_Answer")	//답변 수정
+	@RequestMapping("/updateInquire_AnswerProc")	//답변 수정
 	public String updateInquireProc(Inquire_AnswerVO vo) {
 		inquire_AnswerMapper.updateInquire_Answer(vo);
 		return "redirect:/getInquire_AnswerList";
