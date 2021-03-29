@@ -3,7 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+	<bean id="jdbcProp"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:global.properties" />
+	</bean>
+
+
+	<bean id="dataSource"
+		class="org.apache.tomcat.jdbc.pool.DataSource">
 		<property value="${jdbc.driver}" name="driverClassName" />
 		<property value="${jdbc.url}" name="url" />
 		<property value="${jdbc.username}" name="username" />
