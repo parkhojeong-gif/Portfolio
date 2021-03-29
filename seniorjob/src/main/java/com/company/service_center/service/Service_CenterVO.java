@@ -3,7 +3,7 @@ package com.company.service_center.service;
 import lombok.Data;
 
 @Data
-public class Service_CentersVO { 		//고객센터
+public class Service_CenterVO { 		//고객센터
 	private String seq;		//글번호
 	private String category_a;		//대분류
 	private String category_b;		//중분류
