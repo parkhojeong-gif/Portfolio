@@ -19,8 +19,9 @@
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
             <div class="container">  
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2"> 
-                        <div class="" id="contact1">                        
+                	<jsp:include page="../mypage.jsp"></jsp:include>
+                    <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+<!--                         <div class="" id="contact1">                         -->
                             <!-- /.row -->
                             <div align="center"><h2>이력서 등록</h2></div>
                             <h5>이력서 항목</h5>
@@ -112,11 +113,11 @@
                     </div>    
                 </div>
             </div>
-        </div>
+<!--         </div> -->
 
 
 
-        </div>
+<!--         </div> -->
 
 	<jsp:include page="../footer.jsp"></jsp:include>
     </body>

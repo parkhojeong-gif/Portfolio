@@ -22,7 +22,8 @@
 		style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<jsp:include page="../mypage.jsp"></jsp:include>
+                   <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<div class="" id="contact1">
 						<!-- /.row -->
 						<div align="center">
