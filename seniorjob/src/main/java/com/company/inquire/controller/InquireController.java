@@ -21,7 +21,7 @@ public class InquireController {
 	public String insertInquire(InquireVO vo) {
 		return "/inquire/insertInquire";
 	}
-	@RequestMapping("/insertInquire") //문의 등록
+	@RequestMapping("/insertInquireProc") //문의 등록
 	public String insertInquireProc(InquireVO vo) {
 		inquireMapper.insertInquire(vo);
 		return "redirect:/getInquireList";
@@ -31,7 +31,7 @@ public class InquireController {
 		model.addAttribute("list", inquireMapper.getInquire(vo));
 		return "/inquire/updateInquire";
 	}
-	@RequestMapping("/updateInquire")	//문의 수정
+	@RequestMapping("/updateInquireProc")	//문의 수정
 	public String updateInquireProc(InquireVO vo) {
 		inquireMapper.updateInquire(vo);
 		return "redirect:/getInquireList";
