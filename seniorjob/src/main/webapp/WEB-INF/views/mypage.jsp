@@ -35,7 +35,7 @@
 						</div>
 
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='resumeInsert'">
+							<div class="panel-heading" onclick="location.href='resumeInsertForm'">
 								<h3 class="panel-title">이력서 등록</h3>
 							</div>
 						</div>

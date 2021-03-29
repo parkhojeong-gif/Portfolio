@@ -34,7 +34,7 @@ public class UsersController {
 		model.addAttribute("list", usersMapper.getUsers(vo));
 		return "/users/updateUsers";
 	}
-	@RequestMapping("/updateUsers")	//유저 수정처리
+	@RequestMapping("/updateUsersProc")	//유저 수정처리
 	public String updateInquireProc(UsersVO vo) {
 		usersMapper.updateUsers(vo);
 		return "redirect:/getUsersList";

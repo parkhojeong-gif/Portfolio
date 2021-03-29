@@ -3,7 +3,72 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.resume.service.impl.ResumeMapper">
 	<select id="getSearchResumeList" resultType="com.company.resume.service.ResumeVO">
-		select resume_no, resume_name, resume_birth, resume_email, resume_phone, resume_address, resume_school, resume_area, resume_start, resume_end, id, image
-		from resume; 
+		SELECT  RESUME_NO, 
+				RESUME_NAME, 
+				RESUME_BIRTH, 
+				RESUME_EMAIL, 
+				RESUME_PHONE, 
+				RESUME_ADDRESS, 
+				RESUME_SCHOOL, 
+				RESUME_AREA, 
+				RESUME_START, 
+				RESUME_END, 
+				ID, 
+				IMAGE
+		FROM 	RESUME 
+	</select>
+	<insert id="insertResume">
+		INSERT INTO RESUME (RESUME_NO, 
+							RESUME_NAME, 
+							RESUME_BIRTH,
+							RESUME_EMAIL, 
+							RESUME_PHONE, 
+							RESUME_ADDRESS, 
+							RESUME_SCHOOL, 
+							RESUME_AREA, 
+							RESUME_START, 
+							RESUME_END)
+		VALUES				(#{resume_no},
+							 #{resume_name}, 
+							 #{resume_birth}, 
+							 #{resume_email}, 
+							 #{resume_phone}, 
+							 #{resume_address}, 
+							 #{resume_school}, 
+							 #{resume_area}, 
+							 #{resume_start}, 
+							 #{resume_end})
+	</insert>
+	<update id="updateResuem">
+		UPDATE RESUME SET RESUME_NAME=#{resume_name}, 
+						  RESUME_BIRTH=#{resume_birth}, 
+						  RESUME_EMAIL=#{resume_email},
+						  RESUME_PHONE=#{resume_phone}, 
+						  RESUME_ADDRESS=#{resume_address}, 
+						  RESUME_SCHOOL=#{resume_school}, 
+						  RESUME_AREA=#{resume_area}, 
+						  RESUME_START=#{resume_start}, 
+						  RESUME_END=#{resume_end}
+		WHERE 			  RESUME_NO = #{resume_no}
+	</update>
+	<delete id="deleteResume">
+		DELETE FROM RESUME 
+		WHERE RESUME_NO = #{resume_no}
+	</delete>
+	<select id="getResume" resultType="com.company.resume.service.ResumeVO">
+		SELECT  RESUME_NO, 
+				RESUME_NAME, 
+				RESUME_BIRTH, 
+				RESUME_EMAIL, 
+				RESUME_PHONE, 
+				RESUME_ADDRESS, 
+				RESUME_SCHOOL, 
+				RESUME_AREA, 
+				RESUME_START, 
+				RESUME_END, 
+				ID, 
+				IMAGE
+		FROM 	RESUME
+		WHERE   RESUME_NO = #{resume_no}
 	</select>
  </mapper>
