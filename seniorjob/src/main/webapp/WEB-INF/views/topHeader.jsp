@@ -111,7 +111,7 @@
                         </li>
 
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">멘토리스트</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="property.html">커뮤니티</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -122,7 +122,7 @@
                                                 <h5>Home pages</h5>
                                                 <ul>
                                                     <li>
-                                                        <a href="index.html">Home Style 1</a>
+                                                        <a href="inquire">문의사항</a>
                                                     </li>
                                                     <li>
                                                         <a href="index-2.html">Home Style 2</a>

@@ -32,7 +32,8 @@
                                     	<li><a>인쇄</a></li>
                                     	<li><a>WORD 변환</a></li>
                                     	<li><a>PDF 변환</a></li>
-                                    	<li><a><button type="button" onclick="location='collection'">확인하기</button></a></li>
+                                    	<li><button type="button" onclick="location='collection'">보기</button>&nbsp;
+                                    	    <button type="button" onclick="location=''">보내기</button></li>
                                     </ul>
                                 </div>
                             </form>

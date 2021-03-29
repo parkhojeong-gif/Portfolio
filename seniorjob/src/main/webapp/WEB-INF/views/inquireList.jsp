@@ -20,23 +20,33 @@
 					<div class="blog-asside-right pr0">
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
-								<h3 class="panel-title">커뮤니티</h3>
+								<h3 class="panel-title">고객센터</h3>
 							</div>
 						</div>
 						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading">
-								<h3 class="panel-title">공지사항</h3>
+								<h3 class="panel-title">결제/환불</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringReviews'">
-								<h3 class="panel-title">멘토링 후기</h3>
+							<div class="panel-heading">
+								<h3 class="panel-title">신청/취소</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='seniorTimes'">
-								<h3 class="panel-title">시니어 타임즈</h3>
+							<div class="panel-heading">
+								<h3 class="panel-title">화상면접 사용법</h3>
+							</div>
+						</div>
+						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='inquireInsert'">
+								<h3 class="panel-title">문의하기</h3>
+							</div>
+						</div>
+						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading">
+								<h3 class="panel-title">문의목록</h3>
 							</div>
 						</div>
 					</div>
@@ -44,7 +54,7 @@
 					
 				<div class="section additional-details">
 
-					<h4 class="s-property-title">공지사항</h4>
+					<h4 class="s-property-title">문의사항</h4>
 					
 
 					<ul>
@@ -57,11 +67,11 @@
 						</li>
 
 							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">1</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">공지</span>
-							<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">금일부로 사이트 점검 시작하겠습니다.</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">관리자</span>
+							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">환불</span>
+							<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">환불 신청했는데 입금 언제 되나요?</span>
+							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">홍길동</span>
 							<span class="col-xs-6 col-sm-8 col-md-2 add-d-entry">2021/01/10</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">329</span>
+							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">2</span>
 					</ul>
 				</div>
 					<hr>

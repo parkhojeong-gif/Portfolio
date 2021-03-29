@@ -25,7 +25,7 @@
 						</div>
 						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='serviceCenter'">
 								<h3 class="panel-title">공지사항</h3>
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='seniorTimes'">
+							<div class="panel-heading">
 								<h3 class="panel-title">시니어 타임즈</h3>
 							</div>
 						</div>
@@ -43,38 +43,10 @@
 				</div>
 					
 				<div class="section additional-details">
-
-					<h4 class="s-property-title">공지사항</h4>
-					
-
-					<ul>
-						<li><span class="col-xs-6 col-sm-4 col-md-1 add-d-title">글번호</span>
-							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">카테고리</span>
-							<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">제목</span>
-							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">작성자</span>
-							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
-							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">조회수</span>
-						</li>
-
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">1</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">공지</span>
-							<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">금일부로 사이트 점검 시작하겠습니다.</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">관리자</span>
-							<span class="col-xs-6 col-sm-8 col-md-2 add-d-entry">2021/01/10</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">329</span>
-					</ul>
-				</div>
-					<hr>
-					<div class="col-sm-3" align="right">
-						<select>
-							<option value="">공지</option>
-							<option value="">이벤트</option>
-						</select>
-						<button type="button">검색하기</button>
-                        <input type="text" class="form-control" id="find" placeholder="검색할 내용을 입력하세요.">
-                    </div>
+					<h4 class="s-property-title">시니어 타임즈</h4>
 			</div>
 		</div>
+
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

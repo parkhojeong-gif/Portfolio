@@ -88,7 +88,7 @@
                                     <div class="col-sm-12 text-center">
                                         <button type="button" class="btn btn-primary" onclick="location='preview'"><i class="fa fa-envelope-o"></i>미리보기</button>
                                         <button type="button" class="btn btn-primary" onclick="middle()"><i class="fa fa-envelope-o"></i>중간저장</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i>이력서 저장</button>
+                                        <button type="submit" class="btn btn-primary" onclick="location='resumeList'"><i class="fa fa-envelope-o"></i>이력서 저장</button>
                                     </div>
                                 </div>
                                 <!-- /.row -->

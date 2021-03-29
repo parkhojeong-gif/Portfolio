@@ -95,6 +95,36 @@ public class HomeController {
 		return "mentoringReviews";		  //멘토링 후기
 	}
 	
+	@RequestMapping("/seniorTimes")
+	public String seniorTimes() {
+		return "seniorTimes";		  	  //시니어 타임즈
+	}
+	
+	@RequestMapping("/shopping")
+	public String shopping() {
+		return "shopping";		  			//장바구니
+	}
+	
+	@RequestMapping("/inquire")
+	public String inquire() {
+		return "inquire";		  			//문의사항
+	}
+	
+	@RequestMapping("/inquireInsert")
+	public String inquireInsert() {
+		return "inquireInsert";		  		 //문의사항 등록
+	}
+	
+	@RequestMapping("/inquireList")
+	public String inquireList() {
+		return "inquireList";		  		 //문의사항 목록
+	}
+	
+	@RequestMapping("/myWriteList")
+	public String myWriteList() {
+		return "myWriteList";		  		 //문의사항 목록
+	}
+	
 
 	
 	

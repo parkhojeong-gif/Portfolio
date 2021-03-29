@@ -25,7 +25,7 @@
 						</div>
 						<hr>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='serviceCenter'">
 								<h3 class="panel-title">공지사항</h3>
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='seniorTimes'">
 								<h3 class="panel-title">시니어 타임즈</h3>
 							</div>
 						</div>
@@ -44,10 +44,13 @@
 					
 					<h4 class="s-property-title">인기글 목록</h4>
 					<hr>
-					<div>
-						<img src=resources/assets/img/ads.jpg width="60">
+					<div align="center">
+						<img src=resources/assets/img/client-face1.png width="100px">&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src=resources/assets/img/client-face2.png width="100px">&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src=resources/assets/img/client-face1.png width="100px">&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- 						<input type="text">ㅇㅇㅇ 멘토를 만나고 인생이 바뀌었습니다. -->
 					</div>
+<!-- 					<input type="text" placeholder="멘토링을 시작한 후..."> -->
 					
 				<div class="section additional-details">
 
@@ -81,6 +84,24 @@
 							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">102</span>
 					</ul>
 					<hr>
+					<!-- 검색 -->
+					<div class="search_help" align="right">
+			        <form action="/zf_user/help/help-word/help-search">
+			            <label for="helpSearchInput" class="copy">
+			            </label>
+			            <select>
+							<option value="">제목</option>
+							<option value="">내용</option>
+							<option value="">전체</option>
+						</select>
+<!-- 						<div align="right"> -->
+<!-- 			            	<input id="helpSearchInput" name="keyword" class="input_search_help" type="text" placeholder="특수문자는 제외 하고 입력해주세요" value=""> -->
+<!-- 			            </div> -->
+			            <button class="btn_search_help" type="submit">
+			                <span class="blind">검색하기</span>
+			            </button>
+			        </form>
+<!--   				  </div> -->
 					<!-- 검색 -->
 <!-- 					<div class="col-sm-3" align="right"> -->
 <!-- 						<select> -->

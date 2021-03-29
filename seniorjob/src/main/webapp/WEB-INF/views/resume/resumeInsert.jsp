@@ -7,6 +7,7 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 <jsp:include page="../topHeader.jsp"></jsp:include>
+<%-- <jsp:include page="../mypage.jsp"></jsp:include> --%>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
         	function middle(){
@@ -14,6 +15,7 @@
         	}
         </script>
     <body>
+       
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
             <div class="container">  
                 <div class="row">
