@@ -24,7 +24,7 @@
                         <div class="section"> 
         					  <div class="profiel-header">
                                 <h3>
-                                    <b>수강중인 멘토링</b>
+                                    <b>결제내역</b>
                                 </h3>
                                 <hr>
                             </div>

@@ -24,7 +24,7 @@
                         <div class="section"> 
         					  <div class="profiel-header">
                                 <h3>
-                                    <b>수강중인 멘토링</b>
+                                    <b>내가 만든 멘토링</b>
                                 </h3>
                                 <hr>
                             </div>

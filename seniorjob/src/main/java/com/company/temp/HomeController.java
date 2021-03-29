@@ -72,4 +72,19 @@ public class HomeController {
 		return "pwNotFound";
 	}
 	
+	@RequestMapping("/mypageHome")
+	public String mypageHome() {
+		return "mypageHome";
+	}
+	
+	@RequestMapping("/payDetail")
+	public String payDetail() {
+		return "payDetail";
+	}
+	
+	@RequestMapping("/mentoringCourse")
+	public String mentoringCourse() {
+		return "mentoringCourse";
+	}
+	
 }

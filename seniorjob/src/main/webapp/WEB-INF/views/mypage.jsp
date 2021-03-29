@@ -23,7 +23,7 @@
 					
 					
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='mypageHome'">
 								<h3 class="panel-title">My Home</h3>
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringStatus'">
+							<div class="panel-heading">
 								<h3 class="panel-title">멘토링 현황</h3>
 							</div>
 						</div>
@@ -70,12 +70,12 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringStatus'">
+							<div class="panel-heading" onclick="location.href='mentoringCourse'">
 								<h3 class="panel-title">내가 만든 멘토링</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='payDetail'">
 								<h3 class="panel-title">결제내역</h3>
 							</div>
 						</div>

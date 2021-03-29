@@ -11,11 +11,15 @@
 
         
 
-        <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
-            <div class="container">   
-                <div class="row">
-                <jsp:include page="mypage.jsp"></jsp:include>
-                    <div class="blog-lst col-md-12 pl0">
+        <div class="content-area recent-property" style="background-color: #FFF;">
+		<div class="container">
+			<div class="row">
+
+				<jsp:include page="mypage.jsp" />
+
+				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+					<div class="section">
+                    
                         <section class="post">
                             <div class="text-center padding-b-50">
                                 <h2 class="wow fadeInLeft animated">사업계획서1 제목</h2>
@@ -120,7 +124,7 @@
                                 <a href="single.html" class="btn btn-default btn-border">첨삭요청</a>
                             </p>
                         </section>  
-
+</div>
                     </div>  
                 </div>
 

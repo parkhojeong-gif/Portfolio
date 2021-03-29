@@ -12,15 +12,14 @@
   
 
         <!-- property area -->
-        <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
-            <div class="container">   
-                <div class="row">
-                
-                <jsp:include page="mypage.jsp"></jsp:include>
-                
-                    <div class="col-sm-10 col-sm-offset-1 profiel-container">
+        <div class="content-area recent-property" style="background-color: #FFF;">
+		<div class="container">
+			<div class="row">
 
-						<div class="section">
+				<jsp:include page="mypage.jsp" />
+
+				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+					<div class="section">
 
                         <form action="" method="">
                             <div class="profiel-header">
@@ -147,6 +146,21 @@
                             <div class="col-sm-5 col-sm-offset-1">
                                 <br>
                                 <input type='button' class='btn btn-finish btn-primary' name='finish' value='등록' />
+                                <br>
+                                <br>
+                            </div>
+                            
+                            
+                            
+                            <br>
+                            <br>
+                            <div class="col-sm-5 col-sm-offset-1">
+                            <br>
+                            <br>
+                            
+                            	<hr>
+                                <br>
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='회원탈퇴' />
                             </div>
                     </form>
 
