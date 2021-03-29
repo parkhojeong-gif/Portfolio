@@ -19,11 +19,11 @@ public class UsersController {
 	}
 	
 	@RequestMapping("/insertUsers") //유저 등록 폼
-	public String insertInquire(UsersVO vo) {
+	public String insertUsers(UsersVO vo) {
 		return "/users/insertUsers";
 	}
 	@RequestMapping("/insertUsersProc")		//등록처리
-	public String insertUsers(UsersVO vo) {
+	public String insertUsersProc(UsersVO vo) {
 		usersMapper.insertUsers(vo);
 		return "/users/getUsersList";
 		
@@ -34,8 +34,8 @@ public class UsersController {
 		model.addAttribute("list", usersMapper.getUsers(vo));
 		return "/users/updateUsers";
 	}
-	@RequestMapping("/updateUsers")	//유저 수정처리
-	public String updateInquireProc(UsersVO vo) {
+	@RequestMapping("/updateUsersProc")	//유저 수정처리
+	public String updateUsersProc(UsersVO vo) {
 		usersMapper.updateUsers(vo);
 		return "redirect:/getUsersList";
 	}

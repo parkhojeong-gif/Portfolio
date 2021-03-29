@@ -22,7 +22,7 @@ public class Service_CenterController {
 	public String insertService_Center(Service_CenterVO vo) {
 		return "/Service_Center/insertService_Center";
 	}
-	@RequestMapping("/insertService_Center") //고객센터 등록
+	@RequestMapping("/insertService_CenterProc") //고객센터 등록
 	public String insertService_CenterProc(Service_CenterVO vo) {
 		service_CenterMapper.insertService_Center(vo);
 		return "redirect:/getService_CenterList";
@@ -32,7 +32,7 @@ public class Service_CenterController {
 		model.addAttribute("list", service_CenterMapper.getService_Center(vo));
 		return "/Service_Center/updateService_Center";
 	}
-	@RequestMapping("/updateService_Center")	//고객센터 수정
+	@RequestMapping("/updateService_CenterProc")	//고객센터 수정
 	public String updateService_CenterProc(Service_CenterVO vo) {
 		service_CenterMapper.updateService_Center(vo);
 		return "redirect:/getService_CenterList";
