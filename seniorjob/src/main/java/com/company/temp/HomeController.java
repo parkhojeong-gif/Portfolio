@@ -45,88 +45,14 @@ public class HomeController {
 		return "mypage";
 	}
 	
-	@RequestMapping("/resumeInsert")
-	public String resumeInsert() {
-		return "resume/resumeInsert";     // 이력서 등록
-	}
-	
-	@RequestMapping("/resumeList")
-	public String resumeList() {
-		return "resume/resumeList";  	  // 이력서 조회
-	}
-	
-	@RequestMapping("/certi")
-	public String certi() {
-		return "resume/certi";			  // 자격증 
-	}
-	
-	@RequestMapping("/portfolio")
-	public String portfolio() {
-		return "resume/portfolio";		  // 포트폴리오
-	}
-	@RequestMapping("/selfInfo")
-	public String selfInfo() {
-		return "resume/selfInfo";		  // 자기소개서
-	}
-	
-	@RequestMapping("/preview")
-	public String preview() {
-		return "preview";				  //미리보기
-	}
-	
-	@RequestMapping("/resumeUpdate")
-	public String resumeUpdate() {
-		return "resume/resumeUpdate";	  //이력서 수정
-	}
-	
-	@RequestMapping("/collection")
-	public String collection() {
-		return "resume/collection";		  //첨삭
-	}
-	
-	@RequestMapping("/following")
-	public String following() {
-		return "following";				  //팔로우 목록
-	}
-	
-	@RequestMapping("/serviceCenter")
-	public String serviceCenter() {
-		return "serviceCenter";			  //공지사항
-	}
-	
-	@RequestMapping("/mentoringReviews")
-	public String mentoringReviews() {
-		return "mentoringReviews";		  //멘토링 후기
-	}
-	
 	@RequestMapping("/seniorTimes")
 	public String seniorTimes() {
 		return "seniorTimes";		  	  //시니어 타임즈
 	}
 	
-	@RequestMapping("/shopping")
-	public String shopping() {
-		return "shopping";		  			//장바구니
-	}
-	
-	@RequestMapping("/inquire")
-	public String inquire() {
-		return "inquire";		  			//문의사항
-	}
-	
-	@RequestMapping("/inquireInsert")
-	public String inquireInsert() {
-		return "inquireInsert";		  		 //문의사항 등록
-	}
-	
-	@RequestMapping("/inquireList")
-	public String inquireList() {
-		return "inquireList";		  		 //문의사항 목록
-	}
-	
 	@RequestMapping("/myWriteList")
 	public String myWriteList() {
-		return "myWriteList";		  		 //문의사항 목록
+		return "myWriteList";		  		 //내 글 목록(게시글, 문의사항)
 	}
 	
 
