@@ -36,14 +36,48 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/jobList")
-	public String jobList() {
-		return "Job/jobList";
-	}
 	
+	
+	// 멘토 리스트(전체검색)
 	@RequestMapping("/mentorList")
 	public String mentorList() {
 		return "Mentor/mentorList";
+	}
+		
+	@RequestMapping("/mypage")
+	public String mypage() {
+		return "mypage";
+	}
+	
+	@RequestMapping("/resumeInsert")
+	public String resumeInsert() {
+		return "resumeInsert";
+	}
+	
+
+	@RequestMapping("/businessPlanInsert")
+	public String businessPlanInsert() {
+		return "businessPlanInsert";
+	}
+	
+	@RequestMapping("/businessPlanList")
+	public String businessPlanList() {
+		return "businessPlanList";
+	}
+	
+	@RequestMapping("/mentoringStatus")
+	public String mentoringStatus() {
+		return "mentoringStatus";
+	}
+	
+	@RequestMapping("/profileModification")
+	public String profileModification() {
+		return "profileModification";
+	}
+	
+	@RequestMapping("/pwNotFound")
+	public String pwNotFound() {
+		return "pwNotFound";
 	}
 	
 }
