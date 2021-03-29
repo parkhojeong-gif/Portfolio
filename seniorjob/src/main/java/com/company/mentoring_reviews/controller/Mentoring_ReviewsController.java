@@ -22,7 +22,7 @@ public class Mentoring_ReviewsController {
 	public String insertMentoring_Reviews(Mentoring_ReviewsVO vo) {
 		return "/Mentoring_Reviews/insertMentoring_Reviews";
 	}
-	@RequestMapping("/insertMentoring_Reviews") //후기 등록
+	@RequestMapping("/insertMentoring_ReviewsProc") //후기 등록
 	public String insertMentoring_ReviewsProc(Mentoring_ReviewsVO vo) {
 		mentoring_ReviewsMapper.insertMentoring_Reviews(vo);
 		return "redirect:/getMentoring_ReviewsList";
@@ -32,7 +32,7 @@ public class Mentoring_ReviewsController {
 		model.addAttribute("list", mentoring_ReviewsMapper.getMentoring_Reviews(vo));
 		return "/Mentoring_Reviews/updateMentoring_Reviews";
 	}
-	@RequestMapping("/updateMentoring_Reviews")	//후기 수정
+	@RequestMapping("/updateMentoring_ReviewsProc")	//후기 수정
 	public String updateMentoring_ReviewsProc(Mentoring_ReviewsVO vo) {
 		mentoring_ReviewsMapper.updateMentoring_Reviews(vo);
 		return "redirect:/getMentoring_ReviewsList";
