@@ -7,7 +7,7 @@ import com.company.mentor.service.MentorVO;
 public interface MentorMapper {
 	
 	// 검색
-	public List<MentorVO> getMentorList(MentorVO vo);
+	public List<MentorVO> getMentorList();
 	
 	// 키워드 검색
 	public List<MentorVO> getKeywordSearch();

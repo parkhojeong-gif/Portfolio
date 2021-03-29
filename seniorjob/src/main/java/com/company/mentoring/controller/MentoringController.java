@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.mentor.service.MentorVO;
 import com.company.mentor.service.impl.MentorMapper;
 
 @Controller
@@ -18,9 +18,11 @@ public class MentoringController {
 	
 	// 검색
 	@PostMapping("/getMentorList")
-	public String wholeSearch(Model model, MentorVO vo) {
+	public String wholeSearch(@RequestParam("mentoring_location") String mentoring_location,
+								@RequestParam("mentor_duty") String mentor_duty ,Model model) {
 		model.addAttribute("list", mentorMapper.getMentorList());
-		model.addAttribute("list", mentorMapper.getMentorList());
+		model.addAttribute("mentoring_location", mentoring_location);
+		model.addAttribute("mentor_duty", mentor_duty);
 		return "Mentor/mentorList";
 	}
 	

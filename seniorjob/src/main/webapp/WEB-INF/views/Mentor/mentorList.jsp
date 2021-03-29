@@ -301,6 +301,14 @@
                         <div class="section clear"> 
                             <div id="list-type" class="proerty-th">
                             
+                            <c:when test="${mentoring_location not empty }">
+                            	<h5>${mentoring_location.mentoring_location } 멘토링 가능 멘토</h5>
+                            </c:when>
+                            
+                            <c:when test="${mentor_duty not empty }">
+                            	<h5>${mentor_duty } 직무 멘토링 가능 멘토</h5>
+                            </c:when>
+                            
                             
                               <c:forEach var="mentor" items="${list }">
 								<div class="col-sm-6 col-md-4 p0">
@@ -321,6 +329,8 @@
 									</div>
 								</div>
 							</c:forEach>
+							
+							
 							
                             </div>
                         </div>
