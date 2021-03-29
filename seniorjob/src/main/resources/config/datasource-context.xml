@@ -3,6 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="jdbcProp"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:global.properties" />
+	</bean>
+
 	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
 		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"></property>
@@ -10,7 +15,9 @@
 		<property name="password" value="hr"></property>
 		<property name="maxActive" value="5"></property>
 		<property name="maxIdle" value="1"></property>
-		<property name="maxWait" value="-1"></property>
 	</bean>
+
+
 	
+
 </beans>

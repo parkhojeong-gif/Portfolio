@@ -6,16 +6,20 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.company.users.service.impl.UsersMapper;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -34,6 +38,42 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping("/mypage")
+	public String mypage() {
+		return "mypage";
+	}
+	
+	@RequestMapping("/resumeInsert")
+	public String resumeInsert() {
+		return "resumeInsert";
+	}
+	
+
+	@RequestMapping("/businessPlanInsert")
+	public String businessPlanInsert() {
+		return "businessPlanInsert";
+	}
+	
+	@RequestMapping("/businessPlanList")
+	public String businessPlanList() {
+		return "businessPlanList";
+	}
+	
+	@RequestMapping("/mentoringStatus")
+	public String mentoringStatus() {
+		return "mentoringStatus";
+	}
+	
+	@RequestMapping("/profileModification")
+	public String profileModification() {
+		return "profileModification";
+	}
+	
+	@RequestMapping("/pwNotFound")
+	public String pwNotFound() {
+		return "pwNotFound";
 	}
 	
 }
