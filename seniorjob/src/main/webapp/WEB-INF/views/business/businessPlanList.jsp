@@ -11,7 +11,9 @@
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <body>
 
-
+<c:forEach items="${list }" var="bp">
+${bp.business_a}
+</c:forEach>
 
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
@@ -21,7 +23,7 @@
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<div class="section">
-					<c:forEach items="${list }" var="bp">
+					
 						<section class="post">
 							<div class="text-center padding-b-50">
 								<h2 class="wow fadeInLeft animated">사업계획서1 제목</h2>
@@ -61,7 +63,7 @@
 							</p>
 						</section>
 						<hr>
-						</c:forEach>
+						
 
 
 					</div>

@@ -55,7 +55,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='businessPlanList'">
+							<div class="panel-heading" onclick="location.href='getSearchBusinessPlanA'">
 								<h3 class="panel-title">사업계획서 관리</h3>
 							</div>
 						</div>
