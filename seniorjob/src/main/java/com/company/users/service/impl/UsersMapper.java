@@ -1,5 +1,10 @@
 package com.company.users.service.impl;
 
-public interface UsersMapper {
+import java.util.List;
 
+import com.company.users.service.UsersVO;
+
+
+public interface UsersMapper {
+	public List<UsersVO> getUsersList();
 }

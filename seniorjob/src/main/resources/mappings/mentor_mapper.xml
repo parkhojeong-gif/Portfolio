@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.company.mentor.service.impl.MentorMapper">
+	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+		<where>
+			
+		</where>
+	</select>
+	
+	<select id="getMentor" resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR WHERE MENTORING_LOCATION = #{mentoring_location}
+	</select>
+	
+ </mapper>	

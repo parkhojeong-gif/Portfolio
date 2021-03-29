@@ -32,22 +32,24 @@
 
                             <form action="" class=" form-inline">
 
-                                <div class="btn-group">    
-                                <h3>지역</h3>                               
-                                    <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="지역을 선택하세요">
-
-                                        <option>서울특별시</option>
-                                        <option>부산광역시</option>
-                                        <option>대구광역시</option>
-                                        <option>인천광역시</option>
-                                        <option>광주광역시</option>
-                                        <option>대전광역시</option>
-                                        <option>울산광역시</option>
-                                        <option>세종특별자치시</option>
-                                    </select>
-                                </div>
-                                <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
                                 
+                                 <h3>지역</h3>
+                                 <div class="col-md-12">
+                                    <div class="col-md-4">                                     
+                                        <select id="basic" class="selectpicker show-tick form-control">
+                                        <option></option>
+										<option name="location">서울특별시</option>
+										<option name="location">부산광역시</option>
+										<option name="location">대구광역시</option>
+										<option name="location">인천광역시</option>
+										<option name="location">광주광역시</option>
+										<option name="location">대전광역시</option>
+										<option name="location">울산광역시</option>
+										<option name="location">세종특별자치시</option>
+
+									</select>
+                                    </div>
+                                </div>
                                 
 								<!-- 직무 선택 체크박스 -->	
                                 <div class="content-area">
@@ -222,8 +224,8 @@
                                         <hr>
                                     </div>                             
                                 </div>                    
-								<button type="button" name="wholeSearch" id="wholeSearch">전체리스트</button>
-								<button type="button" name="detailedSearch" id="detailedSearch">검색</button>
+								<button type="button" name="getMentorList" id="getMentorList">전체리스트</button>
+								<button type="button" name="getMentor" id="getMentor">검색</button>
                             </form>
                         </div>
                     </div>
@@ -292,49 +294,32 @@
         <!-- End of 연령별 검색 -->
         <!-- End of search-form-bottom -->
         
-        <!-- 지역별 검색(구글 지도 api) -->
-			<div id="geochart-colors" style="width: 700px; height: 433px;"></div>
-		<!-- End of 지역별 검색(구글 지도 api) -->
+        <!-- 지역별 검색 -->
+			
+		<!-- End of 지역별 검색 -->
 
         <!-- Footer area-->
         <jsp:include page="footer.jsp" />
 		<!-- Footer area-->
 		
 
-	<!-- 지역별 검색 구현 자바 스크립트 -->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript">
-		google.charts.load('current', {
-			'packages' : [ 'geochart' ],
-			// Note: you will need to get a mapsApiKey for your project.
-			// See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-			'mapsApiKey' : 'AIzaSyAbScl3M1kehlYP67hrvA3B0i0T-tj5mZ4' // Google Cloud Platform에서 발급된 API키
+	
+
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script>
+	
+		$(function(){
+			$('#getMentorList').click(function(){
+				location.href = 'getMentorList';
+			});
+			
+			var mentoringLocation = $('option[name=location]:selected').val();
+
+			$('#getMentor').click(function() {
+				location.href = 'getMentor';
+			});
+			
 		});
-		google.charts.setOnLoadCallback(drawRegionsMap);
-
-		function drawRegionsMap() {
-			var data = google.visualization.arrayToDataTable([
-					[ 'Country', 'Latitude' ], [ 'Korea (Republic of)', 36 ] ]);
-
-			var options = {
-				region : 'KR', // 한국 국가 코드
-				colorAxis : {
-					colors : [ '#00853f', 'black', '#e31b23' ]
-				},
-				backgroundColor : '#81d4fa',
-				datalessRegionColor : '#f8bbd0',
-				defaultColor : '#2DB400',
-			};
-
-			var chart = new google.visualization.GeoChart(document
-					.getElementById('geochart-colors'));
-			chart.draw(data, options);
-		};
-	</script>
-	<!-- 지역별 검색 구현 자바 스크립트 -->
-
-	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
-		$("#wholeSearch").on('click',function(){
-			$(location).attr('href','wholeSearch');
-		});
+		
+		
 	</script>
