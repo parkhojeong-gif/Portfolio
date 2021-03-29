@@ -87,8 +87,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.45s">Login</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.45s">로그인</button>
+                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">회원가입</button>
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -110,8 +110,10 @@
                             </ul>
                         </li>
 
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">멘토리스트</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
+
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="">채용공고</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="mentorList">멘토리스트</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="property.html">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터 <b class="caret"></b></a>
                             <ul class="dropdown-menu">

@@ -40,6 +40,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	
+	// 멘토 리스트(전체검색)
+	@RequestMapping("/mentorList")
+	public String mentorList() {
+		return "Mentor/mentorList";
+	}
+		
 	@RequestMapping("/mypage")
 	public String mypage() {
 		return "mypage";
