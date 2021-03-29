@@ -60,7 +60,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 영업
+                                                    <input type="checkbox" name="mentor_duty"> 영업
                                                 </label>
                                             </div>
                                         </div>
@@ -69,7 +69,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 인사
+                                                    <input type="checkbox" name="mentor_duty"> 인사
                                                 </label>
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 총무
+                                                    <input type="checkbox" name="mentor_duty"> 총무
                                                 </label>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 마케팅
+                                                    <input type="checkbox" name="mentor_duty"> 마케팅
                                                 </label>
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 광고
+                                                    <input type="checkbox" name="mentor_duty"> 광고
                                                 </label>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 회계
+                                                    <input type="checkbox" name="mentor_duty"> 회계
                                                 </label>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 재무
+                                                    <input type="checkbox" name="mentor_duty"> 재무
                                                 </label>
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 해외
+                                                    <input type="checkbox" name="mentor_duty"> 해외
                                                 </label>
                                             </div>
                                         </div>
@@ -132,7 +132,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 유통
+                                                    <input type="checkbox" name="mentor_duty"> 유통
                                                 </label>
                                             </div>
                                         </div>
@@ -142,7 +142,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 무역
+                                                    <input type="checkbox" name="mentor_duty"> 무역
                                                 </label>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 전략
+                                                    <input type="checkbox" name="mentor_duty"> 전략
                                                 </label>
                                             </div>
                                         </div>
@@ -160,7 +160,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 기획
+                                                    <input type="checkbox" name="mentor_duty"> 기획
                                                 </label>
                                             </div>
                                         </div>
@@ -169,7 +169,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 생산
+                                                    <input type="checkbox" name="mentor_duty"> 생산
                                                 </label>
                                             </div>
                                         </div>
@@ -178,7 +178,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 공기업
+                                                    <input type="checkbox" name="mentor_duty"> 공기업
                                                 </label>
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> IT
+                                                    <input type="checkbox" name="mentor_duty"> IT
                                                 </label>
                                             </div>
                                         </div>
@@ -196,7 +196,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 디자인
+                                                    <input type="checkbox" name="mentor_duty"> 디자인
                                                 </label>
                                             </div>
                                         </div>
@@ -205,7 +205,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 교육
+                                                    <input type="checkbox" name="mentor_duty"> 교육
                                                 </label>
                                             </div>
                                         </div>
@@ -214,7 +214,7 @@
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_duty"> 컨설팅
+                                                    <input type="checkbox" name="mentor_duty"> 컨설팅
                                                 </label>
                                             </div>
                                         </div>
@@ -223,7 +223,7 @@
                                         <hr>
                                     </div>                             
                                 </div>                    
-								<input type="button" class="btn btn-primary" name="getMentorList" id="getMentorList" value="검색"/>
+								<button type="submit" class="btn btn-primary" name="getMentorList" id="getMentorList">검색</button>
                             </form>
                         </div>
                     </div>
@@ -233,19 +233,22 @@
      
         
 	<!-- 키워드로 검색 -->
+	<form action="getKeywordSearch" class=" form-inline" method="post">
 	<div class="keyword-search" style="background-color: #FFFFFF; padding-top:100px;">
 	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 	<div class="search-form wow pulse" data-wow-delay="0.8s">
 	<h3>키워드로 검색</h3>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Key word" name="searchKeyword">
-			<input type="button" name="getKeywordSearch" id="getKeywordSearch" value="검색"/>
+			<input type="button" id="getKeywordSearch" value="검색"/>
 		</div>
 	</div>
 	</div>
 	</div>
+	</form>
 
 	<!-- 연령별 검색 -->
+	<form action="getAgeSearch" class=" form-inline" method="post">
         <div class="boy-sale-area">
             <div class="container">
 			<div class="row">
@@ -254,7 +257,7 @@
                             <div class="pe-7s-users">
                                 <span class="fa fa-search"></span>
                             </div>
-                            <div class="asks-first-info">
+                            <div class="asks-first-info" name="mentoring_age">
                                 <h2>40대 대상자</h2>
                             </div>
                             <div class="asks-first-arrow">
@@ -267,7 +270,7 @@
                             <div class="pe-7s-users">
                                 <span class="fa fa-usd"></span>
                             </div>
-                            <div class="asks-first-info">
+                            <div class="asks-first-info" name="mentoring_age">
                                 <h2>50대 대상자</h2>
                             </div>
                             <div class="asks-first-arrow">
@@ -280,7 +283,7 @@
                             <div class="pe-7s-users">
                                 <span class="fa fa-usd"></span>
                             </div>
-                            <div class="asks-first-info">
+                            <div class="asks-first-info" name="mentoring_age">
                                 <h2>60대 대상자</h2>
                             </div>
                             <div class="asks-first-arrow">
@@ -291,6 +294,7 @@
             </div>
             </div>
         </div>
+        </form>
         <!-- End of 연령별 검색 -->
         <!-- End of search-form-bottom -->
         

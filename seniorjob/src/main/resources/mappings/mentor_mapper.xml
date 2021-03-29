@@ -7,7 +7,7 @@
 		<if test="mentoring_location != null and mentoring_location = ''">
 			WHERE MENTORING_LOCATION = #{mentoring_location}
 		</if>
-		<if test="mentoring_duty != null and mentoring_duty = ''">
+		<if test="mentor_duty != null and mentor_duty = ''">
 			AND MENTOR_DUTY = #{mentor_duty}
 		</if>
 	</select>
@@ -16,8 +16,4 @@
 		SELECT * FROM MENTOR
 		WHERE MENTORING_KIND LIKE '%'||#searchKeyword#||'%' 
 	</select>
-	
-	
-	
-
  </mapper>	
