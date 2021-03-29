@@ -25,9 +25,9 @@
                             <div align="center"><h2>이력서 등록</h2></div>
                             <h5><a href="resumeInsert">이력서 항목</a></h5>
                             <a href="">자격증</a>
-                            <button type="button" onclick="location='certi'">추가+</button><br>
+                            <button type="button" onclick="location='certi'">추가+</button>
                             <a href="">포트폴리오</a>
-                            <button type="button" onclick="location='portfolio'">추가+</button><br>
+                            <button type="button" onclick="location='portfolio'">추가+</button>
                             <a href="">자기소개서</a>
                             <button type="button" onclick="location='selfInfo'">추가+</button>
                             <hr>

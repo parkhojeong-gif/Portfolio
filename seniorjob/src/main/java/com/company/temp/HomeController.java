@@ -43,54 +43,62 @@ public class HomeController {
 	
 	@RequestMapping("/resumeInsert")
 	public String resumeInsert() {
-		return "resume/resumeInsert";
+		return "resume/resumeInsert";     // 이력서 등록
 	}
 	
 	@RequestMapping("/resumeList")
 	public String resumeList() {
-		return "resume/resumeList";
+		return "resume/resumeList";  	  // 이력서 조회
 	}
 	
 	@RequestMapping("/certi")
 	public String certi() {
-		return "resume/certi";
+		return "resume/certi";			  // 자격증 
 	}
 	
 	@RequestMapping("/portfolio")
 	public String portfolio() {
-		return "resume/portfolio";
+		return "resume/portfolio";		  // 포트폴리오
 	}
 	@RequestMapping("/selfInfo")
 	public String selfInfo() {
-		return "resume/selfInfo";
+		return "resume/selfInfo";		  // 자기소개서
 	}
 	
 	@RequestMapping("/preview")
 	public String preview() {
-		return "preview";
+		return "preview";				  //미리보기
 	}
 	
 	@RequestMapping("/resumeUpdate")
 	public String resumeUpdate() {
-		return "resume/resumeUpdate";
+		return "resume/resumeUpdate";	  //이력서 수정
 	}
 	
 	@RequestMapping("/collection")
 	public String collection() {
-		return "resume/collection";
+		return "resume/collection";		  //첨삭
 	}
 	
 	@RequestMapping("/following")
 	public String following() {
-		return "following";
+		return "following";				  //팔로우 목록
 	}
 	
 	@RequestMapping("/serviceCenter")
 	public String serviceCenter() {
-		return "serviceCenter";
+		return "serviceCenter";			  //공지사항
+	}
+	
+	@RequestMapping("/mentoringReviews")
+	public String mentoringReviews() {
+		return "mentoringReviews";		  //멘토링 후기
 	}
 	
 
+	
+	
+	
 	@RequestMapping("/businessPlanInsert")
 	public String businessPlanInsert() {
 		return "businessPlanInsert";

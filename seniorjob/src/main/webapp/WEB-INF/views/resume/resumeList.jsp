@@ -23,33 +23,18 @@
                     <div class="wizard-container"> 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                             <form action="" method="post">         
-                            <table style="color: orange">     
-                            	<tr>
-                                    <td><a data-toggle="tab">이력서 제목 </a></td>
-                                    <td><a data-toggle="tab">수정 </a></td>
-                                    <td><a data-toggle="tab">삭제 </a></td>
-                                    <td><a data-toggle="tab">인쇄 </a></td>
-                                    <td><a data-toggle="tab">워드 변환 </a></td>
-                                    <td><a data-toggle="tab">PDF 변환 </a></td>
-                                    <td><a data-toggle="tab">첨삭 </a></td>
-                                </tr>        
-                                <tr>
-									<td><a data-toggle="tab">첫번째 이력서 </a></td>&nbsp;&nbsp;&nbsp;
-									<td><a data-toggle="tab"><button type="button" onclick="location='resumeUpdate'">수정</button></a></td>
-									<td><a data-toggle="tab"><button type="submit" onclick="delRe()">삭제</button></a></td>
-									<td><a data-toggle="tab">인쇄 </a></td>
-								    <td><a data-toggle="tab">WORD 변환 </a></td>
-									<td><a data-toggle="tab">PDF 변환 </a></td>
-									<td><a data-toggle="tab"><button type="button" onclick="location='collection'">확인하기</button></a></td>
-								</tr>
-<!--                                 <div class="wizard-footer"> -->
-
-<!--                                     <div class="pull-left"> -->
-<!--                                         <input type='button' class='btn btn-previous btn-default' name='previous' value='Previous' /> -->
-<!--                                     </div> -->
-<!--                                     <div class="clearfix"></div>                                             -->
-<!--                                 </div>	 -->
-                                </table>      
+								<div class="section property-features" align="center">      
+                                    <h4 class="s-property-title">이력서 제목 | 수정 | 삭제 | 인쇄 | WORD 변환 | PDF 변환 | 첨삭</h4> 
+                                    <ul>
+                                        <li><a>첫번째 이력서</a></li>   
+                                    	<li><a><button type="button" onclick="location='resumeUpdate'">수정</button></a></li>
+                                    	<li><a><button type="submit" onclick="delRe()">삭제</button></a></a></li>
+                                    	<li><a>인쇄</a></li>
+                                    	<li><a>WORD 변환</a></li>
+                                    	<li><a>PDF 변환</a></li>
+                                    	<li><a><button type="button" onclick="location='collection'">확인하기</button></a></li>
+                                    </ul>
+                                </div>
                             </form>
                         </div>
                         <!-- End submit form -->

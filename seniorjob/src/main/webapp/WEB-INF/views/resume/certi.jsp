@@ -33,9 +33,9 @@
 						</h5>
 						<a href="">자격증</a>
 						<button type="button" onclick="location='certi'">추가+</button>
-						<br> <a href="">포트폴리오</a>
+						<a href="">포트폴리오</a>
 						<button type="button" onclick="location='portfolio'">추가+</button>
-						<br> <a href="">자기소개서</a>
+						<a href="">자기소개서</a>
 						<button type="button" onclick="location='selfInfo'">추가+</button>
 						<hr>
 						<form>

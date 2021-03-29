@@ -8,7 +8,6 @@
 <%-- <jsp:include page="mypage.jsp" /> --%>
 <html class="no-js"> <!--<![endif]-->
 <jsp:include page="../topHeader.jsp"></jsp:include>
-    </head>
     <body>
 
         <!-- property area -->
@@ -188,8 +187,6 @@
                 </div>
             </div>
         </div>
-
-
 
         </div>
 	<jsp:include page="../footer.jsp"></jsp:include>
