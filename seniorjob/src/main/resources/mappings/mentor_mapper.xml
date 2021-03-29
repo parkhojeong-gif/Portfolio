@@ -4,13 +4,20 @@
  <mapper namespace="com.company.mentor.service.impl.MentorMapper">
 	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
-		<where>
-			
-		</where>
+		<if test="mentoring_location != null and mentoring_location = ''">
+			WHERE MENTORING_LOCATION = #{mentoring_location}
+		</if>
+		<if test="mentoring_duty != null and mentoring_duty = ''">
+			AND MENTOR_DUTY = #{mentor_duty}
+		</if>
 	</select>
 	
-	<select id="getMentor" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM MENTOR WHERE MENTORING_LOCATION = #{mentoring_location}
+	<select id="getKeywordSearch"  resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+		WHERE MENTORING_KIND LIKE '%'||#searchKeyword#||'%' 
 	</select>
 	
+	
+	
+
  </mapper>	

@@ -13,20 +13,20 @@ public class MentoringController {
 	
 	@Autowired MentorMapper mentorMapper;
 	
-	// 전체 멘토리스트 조회
+	// 검색
 	@RequestMapping("/getMentorList")
-	public String wholeSearch(Model model) {
-		model.addAttribute("list", mentorMapper.getMentorList());
+	public String wholeSearch(Model model, MentorVO vo) {
+		
+		model.addAttribute("list", mentorMapper.getMentorList(vo));
 		return "Mentor/mentorList";
 	}
 	
-	//단건조회
-	@RequestMapping("/getMentor")
-	public String getMentor(Model model, MentorVO vo) {
-		model.addAttribute("list", mentorMapper.getMentor(vo));
+	// 키워드 검색
+	@RequestMapping("/getKeywordSearch")
+	public String getKeywordSearch(Model model) {
+		model.addAttribute("list", mentorMapper.getKeywordSearch());
 		return "Mentor/mentorList";
 	}
-	
 	
 
 	

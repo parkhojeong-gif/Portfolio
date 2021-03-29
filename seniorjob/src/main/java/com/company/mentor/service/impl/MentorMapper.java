@@ -6,10 +6,22 @@ import com.company.mentor.service.MentorVO;
 
 public interface MentorMapper {
 	
-	// 전체 조회('전체검색'클릭)
-	public List<MentorVO> getMentorList();
+	// 검색
+	public List<MentorVO> getMentorList(MentorVO vo);
 	
-	// 단건 조회(조건 선택 후 '검색'클릭)
-	public List<MentorVO> getMentor(MentorVO vo);
+	// 키워드 검색
+	public List<MentorVO> getKeywordSearch();
+	
+	// 연령 검색
+	public List<MentorVO> getAgeSearch(MentorVO vo);
+	
+	// 지역 검색
+	public List<MentorVO> getLocationSearch(MentorVO vo);
+	
+	// 멘토 상세페이지
+	public MentorVO getMentor(MentorVO vo);
+	
+	// 멘토 등록
+	
 
 }
