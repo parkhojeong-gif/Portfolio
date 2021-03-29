@@ -35,12 +35,12 @@
 						</div>
 
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='resumeInsert'">
 								<h3 class="panel-title">이력서 등록</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
+							<div class="panel-heading" onclick="location.href='resumeList'">
 								<h3 class="panel-title">이력서 관리</h3>
 							</div>
 						</div>
@@ -86,9 +86,5 @@
 						</div>
 					</div>
 				</div>
-
-
-
-	
 </body>
 </html>
