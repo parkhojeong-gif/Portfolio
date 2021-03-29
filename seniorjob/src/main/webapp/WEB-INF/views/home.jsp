@@ -79,8 +79,8 @@
                             </ul>
                         </li>
 
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="Job/jobList.jsp">채용공고</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="Mentor/mentorList.jsp">멘토리스트</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="jobList">채용공고</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="mentorList">멘토리스트</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">커뮤니티 <b class="caret"></b></a>
                             <ul class="dropdown-menu">

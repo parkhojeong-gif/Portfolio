@@ -36,4 +36,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/jobList")
+	public String jobList() {
+		return "Job/jobList";
+	}
+	
+	@RequestMapping("/mentorList")
+	public String mentorList() {
+		return "Mentor/mentorList";
+	}
+	
 }
