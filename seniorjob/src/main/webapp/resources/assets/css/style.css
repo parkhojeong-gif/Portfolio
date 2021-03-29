@@ -3044,3 +3044,39 @@ padding: 10px;
 #map {
     height: 300px;
 }
+
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 96px;
+    left: 50%;
+    margin-left: 370px;
+}
+
+.btn_check {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 0 0 0 12px;
+    width: 62px;
+    height: 30px;
+    border: 1px solid #dfdfdf;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    background-color: #fff;
+}
+
+.btn_check:after {
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    right: 11px;
+    width: 9px;
+    height: 9px;
+    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
+    content: "";
+}
