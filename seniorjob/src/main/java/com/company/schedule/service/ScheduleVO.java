@@ -1,4 +1,4 @@
-package com.company.schedule;
+package com.company.schedule.service;
 
 import lombok.Data;
 

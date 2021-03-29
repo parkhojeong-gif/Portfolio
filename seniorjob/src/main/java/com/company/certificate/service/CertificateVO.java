@@ -1,4 +1,4 @@
-package com.company.certificate;
+package com.company.certificate.service;
 
 import lombok.Data;
 

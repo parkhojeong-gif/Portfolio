@@ -1,4 +1,4 @@
-package com.company.inquire_answer;
+package com.company.inquire_answer.service;
 
 import lombok.Data;
 

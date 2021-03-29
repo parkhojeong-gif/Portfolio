@@ -1,4 +1,4 @@
-package com.company.declaration;
+package com.company.declaration.service;
 
 import lombok.Data;
 

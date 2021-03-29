@@ -1,4 +1,4 @@
-package com.company.self_info;
+package com.company.self_info.service;
 
 import lombok.Data;
 

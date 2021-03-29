@@ -1,4 +1,4 @@
-package com.company.portfolio;
+package com.company.portfolio.service;
 
 import lombok.Data;
 

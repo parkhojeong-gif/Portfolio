@@ -1,4 +1,4 @@
-package com.company.mentor;
+package com.company.mentor.service;
 
 import lombok.Data;
 

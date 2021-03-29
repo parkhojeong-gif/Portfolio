@@ -1,4 +1,4 @@
-package com.company.users;
+package com.company.users.service;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.company.businesspalnb;
+package com.company.businesspalnb.service;
 
 import lombok.Data;
 

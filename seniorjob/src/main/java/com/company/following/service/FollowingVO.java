@@ -1,4 +1,4 @@
-package com.company.following;
+package com.company.following.service;
 
 import lombok.Data;
 
