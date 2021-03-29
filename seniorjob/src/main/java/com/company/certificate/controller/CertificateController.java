@@ -8,6 +8,6 @@ public class CertificateController {
 
 	@RequestMapping("/certi")
 	public String certi() {
-		return "resume/certi";			  // 자격증 
+		return "resume/certi";	   		  // 자격증 
 	}
 }
