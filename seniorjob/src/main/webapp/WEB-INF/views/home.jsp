@@ -222,8 +222,8 @@
                                         <hr>
                                     </div>                             
                                 </div>                    
-								<button type="submit" name="wholeSearch">전체리스트</button>
-								<button type="submit" name="certainSearch">검색</button>
+								<button type="button" name="wholeSearch" id="wholeSearch">전체리스트</button>
+								<button type="button" name="detailedSearch" id="detailedSearch">검색</button>
                             </form>
                         </div>
                     </div>
@@ -333,3 +333,8 @@
 	</script>
 	<!-- 지역별 검색 구현 자바 스크립트 -->
 
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+		$("#wholeSearch").on('click',function(){
+			$(location).attr('href','wholeSearch');
+		});
+	</script>
