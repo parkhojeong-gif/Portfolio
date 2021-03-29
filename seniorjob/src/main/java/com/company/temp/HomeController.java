@@ -53,12 +53,6 @@ public class HomeController {
 		
 		return "dec/declaration"; 
 	}
-	//신고조치
-	@RequestMapping("/dec_mes")
-	public String dec_mes() {
-		
-		return "dec/dec_mes"; 
-	}
 	//매출종합관리
 	@RequestMapping("/sum")
 	public String sum() {
@@ -77,11 +71,16 @@ public class HomeController {
 		
 		return "com/com_later"; 
 	}
-	//고객센터
+	//고객센터(결제/환불)
 	@RequestMapping("/service")
 	public String service() {
 		
-		return "service"; 
+		return "serv/service"; 
 	}
-	
+	//고객세터(취소/신청)
+	@RequestMapping("/service2")
+	public String service2() {
+		
+		return "serv/service2"; 
+	}
 }

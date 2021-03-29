@@ -18,6 +18,22 @@
 <link rel="stylesheet" href="resources/assets/css/app.css">
 <link rel="shortcut icon" href="resources/assets/images/favicon.svg"
 	type="image/x-icon">
+<style type="text/css">
+
+.dataTable-search {
+width : 1000px ;
+position : absolute;
+right : 0px;
+
+}
+
+.dataTable-input{
+position : absolute;
+right : 0px;
+bottom : 5px;
+
+}
+</style>
 </head>
 
 <body>
@@ -32,7 +48,10 @@
 
 
 						<li class='sidebar-title'>관리자 페이지</li>
-
+						<a href="/" class='sidebar-link'>
+                                <i data-feather="user" width="20"></i>
+                                <span>메인으로</span>
+                            </a>
 
 						<li class='sidebar-title'>관리 목록</li>
 
@@ -49,19 +68,10 @@
 								<span>멘토관리</span>
 						</a></li>
 
-
-						<li class="sidebar-item  has-sub"><a href="#"
-							class='sidebar-link'> <i data-feather="file-text" width="20"></i>
+						<li class="sidebar-item  "><a href="/declaration"
+							class='sidebar-link'> <i data-feather="alert-circle" width="20"></i>
 								<span>신고관리</span>
-						</a>
-
-							<ul class="submenu ">
-
-								<li><a href="/declaration">신고관리</a></li>
-
-								<li><a href="/dec_mes">신고조치</a></li>
-
-							</ul></li>
+						</a></li>
 
 						<li class="sidebar-item  has-sub"><a href="#"
 							class='sidebar-link'> <i data-feather="trending-up"
@@ -87,10 +97,18 @@
 
 							</ul></li>
 
-						<li class="sidebar-item  "><a href="./service"
+						<li class="sidebar-item  has-sub"><a href="#"
 							class='sidebar-link'> <i data-feather="file-text" width="20"></i>
 								<span>고객센터</span>
-						</a></li>
+						</a>
+
+							<ul class="submenu ">
+
+								<li><a href="/service">결제/환불</a></li>
+
+								<li><a href="/service2">취소/신청</a></li>
+								
+							</ul></li>
 
 					</ul>
 				</div>
@@ -174,162 +192,120 @@
 
 			<div class="main-content container-fluid">
 				<div class="page-title">
-					<h3>멘토관리</h3>
-				</div>
-				<!-- Bordered table start -->
-				<div class="row" id="table-bordered">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-header">
-								<h4 class="card-title">멘토 목록</h4>
-							</div>
-							<div class="card-content">
-								<div class="card-body">
-									<p class="card-text">멘토들의 목록을 보여줍니다.</p>
-								</div>
-								<div>
-									<div class="insertModal">
-										<!-- Button trigger for Edit theme modal -->
-										<button type="button" class="btn btn-outline-success"
-											data-bs-toggle="modal" data-bs-target="#edit">수정
-										</button>
-									</div>
-
-									<div class="deleteModal">
-										<!-- Button trigger for Delete theme modal -->
-										<button type="button" class="btn btn-outline-danger"
-											data-bs-toggle="modal" data-bs-target="#delete">삭제</button>
-									</div>
-								</div>
-
-								<!-- table bordered -->
-								<div class="table-responsive">
-									<table class="table table-bordered mb-0">
-										<thead>
-											<tr>
-												<th>MENTOR_ID</th>
-												<th>MENTOR_NAME</th>
-												<th>MENTOR_ADDRESS</th>
-												<th>MENTOR_PHONENUM</th>
-												<th>MENTOR_EMAIL</th>
-												<th>MENTOR_BIRTH</th>
-												<th>AUTH</th>
-												<th>MENTOR_EDIT</th>
-												<th>MENTOR_DELETE</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="text-bold-500">아이디</td>
-												<td>이름</td>
-												<td class="text-bold-500">주소</td>
-												<td>전화번호</td>
-												<td>이메일</td>
-												<td>생일</td>
-												<td><a href="#"><i
-														class="badge-circle badge-circle-light-secondary font-medium-1"
-														data-feather="user"></i></a>
-												</td>
-												<td>
-												<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-												<i data-feather="edit"></i></a>
-												</td>
-												<td>
-												<a href="#delete" class="delete" data-bs-toggle="modal" onclick="">
-												<i data-feather="alert-circle"></i></a>
-												</td>		
-											</tr>
-											<tr>
-												<td class="text-bold-500">아이디</td>
-												<td>이름</td>
-												<td class="text-bold-500">주소</td>
-												<td>전화번호</td>
-												<td>이메일</td>
-												<td>생일</td>
-												<td><a href="#"><i
-														class="badge-circle badge-circle-light-secondary font-medium-1"
-														data-feather="user"></i></a>
-												</td>
-												<td>
-												<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-												<i data-feather="edit"></i></a>
-												</td>
-												<td>
-												<a href="#delete" class="delete" data-bs-toggle="modal" onclick="">
-												<i data-feather="alert-circle"></i></a>
-												</td>		
-											</tr>
-											<tr>
-												<td class="text-bold-500">아이디</td>
-												<td>이름</td>
-												<td class="text-bold-500">주소</td>
-												<td>전화번호</td>
-												<td>이메일</td>
-												<td>생일</td>
-												<td><a href="#"><i
-														class="badge-circle badge-circle-light-secondary font-medium-1"
-														data-feather="user"></i></a>
-												</td>
-												<td>
-												<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-												<i data-feather="edit"></i></a>
-												</td>
-												<td>
-												<a href="#delete" class="delete" data-bs-toggle="modal" onclick="">
-												<i data-feather="alert-circle"></i></a>
-												</td>		
-											</tr>
-											<tr>
-												<td class="text-bold-500">아이디</td>
-												<td>이름</td>
-												<td class="text-bold-500">주소</td>
-												<td>전화번호</td>
-												<td>이메일</td>
-												<td>생일</td>
-												<td><a href="#"><i
-														class="badge-circle badge-circle-light-secondary font-medium-1"
-														data-feather="user"></i></a>
-												</td>
-												<td>
-												<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-												<i data-feather="edit"></i></a>
-												</td>
-												<td>
-												<a href="#delete" class="delete" data-bs-toggle="modal" onclick="">
-												<i data-feather="alert-circle"></i></a>
-												</td>		
-											</tr>
-											<tr>
-												<td class="text-bold-500">아이디</td>
-												<td>이름</td>
-												<td class="text-bold-500">주소</td>
-												<td>전화번호</td>
-												<td>이메일</td>
-												<td>생일</td>
-												<td><a href="#"><i
-														class="badge-circle badge-circle-light-secondary font-medium-1"
-														data-feather="user"></i></a>
-												</td>
-												<td>
-												<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-												<i data-feather="edit"></i></a>
-												</td>
-												<td>
-												<a href="#delete" class="delete" data-bs-toggle="modal" onclick="">
-												<i data-feather="alert-circle"></i></a>
-												</td>		
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-12 col-md-6 order-md-1 order-last">
+							<h3>멘토관리</h3>
+							<p class="text-subtitle text-muted">멘토관리 목록을 보여줍니다.</p>
+						</div>
+						<div class="col-12 col-md-6 order-md-2 order-first">
+							<nav aria-label="breadcrumb" class='breadcrumb-header'>
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/">메인</a></li>
+									<li class="breadcrumb-item active" aria-current="page">멘토관리</li>
+								</ol>
+							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Bordered table end -->
+				<section class="section">
+					<div class="card">
+						<div class="card-header">멘토 데이터 테이블</div>
+						<div class="card-body">
+						<div class="dataTable-search">
+								<input class="dataTable-input" placeholder="Search..."
+									type="text">
+							</div>
+							<table class='table table-striped' id="table1">
+								<thead>
+									<tr>
+										<th>멘토ID</th>
+										<th>멘토 이름</th>
+										<th>멘토 전화번호</th>
+										<th>멘토 주소</th>
+										<th>멘토 이메일</th>
+										<th>경력증명서</th>
+										<th>수정</th>
+										<th>삭제</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>user1</td>
+										<td>Graiden</td>
+										<td>vehicula.aliquet@semconsequat.co.uk</td>
+										<td>076 4820 8838</td>
+										<td>Offenburg</td>
+										<td>2011-01-01</td>
+										<td>
+										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
+										<i data-feather="edit"></i></a>
+										</td>
+										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
+										<i data-feather="alert-circle"></i></a>
+										</td>
+									</tr>
+									<tr>
+										<td>user2</td>
+										<td>Dale</td>
+										<td>fringilla.euismod.enim@quam.ca</td>
+										<td>0500 527693</td>
+										<td>New Quay</td>
+										<td>2011-01-01</td>
+										<td><a href="#edit" class="edit" data-bs-toggle="modal"
+											onclick=""> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete"
+											data-bs-toggle="modal" onclick=""> <i
+												data-feather="alert-circle"></i></a></td>
+									</tr>
+									<tr>
+										<td>user3</td>
+										<td>Nathaniel</td>
+										<td>mi.Duis@diam.edu</td>
+										<td>(012165) 76278</td>
+										<td>Grumo Appula</td>
+										<td>2011-01-01</td>
+										<td><a href="#edit" class="edit" data-bs-toggle="modal"
+											onclick=""> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete"
+											data-bs-toggle="modal" onclick=""> <i
+												data-feather="alert-circle"></i></a></td>
+									</tr>
+									<tr>
+										<td>user4</td>
+										<td>Darius</td>
+										<td>velit@nec.com</td>
+										<td>0309 690 7871</td>
+										<td>Ways</td>
+										<td>2011-01-01</td>
+										<td><a href="#edit" class="edit" data-bs-toggle="modal"
+											onclick=""> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete"
+											data-bs-toggle="modal" onclick=""> <i
+												data-feather="alert-circle"></i></a></td>
+									</tr>
+									<tr>
+										<td>user5</td>
+										<td>Oleg</td>
+										<td>rhoncus.id@Aliquamauctorvelit.net</td>
+										<td>0500 441046</td>
+										<td>Rossignol</td>
+										<td>2011-01-01</td>
+										<td><a href="#edit" class="edit" data-bs-toggle="modal"
+											onclick=""> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete"
+											data-bs-toggle="modal" onclick=""> <i
+												data-feather="alert-circle"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</section>
 			</div>
 
-			<!--Edit theme Modal -->
+
+		<!--Edit theme Modal -->
 			<div class="modal fade text-left" id="edit" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel110" aria-hidden="true">
 				<div
@@ -337,8 +313,7 @@
 					role="document">
 					<div class="modal-content">
 						<div class="modal-header bg-success">
-							<h5 class="modal-title white" id="myModalLabel110">edit
-								Modal</h5>
+							<h5 class="modal-title white" id="myModalLabel110">멘토 정보 수정</h5>
 							<button type="button" class="close" data-bs-dismiss="modal"
 								aria-label="Close">
 								<i data-feather="x"></i>
@@ -349,7 +324,7 @@
 						
 						
 						
-			
+	
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-light-secondary"
@@ -379,15 +354,14 @@
 				role="document">
 				<div class="modal-content">
 					<div class="modal-header bg-danger">
-						<h5 class="modal-title white" id="myModalLabel120">Delete
-							Modal</h5>
+						<h5 class="modal-title white" id="myModalLabel120">멘토삭제</h5>
 						<button type="button" class="close" data-bs-dismiss="modal"
 							aria-label="Close">
 							<i data-feather="x"></i>
 						</button>
 					</div>
 					<div class="modal-body">
-					정말로 회원을 삭제하시겠습니까?
+					정말로 멘토를 삭제하시겠습니까?
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-light-secondary"

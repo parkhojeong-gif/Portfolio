@@ -14,6 +14,22 @@
     <link rel="stylesheet" href="resources/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="resources/assets/css/app.css">
     <link rel="shortcut icon" href="resources/assets/images/favicon.svg" type="image/x-icon">
+<style type="text/css">
+
+.dataTable-search {
+width : 1000px ;
+position : absolute;
+right : 0px;
+
+}
+
+.dataTable-input{
+position : absolute;
+right : 0px;
+bottom : 5px;
+
+}
+</style>
 </head>
 
 <body>
@@ -28,7 +44,10 @@
 
 
                         <li class='sidebar-title'>관리자 페이지</li>
-
+							<a href="/" class='sidebar-link'>
+                                <i data-feather="user" width="20"></i>
+                                <span>메인으로</span>
+                            </a>
 
                         <li class='sidebar-title'>관리 목록</li>
 
@@ -51,26 +70,10 @@
 
                         </li>
 
-
-                         <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i data-feather="file-text" width="20"></i>
-                                <span>신고관리</span>
-                            </a>
-
-                            <ul class="submenu ">
-
-                                <li>
-                                    <a href="/declaration">신고관리</a>
-                                </li>
-
-                                <li>
-                                    <a href="/dec_mes">신고조치</a>
-                                </li>
-                          
-                            </ul>
-
-                        </li>
+                        <li class="sidebar-item  "><a href="/declaration"
+							class='sidebar-link'> <i data-feather="alert-circle" width="20"></i>
+								<span>신고관리</span>
+						</a></li>
 
                        <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
@@ -108,13 +111,18 @@
 
                         </li>
 
-						<li class="sidebar-item  ">
-                            <a href="./service" class='sidebar-link'>
-                                <i data-feather="file-text" width="20"></i>
-                                <span>고객센터</span>
-                            </a>
+						<li class="sidebar-item  has-sub"><a href="#"
+							class='sidebar-link'> <i data-feather="file-text" width="20"></i>
+								<span>고객센터</span>
+						</a>
 
-                        </li>
+							<ul class="submenu ">
+
+								<li><a href="/service">결제/환불</a></li>
+
+								<li><a href="/service2">취소/신청</a></li>
+								
+							</ul></li>
 
                     </ul>
                 </div>
@@ -191,22 +199,37 @@
             </nav>
 
             <div class="main-content container-fluid">
-                <div class="page-title">
-                    <h3>매출종합관리</h3>
-                    <p class="text-subtitle text-muted">매출 종합 관리 페이지입니다.</p>
-                </div>
-                       <!-- Bordered table start -->
+				<div class="page-title">
+					<div class="row">
+						<div class="col-12 col-md-6 order-md-1 order-last">
+							<h3>매출종합관리</h3>
+							<p class="text-subtitle text-muted">매출 종합관리 페이지</p>
+						</div>
+						<div class="col-12 col-md-6 order-md-2 order-first">
+							<nav aria-label="breadcrumb" class='breadcrumb-header'>
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/">메인</a></li>
+									<li class="breadcrumb-item active" aria-current="page">매출종합관리</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+                
+        <!-- Bordered table start -->
         <div class="row" id="table-bordered">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Bordered table</h4>
+                
               </div>
               <div class="card-content">
                 <div class="card-body">
-                  <p class="card-text">Add <code>.table-bordered</code> for borders on all sides of the table and cells.
-                    For
-                    Inverse Dark Table, add <code>.table-dark</code> along with <code>.table-bordered</code>.</p>
+                  <div class="dataTable-search">
+								<input class="dataTable-input" placeholder="Search..."
+									type="text">
+				  </div>
                 </div>
                 <section class="section">
                     <div class="row">
@@ -247,29 +270,26 @@
                                                 </div>
                                                 <button a href="#" class="btn btn-success">검색</button>
                                             </div>
-                </section>
+               
                 <!-- table bordered -->
                 <div class="table-responsive">
                   <table class="table table-bordered mb-0">
                     <thead>
                       <tr>
-                        <th>NAME</th>
-                        <th>RATE</th>
-                        <th>SKILL</th>
-                        <th>TYPE</th>
-                        <th>LOCATION</th>
-                        <th>ACTION</th>
+                        <th>멘토링코스번호</th>
+                        <th>멘토ID</th>
+                        <th>주문일</th>
+                        <th>월별 매출 종합</th> 
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-bold-500">Michael Right</td>
-                        <td>$15/hr</td>
+                        <td class="text-bold-500">001</td>
+                        <td></td>
                         <td class="text-bold-500">UI/UX</td>
                         <td>Remote</td>
                         <td>Austin,Taxes</td>
-                        <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1"
-                              data-feather="mail"></i></a></td>
+                        
                       </tr>
                       <tr>
                         <td class="text-bold-500">Morgan Vanblum</td>
@@ -277,8 +297,7 @@
                         <td class="text-bold-500">Graphic concepts</td>
                         <td>Remote</td>
                         <td>Shangai,China</td>
-                        <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1"
-                              data-feather="mail"></i></a></td>
+                        
                       </tr>
                       <tr>
                         <td class="text-bold-500">Tiffani Blogz</td>
@@ -286,8 +305,7 @@
                         <td class="text-bold-500">Animation</td>
                         <td>Remote</td>
                         <td>Austin,Texas</td>
-                        <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1"
-                              data-feather="mail"></i></a></td>
+                       
                       </tr>
                       <tr>
                         <td class="text-bold-500">Ashley Boul</td>
@@ -295,8 +313,7 @@
                         <td class="text-bold-500">Animation</td>
                         <td>Remote</td>
                         <td>Austin,Texas</td>
-                        <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1"
-                              data-feather="mail"></i></a></td>
+                        
                       </tr>
                       <tr>
                         <td class="text-bold-500">Mikkey Mice</td>
@@ -304,8 +321,7 @@
                         <td class="text-bold-500">Animation</td>
                         <td>Remote</td>
                         <td>Austin,Texas</td>
-                        <td><a href="#"><i class="badge-circle badge-circle-light-secondary font-medium-1"
-                              data-feather="mail"></i></a></td>
+                        
                       </tr>
                     </tbody>
                   </table>
@@ -319,7 +335,7 @@
             </div>
             
             </div>
-
+ 	</section>
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">

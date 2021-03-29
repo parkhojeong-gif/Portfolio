@@ -33,7 +33,7 @@ right : 0px;
 bottom : 5px;
 
 }
-</style>	
+</style>		
 </head>
 
 <body>
@@ -91,9 +91,9 @@ bottom : 5px;
 
 							<ul class="submenu ">
 
-								<li><a href="../community">공지사항</a></li>
+								<li><a href="/community">공지사항</a></li>
 
-								<li><a href="../com_later">후기</a></li>
+								<li><a href="/com_later">후기</a></li>
 
 							</ul></li>
 
@@ -194,14 +194,14 @@ bottom : 5px;
 				<div class="page-title">
 					<div class="row">
 						<div class="col-12 col-md-6 order-md-1 order-last">
-							<h3>커뮤니티관리</h3>
-							<p class="text-subtitle text-muted">커뮤니티(후기) 세부 목록을 보여줍니다.</p>
+							<h3>고객센터</h3>
+							<p class="text-subtitle text-muted">고객센터 목록을 보여줍니다.</p>
 						</div>
 						<div class="col-12 col-md-6 order-md-2 order-first">
 							<nav aria-label="breadcrumb" class='breadcrumb-header'>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="/">메인</a></li>
-									<li class="breadcrumb-item active" aria-current="page">커뮤니티(후기)</li>
+									<li class="breadcrumb-item active" aria-current="page">고객센터(취소/신청)</li>
 								</ol>
 							</nav>
 						</div>
@@ -209,7 +209,7 @@ bottom : 5px;
 				</div>
 				<section class="section">
 					<div class="card">
-						<div class="card-header">후기 테이블</div>
+						<div class="card-header">취소/신청 테이블</div>
 						<div class="card-body">
 						<div class="dataTable-search">
 								<input class="dataTable-input" placeholder="Search..."
@@ -218,61 +218,82 @@ bottom : 5px;
 							<table class='table table-striped' id="table1">
 								<thead>
 									<tr>
-										<th>작성자ID</th>
-										<th>멘토링 코스번호</th>
-										<th>후기 작성일자</th>
-										<th>후기 내용</th>
+										<th>제목</th>
+										<th>작성자</th>
+										<th>작성일자</th>
+										<th>내용</th>
 										<th>첨부파일</th>
+										<th>수정</th>
 										<th>삭제</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>user1</td>
-										<td>001</td>
+										<td>공지사항1</td>
+										<td>admin</td>
 										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
+										<td>공지1</td>
+										<td>Offenburg.pdf</td>
+										<td>
+										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
+										<i data-feather="edit"></i></a>
+										</td>
 										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
 										<i data-feather="alert-circle"></i></a>
 										</td>
 									</tr>
 									<tr>
-										<td>user2</td>
-										<td>002</td>
+										<td>공지사항1</td>
+										<td>admin</td>
 										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
+										<td>공지1</td>
+										<td>Offenburg.pdf</td>
+										<td>
+										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
+										<i data-feather="edit"></i></a>
+										</td>
 										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
 										<i data-feather="alert-circle"></i></a>
 										</td>
 									</tr>
 									<tr>
-										<td>user3</td>
-										<td>003</td>
+										<td>공지사항1</td>
+										<td>admin</td>
 										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
+										<td>공지1</td>
+										<td>Offenburg.pdf</td>
+										<td>
+										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
+										<i data-feather="edit"></i></a>
+										</td>
 										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
 										<i data-feather="alert-circle"></i></a>
 										</td>
 									</tr>
 									<tr>
-										<td>user4</td>
-										<td>004</td>
+										<td>공지사항1</td>
+										<td>admin</td>
 										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
+										<td>공지1</td>
+										<td>Offenburg.pdf</td>
+										<td>
+										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
+										<i data-feather="edit"></i></a>
+										</td>
 										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
 										<i data-feather="alert-circle"></i></a>
 										</td>
 									</tr>
 									<tr>
-										<td>user5</td>
-										<td>005</td>
+										<td>공지사항1</td>
+										<td>admin</td>
 										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
+										<td>공지1</td>
+										<td>Offenburg.pdf</td>
+										<td>
+										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
+										<i data-feather="edit"></i></a>
+										</td>
 										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
 										<i data-feather="alert-circle"></i></a>
 										</td>
@@ -284,6 +305,48 @@ bottom : 5px;
 
 				</section>
 			</div>
+
+
+		<!--Edit theme Modal -->
+			<div class="modal fade text-left" id="edit" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel110" aria-hidden="true">
+				<div
+					class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+					role="document">
+					<div class="modal-content">
+						<div class="modal-header bg-success">
+							<h5 class="modal-title white" id="myModalLabel110">멘토 정보 수정</h5>
+							<button type="button" class="close" data-bs-dismiss="modal"
+								aria-label="Close">
+								<i data-feather="x"></i>
+							</button>
+						</div>
+						<div class="modal-body">
+						
+						
+						
+						
+	
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-light-secondary"
+								data-bs-dismiss="modal">
+								<i class="bx bx-x d-block d-sm-none"></i> <span
+									class="d-none d-sm-block">닫기</span>
+							</button>
+
+							<button type="button" class="btn btn-success ml-1"
+								data-bs-dismiss="modal">
+								<i class="bx bx-check d-block d-sm-none"></i> <span
+									class="d-none d-sm-block">수정</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 
 		<!--Delete theme Modal -->
 		<div class="modal fade text-left" id="delete" tabindex="-1"
