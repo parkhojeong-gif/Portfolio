@@ -42,7 +42,7 @@ public class HomeController {
 	
 	
 	
-	// ¸àÅä ¸®½ºÆ®(ÀüÃ¼°Ë»ö)
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½ï¿½Ã¼ï¿½Ë»ï¿½)
 	@RequestMapping("/mentorList")
 	public String mentorList() {
 		return "Mentor/mentorList";
@@ -69,22 +69,22 @@ public class HomeController {
 	
 	@RequestMapping("/businessPlanInsert")
 	public String businessPlanInsert() {
-		return "businessPlanInsert";
+		return "business/businessPlanInsert";
 	}
 	
 	@RequestMapping("/businessPlanList")
 	public String businessPlanList() {
-		return "businessPlanList";
+		return "business/businessPlanList";
 	}
 	
 	@RequestMapping("/mentoringStatus")
 	public String mentoringStatus() {
-		return "mentoringStatus";
+		return "mypage/mentoringStatus";
 	}
 	
 	@RequestMapping("/profileModification")
 	public String profileModification() {
-		return "profileModification";
+		return "mypage/profileModification";
 	}
 	
 	@RequestMapping("/pwNotFound")
@@ -94,17 +94,27 @@ public class HomeController {
 	
 	@RequestMapping("/mypageHome")
 	public String mypageHome() {
-		return "mypageHome";
+		return "mypage/mypageHome";
 	}
 	
 	@RequestMapping("/payDetail")
 	public String payDetail() {
-		return "payDetail";
+		return "mypage/payDetail";
 	}
 	
 	@RequestMapping("/mentoringCourse")
 	public String mentoringCourse() {
-		return "mentoringCourse";
+		return "mypage/mentoringCourse";
+	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping("/memberRegister")
+	public String memberRegister() {
+		return "memberRegister";
 	}
 	
 }

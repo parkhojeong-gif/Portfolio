@@ -7,7 +7,7 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 
-<jsp:include page="topHeader.jsp"></jsp:include>
+<jsp:include page="../topHeader.jsp"></jsp:include>
 
   
 
@@ -16,7 +16,7 @@
 		<div class="container">
 			<div class="row">
 
-				<jsp:include page="mypage.jsp" />
+				<jsp:include page="../mypage.jsp" />
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<div class="section">
@@ -172,7 +172,7 @@
         </div>
     </div>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>

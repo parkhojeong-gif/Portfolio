@@ -18,7 +18,7 @@ public class BusinessPlanAController {
 	@GetMapping("/getSearchBusinessPlanA")
 	public String getSearchBusinessPlanA(BusinessPalnAVO vo, Model model) {
 		model.addAttribute("list", bpService.getSearchBusinessPlanA(vo));
-		return "getSearchBusinessPlanA";
+		return "business/getSearchBusinessPlanA";
 	}
 
 
