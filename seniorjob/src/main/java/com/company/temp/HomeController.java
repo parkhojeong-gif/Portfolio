@@ -52,6 +52,24 @@ public class HomeController {
 		return "businessPlanInsert";
 	}
 	
+	@RequestMapping("/businessPlanList")
+	public String businessPlanList() {
+		return "businessPlanList";
+	}
 	
+	@RequestMapping("/mentoringStatus")
+	public String mentoringStatus() {
+		return "mentoringStatus";
+	}
+	
+	@RequestMapping("/profileModification")
+	public String profileModification() {
+		return "profileModification";
+	}
+	
+	@RequestMapping("/pwNotFound")
+	public String pwNotFound() {
+		return "pwNotFound";
+	}
 	
 }
