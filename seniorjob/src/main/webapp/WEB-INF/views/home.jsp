@@ -7,6 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>시니어잡</title>
+<script>
+	function checkKeywordNull(){
+		var str = document.getElementsByName("searchKeyword");
+		if(str.value == '' || str.value == null){
+			alert("키워드를 입력하세요.");
+			return false;
+		}
+	}
+	
+	function checkAgeNull(){
+		var chk_radio = document.getElementsByName("searchAge");
+		var temp = null;
+		for(var i=0; chk_radio.length; i++){
+			if(chk_radio[i].checked == true){
+				temp = chk_radio[i].value;
+			}
+		}
+		if(temp == null){
+			alert("연령을 선택하세요.");
+			return false;
+		}
+	}
+</script>
 </head>
 <style>
 	h3{text-align:left}
@@ -232,14 +255,14 @@
         </div>
      
 	<!-- 키워드로 검색 -->
-	<form action="getKeywordSearch" class=" form-inline" method="post">
+	<form action="getKeywordSearch" class=" form-inline" name="keywordSearch" method="post">
 	<div class="keyword-search" style="background-color: #FFFFFF; padding-top:100px;">
 	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
 	<div class="search-form wow pulse" data-wow-delay="0.8s">
 	<h3>키워드로 검색</h3>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Key word" name="searchKeyword">
-			<input type="submit" value="검색"/>
+			<input type="button" value="검색" onclick="checkKeywordNull()"/>
 		</div>
 	</div>
 	</div>
@@ -248,54 +271,22 @@
 
 	<!-- 연령별 검색 -->
 	<form action="getAgeSearch" class=" form-inline" method="post">
-        <div class="boy-sale-area">
-            <div class="container">
-			<div class="row">
-                    <div class="col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12">
-                        <div class="asks-first">
-                            <div class="pe-7s-users">
-                                <span class="fa fa-search"></span>
-                            </div>
-                            <div class="asks-first-info" name="mentoring_age">
-                                <h2>40대 대상자</h2>
-                            </div>
-                            <div class="asks-first-arrow">
-                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
-                        <div  class="asks-first">
-                            <div class="pe-7s-users">
-                                <span class="fa fa-usd"></span>
-                            </div>
-                            <div class="asks-first-info" name="mentoring_age">
-                                <h2>50대 대상자</h2>
-                            </div>
-                            <div class="asks-first-arrow">
-                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
-                        <div  class="asks-first">
-                            <div class="pe-7s-users">
-                                <span class="fa fa-usd"></span>
-                            </div>
-                            <div class="asks-first-info" name="mentoring_age">
-                                <h2>60대 대상자</h2>
-                            </div>
-                            <div class="asks-first-arrow">
-                                <a href="properties.html"><span class="fa fa-angle-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            </div>
-        </div>
-        </form>
-        <!-- End of 연령별 검색 -->
-        <!-- End of search-form-bottom -->
+	<div class="keyword-search" style="background-color: #FFFFFF; padding-top:100px;">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+	<div class="search-form wow pulse" data-wow-delay="0.8s">
+	<h3>멘토링 연령으로 검색</h3>
+		<div class="form-group">
+			<input type="radio" class="form-control" placeholder="Key word" name="searchAge"> 40대 대상 멘토링 <br>
+			<input type="radio" class="form-control" placeholder="Key word" name="searchAge"> 50대 대상 멘토링 <br>
+			<input type="radio" class="form-control" placeholder="Key word" name="searchAge"> 60대 대상 멘토링 <br>
+			<input type="button" value="검색" onclick="checkAgeNull()"/>
+		</div>
+	</div>
+	</div>
+	</div>
+	</form>
+    <!-- End of 연령별 검색 -->
+    <!-- End of search-form-bottom -->
         
         <!-- 지역별 검색 -->
 			

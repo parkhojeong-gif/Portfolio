@@ -27,7 +27,7 @@ public class MentoringController {
 	
 	// 키워드 검색
 	@RequestMapping("/getKeywordSearch")
-	public String getKeywordSearch(@RequestParam("searchKeyword") String searchKeyword ,Model model) {
+	public String getKeywordSearch(@RequestParam("searchKeyword") String searchKeyword, Model model) {
 		List<MentorVO> list = mentorMapper.getKeywordSearch(searchKeyword);
 		model.addAttribute("list", list);
 		return "Mentor/mentorList";
@@ -35,8 +35,8 @@ public class MentoringController {
 	
 	// 연령 검색
 	@RequestMapping("/getAgeSearch")
-	public String getAgeSearch(Model model) {
-		model.addAttribute("list", mentorMapper.getAgeSearch());
+	public String getAgeSearch(Model model, MentorVO vo) {
+		model.addAttribute("list", mentorMapper.getAgeSearch(vo));
 		return "Mentor/mentorList";
 	}
 	

@@ -81,7 +81,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="getMain"><img src="resources/assets/img/logo.png" alt="클릭 시 메인페이지로 이동"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

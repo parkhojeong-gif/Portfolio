@@ -40,9 +40,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	// ë©”ì¸ í˜ì´ì§€ í˜¸ì¶œ
+	@RequestMapping("/getMain")
+	public String getMain() {
+		return "home";
+	}
 	
 	
-	// ¸àÅä ¸®½ºÆ®(ÀüÃ¼°Ë»ö)
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®(ï¿½ï¿½Ã¼ï¿½Ë»ï¿½)
 	@RequestMapping("/mentorList")
 	public String mentorList() {
 		return "Mentor/mentorList";
