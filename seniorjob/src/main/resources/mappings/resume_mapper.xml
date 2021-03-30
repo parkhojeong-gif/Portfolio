@@ -3,19 +3,9 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.resume.service.impl.ResumeMapper">
 	<select id="getSearchResumeList" resultType="com.company.resume.service.ResumeVO">
-		SELECT  RESUME_NO, 
-				RESUME_NAME, 
-				RESUME_BIRTH, 
-				RESUME_EMAIL, 
-				RESUME_PHONE, 
-				RESUME_ADDRESS, 
-				RESUME_SCHOOL, 
-				RESUME_AREA, 
-				RESUME_START, 
-				RESUME_END, 
-				ID, 
-				IMAGE
-		FROM 	RESUME 
+		SELECT RESUME.*, SELF_INFO.*
+		FROM   RESUME , SELF_INFO
+		WHERE  RESUME.RESUME_NO = SELF_INFO.RESUME_NO
 	</select>
 	<insert id="insertResume">
 		INSERT INTO RESUME (RESUME_NO, 
@@ -28,7 +18,7 @@
 							RESUME_AREA, 
 							RESUME_START, 
 							RESUME_END)
-		VALUES				(#{resume_no},
+		VALUES				(( SELECT NVL(MAX(RESUME_NO), 0) +1 FROM RESUME  ),
 							 #{resume_name}, 
 							 #{resume_birth}, 
 							 #{resume_email}, 
