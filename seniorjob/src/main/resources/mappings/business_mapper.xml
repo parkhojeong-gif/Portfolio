@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.company.businesspalna.service.impl.BusinessPlanAMapper">
+	<select id="getSearchBusinessPlanA" resultType="BusinessPalnAVO">
+	select * from businessplana
+	</select>
+	<select id="getProduct" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
+ select product_id,
+		product_name,
+		product_price,
+		product_info,
+		company,
+		manager_id
+from PRODUCT_TBL_10
+where product_id=#{product_id}
+</select>
+ </mapper>

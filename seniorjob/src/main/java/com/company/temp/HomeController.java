@@ -69,22 +69,22 @@ public class HomeController {
 	
 	@RequestMapping("/businessPlanInsert")
 	public String businessPlanInsert() {
-		return "businessPlanInsert";
+		return "business/businessPlanInsert";
 	}
 	
 	@RequestMapping("/businessPlanList")
 	public String businessPlanList() {
-		return "businessPlanList";
+		return "business/businessPlanList";
 	}
 	
 	@RequestMapping("/mentoringStatus")
 	public String mentoringStatus() {
-		return "mentoringStatus";
+		return "mypage/mentoringStatus";
 	}
 	
 	@RequestMapping("/profileModification")
 	public String profileModification() {
-		return "profileModification";
+		return "mypage/profileModification";
 	}
 	
 	@RequestMapping("/pwNotFound")
@@ -92,8 +92,31 @@ public class HomeController {
 		return "pwNotFound";
 	}
 	
+
+	@RequestMapping("/mypageHome")
+	public String mypageHome() {
+		return "mypage/mypageHome";
+	}
 	
+	@RequestMapping("/payDetail")
+	public String payDetail() {
+		return "mypage/payDetail";
+	}
 	
+	@RequestMapping("/mentoringCourse")
+	public String mentoringCourse() {
+		return "mypage/mentoringCourse";
+	}
 	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping("/memberRegister")
+	public String memberRegister() {
+		return "memberRegister";
+	}
+
 	
 }
