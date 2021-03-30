@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "AdminMain";
 	}
 	//회원관리
 	@RequestMapping("/user")

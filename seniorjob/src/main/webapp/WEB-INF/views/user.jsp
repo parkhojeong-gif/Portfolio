@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -35,6 +37,8 @@ bottom : 5px;
 }
 
 </style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 <body>
 	<div id="app">
@@ -56,7 +60,7 @@ bottom : 5px;
 
 
 
-						<li class="sidebar-item  "><a href="./user"
+						<li class="sidebar-item  "><a href="/getUsersList"
 							class='sidebar-link'> <i data-feather="user" width="20"></i>
 								<span>회원관리</span>
 						</a></li>
@@ -231,86 +235,24 @@ bottom : 5px;
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="users" items="${list }">
 									<tr>
-										<td>user1</td>
-										<td>Graiden</td>
-										<td>076 4820 8838</td>
-										<td>Offenburg</td>
-										<td>1985-01-01</td>
-										<td>ssde@naver.com</td>
-										<td>sdfd.jpg</td>
+										<td>${users.id }</td>
+										<td>${users.name }</td>
+										<td>${users.phonenum }</td>
+										<td>${users.address }</td>
+										<td>${users.birth }</td>
+										<td>${users.email }</td>
+										<td> </td>
 										<td><span class="badge bg-success" href="#info"
 											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
 										<td><a href="#exampleModalLong" class="edit"
-											data-bs-toggle="modal" onclick=""> <i data-feather="edit"></i></a></td>
+											data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
 										<td><a href="#delete" class="delete"
 											data-bs-toggle="modal" onclick=""> <i
 												data-feather="alert-circle"></i></a></td>
 									</tr>
-									<tr>
-										<td>user1</td>
-										<td>Graiden</td>
-										<td>076 4820 8838</td>
-										<td>Offenburg</td>
-										<td>1985-01-01</td>
-										<td>ssde@naver.com</td>
-										<td>sdfd.jpg</td>
-										<td><span class="badge bg-success" href="#info"
-											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
-										<td><a href="#exampleModalLong" class="edit"
-											data-bs-toggle="modal" onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
-									<tr>
-										<td>user1</td>
-										<td>Graiden</td>
-										<td>076 4820 8838</td>
-										<td>Offenburg</td>
-										<td>1985-01-01</td>
-										<td>ssde@naver.com</td>
-										<td>sdfd.jpg</td>
-										<td><span class="badge bg-success" href="#info"
-											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
-										<td><a href="#exampleModalLong" class="edit"
-											data-bs-toggle="modal" onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
-									<tr>
-										<td>user1</td>
-										<td>Graiden</td>
-										<td>076 4820 8838</td>
-										<td>Offenburg</td>
-										<td>1985-01-01</td>
-										<td>ssde@naver.com</td>
-										<td>sdfd.jpg</td>
-										<td><span class="badge bg-success" href="#info"
-											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
-										<td><a href="#exampleModalLong" class="edit"
-											data-bs-toggle="modal" onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
-									<tr>
-										<td>user1</td>
-										<td>Graiden</td>
-										<td>076 4820 8838</td>
-										<td>Offenburg</td>
-										<td>1985-01-01</td>
-										<td>ssde@naver.com</td>
-										<td>sdfd.jpg</td>
-										<td><span class="badge bg-success" href="#info"
-											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
-										<td><a href="#exampleModalLong" class="edit"
-											data-bs-toggle="modal" onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
+								</c:forEach>	
 								</tbody>
 							</table>
 						</div>
@@ -319,7 +261,7 @@ bottom : 5px;
 				</section>
 			</div>
 
-			<!--info theme Modal -->
+			<!--승급 modal -->
 			<div class="modal fade text-left" id="info" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel130" aria-hidden="true">
 				<div
@@ -351,16 +293,14 @@ bottom : 5px;
 			</div>
 		</div>
 
-		<!--scrollbar Modal -->
-		<div class="modal fade" id="exampleModalLong" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalLongTitle"
-			aria-hidden="true">
+		<!-- 회원정보 수정 modal -->
+		<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
+				<form action="updateUsers" method="post">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLongTitle">회원정보수정</h5>
-						<button type="button" class="close" data-bs-dismiss="modal"
-							aria-label="Close">
+						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 							<i data-feather="x"></i>
 						</button>
 					</div>
@@ -373,7 +313,7 @@ bottom : 5px;
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
 										<input type="text" class="form-control" placeholder="ID"
-											id="first-name-icon">
+											id="first-name-icon" name="id">
 										<div class="form-control-icon">
 											<i data-feather="user"></i>
 										</div>
@@ -386,8 +326,7 @@ bottom : 5px;
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="text" class="form-control" placeholder="Name"
-											id="first-name-icon">
+										<input type="text" class="form-control" placeholder="Name" id="first-name-icon" name="name">
 										<div class="form-control-icon">
 											<i data-feather="user"></i>
 										</div>
@@ -400,8 +339,7 @@ bottom : 5px;
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="email" class="form-control" placeholder="Email"
-											id="first-name-icon">
+										<input type="email" class="form-control" placeholder="Email" id="first-name-icon" name="email">
 										<div class="form-control-icon">
 											<i data-feather="mail"></i>
 										</div>
@@ -409,12 +347,12 @@ bottom : 5px;
 								</div>
 							</div>
 							<div class="col-md-4">
-								<label>Mobile</label>
+								<label>phonenum</label>
 							</div>
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="number" class="form-control" placeholder="Mobile">
+										<input type="text" class="form-control" placeholder="Mobile" name="phonenum">
 										<div class="form-control-icon">
 											<i data-feather="phone"></i>
 										</div>
@@ -427,8 +365,7 @@ bottom : 5px;
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="text" class="form-control"
-											placeholder="Address">
+										<input type="text" class="form-control" placeholder="Address" name="address">
 										<div class="form-control-icon">
 											<i data-feather="file"></i>
 										</div>
@@ -441,42 +378,39 @@ bottom : 5px;
 										<p>File</p>
 										<div class="form-file">
 											<input type="file" class="form-file-input" id="customFile">
-											<label class="form-file-label" for="customFile"> <span
-												class="form-file-text">Choose file...</span> <span
-												class="form-file-button">Browse</span>
+											<label class="form-file-label" for="customFile"> 
+											<span class="form-file-text">Choose file...</span> 
+											<span class="form-file-button">Browse</span>
 											</label>
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-light-secondary"
-											data-bs-dismiss="modal">
+										<button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
 											<i class="bx bx-x d-block d-sm-none"></i> <span
-												class="d-none d-sm-block">Close</span>
+												class="d-none d-sm-block">닫기</span>
 										</button>
 
-										<button type="button" class="btn btn-primary ml-1"
-											data-bs-dismiss="modal">
+										<button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
 											<i class="bx bx-check d-block d-sm-none"></i> <span
-												class="d-none d-sm-block">Accept</span>
+												class="d-none d-sm-block">수정</span>
 										</button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				  </form>
 				</div>
 			</div>
 		</div>
 	</div>
 
 
-	<!--Delete theme Modal -->
-	<div class="modal fade text-left" id="delete" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel120" aria-hidden="true">
-		<div
-			class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-			role="document">
+	<!--삭제 Modal -->
+	<div class="modal fade text-left" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel120" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
 			<div class="modal-content">
+			<form action="deleteUsers" method="post">
 				<div class="modal-header bg-danger">
 					<h5 class="modal-title white" id="myModalLabel120">회원삭제</h5>
 					<button type="button" class="close" data-bs-dismiss="modal"
@@ -486,17 +420,16 @@ bottom : 5px;
 				</div>
 				<div class="modal-body">정말로 회원을 삭제하시겠습니까?</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-light-secondary"
-						data-bs-dismiss="modal">
-						<i class="bx bx-x d-block d-sm-none"></i> <span
-							class="d-none d-sm-block">닫기</span>
+					<button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+						<i class="bx bx-x d-block d-sm-none"></i> 
+						<span class="d-none d-sm-block">닫기</span>
 					</button>
-					<button type="button" class="btn btn-danger ml-1"
-						data-bs-dismiss="modal">
-						<i class="bx bx-check d-block d-sm-none"></i> <span
-							class="d-none d-sm-block">확인</span>
+					<button type="button" class="btn btn-danger ml-1" data-bs-dismiss="modal">
+						<i class="bx bx-check d-block d-sm-none"></i> 
+						<span class="d-none d-sm-block">확인</span>
 					</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -519,6 +452,7 @@ bottom : 5px;
 	</footer>
 	</div>
 	</div>
+	
 	<script src="resources/assets/js/feather-icons/feather.min.js"></script>
 	<script
 		src="resources/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -530,6 +464,26 @@ bottom : 5px;
 	<script src="resources/assets/js/pages/dashboard.js"></script>
 
 	<script src="resources/assets/js/main.js"></script>
+	<script>
+$(function(){
+	
+	$("#exampleModalLong").on('show.bs.modal', function(){
+		var button = $(event.delegateTarget);
+		let edit = button.closest('tr').find('td');
+		$("#exampleModalLong").find('[name=id]').val(edit.eq(0).text());
+		$("#exampleModalLong").find('[name=name]').val(edit.eq(1).text());
+		$("#exampleModalLong").find('[name=email]').val(edit.eq(5).text());
+		$("#exampleModalLong").find('[name=phonenum]').val(edit.eq(2).text());
+		$("#exampleModalLong").find('[name=address]').val(edit.eq(4).text());
+		
+	});
+	
+	$("#delete").on('show.bs.modal', function(){
+		var button = $(event.delegateTarget);
+		let del = button.closest('tr').find('td').eq(0).text();
+	});
+})
+</script>
 </body>
 
 </html>
