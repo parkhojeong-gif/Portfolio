@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="com.company.businesspalna.service.impl.BusinessPlanAMapper">
+<mapper
+	namespace="com.company.businesspalna.service.impl.BusinessPlanAMapper">
 	<select id="getSearchBusinessPlanA" resultType="BusinessPalnAVO">
-	select * from businessplana
+		select * from businessplana
 	</select>
-	<select id="getProduct" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
- select product_id,
-		product_name,
-		product_price,
-		product_info,
-		company,
-		manager_id
-from PRODUCT_TBL_10
-where product_id=#{product_id}
-</select>
- </mapper>
+	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
+		select *
+		from Businessplana a
+		JOIN Businessplanb b
+		on A.Seq = B.Seq
+		JOIN Businessplanc c
+		on A.Seq = C.Seq
+		JOIN Businesspland d
+		on A.Seq = D.Seq
+		where a.seq = #{seq}
+
+	</select>
+	
+	
+	<insert id="insertBusinessPlanA" parameterType="BusinessPalnAVO"> 
+	INSERT INTO Businessplana(SEQ,
+							BUSINESS_A,
+							BUSINESS_B,
+							BUSINESS_C,
+							ID,
+							COLLECTION)
+					VALUES(business_seq.nextval,
+							#{business_a},
+							#{business_b},
+							#{business_c},
+							'test',
+							'test') 
+	</insert>
+	
+	
+	
+</mapper>

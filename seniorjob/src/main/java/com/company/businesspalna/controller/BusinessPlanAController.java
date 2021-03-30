@@ -25,18 +25,18 @@ public class BusinessPlanAController {
 	}
 	
 	@GetMapping("/getBusinessPlanA")			//단건조회
-	public String getBusinessPlanA(@ModelAttribute("employee") BusinessPalnAVO vo, Model model) {
+	public String getBusinessPlanA(BusinessPalnAVO vo, Model model) {
 
-		model.addAttribute("emp", bpService.getBusinessPlanA(vo));
+		model.addAttribute("bp", bpService.getBusinessPlanA(vo));
 		return "business/getBusinessPlanA";
 	}
 	
-	@GetMapping("/insertBusinessPlanA")
+	@GetMapping("/insertBusinessPlanA") //등록페이지로
 	public String insertBusinessPlanA(BusinessPalnAVO vo) {
 		return "business/insertBusinessPlanA";
 	}
 	
-	@PostMapping("/insertBusinessPlanA")
+	@PostMapping("/insertBusinessPlanA") //등록처리
 	public String insertBusinessPlanAProc(BusinessPalnAVO vo) {
 		bpService.insertBusinessPlanA(vo);
 		return "redirect:/getSearchBusinessPlanA";
@@ -44,7 +44,6 @@ public class BusinessPlanAController {
 	
 	@GetMapping("/updateEmp")			//수정페이지로
 	public String updateEmp(BusinessPalnAVO vo, Model model) {
-		
 		
 		model.addAttribute("emp", bpService.getBusinessPlanA(vo));
 		return "/emp/updateEmp";
