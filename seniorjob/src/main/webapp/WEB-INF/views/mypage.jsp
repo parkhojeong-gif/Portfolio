@@ -40,7 +40,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='resumeList'">
+							<div class="panel-heading" onclick="location.href='getSearchResumeList'">
 								<h3 class="panel-title">이력서 관리</h3>
 							</div>
 						</div>

@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.company.certificate.service.CertificateVO2;
+import com.company.certificate.service.impl.CertificateMapper;
+import com.company.portfolio.service.PortfolioVO;
+import com.company.portfolio.service.impl.PortfolioMapper;
 import com.company.resume.service.ResumeVO;
 import com.company.resume.service.impl.ResumeMapper;
 import com.company.self_info.service.Self_InfoVO;
@@ -17,6 +19,8 @@ public class ResumeController {
 	
 	@Autowired ResumeMapper resumemapper;
 	@Autowired Self_InfoMapper selfmapper;
+	@Autowired PortfolioMapper portmapper;
+	@Autowired CertificateMapper certimapper;
 	
 	// 이력서 전체조회
 	@RequestMapping("/getSearchResumeList")
@@ -60,9 +64,11 @@ public class ResumeController {
 	
 	//이력서 단건 조회
 	@RequestMapping("/getResume")
-	public String getResume(Model model, ResumeVO vo, Self_InfoVO selfvo) {
+	public String getResume(Model model, ResumeVO vo, Self_InfoVO selfvo, PortfolioVO portvo, CertificateVO2 certivo) {
 		model.addAttribute("resumeVO", resumemapper.getResume(vo));
 		model.addAttribute("selfvo", selfmapper.getSelf(selfvo));
+		model.addAttribute("portvo", portmapper.getPort(portvo));
+		model.addAttribute("certivo", certimapper.getCerti(certivo));
 		return "resume/resumeList";
 	}
 	

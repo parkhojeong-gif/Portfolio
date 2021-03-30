@@ -119,14 +119,14 @@
                                             <label for="firstname">항목</label>
                                             <select>
                                             	<option value=${certivo.certi_kinds } id="certi_kinds" name="certi_kinds">IT</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">세무/회계</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">건축</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">농업</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">디자인</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">보건/의료</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">기계제작</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">전기</option>
-                                            	<option value="" id="certi_kinds" name="certi_kinds">기타</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">세무/회계</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">건축</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">농업</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">디자인</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">보건/의료</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">기계제작</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">전기</option>
+                                            	<option value=${certivo.certi_kinds } id="certi_kinds">기타</option>
                                             </select>
                                         </div>
                                     </div>
@@ -134,11 +134,11 @@
                                         <div class="form-group">
                                             <label for="subject">합격구분</label>
                                             <select>
-                                            	<option value="" id="accept" name="accept">1차합격</option>
-                                            	<option value="" id="accept" name="accept">2차합격</option>
-                                            	<option value="" id="accept" name="accept">필기합격</option>
-                                            	<option value="" id="accept" name="accept">실기합격</option>
-                                            	<option value="${certivo.accept }" id="accept" name="accept">최종합격</option>
+                                            	<option value=${certivo.accept } id="accept">1차합격</option>
+                                            	<option value=${certivo.accept } id="accept">2차합격</option>
+                                            	<option value=${certivo.accept } id="accept">필기합격</option>
+                                            	<option value=${certivo.accept } id="accept">실기합격</option>
+                                            	<option value=${certivo.accept } id="accept">최종합격</option>
                                             </select>                                        
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
 											<div class="form-group">
 												<label for="message"></label>
 												<textarea id="self_content" name="self_content" class="form-control" 
-												placeholder="내용을 입력하세요." value=${selfvo.self_content }></textarea>
+												placeholder="내용을 입력하세요.">${selfvo.self_content }</textarea>
 											</div>
 										</div>
 									</div>
@@ -207,7 +207,6 @@
                     </div>    
                 </div>
             </div>
-        </div>
         </div>
 		<jsp:include page="../footer.jsp"></jsp:include>
     </body>
