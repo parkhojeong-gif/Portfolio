@@ -1,12 +1,10 @@
-package com.company.businesspalna.service.impl;
+package com.company.businesspalna.service;
 
 import java.util.List;
 
-import com.company.businesspalna.service.BusinessPalnAVO;
-
-public interface BusinessPlanAMapper {
-
-public int insertBusinessPlanA(BusinessPalnAVO vo);
+public interface BusinessPlanAService {
+	
+	public int insertBusinessPlanA(BusinessPalnAVO vo);
 	
 	public int updateBusinessPlanA(BusinessPalnAVO vo);
 	
@@ -16,5 +14,4 @@ public int insertBusinessPlanA(BusinessPalnAVO vo);
 	
 	public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo);
 
-	
 }

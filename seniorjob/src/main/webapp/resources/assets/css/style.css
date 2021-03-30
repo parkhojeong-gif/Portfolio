@@ -300,13 +300,11 @@ input[type="search"]::-webkit-search-decoration {
     padding: 10px 20px;
     border: 1px solid #FDC600;
     color: #000;
-    background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
     color: #000;
-    background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
 }
@@ -334,7 +332,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 .form-control {
     display: block;
-    width: 100%;
+    width: 50%;
     height: 34px;
     padding: 6px 12px;
     font-size: 13px;
@@ -396,7 +394,7 @@ input[type="search"]::-webkit-search-decoration {
     transition: all 300ms linear;
 } 
 /* Inputs               */
-.form-control {
+/* .form-control {
     display: block;
     width: 100%;
     height: 44px;
@@ -410,7 +408,7 @@ input[type="search"]::-webkit-search-decoration {
     border-radius: 0px;
     box-shadow: 0px 1px 1px rgba(179, 179, 179, 0.1) inset;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-}
+} */
 
 .form-control:focus {
     background-color: #FFFFFF;
@@ -1016,10 +1014,9 @@ label small{
 }
 
 .slider-content{
-    position: absolute;
+    /* position: absolute; */
     top: 20%;
     text-align: center;
-    color: #FFF;
     width: 100%;
 }
 .slider-content h2 {
@@ -1107,7 +1104,7 @@ page-header
     letter-spacing: 2px;
 }
 .content-area{
-    background-color: #FCFCFC; padding-bottom: 55px;
+    padding-bottom: 55px;
 }
 .layout-switcher a{
     font-size: 25px;
@@ -2484,9 +2481,14 @@ count-area
     padding: 15px;
 }
 .search-form .form-inline .form-group { 
-    width: 235px;
+    width: 50px;
     text-align: left;
     letter-spacing: 0.5px;
+}
+
+.form-search-location{
+	width:235px;
+	text-align: left;
 }
 .slider-selection { 
     background: #FDC600;
@@ -2696,7 +2698,7 @@ padding-bottom: 15px;
     float: left;
     width: 24px;
     height: 24px;
-    content: "";
+    content: "�겎";
     color: #FDC600;
     font-size: 16px;
     line-height: 24px;
@@ -3045,6 +3047,12 @@ padding: 10px;
     height: 300px;
 }
 
+
+
+
+
+/* somin */
+
 #nudge_wrap {
     width: 260px;
     position: fixed;
@@ -3080,3 +3088,104 @@ padding: 10px;
     background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
     content: "";
 }
+
+
+.tabWrap .tab .badge {
+    display: inline-block;
+    margin: 0 0 0 8px;
+    padding: 0 12px 0 13px;
+    min-width: 36px;
+    height: 28px;
+    border-radius: 14px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0;
+    vertical-align: top;
+    background: #afbac8;
+}
+
+.tabWrap:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed;
+}
+
+.my_notification .sliders .bx-viewport {
+    overflow: visible !important;
+}
+
+.bx-viewport {
+    -webkit-transform: translatez(0);
+}
+
+.my_notification .slider .link:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "";
+    display: block;
+    background: #fff;
+    opacity: 0;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+1), .my_notification .slider.apply li {
+    border-color: #5189fa;
+    background: #5189fa;
+}
+
+
+.my_notification .slider.my li:nth-of-type(4n+2), .my_notification .slider.request li {
+    border-color: #00cba4;
+    background: #00cba4;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+3), .my_notification .slider.jobs li {
+    border-color: #00beea;
+    background: #00beea;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+4), .my_notification .slider.company li {
+    border-color: #a574ee;
+    background: #a574ee;
+}
+
+.my_notification .slider li {
+    float: left;
+    position: relative;
+    width: 300px;
+    height: 190px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 16px;
+    box-sizing: border-box;
+    letter-spacing: -1px;
+}
+
+.my_notification .slider .title {
+    overflow: hidden;
+    margin-bottom: 12px;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my_notification .slider.my li .inner {
+    padding: 31px 23px 23px 23px;
+}
+
+.my_notification .slider .inner {
+    position: relative;
+    z-index: 1;
+    padding: 23px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
