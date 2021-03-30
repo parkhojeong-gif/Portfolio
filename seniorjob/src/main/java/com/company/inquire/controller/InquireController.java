@@ -2,6 +2,7 @@ package com.company.inquire.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,6 +12,21 @@ import com.company.inquire.service.impl.InquireMapper;
 @Controller
 public class InquireController {
 	@Autowired InquireMapper inquireMapper;
+	@RequestMapping("/inquire")
+	public String inquire() {
+		return "inquire";		  			//문의사항
+	}
+	
+	@RequestMapping("/inquireInsert")
+	public String inquireInsert() {
+		return "inquireInsert";		  		 //문의사항 등록
+	}
+	
+	@RequestMapping("/inquireList")
+	public String inquireList() {
+		return "inquireList";}	
+		//문의사항 목록
+	
 	
 	@RequestMapping("/getInquireList")	//문의 리스트
 	public String getInquireList(Model model) {

@@ -1,14 +1,14 @@
-package com.company.certificate.service;
+package com.company.certificate.controller;
 
 import lombok.Data;
 
 @Data
-public class CertificateVO {		//ìê²©ì¦
-	private String certi_no;		//ìê²©ì¦ë²ˆí˜¸
-	private String resume_no;		//ì´ë ¥ì„œë²ˆí˜¸
-	private String certi_kinds;		//ìê²©ì¦í•­ëª©
-	private String certi_name;		//ìê²©ì¦ëª…
-	private String certi_place;		//ë°œí–‰ì²˜
-	private String accept;		//í•©ê²©êµ¬ë¶„
-	private String certi_date;		//ì·¨ë“ì¼
+public interface CertificateVO {
+	private String certi_no;		//ÀÚ°İÁõ ¹øÈ£
+	private String resume_no;		//ÀÌ·Â¼­ ¹øÈ£
+	private String certi_kinds;		//ÀÚ°İÁõ ºĞ·ù
+	private String certi_name;		//ÀÚ°İÁõ ÀÌ¸§
+	private String certi_place;		//ÀÚ°İÁõ ¹ß±ŞÀå¼Ò
+	private String accept;			//ÇÕ°İ¿©ºÎ
+	private String certi_date;		//ÃëµæÀÏ
 }

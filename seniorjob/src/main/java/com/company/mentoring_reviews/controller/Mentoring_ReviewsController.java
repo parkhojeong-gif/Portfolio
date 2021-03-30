@@ -2,6 +2,7 @@ package com.company.mentoring_reviews.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,8 +12,12 @@ import com.company.mentoring_reviews.service.impl.Mentoring_ReviewsMapper;
 
 @Controller
 public class Mentoring_ReviewsController {
-@Autowired Mentoring_ReviewsMapper mentoring_ReviewsMapper;
-	
+
+	@Autowired Mentoring_ReviewsMapper mentoring_ReviewsMapper;
+	@RequestMapping("/mentoringReviews")
+	public String mentoringReviews() {
+		return "mentoringReviews";		  //멘토링 후기
+	}
 	@RequestMapping("/getMentoring_ReviewsList")	//후기 리스트
 	public String getMentoring_ReviewsList(Model model) {
 		model.addAttribute("list", mentoring_ReviewsMapper.getMentoring_ReviewsList());

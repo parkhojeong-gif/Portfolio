@@ -2,8 +2,8 @@ package com.company.service_center.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
 
 import com.company.service_center.service.Service_CenterVO;
 import com.company.service_center.service.impl.Service_CenterMapper;
@@ -12,7 +12,11 @@ import com.company.service_center.service.impl.Service_CenterMapper;
 @Controller
 public class Service_CenterController {
 	@Autowired Service_CenterMapper service_CenterMapper;
-	
+
+	@RequestMapping("/serviceCenter")
+	public String serviceCenter() {
+		return "serviceCenter";			  //공지사항
+	}
 	@RequestMapping("/getService_CenterList")	//고객센터 리스트
 	public String getService_CenterList(Model model) {
 		model.addAttribute("list", service_CenterMapper.getService_CenterList());

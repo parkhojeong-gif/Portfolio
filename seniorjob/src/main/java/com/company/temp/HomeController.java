@@ -45,12 +45,20 @@ public class HomeController {
 		return "mypage";
 	}
 	
-	@RequestMapping("/resumeInsert")
-	public String resumeInsert() {
-		return "resumeInsert";
+	@RequestMapping("/seniorTimes")
+	public String seniorTimes() {
+		return "seniorTimes";		  	  //시니어 타임즈
+	}
+	
+	@RequestMapping("/myWriteList")
+	public String myWriteList() {
+		return "myWriteList";		  		 //내 글 목록(게시글, 문의사항)
 	}
 	
 
+	
+	
+	
 	@RequestMapping("/businessPlanInsert")
 	public String businessPlanInsert() {
 		return "businessPlanInsert";

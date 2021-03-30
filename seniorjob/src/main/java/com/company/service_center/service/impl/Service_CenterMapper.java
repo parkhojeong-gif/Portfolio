@@ -5,7 +5,6 @@ import java.util.List;
 import com.company.service_center.service.Service_CenterVO;
 
 
-
 public interface Service_CenterMapper {
 	//등록
 	public int insertService_Center(Service_CenterVO vo);
