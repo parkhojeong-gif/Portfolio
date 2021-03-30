@@ -231,7 +231,6 @@
             </div>
         </div>
      
-        
 	<!-- 키워드로 검색 -->
 	<form action="getKeywordSearch" class=" form-inline" method="post">
 	<div class="keyword-search" style="background-color: #FFFFFF; padding-top:100px;">
@@ -240,7 +239,7 @@
 	<h3>키워드로 검색</h3>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Key word" name="searchKeyword">
-			<input type="button" id="getKeywordSearch" value="검색"/>
+			<input type="submit" value="검색"/>
 		</div>
 	</div>
 	</div>
