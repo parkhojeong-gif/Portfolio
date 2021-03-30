@@ -28,7 +28,7 @@
         <Logger name="org.springframework" level="debug" additivity="false">
             <AppenderRef ref="console_com" />
         </Logger>
-        <Root level="error">  <!-- debug는 다 보여주는 거 -->
+        <Root level="debug">  <!-- debug는 다 보여주는 거 -->
             <AppenderRef ref="console_com" />
 <!--             <AppenderRef ref="MyFile" /> -->
         </Root>

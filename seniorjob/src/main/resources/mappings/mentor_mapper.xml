@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.company.mentor.service.impl.MentorMapper">
+	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+		<where>
+		<if test="mentoring_location != null and mentoring_location != ''">
+			 MENTORING_LOCATION = #{mentoring_location}
+		</if>
+		<if test="mentor_duty != null and mentor_duty != ''">
+			AND MENTOR_DUTY = #{mentor_duty}
+		</if>
+		</where>
+	</select>
+	
+	<select id="getKeywordSearch"  resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+		WHERE MENTORING_KIND LIKE '%'||#{searchKeyword}||'%' 
+	</select>
+ </mapper>	

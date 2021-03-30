@@ -40,6 +40,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	
+	// ���� ����Ʈ(��ü�˻�)
+	@RequestMapping("/mentorList")
+	public String mentorList() {
+		return "Mentor/mentorList";
+	}
+		
 	@RequestMapping("/mypage")
 	public String mypage() {
 		return "mypage";
@@ -83,5 +91,9 @@ public class HomeController {
 	public String pwNotFound() {
 		return "pwNotFound";
 	}
+	
+	
+	
+	
 	
 }

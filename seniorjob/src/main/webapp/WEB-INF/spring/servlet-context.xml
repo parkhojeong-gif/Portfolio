@@ -54,7 +54,7 @@
 	<!-- TransactionManager AOP 설정 --> <!--read-only="true" > aop 빼면 insert 실행 되고, 넣으면 안 들어가짐.-->
 	<aop:config>
 		<aop:pointcut id="trPointcut"
-			expression="execution(* com.yedam..*Impl.*(..))" />
+			expression="execution(* com.company..*Impl.*(..))" />
 		<aop:advisor pointcut-ref="trPointcut"
 			advice-ref="txAdvice" />
  	</aop:config>

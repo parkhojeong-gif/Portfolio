@@ -86,9 +86,11 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
+                
+               <a href="/">홈으로가기</a>
                     <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.45s">Login</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">Submit</button>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.45s">로그인</button>
+                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.48s">회원가입</button>
                     </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
@@ -110,36 +112,29 @@
                             </ul>
                         </li>
 
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="properties.html">멘토리스트</a></li>
+
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="">채용공고</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="mentorList">멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터 <b class="caret"></b></a>
+                            <a href="inquire" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="yamm-content">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <h5>Home pages</h5>
+                                                <h5><a href="inquire">문의</a></h5>
                                                 <ul>
                                                     <li>
-                                                        <a href="inquire">문의사항</a>
+                                                        <a href="inquire">문의하기</a>
                                                     </li>
                                                     <li>
-                                                        <a href="index-2.html">Home Style 2</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-3.html">Home Style 3</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-4.html">Home Style 4</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-5.html">Home Style 5</a>
+                                                        <a href="index-2.html">문의 목록</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>Pages and blog</h5>
+                                                <h5>결제/환불</h5>
                                                 <ul>
                                                     <li><a href="blog.html">Blog listing</a>  </li>
                                                     <li><a href="single.html">Blog Post (full)</a>  </li>
@@ -153,34 +148,19 @@
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>Property</h5>
+                                                <h5>신청/취소</h5>
                                                 <ul>
                                                     <li><a href="property-1.html">Property pages style (1)</a> </li>
                                                     <li><a href="property-2.html">Property pages style (2)</a> </li>
                                                     <li><a href="property-3.html">Property pages style (3)</a> </li>
                                                 </ul>
-
-                                                <h5>Properties list</h5>
-                                                <ul>
-                                                    <li><a href="properties.html">Properties list style (1)</a> </li> 
-                                                    <li><a href="properties-2.html">Properties list style (2)</a> </li> 
-                                                    <li><a href="properties-3.html">Properties list style (3)</a> </li> 
-                                                </ul>                                               
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>Property process</h5>
+                                                <h5>화상면접사용법</h5>
                                                 <ul> 
                                                     <li><a href="submit-property.html">Submit - step 1</a> </li>
                                                     <li><a href="submit-property.html">Submit - step 2</a> </li>
                                                     <li><a href="submit-property.html">Submit - step 3</a> </li> 
-                                                </ul>
-                                                <h5>User account</h5>
-                                                <ul>
-                                                    <li><a href="register.html">Register / login</a>   </li>
-                                                    <li><a href="user-properties.html">Your properties</a>  </li>
-                                                    <li><a href="submit-property.html">Submit property</a>  </li>
-                                                    <li><a href="change-password.html">Change password</a> </li>
-                                                    <li><a href="user-profile.html">Your profile</a>  </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -196,6 +176,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         <!-- End of nav bar -->
+
 
     </body>
 </html>
