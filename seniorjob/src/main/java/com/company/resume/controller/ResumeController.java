@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.company.resume.service.ResumeVO;
 import com.company.resume.service.impl.ResumeMapper;
@@ -48,6 +50,14 @@ public class ResumeController {
 		resumemapper.updateResuem(vo);
 		return "resume/resumeList";	  
 	}
+	
+	//이력서 삭제
+	@RequestMapping("/resumeDelete")
+	public String resumeDelete(ResumeVO vo) {
+		resumemapper.deleteResume(vo);
+		return "resume/resumeList";	  
+	}
+	
 	//이력서 단건 조회
 	@RequestMapping("/getResume")
 	public String getResume(Model model, ResumeVO vo, Self_InfoVO selfvo) {
@@ -55,6 +65,10 @@ public class ResumeController {
 		model.addAttribute("selfvo", selfmapper.getSelf(selfvo));
 		return "resume/resumeList";
 	}
+	
+	//이미지 업로드
+	
+	
 	
 	@RequestMapping("/preview")
 	public String preview() {

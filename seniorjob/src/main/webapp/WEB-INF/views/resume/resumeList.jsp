@@ -10,10 +10,17 @@
 <jsp:include page="../topHeader.jsp"></jsp:include>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-        	function delRe(){
-        		alert("정말 삭제하시겠습니까?");
-        	}
+        	
         </script>
+        <!-- <script>
+        	function delRe(str){
+        		var yn = alert("정말 삭제하시겠습니까?");
+        		if(yn){
+        			frm.action = "resumeDelete?resume_no"+str;
+        			frm.submit();
+        		}
+        	}
+        </script> -->
     <body>
         <!-- Body content -->
         <!-- property area -->
@@ -30,10 +37,12 @@
                                         <li><a>${resume.resume_no }</a></li> 
                                         <li><a>${resume.self_name }</a></li>
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">수정</button></a></li>
-                                    	<li><a><button type="button" onclick="location.href='resumeDelete?resume_no=${resumeVO.resume_no}'">삭제</button></a></a></li>
-                                    	<li><a>인쇄</a></li>
+                                    	<!-- 데이터무결성 조건 때문에 삭제 처리 안 됨. -->
+                                    	<li><a><button type="button" onclick="location.href='resumeDelete?resume_no=${resume.resume_no}'">삭제</button></a></li>
+                                    	<!-- 인쇄랑 PDF 저장 같이 됨. -->
+                                    	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">인쇄 하러가기</button></a></li>
                                     	<li><a>WORD 변환</a></li>
-                                    	<li><a>PDF 변환</a></li>
+                                    	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">PDF 변환하러 가기</button></a></li>
                                     	<li><button type="button" onclick="location='collection'">보기</button>&nbsp;
                                     	    <button type="button" onclick="location=''">보내기</button></li>
                                     </ul>

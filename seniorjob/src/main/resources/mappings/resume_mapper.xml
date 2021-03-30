@@ -39,7 +39,7 @@
 						  RESUME_AREA=#{resume_area}, 
 						  RESUME_START=#{resume_start}, 
 						  RESUME_END=#{resume_end}
-		WHERE 			  RESUME_NO = #{resume_no}
+		WHERE 			  RESUME_NO=#{resume_no}
 	</update>
 	<delete id="deleteResume">
 		DELETE FROM RESUME 

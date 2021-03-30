@@ -19,10 +19,10 @@
 </script>
 <!-- 글자수세기 -->
 <script>
-	var total = 4000;
+	var total = 2000;
 	function counter() {
 		var check = document.frm.self_content.value.length;
-		var cnt = 4000 - check;
+		var cnt = 2000 - check;
 		document.frm.cnt.value = cnt;
 	}
 	function middle() {
@@ -31,13 +31,28 @@
 </script>
 <!-- 글자수세기(이력서 항목 추가+) -->
 <script>
-	var total2 = 4000;
+	var total2 = 2000;
 	function counter2() {
 		var check2 = document.frm.self_content2.value.length;
-		var cnt2 = 4000 - check2;
+		var cnt2 = 2000 - check2;
 		document.frm.cnt2.value = cnt2;
 	}
 </script>
+<script>
+	function uploadImage(e){
+		e.preventDefault();
+		var imgName = $('#file').val();
+		imgName = imgName.substring(imgName.lastIndexOf('\\') + 1);
+		$('#image').val(imgName);
+// 		document.frm.submit();
+	}
+</script>
+<script>
+	function preview() {
+	$('#frm').attr('action', 'preview');
+	$('#frm').submit();
+	}
+</script>	
 <body>
 	<div class="content-area recent-property padding-top-40"
 		style="background-color: #FFF;">
@@ -59,14 +74,16 @@
 					<a href="">자기소개서</a> 
 					<a href="#step3" data-toggle="tab"><button type="button">보기+</button></a>
 					<hr>
-					<form action="resumeInsert" method="post" name="frm">
+					<form id="frm" action="ResumeFileUpload" enctype="multipart/form-data" method="post" name="frm" onsubmit="uploadImage(event)">
 						<div class="row">
 							<div><input type="hidden" value="${ResumeVO.resume_no }" id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
 							<div class="col-sm-6">
+							<!-- 이미지 업로드 오류 수정중 -->
 								<div class="form-group">
 									<label>사진</label> 
-									<input type="file" class="form-control" id="image" name="image">
+									<input type="file" class="form-control" id="file" name="file">
+									<input type="hidden" name="image" id="image">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -237,7 +254,7 @@
 										<i class="fa fa-envelope-o"></i>이력서 저장
 									</button>
 									<button type="button" class="btn btn-primary"
-										onclick="location='preview'">
+										onclick="preview()">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
 									<button type="button" class="btn btn-primary"
