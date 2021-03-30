@@ -117,4 +117,9 @@ public class HomeController {
 		return "memberRegister";
 	}
 	
+	@RequestMapping("/calendarTest")
+	public String calendarTest() {
+		return "mypage/calendarTest";
+	}
+	
 }
