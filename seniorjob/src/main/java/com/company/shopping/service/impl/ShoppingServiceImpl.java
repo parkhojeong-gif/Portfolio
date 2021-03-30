@@ -38,5 +38,10 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return dao.getSearchShopping(vo);
 	}
 
+	@Override
+	public List<ShoppingVO> getSearchPay(ShoppingVO vo) {
+		return dao.getSearchPay(vo);
+	}
+
 
 }

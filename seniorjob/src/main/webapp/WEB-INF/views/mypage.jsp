@@ -75,7 +75,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='payDetail'">
+							<div class="panel-heading" onclick="location.href='getSearchPay'">
 								<h3 class="panel-title">결제내역</h3>
 							</div>
 						</div>

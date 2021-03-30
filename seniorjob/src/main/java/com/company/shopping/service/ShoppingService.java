@@ -15,4 +15,7 @@ public int insertShopping(ShoppingVO vo);
 	
 	public List<ShoppingVO> getSearchShopping(ShoppingVO vo);
 
+	public List<ShoppingVO> getSearchPay(ShoppingVO vo);
+
+	
 }

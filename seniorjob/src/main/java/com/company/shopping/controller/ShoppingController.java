@@ -25,6 +25,14 @@ public class ShoppingController {
 		return "mypage/mentoringStatus";
 	}
 	
+	@GetMapping("/getSearchPay")
+	public String getSearchPay(ShoppingVO vo, Model model) {
+		model.addAttribute("list", spService.getSearchPay(vo));
+		return "mypage/payDetail";
+	}
+	
+	
+	
 	
 	
 }
