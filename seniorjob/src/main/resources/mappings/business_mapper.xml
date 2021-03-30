@@ -8,14 +8,14 @@
 	</select>
 	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
 		select *
-		from Businessplana a
+		from Businessplana<!-- a 
 		JOIN Businessplanb b
 		on A.Seq = B.Seq
 		JOIN Businessplanc c
 		on A.Seq = C.Seq
 		JOIN Businesspland d
-		on A.Seq = D.Seq
-		where a.seq = #{seq}
+		on A.Seq = D.Seq -->
+		where seq = #{seq}
 
 	</select>
 	
@@ -34,6 +34,22 @@
 							'test',
 							'test') 
 	</insert>
+	
+	<update id="updateBusinessPlanA" parameterType="BusinessPalnAVO">
+	UPDATE Businessplana 
+	<set>
+		BUSINESS_A =#{business_a},
+		BUSINESS_B=#{business_b},
+		BUSINESS_C=#{business_c}
+	</set> 
+	WHERE SEQ=#{seq}
+	</update>
+	
+	
+	<delete id="deleteBusinessPlanA" parameterType="BusinessPalnAVO">
+	DELETE FROM Businessplana 
+	WHERE SEQ=#{seq}
+	</delete>
 	
 	
 	

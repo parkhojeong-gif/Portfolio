@@ -13,6 +13,16 @@
 function detail(seq) {
 	location.href="getBusinessPlanA?seq="+seq //
 }
+
+function deleteBp(seq) {
+	location.href="deleteBusinessPlanA?seq="+seq //
+}
+
+function updateBp(seq) {
+	location.href="updateBusinessPlanA?seq="+seq //
+}
+
+
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <body>
@@ -63,8 +73,8 @@ function detail(seq) {
 									sit amet, ante. Donec eu libero sit amet quam egestas semper.
 									Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 								<p class="read-more">
-									<a href="single.html" class="btn btn-default btn-border">수정</a>
-									<a href="single.html" class="btn btn-default btn-border">삭제</a>
+									<a onclick="updateBp('${bp.seq }')" class="btn btn-default btn-border">수정</a>
+									<a onclick="deleteBp('${bp.seq }')" class="btn btn-default btn-border">삭제</a>
 									<a href="single.html" class="btn btn-default btn-border">인쇄</a>
 									<a href="single.html" class="btn btn-default btn-border">저장</a>
 									<a href="single.html" class="btn btn-default btn-border">첨삭요청</a>
