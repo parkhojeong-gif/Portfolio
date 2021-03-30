@@ -65,7 +65,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringStatus'">
+							<div class="panel-heading" onclick="location.href='getSearchShopping'">
 								<h3 class="panel-title">수강중인 멘토링</h3>
 							</div>
 						</div>

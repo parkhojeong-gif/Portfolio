@@ -1,10 +1,9 @@
-package com.company.shopping.service.impl;
+package com.company.shopping.service;
 
 import java.util.List;
 
-import com.company.shopping.service.ShoppingVO;
 
-public interface ShoppingMapper {
+public interface ShoppingService {
 	
 public int insertShopping(ShoppingVO vo);
 	
