@@ -3,6 +3,11 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.mentor.service.impl.MentorMapper">
  
+ 	<!-- 멘토 리스트 페이지 호출  -->
+ 	<select id="MentorList" resultType="com.company.mentor.service.MentorVO">
+ 		SELECT * FROM MENTOR
+ 	</select>
+ 
  	<!-- 전체검색 / 지역 검색 / 직무 검색  --> 
 	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
@@ -25,6 +30,6 @@
 	<!-- 연령 검색 -->
 	<select id="getAgeSearch"  resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
-				WHERE MENTORING_AGE = #{mentoring_age}			
+				WHERE MENTORING_AGE = #{searchAge}			
 	</select>
  </mapper>	

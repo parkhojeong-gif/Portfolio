@@ -34,9 +34,10 @@ public class MentoringController {
 	}
 	
 	// 연령 검색
-	@RequestMapping("/getAgeSearch")
-	public String getAgeSearch(Model model, MentorVO vo) {
-		model.addAttribute("list", mentorMapper.getAgeSearch(vo));
+	@PostMapping("/getAgeSearch")
+	public String getAgeSearch(@RequestParam("searchAge") String searchAge, Model model) {
+		List<MentorVO> list = mentorMapper.getAgeSearch(searchAge);
+		model.addAttribute("list", list);
 		return "Mentor/mentorList";
 	}
 	
@@ -46,6 +47,16 @@ public class MentoringController {
 		model.addAttribute("list", mentorMapper.getLocationSearch());
 		return "Mentor/mentorList";
 	}
+	
+	// 멘토링 등록 페이지 호출
+	@RequestMapping("/MentorRegister")
+	public String MentorRegister() {
+		return "Mentor/mentorRegister";
+	}
+	
+	// 멘토링 등록
+	
+	// 멘토 상세 페이지 호출
 
 	
 }
