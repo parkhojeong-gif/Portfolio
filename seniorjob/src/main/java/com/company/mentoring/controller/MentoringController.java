@@ -48,15 +48,24 @@ public class MentoringController {
 		return "Mentor/mentorList";
 	}
 	
-	// 멘토링 등록 페이지 호출
+	// 멘토 등록 페이지 호출
 	@RequestMapping("/MentorRegister")
 	public String MentorRegister() {
 		return "Mentor/mentorRegister";
 	}
 	
-	// 멘토링 등록
+	// 멘토 등록 요청
+	@PostMapping("/MentorRegisterProc")
+	public String MentorRegisterProc(Model model) {
+		return "Mentor/mentorRegisterSuccess";
+	}
 	
 	// 멘토 상세 페이지 호출
+	@RequestMapping("/getMentor")
+	public String getMentor(Model model, MentorVO vo) {
+		model.addAttribute("list", mentorMapper.getMentor(vo));
+		return "Mentor/getMentor";
+	}
 
 	
 }

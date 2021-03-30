@@ -32,4 +32,43 @@
 		SELECT * FROM MENTOR
 				WHERE MENTORING_AGE = #{searchAge}			
 	</select>
+	
+	<insert id="MentorRegisterProc">
+		INSERT INTO MENTOR
+		(
+		MENTOR_ID,
+		MENTORING_KIND,
+		MENTOR_INTRODUCE,
+		MENTOR_CAREER,
+		MENTOR_PHOTO,
+		MENTOR_LICENSE,
+		MENTOR_CAREER_CERTIFICATE,
+		MENTOR_SCHOOL_NAME,
+		MENTOR_COMPANY_NAME,
+		MENTOR_DEPARTMENT_NAME,
+		MENTOR_JOB_ID,
+		MENTOR_DUTY,
+		ID,
+		MENTORING_AGE,
+		MENTORING_LOCATION
+			
+		)
+		values(
+		#{seq_mentor.nextval},
+		#{mentoring_kind},
+		#{mentor_introduce},
+		#{mentor_photo},
+		#{mentor_license},
+		#{mentor_career_certificate},
+		#{mentor_school_name},
+		#{mentor_company_name},
+		#{mentor_department_name},
+		#{mentor_job_id},
+		#{mentor_duty},
+		#{id},
+		#{mentoring_age},
+		#{mentoring_location}
+		
+		)
+	</insert>
  </mapper>	

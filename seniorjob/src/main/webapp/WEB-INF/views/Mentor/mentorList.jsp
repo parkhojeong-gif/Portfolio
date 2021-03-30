@@ -303,7 +303,7 @@
 								<div class="col-sm-6 col-md-4 p0">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
-											<a href="property-1.html"><img src="../resources/assets/img/mentor/photoDefault.png"></a>
+											<a href="property-1.html"><img src="../resources/assets/img/mentor/photoDefault.jpg"></a>
 										</div>
 
 										<div class="item-entry overflow">
