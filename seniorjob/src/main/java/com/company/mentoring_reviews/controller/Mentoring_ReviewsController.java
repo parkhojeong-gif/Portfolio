@@ -15,8 +15,9 @@ public class Mentoring_ReviewsController {
 
 	@Autowired Mentoring_ReviewsMapper mentoring_ReviewsMapper;
 	@RequestMapping("/mentoringReviews")
-	public String mentoringReviews() {
-		return "mentoringReviews";		  //멘토링 후기
+	public String mentoringReviews(Model model) {
+		model.addAttribute("list", mentoring_ReviewsMapper.getMentoring_ReviewsList());
+		return "/mentoringReviews/mentoringReviews";		  //멘토링 후기
 	}
 	@RequestMapping("/getMentoring_ReviewsList")	//후기 리스트
 	public String getMentoring_ReviewsList(Model model) {

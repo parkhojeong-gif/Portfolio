@@ -12,4 +12,5 @@ public class Service_CenterVO { 		//고객센터
 	private String content;		//글내용
 	private String s_file;		//첨부파일
 	private String id;		//아이디
+	private String title; //글제목
 }

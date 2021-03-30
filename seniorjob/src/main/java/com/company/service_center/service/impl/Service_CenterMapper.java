@@ -2,6 +2,7 @@ package com.company.service_center.service.impl;
 
 import java.util.List;
 
+import com.company.service_center.PagingVO;
 import com.company.service_center.service.Service_CenterVO;
 
 
@@ -15,5 +16,14 @@ public interface Service_CenterMapper {
 	//단건조회
 	public Service_CenterVO getService_Center(Service_CenterVO vo);
 	//전체 검색 조회
-	public List<Service_CenterVO> getService_CenterList();
+	public List<Service_CenterVO> getService_CenterList(Service_CenterVO vo);
+	//조회수 증가
+	public boolean updateClick(Service_CenterVO vo);
+	// 게시물 총 갯수
+	public int countBoard();
+	// 페이징 처리 게시글 조회
+	public List<Service_CenterVO> selectBoard(PagingVO vo);
+	
+	
+
 }
