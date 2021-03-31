@@ -17,4 +17,5 @@ public class ResumeVO {		//이력서필수
 	private String id;		//아이디
 	private String collection;		//지도내용
 	private String image;		//이미지
+	private String self_name;   //자소서 제목
 }

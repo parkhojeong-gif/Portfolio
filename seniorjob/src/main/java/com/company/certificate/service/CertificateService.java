@@ -1,13 +1,8 @@
-package com.company.certificate.service.impl;
+package com.company.certificate.service;
 
 import java.util.List;
 
-import com.company.certificate.service.CertificateVO2;
-
-//import com.company.certificate.service.CertificateVO;
-
-
-public interface CertificateMapper {
+public interface CertificateService {
 	//전체조회
 	public List<CertificateVO2> getSearchCertiList();
 	//등록
