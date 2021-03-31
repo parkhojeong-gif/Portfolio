@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
  <jsp:include page="topHeader.jsp"></jsp:include>
@@ -12,14 +13,14 @@
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Login : </h2> 
-                            <form action="" method="post">
+                            <form action='<c:url value='/loginProc'/>' method="post">
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <label for="id">Id</label>
+                                    <input type="text" class="form-control" id="id" name="id">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" class="form-control" id="password" name="password">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default"> Log in</button>

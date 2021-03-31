@@ -10,23 +10,23 @@ import com.company.users.service.impl.UsersMapper;
 
 @Controller
 public class UsersController {
-	@Autowired UsersMapper usersMapper;
 	
+	@Autowired UsersMapper usersMapper;
+
 	@RequestMapping("/getUsersList")		//전체조회
 	public String userstest(Model model) {
 		model.addAttribute("list", usersMapper.getUsersList());
 		return "/users/getUsersList";
 	}
 	
-	@RequestMapping("/insertUsers") //유저 등록 폼
+	@RequestMapping("/insertUsers") //회원가입 폼
 	public String insertInquire(UsersVO vo) {
-		return "/users/insertUsers";
+		return "memberRegister";
 	}
-	@RequestMapping("/insertUsersProc")		//등록처리
-	public String insertUsers(UsersVO vo) {
+	@RequestMapping("/insertUsersProc") // 회원가입 처리
+	public String insertUsersProc(UsersVO vo) {
 		usersMapper.insertUsers(vo);
-		return "/users/getUsersList";
-		
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/updateUsers")	//유저 정보 수정폼

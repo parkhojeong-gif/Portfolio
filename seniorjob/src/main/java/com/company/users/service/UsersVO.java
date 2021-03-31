@@ -1,8 +1,14 @@
 package com.company.users.service;
 
+import java.util.Date;
+
+import javax.validation.constraints.NotEmpty;
+
 import lombok.Data;
 
+
 @Data
+
 public class UsersVO { //회원테이블
 	private String id; //아이디
 	private String password; //패스워드
@@ -12,5 +18,5 @@ public class UsersVO { //회원테이블
 	private String birth; //생년월일
 	private String auth; //권한
 	private String name; //이름
-	private String log_date; //가입일
+	private Date log_date; //가입일
 }

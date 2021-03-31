@@ -11,4 +11,5 @@ public interface UsersMapper {
 	public int updateUsers(UsersVO vo);		//수정
 	public int deleteUsers(UsersVO vo);		//삭제
 	public UsersVO getUsers(UsersVO vo);	//단건조회
+	public UsersVO logCheck(UsersVO vo);    //로그인
 }
