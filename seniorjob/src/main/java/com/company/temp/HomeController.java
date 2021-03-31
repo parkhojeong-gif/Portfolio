@@ -48,13 +48,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	// 멘토 리스트 페이지 호출
-	@RequestMapping("/MentorList")
-	public String MentorList(Model model) {
-		model.addAttribute("list", mentorMapper.MentorList());
-		return "Mentor/mentorList";
-	}
-		
 	@RequestMapping("/mypage")
 	public String mypage() {
 		return "mypage";

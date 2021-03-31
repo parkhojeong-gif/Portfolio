@@ -25,6 +25,8 @@ public interface MentorMapper {
 	public MentorVO getMentor(MentorVO vo);
 	
 	// 멘토 등록
+	public MentorVO MentorRegisterProc(MentorVO vo);
+	
 	
 
 }

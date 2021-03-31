@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -99,7 +98,8 @@ button:hover {
   <h1>멘토등록</h1>
   <!-- One "tab" for each step in the form: -->
   <div class="tab">기본정보
-    <p><input placeholder="이름" oninput="this.className = ''" name="name"></p>
+ 	<p><input placeholder="이름: 나훈아" oninput="this.className = ''" name="id" readonly></p> <!-- 현재 로그인 세션값 활용하여 출력 -->
+    <p><input placeholder="이름: 나훈아" oninput="this.className = ''" name="name"  readonly></p> <!-- 현재 로그인 세션값 활용하여 출력 -->
     <p><input placeholder="학교명" oninput="this.className = ''" name="mentor_school_name"></p>
     <p><input placeholder="회사명" oninput="this.className = ''" name="mentor_company_name"></p>
     <p><input placeholder="부서" oninput="this.className = ''" name="mentor_department_name"></p>
@@ -140,6 +140,21 @@ button:hover {
     <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">공기업
     <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">기타
     <p />
+    <p>멘토링 희망 연령</p>
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_age" type="radio">40대
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_age" type="radio">50대
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_age" type="radio">60대
+    <p />
+    <p>멘토링 희망 지역</p>
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">서울특별시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">부산광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">대구광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">인천광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">광주광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">대전광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">울산광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio">세종특별자치시
+    <p />
     <p><input placeholder="멘토소개" oninput="this.className = ''" name="mentor_introduce"></p>
     <p><input placeholder="주요경력" oninput="this.className = ''" name="mentor_career" type="text"></p>
   </div>
@@ -157,7 +172,7 @@ button:hover {
     <p>경력 증명서</p>
     <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate">
   </div>
-  <div class="tab">등록정보
+  <div class="tab">등록정보 확인
     <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
     <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
   </div>

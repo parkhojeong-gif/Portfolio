@@ -185,7 +185,10 @@
                                 </li>
                             </ul>
                         </li>
-
+                        
+                        <c:if test="${not empty users }">
+							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
+                        </c:if>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHome">마이페이지</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

@@ -344,11 +344,10 @@
                                 </div>
                                 <div class="panel-body search-widget">
                                     <form action="" class=" form-inline"> 
-                                    
                                    		<fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
-                                                    <a href="MentorRegister"><img src="../resources/assets/img/mentor/mentoring.jpg"></a>
+                                                    <a href=""><img src="../resources/assets/img/mentor/mentoring.jpg"></a>
                                                 </div>  
                                             </div>
                                         </fieldset>
@@ -356,7 +355,12 @@
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
+                                                <c:if test="${empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
+                                                </c:if>
+                                                <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="location.href='MentorRegister'">
+                                                </c:if>
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
@@ -375,11 +379,16 @@
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
 
-<!-- 플로팅 배너(사용X) -->
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script>
 	
-		$(function(){
+	function loginCheck(){
+		alert("로그인 또는 회원가입이 필요한 항목입니다.");
+		var url = "loginCheckAlert";
+		window.open(url, "로그인/회원가입", "width=500, height=450");
+	}
+	
+	$(function(){ // 플로팅 배너
 			// 기본 위치(top)값
 			var floatPosition = parseInt($("#floatMenu").css('top'))
 
