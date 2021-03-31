@@ -3,6 +3,21 @@
 <!DOCTYPE html>
 <html class="no-js">
 <jsp:include page="../topHeader.jsp" />
+ <head>
+    <link href='../../../resources/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='../../../resources/fullcalendar/lib/main.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+  </head>
 <body>
 
 	<div class="content-area recent-property"
@@ -13,6 +28,9 @@
 				<jsp:include page="../mypage.jsp" />
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+				<div class="section" id='calendar'>
+				</div>
+				
 					<div class="section">
 						<h3>열정적인 멘토, 양소민 님</h3>
 
