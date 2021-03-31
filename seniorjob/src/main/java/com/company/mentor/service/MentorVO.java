@@ -20,4 +20,5 @@ public class MentorVO { //멘토
 	private String mentoring_age; //멘토링 연령대
 	private String mentoring_location; //멘토링 지역
 	private String mentor_confirm_status; //멘토링 승인여부
+	
 }

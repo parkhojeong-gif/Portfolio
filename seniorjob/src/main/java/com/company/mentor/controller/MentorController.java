@@ -3,7 +3,6 @@ package com.company.mentor.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.mentor.service.MentorVO;
@@ -37,10 +36,17 @@ public class MentorController {
 		}
 		
 		// 멘토 등록 요청
-		@PostMapping("/MentorRegisterProc")
+		@RequestMapping(value = "/MentorRegisterProc")
 		public String MentorRegisterProc(Model model, MentorVO vo) {
-			mentorMapper.MentorRegisterProc(vo);
-			return "Mentor/mentorRegisterSuccess";
+			MentorVO mentorCheck = mentorMapper.mentorRegisterCheck(vo);
+			if(mentorCheck != null) {
+				model.addAttribute("msg", "이미 멘토로 등록하셨습니다. 마이페이지를 확인하세요.");
+				model.addAttribute("url", "MentorList");
+				return "Mentor/alert";
+			}else {
+				mentorMapper.MentorRegisterProc(vo);
+				return "Mentor/mentorRegisterSuccess";
+			}
 		}
 		
 		// 멘토 상세 페이지 호출

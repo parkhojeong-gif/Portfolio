@@ -33,6 +33,7 @@
 	<select id ="logCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
 		SELECT ID,
 			   PASSWORD,
+			   NAME,
 			   AUTH	
 		FROM USERS
 		WHERE ID = #{id} 

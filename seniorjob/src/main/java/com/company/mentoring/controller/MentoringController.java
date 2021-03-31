@@ -42,11 +42,11 @@ public class MentoringController {
 	}
 	
 	// 멘토링 지역 검색
-	@RequestMapping("/getLocationSearch")
-	public String getLocationSearch(Model model) {
-		model.addAttribute("list", mentorMapper.getLocationSearch());
-		return "Mentor/mentorList";
-	}
+	/*
+	 * @RequestMapping("/getLocationSearch") public String getLocationSearch(Model
+	 * model) { model.addAttribute("list", mentorMapper.getLocationSearch()); return
+	 * "Mentor/mentorList"; }
+	 */
 	
 	
 
