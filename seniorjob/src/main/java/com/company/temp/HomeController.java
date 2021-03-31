@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.company.mentor.service.impl.MentorMapper;
 import com.company.users.service.impl.UsersMapper;
 
 /**
@@ -19,7 +20,8 @@ import com.company.users.service.impl.UsersMapper;
  */
 @Controller
 public class HomeController {
-
+	
+	@Autowired MentorMapper mentorMapper;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -40,11 +42,16 @@ public class HomeController {
 		return "home";
 	}
 	
+	// 메인 페이지 호출
+	@RequestMapping("/getMain")
+	public String getMain() {
+		return "home";
+	}
 	
-	
-	// ���� ����Ʈ(��ü�˻�)
-	@RequestMapping("/mentorList")
-	public String mentorList() {
+	// 멘토 리스트 페이지 호출
+	@RequestMapping("/MentorList")
+	public String MentorList(Model model) {
+		model.addAttribute("list", mentorMapper.MentorList());
 		return "Mentor/mentorList";
 	}
 		

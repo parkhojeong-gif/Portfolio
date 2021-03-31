@@ -27,16 +27,17 @@ public class MentoringController {
 	
 	// 키워드 검색
 	@RequestMapping("/getKeywordSearch")
-	public String getKeywordSearch(@RequestParam("searchKeyword") String searchKeyword ,Model model) {
+	public String getKeywordSearch(@RequestParam("searchKeyword") String searchKeyword, Model model) {
 		List<MentorVO> list = mentorMapper.getKeywordSearch(searchKeyword);
 		model.addAttribute("list", list);
 		return "Mentor/mentorList";
 	}
 	
 	// 연령 검색
-	@RequestMapping("/getAgeSearch")
-	public String getAgeSearch(Model model) {
-		model.addAttribute("list", mentorMapper.getAgeSearch());
+	@PostMapping("/getAgeSearch")
+	public String getAgeSearch(@RequestParam("searchAge") String searchAge, Model model) {
+		List<MentorVO> list = mentorMapper.getAgeSearch(searchAge);
+		model.addAttribute("list", list);
 		return "Mentor/mentorList";
 	}
 	
@@ -45,6 +46,25 @@ public class MentoringController {
 	public String getLocationSearch(Model model) {
 		model.addAttribute("list", mentorMapper.getLocationSearch());
 		return "Mentor/mentorList";
+	}
+	
+	// 멘토 등록 페이지 호출
+	@RequestMapping("/MentorRegister")
+	public String MentorRegister() {
+		return "Mentor/mentorRegister";
+	}
+	
+	// 멘토 등록 요청
+	@PostMapping("/MentorRegisterProc")
+	public String MentorRegisterProc(Model model) {
+		return "Mentor/mentorRegisterSuccess";
+	}
+	
+	// 멘토 상세 페이지 호출
+	@RequestMapping("/getMentor")
+	public String getMentor(Model model, MentorVO vo) {
+		model.addAttribute("list", mentorMapper.getMentor(vo));
+		return "Mentor/getMentor";
 	}
 
 	

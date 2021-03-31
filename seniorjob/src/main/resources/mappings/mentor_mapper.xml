@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.mentor.service.impl.MentorMapper">
+ 
+ 	<!-- 멘토 리스트 페이지 호출  -->
+ 	<select id="MentorList" resultType="com.company.mentor.service.MentorVO">
+ 		SELECT * FROM MENTOR
+ 	</select>
+ 
+ 	<!-- 전체검색 / 지역 검색 / 직무 검색  --> 
 	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
 		<where>
@@ -14,8 +21,54 @@
 		</where>
 	</select>
 	
+	<!-- 키워드 검색 -->
 	<select id="getKeywordSearch"  resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
 		WHERE MENTORING_KIND LIKE '%'||#{searchKeyword}||'%' 
 	</select>
+	
+	<!-- 연령 검색 -->
+	<select id="getAgeSearch"  resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+				WHERE MENTORING_AGE = #{searchAge}			
+	</select>
+	
+	<insert id="MentorRegisterProc">
+		INSERT INTO MENTOR
+		(
+		MENTOR_ID,
+		MENTORING_KIND,
+		MENTOR_INTRODUCE,
+		MENTOR_CAREER,
+		MENTOR_PHOTO,
+		MENTOR_LICENSE,
+		MENTOR_CAREER_CERTIFICATE,
+		MENTOR_SCHOOL_NAME,
+		MENTOR_COMPANY_NAME,
+		MENTOR_DEPARTMENT_NAME,
+		MENTOR_JOB_ID,
+		MENTOR_DUTY,
+		ID,
+		MENTORING_AGE,
+		MENTORING_LOCATION
+			
+		)
+		values(
+		#{seq_mentor.nextval},
+		#{mentoring_kind},
+		#{mentor_introduce},
+		#{mentor_photo},
+		#{mentor_license},
+		#{mentor_career_certificate},
+		#{mentor_school_name},
+		#{mentor_company_name},
+		#{mentor_department_name},
+		#{mentor_job_id},
+		#{mentor_duty},
+		#{id},
+		#{mentoring_age},
+		#{mentoring_location}
+		
+		)
+	</insert>
  </mapper>	
