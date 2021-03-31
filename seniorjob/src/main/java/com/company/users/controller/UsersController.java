@@ -37,7 +37,7 @@ public class UsersController {
 	@RequestMapping("/updateUsersProc")	//유저 수정처리
 	public String updateInquireProc(UsersVO vo) {
 		usersMapper.updateUsers(vo);
-		return "redirect:/getUsersList";
+		return "/users/updateSuccess";
 	}
 	@RequestMapping("/deleteUsers")	//유저 삭제
 	public String deleteUsers(UsersVO vo) {

@@ -50,7 +50,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='businessPlanInsert'">
+							<div class="panel-heading" onclick="location.href='insertBusinessPlanA'">
 								<h3 class="panel-title">사업계획서 등록</h3>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringStatus'">
+							<div class="panel-heading" onclick="location.href='getSearchShopping'">
 								<h3 class="panel-title">수강중인 멘토링</h3>
 							</div>
 						</div>
@@ -75,12 +75,12 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='payDetail'">
+							<div class="panel-heading" onclick="location.href='getSearchPay'">
 								<h3 class="panel-title">결제내역</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='profileModification'">
+							<div class="panel-heading" onclick="location.href='updateUsers?id=somTest'">
 								<h3 class="panel-title">개인정보/경력 수정</h3>
 							</div>
 						</div>

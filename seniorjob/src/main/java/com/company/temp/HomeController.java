@@ -126,4 +126,9 @@ public class HomeController {
 	}
 
 	
+	@RequestMapping("/calendarTest")
+	public String calendarTest() {
+		return "mypage/calendarTest";
+	}
+	
 }
