@@ -11,35 +11,12 @@
 <body>
 
 	<!-- property area -->
-	<div class="properties-area recent-property"
-		style="background-color: #FFF;">
+	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3 p0 padding-top-20">
-					<div class="blog-asside-right pr0">
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
-								<h3 class="panel-title">커뮤니티</h3>
-							</div>
-						</div>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
-								<h3 class="panel-title">공지사항</h3>
-							</div>
-						</div>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringReviews'">
-								<h3 class="panel-title">멘토링 후기</h3>
-							</div>
-						</div>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='seniorTimes'">
-								<h3 class="panel-title">시니어 타임즈</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				
+			
+			<jsp:include page="sevice_left.jsp"></jsp:include>
+				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section additional-details">
 
 					<h4 class="s-property-title">공지사항</h4>
@@ -59,8 +36,13 @@
 							<span onclick="location.href='getService_Center'"class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${gongji.id }</span>
 							<span onclick="location.href='getService_Center'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.w_date }</span>
 							<span onclick="location.href='getService_Center'"class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${gongji.click }</span>
-						</c:forEach>	
-						<c:if test="${paging.startPage != 1 }">
+						</c:forEach>
+						</ul>
+				</div>
+				
+		<div class="col-xs-8">		
+		<div class="pagination">	
+		<c:if test="${paging.startPage != 1 }">
 			<a href="/serviceCenter?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 		</c:if>
 		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
@@ -75,9 +57,9 @@
 		</c:forEach>
 		<c:if test="${paging.endPage != paging.lastPage}">
 			<a href="/serviceCenter?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-		</c:if>	
-					</ul>
-				</div>
+		</c:if>
+		</div>	
+		</div>			
 					<div class="col-xs-8">
 					<br>
 					</div>
@@ -100,6 +82,7 @@
                    
                    
 			</div>
+		</div>
 		</div>
 	</div>
 	</div>
