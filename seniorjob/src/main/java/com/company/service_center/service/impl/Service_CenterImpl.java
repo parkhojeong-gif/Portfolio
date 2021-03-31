@@ -62,4 +62,10 @@ public class Service_CenterImpl implements Service_CenterService{
 		return dao.selectBoard(vo);
 	}
 
+	@Override
+	public List<Service_CenterVO> searchService(String searchKeyword) {
+		// TODO Auto-generated method stub
+		return dao.searchService(searchKeyword);
+	}
+
 }

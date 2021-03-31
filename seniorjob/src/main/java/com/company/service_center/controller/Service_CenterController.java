@@ -1,5 +1,7 @@
 package com.company.service_center.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +43,16 @@ public class Service_CenterController {
 		service_CenterMapper.updateClick(vo);	 //조회수 증가
 		return "/Service_Center/getService_Center";
 	}
+	//검색
+	@RequestMapping("/searchService")
+	public String searchService(Model model, @RequestParam("searchKeyword") String searchKeyword) {
+		List<Service_CenterVO> list= service_CenterMapper.searchService(searchKeyword);
+		model.addAttribute("list", list);
+	return "/Service_Center/searchService";	
+	}
+	
+	
+
 	@RequestMapping("/insertService_Center") //고객센터 등록 폼
 	public String insertService_Center(Service_CenterVO vo) {
 		return "/Service_Center/insertService_Center";

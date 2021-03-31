@@ -47,6 +47,14 @@
 				)
 	WHERE RN BETWEEN #{start} AND #{end}
 	</select>
-	
+	<!--검색 결과 -->
+	<select id="searchService" resultType="Service_CenterVO">
+	SELECT * FROM service_center
+	<where>
+	<if test="searchType != null and searchType='제목'">
+		TITLE LIKE '%'||#{searchKeyword}||'%' 
+	</if>	
+	</where>
+	</select>
 	
  </mapper>

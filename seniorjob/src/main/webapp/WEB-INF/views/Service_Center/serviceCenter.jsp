@@ -8,20 +8,50 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
-<body>
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="serviceCenter?nowPage=${paging.nowPage}&cntPerPage="+sel;
+		}
+	
+	// 키워드 검색 값 체크
+	function checkKeywordNull() {
+		var str = document.getElementsByName("searchKeyword");
+		var keywordForm = document.keywordSearch;
+		if (str[0].value == '' || str[0].value == null) { // 값이 NodeList, 배열로 넘어오기 때문에 [0]번쨰로 값을 확실히 지정헤야 한다.
+			alert("키워드를 입력하세요.");
+			return false;
+		} else {
+			keywordForm.action = "searchService";
+			keywordForm.submit();
+		}
+	}
+</script>
 
+<body>
 	<!-- property area -->
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
 			
+			<div id="outter">
+				<div style="float: right;">
+				<select id="cntPerPage" name="sel" onchange="selChange()">
+					<option value="5"
+						<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+					<option value="10"
+						<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+					<option value="15"
+						<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+					<option value="20"
+						<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+				</select>
+			</div> <!-- 옵션선택 끝 -->
+			
 			<jsp:include page="sevice_left.jsp"></jsp:include>
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section additional-details">
-
 					<h4 class="s-property-title">공지사항</h4>
-					
-
 					<ul>
 						<li>
 							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">카테고리</span>
@@ -59,28 +89,29 @@
 			<a href="/serviceCenter?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 		</c:if>
 		</div>	
-		</div>			
+		</div>		
+				<form onsubmit="return checkKeywordNull()" name="keywordSearch" method="post">			
 					<div class="col-xs-8">
 					<br>
 					</div>
 					<div class="col-xs-2">
                          <div class="btn-group bootstrap-select show-tick form-control">
-                         	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div><select id="basic" class="selectpicker show-tick form-control" tabindex="-98">
-                             <option> 분류 </option>
-                             <option>제목 </option>
+                         	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
+                         	 <select id="basic" name="searchType" class="selectpicker show-tick form-control" tabindex="-98">
+                             <option value=""> 분류 </option>
+                             <option value="제목">제목 </option>
                              <option>제목/내용</option>
                              <option>작성자</option>  
                         </select></div>
                     </div>
                     <div class="col-xs-7">
 					<div class="input-group">
-                             <input class="form-control"  style="text-align:center;  height:45px; type="text" placeholder="내용 입력 ">
+                             <input class="form-control" name="searchKeyword" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
                              <span class="input-group-btn">
-                                   <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                             </span>
+                    <button class="btn btn-primary subscribe" type="submit"><i class="pe-7s-paper-plane pe-2x"></i></button>
+                           </span>
                    </div>
-                   
-                   
+                </form> 
 			</div>
 		</div>
 		</div>

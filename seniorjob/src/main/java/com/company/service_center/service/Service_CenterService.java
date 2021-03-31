@@ -21,6 +21,9 @@ public interface Service_CenterService {
 		public int countBoard();
 		// 페이징 처리 게시글 조회
 		public List<Service_CenterVO> selectBoard(PagingVO vo);
+		// 게시글 검색
+		public List<Service_CenterVO> searchService(String searchKeyword);
+		
 		
 	}
 
