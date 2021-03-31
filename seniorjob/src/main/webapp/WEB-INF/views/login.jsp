@@ -31,12 +31,11 @@
                             <h2>Social login :  </h2> 
                             
                             <p>
-                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a> 
-                            <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
-                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>  
+                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;kakao</a> 
+                            <!-- <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
+                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>   -->
                             </p> 
                         </div>
-                        
                     </div>
                 </div>
                 </div> 

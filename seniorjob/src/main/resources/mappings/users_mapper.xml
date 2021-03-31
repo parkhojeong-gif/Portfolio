@@ -34,10 +34,23 @@
 	<select id ="logCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
 		SELECT ID,
 			   PASSWORD,
+			   NAME,
 			   AUTH	
 		FROM USERS
-		WHERE ID = #{id} 
-		AND PASSWORD = #{password}	   
+		WHERE ID = #{id}    
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" resultType="int">
+	SELECT COUNT(*) FROM USERS
+	WHERE ID = #{id}
+	</select>
+	
+	<!-- 패스워드 중복체크 -->
+	<select id ="passCheck" resultType="int">
+	SELECT COUNT(*) FROM USERS
+	WHERE ID = #{id}
+	AND PASSWORD = #{password}
 	</select>
 	
 	<!-- 회원가입 -->

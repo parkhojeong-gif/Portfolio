@@ -1,9 +1,17 @@
 package com.company.users.controller;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.users.service.UsersVO;
 import com.company.users.service.impl.UsersMapper;
@@ -12,7 +20,8 @@ import com.company.users.service.impl.UsersMapper;
 public class UsersController {
 	
 	@Autowired UsersMapper usersMapper;
-
+	@Inject BCryptPasswordEncoder pwdEncoder;
+	
 	@RequestMapping("/getUsersList")		//전체조회
 	public String userstest(Model model) {
 		model.addAttribute("list", usersMapper.getUsersList());
@@ -23,10 +32,23 @@ public class UsersController {
 	public String insertInquire(UsersVO vo) {
 		return "memberRegister";
 	}
-	@RequestMapping("/insertUsersProc") // 회원가입 처리
+	@RequestMapping("/insertUsersProc") // 회원가입 처리, 중복체크, 암호화
 	public String insertUsersProc(UsersVO vo) {
-		usersMapper.insertUsers(vo);
-		return "redirect:/";
+		int result = usersMapper.idCheck(vo);
+		try {
+			if(result == 1) {
+				return "insertUsers";
+			}else if(result == 0) {
+				String Pass = vo.getPassword();
+				String pwd = pwdEncoder.encode(Pass);
+				vo.setPassword(pwd);
+				
+				usersMapper.insertUsers(vo);
+			}
+		}catch(Exception e){
+			throw new RuntimeException();
+		}
+		return "redirect:/login";
 	}
 	
 	@RequestMapping("/updateUsers")	//유저 정보 수정폼
@@ -45,5 +67,47 @@ public class UsersController {
 		return "redirect:/getInquireList";
 	}
 	
+	//login
+	@RequestMapping("/login")
+	public String login() {
+	return "login";
+	}
 	
+	//login 처리, 암호화
+	@RequestMapping(value="/loginProc", method= {RequestMethod.GET, RequestMethod.POST})
+	public String loginProc(UsersVO vo, HttpServletRequest request, RedirectAttributes rttr) {
+	HttpSession session = request.getSession();
+	UsersVO users = usersMapper.logCheck(vo);
+	boolean psMatch = pwdEncoder.matches(vo.getPassword(), users.getPassword()); //
+		if(users != null && psMatch == true) {
+			session.setAttribute("users", users);
+			return "redirect:/";
+		}else {
+			session.setAttribute("users", null);
+			rttr.addFlashAttribute("msg", false);
+		}
+			return "redirect:/login";
+		}
+		
+	//logout 
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+		}
+	
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value="/idCheck", method= RequestMethod.POST)
+	public int idCheck(UsersVO vo) {
+		int result = usersMapper.idCheck(vo);
+		return result;
+	}
+	//패스워드 체크
+	@ResponseBody
+	@RequestMapping(value="/passCheck", method= RequestMethod.POST)
+	public int passCheck(UsersVO vo) {
+		int result = usersMapper.passCheck(vo);
+		return result;
+	}
 }
