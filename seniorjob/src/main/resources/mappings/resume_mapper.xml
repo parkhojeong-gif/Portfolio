@@ -3,11 +3,24 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.resume.service.impl.ResumeMapper">
 	<select id="getSearchResumeList" resultType="com.company.resume.service.ResumeVO">
-		SELECT RESUME.*, SELF_INFO.*
-		FROM   RESUME , SELF_INFO
-		WHERE  RESUME.RESUME_NO = SELF_INFO.RESUME_NO
+		SELECT  RESUME_NO, 
+				RESUME_NAME, 
+				RESUME_BIRTH, 
+				RESUME_EMAIL, 
+				RESUME_PHONE, 
+				RESUME_ADDRESS, 
+				RESUME_SCHOOL, 
+				RESUME_AREA, 
+				RESUME_START, 
+				RESUME_END, 
+				ID, 
+				IMAGE
+		FROM 	RESUME
 	</select>
-	<insert id="insertResume">
+	<insert id="insertResume" parameterType="ResumeVO">
+	<selectKey keyProperty="resume_no" resultType="string" order="BEFORE">
+		SELECT NVL(MAX(RESUME_NO), 0) + 1 FROM RESUME
+ 	</selectKey>
 		INSERT INTO RESUME (RESUME_NO, 
 							RESUME_NAME, 
 							RESUME_BIRTH,
@@ -17,8 +30,9 @@
 							RESUME_SCHOOL, 
 							RESUME_AREA, 
 							RESUME_START, 
-							RESUME_END)
-		VALUES				(( SELECT NVL(MAX(RESUME_NO), 0) +1 FROM RESUME  ),
+							RESUME_END,
+							IMAGE)
+		VALUES				(RESUME_SEQ.NEXTVAL,
 							 #{resume_name}, 
 							 #{resume_birth}, 
 							 #{resume_email}, 
@@ -27,7 +41,8 @@
 							 #{resume_school}, 
 							 #{resume_area}, 
 							 #{resume_start}, 
-							 #{resume_end})
+							 #{resume_end},
+							 #{image})
 	</insert>
 	<update id="updateResuem">
 		UPDATE RESUME SET RESUME_NAME=#{resume_name}, 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     <!-- 워드파일이 깨지는 오류가 있음. -->
 <%-- <% 
 	response.setHeader("Content-Disposition", "attachment;filename=member.doc");  
@@ -13,6 +14,7 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 프린트, PDF 저장 -->
 <script>
 	function divPrint(){
 		var initBody = document.body.innerHTML;
@@ -114,51 +116,36 @@
                                     <div class="tab-content">
                                     <div class="tab-pane" id="step1">
                                        <h3>자격증</h3>
+                                    <div><input type="hidden" value=${certivo.certi_no }></div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="firstname">항목</label>
-                                            <select>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds" name="certi_kinds">IT</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">세무/회계</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">건축</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">농업</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">디자인</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">보건/의료</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">기계제작</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">전기</option>
-                                            	<option value=${certivo.certi_kinds } id="certi_kinds">기타</option>
-                                            </select>
+                                        	<label>자격증 항목</label>
+                                            <input type="text" class="form-control" id="certi_kinds" name="certi_kinds" value=${certivo.certi_kinds }>
                                         </div>
                                     </div>
 									 <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="subject">합격구분</label>
-                                            <select>
-                                            	<option value=${certivo.accept } id="accept">1차합격</option>
-                                            	<option value=${certivo.accept } id="accept">2차합격</option>
-                                            	<option value=${certivo.accept } id="accept">필기합격</option>
-                                            	<option value=${certivo.accept } id="accept">실기합격</option>
-                                            	<option value=${certivo.accept } id="accept">최종합격</option>
-                                            </select>                                        
+                                            <label>합격구분</label>
+                                            <input type="text" class="form-control" id="accept" name="accept" value=${certivo.accept }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="lastname">자격증명</label>
+                                            <label>자격증명</label>
                                             <input type="text" class="form-control" id="certi_name" value=${certivo.certi_name }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="email">발행처/기관</label>
+                                            <label>발행처/기관</label>
                                             <input type="text" class="form-control" id="certi_place" value=${certivo.certi_place }>
                                         </div>
                                     </div>
                                    
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="subject">취득일</label>
-                                            <input type="date" class="form-control" id="certi_date" value=${certivo.certi_date }>
+                                            <label>취득일</label>
+                                            <input type="text" class="form-control" id="certi_date" value=${certivo.certi_date }>
                                         </div>
                                     </div>
                                   	   </div>
@@ -181,27 +168,27 @@
 										<h3>자기소개서</h3>
 										<div class="col-sm-6">
 											<div class="form-group">
-												<label for="subject"></label> 
+												<label for="subject">제목</label> 
 												<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목" value=${selfvo.self_name }>
 											</div>
 										</div>
 										<div class="col-sm-12">
 											<div class="form-group">
-												<label for="message"></label>
+												<label for="message">내용</label>
 												<textarea id="self_content" name="self_content" class="form-control" 
 												placeholder="내용을 입력하세요.">${selfvo.self_content }</textarea>
 											</div>
 										</div>
 									</div>
-									<br><br><br><br>
-                                    <div class="col-sm-12 text-center">
-                                        <button type="button" class="btn btn-primary" onclick="location='getSearchResumeList'"><i class="fa fa-envelope-o"></i>목록으로</button>
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i>수정하기</button>
-                                        <button type="submit" class="btn btn-primary" onclick="divPrint()"><i class="fa fa-envelope-o"></i>인쇄하기</button>
-                                    </div>
                                 </div> 
                                 </div>
                                 <!-- /.row -->
+								<br><br><br><br>
+                                 <div class="col-sm-12 text-center">
+                                     <button type="button" class="btn btn-primary" onclick="location='getSearchResumeList'"><i class="fa fa-envelope-o"></i>목록으로</button>
+                                     <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i>수정하기</button>
+                                     <button type="submit" class="btn btn-primary" onclick="divPrint()"><i class="fa fa-envelope-o"></i>인쇄(PDF 저장)</button>
+                                 </div>
                             </form>
                         </div>
                     </div>    

@@ -10,9 +10,6 @@
 <jsp:include page="../topHeader.jsp"></jsp:include>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-        	
-        </script>
-        <!-- <script>
         	function delRe(str){
         		var yn = alert("정말 삭제하시겠습니까?");
         		if(yn){
@@ -20,7 +17,7 @@
         			frm.submit();
         		}
         	}
-        </script> -->
+        </script>
     <body>
         <!-- Body content -->
         <!-- property area -->
@@ -35,17 +32,15 @@
                                     <c:forEach items="${list }" var = "resume">    
                                     	<ul>
                                         <li><a>${resume.resume_no }</a></li> 
-                                        <li><a>${resume.self_name }</a></li>
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">수정</button></a></li>
-                                    	<!-- 데이터무결성 조건 때문에 삭제 처리 안 됨. -->
-                                    	<li><a><button type="button" onclick="location.href='resumeDelete?resume_no=${resume.resume_no}'">삭제</button></a></li>
+                                    	<li><a><button type="button" onclick="delRe(${resume.resume_no})">삭제</button></a></li>
                                     	<!-- 인쇄랑 PDF 저장 같이 됨. -->
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">인쇄 하러가기</button></a></li>
                                     	<li><a>WORD 변환</a></li>
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">PDF 변환하러 가기</button></a></li>
-                                    	<li><button type="button" onclick="location='collection'">보기</button>&nbsp;
+                                    	<li><button type="button" onclick="location.href='collection?resume_no=${resume.resume_no}'">보기</button>&nbsp;
                                     	    <button type="button" onclick="location=''">보내기</button></li>
-                                    </ul>
+                                    	</ul>
                                     </c:forEach>
                                 </div>
                             </form>

@@ -14,8 +14,8 @@
 							  RESUME_NO, 
 							  SELF_NAME, 
 							  SELF_CONTENT)
-		VALUES				  (( SELECT NVL(MAX(SELF_NO), 0) +1 FROM SELF_INFO  ),
-							   ( SELECT NVL(MAX(RESUME_NO), 0) +1 FROM SELF_INFO  ),
+		VALUES				  (RESUME_SEQ.NEXTVAL,
+							   #{resume_no},
 							   #{self_name}, 
 							   #{self_content})
 	</insert>
@@ -30,9 +30,11 @@
 		WHERE SELF_NO = #{self_no}
 	</delete>
 	<select id="getSelf" resultType="com.company.self_info.service.Self_InfoVO">
-		SELECT R.*, S.*
-		FROM   RESUME R, SELF_INFO S
-		WHERE  R.RESUME_NO = S.RESUME_NO
-		AND    R.RESUME_NO = #{resume_no}
+		SELECT SELF_NO, 
+			   RESUME_NO, 
+			   SELF_NAME, 
+			   SELF_CONTENT
+		FROM   SELF_INFO
+		WHERE  RESUME_NO = #{resume_no}
 	</select>
  </mapper>

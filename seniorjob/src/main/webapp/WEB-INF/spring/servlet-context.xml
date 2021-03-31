@@ -38,6 +38,13 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
+	
+	<!-- multipart 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	 <beans:property name="maxUploadSize" value="100000000" />
+	 <beans:property name="maxInMemorySize" value="100000000" />
+	 </beans:bean>
+	 
 	<!-- @Transactional 어노테이션 처리 -->
 	<tx:annotation-driven
 		transaction-manager="txManager" />

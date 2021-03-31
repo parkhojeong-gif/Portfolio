@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  	pageEncoding="UTF-8"%>
-<%-- <%@ page contentType="application/vnd.ms-excel;charset=EUC-KR"%>  	 --%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -9,13 +8,15 @@
 <html class="no-js">
 <!--<![endif]-->
 <jsp:include page="../topHeader.jsp"></jsp:include>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	function middle() {
-		alert("저장 됐습니다.");
+	function middle(str){
+		var yn = alert("저장 됐습니다.");
+		if(yn){
+			frm.action = "resumeInsert?resume_num"+str;
+			frm.submit();
+		}
 	}
-</script>
 </script>
 <!-- 글자수세기 -->
 <script>
@@ -38,7 +39,8 @@
 		document.frm.cnt2.value = cnt2;
 	}
 </script>
-<script>
+<!-- 이미지 저장 함수-->
+<!-- <script>
 	function uploadImage(e){
 		e.preventDefault();
 		var imgName = $('#file').val();
@@ -46,11 +48,32 @@
 		$('#image').val(imgName);
 // 		document.frm.submit();
 	}
-</script>
+</script> -->
 <script>
-	function preview() {
-	$('#frm').attr('action', 'preview');
-	$('#frm').submit();
+/* 	function preview() {
+		document.onmousemove=function(){
+			oElement = document.elementFromPoint(event.x, event.y);
+			if(oElement.id.indexOf('frm')!=-1){
+				d.style.display = '';
+				d.style.pixelLeft=event.x+10;
+				d.style.pixelTop=event.y;
+				d.innerHTML=oElement.alt;
+			} else{
+				d.style.display='none';
+			}
+		}
+	} */
+	
+	/* 이미지 미리보기 */
+	function setImage(event) {
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.querySelector("div#image_container").appendChild(img);
+		}
+		reader.readAsDataURL(event.target.files[0]);
 	}
 </script>	
 <body>
@@ -59,8 +82,7 @@
 		<div class="container">
 			<div class="row">
 				<jsp:include page="../mypage.jsp"></jsp:include>
-				<div
-					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties" id="d">
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
@@ -74,16 +96,17 @@
 					<a href="">자기소개서</a> 
 					<a href="#step3" data-toggle="tab"><button type="button">보기+</button></a>
 					<hr>
-					<form id="frm" action="ResumeFileUpload" enctype="multipart/form-data" method="post" name="frm" onsubmit="uploadImage(event)">
+					<form id="frm" action="resumeInsert" method="post" name="frm" encType="multipart/form-data"><!-- onsubmit="uploadImage(event)"  encType="multipart/form-data"-->
 						<div class="row">
-							<div><input type="hidden" value="${ResumeVO.resume_no }" id="resume_no" name="resume_no"></div>
+							<div><input type="hidden" value=${ResumeVO.resume_no } id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
 							<div class="col-sm-6">
 							<!-- 이미지 업로드 오류 수정중 -->
 								<div class="form-group">
 									<label>사진</label> 
-									<input type="file" class="form-control" id="file" name="file">
-									<input type="hidden" name="image" id="image">
+									<input type="file" class="form-control" name="uploadFile" multiple="multiple" onchange="setImage(event)">
+<!-- 									<input type="hidden" name="image" id="image"> -->
+									<div id="image_container"></div>
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -202,9 +225,10 @@
 								<div class="tab-pane" id="step2">
 									<h3>포트폴리오</h3>
 									<div class="col-sm-6">
+									<div><input type="hidden" value=${portvo.port_no } id="port_no" name="port_no"></div>
 										<div class="form-group">
-											<label for="subject">포트폴리오 및 기타문서</label> 
-											<input type="file" class="form-control" id="portfolio">
+											<label>포트폴리오 및 기타문서</label> 
+											<input type="file" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -215,13 +239,13 @@
 									<h3>자기소개서</h3>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label for="subject"></label> 
+											<label for="subject">제목</label> 
 											<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목">
 										</div>
 									</div>
 									<div class="col-sm-12">
 										<div class="form-group">
-											<label for="message"></label>
+											<label for="message">내용</label>
 											<textarea id="self_content" name="self_content" class="form-control" 
 											placeholder="내용을 입력하세요." onkeyup="counter()"></textarea>
 										</div>
@@ -233,7 +257,7 @@
 										<div class="tab-pane" id="step4">
 											<div class="col-sm-12">
 												<div class="form-group">
-													<label for="message"></label>
+													<label for="message">내용</label>
 													<textarea id="self_content2" name="self_content2" class="form-control" 
 													placeholder="내용을 입력하세요." onkeyup="counter2()"></textarea>
 												</div>
@@ -258,7 +282,7 @@
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
 									<button type="button" class="btn btn-primary"
-										onclick="middle()">
+										onclick="middle(${ResumeVO.resume_no})">
 										<i class="fa fa-envelope-o"></i>중간저장
 									</button>
 								</div>

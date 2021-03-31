@@ -13,15 +13,18 @@
 		FROM   CERTIFICATE
 	</select>
 	<insert id="insertCerti">
+	<selectKey keyProperty="resume_no" resultType="string" order="BEFORE">
+		SELECT NVL(MAX(RESUME_NO), 0) + 1 FROM RESUME
+ 	</selectKey>
 		INSERT INTO CERTIFICATE(CERTI_NO, 
-								RESUME_NO, 
+								RESUME_NO,
 								CERTI_KINDS, 
 								CERTI_NAME, 
 								CERTI_PLACE, 
 								ACCEPT, 
 								CERTI_DATE)
 		VALUES					(( SELECT NVL(MAX(CERTI_NO), 0) +1 FROM CERTIFICATE  ), 
-								 #{resume_no}
+								 #{resume_no},
 								 #{certi_kinds}, 
 								 #{certi_name}, 
 								 #{certi_place}, 
