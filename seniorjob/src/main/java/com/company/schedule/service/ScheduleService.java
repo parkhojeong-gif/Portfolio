@@ -5,14 +5,14 @@ import java.util.List;
 
 public interface ScheduleService {
 	
-	public int insertSchedule(BusinessPalnAVO vo);
+	public int insertSchedule(ScheduleVO vo);
 	
-	public int updateSchedule(BusinessPalnAVO vo);
+	public int updateSchedule(ScheduleVO vo);
 	
-	public int deleteSchedule(BusinessPalnAVO vo);
+	public int deleteSchedule(ScheduleVO vo);
 	
-	public BusinessPalnAVO getSchedule(BusinessPalnAVO vo);
+	public ScheduleVO getSchedule(ScheduleVO vo);
 	
-	public List<BusinessPalnAVO> getSearchSchedule(BusinessPalnAVO vo);
+	public List<ScheduleVO> getSearchSchedule(ScheduleVO vo);
 
 }
