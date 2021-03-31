@@ -46,7 +46,7 @@
 	WHERE ID = #{id}
 	</select>
 	
-	<!-- 패스워드 중복체크 -->
+	<!-- 패스워드 체크 -->
 	<select id ="passCheck" resultType="int">
 	SELECT COUNT(*) FROM USERS
 	WHERE ID = #{id}
@@ -54,7 +54,7 @@
 	</select>
 	
 	<!-- 회원가입 -->
-	<insert id="insertUsers">
+	<insert id="insertUsers" parameterType="com.company.users.service.UsersVO">
 	INSERT INTO USERS(ID,
 					PASSWORD,
 					ADDRESS,

@@ -92,7 +92,7 @@
                <c:if test="${empty users}">
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick="location.href='memberRegister'" data-wow-delay="0.48s">회원가입</button>
+                        <button class="navbar-btn nav-button wow fadeInRight" onclick="location.href='insertUsers'" data-wow-delay="0.48s">회원가입</button>
                     </div>
                </c:if>    
                <c:if test="${users.auth eq 'ADMIN'}">

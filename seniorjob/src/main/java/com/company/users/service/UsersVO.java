@@ -2,7 +2,7 @@ package com.company.users.service;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -10,7 +10,9 @@ import lombok.Data;
 @Data
 
 public class UsersVO { //회원테이블
+	@NotEmpty(message="※아이디를 입력하세요")
 	private String id; //아이디
+	@NotEmpty(message="※패스워드를 입력하세요")
 	private String password; //패스워드
 	private String address; //주소
 	private String phonenum; //전화번호

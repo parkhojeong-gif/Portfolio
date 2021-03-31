@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>          
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
  <jsp:include page="topHeader.jsp"></jsp:include>
@@ -27,7 +28,10 @@ function btnId(){
 		}
 	})
 }
-</script>    
+</script>
+<style>
+.error {color: red;}
+</style>    
     <body>
 		<div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
@@ -36,41 +40,40 @@ function btnId(){
                     <div class="box-for overflow">
                         <div class="col-md-12 col-xs-12 register-blocks">
                             <h2>회원가입 : </h2> 
-                            <form action="insertUsersProc" method="post">
+                            <form:form modelAttribute ="usersVO" action="insertUsersProc" method="post" name="UsersVO">
                             <div class="form-group">
-                                   	<label for="name">ID</label>
-                                    <input type="text" class="form-control" id="id" name="id">
-                                	<button class="idCheck" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</button>
-                                	<span id="idResult"></span>
+                                   	<label for="id">ID</label>
+                                    <form:input path="id"/><form:errors path="id" cssClass="error"/>
+                                	<form:button class="idCheck" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">PASSWORD</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+                                    <form:input path="password"/><form:errors path="password" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">ADDRESS</label>
-                                    <input type="text" class="form-control" id="address" name="address">
+                                    <label for="address">ADDRESS</label>
+                                    <form:input path="address"/><form:errors path="address" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">PHONENUM</label>
-                                    <input type="text" class="form-control" id="phonenum" name="phonenum">
+                                    <label for="phonenum">PHONENUM</label>
+                                    <form:input path="phonenum"/><form:errors path="phonenum" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">NAME</label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <form:input path="name"/><form:errors path="name" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">BIRTH</label>
-                                    <input type="text" class="form-control" id="birth" name="birth">
+                                    <label for="birth">BIRTH</label>
+                                    <form:input path="birth"/><form:errors path="birth" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email">
+                                    <form:input path="email"/><form:errors path="email" cssClass="error"/>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">승인</button>
                                 </div>
-                            </form>
+                            </form:form>
                         </div>
                     </div>
                 </div>
