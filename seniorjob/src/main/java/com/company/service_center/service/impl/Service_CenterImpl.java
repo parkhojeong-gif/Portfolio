@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.service_center.Criteria;
 import com.company.service_center.PagingVO;
+import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterService;
 import com.company.service_center.service.Service_CenterVO;
 
@@ -67,5 +69,19 @@ public class Service_CenterImpl implements Service_CenterService{
 		// TODO Auto-generated method stub
 		return dao.searchService(searchKeyword);
 	}
+
+	@Override
+	public List<Service_CenterVO> list(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.list(scri);
+	}
+
+	@Override
+	public int listCount(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listCount(scri);
+	}
+
+	
 
 }

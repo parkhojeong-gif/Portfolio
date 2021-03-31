@@ -4,11 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
+import com.company.service_center.Criteria;
+import com.company.service_center.PageMaker;
 import com.company.service_center.PagingVO;
+import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterVO;
 import com.company.service_center.service.impl.Service_CenterMapper;
 
@@ -17,24 +21,19 @@ import com.company.service_center.service.impl.Service_CenterMapper;
 public class Service_CenterController {
 	@Autowired Service_CenterMapper service_CenterMapper;
 
+	
+	//게시판 목록 조회
 	@RequestMapping("/serviceCenter")
-	public String serviceCenter(Model model, Service_CenterVO vo, PagingVO pvo,
-			  @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
-		int total = service_CenterMapper.countBoard();
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "5";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
-		}
-		pvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		model.addAttribute("paging", pvo);
-		model.addAttribute("list", service_CenterMapper.selectBoard(pvo));
+	public String list(Model model,  @ModelAttribute("scri") SearchCriteria scri) {
 		
-		//model.addAttribute("list", service_CenterMapper.getService_CenterList(vo));
+		model.addAttribute("list", service_CenterMapper.list(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service_CenterMapper.listCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
 		return "/Service_Center/serviceCenter";			  //공지사항
 	}
 	@RequestMapping("/getService_Center")	//공지사항 단건조회

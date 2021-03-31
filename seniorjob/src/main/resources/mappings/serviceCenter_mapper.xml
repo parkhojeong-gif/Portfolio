@@ -31,21 +31,61 @@
   		UPDATE service_center SET click = click + 1 WHERE SEQ = #{seq}
 	</update>
 	<!--페이징 처리(1) 페이지 갯수 체크  -->
-	<select id="countBoard" resultType="int">
-		SELECT COUNT(*) FROM service_center
+	<select id="listCount"  parameterType="SearchCriteria" resultType="int">
+
+		SELECT COUNT(SEQ) 
+		FROM service_center
+		WHERE  1=1
+		<include refid="search"></include>
+		AND SEQ > 0	  
+
 	</select>
+	<sql id="search">
+		<if test="searchType != null">
+				<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'w'.toString()">AND ID LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+	
+	
+	
 	<!--페이징 처리(2) 페이지 처리 후 게시글 조회  -->
-	<select id="selectBoard" resultType="Service_CenterVO">
-	SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						SELECT * 
-						FROM service_center 
-						ORDER BY SEQ DESC 
-						) A
-				)
-	WHERE RN BETWEEN #{start} AND #{end}
+	<select id="list" resultType="Service_CenterVO" parameterType="Service_CenterVO">
+		select 	SEQ,
+						CATEGORY_A,
+						CATEGORY_B,
+						W_DATE,
+						CLICK,
+						CONTENT,
+						S_FILE,
+						ID,
+						TITLE from (
+            										SELECT 	SEQ,
+																	CATEGORY_A,
+																	CATEGORY_B,
+																	W_DATE,
+																	CLICK,
+																	CONTENT,
+																	S_FILE,
+																	ID,
+																	TITLE, ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+																	FROM SERVICE_CENTER
+																	
+																	where 1=1
+																	 	<include refid="search"></include>
+																	 
+																	  ) SERVCIE_CENTER WHERE RNUM
+																	  
+																	  
+																	BETWEEN #{rowStart} AND #{rowEnd}
+																	ORDER BY SEQ DESC
+
+
+
+
+
 	</select>
 	<!--검색 결과 -->
 	<select id="searchService" resultType="Service_CenterVO">

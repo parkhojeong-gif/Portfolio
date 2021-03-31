@@ -8,6 +8,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -33,20 +34,7 @@
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
-			
-			<div id="outter">
-				<div style="float: right;">
-				<select id="cntPerPage" name="sel" onchange="selChange()">
-					<option value="5"
-						<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
-					<option value="10"
-						<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
-					<option value="15"
-						<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
-					<option value="20"
-						<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-				</select>
-			</div> <!-- 옵션선택 끝 -->
+
 			
 			<jsp:include page="sevice_left.jsp"></jsp:include>
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
@@ -72,51 +60,64 @@
 				
 		<div class="col-xs-8">		
 		<div class="pagination">	
-		<c:if test="${paging.startPage != 1 }">
-			<a href="/serviceCenter?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-		</c:if>
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-			<c:choose>
-				<c:when test="${p == paging.nowPage }">
-					<b>${p }</b>
-				</c:when>
-				<c:when test="${p != paging.nowPage }">
-					<a href="/serviceCenter?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="/serviceCenter?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-		</c:if>
+		 			<ul>
+    						<c:if test="${pageMaker.prev}">
+    						<li><a href="serviceCenter${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+    						</c:if> 
+
+    						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    						<li><a href="serviceCenter${pageMaker.makeSearch(idx)}">${idx}</a></li>
+    						</c:forEach>
+			
+    						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+    						<li><a href="serviceCenter${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+    						</c:if> 
+					  </ul>
 		</div>	
 		</div>		
-				<form onsubmit="return checkKeywordNull()" name="keywordSearch" method="post">			
+		
+				<form role="form" method="get">
+				<div class="search">			
 					<div class="col-xs-8">
 					<br>
 					</div>
+						</div>
 					<div class="col-xs-2">
                          <div class="btn-group bootstrap-select show-tick form-control">
                          	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
                          	 <select id="basic" name="searchType" class="selectpicker show-tick form-control" tabindex="-98">
-                             <option value=""> 분류 </option>
-                             <option value="제목">제목 </option>
-                             <option>제목/내용</option>
-                             <option>작성자</option>  
+                             <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
+						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
                         </select></div>
                     </div>
                     <div class="col-xs-7">
 					<div class="input-group">
-                             <input class="form-control" name="searchKeyword" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
+                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
                              <span class="input-group-btn">
-                    <button class="btn btn-primary subscribe" type="submit"><i class="pe-7s-paper-plane pe-2x"></i></button>
+                    <button class="btn btn-primary subscribe" id="searchBtn" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
+                    <script>
+			      $(function(){
+			        $('#searchBtn').click(function() {
+			          self.location = "serviceCenter" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+			        });
+			      });   
+			    </script>
                            </span>
                    </div>
+                   </div>
                 </form> 
+                
+                
+                
 			</div>
 		</div>
 		</div>
 	</div>
 	</div>
+	
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
