@@ -14,5 +14,7 @@ public interface ScheduleService {
 	public ScheduleVO getSchedule(ScheduleVO vo);
 	
 	public List<ScheduleVO> getSearchSchedule(ScheduleVO vo);
+	
+	
 
 }
