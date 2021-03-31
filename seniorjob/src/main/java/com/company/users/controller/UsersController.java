@@ -17,18 +17,16 @@ public class UsersController {
 		model.addAttribute("list", usersMapper.getUsersList());
 		return "/users/getUsersList";
 	}
-	
-	@RequestMapping("/insertUsers") //유저 등록 폼
+	@RequestMapping("/insertUsers") //회원가입 폼
 	public String insertInquire(UsersVO vo) {
-		return "/users/insertUsers";
+		return "memberRegister";
 	}
-	@RequestMapping("/insertUsersProc")		//등록처리
-	public String insertUsers(UsersVO vo) {
+	@RequestMapping("/insertUsersProc") // 회원가입 처리
+	public String insertUsersProc(UsersVO vo) {
 		usersMapper.insertUsers(vo);
-		return "/users/getUsersList";
+		return "reidrect:/getUsersList";
 		
 	}
-	
 	@RequestMapping("/updateUsers")	//유저 정보 수정폼
 	public String updateUsers(UsersVO vo, Model model) {
 		model.addAttribute("list", usersMapper.getUsers(vo));
@@ -37,13 +35,14 @@ public class UsersController {
 	@RequestMapping("/updateUsersProc")	//유저 수정처리
 	public String updateInquireProc(UsersVO vo) {
 		usersMapper.updateUsers(vo);
-		return "/users/updateSuccess";
+		return "redirect:/getUsersList";
 	}
 	@RequestMapping("/deleteUsers")	//유저 삭제
 	public String deleteUsers(UsersVO vo) {
 		usersMapper.deleteUsers(vo);
 		return "redirect:/getInquireList";
 	}
+	
 	
 	
 }

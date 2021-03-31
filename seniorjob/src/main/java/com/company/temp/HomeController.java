@@ -115,11 +115,7 @@ public class HomeController {
 		return "mypage/mentoringCourse";
 	}
 	
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}
-	
+
 	@RequestMapping("/memberRegister")
 	public String memberRegister() {
 		return "memberRegister";

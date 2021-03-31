@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -88,10 +89,25 @@
                 <div class="collapse navbar-collapse yamm" id="navigation">
                 
                <a href="/">홈으로가기</a>
+                   <c:if test="${empty users}">
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>
                         <button class="navbar-btn nav-button wow fadeInRight" onclick="location.href='memberRegister'" data-wow-delay="0.48s">회원가입</button>
                     </div>
+               	</c:if>
+               	<c:if test="${users.auth eq 'ADMIN'}">
+               			<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+               		 	<button class="navbar-btn nav-button wow bounceInRight login" onclick="" data-wow-delay="0.45s">관리자페이지</button>
+              			<form action="logout" method="get">
+						<input type="submit" value="logout">
+						</form>
+               </c:if>
+               <c:if test="${users.auth eq 'USER'}">
+               			<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+               			<form action="logout" method="get">
+						<input type="submit" value="logout">
+						</form>
+               </c:if>    
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">채용공고 <b class="caret"></b></a>

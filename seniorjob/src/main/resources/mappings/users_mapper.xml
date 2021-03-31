@@ -2,24 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.users.service.impl.UsersMapper">
+	<!-- 전체 조회 -->
 	<select id="getUsersList" resultType="com.company.users.service.UsersVO">
-	select * from users
+	SELECT     ID
+			  ,PASSWORD
+			  ,ADDRESS
+			  ,PHONENUM
+			  ,EMAIL
+			  ,BIRTH
+			  ,AUTH
+			  ,NAME
+			  ,LOG_DATE
+	FROM USERS
 	</select>
-	
-	<select id="getUsers" resultType="UsersVO">
-	select * from users
-	where id=#{id}
+	<!-- 단건 조회 -->
+	<select id ="getUsers" resultType="com.company.users.service.UsersVO" parameterType="com.company.users.service.UsersVO">
+	SELECT     ID
+			  ,PASSWORD
+			  ,ADDRESS
+			  ,PHONENUM
+			  ,EMAIL
+			  ,BIRTH
+			  ,AUTH
+			  ,NAME
+			  ,LOG_DATE
+			  FROM USERS
+	WHERE ID = #{id}		  
 	</select>
-	
-	
-	<update id="updateUsers" parameterType="UsersVO">
-	update users
-	<set>
-	address=#{address},
-	phonenum=#{phonenum},
-	email=#{email},
-	birth=#{birth}
-	</set>
-	where id=#{id}
-	</update>
+	<!-- login -->
+	<select id ="logCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
+		SELECT ID,
+			   PASSWORD,
+			   AUTH	
+		FROM USERS
+		WHERE ID = #{id} 
+		AND PASSWORD = #{password}	   
+	</select>
+	<!-- 회원가입 -->
+	<insert id="insertUsers">
+	INSERT INTO USERS(ID,
+					PASSWORD,
+					ADDRESS,
+					PHONENUM,
+					EMAIL,
+					BIRTH,
+					NAME) 
+	VALUES(			#{id},
+					#{password},
+					#{address},
+					#{phonenum},
+					#{email},
+					#{birth},
+					#{name})
+	</insert>
  </mapper>
