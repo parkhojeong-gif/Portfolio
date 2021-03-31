@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html class="no-js">
 <jsp:include page="../topHeader.jsp" />
@@ -29,6 +30,12 @@
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section" id='calendar'>
+				</div>
+				<div class="section">
+				<c:forEach items="${list }" var="list">
+				${list.schedule_name }
+				</c:forEach>
+			
 				</div>
 				
 					<div class="section">
