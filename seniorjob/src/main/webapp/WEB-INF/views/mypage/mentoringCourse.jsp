@@ -8,11 +8,7 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-function request(menteeId, id) {
-	location.href="?menteeId="+menteeId //
-}
-</script>
+
  <jsp:include page="../topHeader.jsp"></jsp:include>
     <body>
 
@@ -45,14 +41,21 @@ function request(menteeId, id) {
                                         <div class="item-thumb">
                                             <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
                                         </div>
+                                        <form name="requestForm" action="requestMentoring"  method="post">
+                                        <input type="hidden" name="mentorid" value="${list.id }">
+                                        <input type="hidden" name="menteeid" value="${list.menteeId }">
+                                        <input type="hidden" name="schedule_name" value="${list.mentoring_name }">
+                                        
                                         <div class="item-entry overflow">
                                             <h5><a href="property-1.html">${list.mentoring_name }</a></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>${list.mentoring_begin_date } - ${list.mentoring_end_date }</b></span>
-                                            <span class="proerty-price pull-right" onclick="request('${list.menteeId}')"> 멘티 : ${list.name }</span>
+                                            <span class="proerty-price pull-right" > 멘티 : ${list.name }</span>
                                             <p style="display: none;">수강기간:${list.men_start }-${list.met_end }/멘토링횟수:3회</p>
 
                                         </div>
+                                         <button type="submit" class="btn btn-primary">멘토링 요청</button>
+                                        </form>
                                     </div>
                                 </div>                             
                                                                                       
