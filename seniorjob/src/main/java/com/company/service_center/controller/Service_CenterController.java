@@ -71,19 +71,19 @@ public class Service_CenterController {
 		service_CenterMapper.insertService_Center(vo);
 		return "redirect:/serviceCenter";
 	}
-	@RequestMapping("/updateService_Center")	//고객센터 수정폼
+	@RequestMapping("/updateService_CenterForm")	//고객센터 수정폼
 	public String updateService_Center(Service_CenterVO vo, Model model) {
 		model.addAttribute("list", service_CenterMapper.getService_Center(vo));
-		return "/Service_Center/updateService_Center";
+		return "/Service_Center/updateService_CenterForm";
 	}
-	@RequestMapping("/updateService_CenterProc")	//고객센터 수정
+	@RequestMapping("/updateService_Center")	//고객센터 수정
 	public String updateService_CenterProc(Service_CenterVO vo) {
 		service_CenterMapper.updateService_Center(vo);
-		return "redirect:/getService_CenterList";
+		return "redirect:/serviceCenter";
 	}
 	@RequestMapping("/deleteService_Center")	//고객센터 삭제
 	public String deleteService_Center(Service_CenterVO vo) {
 		service_CenterMapper.deleteService_Center(vo);
-		return "redirect:/getService_CenterList";
+		return "redirect:/serviceCenter";
 	}
 }

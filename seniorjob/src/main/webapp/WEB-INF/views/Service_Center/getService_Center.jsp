@@ -9,6 +9,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 /*이전 글, 다음 글 기능  */
 function pagePre() {
@@ -27,6 +28,16 @@ function pageNext() {
 	location.href="getService_Center?seq=${num.next }";
 	}
 	}
+$(function(){
+	$("#btnUpd").on("click", function(){
+		//location.href ="updateEmp?employee_id=${emp.employee_id}"
+		location.assign("updateService_CenterForm?seq=${gongji.seq}");
+
+	});
+	
+	
+});
+	
 /*이전 글, 다음 글 기능  */
 </script>
 <body>
@@ -106,7 +117,7 @@ function pageNext() {
                             <!-- .property-meta -->
 							<br><br>
                             <div class="section">
-                             <h4 class="s-property-title">${gongji.category_a }</h4>
+                             <h4 class="s-property-title">${gongji.category_b }</h4>
                                 <div class="s-property-content">
                                     <h3>${gongji.content }Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>
                                 </div>
@@ -120,8 +131,16 @@ function pageNext() {
                                     <li class="previous"><a href="#" onclick="pagePre()"><i class=""></i>← 이전 글 </a></li>
                                     <li class="next"><a href="#" onclick="pageNext()">다음 글 →<i class=""></i> </a></li>
                                 </ul> 
+                            <!-- 수정/삭제-->
+                            <div class="button navbar-right">
+                        		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
+                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_Center?seq=${gongji.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
+                    		</div>
+                    		<br><br><br><br><br><br>
+                              <!-- 수정/삭제-->
                             </div>
-                            
+                            <br>
+                              <br>
                             <hr>
                             <p onclick="pagePre()"><이전 글><c:if test="${num.prev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${num.prev ne 0 }">${num.prev_title }</c:if></p>
                             <hr>			

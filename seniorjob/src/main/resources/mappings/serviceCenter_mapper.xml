@@ -26,6 +26,8 @@
 	title from service_center
 	 WHERE SEQ = #{seq} 
 	</select>
+	
+	
 	<!--조회수 증가  -->
 	<update id="updateClick" parameterType="Service_CenterVO">
   		UPDATE service_center SET click = click + 1 WHERE SEQ = #{seq}
@@ -35,7 +37,7 @@
 
 		SELECT COUNT(SEQ) 
 		FROM service_center
-		WHERE  1=1
+		WHERE  1=1 <!-- and CATEGORY_a='공지사항' 공지사항 구분용   -->
 		<include refid="search"></include>
 		AND SEQ > 0	  
 
@@ -73,7 +75,7 @@
 											TITLE, ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
 											FROM SERVICE_CENTER
 																	
-											where 1=1
+											where 1=1 <!-- and CATEGORY_a='공지사항' 공지사항 구분용   -->
 											<include refid="search"></include>
 																	 
 											 ) SERVCIE_CENTER WHERE RNUM
@@ -103,18 +105,38 @@
  	<insert id="insertService_Center" parameterType="Service_CenterVO">
  	insert into service_center(SEQ,
 				CATEGORY_A,
-				<!-- CATEGORY_B, -->
+				CATEGORY_B,
 				CONTENT,
-				<!-- S_FILE, -->
+				W_DATE,
+				CLICK,
+				S_FILE,
 				ID,
 				TITLE) values ((SELECT NVL(MAX(SEQ),0)+1 FROM service_center),
-				 				#{category_a},
-				 				<!--#{category_b},  -->
+				 				'공지사항',
+				 				#{category_b}, 
 				 				#{content},
-				 				<!-- #{s_file}, -->
+				 				SYSDATE,
+				 				'0',
+				 				'파일없음',
 				 				#{id},
 				 				#{title})
  	</insert>
+ 	<!--글 수정  -->
+ <update id="updateService_Center" parameterType="Service_CenterVO">
+	UPDATE service_center 
+	<set>
+	title = #{title},
+	content = #{content}
+	</set>
+					where SEQ = #{seq}
+	</update>
+	<!--글 삭제  -->
+	<delete id="deleteService_Center" parameterType="Service_CenterVO">
+	DELETE FROM SERVICE_CENTER 
+	WHERE SEQ=#{seq}
+	
+	</delete>
+ 	
  	
 	
  </mapper>

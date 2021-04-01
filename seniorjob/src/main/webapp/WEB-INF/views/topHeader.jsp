@@ -145,38 +145,32 @@
                                                         <a href="inquire">문의하기</a>
                                                     </li>
                                                     <li>
-                                                        <a href="index-2.html">문의 목록</a>
+                                                        <a href="inquireList">문의 목록</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>결제/환불</h5>
+                                                <h5><a href="inquire">결제/환불</a></h5>
                                                 <ul>
-                                                    <li><a href="blog.html">Blog listing</a>  </li>
-                                                    <li><a href="single.html">Blog Post (full)</a>  </li>
-                                                    <li><a href="single-right.html">Blog Post (Right)</a>  </li>
-                                                    <li><a href="single-left.html">Blog Post (left)</a>  </li>
-                                                    <li><a href="contact.html">Contact style (1)</a> </li>
-                                                    <li><a href="contact-3.html">Contact style (2)</a> </li>
-                                                    <li><a href="contact_3.html">Contact style (3)</a> </li>
-                                                    <li><a href="faq.html">FAQ page</a> </li> 
-                                                    <li><a href="404.html">404 page</a>  </li>
+                                                	<li>
+                                                        <a href="inquireList">질문 목록</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>신청/취소</h5>
+                                                <h5><a href="inquire">신청/취소</a></h5>
                                                 <ul>
-                                                    <li><a href="property-1.html">Property pages style (1)</a> </li>
-                                                    <li><a href="property-2.html">Property pages style (2)</a> </li>
-                                                    <li><a href="property-3.html">Property pages style (3)</a> </li>
+                                                	<li>
+                                                        <a href="inquireList">질문 목록</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>화상면접사용법</h5>
+                                                <h5><a href="inquire">화상면접사용법</a></h5>
                                                 <ul> 
-                                                    <li><a href="submit-property.html">Submit - step 1</a> </li>
-                                                    <li><a href="submit-property.html">Submit - step 2</a> </li>
-                                                    <li><a href="submit-property.html">Submit - step 3</a> </li> 
+                                                	<li>
+                                                        <a href="inquireList">사용법 목록</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

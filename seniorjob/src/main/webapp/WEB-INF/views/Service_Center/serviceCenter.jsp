@@ -11,23 +11,7 @@
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	function selChange() {
-		var sel = document.getElementById('cntPerPage').value;
-		location.href="serviceCenter?nowPage=${paging.nowPage}&cntPerPage="+sel;
-		}
 	
-	// 키워드 검색 값 체크
-	function checkKeywordNull() {
-		var str = document.getElementsByName("searchKeyword");
-		var keywordForm = document.keywordSearch;
-		if (str[0].value == '' || str[0].value == null) { // 값이 NodeList, 배열로 넘어오기 때문에 [0]번쨰로 값을 확실히 지정헤야 한다.
-			alert("키워드를 입력하세요.");
-			return false;
-		} else {
-			keywordForm.action = "searchService";
-			keywordForm.submit();
-		}
-	}
 </script>
 
 <body>
@@ -50,7 +34,7 @@
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
 						</li>
 						<c:forEach items="${list }" var="gongji">
-							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_a }</span>
+							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_b }</span>
 							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${gongji.title }</span>
 							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.id }</span>
 							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry"><fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd"/></span>

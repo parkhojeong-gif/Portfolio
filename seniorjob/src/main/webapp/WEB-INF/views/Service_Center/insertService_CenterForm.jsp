@@ -49,8 +49,12 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
-									<label>카테고리</label> 
-									<input type="text" class="form-control" id="category_a" name="category_a">
+									<select name="category_b" id="category_b">
+										<option value="">카테고리</option>
+										<option value="이벤트">이벤트</option>
+										<option value="점검">점검</option>
+										<option value="안내">안내</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-sm-12">

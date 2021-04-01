@@ -17,20 +17,20 @@ public class Service_CenterImpl implements Service_CenterService{
 
 	@Override
 	public int insertService_Center(Service_CenterVO vo) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 등록
 		return dao.insertService_Center(vo);
 	}
 
 	@Override
-	public int updateService_Center(Service_CenterVO vo) {
-		// TODO Auto-generated method stub
-		return dao.updateService_Center(vo);
+	public void updateService_Center(Service_CenterVO vo) {
+		// TODO Auto-generated method stub 수정
+	 dao.updateService_Center(vo);
 	}
 
 	@Override
-	public int deleteService_Center(Service_CenterVO vo) {
-		// TODO Auto-generated method stub
-		return dao.deleteService_Center(vo);
+	public void deleteService_Center(Service_CenterVO vo) {
+		// TODO Auto-generated method stub 삭제
+		dao.deleteService_Center(vo);
 	}
 
 	@Override
