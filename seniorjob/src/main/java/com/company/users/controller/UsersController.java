@@ -2,6 +2,7 @@ package com.company.users.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -11,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.company.users.service.UsersService;
 import com.company.users.service.UsersVO;
 import com.company.users.service.UsersValidation;
 import com.company.users.service.impl.UsersMapper;
@@ -24,7 +27,10 @@ import com.company.users.service.impl.UsersMapper;
 public class UsersController {
 
 	@Autowired
+	UsersService usersService ;
+	@Autowired
 	UsersMapper usersMapper;
+	
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
 
@@ -68,7 +74,7 @@ public class UsersController {
 	}
 
 	@RequestMapping("/updateUsersProc") // 유저 수정처리
-	public String updateInquireProc(UsersVO vo) {
+	public String updateInquireProc(UsersVO vo, BindingResult bresult) {
 		usersMapper.updateUsers(vo);
 		return "redirect:/getUsersList";
 	}
@@ -122,11 +128,14 @@ public class UsersController {
 		return result;
 	}
 
-	// 패스워드 체크
-	@ResponseBody
-	@RequestMapping(value = "/passCheck", method = RequestMethod.POST)
-	public int passCheck(UsersVO vo) {
-		int result = usersMapper.passCheck(vo);
-		return result;
+	// 비밀번호 찾기 
+	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
+	public void findPwGET() throws Exception{
+		
+	}
+
+	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
+	public void findPwPOST(@ModelAttribute UsersVO vo, HttpServletResponse response) throws Exception{
+		usersService.findPw(response, vo);
 	}
 }

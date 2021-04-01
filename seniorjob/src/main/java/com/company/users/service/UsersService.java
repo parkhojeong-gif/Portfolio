@@ -1,11 +1,11 @@
-package com.company.users.service.impl;
+package com.company.users.service;
 
 import java.util.List;
 
-import com.company.users.service.UsersVO;
+import javax.servlet.http.HttpServletResponse;
 
-public interface UsersMapper {
-	
+public interface UsersService {
+
 	public List<UsersVO> getUsersList();	//전체조회
 	public int insertUsers(UsersVO vo);		//등록
 	public int updateUsers(UsersVO vo);		//수정
@@ -15,7 +15,6 @@ public interface UsersMapper {
 	public int idCheck(UsersVO vo); //아이디 중복체크
 	//이메일발송
 	public void sendEmail(UsersVO vo, String div) throws Exception;
-	// 회원정보(패스워드 변경 겸용) 변경
-	public int updateInfo(UsersVO vo) throws Exception;
-
+	//비밀번호찾기
+	public void findPw(HttpServletResponse resp, UsersVO vo) throws Exception;
 }

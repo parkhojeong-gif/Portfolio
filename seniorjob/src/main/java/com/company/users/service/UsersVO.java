@@ -21,4 +21,5 @@ public class UsersVO { //회원테이블
 	private String auth; //권한
 	private String name; //이름
 	private Date log_date; //가입일
+	private String approval_key; //인증키
 }

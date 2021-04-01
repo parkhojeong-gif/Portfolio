@@ -43,7 +43,7 @@ function btnId(){
                             <form:form modelAttribute ="usersVO" action="insertUsersProc" method="post" name="UsersVO">
                             <div class="form-group">
                                    	<label for="id">ID</label>
-                                    <form:input path="id"/><form:errors path="id" cssClass="error"/>
+                                    <form:input path="id" border="1"/><form:errors path="id" cssClass="error"/>
                                 	<form:button class="idCheck" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>
                                 </div>
                                 <div class="form-group">

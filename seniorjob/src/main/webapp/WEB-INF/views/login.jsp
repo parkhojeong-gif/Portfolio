@@ -5,6 +5,15 @@
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
  <jsp:include page="topHeader.jsp"></jsp:include>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function(){
+	$("#findpw").click(function(){
+	window.open("findpw", "a", "width=400, height=400, left=100, top=50"); 
+	})
+})
+
+</script>
 <style>
 .error {color: red;}
 </style>  
@@ -24,14 +33,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <form:input path="password"/><form:errors path="password" cssClass="error"/>
+                                    <form:input path="password" type="password"/><form:errors path="password" cssClass="error"/><br>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default"> Log in</button>
                                 </div>
                             </form:form>
                             <br>
-                            
+                            	<button id="findpw" name="findpw">비밀번호를 잊으셨습니까?</button>
+                            <br>
                             <h2>Social login :  </h2> 
                             
                             <p>
