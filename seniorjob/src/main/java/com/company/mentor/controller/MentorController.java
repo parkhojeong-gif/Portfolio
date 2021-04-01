@@ -11,11 +11,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.company.mentor.common.FileRenamePolicy;
 import com.company.mentor.service.MentorVO;
 import com.company.mentor.service.impl.MentorMapper;
+import com.company.users.service.impl.UsersMapper;
 
 @Controller
 public class MentorController {
 	
 	@Autowired MentorMapper mentorMapper;
+	@Autowired UsersMapper usersMapper;
 	
 		// 로그인, 회원가입 미비 시 호출되는 페이지
 		// 로그아웃 상태에서 멘토등록 클릭하면 호출
@@ -91,6 +93,7 @@ public class MentorController {
 		// 멘토 상세 페이지 호출
 		@RequestMapping("/getMentor")
 		public String getMentor(Model model, MentorVO vo) {
+			System.out.println("check " + vo);
 			model.addAttribute("list", mentorMapper.getMentor(vo));
 			return "Mentor/getMentor";
 		}

@@ -80,24 +80,13 @@
 		WHERE ID = #{id}
 	</select>
 	
-	<resultMap type="com.company.mentor.service.MentorVO" id="mentorMap">
-		<id property="id" column="id" />
-	</resultMap>
-	
-	<resultMap type="com.company.users.service.UsersVO" id="usersMap">
-		<id property="id" column="id" />
-	</resultMap>
-	
-	<resultMap type="com.company.mentor.service.MentorUsersVO" id="mentorUsersMap">
-		<collection property="" resultMap="mentorMap"/>
-		<collection property="" resultMap="usersMap"/>
-	</resultMap>
-	
 	<!-- 멘토 상세페이지 -->
 	<select id="getMentor" resultType="com.company.mentor.service.MentorVO" parameterType="com.company.mentor.service.MentorVO">
-	SELECT U.NAME, M.*
+	SELECT U.name "usersVO.name", M.*
 	FROM USERS U, MENTOR M
 	WHERE U.ID = M.ID
-	AND MENTOR_ID = #{mentor_id}
+	AND M.MENTOR_ID = #{mentor_id}
 	</select>
+	
+	
  </mapper>	

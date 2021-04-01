@@ -13,7 +13,7 @@ public interface MentorMapper {
 	public List<MentorVO> getKeywordSearch(String searchKeyword); // 키워드 검색
 	public List<MentorVO> getAgeSearch(String searchAge); // 연령 검색
  	
-	public List<MentorVO> getMentor(MentorVO vo); // 멘토 상세페이지
+	public MentorVO getMentor(MentorVO vo); // 멘토 상세페이지
 	
 	public void MentorRegisterProc(MentorVO vo); // 멘토 등록
 	public MentorVO mentorRegisterCheck(MentorVO vo); // 멘토 등록 중복 체크

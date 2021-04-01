@@ -2,6 +2,8 @@ package com.company.mentor.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.company.users.service.UsersVO;
+
 import lombok.Data;
 
 @Data
@@ -26,4 +28,6 @@ public class MentorVO { //멘토
 	private MultipartFile mentor_photo_file; // 멘토 사진 파일
 	private MultipartFile mentor_license_file; // 멘토 자격증 파일
 	private MultipartFile mentor_career_certificate_file; // 멘토 경력 증명서 파일
+	
+	private UsersVO usersVO; // Users/Mentor 테이블 조인구문 사용 시 필요
 }
