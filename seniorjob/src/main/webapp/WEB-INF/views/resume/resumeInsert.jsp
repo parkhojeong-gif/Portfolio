@@ -121,6 +121,7 @@
 	.select_img img{width: 90px; height:90px; margin:20px 0;}
 </style>	
 <body>
+<!-- responsebody(ajax)  >>  List<vo> 담아서 하기(자기소개서, 자격증), for문 사용 -->
 	<div class="content-area recent-property padding-top-40"
 		style="background-color: #FFF;">
 		<div class="container">
