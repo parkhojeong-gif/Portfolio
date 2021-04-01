@@ -1,7 +1,6 @@
 package com.company.mentor.controller;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,55 +44,47 @@ public class MentorController {
 			if(mentorCheck != null) {
 				model.addAttribute("msg", "이미 멘토로 등록하셨습니다. 마이페이지를 확인하세요.");
 				model.addAttribute("url", "MentorList");
-				return "Mentor/alert"; // 이미 멘토 등록되어 있으면 해당 주소로 리턴
+				return "Mentor/mentorDuplicateAlert"; // 이미 멘토 등록되어 있으면 해당 주소로 리턴
 			}else {
-				// 첨부파일 처리
-				MultipartFile mentor_photo_file = vo.getMentor_photo_file();
-				MultipartFile mentor_license_file = vo.getMentor_license_file();
-				MultipartFile mentor_career_certificate_file = vo.getMentor_career_certificate_file();
-				String fileNames = "";
+				MultipartFile photoFile = vo.getMentor_photo_file(); // 멘토 사진 파일
+				MultipartFile licenseFile = vo.getMentor_license_file(); // 멘토 자격증 파일
+				MultipartFile careerFile = vo.getMentor_career_certificate_file(); // 멘토 경력 인증 파일
 				
-				// 마지막 파일 뒤에 콤마(,) 제거
-				boolean start = true;
-
 				if(
-					mentor_photo_file != null && mentor_photo_file.isEmpty() && mentor_photo_file.getSize() > 0
-					&& mentor_license_file != null && mentor_license_file.isEmpty() && mentor_license_file.getSize() > 0
-					&& mentor_career_certificate_file != null && mentor_career_certificate_file.isEmpty() && mentor_career_certificate_file.getSize() > 0
+					photoFile != null && !photoFile.isEmpty() && photoFile.getSize() > 0
+					&& licenseFile != null && !licenseFile.isEmpty() && licenseFile.getSize() > 0
+					&& careerFile != null && !careerFile.isEmpty() && careerFile.getSize() > 0
 				  ) {
-					String photo_file_name = mentor_photo_file.getOriginalFilename();
-					String license_file_name = mentor_license_file.getOriginalFilename();
-					String career_certificate_file_name = mentor_career_certificate_file.getOriginalFilename();
-				
-					File photo_file_rename = FileRenamePolicy.rename(new File("c:/uploadTest/" + photo_file_name));
-					File license_file_rename = FileRenamePolicy.rename(new File("c:/uploadTest/" + license_file_name));
-					File career_certificate_file_rename = FileRenamePolicy.rename(new File("c:/uploadTest/" + career_certificate_file_name)); 
-				
-					if(!start) {
-						photo_file_name += ",";
-						license_file_name += ",";
-						career_certificate_file_name += ",";
-					}else {
-						start = false;
-					}
-					photo_file_name += photo_file_rename.getName();
-					license_file_name += license_file_rename.getName();
-					career_certificate_file_name += career_certificate_file_rename.getName();
+					// 파일 이름만 추출
+					String photoFileName = photoFile.getOriginalFilename();
+					String licenseFileName = licenseFile.getOriginalFilename();
+					String careerFileName = careerFile.getOriginalFilename();
 					
-					mentor_photo_file.transferTo(photo_file_rename);
-					mentor_license_file.transferTo(license_file_rename);
-					mentor_career_certificate_file.transferTo(career_certificate_file_rename);
+					// 파일 이름 중복 처리
+					// 동일 파일 처리 시 파일 이름 뒤에 숫자 삽입
+					File photoRename = FileRenamePolicy.rename(new File("c:/uploadTest/", photoFileName));
+					File licenseRename = FileRenamePolicy.rename(new File("c:/uploadTest/", licenseFileName));
+					File careerRename = FileRenamePolicy.rename(new File("c:/uploadTest/", careerFileName));
+					
+					// DB에 파일 이름만 저장
+					vo.setMentor_photo(photoFileName);
+					vo.setMentor_license(licenseFileName);
+					vo.setMentor_career_certificate(careerFileName);
+					
+					// 물리 저장소에 파일 저장
+					photoFile.transferTo(photoRename);
+					licenseFile.transferTo(licenseRename);
+					careerFile.transferTo(careerRename);
+
+					mentorMapper.MentorRegisterProc(vo);
+					return "Mentor/mentorRegisterSuccess";
+				}else {
+					// 멘토 등록 오류 발생 시 해당 페이지로 리턴
+					// 오류 발생 조건: 빈칸 제출
+					model.addAttribute("msg", "멘토 등록 처리 실패. 다시 작성 해주세요.");
+					model.addAttribute("url", "MentorList");
+					return "Mentor/registerAlert"; 
 				}
-				vo.setMentor_photo(fileNames);
-				vo.setMentor_license(fileNames);
-					
-				
-				
-				
-				
-				
-				mentorMapper.MentorRegisterProc(vo);
-				return "Mentor/mentorRegisterSuccess";
 			}
 		}
 		
