@@ -23,7 +23,7 @@
 			<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties  profiel-container">
 			
 
-				<form action="" method="">
+				<form action="insertSchedule" method="post">
 
 					<div class="profiel-header">
 						<h3>
@@ -38,11 +38,11 @@
 						<div class="col-sm-10 col-sm-offset-1">
 							<div class="form-group">
 								<label>멘토 <small>(read only)</small></label> <input
-									name="mentorid" type="text" value="${mentorid }" class="form-control">
+									name="mentorid" type="text" value="${mentorid }" class="form-control" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label>일정이름<small>(read only)</small></label> <input
-									name="schedule_name" type="text" value="${schedule_name }" class="form-control">
+									name="schedule_name" type="text" value="${schedule_name }" class="form-control" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label>요청내용<small>(required)</small></label> <input
@@ -58,13 +58,11 @@
 							</div>
 							<div class="form-group">
 								<label>멘티<small>(read only)</small></label> <input
-									name="menteeid" type="text" value="${menteeid }" class="form-control">
+									name="menteeid" type="text" value="${menteeid }" class="form-control" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-sm-10 col-sm-offset-1">
-							<input type='button'
-								class='btn btn-finish btn-primary pull-right' name='update'
-								value='Update' />
+							<button type="submit" class="btn btn-primary">요청</button>
 						</div>
 
 					</div>

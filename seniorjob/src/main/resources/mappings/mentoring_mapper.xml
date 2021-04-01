@@ -24,5 +24,7 @@
 		FROM MYMENTORINGVU
 		WHERE ID='123'
 	</select>
+	
+
 
 </mapper>

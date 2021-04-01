@@ -22,5 +22,26 @@
 		AND 
 		STATE='accept'
 	</select>
+	
+	<insert id="insertSchedule" parameterType="ScheduleVO">
+		insert into schedule(SEQ,
+							SCHEDULE_NAME,
+							SCHEDULE_CON,
+							SCHEDULE_START,
+							SCHEDULE_END,
+							STATE,
+							MENTEEID,
+							MENTORID) 
+					values(schedule_seq.nextval,
+							#{schedule_name},
+							#{schedule_con},
+							sysdate,
+							sysdate+5,
+							'request',
+							#{menteeid},
+							#{mentorid}
+							)
+					
+	</insert>
 
 </mapper>

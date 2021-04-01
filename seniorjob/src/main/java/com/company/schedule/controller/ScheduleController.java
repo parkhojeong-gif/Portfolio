@@ -31,5 +31,11 @@ public class ScheduleController {
 		return list;
 	
 	}
+	
+	@RequestMapping("/insertSchedule") //멘토가 멘티에게 멘토링 요청
+	public String insertScheduleProc(ScheduleVO vo) {
+		scService.insertSchedule(vo);
+		return "schedule/insertScheduleComplete";
+	}
 
 }
