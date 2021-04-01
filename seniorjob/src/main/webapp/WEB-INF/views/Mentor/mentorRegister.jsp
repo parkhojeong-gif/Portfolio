@@ -160,8 +160,8 @@ button:hover {
   </div>
   <div class="tab">멘토 확인
   	<p />
-  	<p>프로필 사진</p>
   	<div>
+  	<p>프로필 사진</p>
   		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image" id="profilePhoto">
     	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file">
   	</div>
@@ -225,8 +225,8 @@ function nextPrev(n) {
   currentTab = currentTab + n;
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
+    // 일정 시간 지난 후 submit
+    setTimeout('document.getElementById("regForm").submit()', 2000); // 2초 후 실행
     return false;
   }
   // Otherwise, display the correct tab:

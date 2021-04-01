@@ -18,6 +18,5 @@ public interface MentorMapper {
 	public void MentorRegisterProc(MentorVO vo); // 멘토 등록
 	public MentorVO mentorRegisterCheck(MentorVO vo); // 멘토 등록 중복 체크
 	
-	
 
 }

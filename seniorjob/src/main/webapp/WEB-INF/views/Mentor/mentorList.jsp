@@ -8,7 +8,7 @@
 </head>
 <style>
 	h3{text-align:left}
-	
+	#clickMentor{cursor:pointer}
 </style>
 <body>
 
@@ -293,23 +293,24 @@
                         <div class="section clear"> 
                             <div id="list-type" class="proerty-th">
                             
-
+		
                               <c:forEach var="mentor" items="${list }">
-								<div class="col-sm-6 col-md-4 p0">
+                              
+								<div class="col-sm-6 col-md-4 p0" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
-											<a href="property-1.html"><img src="../resources/assets/img/mentor/photoDefault.jpg"></a>
+											<img src="../resources/assets/img/mentor/photoDefault.jpg">
 										</div>
 
 										<div class="item-entry overflow">
 											<h5>
-												<a href="getMentorInfo"></a>
+												<a href=""></a>
 											</h5>
 											<h5>${mentor.mentor_company_name }</h5>
 											<br> <a>${mentor.mentor_department_name } </a>
 											<div class="dot-hr"></div>
 											<span class="pull-left"><b>${mentor.mentoring_kind }</b></span>
-										</div>
+										</div>	
 									</div>
 								</div>
 							</c:forEach>
@@ -343,7 +344,7 @@
                                     <h3 class="panel-title">멘토등록</h3>
                                 </div>
                                 <div class="panel-body search-widget">
-                                    <form action="" class=" form-inline"> 
+                                    <form action="" class="form-inline"> 
                                    		<fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
@@ -380,7 +381,7 @@
 <!-- Footer area-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	<script>
+<script>
 	
 	function loginCheck(){
 		alert("로그인 또는 회원가입이 필요한 항목입니다.");
@@ -388,7 +389,8 @@
 		window.open(url, "로그인/회원가입", "width=500, height=450");
 	}
 	
-	$(function(){ // 플로팅 배너
+	
+	/* $(function(){ // 플로팅 배너
 			// 기본 위치(top)값
 			var floatPosition = parseInt($("#floatMenu").css('top'))
 
@@ -405,5 +407,5 @@
 			    }, 500);
 
 			}).scroll();
-		});
+		}); */
 </script>
