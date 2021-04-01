@@ -33,13 +33,16 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return dao.getShopping(vo);
 	}
 
+	
+	//양소민 추가
+	
 	@Override
-	public List<ShoppingVO> getSearchShopping(ShoppingVO vo) {
+	public List<ShoppingVO> getSearchShopping(ShoppingVO vo) { //마이페이지_수강중인 멘토링
 		return dao.getSearchShopping(vo);
 	}
 
 	@Override
-	public List<ShoppingVO> getSearchPay(ShoppingVO vo) {
+	public List<ShoppingVO> getSearchPay(ShoppingVO vo) { //마이페이지_결제내역
 		return dao.getSearchPay(vo);
 	}
 

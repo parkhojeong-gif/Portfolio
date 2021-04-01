@@ -19,13 +19,14 @@ public class ShoppingController {
 		return "shopping";		  			//장바구니
 	}
 	
-	@GetMapping("/getSearchShopping")
+	//양소민 추가
+	@GetMapping("/getSearchShopping")   //마이페이지_수강중인 멘토링
 	public String getSearchShopping(ShoppingVO vo, Model model) {
 		model.addAttribute("list", spService.getSearchShopping(vo));
 		return "mypage/mentoringStatus";
 	}
 	
-	@GetMapping("/getSearchPay")
+	@GetMapping("/getSearchPay")  //마이페이지_결제내역
 	public String getSearchPay(ShoppingVO vo, Model model) {
 		model.addAttribute("list", spService.getSearchPay(vo));
 		return "mypage/payDetail";
