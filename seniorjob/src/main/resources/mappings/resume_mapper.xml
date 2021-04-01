@@ -3,19 +3,20 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.resume.service.impl.ResumeMapper">
 	<select id="getSearchResumeList" resultType="com.company.resume.service.ResumeVO">
-		SELECT  RESUME_NO, 
-				RESUME_NAME, 
-				RESUME_BIRTH, 
-				RESUME_EMAIL, 
-				RESUME_PHONE, 
-				RESUME_ADDRESS, 
-				RESUME_SCHOOL, 
-				RESUME_AREA, 
-				RESUME_START, 
-				RESUME_END, 
-				ID, 
-				IMAGE
-		FROM 	RESUME
+		SELECT   RESUME_NO, 
+				 RESUME_NAME, 
+				 RESUME_BIRTH, 
+				 RESUME_EMAIL, 
+				 RESUME_PHONE, 
+				 RESUME_ADDRESS, 
+				 RESUME_SCHOOL, 
+				 RESUME_AREA, 
+				 RESUME_START, 
+				 RESUME_END, 
+				 ID, 
+				 IMAGE
+		FROM 	 RESUME
+		ORDER BY RESUME_NO
 	</select>
 	<insert id="insertResume" parameterType="ResumeVO">
 	<selectKey keyProperty="resume_no" resultType="string" order="BEFORE">
@@ -30,9 +31,12 @@
 							RESUME_SCHOOL, 
 							RESUME_AREA, 
 							RESUME_START, 
-							RESUME_END,
-							IMAGE)
-		VALUES				(RESUME_SEQ.NEXTVAL,
+							RESUME_END
+							<if test="image != null and image !=''">
+							,IMAGE
+							</if>
+							)
+		VALUES				(#{resume_no},
 							 #{resume_name}, 
 							 #{resume_birth}, 
 							 #{resume_email}, 
@@ -41,8 +45,11 @@
 							 #{resume_school}, 
 							 #{resume_area}, 
 							 #{resume_start}, 
-							 #{resume_end},
-							 #{image})
+							 #{resume_end}
+							 <if test="image != null and image !=''">
+							 ,#{image}
+							 </if>
+							 )
 	</insert>
 	<update id="updateResuem">
 		UPDATE RESUME SET RESUME_NAME=#{resume_name}, 

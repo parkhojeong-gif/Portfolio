@@ -33,7 +33,7 @@ public class CertificateServiceImpl implements CertificateService{
 	}
 
 	@Override
-	public CertificateVO2 getCerti(CertificateVO2 vo) {
+	public List<CertificateVO2> getCerti(CertificateVO2 vo) {
 		return certimapper.getCerti(vo);
 	}
 

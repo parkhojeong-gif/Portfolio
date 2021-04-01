@@ -39,6 +39,10 @@
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 	
+	<!-- 일반 파일 업로드 경로 -->
+	<resources mapping="/image/**" location="c:/upload" />
+	
+	
 	<!-- multipart 설정 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	 <beans:property name="maxUploadSize" value="100000000" />

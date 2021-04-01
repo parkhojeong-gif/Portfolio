@@ -1,4 +1,4 @@
-package com.company.resume.service;
+package com.company.portfolio.service;
 
 import java.io.File;
 import java.io.IOException;
