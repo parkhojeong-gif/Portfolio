@@ -2,7 +2,6 @@ package com.company.service_center.service;
 
 import java.util.List;
 
-import com.company.service_center.Criteria;
 import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 
@@ -26,9 +25,12 @@ public interface Service_CenterService {
 		// 게시글 검색
 		public List<Service_CenterVO> searchService(String searchKeyword);
 		// 페이징 처리 게시글 조회(test)
-				public List<Service_CenterVO> list(SearchCriteria scri);
-			// 게시물 총갯수 (test)
-				public int listCount(SearchCriteria scri);
+		public List<Service_CenterVO> list(SearchCriteria scri);
+		// 게시물 총갯수 (test)
+		public int listCount(SearchCriteria scri);
+		//게시물 단건조회 후 이전/다음글
+		public Service_CenterVO preNext(Service_CenterVO vo);
+				
 		
 	}
 

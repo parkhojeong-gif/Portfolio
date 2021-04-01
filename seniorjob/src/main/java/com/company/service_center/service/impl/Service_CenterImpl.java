@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.service_center.Criteria;
 import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterService;
@@ -80,6 +79,12 @@ public class Service_CenterImpl implements Service_CenterService{
 	public int listCount(SearchCriteria scri) {
 		// TODO Auto-generated method stub
 		return dao.listCount(scri);
+	}
+
+	@Override
+	public Service_CenterVO preNext(Service_CenterVO vo) {
+		// TODO 게시물 단건조회 후 게시글 이전/다음
+		return dao.preNext(vo);
 	}
 
 	

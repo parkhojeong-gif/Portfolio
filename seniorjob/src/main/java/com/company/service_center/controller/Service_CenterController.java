@@ -36,12 +36,22 @@ public class Service_CenterController {
 		
 		return "/Service_Center/serviceCenter";			  //공지사항
 	}
+	
+	
+	
 	@RequestMapping("/getService_Center")	//공지사항 단건조회
 	public String getService_CenterList(Model model, Service_CenterVO vo) {
 		model.addAttribute("gongji", service_CenterMapper.getService_Center(vo));
 		service_CenterMapper.updateClick(vo);	 //조회수 증가
+		
+		model.addAttribute("num", service_CenterMapper.preNext(vo));
+		service_CenterMapper.preNext(vo);		//게시글 이전/다음
 		return "/Service_Center/getService_Center";
 	}
+	
+	
+	
+	
 	//검색
 	@RequestMapping("/searchService")
 	public String searchService(Model model, @RequestParam("searchKeyword") String searchKeyword) {
@@ -52,14 +62,14 @@ public class Service_CenterController {
 	
 	
 
-	@RequestMapping("/insertService_Center") //고객센터 등록 폼
+	@RequestMapping("/insertService_CenterForm") //고객센터 등록 폼
 	public String insertService_Center(Service_CenterVO vo) {
-		return "/Service_Center/insertService_Center";
+		return "/Service_Center/insertService_CenterForm";
 	}
-	@RequestMapping("/insertService_CenterProc") //고객센터 등록
+	@RequestMapping("/insertService_Center") //고객센터 등록
 	public String insertService_CenterProc(Service_CenterVO vo) {
 		service_CenterMapper.insertService_Center(vo);
-		return "redirect:/getService_CenterList";
+		return "redirect:/serviceCenter";
 	}
 	@RequestMapping("/updateService_Center")	//고객센터 수정폼
 	public String updateService_Center(Service_CenterVO vo, Model model) {
