@@ -13,14 +13,17 @@
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-        $.ajax({
-    		url : getSearchSchedule?menteeid=somTest,
-    		success : showContents
-    		});
-    	});
+       
+    	
         var calendar = new FullCalendar.Calendar(calendarEl, {
         	
-          initialView: 'dayGridMonth'
+          initialView: 'dayGridMonth',
+          timeZone: 'UTC',
+          eventSources : [{
+          		url : "getSearchSchedule?menteeid=somTest"
+          				
+          }
+          ]
           
         
         });

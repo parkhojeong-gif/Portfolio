@@ -1,6 +1,7 @@
 package com.company.schedule.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 	}
 
 	@Override
-	public List<ScheduleVO> getSearchSchedule(ScheduleVO vo) {
+	public List<Map> getSearchSchedule(ScheduleVO vo) {
 		return dao.getSearchSchedule(vo);
 	}
 

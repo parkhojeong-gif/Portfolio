@@ -1,6 +1,7 @@
 package com.company.schedule.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.schedule.service.ScheduleVO;
 
@@ -14,6 +15,6 @@ public interface ScheduleMapper {
 	
 	public ScheduleVO getSchedule(ScheduleVO vo);
 	
-	public List<ScheduleVO> getSearchSchedule(ScheduleVO vo);
+	public List<Map> getSearchSchedule(ScheduleVO vo);
 
 }

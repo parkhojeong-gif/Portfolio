@@ -2,6 +2,7 @@ package com.company.schedule.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,10 @@ public class ScheduleController {
 	
 	@RequestMapping("/getSearchSchedule")
 	@ResponseBody
-	public HashMap<String, Object> getSearchSchedule(ScheduleVO vo) {
-		HashMap<String, Object> map = new HashMap<>();
-		List<ScheduleVO> plan = scService.getSearchSchedule(vo);
-		map.put("plan", plan);
-		return map;
+	public List<Map> getSearchSchedule(ScheduleVO vo) {
+		List<Map> list = scService.getSearchSchedule(vo);
+		System.out.println(list);
+		return list;
 	
 	}
 
