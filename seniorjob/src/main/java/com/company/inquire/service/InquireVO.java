@@ -13,4 +13,5 @@ public class InquireVO {  //문의하기
 	private String i_file;		//첨부파일
 	private String status;		//문의상태
 	private String id;		//아이디
+	private String title;
 }

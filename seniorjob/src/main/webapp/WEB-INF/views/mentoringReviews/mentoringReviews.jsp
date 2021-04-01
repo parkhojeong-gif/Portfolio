@@ -7,7 +7,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<jsp:include page="topHeader.jsp"></jsp:include>
+<jsp:include page="../topHeader.jsp"></jsp:include>
 <body>
 
 	<!-- property area -->
@@ -59,29 +59,19 @@
 
 					<ul>
 						<li><span class="col-xs-6 col-sm-4 col-md-1 add-d-title">글번호</span>
-							<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">제목</span>
+							<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">제목</span>
 							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">작성자</span>
-							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">작성일자</span>
+							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
 							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">조회수</span>
 						</li>
-						
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">1</span>
-							<span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">ㅇㅇㅇ 멘토를 만나고 인생이 바뀌었습니다.</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">kildong</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">2021/03/03</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">102</span>
-						<br>	
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">1</span>
-							<span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">ㅇㅇㅇ 멘토를 만나고 인생이 바뀌었습니다.</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">kildong</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">2021/03/03</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">102</span>
-						<br>	
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">1</span>
-							<span class="col-xs-6 col-sm-8 col-md-4 add-d-entry">ㅇㅇㅇ 멘토를 만나고 인생이 바뀌었습니다.</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">kildong</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">2021/03/03</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">102</span>
+						<c:forEach items="${list }" var="rev">
+							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${rev.seq }</span>
+							<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${rev.title }</span>
+							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${rev.id }</span>
+							<span class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${rev.w_date }</span>
+							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${rev.click }</span>
+						<br>
+						</c:forEach>	
 					</ul>
 					<hr>
 					<!-- 검색 -->
@@ -114,8 +104,8 @@
 				</div>
 			</div>
 		</div>
-
+</div>
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

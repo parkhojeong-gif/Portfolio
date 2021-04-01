@@ -13,4 +13,5 @@ public class Mentoring_ReviewsVO { //멘토링 후기
 	private String r_file;		//첨부파일
 	private String id;		//아이디
 	private String mentoring_number;		//멘토링 코스 번호
+	private String title; //글제목
 }
