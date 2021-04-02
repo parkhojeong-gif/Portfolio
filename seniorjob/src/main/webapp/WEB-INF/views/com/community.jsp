@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -228,77 +229,22 @@ bottom : 5px;
 										<th>삭제</th>
 									</tr>
 								</thead>
-								<tbody>
+							<tbody>
+								<c:forEach var="mentor" items="${list}">
 									<tr>
-										<td>공지사항1</td>
-										<td>admin</td>
-										<td>2011-01-01</td>
-										<td>공지1</td>
-										<td>Offenburg.pdf</td>
-										<td>
-										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-										<i data-feather="edit"></i></a>
-										</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td><a href="#exampleModalLong" class="edit"
+											data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete"
+											data-bs-toggle="modal" onclick=""> <i
+												data-feather="alert-circle"></i></a></td>
 									</tr>
-									<tr>
-										<td>공지사항1</td>
-										<td>admin</td>
-										<td>2011-01-01</td>
-										<td>공지1</td>
-										<td>Offenburg.pdf</td>
-										<td>
-										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-										<i data-feather="edit"></i></a>
-										</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>공지사항1</td>
-										<td>admin</td>
-										<td>2011-01-01</td>
-										<td>공지1</td>
-										<td>Offenburg.pdf</td>
-										<td>
-										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-										<i data-feather="edit"></i></a>
-										</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>공지사항1</td>
-										<td>admin</td>
-										<td>2011-01-01</td>
-										<td>공지1</td>
-										<td>Offenburg.pdf</td>
-										<td>
-										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-										<i data-feather="edit"></i></a>
-										</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>공지사항1</td>
-										<td>admin</td>
-										<td>2011-01-01</td>
-										<td>공지1</td>
-										<td>Offenburg.pdf</td>
-										<td>
-										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-										<i data-feather="edit"></i></a>
-										</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
+								</c:forEach>	
 								</tbody>
 							</table>
 						</div>

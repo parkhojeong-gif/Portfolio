@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>		
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -220,6 +221,7 @@ bottom : 5px;
 									<tr>
 										<th>작성자ID</th>
 										<th>멘토링 코스번호</th>
+										<th>후기 제목</th>
 										<th>후기 작성일자</th>
 										<th>후기 내용</th>
 										<th>첨부파일</th>
@@ -227,56 +229,22 @@ bottom : 5px;
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="reviews" items="${list}">
 									<tr>
-										<td>user1</td>
-										<td>001</td>
-										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
+										<td>${reviews.id}</td>
+										<td>${reviews.mentoring_number}</td>
+										<td>${reviews.title}</td>
+										<td>${reviews.w_date}</td>
+										<td>${reviews.content}</td>
+										<td>${reviews.}</td>
+										<td></td>
+										<td><a href="#exampleModalLong" class="edit"
+											data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete"
+											data-bs-toggle="modal" onclick=""> <i
+												data-feather="alert-circle"></i></a></td>
 									</tr>
-									<tr>
-										<td>user2</td>
-										<td>002</td>
-										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>user3</td>
-										<td>003</td>
-										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>user4</td>
-										<td>004</td>
-										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>user5</td>
-										<td>005</td>
-										<td>2011-01-01</td>
-										<td>좋은 후기</td>
-										<td>Offenburg.jpg</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
+								</c:forEach>	
 								</tbody>
 							</table>
 						</div>

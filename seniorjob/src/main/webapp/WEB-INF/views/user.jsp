@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -235,7 +235,7 @@ bottom : 5px;
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="users" items="${list }">
+								<c:forEach var="users" items="${list}">
 									<tr>
 										<td>${users.id }</td>
 										<td>${users.name }</td>

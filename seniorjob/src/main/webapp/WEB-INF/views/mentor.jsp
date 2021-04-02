@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -229,73 +230,21 @@ bottom : 5px;
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="mentor" items="${list}">
 									<tr>
-										<td>user1</td>
-										<td>Graiden</td>
-										<td>vehicula.aliquet@semconsequat.co.uk</td>
-										<td>076 4820 8838</td>
-										<td>Offenburg</td>
-										<td>2011-01-01</td>
-										<td>
-										<a href="#edit" class="edit" data-bs-toggle="modal" onclick="">
-										<i data-feather="edit"></i></a>
-										</td>
-										<td><a href="#delete" class="delete" data-bs-toggle="modal" onclick=""> 
-										<i data-feather="alert-circle"></i></a>
-										</td>
-									</tr>
-									<tr>
-										<td>user2</td>
-										<td>Dale</td>
-										<td>fringilla.euismod.enim@quam.ca</td>
-										<td>0500 527693</td>
-										<td>New Quay</td>
-										<td>2011-01-01</td>
-										<td><a href="#edit" class="edit" data-bs-toggle="modal"
-											onclick=""> <i data-feather="edit"></i></a></td>
+										<td>${mentor.id }</td>
+										<td>${mentor.name }</td>
+										<td>${mentor.phonenum }</td>
+										<td>${mentor.address }</td>
+										<td>${mentor.email }</td>
+										<td></td>
+										<td><a href="#exampleModalLong" class="edit"
+											data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
 										<td><a href="#delete" class="delete"
 											data-bs-toggle="modal" onclick=""> <i
 												data-feather="alert-circle"></i></a></td>
 									</tr>
-									<tr>
-										<td>user3</td>
-										<td>Nathaniel</td>
-										<td>mi.Duis@diam.edu</td>
-										<td>(012165) 76278</td>
-										<td>Grumo Appula</td>
-										<td>2011-01-01</td>
-										<td><a href="#edit" class="edit" data-bs-toggle="modal"
-											onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
-									<tr>
-										<td>user4</td>
-										<td>Darius</td>
-										<td>velit@nec.com</td>
-										<td>0309 690 7871</td>
-										<td>Ways</td>
-										<td>2011-01-01</td>
-										<td><a href="#edit" class="edit" data-bs-toggle="modal"
-											onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
-									<tr>
-										<td>user5</td>
-										<td>Oleg</td>
-										<td>rhoncus.id@Aliquamauctorvelit.net</td>
-										<td>0500 441046</td>
-										<td>Rossignol</td>
-										<td>2011-01-01</td>
-										<td><a href="#edit" class="edit" data-bs-toggle="modal"
-											onclick=""> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
-									</tr>
+								</c:forEach>	
 								</tbody>
 							</table>
 						</div>
