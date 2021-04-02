@@ -12,4 +12,5 @@ public class ScheduleVO {		//일정
 	private String state;		//진행상황
 	private String menteeid;		//멘티
 	private String mentorid;		//멘토
+	private String auth;
 }

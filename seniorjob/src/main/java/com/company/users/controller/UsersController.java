@@ -106,6 +106,8 @@ public class UsersController {
 			if (psMatch == true) {
 				session.setAttribute("users", users);
 				session.setAttribute("id", users.getId());   //session에 id란 이름으로 id 저장
+				session.setAttribute("auth", users.getAuth());   //session에 auth란 이름으로 auth 저장
+				
 				return "redirect:/";
 			} else {
 				session.setAttribute("users", null);
@@ -166,16 +168,9 @@ public class UsersController {
 		} else {
 			System.out.println("error");
 			return "users/updateInfo";
-		}
+		}			
 		
-		
-		
-		
-		
-		
-		
-		
-	}
+	} //비밀번호 수정 처리 끝
 	
 	
 }

@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +28,16 @@ public class ScheduleController {
 	
 	@RequestMapping("/getSearchSchedule")
 	@ResponseBody
-	public List<Map> getSearchSchedule(ScheduleVO vo) {
+	public List<Map> getSearchSchedule(ScheduleVO vo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String auth = (String) session.getAttribute("auth");
+		vo.setAuth(auth);
+		String id = (String)session.getAttribute("id");
+		if("USER".equals(auth)) {
+			vo.setMenteeid(id);
+		} else if ("MENTOR".equals(auth)) {
+			vo.setMentorid(id);
+		}
 		List<Map> list = scService.getSearchSchedule(vo);
 		System.out.println(list);
 		return list;
@@ -36,7 +48,11 @@ public class ScheduleController {
 	
 	@RequestMapping("/getSearchRequest")
 	@ResponseBody
-	public List<Map> getSearchRequest(ScheduleVO vo) {
+	public List<Map> getSearchRequest(ScheduleVO vo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMenteeid(id);
+		System.out.println("mentee:"+vo.getMenteeid());
 		List<Map> list = scService.getSearchRequest(vo);
 		System.out.println(list);
 		return list;

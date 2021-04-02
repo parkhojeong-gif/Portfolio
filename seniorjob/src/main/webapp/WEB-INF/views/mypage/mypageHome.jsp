@@ -20,7 +20,7 @@
           initialView: 'dayGridMonth',
           timeZone: 'UTC',
           eventSources : [{
-          		url : "getSearchSchedule?menteeid=somTest"
+          		url : "getSearchSchedule"
           				
           }
           ]
@@ -30,7 +30,7 @@
         calendar.render();
         
         $.ajax({
-        	url : "getSearchRequest?menteeid=somTest",
+        	url : "getSearchRequest",
         	success : function(result) {
         		console.log(result);
         	}

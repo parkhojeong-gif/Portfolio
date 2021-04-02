@@ -50,11 +50,11 @@
 							</div>
 							<div class="form-group">
 								<label>시작일시<small>(required)</small></label> <input
-									name="schedule_start" type="text" class="form-control">
+									name="schedule_start" type="text" class="form-control" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label>종료일시<small>(required)</small></label> <input
-									name="schedule_end" type="text" class="form-control">
+									name="schedule_end" type="text" class="form-control" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label>멘티<small>(read only)</small></label> <input

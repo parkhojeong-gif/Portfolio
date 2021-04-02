@@ -3,22 +3,25 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.company.schedule.service.impl.ScheduleMapper">
-	<!-- <select id="getSearchSchedule" resultType="ScheduleVO">
-		SELECT * 
-		FROM SCHEDULE 
-		WHERE 
-		MENTEEID=#{menteeid} 
-		AND 
-		STATE='accept'
-	</select> -->
+
 	
-	<select id="getSearchSchedule" resultType="map">
+	<select id="getSearchSchedule" parameterType="ScheduleVO" resultType="map">
 		SELECT Schedule_Name as "title",
   				Schedule_Start as "start",
  				Schedule_End as "end"
 		FROM SCHEDULE 
-		WHERE 
-		MENTEEID=#{menteeid} 
+		WHERE
+		<choose>
+		<when test="auth == 'MENTOR'">
+			MENTORID=#{mentorid}
+			</when>
+			<when test="auth == 'USER'">
+			MENTEEID=#{menteeid} 
+			</when>
+			
+			<otherwise>
+			</otherwise>
+		</choose>
 		AND 
 		STATE='accept'
 	</select>
