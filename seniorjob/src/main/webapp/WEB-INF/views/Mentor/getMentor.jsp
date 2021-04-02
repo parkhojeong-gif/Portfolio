@@ -1,10 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>멘토 상세 페이지</title>
 <style>
 body {
@@ -195,9 +193,14 @@ input{
 	
 	// 멘토 팔로우 취소
 	function deleteMentorFollow(){
-		confirm("멘토 팔로우를 취소하시겠습니까?");
-		if(confirm){
-			location.href="deleteMentorFollow";
+		var msg = confirm("멘토 팔로우를 취소하시겠습니까?");
+		if(msg==true){
+			var getMentorInfo = document.getMentorInfo;
+			getMentorInfo.action = "deleteMentorFollow";
+			getMentorInfo.submit();
+		}
+		else if(msg==false){
+			alert("취소");	
 		}
 	}
 </script>

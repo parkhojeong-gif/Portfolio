@@ -18,9 +18,9 @@
 	</insert>
 	
 	<!-- 멘토 팔로우 취소 -->
-	<delete id="deleteMentorFollow" parameterType="com.company.following.service.FollowingVO">
-		DELETE FROM MENTOR
-		WHERE ID = #{id}
+	<delete id="deleteMentorFollow">
+		DELETE FROM FOLLOWING
+		WHERE MENTOR_ID = #{mentor_id}
 	</delete>
 	
 	<!-- 팔로우 중복 확인 -->

@@ -23,15 +23,16 @@ public class FollowingController {
 	public String getMentorFollow(Model model, FollowingVO vo) {
 		followingMapper.MentorFollow(vo);
 		model.addAttribute("msg","팔로우 완료");
-		model.addAttribute("url","getMentor");
+		model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
 		return "following/followSuccess";
 	}
 	
 	// 멘토 팔로우 취소
 	@RequestMapping("/deleteMentorFollow")
-	public String deleteMentorFollow(Model model) {
+	public String deleteMentorFollow(Model model, FollowingVO vo) {
+		followingMapper.deleteMentorFollow(vo);
 		model.addAttribute("msg","팔로우 취소 완료");
-		model.addAttribute("url","getMentor");
+		model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
 		return "following/followDeleteSuccess";
 	}
 	
