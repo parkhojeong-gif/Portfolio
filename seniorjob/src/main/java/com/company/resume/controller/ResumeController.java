@@ -1,6 +1,8 @@
 package com.company.resume.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.company.certificate.service.CertificateVO2;
@@ -42,7 +45,8 @@ public class ResumeController {
 	}
 	// 이력서 등록
 	@PostMapping("/resumeInsert")
-	public String resumeInsert(HttpServletRequest req, ResumeVO vo, CertificateVO2 certivo, Self_InfoVO selfvo, PortfolioVO portvo) throws Exception {
+	@ResponseBody 
+	public String resumeInsert(Self_InfoVO selfvo, HttpServletRequest req, ResumeVO vo, CertificateVO2 certivo,  PortfolioVO portvo) throws Exception {
 		System.out.println(vo);
 		// image 업로드(RESUME)
 		MultipartFile file = vo.getUploadFile();
@@ -72,6 +76,8 @@ public class ResumeController {
 		}
 		portvo.setPortfolio(portnames);
 		
+		List<Self_InfoVO> selflist = new ArrayList<Self_InfoVO>();
+		
 		resumemapper.insertResume(vo);
 		selfvo.setResume_no(vo.getResume_no());
 		selfmapper.insertSelf(selfvo);
@@ -98,8 +104,10 @@ public class ResumeController {
 	
 	//이력서 수정
 	@RequestMapping("/resumeUpdate")
-	public String resumeUpdate(ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo, PortfolioVO portvo) {
+	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo, PortfolioVO portvo) throws Exception {
 		//portfolio(파일) 수정
+		
+		
 		resumemapper.updateResuem(vo);
 //		portvo.setResume_no(vo.getResume_no());
 //		portmapper.updatePort(portvo);
@@ -114,7 +122,7 @@ public class ResumeController {
 	@RequestMapping("/resumeDelete")
 	public String resumeDelete(ResumeVO vo) {
 		resumemapper.deleteResume(vo);
-		return "resumeInsertForm";	  
+		return "resume/resumeList";	  
 	}
 	
 	//이력서 단건 조회

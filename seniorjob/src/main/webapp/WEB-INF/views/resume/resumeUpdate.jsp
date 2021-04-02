@@ -180,7 +180,7 @@
 													<c:forTokens items="${portvo.portfolio }" delims="," var="file">
 														${file }<br>
 													</c:forTokens>
-													<input type="file" class="form-control" name="portFile" multiple="multiple">
+													<input type="file" class="form-control" name="portfolio" multiple="multiple">
 												</div>
 											</div>
 										</div>

@@ -62,7 +62,7 @@
 
 	function middle(){
 		var yn = alert("필수 항목을 기입하여 주세요.");
-		if($("#resume_name").value == '' || $("#resume_birth").value == ''){
+		if($("#resume_name").val() == '' || $("#resume_birth").val() == ''){
 			yn;
 		} else {
 			frm.action = "resumeInsert";
@@ -80,15 +80,7 @@
 		document.frm.cnt.value = cnt;
 	}
 </script>
-<!-- 글자수세기(이력서 항목 추가+) -->
-<script>
-	var total2 = 2000;
-	function counter2() {
-		var check2 = document.frm.self_content2.value.length;
-		var cnt2 = 2000 - check2;
-		document.frm.cnt2.value = cnt2;
-	}
-</script>
+
 <!-- 미리보기(preview) -->
 <script>
 /* 	function preview() {
@@ -108,7 +100,7 @@
 	/* 이미지 미리보기 */
 	function setImage(event) {
 		var reader = new FileReader();
-		
+
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
@@ -117,6 +109,113 @@
 		reader.readAsDataURL(event.target.files[0]);
 	}
 </script>
+<!-- 자기소개서 항목 추가 -->
+<script>
+	
+	var self_arrang = [];
+	$(document).on("click", "#selfAdd" ,function(){
+			var array = "<div class='col-sm-6'>"
+				  + "<div class='form-group'>" 
+				  + "<label>제목</label>"
+				  + "<input type='text' class='form-control' id='self_name' name='self_name' placeholder='자기소개서 제목'>"
+				  + "</div>"
+				  + "</div>"
+				  + "<div class='col-sm-12'>" 
+				  + "<div class='form-group'>" 
+				  + "<label>내용</label>"
+				  + "<textarea id='self_content' name='self_content' class='form-control' placeholder='내용을 입력하세요.' onkeyup='counter()'></textarea>"
+				  + "</div>"
+				  + "</div>"
+				  + "<div class='col-sm-12'>" 
+				  + "<input type='text' id='cnt' name='cnt'>글자 입력이 가능합니다."
+				  + "</div>";
+				  $("div[id=step3]").append(array);
+				  var seln = $("input[id='self_name']").eq(0).val()
+				  var selc = $("#self_content").eq(0).val()
+				  for(var i = 0; i < self_arrang.length; i++){
+					  var seln = $("input[id='self_name']").eq(i).val()
+					  var selc = $("#self_content").eq(i).val()
+					  self_arrang.push(seln);
+					  self_arrang.push(selc);
+					  console.log(JSON.stringify(self_arrang));
+				  }
+				  self_arrang.push(seln, selc)
+				  console.log(JSON.stringify(self_arrang))
+				 
+	})
+			
+	
+// 	$.ajax(function(){
+// 		url : "resumeInsert",
+// 		dataType : "json",
+// 		method : "post",
+// 		data: {param : JSON.stringify(self_arrang)},
+// 		success : function(response){
+// 			console.log(response)
+// 		}
+// 	})	  
+				
+		
+	
+</script>
+<!-- 자격증 항목 추가+ -->
+<script>
+	$(document).on("click", "#certiAdd", function(){
+		var certi = "<div class='col-sm-6'>"
+				  + "<div class='form-group'>"
+				  + "<label>항목</label>"
+				  + "<input type='hidden' name='certi_kind'>"
+				  + "<select id='certi_kinds' name='certi_kinds'>"
+				  + "<option value='IT'>IT</option>"
+				  + "<option value='세무/회계'>세무/회계</option>"
+				  + "<option value='건축'>건축</option>"
+				  + "<option value='농업'>농업</option>"
+				  + "<option value='디자인'>디자인</option>"
+				  + "<option value='보건/의료'>보건/의료</option>"
+				  + "<option value='기계제작'>기계제작</option>"
+				  + "<option value='전기'>전기</option>"
+				  + "<option value='기타'>기타</option>"
+				  + "<select>"
+				  + "</div>"
+				  + "</div>"
+				  + "<div class='col-sm-6'>"
+				  + "<div class='form-group'>"
+				  + "<label>합격구분</label>"
+				  + "<select name='accept' id='accept>'"
+				  + "<option value='1차합격'>1차합격</option>"
+				  + "<option value='2차합격'>2차합격</option>"
+				  + "<option value='필기합격'>필기합격</option>"
+				  + "<option value='실기합격'>실기합격</option>"
+				  + "<option value='최종합격'>최종합격</option>"
+				  + "</select>"
+				  + "</div>"
+				  + "</div>"
+				  + "<div class='col-sm-6'>"
+				  + "<div class='form-group'>"
+				  + "<label>자격증명</label>"
+				  + "<input type='text' class='form-control' id='certi_name' name='certi_name'>"
+				  + "</div>"
+				  + "</div>"
+				  + "<div class='col-sm-6'>"
+				  + "<div class='form-group'>"
+				  + "<label>발행처/기관</label>"
+				  + "<input type='text' class='form-control' id='certi_place' name='certi_place'>"
+				  + "</div>"
+				  + "</div>"
+				  + "<div class='col-sm-6'>"
+				  + "<div class='form-group'>"
+				  + "<label>취득일</label>"
+				  + "<input type='date' class='form-control' id='certi_date' name='certi_date'>"
+				  + "</div>"
+				  + "</div>";
+				  
+				  $("div[id=step1]").append(certi);
+	})
+	
+	
+</script>
+
+<!-- 이미지 미리보기 스타일 적용 -->
 <style>
 	.select_img img{width: 90px; height:90px; margin:20px 0;}
 </style>	
@@ -214,6 +313,19 @@
 							</div>
 							<br> <br> <br> <br><br> <br> <br> <br>
 							<div class="tab-content">
+								<div class="tab-pane" id="step2">
+									<h3>포트폴리오</h3>
+									<div class="col-sm-6">
+									<div><input type="hidden" value=${portvo.port_no } id="port_no" name="port_no"></div>
+										<div class="form-group">
+											<label>포트폴리오 및 기타문서</label> 
+											<input type="file" class="form-control" name="portFile" multiple="multiple">
+										</div>
+									</div>
+								</div>
+							</div>
+							<br><br><br><br><br><br><br>
+							<div class="tab-content">
 								<div class="tab-pane" id="step1">
 									<h3>자격증</h3>
 									<div class="col-sm-6">
@@ -264,60 +376,40 @@
 											<input type="date" class="form-control" id="certi_date" name="certi_date">
 										</div>
 									</div>
-								</div>
-							</div>
-							<br> <br> <br> <br> <br> <br> <br>
-							<br> <br>
-							<div class="tab-content">
-								<div class="tab-pane" id="step2">
-									<h3>포트폴리오</h3>
-									<div class="col-sm-6">
-									<div><input type="hidden" value=${portvo.port_no } id="port_no" name="port_no"></div>
-										<div class="form-group">
-											<label>포트폴리오 및 기타문서</label> 
-											<input type="file" class="form-control" name="portFile" multiple="multiple">
-										</div>
-									</div>
-								</div>
-							</div>
-							<br> <br> <br> <br> <br>
-							<div class="tab-content">
-								<div class="tab-pane" id="step3">
-									<h3>자기소개서</h3>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label for="subject">제목</label> 
-											<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목">
-										</div>
-									</div>
-									<div class="col-sm-12">
-										<div class="form-group">
-											<label for="message">내용</label>
-											<textarea id="self_content" name="self_content" class="form-control" 
-											placeholder="내용을 입력하세요." onkeyup="counter()"></textarea>
-										</div>
-									</div>
-									<div class="col-sm-12">
-										<input type="text" id="cnt" name="cnt">글자 입력이 가능합니다.
-									</div>
-									<div class="tab-content">
-										<div class="tab-pane" id="step4">
-											<div class="col-sm-12">
-												<div class="form-group">
-													<label for="message">내용</label>
-													<textarea id="self_content2" name="self_content2" class="form-control" 
-													placeholder="내용을 입력하세요." onkeyup="counter2()"></textarea>
-												</div>
-											</div>
-											<div class="col-sm-12">
-												<input type="text" id="cnt2" name="cnt2">글자 입력이 가능합니다.
-											</div>
-										</div>
-									</div>
-									<br><br><br><br><br><br>
-                                    <div class="col-sm-12" align="right">
-                                        <a href="#step4" data-toggle="tab"><button type="button" class="btn btn-primary">자기소개서 항목 추가+</button></a>
+									<div class="col-sm-12" align="right">
+                                        <a href="#step4" data-toggle="tab">
+                                        <button type="button" class="btn btn-primary" id="certiAdd" name="certiAdd">자격증 항목 추가+</button></a>
                                     </div>
+								</div>
+							</div>
+							<br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br>
+								<div class="tab-content">
+									<div class="tab-pane" id="step3" name="step3">
+										<h3>자기소개서</h3>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="subject">제목</label> 
+												<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목">
+											</div>
+										</div>
+										<div class="col-sm-12">
+											<div class="form-group">
+												<label for="message">내용</label>
+												<textarea id="self_content" name="self_content" class="form-control" 
+												placeholder="내용을 입력하세요." onkeyup="counter()"></textarea>
+											</div>
+										</div>
+										<div class="col-sm-12">
+											<input type="text" id="cnt" name="cnt">글자 입력이 가능합니다.
+										</div>
+	                                    <div class="col-sm-12" align="right">
+	                                        <a href="#step4" data-toggle="tab">
+	                                        <button type="button" class="btn btn-primary" id="selfAdd" name="selfAdd">자기소개서 항목 추가+</button></a>
+	                                    </div>
+										</div>
+									</div> 
+									<br><br><br><br><br><br>
 								</div>
 								<br> <br> <br> <br>
 								<div class="col-sm-12 text-center">
