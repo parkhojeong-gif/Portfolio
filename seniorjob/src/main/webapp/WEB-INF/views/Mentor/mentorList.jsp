@@ -1,8 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -301,7 +298,7 @@
 								<div class="col-sm-6 col-md-4 p0">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
-											<a href="property-1.html"><img src="../resources/assets/img/mentor/photoDefault.png"></a>
+											<a href="property-1.html"><img src="../resources/assets/img/mentor/photoDefault.jpg"></a>
 										</div>
 
 										<div class="item-entry overflow">
@@ -316,8 +313,6 @@
 									</div>
 								</div>
 							</c:forEach>
-							
-							
 							
                             </div>
                         </div>
@@ -349,7 +344,6 @@
                                 </div>
                                 <div class="panel-body search-widget">
                                     <form action="" class=" form-inline"> 
-                                    
                                    		<fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
@@ -361,7 +355,12 @@
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="submit">
+                                                <c:if test="${empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
+                                                </c:if>
+                                                <c:if test="${not empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="location.href='MentorRegister'">
+                                                </c:if>
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
@@ -380,11 +379,16 @@
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
 
-<!-- 플로팅 배너(사용X) -->
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script>
 	
-		$(function(){
+	function loginCheck(){
+		alert("로그인 또는 회원가입이 필요한 항목입니다.");
+		var url = "loginCheckAlert";
+		window.open(url, "로그인/회원가입", "width=500, height=450");
+	}
+	
+	$(function(){ // 플로팅 배너
 			// 기본 위치(top)값
 			var floatPosition = parseInt($("#floatMenu").css('top'))
 

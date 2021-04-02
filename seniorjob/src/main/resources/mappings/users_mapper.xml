@@ -29,6 +29,7 @@
 			  FROM USERS
 	WHERE ID = #{id}		  
 	</select>
+
 	
 	<!-- login -->
 	<select id ="logCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
@@ -56,19 +57,19 @@
 	<!-- 회원가입 -->
 	<insert id="insertUsers" parameterType="com.company.users.service.UsersVO">
 	INSERT INTO USERS(ID,
-					PASSWORD,
-					ADDRESS,
-					PHONENUM,
-					EMAIL,
-					BIRTH,
-					NAME)
+					<if test="password != null and password !=''">PASSWORD,</if>
+					<if test="address != null and address !=''">ADDRESS,</if>
+					<if test="phonenum != null and phonenum !=''">PHONENUM,</if>
+					<if test="email != null and email !=''">EMAIL,</if>
+					<if test="birth != null and birth !=''">BIRTH,</if>
+					<if test="name != null and name !=''">NAME</if>
 	VALUES(			#{id},
-					#{password},
-					#{address},
-					#{phonenum},
-					#{email},
-					#{birth},
-					#{name})
+					<if test="password != null and password !=''">#{password},</if>
+					<if test="address != null and address !=''">#{address},</if>
+					<if test="phonenum != null and phonenum !=''">#{phonenum},</if>
+					<if test="email != null and email !=''">#{email},</if>
+					<if test="birth != null and birth !=''">#{birth},</if>
+					<if test="name != null and name !=''">#{name})</if>
 	</insert>
 	
 	<!-- 패스워드 변경 -->
@@ -87,5 +88,4 @@
 						 <if test="name !=null and name !=''">NAME= #{name},</if>	
 						 WHERE ID = #{id}
 	</update>
-	
 	</mapper>

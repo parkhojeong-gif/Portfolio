@@ -82,32 +82,41 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="getMain"><img src="resources/assets/img/logo.png" alt="클릭 시 메인페이지로 이동"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
                 
                <a href="/">홈으로가기</a>
-               <c:if test="${empty users}">
+               <c:choose>
+                <c:when test="${users.auth eq 'ADMIN'}">
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+               		 <button class="navbar-btn nav-button wow bounceInRight login" onclick="" data-wow-delay="0.45s">관리자페이지</button>
+              		 <form action="logout" method="get">
+						 <input type="submit" value="logout">
+					</form>
+               </c:when>
+               <c:when test="${users.auth eq 'USER'}">
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+               		<form action="logout" method="get">
+					<input type="submit" value="logout">
+					</form>
+				</c:when>
+           		<c:when test="${users.auth eq 'MENTOR'}">
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+               		<form action="logout" method="get">
+					<input type="submit" value="logout">
+					</form>
+				</c:when>	
+               <c:otherwise>
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>
                         <button class="navbar-btn nav-button wow fadeInRight" onclick="location.href='insertUsers'" data-wow-delay="0.48s">회원가입</button>
                     </div>
-               </c:if>    
-               <c:if test="${users.auth eq 'ADMIN'}">
-               <h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               		 <button class="navbar-btn nav-button wow bounceInRight login" onclick="" data-wow-delay="0.45s">관리자페이지</button>
-              	<form action="logout" method="get">
-						<input type="submit" value="logout">
-				</form>
-               </c:if>
-               <c:if test="${users.auth eq 'USER'}">
-               <h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               	<form action="logout" method="get">
-						<input type="submit" value="logout">
-				</form>
-               </c:if>
+               </c:otherwise>             
+               </c:choose>
+              
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">채용공고 <b class="caret"></b></a>
@@ -130,7 +139,7 @@
 
 
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="">채용공고</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="mentorList">멘토리스트</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
                             <a href="inquire" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
@@ -185,7 +194,10 @@
                                 </li>
                             </ul>
                         </li>
-
+                        
+                        <c:if test="${not empty users }">
+							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
+                        </c:if>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHome">마이페이지</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

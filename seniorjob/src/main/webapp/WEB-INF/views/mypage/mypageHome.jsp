@@ -1,8 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html class="no-js">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <jsp:include page="../topHeader.jsp" />
+ <head>
+    <link href='../../../resources/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='../../../resources/fullcalendar/lib/main.js'></script>
+    
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+       
+    	
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        	
+          initialView: 'dayGridMonth',
+          timeZone: 'UTC',
+          eventSources : [{
+          		url : "getSearchSchedule?menteeid=somTest"
+          				
+          }
+          ]
+          
+        
+        });
+        calendar.render();
+       
+        
+        
+      });
+      
+
+ 
+	  
+  
+     
+
+    </script>
+  </head>
 <body>
 
 	<div class="content-area recent-property"
@@ -13,6 +51,10 @@
 				<jsp:include page="../mypage.jsp" />
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+				<div class="section" id='calendar'>
+				</div>
+				
+				
 					<div class="section">
 						<h3>열정적인 멘토, 양소민 님</h3>
 

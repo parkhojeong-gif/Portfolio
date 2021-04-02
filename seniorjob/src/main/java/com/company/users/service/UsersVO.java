@@ -1,9 +1,7 @@
 package com.company.users.service;
 
 import java.util.Date;
-
 import org.hibernate.validator.constraints.NotEmpty;
-
 import lombok.Data;
 
 

@@ -8,6 +8,22 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function detail(seq) {
+	location.href="getBusinessPlanA?seq="+seq //
+}
+
+function deleteBp(seq) {
+	location.href="deleteBusinessPlanA?seq="+seq //
+}
+
+function updateBp(seq) {
+	location.href="updateBusinessPlanA?seq="+seq //
+}
+
+
+</script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <body>
 
@@ -28,14 +44,14 @@
 
 							<section class="post">
 								<div class="text-center padding-b-50">
-									<h2 class="wow fadeInLeft animated">${bp.business_a}</h2>
+									<h2 class="wow fadeInLeft animated" onclick="detail('${bp.seq }')" >${bp.business_a}</h2>
 									<div class="title-line wow fadeInRight animated"></div>
 								</div>
 
 								<div class="row">
 									<div class="col-sm-6">
 										<p class="author-category">
-											By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a>
+											by <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a>
 										</p>
 									</div>
 									<div class="col-sm-6 right">
@@ -57,8 +73,8 @@
 									sit amet, ante. Donec eu libero sit amet quam egestas semper.
 									Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 								<p class="read-more">
-									<a href="single.html" class="btn btn-default btn-border">수정</a>
-									<a href="single.html" class="btn btn-default btn-border">삭제</a>
+									<a onclick="updateBp('${bp.seq }')" class="btn btn-default btn-border">수정</a>
+									<a onclick="deleteBp('${bp.seq }')" class="btn btn-default btn-border">삭제</a>
 									<a href="single.html" class="btn btn-default btn-border">인쇄</a>
 									<a href="single.html" class="btn btn-default btn-border">저장</a>
 									<a href="single.html" class="btn btn-default btn-border">첨삭요청</a>

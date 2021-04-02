@@ -1,5 +1,7 @@
 package com.company.users.controller;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +18,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.company.api.common.Kakaoapi;
 import com.company.users.service.UsersService;
 import com.company.users.service.UsersVO;
 import com.company.users.service.UsersValidation;
@@ -30,6 +35,7 @@ public class UsersController {
 	UsersService usersService ;
 	@Autowired
 	UsersMapper usersMapper;
+	@Autowired Kakaoapi kakaoapi;
 	
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
@@ -44,7 +50,7 @@ public class UsersController {
 	public String insertInquire(UsersVO vo) {
 		return "memberRegister";
 	}
-
+		
 	@RequestMapping("/insertUsersProc") // 회원가입 처리, 중복체크, 암호화, 유효성검사
 	public String insertUsersProc(UsersVO vo, BindingResult bresult, Model model) {
 		UsersValidation usersValidation = new UsersValidation(); // 유효성 검사
@@ -90,6 +96,21 @@ public class UsersController {
 	public String login(UsersVO vo) {
 		return "login";
 	}
+	
+	//kakao login
+	@RequestMapping("/kakaologin")
+	public String kakaologin(@RequestParam(value = "code", required = false) String code, UsersVO vo, HttpSession session) {
+			System.out.println("######" + code);	
+		String accessToken = kakaoapi.getAccessToken(code);
+		HashMap<String, Object> userInfo = kakaoapi.getUserInfo(accessToken);
+			System.out.println("@AccessToken@" + accessToken);
+			System.out.println("userInfo:" + userInfo.get("email"));
+			System.out.println("nickname:" + userInfo.get("nickname"));
+			System.out.println("profile:" + userInfo.get("profile_image"));
+		session.setAttribute("accessToken", accessToken);
+		
+		return "redirect:/";
+	}
 
 	// login 처리, 암호화
 	@RequestMapping(value = "/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
@@ -119,7 +140,7 @@ public class UsersController {
 		session.invalidate();
 		return "redirect:/";
 	}
-
+	
 	// 아이디 중복체크
 	@ResponseBody
 	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
@@ -138,4 +159,5 @@ public class UsersController {
 	public void findPwPOST(@ModelAttribute UsersVO vo, HttpServletResponse response) throws Exception{
 		usersService.findPw(response, vo);
 	}
+	
 }

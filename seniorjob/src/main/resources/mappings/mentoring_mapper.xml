@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.company.mentoring.service.impl.MentoringMapper">
+	<select id="getSearchMentoring" resultType="MentoringVO">
+		SELECT
+				NAME,
+				MENTORING_NUMBER,
+				MENTORING_NAME,
+				MENTORING_LIMIT,
+				MENTORING_CONTENT,
+				MENTORING_PHOTO,
+				MENTORING_PRICE,
+				MENTORING_DATA,
+				MENTORING_REQUEST,
+				MENTOR_ID,
+				MENTORING_END_DATE,
+				MENTORING_BEGIN_DATE,
+				MENTEEID,
+				MEN_START,
+				MET_END,
+				ID
+		FROM MYMENTORINGVU
+		WHERE ID='123'
+	</select>
+	
+
+
+</mapper>

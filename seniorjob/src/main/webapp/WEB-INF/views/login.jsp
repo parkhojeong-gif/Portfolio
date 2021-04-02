@@ -45,9 +45,10 @@ $(function(){
                             <h2>Social login :  </h2> 
                             
                             <p>
-                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;kakao</a> 
-                            <!-- <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
-                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>   -->
+                            <button type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=3cab068ec0c75ace569fa7942cb9c9f5&redirect_uri=http://localhost/kakaologin&response_type=code'">
+                            	<img src="resources/kakaobutton/kakao_login_medium_narrow.png">
+                            </button> 
+                            
                             </p> 
                         </div>
                     </div>
