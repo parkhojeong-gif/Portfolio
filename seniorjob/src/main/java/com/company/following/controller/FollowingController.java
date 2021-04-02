@@ -24,7 +24,7 @@ public class FollowingController {
 		followingMapper.MentorFollow(vo);
 		model.addAttribute("msg","팔로우 완료");
 		model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
-		return "following/followSuccess";
+		return "common/Success";
 	}
 	
 	// 멘토 팔로우 취소
@@ -33,7 +33,7 @@ public class FollowingController {
 		followingMapper.deleteMentorFollow(vo);
 		model.addAttribute("msg","팔로우 취소 완료");
 		model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
-		return "following/followDeleteSuccess";
+		return "common/Success";
 	}
 	
 	// 멘토 팔로우 중복 확인

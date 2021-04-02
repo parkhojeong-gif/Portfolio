@@ -9,6 +9,9 @@
 <body>
 
 <script>
+
+	//Controller애서 설정된 Attribute값 받아서 출력
+
 	var url = '${url}';
 	var msg = '${msg}';
 	alert(msg);
