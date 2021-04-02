@@ -16,5 +16,7 @@ public interface ScheduleMapper {
 	public ScheduleVO getSchedule(ScheduleVO vo);
 	
 	public List<Map> getSearchSchedule(ScheduleVO vo);
+	
+	public List<Map> getSearchRequest(ScheduleVO vo);
 
 }

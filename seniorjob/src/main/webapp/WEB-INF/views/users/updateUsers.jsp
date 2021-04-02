@@ -47,6 +47,8 @@
                                         <label>이름 <small>(read only)</small></label>
                                         <input name="name" type="text" class="form-control" value="${list.name }" readonly>
                                     </div>
+                                    
+                                    
                                     <div class="form-group">
                                         <label>주소 <small>
                                         <input name="address" type="text" class="form-control" value="${list.address }">

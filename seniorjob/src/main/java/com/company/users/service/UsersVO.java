@@ -20,4 +20,7 @@ public class UsersVO { //회원테이블
 	private String name; //이름
 	private Date log_date; //가입일
 	private String approval_key; //인증키
+	private String passwordold; //예전 비밀번호
+	private String passwordck; //비밀번호 확인
+	
 }

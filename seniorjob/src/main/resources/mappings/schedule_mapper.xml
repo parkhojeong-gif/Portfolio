@@ -23,6 +23,15 @@
 		STATE='accept'
 	</select>
 	
+	<select id="getSearchRequest" resultType="map">
+		SELECT *
+		FROM SCHEDULE 
+		WHERE 
+		MENTEEID=#{menteeid} 
+		AND 
+		STATE='request'
+	</select>
+	
 	<insert id="insertSchedule" parameterType="ScheduleVO">
 		insert into schedule(SEQ,
 							SCHEDULE_NAME,

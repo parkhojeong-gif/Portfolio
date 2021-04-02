@@ -28,6 +28,13 @@
         
         });
         calendar.render();
+        
+        $.ajax({
+        	url : "getSearchRequest?menteeid=somTest",
+        	success : function(result) {
+        		console.log(result);
+        	}
+        })
        
         
         
@@ -81,7 +88,7 @@
 														href="/zf_user/company-review-qst-and-ans" target="_blank"
 														onclick="" class="link my_notification_card_link"
 														data-gtm_creative="card_main" data-gtm_position="d15"></a>
-													<div class="inner">
+														<div class="inner">
 															<dl>
 																<dt class="title">
 																	홍길동 멘티가<br>이력서를 보냈어요!<br>첨삭해주세요!

@@ -39,4 +39,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return dao.getSearchSchedule(vo);
 	}
 
+	@Override
+	public List<Map> getSearchRequest(ScheduleVO vo) {
+		return dao.getSearchRequest(vo);
+	}
+
 }

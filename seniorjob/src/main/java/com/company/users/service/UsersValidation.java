@@ -35,6 +35,8 @@ public class UsersValidation implements Validator {
 		//이름 체크 
 		if(users.getName() == null || users.getName().isEmpty())
 			errors.rejectValue("name", null, "※이름을 입력해주세요");
+		
+		
 	}
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.company.users.service.PwValidation;
 import com.company.users.service.UsersService;
 import com.company.users.service.UsersVO;
 import com.company.users.service.UsersValidation;
@@ -104,6 +105,7 @@ public class UsersController {
 			boolean psMatch = pwdEncoder.matches(vo.getPassword(), users.getPassword()); //			
 			if (psMatch == true) {
 				session.setAttribute("users", users);
+				session.setAttribute("id", users.getId());   //session에 id란 이름으로 id 저장
 				return "redirect:/";
 			} else {
 				session.setAttribute("users", null);
@@ -138,4 +140,42 @@ public class UsersController {
 	public void findPwPOST(@ModelAttribute UsersVO vo, HttpServletResponse response) throws Exception{
 		usersService.findPw(response, vo);
 	}
+	
+	//비밀번호 변경
+	@RequestMapping("/updateInfo") // 비밀번호 수정폼
+	public String updateInfo() {
+		return "/users/updateInfo";
+	}
+	
+	@RequestMapping("/pwProc") //비밀번호 수정 처리
+	public String pwProc(UsersVO vo, BindingResult result, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		PwValidation pwValidation = new PwValidation(); // 유효성 검사
+		pwValidation.validate(vo, result);
+		
+		String id = (String) session.getAttribute("id");  //로그인 시 세션에 저장된 id값 가져옴
+		String pw = vo.getPassword();  //새로 입력받은 비밀번호
+		String pwe = pwdEncoder.encode(pw);   // 새로 입력받은 비밀번호 암호화
+		vo.setId(id);
+		UsersVO users = usersMapper.logCheck(vo);
+		boolean psMatch = pwdEncoder.matches(vo.getPasswordold(), users.getPassword());
+		if (psMatch == true) {
+			vo.setPassword(pwe);
+			usersService.updateInfo(vo);  //비밀번호 수정
+			return "mypage/mypageHome";
+		} else {
+			System.out.println("error");
+			return "users/updateInfo";
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 }

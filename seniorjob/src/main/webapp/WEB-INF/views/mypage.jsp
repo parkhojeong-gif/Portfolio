@@ -84,6 +84,11 @@
 								<h3 class="panel-title">개인정보/경력 수정</h3>
 							</div>
 						</div>
+						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='updateInfo'">
+								<h3 class="panel-title">비밀번호 변경</h3>
+							</div>
+						</div>
 					</div>
 				</div>
 </body>

@@ -17,4 +17,7 @@ public interface UsersService {
 	public void sendEmail(UsersVO vo, String div) throws Exception;
 	//비밀번호찾기
 	public void findPw(HttpServletResponse resp, UsersVO vo) throws Exception;
+	
+	// 회원정보(패스워드 변경 겸용) 변경
+	public int updateInfo(UsersVO vo) throws Exception;
 }
