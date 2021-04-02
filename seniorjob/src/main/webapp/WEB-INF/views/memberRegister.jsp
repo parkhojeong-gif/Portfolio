@@ -48,7 +48,7 @@ function btnId(){
                                 </div>
                                 <div class="form-group">
                                     <label for="password">PASSWORD</label>
-                                    <form:input path="password"/><form:errors path="password" cssClass="error"/>
+                                    <form:password path="password"/><form:errors path="password" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="address">ADDRESS</label>

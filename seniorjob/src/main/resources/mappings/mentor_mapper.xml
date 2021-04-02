@@ -22,18 +22,19 @@
 	</select>
 	
 	<!-- 키워드 검색 -->
-	<select id="getKeywordSearch"  resultType="com.company.mentor.service.MentorVO">
+	<select id="getKeywordSearch" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
 		WHERE MENTORING_KIND LIKE '%'||#{searchKeyword}||'%' 
 	</select>
 	
 	<!-- 연령 검색 -->
-	<select id="getAgeSearch"  resultType="com.company.mentor.service.MentorVO">
+	<select id="getAgeSearch" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
 				WHERE MENTORING_AGE = #{searchAge}			
 	</select>
 	
-	<insert id="MentorRegisterProc">
+	<!-- 멘토 등록 -->
+	<insert id="MentorRegisterProc" parameterType="com.company.mentor.service.MentorVO">
 		INSERT INTO MENTOR
 		(
 		MENTOR_ID,
@@ -53,10 +54,11 @@
 		MENTORING_LOCATION
 			
 		)
-		values(
-		#{seq_mentor.nextval},
+		VALUES(
+		SEQ_MENTOR.NEXTVAL,
 		#{mentoring_kind},
 		#{mentor_introduce},
+		#{mentor_career},
 		#{mentor_photo},
 		#{mentor_license},
 		#{mentor_career_certificate},
@@ -71,4 +73,10 @@
 		
 		)
 	</insert>
+	
+	<!-- 멘토 중복 체크 -->
+	<select id="mentorRegisterCheck" resultType="com.company.mentor.service.MentorVO" parameterType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+		WHERE ID = #{id}
+	</select>
  </mapper>	
