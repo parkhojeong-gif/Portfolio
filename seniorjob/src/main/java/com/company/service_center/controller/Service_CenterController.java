@@ -22,7 +22,7 @@ public class Service_CenterController {
 	@Autowired Service_CenterMapper service_CenterMapper;
 
 	
-	//게시판 목록 조회
+	//게시판 목록 조회(공지사항)
 	@RequestMapping("/serviceCenter")
 	public String list(Model model,  @ModelAttribute("scri") SearchCriteria scri) {
 		
@@ -52,7 +52,7 @@ public class Service_CenterController {
 	
 	
 	
-	//검색
+	//검색(공지사항)
 	@RequestMapping("/searchService")
 	public String searchService(Model model, @RequestParam("searchKeyword") String searchKeyword) {
 		List<Service_CenterVO> list= service_CenterMapper.searchService(searchKeyword);
@@ -62,26 +62,26 @@ public class Service_CenterController {
 	
 	
 
-	@RequestMapping("/insertService_CenterForm") //고객센터 등록 폼
+	@RequestMapping("/insertService_CenterForm") //고객센터 등록 폼(공지사항)
 	public String insertService_Center(Service_CenterVO vo) {
 		return "/Service_Center/insertService_CenterForm";
 	}
-	@RequestMapping("/insertService_Center") //고객센터 등록
+	@RequestMapping("/insertService_Center") //고객센터 등록(공지사항)
 	public String insertService_CenterProc(Service_CenterVO vo) {
 		service_CenterMapper.insertService_Center(vo);
 		return "redirect:/serviceCenter";
 	}
-	@RequestMapping("/updateService_CenterForm")	//고객센터 수정폼
+	@RequestMapping("/updateService_CenterForm")	//고객센터 수정폼(공지사항)
 	public String updateService_Center(Service_CenterVO vo, Model model) {
 		model.addAttribute("list", service_CenterMapper.getService_Center(vo));
 		return "/Service_Center/updateService_CenterForm";
 	}
-	@RequestMapping("/updateService_Center")	//고객센터 수정
+	@RequestMapping("/updateService_Center")	//고객센터 수정(공지사항)
 	public String updateService_CenterProc(Service_CenterVO vo) {
 		service_CenterMapper.updateService_Center(vo);
 		return "redirect:/serviceCenter";
 	}
-	@RequestMapping("/deleteService_Center")	//고객센터 삭제
+	@RequestMapping("/deleteService_Center")	//고객센터 삭제(공지사항)
 	public String deleteService_Center(Service_CenterVO vo) {
 		service_CenterMapper.deleteService_Center(vo);
 		return "redirect:/serviceCenter";
