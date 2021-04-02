@@ -106,6 +106,7 @@ input{
 <form name="getMentorInfo">
 <input type="hidden" name="id" value="${users.id }">
 <input type="hidden" name="mentor_id" value="${list.mentor_id }">
+
 	<div class="row">
 		<div class="column">
 			<div class="card">
@@ -149,7 +150,7 @@ input{
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
-					<img src="../resources/assets/img/mentor/mentoringCourse.jpg" id="mentoringCourse" style="width: 100%">
+					<img src="../resources/assets/img/mentor/mentoringCourse.jpg" id="mentoringCourse" style="width:100%">
 				</div>
 				<div class="container">
 					<p>
@@ -177,30 +178,34 @@ input{
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
-	// 멘토 팔로우
-	function mentorFollow(){
-		var getMentorInfo = document.getMentorInfo;
-		getMentorInfo.action = "MentorFollow";
-		getMentorInfo.submit();
-	}
-	
 	// 로그인 여부 확인
-	function loginCheck(){
+	function loginCheck() {
 		alert("로그인 또는 회원가입이 필요한 항목입니다.");
 		var url = "loginCheckAlert";
 		window.open(url, "로그인/회원가입", "width=500, height=450");
 	}
 	
-	// 멘토 팔로우 취소
-	function deleteMentorFollow(){
-		var msg = confirm("멘토 팔로우를 취소하시겠습니까?");
+	// 멘토 팔로우
+	function mentorFollow() {
+		var msg = confirm("멘토를 팔로우 하시겠습니까?");
 		if(msg==true){
+			var getMentorInfo = document.getMentorInfo;
+			getMentorInfo.action = "MentorFollow";
+			getMentorInfo.submit();
+		}else if (msg == false){
+			alert("취소");
+		}
+	}
+
+	// 멘토 팔로우 취소
+	function deleteMentorFollow() {
+		var msg = confirm("멘토 팔로우를 취소하시겠습니까?");
+		if (msg == true) {
 			var getMentorInfo = document.getMentorInfo;
 			getMentorInfo.action = "deleteMentorFollow";
 			getMentorInfo.submit();
-		}
-		else if(msg==false){
-			alert("취소");	
+		} else if (msg == false) {
+			alert("취소");
 		}
 	}
 </script>

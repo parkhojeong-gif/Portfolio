@@ -158,7 +158,7 @@ button:hover {
     <p><input placeholder="멘토소개" oninput="this.className = ''" name="mentor_introduce"></p>
     <p><input placeholder="주요경력" oninput="this.className = ''" name="mentor_career" type="text"></p>
   </div>
-  <div class="tab">멘토 확인
+  <div class="tab">멘토 인증
   	<p />
   	<div>
   	<p>프로필 사진</p>
@@ -172,6 +172,7 @@ button:hover {
     <p>경력 증명서</p>
     <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate_file">
   </div>
+  
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">이전</button>

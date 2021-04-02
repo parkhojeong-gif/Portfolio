@@ -344,7 +344,8 @@
                                     <h3 class="panel-title">멘토등록</h3>
                                 </div>
                                 <div class="panel-body search-widget">
-                                    <form action="" class="form-inline"> 
+                                    <form name="mentorRegisterForm" class="form-inline">
+                                    <input type="hidden" name="id" value="${users.id }">
                                    		<fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
@@ -361,6 +362,12 @@
                                                 </c:if>
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="location.href='MentorRegister'">
+                                                </c:if>
+                                                <c:if test="${empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="loginCheck()">
+                                                </c:if>
+                                                <c:if test="${not empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
                                                 </c:if>
                                                 </div>  
                                             </div>
@@ -383,10 +390,18 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	
+	// 로그아웃 상태에서 멘토 등록 클릭 시
 	function loginCheck(){
 		alert("로그인 또는 회원가입이 필요한 항목입니다.");
 		var url = "loginCheckAlert";
 		window.open(url, "로그인/회원가입", "width=500, height=450");
+	}
+	
+	// 로그인 상태에서 멘토 등록 클릭 시
+	function MentoringRegister(){
+		var mentorRegisterForm = document.mentorRegisterForm;
+		mentorRegisterForm.action = "MentoringRegister";
+		mentorRegisterForm.submit();
 	}
 	
 	

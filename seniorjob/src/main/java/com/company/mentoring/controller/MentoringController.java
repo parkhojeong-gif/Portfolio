@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.mentor.service.MentorVO;
 import com.company.mentor.service.impl.MentorMapper;
+import com.company.mentoring.service.MentoringVO;
+import com.company.mentoring.service.impl.MentoringMapper;
 
 @Controller
 public class MentoringController {
 	
 	@Autowired MentorMapper mentorMapper;
+	@Autowired MentoringMapper mentoringMapper;
 	
 	// 멘토링 검색
 	@PostMapping("/getMentorList")
@@ -48,6 +51,28 @@ public class MentoringController {
 	 * "Mentor/mentorList"; }
 	 */
 	
+	// 멘토링 등록 페이지
+	@RequestMapping("/MentoringRegister")
+	public String MentoringRegister(Model model, MentorVO vo) {
+		MentorVO mentorRegisterCheck = mentorMapper.mentorRegisterCheck(vo);
+		if(mentorRegisterCheck==null) {
+			model.addAttribute("msg", "멘토가 아닙니다. 멘토 등록을 해주세요.");
+			model.addAttribute("url", "MentorList");
+			return "common/Fail";
+		}else {
+			model.addAttribute("mentorInfo", mentorRegisterCheck);
+			return "Mentoring/MentoringRegister";
+		}
+	}
+	
+	// 멘토링 등록 처리
+	@RequestMapping("/MentoringRegisterProc")
+	public String MentoringRegisterProc(Model model, MentoringVO vo) {
+		mentoringMapper.MentoringRegisterProc(vo);
+		model.addAttribute("msg", "멘토링 등록 완료");
+		model.addAttribute("url", "MentorList");
+		return "common/Success";
+	}
 	
 
 	

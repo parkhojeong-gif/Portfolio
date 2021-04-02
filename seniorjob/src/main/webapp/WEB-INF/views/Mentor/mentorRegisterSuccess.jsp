@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¸àÅä¸µ µî·Ï ¼º°ø ÆäÀÌÁö</title>
+<title>ë©˜í† ë§ ë“±ë¡ ì„±ê³µ í˜ì´ì§€</title>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
@@ -264,14 +263,14 @@ html, body {
         </svg>
       </div>
       <div class="more-info">
-        <h1>Jane Doe</h1>
+        <h1>ë©˜í† ì´ë¦„</h1>
         <div class="coords">
           <span>Group Name</span>
           <span>Joined January 2019</span>
         </div>
         <div class="coords">
-          <span>Position/Role</span>
-          <span>City, Country</span>
+          <span>íšŒì‚¬ëª…: ${list.mentor_company_name }</span>
+          <span>ë¶€ì„œëª…: ${list.mentor_department_name }</span>
         </div>
         <div class="stats">
           <div>
@@ -292,7 +291,7 @@ html, body {
           <div>
             <div class="title">Coffee</div>
             <i class="fa fa-coffee"></i>
-            <div class="value infinity">¡Ä</div>
+            <div class="value infinity">âˆ</div>
           </div>
         </div>
       </div>
@@ -304,8 +303,8 @@ html, body {
     </div>
   </div>
   
-  <input class="button btn largesearch-btn" value="¸ŞÀÎ ÆäÀÌÁö·Î ÀÌµ¿" type="button" onclick="location.href='getMain'">
-  <input class="button btn largesearch-btn" value="¸¶ÀÌ ÆäÀÌÁö·Î ÀÌµ¿" type="button" onclick="location.href=''">
+  <input class="button btn largesearch-btn" value="ë©”ì¸ í˜ì´ì§€ë¡œ ì´ë™" type="button" onclick="location.href='getMain'">
+  <input class="button btn largesearch-btn" value="ë§ˆì´ í˜ì´ì§€ë¡œ ì´ë™" type="button" onclick="location.href=''">
 
 </div>
 

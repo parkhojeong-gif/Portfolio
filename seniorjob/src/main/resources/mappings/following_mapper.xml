@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.following.service.impl.FollowingMapper">
+
+	<!-- 단건 조회 -->
+	<select id="getMentorFollowing" resultType="com.company.following.service.FollowingVO">
+		SELECT ID, MENTOR_ID
+		FROM FOLLOWING
+		WHERE ID = #{id}	
+	</select>
 	
 	<!-- 멘토 팔로우  -->
 	<insert id="MentorFollow" parameterType="com.company.following.service.FollowingVO" >
@@ -26,7 +33,7 @@
 	<!-- 팔로우 중복 확인 -->
 	<select id="mentorFollowCheck" resultType="com.company.following.service.FollowingVO" parameterType="com.company.following.service.FollowingVO">
 		SELECT ID, MENTOR_ID
-		FROM MENTOR
+		FROM FOLLOWING
 		WHERE ID = #{id}
 	</select>
 	
