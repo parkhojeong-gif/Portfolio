@@ -1,9 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
  <jsp:include page="topHeader.jsp"></jsp:include>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(function(){
+	$("#findpw").click(function(){
+	window.open("findpw", "a", "width=400, height=400, left=100, top=50"); 
+	})
+})
+
+</script>
+<style>
+.error {color: red;}
+</style>  
     <body>
 
 <div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
@@ -13,30 +26,30 @@
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Login : </h2> 
-                            <form action='<c:url value='/loginProc'/>' method="post">
+                            <form:form modelAttribute ="usersVO" action="loginProc" method="post" name="UsersVO">
                                 <div class="form-group">
                                     <label for="id">Id</label>
-                                    <input type="text" class="form-control" id="id" name="id">
+                                    <form:input path="id"/><form:errors path="id" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+                                    <form:input path="password" type="password"/><form:errors path="password" cssClass="error"/><br>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default"> Log in</button>
                                 </div>
-                            </form>
+                            </form:form>
                             <br>
-                            
+                            	<button id="findpw" name="findpw">비밀번호를 잊으셨습니까?</button>
+                            <br>
                             <h2>Social login :  </h2> 
                             
                             <p>
-                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;Facebook</a> 
-                            <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
-                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>  
+                            <a class="login-social" href="#"><i class="fa fa-facebook"></i>&nbsp;kakao</a> 
+                            <!-- <a class="login-social" href="#"><i class="fa fa-google-plus"></i>&nbsp;Gmail</a> 
+                            <a class="login-social" href="#"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>   -->
                             </p> 
                         </div>
-                        
                     </div>
                 </div>
                 </div> 

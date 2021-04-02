@@ -1,57 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>          
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
  <jsp:include page="topHeader.jsp"></jsp:include>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
 <script>
-$("#btnId").on("click", function(){
+function btnId(){
+	//입력한 아이디 값이 없을 경우
+	if($("#id").val() == "" ){
+		alert("아이디를 입력하시오.")
+		return;
+	}
+	//아이디 중복체크 ajax
 	$.ajax({
-		url: "",
-		data : "id=" =$("[name=id]").val(),	
+		url : "idCheck",
+		type : "POST",
 		dataType : "json",
-		success ; function(response){
-			if(response.id == true){
-				$("#idResult").html("<font color='blue'>사용 가능합니다</font>");
-			}else{
-				$("#idResult").html("<font color='red'>사용 불가능합니다.</font>");
-			} 
+		data : {"id" : $("#id").val()},
+		success : function(data){
+			if(data == 1) {
+				alert("중복된 아이디입니다.");
+			}else if(data == 0){
+				$("#idCheck").attr("value", "Y");
+				alert("사용가능한 아이디입니다.");
+			}
 		}
 	})
-});
-
-</script>    
+}
+</script>
+<style>
+.error {color: red;}
+</style>    
     <body>
-
-<div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
+		<div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
                    <div class="col-md-6">
                     <div class="box-for overflow">
                         <div class="col-md-12 col-xs-12 register-blocks">
                             <h2>회원가입 : </h2> 
-                            <form action="insertUsersProc" method="post">
+                            <form:form modelAttribute ="usersVO" action="insertUsersProc" method="post" name="UsersVO">
                             <div class="form-group">
-                                   	<label for="name">ID</label>
-                                    <input type="text" class="form-control" id="id">
-                                	<button type="button" id="btnId">중복체크</button>
-                                	<span id="idResult"></span>
+                                   	<label for="id">ID</label>
+                                    <form:input path="id" border="1"/><form:errors path="id" cssClass="error"/>
+                                	<form:button class="idCheck" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">PASSWORD</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <form:input path="password"/><form:errors path="password" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">ADDRESS</label>
-                                    <input type="text" class="form-control" id="address">
+                                    <label for="address">ADDRESS</label>
+                                    <form:input path="address"/><form:errors path="address" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">PHONENUM</label>
-                                    <input type="text" class="form-control" id="phonenum">
+                                    <label for="phonenum">PHONENUM</label>
+                                    <form:input path="phonenum"/><form:errors path="phonenum" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">NAME</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <form:input path="name"/><form:errors path="name" cssClass="error"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="birth">BIRTH</label>
+                                    <form:input path="birth"/><form:errors path="birth" cssClass="error"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">BIRTH</label>
@@ -59,12 +72,12 @@ $("#btnId").on("click", function(){
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <form:input path="email"/><form:errors path="email" cssClass="error"/>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default">승인</button>
                                 </div>
-                            </form>
+                            </form:form>
                         </div>
                     </div>
                 </div>
