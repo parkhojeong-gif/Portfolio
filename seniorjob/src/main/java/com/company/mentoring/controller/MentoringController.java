@@ -3,6 +3,9 @@ package com.company.mentoring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,7 +57,10 @@ public class MentoringController {
 	
 	//양소민 추가
 	@GetMapping("/getSearchMentoring")   //마이페이지_내가 만든 멘토링
-	public String getSearchMentoring(MentoringVO vo, Model model) {
+	public String getSearchMentoring(MentoringVO vo, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		model.addAttribute("list", mtService.getSearchMentoring(vo));
 		return "mypage/mentoringCourse";
 	}

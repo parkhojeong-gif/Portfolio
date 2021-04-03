@@ -55,5 +55,13 @@
 							)
 					
 	</insert>
+	
+	<update id="updateSchedule" parameterType="ScheduleVO">
+		update schedule 
+		set 
+		state='accept' 
+		where 
+		seq=#{seq}
+	</update>
 
 </mapper>

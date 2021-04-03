@@ -22,7 +22,7 @@
 				MET_END,
 				ID
 		FROM MYMENTORINGVU
-		WHERE ID='123'
+		WHERE ID=#{id}
 	</select>
 	
 

@@ -65,6 +65,14 @@ public class ScheduleController {
 		return "schedule/insertScheduleComplete";
 	}
 	
+	@RequestMapping("/updateSchedule")
+	public String updateSchedule(String seq, ScheduleVO vo) {
+		vo.setSeq(seq);
+		scService.updateSchedule(vo);
+		return "mypage/mypageHome";
+		
+	}
+	
 	
 
 }

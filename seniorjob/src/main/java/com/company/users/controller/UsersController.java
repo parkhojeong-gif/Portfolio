@@ -143,6 +143,7 @@ public class UsersController {
 		usersService.findPw(response, vo);
 	}
 	
+	//양소민 추가
 	//비밀번호 변경
 	@RequestMapping("/updateInfo") // 비밀번호 수정폼
 	public String updateInfo() {
