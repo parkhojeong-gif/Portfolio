@@ -29,20 +29,21 @@
         });
         calendar.render();
         
-        $.ajax({
-        	url : "getSearchRequest",
-        	success : function(result) {
-        		console.log(result);
-        	}
-        })
+        
        
         
         
       });
       
-
+$(document).ready(function() {
+	$.ajax({
+        	url : "getSearchRequest",
+        	success : function(result) {
+        		console.log(result);
+        	}
+        })
  
-	  
+});	  
   
      
 
