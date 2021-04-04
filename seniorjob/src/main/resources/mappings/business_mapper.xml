@@ -5,6 +5,7 @@
 	namespace="com.company.businesspalna.service.impl.BusinessPlanAMapper">
 	<select id="getSearchBusinessPlanA" resultType="BusinessPalnAVO">
 		select * from businessplana
+		where id=#{id}
 	</select>
 	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
 		select *

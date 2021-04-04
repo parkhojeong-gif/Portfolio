@@ -92,7 +92,7 @@ function showContents(result) {
 				
 				
 					<div class="section">
-						<h3>열정적인 멘토, 양소민 님</h3>
+						<h3>열정적인 멘토, ${name } 님</h3>
 
 						<div id="wrap_notification">
 							<div class="my_notification complete">

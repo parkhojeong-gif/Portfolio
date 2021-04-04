@@ -22,6 +22,11 @@ function updateBp(seq) {
 	location.href="updateBusinessPlanA?seq="+seq //
 }
 
+function printBp(seq) {
+	var url = "printBusinessPlanA?seq="+seq;
+	window.open(url,"","width=500,height=600");
+}
+
 
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
@@ -75,7 +80,7 @@ function updateBp(seq) {
 								<p class="read-more">
 									<a onclick="updateBp('${bp.seq }')" class="btn btn-default btn-border">수정</a>
 									<a onclick="deleteBp('${bp.seq }')" class="btn btn-default btn-border">삭제</a>
-									<a href="single.html" class="btn btn-default btn-border">인쇄</a>
+									<a onclick="printBp('${bp.seq }')" class="btn btn-default btn-border">인쇄</a>
 									<a href="single.html" class="btn btn-default btn-border">저장</a>
 									<a href="single.html" class="btn btn-default btn-border">첨삭요청</a>
 								</p>

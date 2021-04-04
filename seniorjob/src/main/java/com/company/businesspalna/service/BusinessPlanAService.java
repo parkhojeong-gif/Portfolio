@@ -1,6 +1,7 @@
 package com.company.businesspalna.service;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BusinessPlanAService {
 	
@@ -13,5 +14,6 @@ public interface BusinessPlanAService {
 	public BusinessPalnAVO getBusinessPlanA(BusinessPalnAVO vo);
 	
 	public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo);
+	
 
 }

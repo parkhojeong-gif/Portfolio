@@ -107,6 +107,7 @@ public class UsersController {
 				session.setAttribute("users", users);
 				session.setAttribute("id", users.getId());   //session에 id란 이름으로 id 저장
 				session.setAttribute("auth", users.getAuth());   //session에 auth란 이름으로 auth 저장
+				session.setAttribute("name", users.getName()); //session에 name이란 이름으로 name 저장
 				
 				return "redirect:/";
 			} else {
