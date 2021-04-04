@@ -14,7 +14,7 @@
 							  RESUME_NO, 
 							  SELF_NAME, 
 							  SELF_CONTENT)
-		VALUES				  (RESUME_SEQ.NEXTVAL,
+		VALUES				  ((SELECT NVL(MAX(SELF_NO), 0) + 1 FROM SELF_INFO),
 							   #{resume_no},
 							   #{self_name}, 
 							   #{self_content})

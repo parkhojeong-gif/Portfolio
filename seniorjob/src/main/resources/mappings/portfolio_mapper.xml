@@ -14,7 +14,7 @@
 							  ,PORTFOLIO 
 							  </if>
 							  )
-		values				 (RESUME_SEQ.NEXTVAL,
+		values				 ((SELECT NVL(MAX(PORT_NO), 0) + 1 FROM PORTFOLIO),
 							  #{resume_no} 
 							  <if test="portfolio != null and portfolio !=''">
 							  ,#{portfolio}

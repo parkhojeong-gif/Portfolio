@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.company.certificate.service.CertificateVO2;
 import com.company.certificate.service.impl.CertificateMapper;
@@ -44,7 +45,7 @@ public class ResumeController {
 		return "resume/resumeInsert";     
 	}
 	// 이력서 등록
-	@PostMapping("/resumeInsert")
+	@RequestMapping("/resumeInsert")
 	@ResponseBody 
 	public String resumeInsert(Self_InfoVO selfvo, HttpServletRequest req, ResumeVO vo, CertificateVO2 certivo,  PortfolioVO portvo) throws Exception {
 		System.out.println(vo);
@@ -55,7 +56,7 @@ public class ResumeController {
 			String path = req.getServletContext().getRealPath("image");
 			//DB에 담기
 			vo.setImage(image);
-			file.transferTo(new File(path, image));
+			file.transferTo(new File("c:/upload", image));
 		}
 		// portfolio 업로드
 		MultipartFile[] ports = portvo.getPortFile();
@@ -105,12 +106,28 @@ public class ResumeController {
 	//이력서 수정
 	@RequestMapping("/resumeUpdate")
 	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo, PortfolioVO portvo) throws Exception {
-		//portfolio(파일) 수정
-		
+		//portfolio(파일) 수정하는 중(nullpoint 오류)
+		MultipartFile[] ports = portvo.getPortFile();
+		String portnames = "";
+		boolean start = true;
+		for(MultipartFile port : ports) {
+			if(port.isEmpty() != false && port.getSize() > 0){ 
+				String portfolio = port.getOriginalFilename();
+				File rename = FileRenamePolicy.rename(new File("c:/upload", portfolio));
+				if(! start) {
+					portnames += ",";
+				} else {
+					start = false;
+				}
+				portnames += rename.getName();
+				port.transferTo(rename);
+			}
+		}
+		portvo.setPortfolio(portnames);
 		
 		resumemapper.updateResuem(vo);
-//		portvo.setResume_no(vo.getResume_no());
-//		portmapper.updatePort(portvo);
+		portvo.setResume_no(vo.getResume_no());
+		portmapper.updatePort(portvo);
 		selfvo.setResume_no(vo.getResume_no());
 		selfmapper.updateSelf(selfvo);
 		certivo.setResume_no(vo.getResume_no());
@@ -137,7 +154,7 @@ public class ResumeController {
 	
 	@RequestMapping("/preview")
 	public String preview() {
-		return "preview";				  //미리보기
+		return "resume/preview";				  //미리보기
 	}
 	
 	

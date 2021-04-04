@@ -9,67 +9,21 @@
 <!--<![endif]-->
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 중간 저장(필수항목 기입) -->
 <script>
-// 	function middle(){
-// 		var input = $("input[id^='resume_']");
-// 		for(var n = 0; n < input.length; n++){
-// 			if(input[n].value == ''){
-// 				alert("필수 항목을 기입하여 주세요.");
-// 			} else{
-// 				yn = alert("저장 됐습니다.");
-// 				frm.action = "resumeInsert";
-// 				frm.submit;
-// 			}
-// 		}
-// 	}
-	
-	
-// 	$(function(){
-	
-// 		$('#middle').on('click', function(){
-// 			var input = $("input[name^=resume_]");
-// 			for(var i = 0; i < input.length; i++){
-// 				if(input.val() == ''){
-// 					alert("필수 항목을 기입하여 주세요.");
-// 					$(this).focus;
-// 				} else{
-// 					frm.action = "resumeInsert";
-// 					frm.submit;
-// 				}
-// 			}
-// 		})
-// 	})
-	
-	
-	
-	
-// 	$(function(){
-
-// 		$('#commentbtn').on('click', function(){
-// 	    	//값들의 갯수 -> 배열 길이를 지정
-// 			var grpl = $("input[name=groupod]").length;
-// 			//배열 생성
-// 			var grparr = new Array(grpl);
-// 			//배열에 값 주입
-// 			for(var i=0; i<grpl; i++){                          
-// 				grparr[i] = $("input[name=groupod]").eq(i).val();
-// 		        alert(grparr[i]);
-// 		    }
-// 		});
-// 	});
-	
-
-
-	function middle(){
-		var yn = alert("필수 항목을 기입하여 주세요.");
-		if($("#resume_name").val() == '' || $("#resume_birth").val() == ''){
-			yn;
-		} else {
-			frm.action = "resumeInsert";
-			frm.submit;
-		}
-	}
-
+	$(function(){
+		$('#middle').click(function(){
+			var yn = true;
+			$("#frm").find("input[name^=resume_]").each(function(index, item){
+				if($(this).val().trim() == ''){
+					alert($(this).attr("data-name") + "항목을 입력하세요.");
+					$(this).focus();
+					yn = false;
+					return false;
+				}
+			});
+		})
+	})
 </script>
 <!-- 글자수세기 -->
 <script>
@@ -81,22 +35,7 @@
 	}
 </script>
 
-<!-- 미리보기(preview) -->
 <script>
-/* 	function preview() {
-		document.onmousemove=function(){
-			oElement = document.elementFromPoint(event.x, event.y);
-			if(oElement.id.indexOf('frm')!=-1){
-				d.style.display = '';
-				d.style.pixelLeft=event.x+10;
-				d.style.pixelTop=event.y;
-				d.innerHTML=oElement.alt;
-			} else{
-				d.style.display='none';
-			}
-		}
-	} */
-	
 	/* 이미지 미리보기 */
 	function setImage(event) {
 		var reader = new FileReader();
@@ -109,11 +48,21 @@
 		reader.readAsDataURL(event.target.files[0]);
 	}
 </script>
+<!-- 미리보기(preview) -->
+<script>
+	$(document).on("click", "#preview", function(){
+		window.name = "resumeInsertForm";
+		var openWin = window.open("preview",
+                "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
+	})
+
+
+</script>
 <!-- 자기소개서 항목 추가 -->
 <script>
 	
-	var self_arrang = [];
 	$(document).on("click", "#selfAdd" ,function(){
+			var obj = new Object();
 			var array = "<div class='col-sm-6'>"
 				  + "<div class='form-group'>" 
 				  + "<label>제목</label>"
@@ -128,9 +77,29 @@
 				  + "</div>"
 				  + "<div class='col-sm-12'>" 
 				  + "<input type='text' id='cnt' name='cnt'>글자 입력이 가능합니다."
-				  + "</div>";
+				  + "</div>"
+				  + "<br><br><br><br><br><br>";
 				  $("div[id=step3]").append(array);
-				  var seln = $("input[id='self_name']").eq(0).val()
+				  
+				  obj.self_name = $("input[id='self_name']").val()
+				  obj.self_content = $("#self_content").val()
+				  var jsonData = JSON.stringify(obj);
+				  console.log(jsonData)
+				 
+				  $.ajax({
+						url : "resumeInsert",
+						dataType : "json",
+						data : {json : jsonData},
+						success : function(response){
+							console.log(response)
+// 							 for(var i = 0; i < obj.length; i++){
+// 								  obj.self_name = $("input[id='self_name']").eq(i).val()
+// 								  obj.self_content = $("#self_content").eq(i).val()
+// 							  }
+						}
+					})	  
+		})
+				  /* var seln = $("input[id='self_name']").eq(0).val()
 				  var selc = $("#self_content").eq(0).val()
 				  for(var i = 0; i < self_arrang.length; i++){
 					  var seln = $("input[id='self_name']").eq(i).val()
@@ -141,19 +110,9 @@
 				  }
 				  self_arrang.push(seln, selc)
 				  console.log(JSON.stringify(self_arrang))
-				 
-	})
-			
+			 */
 	
-// 	$.ajax(function(){
-// 		url : "resumeInsert",
-// 		dataType : "json",
-// 		method : "post",
-// 		data: {param : JSON.stringify(self_arrang)},
-// 		success : function(response){
-// 			console.log(response)
-// 		}
-// 	})	  
+	
 				
 		
 	
@@ -207,7 +166,8 @@
 				  + "<label>취득일</label>"
 				  + "<input type='date' class='form-control' id='certi_date' name='certi_date'>"
 				  + "</div>"
-				  + "</div>";
+				  + "</div>"
+				  + "<br><br><br><br><br><br><br><br><br><br><br>";
 				  
 				  $("div[id=step1]").append(certi);
 	})
@@ -240,7 +200,7 @@
 					<a href="">자기소개서</a> 
 					<a href="#step3" data-toggle="tab"><button type="button">보기+</button></a>
 					<hr>
-					<form id="frm" action="resumeInsert" method="post" name="frm" encType="multipart/form-data"><!-- onsubmit="uploadImage(event)"  encType="multipart/form-data"-->
+					<form id="frm" action="resumeInsert" method="post" name="frm" encType="multipart/form-data">
 						<div class="row">
 							<div><input type="hidden" value=${ResumeVO.resume_no } id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
@@ -256,32 +216,32 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>이름</label> 
-									<input type="text" class="form-control" id="resume_name" name="resume_name">
+									<input type="text" class="form-control" id="resume_name" name="resume_name" data-name="이름">
 								</div>
 							</div>
 
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>생년월일</label> 
-									<input type="text" class="form-control" id="resume_birth" name="resume_birth" placeholder="생년월일 6자리를 기입하여 주세요.">
+									<input type="text" class="form-control" id="resume_birth" name="resume_birth" placeholder="생년월일 6자리를 기입하여 주세요." data-name="생일">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>Email</label> 
-									<input type="email" class="form-control" id="resume_email" name="resume_email">
+									<input type="email" class="form-control" id="resume_email" name="resume_email" data-name="이메일">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>휴대폰 번호</label> 
-									<input type="text" class="form-control" id="resume_phone" name="resume_phone">
+									<input type="text" class="form-control" id="resume_phone" name="resume_phone" data-name="핸드폰번호">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>주소</label> 
-									<input type="text" class="form-control" id="resume_address" name="resume_address">
+									<input type="text" class="form-control" id="resume_address" name="resume_address" data-name="주소">
 								</div>
 							</div>
 							<br><br><br><br><br><br><br><br><br>
@@ -290,25 +250,25 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>학교명</label> 
-									<input type="text" class="form-control" id="resume_school" name="resume_school">
+									<input type="text" class="form-control" id="resume_school" name="resume_school" data-name="학교">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>지역</label> 
-									<input type="text" class="form-control" id="resume_area" name="resume_area">
+									<input type="text" class="form-control" id="resume_area" name="resume_area" data-name="지역">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>입학일</label> 
-									<input type="date" class="form-control" id="resume_start" name="resume_start">
+									<input type="date" class="form-control" id="resume_start" name="resume_start" data-name="입학일">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>졸업일</label> 
-									<input type="date" class="form-control" id="resume_end" name="resume_end">
+									<input type="date" class="form-control" id="resume_end" name="resume_end" data-name="졸업일">
 								</div>
 							</div>
 							<br> <br> <br> <br><br> <br> <br> <br>
@@ -416,21 +376,20 @@
 									<button type="submit" class="btn btn-primary">
 										<i class="fa fa-envelope-o"></i>이력서 저장
 									</button>
-									<button type="button" class="btn btn-primary" onclick="preview()">
+									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
-									<button type="button" class="btn btn-primary" onclick="middle()">
+									<button type="button" class="btn btn-primary" name="middle" id="middle">
 										<i class="fa fa-envelope-o"></i>중간저장
 									</button>
 								</div>
 								<br><br><br>
-					</form>
+						</form>
+					</div>
+					<!-- /.row -->
 				</div>
-				<!-- /.row -->
 			</div>
 		</div>
-	</div>
-	</div>
 	<!--         </div> -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
