@@ -40,12 +40,6 @@ public class Service_CenterImpl implements Service_CenterService{
 	}
 
 	@Override
-	public List<Service_CenterVO> getService_CenterList(Service_CenterVO vo) {
-		// TODO Auto-generated method stub
-		return dao.getService_CenterList(vo);
-	}
-
-	@Override
 	public boolean updateClick(Service_CenterVO vo) {
 		// TODO 조회수 증가
 		return dao.updateClick(vo);
@@ -85,6 +79,36 @@ public class Service_CenterImpl implements Service_CenterService{
 	public Service_CenterVO preNext(Service_CenterVO vo) {
 		// TODO 게시물 단건조회 후 게시글 이전/다음
 		return dao.preNext(vo);
+	}
+//==============================================결제환불========================================================
+	@Override
+	public List<Service_CenterVO> listQna(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQna(scri);
+	}
+
+	@Override
+	public int listCountQna(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listCountQna(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> searchServiceQna(String searchKeyword) {
+		// TODO Auto-generated method stub
+		return dao.searchServiceQna(searchKeyword);
+	}
+
+	@Override
+	public Service_CenterVO getService_CenterQna(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		return dao.getService_CenterQna(vo);
+	}
+
+	@Override
+	public Service_CenterVO preNextQna(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		return dao.preNextQna(vo);
 	}
 
 	

@@ -150,10 +150,10 @@
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5><a href="inquire">결제/환불</a></h5>
+                                                <h5><a href="serviceCenterQna">결제/환불</a></h5>
                                                 <ul>
                                                 	<li>
-                                                        <a href="inquireList">질문 목록</a>
+                                                        <a href="serviceCenterQna">질문 목록</a>
                                                     </li>
                                                 </ul>
                                             </div>
