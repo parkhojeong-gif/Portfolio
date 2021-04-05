@@ -11,7 +11,7 @@ public class ShoppingVO { //주문정보
 	private String men_start; //멘토링 시작일
 	private String met_end; //멘토링 종료일
 	
-	//양소민 추가
+	//양소민 추가(마이페이지 수강중인 멘토링, 결제내역에 사용)
 	private String name;
 	private String mentoring_name;
 	private String mentoring_content;

@@ -1,12 +1,10 @@
-package com.company.mentoring.service.impl;
+package com.company.mentoring.service;
 
 import java.util.List;
 
-import com.company.mentoring.service.MentoringVO;
-
-public interface MentoringMapper {
+public interface MentoringService {
 	
-	public int insertMentoring(MentoringVO vo);
+public int insertMentoring(MentoringVO vo);
 	
 	public int updateMentoring(MentoringVO vo);
 	

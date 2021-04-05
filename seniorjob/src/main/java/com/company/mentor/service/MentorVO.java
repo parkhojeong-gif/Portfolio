@@ -1,5 +1,7 @@
 package com.company.mentor.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -20,4 +22,8 @@ public class MentorVO { //멘토
 	private String mentoring_age; //멘토링 연령대
 	private String mentoring_location; //멘토링 지역
 	private String mentor_confirm_status; //멘토링 승인여부
+	
+	private MultipartFile mentor_photo_file; // 멘토 사진 파일
+	private MultipartFile mentor_license_file; // 멘토 자격증 파일
+	private MultipartFile mentor_career_certificate_file; // 멘토 경력 증명서 파일
 }

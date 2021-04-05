@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -95,50 +94,66 @@ button:hover {
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
 
-<form id="regForm" action="MentorRegisterProc" method="post">
+<form id="regForm" action="MentorRegisterProc" method="post" enctype="Multipart/form-data">
   <h1>멘토등록</h1>
   <!-- One "tab" for each step in the form: -->
   <div class="tab">기본정보
-    <p><input placeholder="이름" oninput="this.className = ''" name="name"></p>
+ 	<p><input placeholder="${users.id }" oninput="this.className = ''" name="id" value="${users.id }" type="text" readonly></p> <!-- 현재 로그인 세션값 활용하여 출력 -->
+    <p><input placeholder="${users.name }" oninput="this.className = ''" readonly></p> <!-- 현재 로그인 세션값 활용하여 출력 -->
     <p><input placeholder="학교명" oninput="this.className = ''" name="mentor_school_name"></p>
     <p><input placeholder="회사명" oninput="this.className = ''" name="mentor_company_name"></p>
     <p><input placeholder="부서" oninput="this.className = ''" name="mentor_department_name"></p>
     <p><input placeholder="직급" oninput="this.className = ''" name="mentor_job_id"></p>
     <p>직무유형 선택</p>
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">영업
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">인사
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">총무
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">마케팅
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">광고
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">회계
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">재무
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">해외
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">유통
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">무역
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">전략
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">기획
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">생산
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">공기업
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">IT
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">디자인
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">교육
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio">컨설팅
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="영업">영업
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="인사">인사
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="총무">총무
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="마케팅">마케팅
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="광고">광고
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="회계">회계
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="재무">재무
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="해외">해외
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="유통">유통
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="무역">무역
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="전략">전략
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="기획">기획
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="생산">생산
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="공기업">공기업
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="IT">IT
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="디자인">디자인
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="교육">교육
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="컨설팅">컨설팅
     
   </div>
   <div class="tab">멘토링 정보
   	<p>대표 멘토링 분야(최대 5개 선택)</p>
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">해외취업
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">직무
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">진로
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">스펙
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">외국어
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">자소서
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">면접
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">회사생활
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">창업
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">이직
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">공기업
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox">기타
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="해외취업">해외취업
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="직무">직무
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="진로">진로
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="스펙">스펙
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="외국어">외국어
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="자소서">자소서
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="면접">면접
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="회사생활">회사생활
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="창업">창업
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="이직">이직
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="공기업">공기업
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="기타">기타
+    <p />
+    <p>멘토링 희망 연령</p>
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_age" type="radio" value="40대">40대
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_age" type="radio" value="50대">50대
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_age" type="radio" value="60대">60대
+    <p />
+    <p>멘토링 희망 지역</p>
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="서울특별시">서울특별시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="부산광역시">부산광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="대구광역시">대구광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="인천광역시">인천광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="광주광역시">광주광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="대전광역시">대전광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="울산광역시">울산광역시
+    <input placeholder="주요경력" oninput="this.className = ''" name="mentoring_location" type="radio" value="세종특별자치시">세종특별자치시
     <p />
     <p><input placeholder="멘토소개" oninput="this.className = ''" name="mentor_introduce"></p>
     <p><input placeholder="주요경력" oninput="this.className = ''" name="mentor_career" type="text"></p>
@@ -148,18 +163,14 @@ button:hover {
   	<p>프로필 사진</p>
   	<div>
   		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image" id="profilePhoto">
-    	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo">
+    	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file">
   	</div>
     <p />
     <p>자격증 선택</p>
-    <input placeholder="자격증" class="form-control" type="file" id="property-images" name="mentor_license">
+    <input placeholder="자격증" class="form-control" type="file" id="property-images" name="mentor_license_file">
     <p />
     <p>경력 증명서</p>
-    <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate">
-  </div>
-  <div class="tab">등록정보
-    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+    <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate_file">
   </div>
   <div style="overflow:auto;">
     <div style="float:right;">
