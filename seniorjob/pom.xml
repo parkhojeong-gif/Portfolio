@@ -225,7 +225,20 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.14</version>
 		</dependency>
-		
+	
+	<!-- docx -->
+	<dependency>
+    	<groupId>org.docx4j</groupId>
+    	<artifactId>docx4j</artifactId>
+    	<version>3.3.5</version>
+	</dependency>
+	
+	<dependency> 
+    	<groupId>javax.xml.bind</groupId>
+   		<artifactId>jaxb-api</artifactId>
+    	<version>2.1</version>
+	</dependency>	
+	
 	</dependencies>
     <build>
         <plugins>

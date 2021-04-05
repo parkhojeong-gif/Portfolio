@@ -1,6 +1,7 @@
 package com.company.businesspalna.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.businesspalna.service.BusinessPalnAVO;
 
@@ -16,5 +17,5 @@ public int insertBusinessPlanA(BusinessPalnAVO vo);
 	
 	public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo);
 
-	
+	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
 }

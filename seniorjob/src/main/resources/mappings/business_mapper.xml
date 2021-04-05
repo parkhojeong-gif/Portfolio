@@ -7,6 +7,13 @@
 		select * from businessplana
 		where id=#{id}
 	</select>
+	
+	<select id="getBpExcel" resultType="map">
+		select * from businessplana
+		where seq = #{seq}
+	</select>
+	
+	
 	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
 		select *
 		from Businessplana<!-- a 

@@ -15,5 +15,6 @@ public interface BusinessPlanAService {
 	
 	public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo);
 	
+	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
 
 }

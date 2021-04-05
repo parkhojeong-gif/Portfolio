@@ -1,58 +1,80 @@
 package com.company.api.common;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.docx4j.XmlUtils;
+import org.docx4j.openpackaging.io3.Save;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
+import org.docx4j.wml.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
+import org.springframework.web.servlet.view.AbstractTemplateView;
 
 @Component("wordView")
-public class WordView{
+public class WordView extends AbstractTemplateView{
 	private static final Logger LOGGER = LoggerFactory.getLogger(WordView.class);
-	
-	
-	public static void main(String[] args, Model model) throws IOException {
-		
-		
-		
-		//Blank Document
-	      XWPFDocument document = new XWPFDocument();
-	      
-	    //Write the Document in file system
-	      FileOutputStream out = new FileOutputStream(new File("createparagraph.docx"));
-	        
-	      //create table
-	      XWPFTable table = document.createTable();
-	      
-	      String bp = (String)model.getAttribute("bp");
-	      
-	    //create first row
-	      XWPFTableRow tableRowOne = table.getRow(0);
-	      tableRowOne.getCell(0).setText("col one, row one");
-	      tableRowOne.addNewTableCell().setText(bp);
-	      
-	      
-	      //create second row
-	      XWPFTableRow tableRowTwo = table.createRow();
-	      tableRowTwo.getCell(0).setText("col one, row two");
-	      tableRowTwo.getCell(1).setText("col two, row two");
-			
-	      //create third row
-	      XWPFTableRow tableRowThree = table.createRow();
-	      tableRowThree.getCell(0).setText("col one, row three");
-	      tableRowThree.getCell(1).setText("col two, row three");
-	      
-	      document.write(out);
-	      out.close();
-	      System.out.println("create_table.docx written successully");
-	      
-	      LOGGER.debug("### buildExcelDocument Map : {} end!!");
+
+	public void DocxView() {
+		setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
 	}
 
+	@Override
+	protected void renderMergedTemplateModel(Map<String, Object> model, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(getApplicationContext().getResource(getUrl()).getFile());  //OpenXML 형식 의 docx 파일 을 나타내는 WordprocessingMLPackage
+
+		MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();  //MainDocumentPart 클래스는 기본 document.xml 부분 의 표현을 보유합니다 
+
+
+		org.docx4j.wml.Document wmlDocumentEl = (org.docx4j.wml.Document) documentPart.getContents();
+		String xml = XmlUtils.marshaltoString(wmlDocumentEl);
+
+
+		HashMap<String, String> mappings = new HashMap<String, String>();
+		for (Object key : model.keySet()) {
+			mappings.put(key.toString(), model.get(key).toString());
+		}
+
+		Object obj = XmlUtils.unmarshallFromTemplate(xml, mappings);
+		documentPart.setJaxbElement((Document) obj);
+
+		String name = "사업계획서_"+System.currentTimeMillis()+".docx";
+
+		response.setHeader("Content-Disposition", "attachment; filename=\""+ name+"\"");
+		
+		ServletOutputStream out = response.getOutputStream();
+
+		Save saver = new Save(wordMLPackage);
+		saver.save(out);
+
+
+		out.flush();
+		
+		LOGGER.debug("### buildExcelDocument Map : {} end!!");
+
+	}
+
+	
+	 public boolean checkResource(Locale locale) { return
+	 getApplicationContext().getResource(getUrl()).exists(); }
+	 
+	 protected boolean isUrlRequired() {
+	        return false;
+	}
+	
+	
 }
+
+
+	
+
+
