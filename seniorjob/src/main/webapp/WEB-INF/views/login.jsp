@@ -16,6 +16,7 @@ $(function(){
 </script>
 <style>
 .error {color: red;}
+.login-blocks form input{border-bottom: 3px solid #fbb530;}
 </style>  
     <body>
 
@@ -29,11 +30,11 @@ $(function(){
                             <form:form modelAttribute ="usersVO" action="loginProc" method="post" name="UsersVO">
                                 <div class="form-group">
                                     <label for="id">Id</label>
-                                    <form:input path="id"/><form:errors path="id" cssClass="error"/>
+                                    <form:input path="id"/><form:errors path="id" cssClass="error"/>${message}
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <form:input path="password" type="password"/><form:errors path="password" cssClass="error"/><br>
+                                    <form:input path="password" type="password"/><form:errors path="password" cssClass="error"/><br>${message2}
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default"> Log in</button>

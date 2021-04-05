@@ -17,4 +17,5 @@ public interface UsersService {
 	public void sendEmail(UsersVO vo, String div) throws Exception;
 	//비밀번호찾기
 	public void findPw(HttpServletResponse resp, UsersVO vo) throws Exception;
+	public int emailCheck(String email); //email 중복체크 
 }

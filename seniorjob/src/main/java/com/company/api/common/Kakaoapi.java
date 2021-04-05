@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 
+import com.company.users.service.UsersVO;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -81,7 +82,7 @@ public class Kakaoapi {
 	
 	//kakao 사용자 정보 (Header에 발급 받은 토큰)가져오기
 	public HashMap<String, Object> getUserInfo (String access_Token) {
-	    
+	 
 	    // 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
 	    HashMap<String, Object> userInfo = new HashMap<>();
 	    String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -124,6 +125,8 @@ public class Kakaoapi {
 	        userInfo.put("nickname", nickname);
 	        userInfo.put("kakaoId", id);
 	        //userInfo.put("email", email);
+	        
+	        
 	        
 	    } catch (IOException e) {
 	        // TODO Auto-generated catch block

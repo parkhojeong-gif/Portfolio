@@ -91,23 +91,13 @@
                <a href="/">홈으로가기</a>
                <c:choose>
                 <c:when test="${users.auth eq 'ADMIN'}">
-               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               		 <button class="navbar-btn nav-button wow bounceInRight login" onclick="" data-wow-delay="0.45s">관리자페이지</button>
-              		 <form action="logout" method="get">
-						 <input type="submit" value="logout">
-					</form>
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>	 
                </c:when>
                <c:when test="${users.auth eq 'USER'}">
                	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               		<form action="logout" method="get">
-					<input type="submit" value="logout">
-					</form>
 				</c:when>
            		<c:when test="${users.auth eq 'MENTOR'}">
                	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               		<form action="logout" method="get">
-					<input type="submit" value="logout">
-					</form>
 				</c:when>	
                <c:otherwise>
                     <div class="button navbar-right">
@@ -199,6 +189,9 @@
 							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
                         </c:if>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHome">마이페이지</a></li>
+                        <c:if test="${users.auth eq 'ADMIN'}">
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="">관리자페이지</a></li>
+                        </c:if>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
