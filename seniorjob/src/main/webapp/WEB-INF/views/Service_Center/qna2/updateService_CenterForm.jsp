@@ -18,17 +18,17 @@
 		<div class="container">
 			<div class="row">
 			
-			<jsp:include page="sevice_left.jsp"></jsp:include>
+			<jsp:include page="../sevice_left.jsp"></jsp:include>
 		<div
 					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
-						<h2>결제환불 수정</h2>
+						<h2>공지사항 수정</h2>
 						<input type="text" value="${list.seq }">
 					</div>
 					<hr>
-					<form id="frm" action="updateService_CenterQna?seq=${list.seq }"  method="post" name="frm" >
+					<form id="frm" action="updateService_Center?seq=${list.seq }"  method="post" name="frm" >
 							<h3>글 작성</h3>
 							<div class="col-sm-12">
 								<div class="form-group">
@@ -68,14 +68,8 @@
 							<div class="col-sm-6 text-right">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-bars"></i> 등록하기</button>
                             </div>
-                            <div class="col-sm-6 text-left">
-                                   <button class="btn btn-primary" onclick="return confirm('목록으로 돌아가시겠습니까?');"><i class="fa fa-reply"></i>
-                               
-                                   		<a href="serviceCenterQna"
-                                   			>
-                                   			목록으로
-                                   		</a>
-                                   </button>
+                            <div class="col-sm-6 text-left" onclick="return confirm('목록으로 돌아가시겠습니까?');">
+                                   <button class="btn btn-primary"><i class="fa fa-reply"></i> <a href="serviceCenter" >목록으로</a></button>
                             </div>
 							<br> <br> <br> <br>
 								<br><br><br>

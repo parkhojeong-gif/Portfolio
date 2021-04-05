@@ -123,6 +123,15 @@ public class Service_CenterController {
 		model.addAttribute("list", service_CenterMapper.getService_CenterQna(vo));
 		return "/Service_Center/qna/updateService_CenterFormQna"; 
 	}
-
+	@RequestMapping("/updateService_CenterQna") // 결제환불 수정
+	public String updateService_CenterProcQna(Service_CenterVO vo) {
+		service_CenterMapper.updateService_CenterQna(vo);
+		return "redirect:/serviceCenterQna";
+	}
+	@RequestMapping("/deleteService_CenterQna") // 결제환불 삭제
+	public String deleteService_CenterQna(Service_CenterVO vo) {
+		service_CenterMapper.deleteService_Center(vo);
+		return "redirect:/serviceCenterQna";
+	}
 
 }

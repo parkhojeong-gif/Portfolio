@@ -117,6 +117,12 @@ public class Service_CenterImpl implements Service_CenterService{
 		return dao.insertService_CenterQna(vo);
 	}
 
+	@Override
+	public void updateService_CenterQna(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		dao.updateService_CenterQna(vo);
+	}
+
 	
 
 }

@@ -17,7 +17,7 @@ function pagePre() {
 	if(sel == 0){
 		window.alert("이전 글이 없습니다");
 	}else{
-	location.href="getService_CenterQna?seq=${num.prev }";
+	location.href="getService_Center?seq=${num.prev }";
 	}
 	}
 function pageNext() {
@@ -25,13 +25,13 @@ function pageNext() {
 	if(sel == 0){
 		window.alert("다음 글이 없습니다");
 	}else{
-	location.href="getService_CenterQna?seq=${num.next }";
+	location.href="getService_Center?seq=${num.next }";
 	}
 	}
 $(function(){
 	$("#btnUpd").on("click", function(){
 		//location.href ="updateEmp?employee_id=${emp.employee_id}"
-		location.assign("updateService_CenterFormQna?seq=${gongji.seq}");
+		location.assign("updateService_CenterForm?seq=${gongji.seq}");
 
 	});
 	
@@ -44,7 +44,7 @@ $(function(){
 <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
-                    <jsp:include page="sevice_left.jsp"></jsp:include>
+                    <jsp:include page="../sevice_left.jsp"></jsp:include>
  
                     
                     <div class="col-md-8 single-property-content ">
@@ -134,7 +134,7 @@ $(function(){
                             <!-- 수정/삭제-->
                             <div class="button navbar-right">
                         		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
-                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_CenterQna?seq=${gongji.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
+                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_Center?seq=${gongji.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
                     		</div>
                     		<br><br><br><br><br><br>
                               <!-- 수정/삭제-->

@@ -186,5 +186,14 @@
 				 				#{id},
 				 				#{title})
  	</insert>
+ 	<!--결제환불 글 수정  -->
+ 	<update id="updateService_CenterQna" parameterType="Service_CenterVO">
+	UPDATE service_center 
+	<set>
+	title = #{title},
+	content = #{content}
+	</set>
+					where SEQ = #{seq}
+	</update>
  </mapper>
  

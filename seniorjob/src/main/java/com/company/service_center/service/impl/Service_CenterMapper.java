@@ -57,5 +57,7 @@ public interface Service_CenterMapper {
 	public Service_CenterVO preNextQna(Service_CenterVO vo);
 	// 결제환불 등록
 	public int insertService_CenterQna(Service_CenterVO vo);
+	// 결제환불 수정
+	public void updateService_CenterQna(Service_CenterVO vo);
 
 }
