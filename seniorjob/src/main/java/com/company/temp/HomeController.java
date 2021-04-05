@@ -53,10 +53,10 @@ public class HomeController {
 		return "mypage";
 	}
 	
-	@RequestMapping("/seniorTimes")
-	public String seniorTimes() {
-		return "seniorTimes";		  	  //시니어 타임즈
-	}
+	/*
+	 * @RequestMapping("/seniorTimes") public String seniorTimes() { return
+	 * "seniorTimes"; //시니어 타임즈 }
+	 */
 	
 	@RequestMapping("/myWriteList")
 	public String myWriteList() {
@@ -120,4 +120,8 @@ public class HomeController {
 		return "mypage/calendarTest";
 	}
 	
+
+	
+	
+	//test
 }

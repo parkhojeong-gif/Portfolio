@@ -70,7 +70,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringCourse'">
+							<div class="panel-heading" onclick="location.href='getSearchMentoring'">
 								<h3 class="panel-title">내가 만든 멘토링</h3>
 							</div>
 						</div>

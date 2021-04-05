@@ -14,8 +14,8 @@ public int insertShopping(ShoppingVO vo);
 	
 	public ShoppingVO getShopping(ShoppingVO vo);
 	
-	public List<ShoppingVO> getSearchShopping(ShoppingVO vo);
-
+	//양소민 추가
+	public List<ShoppingVO> getSearchShopping(ShoppingVO vo); //마이페이지_수강중인 멘토링
 	
-	public List<ShoppingVO> getSearchPay(ShoppingVO vo);
+	public List<ShoppingVO> getSearchPay(ShoppingVO vo); //마이페이지_결제내역
 }

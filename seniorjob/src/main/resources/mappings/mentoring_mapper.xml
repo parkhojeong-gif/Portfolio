@@ -40,4 +40,28 @@
 		WHERE MENTOR_ID = #{mentor_id}
 	</select>
 	
- </mapper>
+	<select id="getSearchMentoring" resultType="MentoringVO">
+		SELECT
+				NAME,
+				MENTORING_NUMBER,
+				MENTORING_NAME,
+				MENTORING_LIMIT,
+				MENTORING_CONTENT,
+				MENTORING_PHOTO,
+				MENTORING_PRICE,
+				MENTORING_DATA,
+				MENTORING_REQUEST,
+				MENTOR_ID,
+				MENTORING_END_DATE,
+				MENTORING_BEGIN_DATE,
+				MENTEEID,
+				MEN_START,
+				MET_END,
+				ID
+		FROM MYMENTORINGVU
+		WHERE ID='123'
+	</select>
+	
+
+
+</mapper>
