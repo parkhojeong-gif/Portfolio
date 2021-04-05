@@ -96,9 +96,9 @@ public class Service_CenterController {
 
 		model.addAttribute("pageMaker", pageMaker);
 
-		return "/Service_Center/qna/serviceCenterQna"; // 공지사항
+		return "/Service_Center/qna/serviceCenterQna"; 
 	}
-	@RequestMapping("/getService_CenterQna") // 공지사항 단건조회
+	@RequestMapping("/getService_CenterQna") // 결제환불 단건조회
 	public String getService_CenterListQna(Model model, Service_CenterVO vo) {
 		model.addAttribute("gongji", service_CenterMapper.getService_CenterQna(vo));
 		service_CenterMapper.updateClick(vo); // 조회수 증가
@@ -106,6 +106,22 @@ public class Service_CenterController {
 		model.addAttribute("num", service_CenterMapper.preNextQna(vo));
 		service_CenterMapper.preNextQna(vo); // 게시글 이전/다음
 		return "/Service_Center/qna/getService_CenterQna";
+	}
+
+	@RequestMapping("/insertService_CenterFormQna") // 결제환불 등록폼
+	public String insertService_CenterQna(Service_CenterVO vo) {
+		return "/Service_Center/qna/insertService_CenterFormQna";
+	}
+	
+	@RequestMapping("/insertService_CenterQna") // 결제환불 등록
+	public String insertService_CenterProcQna(Service_CenterVO vo) {
+		service_CenterMapper.insertService_CenterQna(vo);
+		return "redirect:/serviceCenterQna";
+	}
+	@RequestMapping("/updateService_CenterFormQna") // 결제환불 수정폼
+	public String updateService_CenterQna(Service_CenterVO vo, Model model) {
+		model.addAttribute("list", service_CenterMapper.getService_CenterQna(vo));
+		return "/Service_Center/qna/updateService_CenterFormQna"; 
 	}
 
 

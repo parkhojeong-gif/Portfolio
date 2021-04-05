@@ -83,7 +83,7 @@
 				S_FILE,
 				ID,
 				TITLE) values ((SELECT NVL(MAX(SEQ),0)+1 FROM service_center),
-				 				'공지사항',
+				 				#{category_a},
 				 				#{category_b}, 
 				 				#{content},
 				 				SYSDATE,
@@ -166,6 +166,25 @@
  		where CATEGORY_a='결제' )
  		WHERE SEQ= #{seq}  
  	</select>
-	
+ 	<!--결제환불 글 등록  -->
+	<insert id="insertService_CenterQna" parameterType="Service_CenterVO">
+ 	insert into service_center(SEQ,
+				CATEGORY_A,
+				CATEGORY_B,
+				CONTENT,
+				W_DATE,
+				CLICK,
+				S_FILE,
+				ID,
+				TITLE) values ((SELECT NVL(MAX(SEQ),0)+1 FROM service_center),
+				 				#{category_a},
+				 				#{category_b}, 
+				 				#{content},
+				 				SYSDATE,
+				 				'0',
+				 				'파일없음',
+				 				#{id},
+				 				#{title})
+ 	</insert>
  </mapper>
  

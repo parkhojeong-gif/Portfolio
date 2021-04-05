@@ -8,7 +8,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<jsp:include page="../topHeader.jsp"></jsp:include>
+<jsp:include page="../../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <body>
@@ -24,10 +24,10 @@
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
-						<h2>공지사항 등록하기</h2>
+						<h2>결제환불 질문 등록</h2>
 					</div>
 					<hr>
-					<form id="frm" action="insertService_Center"  method="post" name="frm" >
+					<form id="frm" action="insertService_CenterQna"  method="post" name="frm" >
 							<h3>글 작성</h3>
 							<div class="col-sm-12">
 								<div class="form-group">
@@ -47,14 +47,14 @@
 									<input type="date" class="form-control" id='currentDate' name="resume_email" readonly="readonly" >
 								</div>
 							</div>
-							<input type="hidden" name="category_a" id="category_a" value="공지사항">
+							<input type="hidden" name="category_a" id="category_a" value="결제">
 							<div class="col-sm-6">
 								<div class="form-group">
 									<select name="category_b" id="category_b">
 										<option value="">카테고리</option>
-										<option value="이벤트">이벤트</option>
-										<option value="점검">점검</option>
-										<option value="안내">안내</option>
+										<option value="결제">결제</option>
+										<option value="환불">환불</option>
+										<option value="기타">기타</option>
 									</select>
 								</div>
 							</div>
@@ -87,6 +87,6 @@
 
 	</script>
 	<!--         </div> -->
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<jsp:include page="../../footer.jsp"></jsp:include>
 </body>
 </html>

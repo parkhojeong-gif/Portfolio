@@ -53,5 +53,7 @@ public interface Service_CenterService {
 	public Service_CenterVO getService_CenterQna(Service_CenterVO vo);
 	// 결제환불게시물 단건조회 후 이전/다음글
 	public Service_CenterVO preNextQna(Service_CenterVO vo);
+	// 결제환불 등록
+	public int insertService_CenterQna(Service_CenterVO vo);
 
 }

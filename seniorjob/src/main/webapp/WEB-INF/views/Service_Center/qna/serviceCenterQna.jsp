@@ -21,7 +21,7 @@
 			<div class="row">
 
 			
-			<jsp:include page="../sevice_left.jsp"></jsp:include>
+			<jsp:include page="sevice_left.jsp"></jsp:include>
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section additional-details">
 					<h4 class="s-property-title">결제환불</h4>
@@ -82,7 +82,7 @@
                              <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
                              <span class="input-group-btn">
                     <button class="btn btn-primary subscribe" id="searchBtn" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                    <button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterForm'" >등록</button>
+                    <button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterFormQna'" >등록</button>
                     <script>
 			      $(function(){
 			        $('#searchBtn').click(function() {

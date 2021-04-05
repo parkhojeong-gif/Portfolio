@@ -31,7 +31,7 @@ function pageNext() {
 $(function(){
 	$("#btnUpd").on("click", function(){
 		//location.href ="updateEmp?employee_id=${emp.employee_id}"
-		location.assign("updateService_CenterForm?seq=${gongji.seq}");
+		location.assign("updateService_CenterFormQna?seq=${gongji.seq}");
 
 	});
 	
@@ -44,7 +44,7 @@ $(function(){
 <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
-                    <jsp:include page="../sevice_left.jsp"></jsp:include>
+                    <jsp:include page="sevice_left.jsp"></jsp:include>
  
                     
                     <div class="col-md-8 single-property-content ">
