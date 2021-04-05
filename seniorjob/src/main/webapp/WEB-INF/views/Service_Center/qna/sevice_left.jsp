@@ -23,12 +23,12 @@
 					
 					
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='serviceCenter'">
+							<div class="panel-heading" onclick="location.href='serviceCenterQna'">
 								<h3 class="panel-title">결제/환불</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='serviceCenter'">
+							<div class="panel-heading" onclick="location.href='serviceCenterQna2'">
 								<h3 class="panel-title">신청/취소</h3>
 							</div>
 						</div>

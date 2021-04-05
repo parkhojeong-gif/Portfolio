@@ -134,4 +134,47 @@ public class Service_CenterController {
 		return "redirect:/serviceCenterQna";
 	}
 
+//	--------------------------------------------------------신청취소-----------------------------------------------------------------------------------------------------
+	@RequestMapping("serviceCenterQna2") // 신청취소 목록 조회
+	public String listQna2(Model model, @ModelAttribute("scri") SearchCriteria scri) {
+
+		model.addAttribute("list", service_CenterMapper.listQna2(scri));
+
+		PageMaker pageMaker = new PageMaker(); //페이징
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service_CenterMapper.listCountQna2(scri));
+
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "/Service_Center/qna2/serviceCenterQna2"; 
+	}
+	@RequestMapping("/getService_CenterQna2") // 결제환불 단건조회
+	public String getService_CenterListQna2(Model model, Service_CenterVO vo) {
+		model.addAttribute("gongji", service_CenterMapper.getService_CenterQna2(vo));
+		service_CenterMapper.updateClick(vo); // 조회수 증가
+
+		model.addAttribute("num", service_CenterMapper.preNextQna2(vo));
+		service_CenterMapper.preNextQna2(vo); // 게시글 이전/다음
+		return "/Service_Center/qna2/getService_CenterQna2";
+	}
+	@RequestMapping("/insertService_CenterFormQna2") // 신청취소 등록폼
+	public String insertService_CenterQna2(Service_CenterVO vo) {
+		return "/Service_Center/qna2/insertService_CenterFormQna2";
+	}
+	
+	@RequestMapping("/insertService_CenterQna2") // 신청취소 등록
+	public String insertService_CenterProcQna2(Service_CenterVO vo) {
+		service_CenterMapper.insertService_CenterQna2(vo);
+		return "redirect:/serviceCenterQna2";
+	}
+	@RequestMapping("/updateService_CenterFormQna2") // 신청취소 수정폼
+	public String updateService_CenterQna2(Service_CenterVO vo, Model model) {
+		model.addAttribute("list", service_CenterMapper.getService_CenterQna2(vo));
+		return "/Service_Center/qna2/updateService_CenterFormQna2"; 
+	}
+	@RequestMapping("/updateService_CenterQna2") // 신청취소 수정
+	public String updateService_CenterProcQna2(Service_CenterVO vo) {
+		service_CenterMapper.updateService_CenterQna2(vo);
+		return "redirect:/serviceCenterQna2";
+	}
 }

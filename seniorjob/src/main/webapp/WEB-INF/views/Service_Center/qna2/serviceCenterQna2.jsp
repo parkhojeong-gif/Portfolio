@@ -21,10 +21,10 @@
 			<div class="row">
 
 			
-			<jsp:include page="../sevice_left.jsp"></jsp:include>
+			<jsp:include page="../qna/sevice_left.jsp"></jsp:include>
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section additional-details">
-					<h4 class="s-property-title">공지사항</h4>
+					<h4 class="s-property-title">신청/취소</h4>
 					<ul>
 						<li>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">카테고리</span>
@@ -34,11 +34,11 @@
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
 						</li>
 						<c:forEach items="${list }" var="gongji">
-							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_b }</span>
-							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${gongji.title }</span>
-							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.id }</span>
-							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry"><fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd"/></span>
-							<span onclick="location.href='getService_Center?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.click }</span>
+							<span onclick="location.href='getService_CenterQna2?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_b }</span>
+							<span onclick="location.href='getService_CenterQna2?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${gongji.title }</span>
+							<span onclick="location.href='getService_CenterQna2?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.id }</span>
+							<span onclick="location.href='getService_CenterQna2?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry"><fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd"/></span>
+							<span onclick="location.href='getService_CenterQna2?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.click }</span>
 						</c:forEach>
 						</ul>
 				</div>
@@ -47,15 +47,15 @@
 		<div class="pagination">	
 		 			<ul>
     						<c:if test="${pageMaker.prev}">
-    						<li><a href="serviceCenter${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+    						<li><a href="serviceCenterQna2${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
     						</c:if> 
 
     						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    						<li><a href="serviceCenter${pageMaker.makeSearch(idx)}">${idx}</a></li>
+    						<li><a href="serviceCenterQna2${pageMaker.makeSearch(idx)}">${idx}</a></li>
     						</c:forEach>
 			
     						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-    						<li><a href="serviceCenter${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+    						<li><a href="serviceCenterQna2${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
     						</c:if> 
 					  </ul>
 		</div>
@@ -82,11 +82,11 @@
                              <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
                              <span class="input-group-btn">
                     <button class="btn btn-primary subscribe" id="searchBtn" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                    <button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterForm'" >등록</button>
+                    <button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterFormQna2'" >등록</button>
                     <script>
 			      $(function(){
 			        $('#searchBtn').click(function() {
-			          self.location = "serviceCenter" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+			          self.location = "serviceCenterQna2" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 			        });
 			      });   
 			    </script>

@@ -27,7 +27,7 @@
 						<h2>결제환불 질문 등록</h2>
 					</div>
 					<hr>
-					<form id="frm" action="insertService_CenterQna"  method="post" name="frm" >
+					<form id="frm" action="insertService_CenterQna2"  method="post" name="frm" >
 							<h3>글 작성</h3>
 							<div class="col-sm-12">
 								<div class="form-group">
@@ -69,7 +69,7 @@
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-bars"></i> 등록하기</button>
                             </div>
                             <div class="col-sm-6 text-left">
-                                   <button class="btn btn-primary"><i class="fa fa-reply"></i> <a href="serviceCenter" onclick="return confirm('목록으로 돌아가시겠습니까?');">목록으로</a></button>
+                                   <button class="btn btn-primary" onclick="return confirm('목록으로 돌아가시겠습니까?');"><i class="fa fa-reply"></i> <a href="serviceCenterQna" >목록으로</a></button>
                             </div>
 							<br> <br> <br> <br>
 								<br><br><br>

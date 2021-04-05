@@ -133,7 +133,7 @@
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
-                            <a href="inquire" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
+                            <a href="serviceCenterQna" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="yamm-content">
@@ -158,10 +158,10 @@
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5><a href="inquire">신청/취소</a></h5>
+                                                <h5><a href="serviceCenterQna2">신청/취소</a></h5>
                                                 <ul>
                                                 	<li>
-                                                        <a href="inquireList">질문 목록</a>
+                                                        <a href="serviceCenterQna2">질문 목록</a>
                                                     </li>
                                                 </ul>
                                             </div>
