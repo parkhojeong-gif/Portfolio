@@ -1,13 +1,12 @@
-<%-- <%@ page language="java" contentType="application/vnd.word; charset=UTF-8" pageEncoding="UTF-8"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     <!-- 워드파일이 깨지는 오류가 있음. -->
-<%--  <% 
+  <% 
 	response.setHeader("Content-Disposition", "attachment;filename=member.doc");  
 	response.setHeader("Content-Description", "JSP Generated Data");	
 	response.setContentType("application/vnd.ms-word; charset=UTF-8");                       
-%>   --%> 
+%>    
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -27,15 +26,8 @@
 		}
 		window.print();
 	}
-	
-	/* 수정 */
 </script>
-<jsp:include page="../topHeader.jsp"></jsp:include>
-<style>
-	.select_img img{width: 90px; height:90px; margin:20px 0;}
-</style>
     <body>
-
         <!-- property area -->
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
             <div class="container">  
@@ -43,22 +35,16 @@
                     <div class="col-md-8 col-md-offset-2"> 
                         <div class="" id="contact1">                        
                             <!-- /.row -->
-                            <div align="center"><h2>수정</h2></div>
-                            <a href="">자격증</a>
-                            <a href="#step1" data-toggle="tab"><button type="button">보기+</button></a> &nbsp;&nbsp;
-                            <a href="">포트폴리오</a>
-                            <a href="#step2" data-toggle="tab"><button type="button">보기+</button></a>&nbsp;&nbsp;
-                            <a href="">자기소개서</a>
-                            <a href="#step3" data-toggle="tab"><button type="button">보기+</button></a>
+                            <div align="center"><h2>이력서</h2></div>
                             <hr>
-                            <form action="resumeUpdate?resume_no=${resumeVO.resume_no }" method="post" name="frm">
+                            <form name="frm">
                             	
                                 <div class="row" id="printIs">
                            		   <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>사진</label>
-                                            <div class="select_img"><img src="image/${resumeVO.image }"></div>
-                                            <input type="file" id="image" name="image"> 
+                                            <%-- <img src="{path}/image/${resumeVO.image }">
+                                            <input type="file" id="image" name="image"> --%>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -120,9 +106,7 @@
                                         </div>
                                     </div>
                                     <br><br><br><br><br><br><br><br><br>
-                                    <div class="tab-content">
-                                    <div class="tab-pane" id="step1">
-                                       <h3>자격증</h3>
+                                    <h3>자격증</h3>
                                     <c:forEach items="${clist}" var="certi"> 
                                     <input type="hidden" id="certi_no" name="certi_no" value=${certi.certi_no }>
                                     <div class="col-sm-6">
@@ -173,58 +157,42 @@
                                         </div>
                                     </div>
                                     </c:forEach>  
-                                  	   </div>
-                                	</div>
                                 	<br><br><br><br><br><br><br><br><br><br>
-                                	<div class="tab-content">
-										<div class="tab-pane" id="step2">
-											<h3>포트폴리오</h3>
-											<c:forEach items="${portvo }" var="port">
-											<div class="col-sm-6">
-												<div class="form-group">
-													<label for="subject">포트폴리오 및 기타문서</label> <br>
-													<input type="text" class="form-control" name="portfolio" multiple="multiple" value="${port.portfolio }">
-												</div>
-											</div>
-											</c:forEach>
+									<h3>포트폴리오</h3>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label for="subject">포트폴리오 및 기타문서</label> <br>
+											<c:forTokens items="${portvo.portfolio }" delims="," var="file">
+												${file }<br>
+											</c:forTokens>
+											<input type="file" class="form-control" name="portfolio" multiple="multiple">
 										</div>
 									</div>
 									<br><br><br><br><br><br><br><br>
-									<div class="tab-content">
-									<div class="tab-pane" id="step3">
-										<h3>자기소개서</h3>
-										<c:forEach items="${slist }" var="self">
-										<input type="hidden" id="self_no" name="self_no" value="${self.self_no }">
-										<div class="col-sm-10">
-											<div class="form-group">
-												<label for="subject">제목</label> 
-												<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목" value=${self.self_name }>
-											</div>
+									<h3>자기소개서</h3>
+									<c:forEach items="${slist }" var="self">
+									<input type="hidden" id="self_no" name="self_no" value="${self.self_no }">
+									<div class="col-sm-10">
+										<div class="form-group">
+											<label for="subject">제목</label> 
+											<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목" value=${self.self_name }>
 										</div>
-										<div class="col-sm-12">
-											<div class="form-group">
-												<label for="message">내용</label>
-												<textarea id="self_content" name="self_content" class="form-control" 
-												placeholder="내용을 입력하세요.">${self.self_content }</textarea>
-											</div>
-										</div>
-										</c:forEach>
 									</div>
-                                </div> 
+									<div class="col-sm-12">
+										<div class="form-group">
+											<label for="message">내용</label>
+											<textarea id="self_content" name="self_content" class="form-control" 
+											placeholder="내용을 입력하세요.">${self.self_content }</textarea>
+										</div>
+									</div>
+									</c:forEach>
                                 </div>
                                 <!-- /.row -->
-								<br><br><br><br>
-                                 <div class="col-sm-12 text-center">
-                                     <button type="button" class="btn btn-primary" onclick="location='getSearchResumeList'"><i class="fa fa-envelope-o"></i>목록으로</button>
-                                     <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i>수정하기</button>
-                                     <button type="submit" class="btn btn-primary" onclick="divPrint()"><i class="fa fa-envelope-o"></i>인쇄(PDF 저장)</button>
-                                 </div>
                             </form>
                         </div>
                     </div>    
                 </div>
             </div>
         </div>
-		<jsp:include page="../footer.jsp"></jsp:include>
     </body>
 </html>

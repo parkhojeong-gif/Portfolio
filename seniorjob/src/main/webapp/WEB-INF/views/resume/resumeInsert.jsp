@@ -60,71 +60,39 @@
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
-	
-	$(document).on("click", "#selfAdd" ,function(){
-			var obj = new Object();
+	var listArray;
+	var self_number = 1;
+	$(document).on("click", "#selfAdd" ,function addSelf(){
 			var array = "<div class='col-sm-6'>"
 				  + "<div class='form-group'>" 
 				  + "<label>제목</label>"
-				  + "<input type='text' class='form-control' id='self_name' name='self_name' placeholder='자기소개서 제목'>"
+				  + "<input type='text' class='form-control' id='self_name' name='slist["+ self_number +"].self_name' placeholder='자기소개서 제목'>"
 				  + "</div>"
 				  + "</div>"
 				  + "<div class='col-sm-12'>" 
 				  + "<div class='form-group'>" 
 				  + "<label>내용</label>"
-				  + "<textarea id='self_content' name='self_content' class='form-control' placeholder='내용을 입력하세요.' onkeyup='counter()'></textarea>"
+				  + "<textarea id='self_content' name='slist[" + self_number + "].self_content' class='form-control' placeholder='내용을 입력하세요.' onkeyup='counter()'></textarea>"
 				  + "</div>"
 				  + "</div>"
 				  + "<div class='col-sm-12'>" 
 				  + "<input type='text' id='cnt' name='cnt'>글자 입력이 가능합니다."
 				  + "</div>"
 				  + "<br><br><br><br><br><br>";
-				  $("div[id=step3]").append(array);
 				  
-				  obj.self_name = $("input[id='self_name']").val()
-				  obj.self_content = $("#self_content").val()
-				  var jsonData = JSON.stringify(obj);
-				  console.log(jsonData)
+			$("div[id=step3]").append(array);
+			self_number++;
+	})	 
 				 
-				  $.ajax({
-						url : "resumeInsert",
-						dataType : "json",
-						data : {json : jsonData},
-						success : function(response){
-							console.log(response)
-// 							 for(var i = 0; i < obj.length; i++){
-// 								  obj.self_name = $("input[id='self_name']").eq(i).val()
-// 								  obj.self_content = $("#self_content").eq(i).val()
-// 							  }
-						}
-					})	  
-		})
-				  /* var seln = $("input[id='self_name']").eq(0).val()
-				  var selc = $("#self_content").eq(0).val()
-				  for(var i = 0; i < self_arrang.length; i++){
-					  var seln = $("input[id='self_name']").eq(i).val()
-					  var selc = $("#self_content").eq(i).val()
-					  self_arrang.push(seln);
-					  self_arrang.push(selc);
-					  console.log(JSON.stringify(self_arrang));
-				  }
-				  self_arrang.push(seln, selc)
-				  console.log(JSON.stringify(self_arrang))
-			 */
-	
-	
-				
-		
-	
-</script>
+
 <!-- 자격증 항목 추가+ -->
-<script>
+	var certi_number = 1;
 	$(document).on("click", "#certiAdd", function(){
 		var certi = "<div class='col-sm-6'>"
 				  + "<div class='form-group'>"
 				  + "<label>항목</label>"
-				  + "<input type='hidden' name='certi_kind'>"
-				  + "<select id='certi_kinds' name='certi_kinds'>"
+				  + "<input type='hidden' name='clist["+certi_number+"].certi_kind'>"
+				  + "<select id='certi_kinds' name='clist["+certi_number+"].certi_kinds'>"
 				  + "<option value='IT'>IT</option>"
 				  + "<option value='세무/회계'>세무/회계</option>"
 				  + "<option value='건축'>건축</option>"
@@ -140,7 +108,7 @@
 				  + "<div class='col-sm-6'>"
 				  + "<div class='form-group'>"
 				  + "<label>합격구분</label>"
-				  + "<select name='accept' id='accept>'"
+				  + "<select name='clist["+certi_number+"].accept' id='accept>'"
 				  + "<option value='1차합격'>1차합격</option>"
 				  + "<option value='2차합격'>2차합격</option>"
 				  + "<option value='필기합격'>필기합격</option>"
@@ -152,19 +120,19 @@
 				  + "<div class='col-sm-6'>"
 				  + "<div class='form-group'>"
 				  + "<label>자격증명</label>"
-				  + "<input type='text' class='form-control' id='certi_name' name='certi_name'>"
+				  + "<input type='text' class='form-control' id='certi_name' name='clist["+certi_number+"].certi_name'>"
 				  + "</div>"
 				  + "</div>"
 				  + "<div class='col-sm-6'>"
 				  + "<div class='form-group'>"
 				  + "<label>발행처/기관</label>"
-				  + "<input type='text' class='form-control' id='certi_place' name='certi_place'>"
+				  + "<input type='text' class='form-control' id='certi_place' name='clist["+certi_number+"].certi_place'>"
 				  + "</div>"
 				  + "</div>"
 				  + "<div class='col-sm-6'>"
 				  + "<div class='form-group'>"
 				  + "<label>취득일</label>"
-				  + "<input type='date' class='form-control' id='certi_date' name='certi_date'>"
+				  + "<input type='date' class='form-control' id='certi_date' name='clist["+certi_number+"].certi_date'>"
 				  + "</div>"
 				  + "</div>"
 				  + "<br><br><br><br><br><br><br><br><br><br><br>";
@@ -276,7 +244,6 @@
 								<div class="tab-pane" id="step2">
 									<h3>포트폴리오</h3>
 									<div class="col-sm-6">
-									<div><input type="hidden" value=${portvo.port_no } id="port_no" name="port_no"></div>
 										<div class="form-group">
 											<label>포트폴리오 및 기타문서</label> 
 											<input type="file" class="form-control" name="portFile" multiple="multiple">
@@ -291,8 +258,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="firstname">항목</label> 
-											<input type="hidden" name="certi_kind" >
-											<select id = "certi_kinds" name = "certi_kinds">
+											<select id = "certi_kinds" name = "clist[0].certi_kinds">
 												<option value="IT">IT</option>
 												<option value="세무/회계">세무/회계</option>
 												<option value="건축">건축</option>
@@ -308,7 +274,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="subject">합격구분</label> 
-											<select name="accept" id="accept">
+											<select name="clist[0].accept" id="accept">
 												<option value="1차합격">1차합격</option>
 												<option value="2차합격">2차합격</option>
 												<option value="필기합격">필기합격</option>
@@ -320,25 +286,25 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="lastname">자격증명</label> 
-											<input type="text" class="form-control" id="certi_name" name="certi_name">
+											<input type="text" class="form-control" id="certi_name" name="clist[0].certi_name">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="email">발행처/기관</label> 
-											<input type="text" class="form-control" id="certi_place" name="certi_place">
+											<input type="text" class="form-control" id="certi_place" name="clist[0].certi_place">
 										</div>
 									</div>
 
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="subject">취득일</label> 
-											<input type="date" class="form-control" id="certi_date" name="certi_date">
+											<input type="date" class="form-control" id="certi_date" name="clist[0].certi_date">
 										</div>
 									</div>
 									<div class="col-sm-12" align="right">
                                         <a href="#step4" data-toggle="tab">
-                                        <button type="button" class="btn btn-primary" id="certiAdd" name="certiAdd">자격증 항목 추가+</button></a>
+                                        <button type="button" class="btn btn-primary" id="certiAdd" name="clist[0].certiAdd">자격증 항목 추가+</button></a>
                                     </div>
 								</div>
 							</div>
@@ -350,13 +316,13 @@
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label for="subject">제목</label> 
-												<input type="text" class="form-control" id="self_name" name="self_name" placeholder="자기소개서 제목">
+												<input type="text" class="form-control" id="self_name" name="slist[0].self_name" placeholder="자기소개서 제목">
 											</div>
 										</div>
 										<div class="col-sm-12">
 											<div class="form-group">
 												<label for="message">내용</label>
-												<textarea id="self_content" name="self_content" class="form-control" 
+												<textarea id="self_content" name="slist[0].self_content" class="form-control" 
 												placeholder="내용을 입력하세요." onkeyup="counter()"></textarea>
 											</div>
 										</div>

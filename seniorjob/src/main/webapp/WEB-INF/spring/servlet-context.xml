@@ -19,6 +19,8 @@
 
 	<!-- 정적 컨텐츠: css, img, js -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/image/**" location="/image/" />
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

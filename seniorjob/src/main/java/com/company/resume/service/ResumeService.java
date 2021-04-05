@@ -1,12 +1,19 @@
 package com.company.resume.service;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.company.certificate.service.CertificateVO2;
+import com.company.portfolio.service.PortfolioVO;
+import com.company.self_info.service.Self_InfoVO;
 
 public interface ResumeService {
 	//이력서 전체조회
 	public List<ResumeVO> getSearchResumeList();
 	//이력서 등록
-	public int insertResume(ResumeVO vo);
+	public void insertResume(ResumeVO vo, List<CertificateVO2> clist, List<Self_InfoVO> slist, PortfolioVO portvo, HttpServletRequest req) throws IllegalStateException, IOException;
 	//이력서 수정
 	public int updateResuem(ResumeVO vo);
 	//이력서 삭제
