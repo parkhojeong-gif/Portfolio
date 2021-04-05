@@ -319,22 +319,29 @@
                         </div>
                         
                         <!-- 페이징 -->
-                        <div class="section">
-                            <div class="pull-right">
-                                <div class="pagination">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 페이징 -->
-                    </div> 
+					<div class="col-xs-8">
+						<div class="pagination">
+							<c:if test="${paging.startPage != 1 }">
+								<a href="/MentorList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+							</c:if>
+							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+								<c:choose>
+									<c:when test="${p == paging.nowPage }">
+										<b>${p }</b>
+									</c:when>
+									<c:when test="${p != paging.nowPage }">
+										<a href="/MentorList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${paging.endPage != paging.lastPage}">
+								<a href="/MentorList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+							</c:if>
+						</div>
+					</div>
+					<!-- 페이징 -->
+					
+                   </div> 
                     
                     <!-- 플로팅 배너 -->
                     <div class="col-md-3 pl0 padding-top-40" id="">
@@ -403,7 +410,6 @@
 		mentorRegisterForm.action = "MentoringRegister";
 		mentorRegisterForm.submit();
 	}
-	
 	
 	/* $(function(){ // 플로팅 배너
 			// 기본 위치(top)값

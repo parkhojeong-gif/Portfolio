@@ -88,5 +88,20 @@
 	AND M.MENTOR_ID = #{mentor_id}
 	</select>
 	
+	<!--페이징 처리(1) 레코드 건수  -->
+	<select id="getCountMentor" resultType="int">
+		SELECT COUNT(*) FROM MENTOR
+	</select>
+	
+	<!--페이징 처리(2) 페이지 처리 후 지정된 범위의 멘토 조회  -->
+	<select id="getSearchMentor" resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM(
+			SELECT ROWNUM RN, A.* FROM(
+				SELECT * FROM MENTOR
+				ORDER BY MENTOR_ID
+				) A
+			)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
 	
  </mapper>	

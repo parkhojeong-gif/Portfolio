@@ -6,15 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.company.following.service.FollowingVO;
-import com.company.following.service.impl.FollowingMapper;
 import com.company.mentor.common.FileRenamePolicy;
 import com.company.mentor.service.MentorVO;
 import com.company.mentor.service.impl.MentorMapper;
 import com.company.mentoring.service.impl.MentoringMapper;
-import com.company.users.service.impl.UsersMapper;
+import com.company.service_center.PagingVO;
 
 @Controller
 public class MentorController {
@@ -29,10 +28,25 @@ public class MentorController {
 			return "Mentor/loginCheckAlert";
 		}
 	
-		// 멘토 리스트 페이지 호출
+		// 멘토 리스트 페이지 호출 + 페이징
 		@RequestMapping("/MentorList")
-		public String MentorList(Model model) {
-			model.addAttribute("list", mentorMapper.MentorList());
+		public String MentorList(PagingVO pVo, Model model,
+				@RequestParam(value="nowPage", required=false)String nowPage,
+				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+			
+			int total = mentorMapper.getCountMentor();
+			if(nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "5";
+			}else if(nowPage==null) {
+				nowPage="1";
+			}else if(cntPerPage==null) {
+				cntPerPage="5";
+			}
+			pVo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			model.addAttribute("paging", pVo);
+			model.addAttribute("list", mentorMapper.getSearchMentor(pVo));
+			
 			return "Mentor/mentorList";
 		}
 		
