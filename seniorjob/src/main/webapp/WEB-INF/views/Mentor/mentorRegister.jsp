@@ -228,6 +228,7 @@ function nextPrev(n) {
   if (currentTab >= x.length) {
     // 일정 시간 지난 후 submit
     setTimeout('document.getElementById("regForm").submit()', 2000); // 2초 후 실행
+    
     return false;
   }
   // Otherwise, display the correct tab:
