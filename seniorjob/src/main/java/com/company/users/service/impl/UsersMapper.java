@@ -18,5 +18,6 @@ public interface UsersMapper {
 	// 회원정보 변경
 	public int updateInfo(UsersVO vo) throws Exception;
 	public int emailCheck(String email); //email 중복체크 
+	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
 
 }

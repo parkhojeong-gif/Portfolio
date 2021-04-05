@@ -47,11 +47,11 @@ function btnId(){
 				data : {"email" : $("#email").val()},
 				success:function(result) {
 					if(result != 'fail'){
-						alert("중복된 이메일입니다.");
-						console.log(result);
-					}else{
 						$("#emailCheck").attr("value", "Y");
 						alert("사용가능한 이메일입니다.");
+					}else{
+						alert("중복된 이메일입니다.");
+						console.log(result);
 					}
 				}
 		 }); 
@@ -112,7 +112,7 @@ function btnId(){
 </script>
 <style>
 .error {color: red;}
-.register-blocks form input{border-bottom: 3px solid #fbb530;}
+.register-blocks form input{border: 1px solid #fbb530;}
 .email_success{coler : green; display : none;}
 .email_fail{coler : red; display : none;}
 </style>    
@@ -128,7 +128,7 @@ function btnId(){
                             <div class="form-group">
                                    	<label for="id">아이디</label>
                                     	<form:input path="id" placeholder="아이디를 적어주세요."/><form:errors path="id" cssClass="error"/>
-                                		<form:button class="idCheck" style="position:absolute; right: 15px;" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>
+                                		<form:button class="idCheck" style="position:inherit; right: 20px;" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>
                                    	<div style="display: inline; width : 100%">
                                 	</div>
                                 </div>
@@ -138,7 +138,7 @@ function btnId(){
                                 </div>
                                 <div class="form-group">
                                 <label for="address">주소</label>
-                                	<form:input path="postcode" id="sample6_postcode" placeholder="우편번호"/><form:errors path="postcode" cssClass="error"/>
+                                	<form:input path="postcode" id="sample6_postcode" placeholder="우편번호"/><form:errors path="postcode" cssClass="error"/><br>
 									<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 									<form:input path="address" id="sample6_address" placeholder="주소"/><form:errors path="address" cssClass="error"/><br>
 									<form:input path="detailaddress" id="sample6_detailAddress" placeholder="상세주소"/><form:errors path="detailaddress" cssClass="error"/><br>
@@ -158,8 +158,8 @@ function btnId(){
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <form:input path="email" class="email" placeholder="이메일을 적어주세요.(ex:USER1@NAVER.COM)" name="email"/><form:errors path="email" cssClass="error"/>
-                                    <form:button class="emailCheck" style="position:absolute; right: 15px;" type="button" id="emailCheck" onclick="btnEmail();" value="N">중복체크</form:button>                                   
+                                    <form:input path="email" class="email" placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email"/><form:errors path="email" cssClass="error"/>
+                                    <form:button class="emailCheck" style="position:inherit; right:20px;" type="button" id="emailCheck" onclick="btnEmail();" value="N">중복체크</form:button>                                   
                                 </div>
                                 <div class="text-center">
                                       <button type="submit" class="btn btn-default" >가입</button>

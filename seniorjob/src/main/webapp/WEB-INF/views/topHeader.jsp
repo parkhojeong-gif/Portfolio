@@ -96,6 +96,9 @@
                <c:when test="${users.auth eq 'USER'}">
                	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
 				</c:when>
+				<c:when test="${not empty userInfo}">
+               	<h5>${sessionScope.userInfo.kakaoId}님의 페이지입니다.</h5>
+				</c:when>
            		<c:when test="${users.auth eq 'MENTOR'}">
                	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
 				</c:when>	
@@ -186,6 +189,9 @@
                         </li>
                         
                         <c:if test="${not empty users }">
+							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
+                        </c:if>
+                        <c:if test="${not empty userInfo }">
 							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
                         </c:if>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHome">마이페이지</a></li>

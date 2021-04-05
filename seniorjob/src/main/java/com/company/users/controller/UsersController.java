@@ -32,11 +32,12 @@ import com.company.users.service.impl.UsersMapper;
 public class UsersController {
 
 	@Autowired
-	UsersService usersService ;
+	UsersService usersService;
 	@Autowired
 	UsersMapper usersMapper;
-	@Autowired Kakaoapi kakaoapi;
-	
+	@Autowired
+	Kakaoapi kakaoapi;
+
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
 
@@ -50,19 +51,19 @@ public class UsersController {
 	public String insertInquire(UsersVO vo) {
 		return "memberRegister";
 	}
-		
+
 	@RequestMapping("/insertUsersProc") // 회원가입 처리, 중복체크, 암호화, 유효성검사
 	public String insertUsersProc(@Validated UsersVO vo, BindingResult bresult, Model model) {
 		if (bresult.hasErrors()) {
-			
+
 			return "memberRegister";
 		}
-		
+
 		int result = usersMapper.idCheck(vo);
 		try {
 			if (result == 1) {
 				return "memberRegister";
-				
+
 			} else if (result == 0) {
 				String Pass = vo.getPassword();
 				String pwd = pwdEncoder.encode(Pass);
@@ -70,7 +71,7 @@ public class UsersController {
 
 				usersMapper.insertUsers(vo);
 			}
-			
+
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
@@ -100,43 +101,47 @@ public class UsersController {
 	public String login(UsersVO vo) {
 		return "login";
 	}
-	
-	//kakao login
+
+	// kakao login
 	@RequestMapping("/kakaologin")
-	public String kakaologin(@RequestParam(value = "code", required = false) String code, UsersVO vo, HttpSession session) {
-			System.out.println("######" + code);	
+	public String kakaologin(@RequestParam(value = "code", required = false) String code, UsersVO vo,
+			HttpSession session) {
+		System.out.println("######" + code);
 		String accessToken = kakaoapi.getAccessToken(code);
 		HashMap<String, Object> userInfo = kakaoapi.getUserInfo(accessToken);
-			System.out.println("@AccessToken@" + accessToken);
-			System.out.println("userInfo:" + userInfo.get("email"));
-			System.out.println("nickname:" + userInfo.get("nickname"));
-			System.out.println("profile:" + userInfo.get("profile_image"));
-			System.out.println("kakaoId:" + userInfo.get("kakaoId"));
+		System.out.println("@AccessToken@" + accessToken);
+		System.out.println("userInfo:" + userInfo.get("email"));
+		System.out.println("nickname:" + userInfo.get("nickname"));
+		System.out.println("profile:" + userInfo.get("profile_image"));
+		System.out.println("kakaoId:" + userInfo.get("kakaoId"));
+
+		vo.setId((String) userInfo.get("kakaoId"));
+		UsersVO users = usersMapper.kakaoCheck(vo);
+		System.out.println(users);
+
+		session.setAttribute("userInfo", userInfo);
 		
-		if(vo.equals(userInfo.get("kakaoId"))) {
-			session.setAttribute("accessToken", accessToken);
-			return "redirect:/";
-		}else{
+		if (users == null) {
 			vo.setId((String) userInfo.get("kakaoId"));
 			usersMapper.insertUsers(vo);
 		}
-		return "redirect:/";			
+		return "redirect:/";
 	}
-	
+
 	// login 처리, 암호화
 	@RequestMapping(value = "/loginProc", method = { RequestMethod.GET, RequestMethod.POST })
-	public String loginProc(UsersVO vo, BindingResult result, HttpServletRequest request,
-							RedirectAttributes rttr, Model model) {
+	public String loginProc(UsersVO vo, BindingResult result, HttpServletRequest request, RedirectAttributes rttr,
+			Model model) {
 		HttpSession session = request.getSession();
 		UsersValidation usersvalidation = new UsersValidation();
 		usersvalidation.validate(vo, result);
-		
+
 		if (result.hasErrors()) {
 			return "login";
 		}
 		UsersVO users = usersMapper.logCheck(vo);
-		if(users != null) {
-			boolean psMatch = pwdEncoder.matches(vo.getPassword(), users.getPassword()); //			
+		if (users != null) {
+			boolean psMatch = pwdEncoder.matches(vo.getPassword(), users.getPassword()); //
 			if (psMatch == true) {
 				session.setAttribute("users", users);
 				return "redirect:/";
@@ -145,7 +150,7 @@ public class UsersController {
 				rttr.addFlashAttribute("msg", false);
 				model.addAttribute("message2", "패스워드가 다릅니다.");
 			}
-		}else{
+		} else {
 			model.addAttribute("message", "아이디가 다릅니다.");
 			return "login";
 		}
@@ -158,7 +163,7 @@ public class UsersController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	// 아이디 중복체크
 	@ResponseBody
 	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
@@ -166,28 +171,29 @@ public class UsersController {
 		int result = usersMapper.idCheck(vo);
 		return result;
 	}
-	//email 중복체크
+
+	// email 중복체크
 	@ResponseBody
-	@RequestMapping(value="/emailCheck", method = RequestMethod.POST)
+	@RequestMapping(value = "/emailCheck", method = RequestMethod.POST)
 	public String emailCheck(String email) {
 		int result = usersMapper.emailCheck(email);
-		System.out.println("result:"+result);
-		if(result != 0) {
+		System.out.println("result:" + result);
+		if (result != 0) {
 			return "fail";
-		}else {
+		} else {
 			return "success";
 		}
 	}
-	
-	// 비밀번호 찾기 
+
+	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
-	public void findPwGET() throws Exception{
-		
+	public void findPwGET() throws Exception {
+
 	}
 
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
-	public void findPwPOST(@ModelAttribute UsersVO vo, HttpServletResponse response) throws Exception{
+	public void findPwPOST(@ModelAttribute UsersVO vo, HttpServletResponse response) throws Exception {
 		usersService.findPw(response, vo);
 	}
-	
+
 }
