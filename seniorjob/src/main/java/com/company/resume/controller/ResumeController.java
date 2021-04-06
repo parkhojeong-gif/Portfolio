@@ -1,15 +1,20 @@
 package com.company.resume.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.company.certificate.service.CertificateVO2;
 import com.company.certificate.service.impl.CertificateMapper;
+import com.company.portfolio.service.FileRenamePolicy;
 import com.company.portfolio.service.PortfolioVO;
 import com.company.portfolio.service.impl.PortfolioMapper;
 import com.company.resume.service.ResumeRequestVO;
@@ -47,13 +52,12 @@ public class ResumeController {
 	}
 
 	// 이력서 등록
-	@RequestMapping("/resumeInsert")
-	@ResponseBody
+	@PostMapping("/resumeInsert")
 	public String resumeInsert(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo,
 			PortfolioVO portvo) throws Exception {
 		System.out.println(vo);
 		resumeservice.insertResume(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
-		return "resume/resumeList";
+		return "redirect:/getSearchResumeList";
 	}
 
 	// 이력서 수정폼
@@ -67,7 +71,7 @@ public class ResumeController {
 		certivo.setResume_no(vo.getResume_no());
 		model.addAttribute("clist", certimapper.getCerti(certivo));
 		portvo.setResume_no(vo.getResume_no());
-		model.addAttribute("portvo", portmapper.getPort(portvo));
+		model.addAttribute("plist", portmapper.getPort(portvo));
 		return "resume/resumeUpdate";
 	}
 
@@ -86,49 +90,59 @@ public class ResumeController {
 	}
 
 	// 이력서 수정
-	@RequestMapping("/resumeUpdate")
+	@PostMapping("/resumeUpdate")
+	@ResponseBody
 	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo,
 			PortfolioVO portvo) throws Exception {
-		// portfolio(파일) 수정하는 중(nullpoint 오류)
+		//portfolio(파일) 수정하는 중()
+//		System.out.println(portvo);
 //		MultipartFile[] ports = portvo.getPortFile();
-//		String portnames = "";
-//		boolean start = true;
 //		for (MultipartFile port : ports) {
-//			if (port != null && port.getSize() > 0) {
+//			if (port.getOriginalFilename() != null && port.getOriginalFilename() != "") {
+//				new File(req.getParameter("portfolio")).delete();
+//				String newPath = req.getServletContext().getRealPath("image");
 //				String portfolio = port.getOriginalFilename();
-//				File rename = FileRenamePolicy.rename(new File("c:/upload", portfolio));
-//				if (!start) {
-//					portnames += ",";
-//				} else {
-//					start = false;
-//				}
-//				portnames += rename.getName();
-//				port.transferTo(rename);
+//				File rename = FileRenamePolicy.rename(new File(newPath, portfolio));
+//				port.transferTo(new File(newPath, rename.getName()));
+//				
+//				PortfolioVO portsvo = new PortfolioVO();
+//				portsvo.setPortfolio(rename.getName());
+//				portsvo.setResume_no(vo.getResume_no());
+//				portmapper.updatePort(portsvo);
+//			}else {
+//				portvo.setPortfolio(req.getParameter("portfolio"));
+//				portvo.setResume_no(vo.getResume_no());
+//				portmapper.updatePort(portvo);
 //			}
 //		}
-//		portvo.setPortfolio(portnames);
 		
+		//image 수정(완료)
+		MultipartFile file = vo.getUploadFile();
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			new File(req.getParameter("image")).delete();
+			String newPath = req.getServletContext().getRealPath("image");
+			String image = file.getOriginalFilename();
+			file.transferTo(new File(newPath, image));
+			vo.setImage(image);
+		} else {
+			vo.setImage(req.getParameter("image"));
+		}
+		System.out.println(vo);
 		resumemapper.updateResuem(vo);
-		if(portvo.getPortfolio() != null && !portvo.getPortfolio().isEmpty()){
-			portvo.setResume_no(vo.getResume_no());
-			portmapper.updatePort(portvo);
-		}
-		if(selfvo.getSelf_name() != null && !selfvo.getSelf_name().isEmpty()) {
-			selfvo.setResume_no(vo.getResume_no());
-			selfmapper.updateSelf(selfvo);
-		}
-		if(certivo.getCerti_name() != null && !certivo.getCerti_name().isEmpty()) {
-			certivo.setResume_no(vo.getResume_no());
-			certimapper.updateCerti(certivo);
-		}
-		return "resume/resumeList";
+//		portvo.setResume_no(vo.getResume_no());
+//		portmapper.updatePort(portvo);
+		selfvo.setResume_no(vo.getResume_no());
+		selfmapper.updateSelf(selfvo);
+		certivo.setResume_no(vo.getResume_no());
+		certimapper.updateCerti(certivo);
+		return "redirect:/getSearchResumeList";
 	}
 
 	// 이력서 삭제
-	@RequestMapping("/resumeDelete")
+	@PostMapping("/resumeDelete")
 	public String resumeDelete(ResumeVO vo) {
 		resumemapper.deleteResume(vo);
-		return "resume/resumeList";
+		return "redirect:/getSearchResumeList";
 	}
 
 	// 이력서 단건 조회

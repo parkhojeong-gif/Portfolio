@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>           
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>         
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -28,7 +28,7 @@
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                             <form action="" method="post" name="frm">  
 								<div class="section property-features" align="center"> 
-                                    <h4 class="s-property-title">이력서 번호 | 이력서 제목 | 수정 | 삭제 | 인쇄 | WORD 변환 | PDF 변환 | 첨삭</h4>
+                                    <h4 class="s-property-title">이력서 번호 | 이력서 제목 | 수정 | 삭제 | 인쇄/PDF | WORD 변환 | 첨삭</h4>
                                     <c:forEach items="${list }" var = "resume">    
                                     	<ul>
                                         <li><a>${resume.resume_no }</a></li> 

@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">  
     <!-- 워드파일이 깨지는 오류가 있음. -->
-  <% 
-	response.setHeader("Content-Disposition", "attachment;filename=member.doc");  
+<% 
+	response.setHeader("Content-Disposition", "attachment;filename=member.doc");
 	response.setHeader("Content-Description", "JSP Generated Data");	
-	response.setContentType("application/vnd.ms-word; charset=UTF-8");                       
-%>    
+	response.setContentType("application/vnd.ms-word; charset=euc-kr");                                        
+%>  
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -14,19 +15,6 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 프린트, PDF 저장 -->
-<script>
-	function divPrint(){
-		var initBody = document.body.innerHTML;
-		window.onbeforeprint = function(){
-			document.body.innerHTML = document.getElementById('printIs').innerHTML;
-		}
-		window.onafterprint = function(){
-			document.body.innerHTML = initBody;
-		}
-		window.print();
-	}
-</script>
     <body>
         <!-- property area -->
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
@@ -162,10 +150,9 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="subject">포트폴리오 및 기타문서</label> <br>
-											<c:forTokens items="${portvo.portfolio }" delims="," var="file">
-												${file }<br>
-											</c:forTokens>
-											<input type="file" class="form-control" name="portfolio" multiple="multiple">
+											<c:forEach items="${plist }" var="port">
+											<input type="hidden" name="portfolio" id="portfolio" value="${port.portfolio }">${port.portfolio }<br>
+											</c:forEach>
 										</div>
 									</div>
 									<br><br><br><br><br><br><br><br>

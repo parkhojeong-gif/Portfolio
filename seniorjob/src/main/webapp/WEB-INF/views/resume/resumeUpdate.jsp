@@ -1,13 +1,6 @@
-<%-- <%@ page language="java" contentType="application/vnd.word; charset=UTF-8" pageEncoding="UTF-8"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-    <!-- 워드파일이 깨지는 오류가 있음. -->
-<%--  <% 
-	response.setHeader("Content-Disposition", "attachment;filename=member.doc");  
-	response.setHeader("Content-Description", "JSP Generated Data");	
-	response.setContentType("application/vnd.ms-word; charset=UTF-8");                       
-%>   --%> 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -28,7 +21,35 @@
 		window.print();
 	}
 	
-	/* 수정 */
+	/* 이미지 수정 */
+	
+	$("image").change(function(){
+		if(this.files && this.files[0]){
+			var reader = new FileReader;
+			reader.onload = function(data){
+				$(".select_img").attr("src", data.target.result).width(500);
+			}
+		}
+	})
+	
+</script>
+<!-- 수정 -->
+<script>
+	$(function(){
+		$("resumeup").on("click", function(){
+			var params = JSON.stringify($("#frm").serializeArray());
+			$.ajax({
+				url: 'resumeUpdate',
+				method: 'post',
+				data: params,
+				contentType : 'application/json',
+				dataType: "json",
+				success: function(response){
+					console.log(response);
+				}
+			})
+		})
+	})
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <style>
@@ -51,14 +72,17 @@
                             <a href="">자기소개서</a>
                             <a href="#step3" data-toggle="tab"><button type="button">보기+</button></a>
                             <hr>
-                            <form action="resumeUpdate?resume_no=${resumeVO.resume_no }" method="post" name="frm">
+                            <form method="post" name="frm" id="frm" encType="multipart/form-data"> <!--  action="resumeUpdate?resume_no=${resumeVO.resume_no }" -->
                             	
                                 <div class="row" id="printIs">
                            		   <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>사진</label>
-                                            <div class="select_img"><img src="image/${resumeVO.image }"></div>
-                                            <input type="file" id="image" name="image"> 
+                                            <div class="select_img">
+                                            <input type="file" multiple="multiple" name="uploadFile"> 
+                                            <img src="image/${resumeVO.image }">
+                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -172,21 +196,23 @@
                                             <input type="text" class="form-control" id="certi_date" name="certi_date" value=${certi.certi_date }>
                                         </div>
                                     </div>
+                                    <br><br><br><br><br><br><br><br><br><br>
                                     </c:forEach>  
                                   	   </div>
                                 	</div>
-                                	<br><br><br><br><br><br><br><br><br><br>
                                 	<div class="tab-content">
 										<div class="tab-pane" id="step2">
 											<h3>포트폴리오</h3>
-											<c:forEach items="${portvo }" var="port">
 											<div class="col-sm-6">
 												<div class="form-group">
 													<label for="subject">포트폴리오 및 기타문서</label> <br>
-													<input type="text" class="form-control" name="portfolio" multiple="multiple" value="${port.portfolio }">
+													<c:forEach items="${plist }" var="port">
+													<input type="hidden" name="portfolio" id="portfolio" value="${port.portfolio }">${port.portfolio }<br>
+													</c:forEach>
+													<input type="file" class="form-control" name="portFile" multiple="multiple">
 												</div>
 											</div>
-											</c:forEach>
+											<br><br><br><br><br><br>
 										</div>
 									</div>
 									<br><br><br><br><br><br><br><br>
@@ -215,9 +241,10 @@
                                 <!-- /.row -->
 								<br><br><br><br>
                                  <div class="col-sm-12 text-center">
-                                     <button type="button" class="btn btn-primary" onclick="location='getSearchResumeList'"><i class="fa fa-envelope-o"></i>목록으로</button>
-                                     <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i>수정하기</button>
-                                     <button type="submit" class="btn btn-primary" onclick="divPrint()"><i class="fa fa-envelope-o"></i>인쇄(PDF 저장)</button>
+                                     <button type="button" class="btn btn-primary" onclick="location='getSearchResumeList'"><i class="fa"></i>목록으로</button>
+<!--                                      <i class="fa"><input type="button" id="resumeUp" name="resumeUp" class="btn btn-primary" value="수정하기"></i>  -->
+                                     <button type="button" name="resumeUp" id="resumeup" class="btn btn-primary"><i class="fa"></i>수정하기</button>
+                                     <button type="submit" class="btn btn-primary" onclick="divPrint()"><i class="fa"></i>인쇄(PDF 저장)</button>
                                  </div>
                             </form>
                         </div>

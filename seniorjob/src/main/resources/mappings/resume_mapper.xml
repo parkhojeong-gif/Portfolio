@@ -60,7 +60,8 @@
 						  RESUME_SCHOOL=#{resume_school}, 
 						  RESUME_AREA=#{resume_area}, 
 						  RESUME_START=#{resume_start}, 
-						  RESUME_END=#{resume_end}
+						  RESUME_END=#{resume_end},
+						  IMAGE = #{image}
 		WHERE 			  RESUME_NO=#{resume_no}
 	</update>
 	<delete id="deleteResume">

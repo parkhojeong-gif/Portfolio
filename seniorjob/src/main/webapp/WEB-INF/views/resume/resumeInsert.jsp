@@ -24,6 +24,20 @@
 			});
 		})
 	})
+	
+// 	$(function(){
+// 		$('#addForm').click(function(){
+// 			var yn = true;
+// 			$("#frm").find("input[name^=resume_]").each(function(index, item){
+// 				if($(this).val().trim() == ''){
+// 					alert($(this).attr("data-name") + "항목을 입력하세요.");
+// 					$(this).focus();
+// 					yn = false;
+// 					return false;
+// 				}
+// 			});
+// 		})
+// 	})
 </script>
 <!-- 글자수세기 -->
 <script>
@@ -168,17 +182,15 @@
 					<a href="">자기소개서</a> 
 					<a href="#step3" data-toggle="tab"><button type="button">보기+</button></a>
 					<hr>
-					<form id="frm" action="resumeInsert" method="post" name="frm" encType="multipart/form-data">
+					<form id="frm" action="resumeInsert" method="post" name="frm" encType="multipart/form-data" target="openWin">
 						<div class="row">
 							<div><input type="hidden" value=${ResumeVO.resume_no } id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
 							<div class="col-sm-6">
-							<!-- 이미지 업로드 오류 수정중 -->
 								<div class="form-group">
 									<label>사진</label> 
 									<input type="file" class="form-control" name="uploadFile" multiple="multiple" onchange="setImage(event)">
-<!-- 									<input type="hidden" name="image" id="image"> -->
-									<div id="image_container" class="select_img"></div>
+									<div id="image_container" name="image_container" class="select_img"></div>
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -339,7 +351,7 @@
 								</div>
 								<br> <br> <br> <br>
 								<div class="col-sm-12 text-center">
-									<button type="submit" class="btn btn-primary">
+									<button type="submit" class="btn btn-primary" name="addForm" id="addForm">
 										<i class="fa fa-envelope-o"></i>이력서 저장
 									</button>
 									<button type="button" class="btn btn-primary" name="preview" id="preview">

@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	window.onload = function(){
-		document.getElementById('image').value = opener.document.getElementById('image').value;
+		document.getElementById('image_container').value = opener.document.getElementById('image_container').value;
 		document.getElementById('resume_name').value = opener.document.getElementById('resume_name').value;
 		document.getElementById('resume_birth').value = opener.document.getElementById('resume_birth').value;
 		document.getElementById('resume_phone').value = opener.document.getElementById('resume_phone').value;
@@ -72,6 +72,7 @@
                                         <div class="form-group">
                                             <label for="firstname">사진</label>
                                             <input type="file" class="form-control" id="image" name="image">
+                                            <div id="image_container" name="image_container" class="select_img"></div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
