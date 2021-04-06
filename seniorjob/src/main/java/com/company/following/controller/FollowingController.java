@@ -30,9 +30,10 @@ public class FollowingController {
 			model.addAttribute("url", "getMentor?mentor_id="+vo.getMentor_id());
 			return "common/Fail";
 		}else {
+			followingMapper.MentorFollow(vo);
 			model.addAttribute("msg","팔로우 완료");
 			model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
-			return "common/Success";
+			return "common/Success";	
 		}
 	}
 	
