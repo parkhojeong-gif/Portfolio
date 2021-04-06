@@ -1,38 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>          
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html class="no-js"> <!--<![endif]-->
- <jsp:include page="topHeader.jsp"></jsp:include>
+<html class="no-js">
+<!--<![endif]-->
+<jsp:include page="topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-function btnId(){
-	//입력한 아이디 값이 없을 경우
-	if($("#id").val() == "" ){
-		alert("아이디를 입력하시오.")
-		return;
-	}
+	//id 중복체크 
+	 $(function(){
+		$("#idsuccess").hide();
+		$("#idfail").hide();
+		$("#idregexp").hide();
 	
-	//var _data = {"id" : $("#id").val()}
-	//아이디 중복체크 ajax
-	$.ajax({
-		url : "idCheck",
-		type : "POST",
-		dataType : "json",
-		data : {"id" : $("#id").val()},
-		success : function(data){
-			console.log(data);
-			if(data != 0) {
-				alert("중복된 아이디입니다.");	
-			}else{
-				$("#idCheck").attr("value", "Y");
-				alert("사용가능한 아이디입니다.");
+	 	 $(".id").change(function(){
+	 		 
+	 		$("#idsuccess").hide();
+			$("#idfail").hide();
+			$("#idregexp").hide();
+			
+			var idreg = RegExp(/^[a-zA-Z0-9]{5,10}$/); //대문자,소문자,0~9까지 숫자, 최소 5에서 최대 10까지
+			var id = $("#inputid").val();
+							
+			if(!id.match(idreg)){
+				$("#idregexp").show();
+				return;
 			}
-		},error:function(request,status,error){console.log(request +' / '+ status+ ' / '+ error);}
-	})
-}
-
+			
+			$.ajax({
+				url : "idCheck?id="+id,
+				type : "POST",
+				success : function(result){
+					console.log(result);
+					if(id == null && id == '' ){
+						return false;
+					}
+					else if(result != 1){
+						$("#idsuccess").show();
+						$("#idfail").hide();
+					}else{
+						$("#idsuccess").hide();
+						$("#idfail").show();
+					} 
+				}	
+			})
+		});		
+	});    
+	
+	/* function btnId(){
+		//입력한 아이디 값이 없을 경우
+		if($("#id").val() == "" ){
+			alert("아이디를 입력하시오.")
+			return;
+		}
+		
+		//var _data = {"id" : $("#id").val()}
+		//아이디 중복체크 ajax
+		$.ajax({
+			url : "idCheck",
+			type : "POST",
+			dataType : "json",
+			data : {"id" : $("#id").val()},
+			success : function(data){
+				console.log(data);
+				if(data != 0) {
+					alert("중복된 아이디입니다.");	
+				}else{
+					$("#idCheck").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");
+				}
+			},error:function(request,status,error){console.log(request +' / '+ status+ ' / '+ error);}
+		})
+	}
+ */
 
 	function btnEmail(){
 		//입력한 이메일 값이 없을 경우
@@ -56,11 +97,34 @@ function btnId(){
 				}
 		 }); 
 	}
-
-
+	
+	//password, passcheck 비교
+	
+	 $(function(){ 
+		$("#success").hide();
+		$("#fail").hide();
+		
+	 	 $(".pw").change(function(){
+	 		$("#success").hide();
+			$("#fail").hide();
+			var pw = $("#password").val();
+			var pwck = $("#passCheck").val();
+			if(pw !='' && pwck == ''){
+				null;
+			 }else if(pw != '' || pwck != ''){
+				 if(pw == pwck) {
+					$("#success").show();
+					$("#fail").hide();
+				 }else{
+					$("#success").hide();
+					$("#fail").show();
+				} 
+			}
+		});   
+	});
 </script>
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -111,68 +175,118 @@ function btnId(){
     }
 </script>
 <style>
-.error {color: red;}
-.register-blocks form input{border: 1px solid #fbb530;}
-.email_success{coler : green; display : none;}
-.email_fail{coler : red; display : none;}
-</style>    
-    <body>
-		<div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
-            <div class="container">
-                <div class="row">
-                   <div class="col-md-6">
-                    <div class="box-for overflow">
-                        <div class="col-md-12 col-xs-12 register-blocks">
-                            <h2>회원가입 : </h2> 
-                            <form:form modelAttribute ="usersVO" action="insertUsersProc" method="post" name="UsersVO">
-                            <div class="form-group">
-                                   	<label for="id">아이디</label>
-                                    	<form:input path="id" placeholder="아이디를 적어주세요."/><form:errors path="id" cssClass="error"/>
-                                		<form:button class="idCheck" style="position:inherit; right: 20px;" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>
-                                   	<div style="display: inline; width : 100%">
-                                	</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">비밀번호</label>
-                                    <form:password path="password" maxlength="10" placeholder="비밀번호를 적어주세요."/><form:errors path="password" cssClass="error"/>
-                                </div>
-                                <div class="form-group">
-                                <label for="address">주소</label>
-                                	<form:input path="postcode" id="sample6_postcode" placeholder="우편번호"/><form:errors path="postcode" cssClass="error"/><br>
-									<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-									<form:input path="address" id="sample6_address" placeholder="주소"/><form:errors path="address" cssClass="error"/><br>
-									<form:input path="detailaddress" id="sample6_detailAddress" placeholder="상세주소"/><form:errors path="detailaddress" cssClass="error"/><br>
-									<form:input path="extraaddress" id="sample6_extraAddress" placeholder="참고항목"/><form:errors path="extraaddress" cssClass="error"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phonenum">전화번호</label>
-                                    <form:input path="phonenum" placeholder="전화번호를 적어주세요."/><form:errors path="phonenum" cssClass="error"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">이름</label>
-                                    <form:input path="name" placeholder="이름을 적어주세요."/><form:errors path="name" cssClass="error"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="birth">생일</label>
-                                    <form:input path="birth" placeholder="생일을 적어주세요."/><form:errors path="birth" cssClass="error"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <form:input path="email" class="email" placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email"/><form:errors path="email" cssClass="error"/>
-                                    <form:button class="emailCheck" style="position:inherit; right:20px;" type="button" id="emailCheck" onclick="btnEmail();" value="N">중복체크</form:button>                                   
-                                </div>
-                                <div class="text-center">
-                                      <button type="submit" class="btn btn-default" >가입</button>
-                                </div>
-                            </form:form>
-                        </div>
-                    </div>
-                </div>
-                </div> 
-            </div>
-        </div> 
+.error {
+	color: red;
+}
 
-<jsp:include page="footer.jsp"></jsp:include>
+.register-blocks form input {
+	border: 1px solid #fbb530;
+}
+
+.email_success {
+	coler: green;
+	display: none;
+}
+
+.email_fail {
+	coler: red;
+	display: none;
+}
+</style>
+<body>
+	<div class="content-area error-page"
+		style="background-color: #FCFCFC; padding-bottom: 55px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="box-for overflow">
+						<div class="col-md-12 col-xs-12 register-blocks">
+							<h2>회원가입 :</h2>
+							<form:form modelAttribute="usersVO" action="insertUsersProc"
+								method="post" name="users">
+								<div class="form-group">
+									<label for="id">아이디</label>
+									<form:input path="id" id="inputid" placeholder="아이디를 적어주세요."
+										class="id" />
+									<form:errors path="id" cssClass="error" />
+									<!--<form:button class="idCheck" style="position:inherit; right: 20px;" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>-->
+									<div style="display: inline; width: 100%">
+										<div class="text" id="idsuccess" style="color: green;">※아이디를
+											사용 할 수 있습니다.</div>
+										<div class="text" id="idfail" style="color: red;">※이미
+											사용중인 아이디입니다.</div>
+										<div class="text" id="idregexp" style="color: red;">※아이디 생성시 대소문자와 숫자 조합으로 입력해주세요.</div>	
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="password">비밀번호</label>
+									<form:password path="password" id="password" name="password"
+										maxlength="10" class="pw" />
+									<form:errors path="password" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="passCheck">비밀번호 재확인</label> <input type="password"
+										id="passCheck" name="passCheck" maxlength="10" class="pw" />
+									<div class="text" id="success" style="color: green;">※패스워드가
+										일치합니다.</div>
+									<div class="text" id="fail" style="color: red;">※패스워드가
+										일치하지 않습니다.</div>
+								</div>
+								<div class="form-group">
+									<label for="address">주소</label>
+									<form:input path="postcode" id="sample6_postcode"
+										placeholder="우편번호" />
+									<form:errors path="postcode" cssClass="error" />
+									<br> <input type="button"
+										onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+									<form:input path="address" id="sample6_address"
+										placeholder="주소" />
+									<form:errors path="address" cssClass="error" />
+									<br>
+									<form:input path="detailaddress" id="sample6_detailAddress"
+										placeholder="상세주소" />
+									<form:errors path="detailaddress" cssClass="error" />
+									<br>
+									<form:input path="extraaddress" id="sample6_extraAddress"
+										placeholder="참고항목" />
+									<form:errors path="extraaddress" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="phonenum">전화번호</label>
+									<form:input path="phonenum" placeholder="전화번호를 적어주세요." />
+									<form:errors path="phonenum" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="name">이름</label>
+									<form:input path="name" placeholder="이름을 적어주세요." />
+									<form:errors path="name" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="birth">생일</label>
+									<form:input path="birth" placeholder="생일을 적어주세요." />
+									<form:errors path="birth" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="email">Email</label>
+									<form:input path="email" class="email"
+										placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email" />
+									<form:errors path="email" cssClass="error" />
+									<form:button class="emailCheck"
+										style="position:inherit; right:20px;" type="button"
+										id="emailCheck" onclick="btnEmail();" value="N">중복체크</form:button>
+								</div>
+								<div class="text-center">
+									<button type="submit" class="btn btn-default">가입</button>
+								</div>
+							</form:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

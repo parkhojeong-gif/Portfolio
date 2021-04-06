@@ -54,17 +54,17 @@
 	WHERE ID = #{id}
 	</select>
 	
-	<!-- email 중복체크 -->
-	<select id="emailCheck" resultType="int">
-	SELECT COUNT(*) FROM USERS
-	WHERE EMAIL = #{email}
-	</select>
-	
 	<!-- 패스워드 체크 -->
 	<select id ="passCheck" resultType="int">
 	SELECT COUNT(*) FROM USERS
 	WHERE ID = #{id}
 	AND PASSWORD = #{password}
+	</select>
+	
+	<!-- email 중복체크 -->
+	<select id="emailCheck" resultType="int">
+	SELECT COUNT(*) FROM USERS
+	WHERE EMAIL = #{email}
 	</select>
 	
 	<!-- 회원가입 -->

@@ -15,11 +15,11 @@ import lombok.Data;
 public class UsersVO { //회원테이블
 	//(?=.*[0-9]) 숫자 적어도 하나, (?=.*[a-zA-Z]) 영문 대,소문자 중 적어도 하나, (?=.*\\W) 특수문자 적어도 하나, (?=\\S+$).{8,20} 공백제거, 적어도 8에서 20자 (https://victorydntmd.tistory.com/332)
 	@NotEmpty(message="※아이디를 입력하세요.")
-	@Length(min=5, max = 10) 
+	@Length(min=5, max = 10, message="※아이디는 최소 5에서 최대 10까지 입력 가능합니다.") 
 	@Pattern(regexp="(?=.*[a-zA-Z])(?=.*[0-9])(?=\\S+$).{5,10}", message="※아이디 생성시 대소문자와 숫자 조합으로 입력해주세요.")
 	private String id; //아이디
 	@NotEmpty(message="※비밀번호를 입력하세요.")
-	@Length(min=4, max = 10)
+	@Length(min=4, max = 10, message="※패스워드는 최소 4에서 최대 10까지 입력 가능합니다.")
 	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{4,10}", message="※비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 한 개 이상 포함 되도록 입력하시오.")
 	private String password; //패스워드
 	@NotEmpty(message="※우편번호를 입력하세요")
