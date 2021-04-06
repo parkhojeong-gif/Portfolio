@@ -18,6 +18,21 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 	public int insertBusinessPlanA(BusinessPalnAVO vo) {
 		return dao.insertBusinessPlanA(vo);
 	}
+	
+	@Override
+	public int insertBusinessPlanB(BusinessPalnAVO vo) {
+		return dao.insertBusinessPlanB(vo);
+	}
+
+	@Override
+	public int insertBusinessPlanC(BusinessPalnAVO vo) {
+		return dao.insertBusinessPlanC(vo);
+	}
+
+	@Override
+	public int insertBusinessPlanD(BusinessPalnAVO vo) {
+		return dao.insertBusinessPlanD(vo);
+	}
 
 	@Override
 	public int updateBusinessPlanA(BusinessPalnAVO vo) {
@@ -43,5 +58,12 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo) {
 		return dao.getBpExcel(vo);
 	}
+
+	@Override
+	public String getSeq() {
+		return dao.getSeq();
+	}
+
+
 
 }

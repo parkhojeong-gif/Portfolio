@@ -20,4 +20,10 @@ public class BusinessPalnAVO { //사업계획서a(필수)
 	private String selling_a;		//제품홍보방법
 	private String selling_b;		//수익창출방안
 	private String selling_c;		//시장성공요인 
+	
+
+	private String pHidden;
+	private String mHidden;
+	private String sHidden;
+	
 }

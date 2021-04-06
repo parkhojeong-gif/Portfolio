@@ -49,8 +49,26 @@ public class BusinessPlanAController {
 	}
 	
 	@PostMapping("/insertBusinessPlanA") //등록처리
-	public String insertBusinessPlanAProc(BusinessPalnAVO vo) {
+	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request ) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		String seq = bpService.getSeq();
+		vo.setId(id);
+		vo.setSeq(seq);
 		bpService.insertBusinessPlanA(vo);
+		System.out.println("prodDiv"+vo.getPHidden());
+		if(vo.getPHidden() != null) {
+			bpService.insertBusinessPlanB(vo);
+		};
+		if(vo.getMHidden() != null) {
+			bpService.insertBusinessPlanC(vo);
+		};
+		if(vo.getSHidden() != null) {
+			bpService.insertBusinessPlanD(vo);
+		};
+		
+		
+		
 		return "redirect:/getSearchBusinessPlanA";
 	}
 	

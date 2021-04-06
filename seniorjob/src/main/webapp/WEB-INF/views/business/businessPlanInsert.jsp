@@ -40,6 +40,10 @@
 <link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/responsive.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+</script>
 </head>
 <body>
 
@@ -55,14 +59,12 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<!-- /.row -->
-
+					<form>
 					<hr>
 					<h2>계획사업의 개요</h2>
 					<br>
-					<form>
-						<div class="row">
-
-							<div class="col-sm-12">
+					
+							<div class="col-sm-12" id="">
 								<div class="form-group">
 									<label for="business_a">사업의 배경과 필요성</label>
 									<textarea id="business_a" class="form-control"></textarea>
@@ -84,7 +86,7 @@
 							</div>
 
 							
-						</div>
+					
 						<!-- /.row -->
 					</form>
 				</div>

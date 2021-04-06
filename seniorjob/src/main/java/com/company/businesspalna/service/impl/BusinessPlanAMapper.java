@@ -8,6 +8,11 @@ import com.company.businesspalna.service.BusinessPalnAVO;
 public interface BusinessPlanAMapper {
 
 public int insertBusinessPlanA(BusinessPalnAVO vo);
+public int insertBusinessPlanB(BusinessPalnAVO vo);
+public int insertBusinessPlanC(BusinessPalnAVO vo);
+public int insertBusinessPlanD(BusinessPalnAVO vo);
+
+	public String getSeq();
 	
 	public int updateBusinessPlanA(BusinessPalnAVO vo);
 	

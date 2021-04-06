@@ -13,17 +13,27 @@
 		where seq = #{seq}
 	</select>
 	
+	<select id="getSeq" resultType="String">
+		select business_seq.nextval from dual
+	</select>
+	
 	
 	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
 		select *
-		from Businessplana<!-- a 
+		from Businessplana a 
+		<if test="pHidden != null">
 		JOIN Businessplanb b
 		on A.Seq = B.Seq
+		</if>
+		<if test="mHidden != null">
 		JOIN Businessplanc c
 		on A.Seq = C.Seq
+		</if>
+		<if test="sHidden != null">
 		JOIN Businesspland d
-		on A.Seq = D.Seq -->
-		where seq = #{seq}
+		on A.Seq = D.Seq
+		</if> 
+		where A.Seq = #{seq}
 
 	</select>
 	
@@ -33,14 +43,60 @@
 							BUSINESS_A,
 							BUSINESS_B,
 							BUSINESS_C,
-							ID,
-							COLLECTION)
-					VALUES(business_seq.nextval,
+							ID)
+					VALUES(#{seq},
 							#{business_a},
 							#{business_b},
 							#{business_c},
-							'test',
-							'test') 
+							#{id}
+							) 
+	</insert>
+	
+	<insert id="insertBusinessPlanB" parameterType="BusinessPalnAVO"> 
+	INSERT INTO Businessplanb(SEQ,
+							prod_a,
+							prod_b,
+							prod_c
+							,bhidden
+							)
+					VALUES(#{seq},
+							#{prod_a},
+							#{prod_b},
+							#{prod_c},
+							#{pHidden},
+							) 
+	</insert>
+	
+	<insert id="insertBusinessPlanC" parameterType="BusinessPalnAVO"> 
+	INSERT INTO Businessplanc(SEQ,
+							market_a,
+							market_b,
+							market_c,
+							market_d,
+							mHidden
+							)
+					VALUES(#{seq},
+							#{market_a},
+							#{market_b},
+							#{market_c},
+							#{market_d},
+							#{mHidden}
+							) 
+	</insert>
+	
+	<insert id="insertBusinessPlanD" parameterType="BusinessPalnAVO"> 
+	INSERT INTO Businesspland(SEQ,
+							selling_a,
+							selling_b,
+							selling_c,
+							sHidden
+							)
+					VALUES(#{seq},
+							#{selling_a},
+							#{selling_b},
+							#{selling_c},
+							#{sHidden}
+							) 
 	</insert>
 	
 	<update id="updateBusinessPlanA" parameterType="BusinessPalnAVO">
