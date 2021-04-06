@@ -197,7 +197,7 @@
 	</update>
 	<!--고객센터 신청취소============================================================================  -->
 	
-	<!--공지사항 페이징 처리(1) 페이지 갯수 체크  -->
+	<!--결제환불 페이징 처리(1) 페이지 갯수 체크  -->
 	<select id="listCountQna2"  parameterType="SearchCriteria" resultType="int">
 		SELECT COUNT(SEQ) 
 		FROM service_center
@@ -206,7 +206,7 @@
 		AND SEQ > 0	  
 	</select>
 	
-	<!--공지사항 페이징 처리(2) 페이지 처리 후 게시글 조회  -->
+	<!--결제환불 페이징 처리(2) 페이지 처리 후 게시글 조회  -->
 	<select id="listQna2" resultType="Service_CenterVO" parameterType="Service_CenterVO">
 		select 	SEQ,
 						CATEGORY_A,
@@ -275,5 +275,14 @@
 				 				#{id},
 				 				#{title})
  	</insert>
+ 	<!--신청취소 글 수정  -->
+ 	<update id="updateService_CenterQna2" parameterType="Service_CenterVO">
+	UPDATE service_center 
+	<set>
+	title = #{title},
+	content = #{content}
+	</set>
+					where SEQ = #{seq}
+	</update>
  </mapper>
  
