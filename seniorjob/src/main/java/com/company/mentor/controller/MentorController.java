@@ -13,12 +13,15 @@ import com.company.mentor.common.FileRenamePolicy;
 import com.company.mentor.service.MentorSearchVO;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
+import com.company.mentoring.service.MentoringService;
+import com.company.mentoring.service.MentoringVO;
 import com.company.service_center.PagingVO;
 
 @Controller
 public class MentorController {
 	
 	@Autowired MentorService mentorService;
+	@Autowired MentoringService mentoringService;
 	
 		// 로그인, 회원가입 미비 시 호출되는 페이지
 		// 로그아웃 상태에서 멘토등록 클릭하면 호출
@@ -111,13 +114,13 @@ public class MentorController {
 
 					mentorService.MentorRegisterProc(vo);
 					model.addAttribute("msg", "멘토 등록 완료");
-					model.addAttribute("url", "MentorList");
+					model.addAttribute("url", "Mentor/mentorListForm");
 					return "common/Success";
 				}else {
 					// 멘토 등록 오류 발생 시 해당 페이지로 리턴
 					// 오류 발생 조건: 빈칸 제출
 					model.addAttribute("msg", "멘토 등록 처리 실패. 다시 작성 해주세요.");
-					model.addAttribute("url", "MentorList");
+					model.addAttribute("url", "Mentor/mentorListForm");
 					return "common/Fail"; 
 				}
 			}
@@ -125,8 +128,9 @@ public class MentorController {
 		
 		// 멘토 상세 페이지 호출
 		@RequestMapping("/getMentor")
-		public String getMentor(Model model, MentorVO mVo) {
+		public String getMentor(Model model, MentorVO mVo, MentoringVO mtrVo) {
 			model.addAttribute("list", mentorService.getMentor(mVo));
+			model.addAttribute("mentoring", mentoringService.getMentoring(mtrVo));
 			return "Mentor/getMentor";
 		}
 			

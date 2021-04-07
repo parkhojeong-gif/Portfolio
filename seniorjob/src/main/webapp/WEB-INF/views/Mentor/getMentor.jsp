@@ -45,7 +45,7 @@ html {
 }
 
 .container {
-  padding: 0 16px;
+  padding: 30px;
 }
 .container2{
 
@@ -86,7 +86,6 @@ html {
 .class{float:left}
 input{
         width:100%;
-        height:100px;
         font-size:20px;
       	background_color:#ffffff;
       	float:left;
@@ -110,7 +109,7 @@ input{
 	<div class="row">
 		<div class="column">
 			<div class="card">
-				<div style="width: 200px; height: 150px; float: left;">
+				<div style="width: 200px; height: 150px; display:block">
 					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
 				</div>
 				<div class="container">
@@ -128,7 +127,6 @@ input{
 					</p>
 					<div style="border:1px solid black; padding-bottom:20px;">
 						<div style="float:left; margin-right:30px;">진행중인 멘토링: </div>
-						<div style="float:left; margin-left:30px;">멘토링 횟수: </div>
 						<div style="float:left; margin-left:30px;">팔로워 숫자: </div>
 					</div>
 					<p>
@@ -147,6 +145,9 @@ input{
 		<p>
 		<hr>
 		<p>
+		<form id="mentoringForm" name="mentoringForm" method="post">
+		<input type="hidden" id="id" name="id" value="${list.id }">
+		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
@@ -154,26 +155,30 @@ input{
 				</div>
 				<div class="container">
 					<p>
-						멘토링 제목: <b>${list.usersVO.name }</b>
+						멘토링 제목: <b>${mentoring.mentoring_name }</b>
 					</p>
 					<p class="title">
-						멘토링 코스 시작/종료일: <b>${list.mentoring_kind }</b>
+						멘토링 코스 시작일: <b id="men_start">${mentoring.mentoring_begin_date }</b>
+					</p>
+					<p class="title">
+						멘토링 코스 종료일: <b id="men_end">${mentoring.mentoring_end_date }</b>
 					</p>
 					<p>
-						정원: <b>${list.mentor_company_name }</b>
+						정원: <b>${mentoring.mentoring_limit }</b>
 					</p>
-					<br>
+					<br>	
 						<b>멘토링 코스 내용</b>
 					<br>
-						<input type="text">
+						<textarea value="${mentoring.mentoring_content }" style="margin: 0px; width: 1019px; height: 143px;">${mentoring.mentoring_content }</textarea>
 					<p>
 					<div>
-						<button class="button" style="float:left; width:200px; height:100px;">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; height:100px; margin-left:10px; ">멘토링 신청하기</button>
+						<button class="button" style="float:left; width:200px;" id="BasketBtn">장바구니 담기</button>
+						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn>멘토링 신청하기</button>
 					</div>
 					</div>
 				</div>
 			</div>
+			</form>
 		
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
@@ -208,6 +213,44 @@ input{
 			alert("취소");
 		}
 	}
+	
+	// 장바구니 담기
+	$('#BasketBtn').click(function(){
+		
+		var formData = {
+				id : $('#id')val(),
+				mentoring_number : $('#mentoring_number').val(),
+				men_start : $('#men_start').val(),
+				men_end : $('#men_end').val()
+		}
+		
+		if(confirm("장바구니에 담을까요?")){
+			$.ajax({
+				url:"insertMentoringBasket",
+				type:"post",
+				data: formData,
+				dataType:"json",
+				success:function(result){
+					alert(result);
+					if(result!=null){
+						alert("이미 장바구니에 등록되어 있습니다.");
+						return false;
+					}
+				},
+			});
+		}
+	});
+	
+	// 멘토링 신청
+	$('#PayBtn').click(function(){
+		if(confirm("멘토링을 신청하시겠습니까?")){
+			document.mentoringForm.action = "";
+			document.mentoringForm.submit();
+		}else{
+			document.mentoringForm.focus();
+		}
+	});
+	
 </script>
 
 </body>

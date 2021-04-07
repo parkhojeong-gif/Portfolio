@@ -18,5 +18,33 @@
 		WHERE ID='somTest'
 	</select>
 	
+	<!-- 김찬곤 추가 -->
+ 	<!-- 멘토 상세페이지_장바구니 담기 -->
+ 	<insert id="insertMentoringBasket">
+ 		INSERT INTO SHOPPING(
+							SHOPPING_NO,
+							ID,
+							MENTORING_NUMBER,
+							S_DATE,
+							MEN_START,
+							MET_END,
+							S_STATE
+							)
+		VALUES				((SELECT NVL(MAX(SHOPPING_NO),0)+1 FROM SHOPPING),
+							#{id},
+							#{mentoring_number},
+							sysdate,
+							#{men_start},
+							#{met_end},
+							'장바구니'
+							)
+ 	</insert>
+ 	
+ 	<!-- 김찬곤 추가 -->
+ 	<!-- 멘토 상세페이지_장바구니 중복 체크 -->
+ 	<select id="BasketCheck" resultType="com.company.shopping.service.ShoppingVO">
+ 		SELECT * FROM SHOPPING
+ 		WHERE ID = #{id}
+ 	</select>
 	
  </mapper>
