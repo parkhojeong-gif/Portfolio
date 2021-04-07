@@ -8,6 +8,23 @@
 		where id=#{id}
 	</select>
 	
+	<select id="getSearchBusinessPlanB" resultType="BusinessPalnAVO">
+		select * from businessplanb
+		where id=#{id}
+	</select>
+	
+	<select id="getSearchBusinessPlanC" resultType="BusinessPalnAVO">
+		select * from businessplanc
+		where id=#{id}
+	</select>
+	
+	<select id="getSearchBusinessPlanD" resultType="BusinessPalnAVO">
+		select * from businesspland
+		where id=#{id}
+	</select>
+	
+	
+	
 	<select id="getBpExcel" resultType="map">
 		select * from businessplana
 		where seq = #{seq}
@@ -21,8 +38,8 @@
 	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
 		select *
 		from Businessplana a 
-		<if test="pHidden != null">
-		JOIN Businessplanb b
+		<if test="pHidden != null and pHidden != ''">
+		 JOIN Businessplanb b
 		on A.Seq = B.Seq
 		</if>
 		<if test="mHidden != null">
@@ -56,14 +73,16 @@
 	INSERT INTO Businessplanb(SEQ,
 							prod_a,
 							prod_b,
-							prod_c
-							,bhidden
+							prod_c,
+							phidden,
+							id
 							)
 					VALUES(#{seq},
 							#{prod_a},
 							#{prod_b},
 							#{prod_c},
 							#{pHidden},
+							#{id}
 							) 
 	</insert>
 	
@@ -73,14 +92,16 @@
 							market_b,
 							market_c,
 							market_d,
-							mHidden
+							mHidden,
+							id
 							)
 					VALUES(#{seq},
 							#{market_a},
 							#{market_b},
 							#{market_c},
 							#{market_d},
-							#{mHidden}
+							#{mHidden},
+							#{id}
 							) 
 	</insert>
 	
@@ -89,13 +110,15 @@
 							selling_a,
 							selling_b,
 							selling_c,
-							sHidden
+							sHidden,
+							id
 							)
 					VALUES(#{seq},
 							#{selling_a},
 							#{selling_b},
 							#{selling_c},
-							#{sHidden}
+							#{sHidden},
+							#{id}
 							) 
 	</insert>
 	

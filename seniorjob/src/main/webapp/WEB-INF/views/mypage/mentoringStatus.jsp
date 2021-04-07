@@ -7,7 +7,18 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function detail(num) {
+	var url = "getMentoring?mentoring_number="+num;
+	window.open(url);
+}
+</script>
  <jsp:include page="../topHeader.jsp"></jsp:include>
+ 
+ 
+ 
+ 
     <body>
 
   
@@ -40,7 +51,7 @@
                                             <a href="property-1.html" ><img src=#></a>
                                         </div>
                                         <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> ${list.mentoring_name } </a></h5>
+                                            <h5><span onclick="detail('${list.mentoring_number}')">${list.mentoring_name } </span></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>${list.men_start }-${list.met_end }</b></span>
                                             <span class="proerty-price pull-right">수강중</span>

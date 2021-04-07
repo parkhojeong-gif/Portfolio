@@ -32,13 +32,17 @@ public class BusinessPlanAController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		model.addAttribute("list", bpService.getSearchBusinessPlanA(vo));
+		model.addAttribute("list1", bpService.getSearchBusinessPlanA(vo));
+		model.addAttribute("list2", bpService.getSearchBusinessPlanB(vo));
+		model.addAttribute("list3", bpService.getSearchBusinessPlanC(vo));
+		model.addAttribute("list4", bpService.getSearchBusinessPlanD(vo));
+		//System.out.println(model);
 		return "business/getSearchBusinessPlanA";
 	}
 	
-	@GetMapping("/getBusinessPlanA")			//단건조회
+	@RequestMapping("/getBusinessPlanA")			//단건조회
 	public String getBusinessPlanA(BusinessPalnAVO vo, Model model) {
-
+		System.out.println("pHidden:"+vo);
 		model.addAttribute("bp", bpService.getBusinessPlanA(vo));
 		return "business/getBusinessPlanA";
 	}

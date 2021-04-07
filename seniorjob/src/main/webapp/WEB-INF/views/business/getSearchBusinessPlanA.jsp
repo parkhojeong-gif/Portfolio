@@ -10,8 +10,10 @@
 <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-function detail(seq) {
-	location.href="getBusinessPlanA?seq="+seq //
+function detail() {
+	//location.href="getBusinessPlanA?seq="+seq //
+	var frm = document.frm;
+	frm.submit();
 }
 
 function deleteBp(seq) {
@@ -40,20 +42,35 @@ function excelBp(seq) {
 
 
 
+
 	<div class="content-area recent-property"
 		style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
 
 				<jsp:include page="../mypage.jsp" />
-				<c:forEach items="${list }" var="bp">
+				<form action="getBusinessPlanA" method="post" name="frm">
+				<%-- <c:forEach items="${bb}" var="bb">
+				
+				</c:forEach>
+				<c:forEach items="${bc}" var="bc">
+					<input type="hidden" name="mHidden" id="mHidden" value="${bc.mHidden }">
+				</c:forEach>
+				<c:forEach items="${bd}" var="bd">
+					<input type="hidden" name="sHidden" id="sHidden" value="${bd.sHidden }">
+				</c:forEach> --%>
+				<c:forEach  var="list1" items="${list1}"  var="list2" items="${list2}" >
+				
+					<input type="hidden" name="seq" id="seq" value="${list1.seq }">
+					<input type="hidden" name="pHidden" id="pHidden" value="${list2.pHidden }">
+					
 					<div
 						class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 						<div class="section">
 
 							<section class="post">
 								<div class="text-center padding-b-50">
-									<h2 class="wow fadeInLeft animated" onclick="detail('${bp.seq }')" >${bp.business_a}</h2>
+									<h2 class="wow fadeInLeft animated" onclick="detail()" >${list1.business_a}</h2>
 									<div class="title-line wow fadeInRight animated"></div>
 								</div>
 
@@ -82,10 +99,10 @@ function excelBp(seq) {
 									sit amet, ante. Donec eu libero sit amet quam egestas semper.
 									Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 								<p class="read-more">
-									<a onclick="updateBp('${bp.seq }')" class="btn btn-default btn-border">수정</a>
-									<a onclick="deleteBp('${bp.seq }')" class="btn btn-default btn-border">삭제</a>
-									<a onclick="printBp('${bp.seq }')" class="btn btn-default btn-border">인쇄</a>
-									<a onclick="excelBp('${bp.seq }')" class="btn btn-default btn-border">엑셀저장</a>
+									<a onclick="updateBp('${list1.seq }')" class="btn btn-default btn-border">수정</a>
+									<a onclick="deleteBp('${list1.seq }')" class="btn btn-default btn-border">삭제</a>
+									<a onclick="printBp('${list1.seq }')" class="btn btn-default btn-border">인쇄</a>
+									<a onclick="excelBp('${list1.seq }')" class="btn btn-default btn-border">엑셀저장</a>
 									<a href="single.html" class="btn btn-default btn-border">첨삭요청</a>
 								</p>
 							</section>
@@ -97,6 +114,7 @@ function excelBp(seq) {
 					</div>
 
 				</c:forEach>
+				</form>
 			</div>
 			<!-- row end -->
 

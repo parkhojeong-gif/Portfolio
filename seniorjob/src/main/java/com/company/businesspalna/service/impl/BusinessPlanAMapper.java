@@ -22,5 +22,12 @@ public int insertBusinessPlanD(BusinessPalnAVO vo);
 	
 	public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo);
 
+	public List<BusinessPalnAVO> getSearchBusinessPlanB(BusinessPalnAVO vo);
+	
+	public List<BusinessPalnAVO> getSearchBusinessPlanC(BusinessPalnAVO vo);
+	
+	public List<BusinessPalnAVO> getSearchBusinessPlanD(BusinessPalnAVO vo);
+	
+	
 	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
 }

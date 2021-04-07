@@ -65,7 +65,7 @@ public class MentoringController {
 		return "mypage/mentoringCourse";
 	}
 	
-	@RequestMapping("/requestMentoring")   //마이페이지_내가 만든 멘토링
+	@RequestMapping("/requestMentoring")   //
 	public String requestMentoring(String mentorid, String menteeid, String schedule_name, Model model) {
 		System.out.println(mentorid);
 		System.out.println(menteeid);
@@ -77,6 +77,12 @@ public class MentoringController {
 		return "mypage/mentoringRequest";
 	}
 	
+	//멘토링 상세 페이지
+	@GetMapping("/getMentoring")
+	public String getMentoring(MentoringVO vo, Model model) {
+		model.addAttribute("md", mtService.getMentoring(vo));
+		return "Mentoring/getMentoring";
+	}
 	
 
 	

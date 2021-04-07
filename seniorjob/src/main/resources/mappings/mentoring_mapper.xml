@@ -25,6 +25,11 @@
 		WHERE ID=#{id}
 	</select>
 	
+	<select id="getMentoring" resultType="MentoringVO">
+		select * 
+		from mentoring
+		where mentoring_number=#{mentoring_number}
+	</select>
 
 
 </mapper>

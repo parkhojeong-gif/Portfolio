@@ -78,10 +78,13 @@
 						 WHERE ID = #{id}
 	</update>
 	
+	<!-- 양소민 수정 -->
 	<!-- 회원정보 업데이트 -->
 	<update id="updateUsers" parameterType="com.company.users.service.UsersVO">
-		UPDATE USERS SET PASSWORD = #{password}, 
-					     <if test="address != null and address !=''">ADDRESS= #{address},</if>		
+		UPDATE USERS SET <if test="postcode != null and postcode !=''">postcode=#{postcode},</if>
+					     <if test="address != null and address !=''">ADDRESS= #{address},</if>
+					     <if test="extraaddress != null and extraaddress !=	''">extraaddress=#{extraaddress},</if>	
+					     <if test="detailaddress != null and detailaddress != ''">detailaddress=#{detailaddress},</if>
 						 <if test="phonenum !=null and phonenum !=''">PHONENUM= #{phonenum},</if>
 						 <if test="email !=null and email !=''">EMAIL= #{email},</if>
 						 <if test="birth !=null and birth !=''">BIRTH= #{birth},</if>
