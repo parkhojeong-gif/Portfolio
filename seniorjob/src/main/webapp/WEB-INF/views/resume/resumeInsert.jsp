@@ -9,10 +9,10 @@
 <!--<![endif]-->
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 중간 저장(필수항목 기입) -->
+<!-- 저장하기(필수항목 기입) -->
 <script>
 	$(function(){
-		$('#middle').click(function(){
+		$('#addForm').click(function(){
 			var yn = true;
 			$("#frm").find("input[name^=resume_]").each(function(index, item){
 				if($(this).val().trim() == ''){
@@ -22,22 +22,14 @@
 					return false;
 				}
 			});
+			if(yn){
+				frm.action = "resumeInsert";
+				frm.submit();
+				return true;
+			}
 		})
+		
 	})
-	
-// 	$(function(){
-// 		$('#addForm').click(function(){
-// 			var yn = true;
-// 			$("#frm").find("input[name^=resume_]").each(function(index, item){
-// 				if($(this).val().trim() == ''){
-// 					alert($(this).attr("data-name") + "항목을 입력하세요.");
-// 					$(this).focus();
-// 					yn = false;
-// 					return false;
-// 				}
-// 			});
-// 		})
-// 	})
 </script>
 <!-- 글자수세기 -->
 <script>
@@ -74,7 +66,6 @@
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
-	var listArray;
 	var self_number = 1;
 	$(document).on("click", "#selfAdd" ,function addSelf(){
 			var array = "<div class='col-sm-6'>"
@@ -94,8 +85,8 @@
 				  + "</div>"
 				  + "<br><br><br><br><br><br>";
 				  
-			$("div[id=step3]").append(array);
-			self_number++;
+				    $("div[id=step3]").append(array);
+			    	self_number++;
 	})	 
 				 
 
@@ -149,9 +140,10 @@
 				  + "<input type='date' class='form-control' id='certi_date' name='clist["+certi_number+"].certi_date'>"
 				  + "</div>"
 				  + "</div>"
-				  + "<br><br><br><br><br><br><br><br><br><br><br>";
+				  + "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
 				  
 				  $("div[id=step1]").append(certi);
+				  certi_number++;
 	})
 	
 	
@@ -186,6 +178,12 @@
 						<div class="row">
 							<div><input type="hidden" value=${ResumeVO.resume_no } id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label>이력서 제목</label> 
+									<input type="text" class="form-control" name="resume_title" id="resume_title" data-name="이력서 제목">
+								</div>
+							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>사진</label> 
@@ -351,15 +349,15 @@
 								</div>
 								<br> <br> <br> <br>
 								<div class="col-sm-12 text-center">
-									<button type="submit" class="btn btn-primary" name="addForm" id="addForm">
+									<button type="button" class="btn btn-primary" name="addForm" id="addForm">
 										<i class="fa fa-envelope-o"></i>이력서 저장
 									</button>
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
-									<button type="button" class="btn btn-primary" name="middle" id="middle">
-										<i class="fa fa-envelope-o"></i>중간저장
-									</button>
+<!-- 									<button type="button" class="btn btn-primary" name="middle" id="middle"> -->
+<!-- 										<i class="fa fa-envelope-o"></i>중간저장 -->
+<!-- 									</button> -->
 								</div>
 								<br><br><br>
 						</form>

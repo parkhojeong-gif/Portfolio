@@ -83,8 +83,54 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public int updateResuem(ResumeVO vo) {
-		return resumemapper.updateResuem(vo);
+	public void updateResuem(ResumeVO vo, List<CertificateVO2> clist, List<Self_InfoVO> slist, PortfolioVO portvo, HttpServletRequest req) 
+			throws IllegalStateException, IOException {
+		//삭제
+		resumemapper.deleteResume(vo);
+// 		이력서 
+		// image 업로드(RESUME)
+		MultipartFile file = vo.getUploadFile();
+		if (file != null && !file.isEmpty() && file.getSize() > 0) {
+			String image = file.getOriginalFilename();
+			String path = req.getServletContext().getRealPath("image");
+			// DB에 담기
+			vo.setImage(image);
+			file.transferTo(new File(path, image));
+		}
+		resumemapper.insertResume(vo);
+//		자기소개서
+		if(slist != null ) {
+			for (Self_InfoVO selfvo : slist) {
+				if (selfvo.getSelf_name() != null && !selfvo.getSelf_name().isEmpty()) {
+					selfvo.setResume_no(vo.getResume_no());
+					selfmapper.insertSelf(selfvo);
+				}
+			}
+		}
+//		자격증
+		if(clist != null ) {
+			for (CertificateVO2 certivo : clist) {
+				if (certivo.getCerti_name() != null && !certivo.getCerti_name().isEmpty()) {
+					certivo.setResume_no(vo.getResume_no());
+					certimapper.insertCerti(certivo);
+				}
+			}
+		}
+		// portfolio 업로드 저장
+		MultipartFile[] ports = portvo.getPortFile();
+		for (MultipartFile port : ports) {
+			if (port != null && !port.isEmpty() && port.getSize() > 0) {
+				String portfolio = port.getOriginalFilename();
+				String path = req.getServletContext().getRealPath("image");
+				File rename = FileRenamePolicy.rename(new File(path, portfolio));
+				port.transferTo(new File(path, rename.getName()));
+
+				PortfolioVO portsvo = new PortfolioVO();
+				portsvo.setPortfolio(rename.getName());
+				portsvo.setResume_no(vo.getResume_no());
+				portmapper.insertPort(portsvo);
+			}
+		}
 	}
 
 	@Override

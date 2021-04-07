@@ -1,6 +1,7 @@
 package com.company.resume.controller;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,6 +62,14 @@ public class ResumeController {
 		resumeservice.insertResume(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
 		return "redirect:/getSearchResumeList";
 	}
+	
+	// 이력서 수정
+	@PostMapping("/resumeUpdate")
+	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo,
+			PortfolioVO portvo) throws Exception {
+	resumeservice.updateResuem(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
+	return "resume/resumeUpdate";
+	}
 
 	// 이력서 수정폼
 	@RequestMapping("/resumeUpdateForm")
@@ -90,10 +101,10 @@ public class ResumeController {
 	}
 
 	// 이력서 수정
-	@PostMapping("/resumeUpdate")
+	@PostMapping("/resumeUpdate2")
 	@ResponseBody
-	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo,
-			PortfolioVO portvo) throws Exception {
+	public String resumeUpdate2(@RequestBody List<ResumeVO> rvo,HttpServletRequest req, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo,
+			PortfolioVO portvo ) throws Exception {
 		//portfolio(파일) 수정하는 중()
 //		System.out.println(portvo);
 //		MultipartFile[] ports = portvo.getPortFile();
@@ -128,6 +139,8 @@ public class ResumeController {
 			vo.setImage(req.getParameter("image"));
 		}
 		System.out.println(vo);
+		System.out.println(selfvo);
+		System.out.println(certivo);
 		resumemapper.updateResuem(vo);
 //		portvo.setResume_no(vo.getResume_no());
 //		portmapper.updatePort(portvo);
@@ -141,6 +154,7 @@ public class ResumeController {
 	// 이력서 삭제
 	@PostMapping("/resumeDelete")
 	public String resumeDelete(ResumeVO vo) {
+		System.out.println(vo);
 		resumemapper.deleteResume(vo);
 		return "redirect:/getSearchResumeList";
 	}
@@ -154,12 +168,14 @@ public class ResumeController {
 		model.addAttribute("certivo", certimapper.getCerti(certivo));
 		return "resume/resumeList";
 	}
-
+	
+	// 미리보기
 	@RequestMapping("/preview")
 	public String preview() {
-		return "resume/preview"; // 미리보기
+		return "resume/preview";
 	}
 
+	// 첨삭
 	@RequestMapping("/collection")
 	public String collection(Model model, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo, PortfolioVO portvo) {
 		vo = resumemapper.getResume(vo);
@@ -167,6 +183,6 @@ public class ResumeController {
 		model.addAttribute("selfvo", selfmapper.getSelf(selfvo));
 		model.addAttribute("certivo", certimapper.getCerti(certivo));
 		model.addAttribute("portvo", portmapper.getPort(portvo));
-		return "resume/collection"; // 첨삭
+		return "resume/collection"; 
 	}
 }

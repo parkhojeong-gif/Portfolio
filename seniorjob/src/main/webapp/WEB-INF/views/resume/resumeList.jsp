@@ -28,10 +28,10 @@
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                             <form action="" method="post" name="frm">  
 								<div class="section property-features" align="center"> 
-                                    <h4 class="s-property-title">이력서 번호 | 이력서 제목 | 수정 | 삭제 | 인쇄/PDF | WORD 변환 | 첨삭</h4>
+                                    <h4 class="s-property-title">이력서 제목 | 수정 | 삭제 | 인쇄/PDF | WORD 변환 | 첨삭</h4>
                                     <c:forEach items="${list }" var = "resume">    
                                     	<ul>
-                                        <li><a>${resume.resume_no }</a></li> 
+                                        <li><a>${resume.resume_title }</a></li> 
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">수정</button></a></li>
                                     	<li><a><button type="button" onclick="delRe('${resume.resume_no}')">삭제</button></a></li>
                                     	<!-- 인쇄랑 PDF 저장 같이 됨. -->

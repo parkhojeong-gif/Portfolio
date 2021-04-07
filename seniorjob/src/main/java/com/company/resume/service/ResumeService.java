@@ -15,7 +15,7 @@ public interface ResumeService {
 	//이력서 등록
 	public void insertResume(ResumeVO vo, List<CertificateVO2> clist, List<Self_InfoVO> slist, PortfolioVO portvo, HttpServletRequest req) throws IllegalStateException, IOException;
 	//이력서 수정
-	public int updateResuem(ResumeVO vo);
+	public void updateResuem(ResumeVO vo, List<CertificateVO2> clist, List<Self_InfoVO> slist, PortfolioVO portvo, HttpServletRequest req) throws IllegalStateException, IOException;
 	//이력서 삭제
 	public int deleteResume(ResumeVO vo);
 	//이력서 단건 조회

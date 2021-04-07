@@ -20,4 +20,6 @@ public class ResumeVO {		//이력서필수
 	private String collection;		//지도내용
 	private String image;		//이미지
 	private MultipartFile uploadFile;
+	private String resume_title; //이력서 제목
+	private String[] Date;   //배열 넘겨줄 값
 }

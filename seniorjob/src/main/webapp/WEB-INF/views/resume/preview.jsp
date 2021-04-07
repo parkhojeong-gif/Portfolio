@@ -20,7 +20,8 @@
 		document.getElementById('resume_area').value = opener.document.getElementById('resume_area').value;
 		document.getElementById('resume_start').value = opener.document.getElementById('resume_start').value;
 		document.getElementById('resume_end').value = opener.document.getElementById('resume_end').value;
-		
+		document.getElementById('resume_end').value = opener.document.getElementById('resume_end').value;
+		document.getElementById('resume_title').value = opener.document.getElementById('resume_title').value;
 		};
 </script>
 <head>
@@ -68,6 +69,12 @@
                             <hr>
                             <form>
                                 <div class="row" align="center">
+                                	<div class="col-sm-12">
+										<div class="form-group">
+											<label>이력서 제목</label> 
+											<input type="text" class="form-control" name="resume_title" id="resume_title">
+										</div>
+									</div>
                            		   <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">사진</label>
