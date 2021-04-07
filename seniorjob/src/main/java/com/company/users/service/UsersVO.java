@@ -4,8 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import lombok.Data;
 
@@ -15,8 +15,8 @@ import lombok.Data;
 public class UsersVO { //회원테이블
 	//(?=.*[0-9]) 숫자 적어도 하나, (?=.*[a-zA-Z]) 영문 대,소문자 중 적어도 하나, (?=.*\\W) 특수문자 적어도 하나, (?=\\S+$).{8,20} 공백제거, 적어도 8에서 20자 (https://victorydntmd.tistory.com/332)
 	@NotEmpty(message="※아이디를 입력하세요.")
-	@Length(min=5, max = 10, message="※아이디는 최소 5에서 최대 10까지 입력 가능합니다.") 
-	@Pattern(regexp="(?=.*[a-zA-Z])(?=.*[0-9])(?=\\S+$).{5,10}", message="※아이디 생성시 대소문자와 숫자 조합으로 입력해주세요.")
+	//@Length(min=5, max = 10, message="※아이디는 최소 5에서 최대 10까지 입력 가능합니다.") 
+	//@Pattern(regexp="(?=.*[a-zA-Z])(?=.*[0-9])(?=\\S+$).{5,10}", message="※아이디 생성시 대소문자와 숫자 조합으로 입력해주세요.")
 	private String id; //아이디
 	@NotEmpty(message="※비밀번호를 입력하세요.")
 	@Length(min=4, max = 10, message="※패스워드는 최소 4에서 최대 10까지 입력 가능합니다.")
@@ -31,10 +31,10 @@ public class UsersVO { //회원테이블
 	@NotEmpty(message="※참고항목을 입력하세요")
 	private String extraaddress; //참고항목
 	@NotEmpty(message="※전화번호를 입력하세요")
-	@Pattern(regexp="[0-9]{10,11}", message="※10~11자리 숫자만 입력가능합니다.")
+	//@Pattern(regexp="[0-9]{10,11}", message="※10~11자리 숫자만 입력가능합니다.")
 	private String phonenum; //전화번호
-	@NotEmpty(message="※이메일을 입력하세요.(ex:USER1@NAVER.COM)")
-	@Email(message="※이메일 양식을 지켜주세요.")
+	@NotEmpty(message="※이메일을 입력하세요.")
+	//@Email(message="※이메일 양식을 지켜주세요.")
 	private String email; //이메일
 	@NotEmpty(message="※생일을 입력하세요")
 	private String birth; //생년월일

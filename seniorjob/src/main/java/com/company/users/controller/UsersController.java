@@ -55,7 +55,6 @@ public class UsersController {
 	@RequestMapping("/insertUsersProc") // 회원가입 처리, 중복체크, 암호화, 유효성검사
 	public String insertUsersProc(@Validated UsersVO vo, BindingResult bresult, Model model) {
 		if (bresult.hasErrors()) {
-
 			return "memberRegister";
 		}
 

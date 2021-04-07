@@ -8,24 +8,54 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	//id 중복체크 
+	//공백 제거
+	function noSpace(obj){
+		var space = /\s/; //공백을 체크한다. 	
+		if(space.exec(obj.value)){ 
+			alert("공백을 사용할 수 없습니다.");
+			obj.focus();
+			obj.value = obj.value.replace(/(\s*)/g, "") //공백 제거
+			return false;
+		}
+	}
+	
 	 $(function(){
+		
+	//id 중복체크 
 		$("#idsuccess").hide();
 		$("#idfail").hide();
 		$("#idregexp").hide();
-	
-	 	 $(".id").change(function(){
+	//input:text 공백 제거 설정
+		$("input:text").on("change", function(){
+			noSpace(this);
+		});
+	//input:password 공백 제거 설정	
+		$("input:password").on("change", function(){
+			noSpace(this);
+		});
+
+		//중복체크
+	 	 $(".id").on("change", function(){  // .change()
 	 		 
 	 		$("#idsuccess").hide();
 			$("#idfail").hide();
 			$("#idregexp").hide();
 			
-			var idreg = RegExp(/^[a-zA-Z0-9]{5,10}$/); //대문자,소문자,0~9까지 숫자, 최소 5에서 최대 10까지
 			var id = $("#inputid").val();
-							
-			if(!id.match(idreg)){
+			
+			//공백검사
+			if(id == ""){
+				return;
+			}
+			
+			//패턴검사
+			var idReg = /^(?!ADMIN)(?!admin)[A-za-z0-9]{5,10}/g; //대문자,소문자,0~9까지 숫자, 최소 5에서 최대 10까지
+				
+			if(!id.match(idReg)){
 				$("#idregexp").show();
 				return;
+			}else{
+				$("#idregexp").hide();
 			}
 			
 			$.ajax({
@@ -33,20 +63,144 @@
 				type : "POST",
 				success : function(result){
 					console.log(result);
-					if(id == null && id == '' ){
+					if(id == null && id.trim() == ""){
 						return false;
 					}
-					else if(result != 1){
-						$("#idsuccess").show();
-						$("#idfail").hide();
-					}else{
+					else if(result == 1){
 						$("#idsuccess").hide();
 						$("#idfail").show();
+						
+					}else{
+						$("#idsuccess").show();
+						$("#idfail").hide();
+						
 					} 
 				}	
 			})
 		});		
-	});    
+	    
+	
+	//전화번호 양식
+	
+		$("#phoneregexp").hide();
+
+		$("#inputphone").change(function(){
+			$("#phoneregexp").hide();
+			
+			var phonenum = $("#inputphone").val();
+			var phoneReg = /^\d{3}-\d{3,4}-\d{4}$/;
+
+			if(!phonenum.match(phoneReg)){
+				$("#phoneregexp").show();
+			}else{
+				$("#phoneregexp").hide();
+			}
+		})
+	
+	
+	//생일 양식
+	
+	
+		$("#birthregexp").hide();
+
+		$("#inputbirth").change(function(){
+			$("#birthregexp").hide();
+			
+			var birth = $("#inputbirth").val();
+			var birthReg = /^([0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1]))$/;
+
+			if(!birth.match(birthReg)){
+				$("#birthregexp").show();
+			}else{
+				$("#birthregexp").hide();
+			}
+		})
+
+		
+	//Email 중복체크 
+		$("#emailsuccess").hide();
+		$("#emailfail").hide();
+		$("#emailregexp").hide();
+	
+	 	 $(".email").change(function(){
+	 		 
+	 		$("#emailsuccess").hide();
+			$("#emailfail").hide();
+			$("#emailregexp").hide();
+		
+			var email = $("#inputemail").val();
+			//공백검사
+			if(email == ""){
+				return;
+			}
+		
+			var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-z])*@[0-9a-z]([-_.]?[0-9a-z])*.[a-z]{2,3}$/i;
+			
+			$("#inputemail").on("keyup", function(){
+				$(this).val($(this).val().toUpperCase());
+			})
+				
+			if(!email.match(emailReg)){
+				$("#emailregexp").show();
+				
+			}else{
+				$("#emailregexp").hide();
+				
+			}
+			
+			$.ajax({
+				url : "emailCheck?email="+email,
+				type : "POST",
+				success : function(result){
+					console.log(result);
+					if(email == null && email.trim() == "" ){
+						return false;
+					}
+					else if(result != "fail"){
+						console.log(result);
+						$("#emailsuccess").show();
+						$("#emailfail").hide();
+						$("#inputbutton").attr("disabled", false);
+					}else{
+						$("#emailsuccess").hide();
+						$("#emailfail").show();
+						$("#inputbutton").attr("disabled", true);
+					} 
+				}	
+			})
+		});	
+	 	 
+	 	
+	 	//password, passcheck 비교
+	 		$("#success").hide();
+	 		$("#fail").hide();
+	 		
+	 	 	 $(".pw").change(function(){
+	 	 		$("#success").hide();
+	 			$("#fail").hide();
+	 			var pw = $("#password").val();
+	 			var pwck = $("#passCheck").val();
+	 			if(pw !='' && pwck == ''){
+	 				null;
+	 			 }else if(pw != '' || pwck != ''){
+	 				 if(pw == pwck) {
+	 					$("#success").show();
+	 					$("#fail").hide();
+	 					
+	 				 }else{
+	 					$("#success").hide();
+	 					$("#fail").show();
+	 				} 
+	 			}
+	 		}); 
+	 	 	 
+	 /* 	 //전체 disable button 
+	 		if($("input:text") != ''){
+	 			$("#inputbutton").attr("disabled", true);
+	 		}else {
+	 			$("#inputbutton").attr("disabled", false);	
+	 		} */
+	 });    
 	
 	/* function btnId(){
 		//입력한 아이디 값이 없을 경우
@@ -75,7 +229,7 @@
 	}
  */
 
-	function btnEmail(){
+	/* function btnEmail(){
 		//입력한 이메일 값이 없을 경우
 		if($("#email").val() == "" ){
 			alert("이메일을 입력하시오.")
@@ -96,32 +250,9 @@
 					}
 				}
 		 }); 
-	}
-	
-	//password, passcheck 비교
-	
-	 $(function(){ 
-		$("#success").hide();
-		$("#fail").hide();
-		
-	 	 $(".pw").change(function(){
-	 		$("#success").hide();
-			$("#fail").hide();
-			var pw = $("#password").val();
-			var pwck = $("#passCheck").val();
-			if(pw !='' && pwck == ''){
-				null;
-			 }else if(pw != '' || pwck != ''){
-				 if(pw == pwck) {
-					$("#success").show();
-					$("#fail").hide();
-				 }else{
-					$("#success").hide();
-					$("#fail").show();
-				} 
-			}
-		});   
-	});
+	} */
+ 
+
 </script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -199,38 +330,34 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<div class="box-for overflow">
+					<div class="box-for overflow" id="form">
 						<div class="col-md-12 col-xs-12 register-blocks">
 							<h2>회원가입 :</h2>
 							<form:form modelAttribute="usersVO" action="insertUsersProc"
 								method="post" name="users">
 								<div class="form-group">
 									<label for="id">아이디</label>
-									<form:input path="id" id="inputid" placeholder="아이디를 적어주세요."
+									<form:input path="id" id="inputid" placeholder="아이디를 적어주세요.(ADMIN,admin 사용불가)"
 										class="id" />
 									<form:errors path="id" cssClass="error" />
 									<!--<form:button class="idCheck" style="position:inherit; right: 20px;" type="button" id="idCheck" onclick="btnId();" value="N">중복체크</form:button>-->
 									<div style="display: inline; width: 100%">
-										<div class="text" id="idsuccess" style="color: green;">※아이디를
-											사용 할 수 있습니다.</div>
-										<div class="text" id="idfail" style="color: red;">※이미
-											사용중인 아이디입니다.</div>
-										<div class="text" id="idregexp" style="color: red;">※아이디 생성시 대소문자와 숫자 조합으로 입력해주세요.</div>	
+										<div class="text" id="idsuccess" style="color: green;">※아이디를 사용 할 수 있습니다.</div>
+										<div class="text" id="idfail" style="color: red;">※이미 사용중인 아이디입니다.</div>
+										<div class="text" id="idregexp" style="color: red;">※아이디 생성시 대소문자 또는 숫자로 시작, 최소4 ~ 최대 10까지 입력해주세요.(ADMIN,admin 사용불가)</div>	
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="password">비밀번호</label>
-									<form:password path="password" id="password" name="password"
-										maxlength="10" class="pw" />
+									<form:password path="password" id="password" name="password" 
+										maxlength="10" class="pw" placeholder="최소 4자리 이상 영문 대,소문자와 숫자, 특수기호가 적어도 한 개 이상 포함 되도록 입력." />
 									<form:errors path="password" cssClass="error" />
 								</div>
 								<div class="form-group">
 									<label for="passCheck">비밀번호 재확인</label> <input type="password"
-										id="passCheck" name="passCheck" maxlength="10" class="pw" />
-									<div class="text" id="success" style="color: green;">※패스워드가
-										일치합니다.</div>
-									<div class="text" id="fail" style="color: red;">※패스워드가
-										일치하지 않습니다.</div>
+										id="passCheck" name="passCheck"  maxlength="10" class="pw" />
+									<div class="text" id="success" style="color: green;">※패스워드가 일치합니다.</div>
+									<div class="text" id="fail" style="color: red;">※패스워드가 일치하지 않습니다.</div>
 								</div>
 								<div class="form-group">
 									<label for="address">주소</label>
@@ -239,44 +366,46 @@
 									<form:errors path="postcode" cssClass="error" />
 									<br> <input type="button"
 										onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-									<form:input path="address" id="sample6_address"
+									<form:input path="address" id="sample6_address" 
 										placeholder="주소" />
 									<form:errors path="address" cssClass="error" />
 									<br>
-									<form:input path="detailaddress" id="sample6_detailAddress"
+									<form:input path="detailaddress" id="sample6_detailAddress" 
 										placeholder="상세주소" />
 									<form:errors path="detailaddress" cssClass="error" />
 									<br>
-									<form:input path="extraaddress" id="sample6_extraAddress"
+									<form:input path="extraaddress" id="sample6_extraAddress" 
 										placeholder="참고항목" />
 									<form:errors path="extraaddress" cssClass="error" />
 								</div>
 								<div class="form-group">
 									<label for="phonenum">전화번호</label>
-									<form:input path="phonenum" placeholder="전화번호를 적어주세요." />
+									<form:input path="phonenum" id="inputphone"  placeholder="전화번호를 적어주세요. 예시:010-1234-5678" />
 									<form:errors path="phonenum" cssClass="error" />
+									<div class="text" id="phoneregexp" style="color: red;">※전화번호 양식을 따라주세요. 예시:010-1234-5678</div>
 								</div>
 								<div class="form-group">
 									<label for="name">이름</label>
-									<form:input path="name" placeholder="이름을 적어주세요." />
+									<form:input path="name"  placeholder="이름을 적어주세요." />
 									<form:errors path="name" cssClass="error" />
 								</div>
 								<div class="form-group">
 									<label for="birth">생일</label>
-									<form:input path="birth" placeholder="생일을 적어주세요." />
+									<form:input path="birth" id="inputbirth"  placeholder="생일을 적어주세요. 예시:88년 1월 1일생 -> 880101" />
 									<form:errors path="birth" cssClass="error" />
+									<div class="text" id="birthregexp" style="color: red;">※생일양식을 따라주세요. 예시: 880101</div>
 								</div>
 								<div class="form-group">
 									<label for="email">Email</label>
-									<form:input path="email" class="email"
-										placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email" />
-									<form:errors path="email" cssClass="error" />
-									<form:button class="emailCheck"
-										style="position:inherit; right:20px;" type="button"
-										id="emailCheck" onclick="btnEmail();" value="N">중복체크</form:button>
+									<!-- style에 uppercase를 줘서 대문자로 입력되도록 한다. -->
+									<form:input path="email" id="inputemail" class="email" style="text-transform:uppercase;" placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email" />
+									<form:errors path="email" cssClass="error"/>
+										<div class="text" id="emailsuccess" style="color: green;">※중복되지 않는 이메일입니다.</div>
+										<div class="text" id="emailfail" style="color: red;">※중복된 이메일입니다.</div>
+										<div class="text" id="emailregexp" style="color: red;">※이메일 양식에 맞춰주세요.</div>
 								</div>
 								<div class="text-center">
-									<button type="submit" class="btn btn-default">가입</button>
+									<button type="submit" id="inputbutton" class="btn btn-default">가입</button>
 								</div>
 							</form:form>
 						</div>
