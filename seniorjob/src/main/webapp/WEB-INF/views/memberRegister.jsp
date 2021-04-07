@@ -33,7 +33,7 @@
 		$("input:password").on("change", function(){
 			noSpace(this);
 		});
-
+		
 		//중복체크
 	 	 $(".id").on("change", function(){  // .change()
 	 		 
