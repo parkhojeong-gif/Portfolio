@@ -112,10 +112,13 @@
 	
 	<!-- 세부검색: 인기순(팔로우숫자 기준) -->
 	<select id="getMentorByFollow" resultType="com.company.mentor.service.MentorVO">
-		SELECT COUNT(ID) , MENTOR_ID
-		FROM FOLLOWING
-		GROUP BY MENTOR_ID
+		SELECT M.MENTOR_ID, COUNT(F.ID) "followingVO.followNum"
+		
+			FROM MENTOR M, FOLLOWING F
+			WHERE M.MENTOR_ID = F.MENTOR_ID
+			
+		GROUP BY M.MENTOR_ID
+		ORDER BY "followingVO.followNum" DESC
 	</select>
-	
 	
  </mapper>	

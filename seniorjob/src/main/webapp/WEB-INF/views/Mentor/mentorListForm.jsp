@@ -330,7 +330,7 @@
 		var param = 'optionValue='+$('#items_per_page').val();
 		$('#optionVal').load('MentorList?'+(obj==""?"":param));
 	}
-	
+	// 함수 실행
 	$(function(){
 		optionSelect("");
 	});

@@ -46,8 +46,7 @@
 </div>
 
 <!-- 페이징 -->
-<div class="col-xs-8">
-	<div class="pagination">
+<div style="align:center">
 		<c:if test="${paging.startPage != 1 }">
 			<a
 				href="/MentorList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
@@ -67,6 +66,5 @@
 			<a
 				href="/MentorList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 		</c:if>
-	</div>
 </div>
 <!-- 페이징 -->

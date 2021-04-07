@@ -32,5 +32,6 @@ public class MentorVO { //멘토
 	private MultipartFile mentor_career_certificate_file; // 멘토 경력 증명서 파일
 	
 	private UsersVO usersVO; // Users/Mentor 테이블 조인구문 사용 시 필요
+	private FollowingVO followingVO; // 멘토리스트 세부검색:인기순 쿼리 시 필요
 	
 }
