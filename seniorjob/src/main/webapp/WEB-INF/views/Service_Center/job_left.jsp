@@ -18,28 +18,28 @@
 
 			
 
-				<div class="col-md-2 p0 padding-top-40">
+				<div class="col-md-1 p0 padding-top-40">
 					<div class="blog-asside-right pr0">
 					
 					
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='serviceCenter'">
-								<h3 class="panel-title">커뮤니티</h3>
+								<h3 class="panel-title">서울</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='serviceCenter'">
-								<h3 class="panel-title">공지사항</h3>
+								<h3 class="panel-title">경기</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='resumeInsertForm'">
-								<h3 class="panel-title">멘토링 후기</h3>
+								<h3 class="panel-title">인천</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='seniorTimes'">
-								<h3 class="panel-title">시니어타임즈</h3>
+								<h3 class="panel-title">강원</h3>
 							</div>
 						</div>
 						

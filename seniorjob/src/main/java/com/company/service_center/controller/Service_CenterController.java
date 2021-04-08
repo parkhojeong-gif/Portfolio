@@ -177,4 +177,10 @@ public class Service_CenterController {
 		service_CenterMapper.updateService_CenterQna2(vo);
 		return "redirect:/serviceCenterQna2";
 	}
+	//==================================고객센터 main=============================
+	@RequestMapping("/serviceCenterMain")
+	public String serviceCenterMain() {
+		return "/Service_Center/qna/serviceCenterMain";
+			
+	}
 }

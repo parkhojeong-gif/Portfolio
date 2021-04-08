@@ -129,11 +129,11 @@
                         </li>
 
 
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="">채용공고</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="job">채용공고</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
-                            <a href="serviceCenterQna" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
+                            <a href="serviceCenterQna" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="yamm-content">
@@ -162,14 +162,6 @@
                                                 <ul>
                                                 	<li>
                                                         <a href="serviceCenterQna2">질문 목록</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5><a href="inquire">화상면접사용법</a></h5>
-                                                <ul> 
-                                                	<li>
-                                                        <a href="inquireList">사용법 목록</a>
                                                     </li>
                                                 </ul>
                                             </div>

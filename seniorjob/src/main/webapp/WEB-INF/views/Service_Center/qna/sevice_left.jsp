@@ -18,7 +18,7 @@
 
 			
 
-				<div class="col-md-3 p0 padding-top-40">
+				<div class="col-md-2 p0 padding-top-40">
 					<div class="blog-asside-right pr0">
 					
 					
