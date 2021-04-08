@@ -6,8 +6,8 @@
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 <property name="url" value="jdbc:oracle:thin:@senior_high?TNS_ADMIN=D:/Wallet_seniorjob"/>
-<property name="username" value="admin"/>
-<property name="password" value="Qwerasdf1234"/>
+<property name="username" value="senior"/>
+<property name="password" value="1234"/>
 </bean>
 <!--  Transaction Manager 설정  -->
 <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
