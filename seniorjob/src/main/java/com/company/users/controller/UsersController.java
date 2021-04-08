@@ -82,8 +82,8 @@ public class UsersController {
 	@RequestMapping("/updateUsers") // 유저 정보 수정폼
 	public String updateUsers(UsersVO vo, Model model,  HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		//String id = (String) session.getAttribute("id");
-		vo.setId("somTest");
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		model.addAttribute("list", usersMapper.getUsers(vo));
 		return "/users/updateUsers";
 	}

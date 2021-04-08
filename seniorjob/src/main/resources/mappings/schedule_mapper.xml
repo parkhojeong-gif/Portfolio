@@ -5,17 +5,19 @@
 	<!-- 일정 조회, 마이페이지 홈에있는 calendar에서 확인 가능 -->
 	<select id="getSearchSchedule" parameterType="ScheduleVO" resultType="map">
 		SELECT SCHEDULE_NAME AS "TITLE",
-  				SCHEDULE_START AS "START",
- 				SCHEDULE_END AS "END"
+  				TO_CHAR(schedule_start,'yyyy-mm-dd')||'T'||schedule_start_TIME||':00Z' AS "START",
+ 				TO_CHAR(schedule_end,'yyyy-mm-dd')||'T'||schedule_end_TIME||':00Z' AS "END"
 		FROM SCHEDULE 
 		WHERE
 		<choose>
-		<when test="auth == 'MENTOR'">
+			<when test="auth == 'MENTOR'">
 			MENTORID=#{mentorid}
 			</when>
 			<when test="auth == 'USER'">
 			MENTEEID=#{menteeid} 
 			</when>
+			<otherwise>
+			</otherwise>
 		</choose>
 		AND 
 		STATE='accept'
@@ -40,18 +42,19 @@
 							SCHEDULE_END,
 							STATE,
 							MENTEEID,
-							MENTORID) 
+							MENTORID,
+							SCHEDULE_START_TIME,
+							SCHEDULE_END_TIME) 
 					VALUES(SCHEDULE_SEQ.NEXTVAL,
 							#{schedule_name},
 							#{schedule_con},
-							
-							
-							
 							SYSDATE,
 							SYSDATE+5,
 							'request',
 							#{menteeid},
-							#{mentorid}
+							#{mentorid},
+							#{schedule_start_time},
+							#{schedule_end_time}
 							)
 					
 	</insert>
@@ -60,7 +63,7 @@
 	<update id="updateSchedule" parameterType="ScheduleVO">
 		UPDATE SCHEDULE 
 		SET 
-		STATE='ACCEPT' 
+		STATE='accept' 
 		WHERE 
 		SEQ=#{seq}
 	</update>

@@ -13,4 +13,7 @@ public class ScheduleVO {
 	private String menteeid;			//멘티
 	private String mentorid;			//멘토
 	private String auth;				//권한
+	
+	private String schedule_start_time;		//시작시간
+	private String schedule_end_time;		//종료시간
 }

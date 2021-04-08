@@ -77,7 +77,6 @@
 					<div class="section">
 
                         <form action="updateUsersProc" method="post">
-                        <input type="hidden" name="id" value="somTest">
                             <div class="profiel-header">
                                 <h3>
                                     <b>개인정보수정</b> <br>

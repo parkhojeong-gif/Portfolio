@@ -18,15 +18,14 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
         	
           initialView: 'dayGridMonth',
-          timeZone: 'UTC',
           eventSources : [{
-          		url : "getSearchSchedule"
+          		url : "getSearchSchedule",
+          		success : function(result) {
+          			console.log(result);
+          		}
           }]
         });
         calendar.render();
-        
-        
-       
         
         
       });
