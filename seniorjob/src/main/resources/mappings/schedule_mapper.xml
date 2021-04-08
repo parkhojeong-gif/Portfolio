@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
- "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="com.company.schedule.service.impl.ScheduleMapper">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.schedule.service.impl.ScheduleMapper">
 
-	
+	<!-- 일정 조회, 마이페이지 홈에있는 calendar에서 확인 가능 -->
 	<select id="getSearchSchedule" parameterType="ScheduleVO" resultType="map">
-		SELECT Schedule_Name as "title",
-  				Schedule_Start as "start",
- 				Schedule_End as "end"
+		SELECT SCHEDULE_NAME AS "TITLE",
+  				SCHEDULE_START AS "START",
+ 				SCHEDULE_END AS "END"
 		FROM SCHEDULE 
 		WHERE
 		<choose>
@@ -18,14 +16,12 @@
 			<when test="auth == 'USER'">
 			MENTEEID=#{menteeid} 
 			</when>
-			
-			<otherwise>
-			</otherwise>
 		</choose>
 		AND 
 		STATE='accept'
 	</select>
 	
+	<!-- 멘토가 보낸 요청이 멘티의 마이페이지 홈에서 보임. -->
 	<select id="getSearchRequest" resultType="map">
 		SELECT *
 		FROM SCHEDULE 
@@ -35,8 +31,9 @@
 		STATE='request'
 	</select>
 	
+	<!-- 멘토링 요청 보내기. 내가 만든 멘토링에서 멘토링 요청 버튼을 누르면 작동  -->
 	<insert id="insertSchedule" parameterType="ScheduleVO">
-		insert into schedule(SEQ,
+		INSERT INTO SCHEDULE(SEQ,
 							SCHEDULE_NAME,
 							SCHEDULE_CON,
 							SCHEDULE_START,
@@ -44,11 +41,14 @@
 							STATE,
 							MENTEEID,
 							MENTORID) 
-					values(schedule_seq.nextval,
+					VALUES(SCHEDULE_SEQ.NEXTVAL,
 							#{schedule_name},
 							#{schedule_con},
-							sysdate,
-							sysdate+5,
+							
+							
+							
+							SYSDATE,
+							SYSDATE+5,
 							'request',
 							#{menteeid},
 							#{mentorid}
@@ -56,12 +56,13 @@
 					
 	</insert>
 	
+	<!-- 멘티가 요청 승낙할 시 캘린더에 등록됨.-->
 	<update id="updateSchedule" parameterType="ScheduleVO">
-		update schedule 
-		set 
-		state='accept' 
-		where 
-		seq=#{seq}
+		UPDATE SCHEDULE 
+		SET 
+		STATE='ACCEPT' 
+		WHERE 
+		SEQ=#{seq}
 	</update>
 
 </mapper>

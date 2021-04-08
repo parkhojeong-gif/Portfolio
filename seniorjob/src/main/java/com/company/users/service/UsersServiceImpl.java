@@ -147,4 +147,9 @@ public class UsersServiceImpl implements UsersService {
 		return usersmapper.updateInfo(vo);
 	}
 
+	@Override
+	public int insertCerti(UsersVO vo) {
+		return usersmapper.insertCerti(vo);
+	}
+
 }

@@ -52,6 +52,16 @@
             }
         }).open();
     }
+    
+    function insertCerti() {
+    	var url="popCerti";
+    	window.open(url,"","width=500,height=600");
+    }
+    
+    function insertCareer() {
+    	var url="popCareer";
+    	window.open(url,"","width=500,height=600");
+    }
 </script>
 <body>
   
@@ -143,40 +153,15 @@
                                 
                                 <hr>
                                 <h3>
-                                    <b>자격증 등록</b>
+                                    <b>자격증 목록</b>
                                 </h3>
                             </div>
 
-                            <div class="clear">
-                                
-                                <hr>
-                                <br>
-                                <div class="col-sm-5 col-sm-offset-1">
-                                    <div class="form-group">
-                                        <label>자격증명 :</label>
-                                        <input name="Facebook" type="text" class="form-control" placeholder="https://facebook.com/user">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>발행처/기관 :</label>
-                                        <input name="Twitter" type="text" class="form-control" placeholder="https://Twitter.com/@user">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>자격증번호:</label>
-                                        <input name="website" type="text" class="form-control" placeholder="https://yoursite.com/">
-                                    </div>
-                                     <div class="form-group">
-                                        <label>취득일:</label>
-                                        <input name="website" type="text" class="form-control" placeholder="https://yoursite.com/">
-                                    </div>
-                                </div>  
-
-                             
- 
-                            </div>
+                            
                     
                             <div class="col-sm-5 col-sm-offset-1">
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='등록' />
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
                                 
                                 
                             </div>
@@ -186,33 +171,14 @@
                                 
                                 <hr>
                                 <h3>
-                                    <b>경력인증서 등록</b>
+                                    <b>경력인증서 목록</b>
                                 </h3>
                             </div>
                           
-                            
-                            <div class="clear">
-                                <hr>
-                                <br>
-                              
-                                                                   
-                                        
-                                         
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
-                                                    <p class="help-block">Select multipel images for your property .</p>
-                                                </div>
-                                            </div>
-                                       
-                                  
-                                    <!--  End step 3 -->
-                            </div>
-                            
+                          
                             <div class="col-sm-5 col-sm-offset-1">
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='등록' />
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
                                 <br>
                                 <br>
                             </div>

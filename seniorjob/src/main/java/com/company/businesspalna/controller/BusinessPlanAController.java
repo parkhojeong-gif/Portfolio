@@ -27,7 +27,8 @@ public class BusinessPlanAController {
 	@Autowired BusinessPlanAService bpService;
 	
 
-	@GetMapping("/getSearchBusinessPlanA") //전체조회
+	
+	@GetMapping("/getSearchBusinessPlanA") //사업계획서 리스트 //수정중, 작동안됨.
 	public String getSearchBusinessPlanA(BusinessPalnAVO vo, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -40,22 +41,24 @@ public class BusinessPlanAController {
 		return "business/getSearchBusinessPlanA";
 	}
 	
-	@RequestMapping("/getBusinessPlanA")			//단건조회
+	
+	@RequestMapping("/getBusinessPlanA")			//사업계획서 하나만 조회. //수정중, 작동안됨.
 	public String getBusinessPlanA(BusinessPalnAVO vo, Model model) {
 		System.out.println("pHidden:"+vo);
 		model.addAttribute("bp", bpService.getBusinessPlanA(vo));
 		return "business/getBusinessPlanA";
 	}
 	
-	@GetMapping("/insertBusinessPlanA") //등록페이지로
+	
+	@GetMapping("/insertBusinessPlanA") //사업계획서 등록 페이지로 이동
 	public String insertBusinessPlanA(BusinessPalnAVO vo) {
 		return "business/insertBusinessPlanA";
 	}
 	
-	@PostMapping("/insertBusinessPlanA") //등록처리
+	@PostMapping("/insertBusinessPlanA") //사업계획서 등록 처리
 	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request ) {
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("id"); //login할 때 session에 저장해둔 id 값을 꺼내씀.
 		String seq = bpService.getSeq();
 		vo.setId(id);
 		vo.setSeq(seq);

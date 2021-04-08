@@ -1,62 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="com.company.businesspalna.service.impl.BusinessPlanAMapper">
+<mapper namespace="com.company.businesspalna.service.impl.BusinessPlanAMapper">
+
+	<!-- businessplanA,B,C,D talbe에서 id값을 조건으로 등록된 사업계획서 목록을 가져옴 -->
 	<select id="getSearchBusinessPlanA" resultType="BusinessPalnAVO">
-		select * from businessplana
-		where id=#{id}
+		SELECT * FROM BUSINESSPLANA
+		WHERE ID=#{id}
 	</select>
 	
 	<select id="getSearchBusinessPlanB" resultType="BusinessPalnAVO">
-		select * from businessplanb
-		where id=#{id}
+		SELECT * FROM BUSINESSPLANB
+		WHERE ID=#{id}
 	</select>
 	
 	<select id="getSearchBusinessPlanC" resultType="BusinessPalnAVO">
-		select * from businessplanc
-		where id=#{id}
+		SELECT * FROM BUSINESSPLANC
+		WHERE ID=#{id}
 	</select>
 	
 	<select id="getSearchBusinessPlanD" resultType="BusinessPalnAVO">
-		select * from businesspland
-		where id=#{id}
+		SELECT * FROM BUSINESSPLAND
+		WHERE ID=#{id}
 	</select>
 	
 	
-	
+	<!-- 사업계획서 엑셀로 다운로드할 때 사업계획서 단건조회 -->
 	<select id="getBpExcel" resultType="map">
-		select * from businessplana
-		where seq = #{seq}
+		SELECT * FROM BUSINESSPLANA
+		WHERE SEQ = #{seq}
 	</select>
 	
+	<!-- 사업계획서 번호. 마지막으로 쓰인 sequence의 다음 값을 가져온다. -->
 	<select id="getSeq" resultType="String">
-		select business_seq.nextval from dual
+		SELECT BUSINESS_SEQ.NEXTVAL FROM DUAL
 	</select>
 	
-	
+	<!-- 사업계획서 단건조회 -->
 	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
-		select *
-		from Businessplana a 
+		SELECT *
+		FROM BUSINESSPLANA A 
 		<if test="pHidden != null and pHidden != ''">
-		 JOIN Businessplanb b
-		on A.Seq = B.Seq
+		 JOIN BUSINESSPLANB B
+		ON A.SEQ = B.SEQ
 		</if>
 		<if test="mHidden != null">
-		JOIN Businessplanc c
-		on A.Seq = C.Seq
+		JOIN BUSINESSPLANC C
+		ON A.SEQ = C.SEQ
 		</if>
 		<if test="sHidden != null">
-		JOIN Businesspland d
-		on A.Seq = D.Seq
+		JOIN BUSINESSPLAND D
+		ON A.SEQ = D.SEQ
 		</if> 
-		where A.Seq = #{seq}
-
+		WHERE A.SEQ = #{SEQ}
 	</select>
 	
-	
+	<!-- 사업계획서 등록 -->
 	<insert id="insertBusinessPlanA" parameterType="BusinessPalnAVO"> 
-	INSERT INTO Businessplana(SEQ,
+	INSERT INTO BUSINESSPLANA(SEQ,
 							BUSINESS_A,
 							BUSINESS_B,
 							BUSINESS_C,
@@ -70,12 +71,12 @@
 	</insert>
 	
 	<insert id="insertBusinessPlanB" parameterType="BusinessPalnAVO"> 
-	INSERT INTO Businessplanb(SEQ,
-							prod_a,
-							prod_b,
-							prod_c,
-							phidden,
-							id
+	INSERT INTO BUSINESSPLANB(SEQ,
+							PROD_A,
+							PROD_B,
+							PROD_C,
+							PHIDDEN,
+							ID
 							)
 					VALUES(#{seq},
 							#{prod_a},
@@ -87,13 +88,13 @@
 	</insert>
 	
 	<insert id="insertBusinessPlanC" parameterType="BusinessPalnAVO"> 
-	INSERT INTO Businessplanc(SEQ,
-							market_a,
-							market_b,
-							market_c,
-							market_d,
-							mHidden,
-							id
+	INSERT INTO BUSINESSPLANC(SEQ,
+							MARKET_A,
+							MARKET_B,
+							MARKET_C,
+							MARKET_D,
+							MHIDDEN,
+							ID
 							)
 					VALUES(#{seq},
 							#{market_a},
@@ -106,12 +107,12 @@
 	</insert>
 	
 	<insert id="insertBusinessPlanD" parameterType="BusinessPalnAVO"> 
-	INSERT INTO Businesspland(SEQ,
-							selling_a,
-							selling_b,
-							selling_c,
-							sHidden,
-							id
+	INSERT INTO BUSINESSPLAND(SEQ,
+							SELLING_A,
+							SELLING_B,
+							SELLING_C,
+							SHIDDEN,
+							ID
 							)
 					VALUES(#{seq},
 							#{selling_a},
@@ -122,8 +123,10 @@
 							) 
 	</insert>
 	
+	
+	<!-- 사업계획서 수정 -->
 	<update id="updateBusinessPlanA" parameterType="BusinessPalnAVO">
-	UPDATE Businessplana 
+	UPDATE BUSINESSPLANA 
 	<set>
 		BUSINESS_A =#{business_a},
 		BUSINESS_B=#{business_b},
@@ -133,11 +136,11 @@
 	</update>
 	
 	
+	<!-- 사업계획서 삭제 -->
 	<delete id="deleteBusinessPlanA" parameterType="BusinessPalnAVO">
-	DELETE FROM Businessplana 
+	DELETE FROM BUSINESSPLANA 
 	WHERE SEQ=#{seq}
 	</delete>
-	
 	
 	
 </mapper>

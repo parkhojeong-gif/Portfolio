@@ -17,5 +17,7 @@ public interface UsersMapper {
 	public void sendEmail(UsersVO vo, String div) throws Exception;
 	// 패스워드 변경
 	public int updateInfo(UsersVO vo) throws Exception;
+	
+	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
 
 }
