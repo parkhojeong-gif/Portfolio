@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class HomeController {
+public class ManagerController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
 	
 	//메인으로
 	@RequestMapping("/manager")
-	public String AdminMain() {
+	public String ManagerMain() {
 	
-		return "AdminMain";
+		return "ManagerMain";
 	}
 	//회원관리
 	@RequestMapping("/user")
