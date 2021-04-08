@@ -42,7 +42,7 @@
 	
 	<!-- 멘토링 상세조회-->
 	<!-- 양소민 -->
-	<select id="getSearchMentoring" resultType="MentoringVO">
+	<select id="getSearchMentoring" resultType="com.company.mentoring.service.MentoringVO">
 		SELECT
 				NAME,
 				MENTORING_NUMBER,
@@ -64,12 +64,7 @@
 		WHERE ID=#{id}
 	</select>
 	
-	<!-- 멘토링 단건조회, 양소민 추가 -->
-	<select id="getMentoring" resultType="MentoringVO">
-		SELECT * 
-		FROM MENTORING
-		WHERE MENTORING_NUMBER=#{mentoring_number}
-	</select>
+
 
 
 </mapper>
