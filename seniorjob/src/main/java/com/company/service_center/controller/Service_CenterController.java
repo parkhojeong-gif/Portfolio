@@ -90,14 +90,15 @@ public class Service_CenterController {
 
 		model.addAttribute("list", service_CenterMapper.listQna(scri));
 
-		PageMaker pageMaker = new PageMaker(); //페이징
+		PageMaker pageMaker = new PageMaker(); // 페이징
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service_CenterMapper.listCountQna(scri));
 
 		model.addAttribute("pageMaker", pageMaker);
 
-		return "/Service_Center/qna/serviceCenterQna"; 
+		return "/Service_Center/qna/serviceCenterQna";
 	}
+
 	@RequestMapping("/getService_CenterQna") // 결제환불 단건조회
 	public String getService_CenterListQna(Model model, Service_CenterVO vo) {
 		model.addAttribute("gongji", service_CenterMapper.getService_CenterQna(vo));
@@ -112,22 +113,25 @@ public class Service_CenterController {
 	public String insertService_CenterQna(Service_CenterVO vo) {
 		return "/Service_Center/qna/insertService_CenterFormQna";
 	}
-	
+
 	@RequestMapping("/insertService_CenterQna") // 결제환불 등록
 	public String insertService_CenterProcQna(Service_CenterVO vo) {
 		service_CenterMapper.insertService_CenterQna(vo);
 		return "redirect:/serviceCenterQna";
 	}
+
 	@RequestMapping("/updateService_CenterFormQna") // 결제환불 수정폼
 	public String updateService_CenterQna(Service_CenterVO vo, Model model) {
 		model.addAttribute("list", service_CenterMapper.getService_CenterQna(vo));
-		return "/Service_Center/qna/updateService_CenterFormQna"; 
+		return "/Service_Center/qna/updateService_CenterFormQna";
 	}
+
 	@RequestMapping("/updateService_CenterQna") // 결제환불 수정
 	public String updateService_CenterProcQna(Service_CenterVO vo) {
 		service_CenterMapper.updateService_CenterQna(vo);
 		return "redirect:/serviceCenterQna";
 	}
+
 	@RequestMapping("/deleteService_CenterQna") // 결제환불 삭제
 	public String deleteService_CenterQna(Service_CenterVO vo) {
 		service_CenterMapper.deleteService_Center(vo);
@@ -140,14 +144,15 @@ public class Service_CenterController {
 
 		model.addAttribute("list", service_CenterMapper.listQna2(scri));
 
-		PageMaker pageMaker = new PageMaker(); //페이징
+		PageMaker pageMaker = new PageMaker(); // 페이징
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service_CenterMapper.listCountQna2(scri));
 
 		model.addAttribute("pageMaker", pageMaker);
 
-		return "/Service_Center/qna2/serviceCenterQna2"; 
+		return "/Service_Center/qna2/serviceCenterQna2";
 	}
+
 	@RequestMapping("/getService_CenterQna2") // 결제환불 단건조회
 	public String getService_CenterListQna2(Model model, Service_CenterVO vo) {
 		model.addAttribute("gongji", service_CenterMapper.getService_CenterQna2(vo));
@@ -157,30 +162,38 @@ public class Service_CenterController {
 		service_CenterMapper.preNextQna2(vo); // 게시글 이전/다음
 		return "/Service_Center/qna2/getService_CenterQna2";
 	}
+
 	@RequestMapping("/insertService_CenterFormQna2") // 신청취소 등록폼
 	public String insertService_CenterQna2(Service_CenterVO vo) {
 		return "/Service_Center/qna2/insertService_CenterFormQna2";
 	}
-	
+
 	@RequestMapping("/insertService_CenterQna2") // 신청취소 등록
 	public String insertService_CenterProcQna2(Service_CenterVO vo) {
 		service_CenterMapper.insertService_CenterQna2(vo);
 		return "redirect:/serviceCenterQna2";
 	}
+
 	@RequestMapping("/updateService_CenterFormQna2") // 신청취소 수정폼
 	public String updateService_CenterQna2(Service_CenterVO vo, Model model) {
 		model.addAttribute("list", service_CenterMapper.getService_CenterQna2(vo));
-		return "/Service_Center/qna2/updateService_CenterFormQna2"; 
+		return "/Service_Center/qna2/updateService_CenterFormQna2";
 	}
+
 	@RequestMapping("/updateService_CenterQna2") // 신청취소 수정
 	public String updateService_CenterProcQna2(Service_CenterVO vo) {
 		service_CenterMapper.updateService_CenterQna2(vo);
 		return "redirect:/serviceCenterQna2";
 	}
-	//==================================고객센터 main=============================
+
+	// ==================================고객센터 main=============================
 	@RequestMapping("/serviceCenterMain")
 	public String serviceCenterMain() {
 		return "/Service_Center/qna/serviceCenterMain";
-			
+	}
+	@RequestMapping("/serviceCenterMain2")
+	public String serviceCenterMain2() {
+		return "/Service_Center/qna/serviceCenterMain2";
+
 	}
 }
