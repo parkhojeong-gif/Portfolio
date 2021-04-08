@@ -37,21 +37,7 @@
 	$(document).on("click", "#certiPl", function(){  
 		var count = $(".certi_this").length;
 		var certi_temp = $(".certi_temp").html();
-		$(".certi_temp").find("input[name^=clist]").each(function(index, item){
-			var certiNew = $(this).attr("name");
-			certiNew.replace("[]", "["+count+"]");
-			$(this).attr("name", certiNew)
-		})
-// 		$(".certi_temp").find("#clist.accept").each(function(index, item){
-// 			var certiNew = $(this).attr("name");
-// 			certiNew.replace("[]", "["+count+"]");
-// 			$(this).attr("name", certiNew)
-// 		})
-// 		$(".certi_temp").find("#clist.certi_kinds").each(function(index, item){
-// 			var certiNew = $(this).attr("name");
-// 			certiNew.replace("[]", "["+count+"]");
-// 			$(this).attr("name", certiNew)
-// 		})
+		certi_temp = certi_temp.replace(/\[\]/g,"["+count+"]"); //정규식([] 를 찾아서 바꾸기)
 		$("div[id=certi_ad]").append(certi_temp);
 	})
 	
@@ -64,35 +50,15 @@
 	
 	
 	/* 자기소개서 추가 */
-	var self_number = 1;
-	$(document).on("click", "#selfPl" ,function addSelf(){
-			var array = "<div class='self_this'>"
-				  + "<br><br><br>"
-				  + "<button type='button' id='selfDe' name='selfDel'>삭제</button>"
-				  + "<div class='col-sm-6'>"
-				  + "<div class='form-group'>" 
-				  + "<label>제목</label>"
-				  + "<input type='text' class='form-control' id='self_name' name='slist.self_name[]' placeholder='자기소개서 제목'>"
-				  + "</div>"
-				  + "</div>"
-				  + "<div class='col-sm-12'>" 
-				  + "<div class='form-group'>" 
-				  + "<label>내용</label>"
-				  + "<textarea id='self_content' name='slist.self_content[]' class='form-control' placeholder='내용을 입력하세요.' onkeyup='counter()'></textarea>"
-				  + "</div>"
-				  + "</div>"
-				  + "<div class='col-sm-12'>" 
-				  + "<input type='text' id='cnt' name='cnt'>글자 입력이 가능합니다."
-				  + "</div>"
-				  + "<br><br><br><br><br><br>"
-				  + "</div>";
-				  
-				  $("div[id=self_ad]").append(array);
-			      self_number++;
-	})	
+	$(document).on("click", "#selfPl", function(){
+		var count = $(".self_this").length;
+		var self_temp = $(".self_temp").html();
+		self_temp = self_temp.replace(/\[\]/g, "["+count+"]")
+		$("div[id=self_ad]").append(self_temp);
+	})
 	
 	/* 자기소개서 삭제 */
-	$(document).on("click", "#selfDe", function(){
+	$(document).on("click", "#selfDel", function(){
 		var self = $(this).closest('.self_this');
 		self.remove();
 	})
@@ -120,12 +86,6 @@
                         <div class="" id="contact1">                        
                             <!-- /.row -->
                             <div align="center"><h2>수정</h2></div>
-<!--                             <a href="">자격증</a> -->
-<!--                             <a href="#step1" data-toggle="tab"><button type="button">보기+</button></a> &nbsp;&nbsp; -->
-<!--                             <a href="">포트폴리오</a> -->
-<!--                             <a href="#step2" data-toggle="tab"><button type="button">보기+</button></a>&nbsp;&nbsp; -->
-<!--                             <a href="">자기소개서</a> -->
-<!--                             <a href="#step3" data-toggle="tab"><button type="button">보기+</button></a> -->
                             <hr>
                             <form method="post" name="frm" id="frm" encType="multipart/form-data" action="resumeUpdate?resume_no=${resumeVO.resume_no }">
                             	
@@ -210,12 +170,13 @@
                                     <button type='button' id='certiPl' name='certiPl'>추가</button>
                                     <c:forEach items="${clist}" var="certi" varStatus="i"> 
                                     <div class='certi_this'>
-                                    <input type="hidden" id="certi_no" name="clist.certi_no[${i.index }]" value=${certi.certi_no }>
+                                    <input type="hidden" id="certi_no" name="clist[${i.index }].certi_no" value=${certi.certi_no }>
+                                    <button type='button' id='certiDel' name='certiDel'>삭제</button>
 									<br><br>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                         	<label>자격증 항목</label>
-                                            <select id = "certi_kinds" name = "clist.certi_kinds[${i.index }]" value=${certi.certi_kinds }>
+                                            <select id = "certi_kinds" name = "clist[${i.index }].certi_kinds" value=${certi.certi_kinds }>
 												<option value="IT" <c:if test="${certi.certi_kinds  eq 'IT' }">selected</c:if>>IT</option>
 												<option value="세무/회계" <c:if test="${certi.certi_kinds eq '세무/회계' }">selected</c:if>>세무/회계</option>
 												<option value="건축" <c:if test="${certi.certi_kinds eq '건축' }">selected</c:if>>건축</option>
@@ -231,7 +192,7 @@
 									 <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>합격구분</label>
-                                            <select name="clist.accept[${i.index }]" id="accept" value=${certi.accept }>
+                                            <select name="clist[${i.index }].accept" id="accept" value=${certi.accept }>
 												<option value="1차합격" <c:if test="${certi.accept  eq '1차합격' }">selected</c:if>>1차합격</option>
 												<option value="2차합격" <c:if test="${certi.accept  eq '2차합격' }">selected</c:if>>2차합격</option>
 												<option value="필기합격" <c:if test="${certi.accept  eq '필기합격' }">selected</c:if>>필기합격</option>
@@ -280,19 +241,20 @@
 									<div id="self_ad">
 										<h3>자기소개서</h3>
 										<button type="button" id="selfPl" name="selfPl">추가</button>
-										<c:forEach items="${slist }" var="self">
+										<c:forEach items="${slist }" var="self" varStatus="i">
 										<div class='self_this'>
-										<input type="hidden" id="self_no" name="slist.self_no[]" value="${self.self_no }">
+										<input type="hidden" id="self_no" name="slist[${i.index }].self_no" value="${self.self_no }">
+										<button type='button' id='selfDel' name='selfDel'>삭제</button>
 										<div class="col-sm-10">
 											<div class="form-group">
 												<label for="subject">제목</label> 
-												<input type="text" class="form-control" id="self_name" name="slist.self_name[]" placeholder="자기소개서 제목" value=${self.self_name }>
+												<input type="text" class="form-control" id="self_name" name="slist[${i.index }].self_name" placeholder="자기소개서 제목" value=${self.self_name }>
 											</div>
 										</div>
 										<div class="col-sm-12">
 											<div class="form-group">
 												<label for="message">내용</label>
-												<textarea id="self_content" name="slist.self_content" class="form-control" 
+												<textarea id="self_content" name="slist[${i.index }].self_content" class="form-control" 
 												placeholder="내용을 입력하세요.">${self.self_content }</textarea>
 											</div>
 										</div>
@@ -315,61 +277,83 @@
             </div>
         </div>
 		<jsp:include page="../footer.jsp"></jsp:include>
-		<div  style="display: none" class="certi_temp"> 
+		
+		<!-- 자격증 추가(숨겨둔 자격증을 추가) -->
+		<div style="display: none" class="certi_temp"> 
 		  <div class='certi_this'>
-                                    <input type="hidden" name="clist.certi_no[${i.index }]" value=${certi.certi_no }>
-									<br><br>
-                                     <button type='button' id='certiDel' name='certiDel'>삭제</button>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                        	<label>자격증 항목</label>
-                                            <select name = "clist.certi_kinds[${i.index }]" value=${certi.certi_kinds }>
-												<option value="IT" <c:if test="${certi.certi_kinds  eq 'IT' }">selected</c:if>>IT</option>
-												<option value="세무/회계" <c:if test="${certi.certi_kinds eq '세무/회계' }">selected</c:if>>세무/회계</option>
-												<option value="건축" <c:if test="${certi.certi_kinds eq '건축' }">selected</c:if>>건축</option>
-												<option value="농업" <c:if test="${certi.certi_kinds eq '농업' }">selected</c:if>>농업</option>
-												<option value="디자인" <c:if test="${certi.certi_kinds eq '디자인' }">selected</c:if>>디자인</option>
-												<option value="보건/의료" <c:if test="${certi.certi_kinds eq '보건/의료' }">selected</c:if>>보건/의료</option>
-												<option value="기계제작" <c:if test="${certi.certi_kinds eq '기계제작' }">selected</c:if>>기계제작</option>
-												<option value="전기" <c:if test="${certi.certi_kinds eq '전기' }">selected</c:if>>전기</option>
-												<option value="기타" <c:if test="${certi.certi_kinds eq '기타' }">selected</c:if>>기타</option>
-											</select>
-                                        </div>
-                                    </div>
-									 <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>합격구분</label>
-                                            <select name="clist.accept[${i.index }]" value=${certi.accept }>
-												<option value="1차합격" <c:if test="${certi.accept  eq '1차합격' }">selected</c:if>>1차합격</option>
-												<option value="2차합격" <c:if test="${certi.accept  eq '2차합격' }">selected</c:if>>2차합격</option>
-												<option value="필기합격" <c:if test="${certi.accept  eq '필기합격' }">selected</c:if>>필기합격</option>
-												<option value="실기합격" <c:if test="${certi.accept  eq '실기합격' }">selected</c:if>>실기합격</option>
-												<option value="최종합격" <c:if test="${certi.accept  eq '최종합격' }">selected</c:if>>최종합격</option>
-											</select>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>자격증명</label>
-                                            <input type="text" class="form-control" name="clist.certi_name[${i.index }]" value=${certi.certi_name }>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>발행처/기관</label>
-                                            <input type="text" class="form-control"  name="clist.certi_place[${i.index }]" value=${certi.certi_place }>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>취득일</label>
-                                            <input type="text" class="form-control"  name="clist.certi_date[${i.index }]" value=${certi.certi_date }>
-                                        </div>
-                                    </div>
-                                    <br><br><br><br><br><br><br><br><br><br>
-                                    </div>
-		
-		
+              <input type="hidden" name="clist[${i.index }].certi_no" value=${certi.certi_no }><br><br>
+              <button type='button' id='certiDel' name='certiDel'>삭제</button>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                     <label>자격증 항목</label>
+                        <select name = "clist[${i.index }].certi_kinds" value=${certi.certi_kinds }>
+							<option value="IT" <c:if test="${certi.certi_kinds  eq 'IT' }">selected</c:if>>IT</option>
+							<option value="세무/회계" <c:if test="${certi.certi_kinds eq '세무/회계' }">selected</c:if>>세무/회계</option>
+							<option value="건축" <c:if test="${certi.certi_kinds eq '건축' }">selected</c:if>>건축</option>
+							<option value="농업" <c:if test="${certi.certi_kinds eq '농업' }">selected</c:if>>농업</option>
+							<option value="디자인" <c:if test="${certi.certi_kinds eq '디자인' }">selected</c:if>>디자인</option>
+							<option value="보건/의료" <c:if test="${certi.certi_kinds eq '보건/의료' }">selected</c:if>>보건/의료</option>
+							<option value="기계제작" <c:if test="${certi.certi_kinds eq '기계제작' }">selected</c:if>>기계제작</option>
+							<option value="전기" <c:if test="${certi.certi_kinds eq '전기' }">selected</c:if>>전기</option>
+							<option value="기타" <c:if test="${certi.certi_kinds eq '기타' }">selected</c:if>>기타</option>
+						</select>
+                  </div>
+                  </div>
+					<div class="col-sm-6">
+                      <div class="form-group">
+                         <label>합격구분</label>
+                            <select name="clist[${i.index }].accept" value=${certi.accept }>
+							   <option value="1차합격" <c:if test="${certi.accept  eq '1차합격' }">selected</c:if>>1차합격</option>
+							   <option value="2차합격" <c:if test="${certi.accept  eq '2차합격' }">selected</c:if>>2차합격</option>
+							   <option value="필기합격" <c:if test="${certi.accept  eq '필기합격' }">selected</c:if>>필기합격</option>
+							   <option value="실기합격" <c:if test="${certi.accept  eq '실기합격' }">selected</c:if>>실기합격</option>
+							   <option value="최종합격" <c:if test="${certi.accept  eq '최종합격' }">selected</c:if>>최종합격</option>
+							</select>
+                      </div>
+                     </div>
+                     <div class="col-sm-6">
+                      <div class="form-group">
+                          <label>자격증명</label>
+                             <input type="text" class="form-control" name="clist[${i.index }].certi_name" value=${certi.certi_name }>
+                      </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                           <label>발행처/기관</label>
+                               <input type="text" class="form-control"  name="clist[${i.index }].certi_place" value=${certi.certi_place }>
+                         </div>
+                     </div>
+                     <div class="col-sm-6">
+                         <div class="form-group">
+                             <label>취득일</label>
+                                <input type="text" class="form-control"  name="clist[${i.index }].certi_date" value=${certi.certi_date }>
+                         </div>
+                     </div>
+                  <br><br><br><br><br><br><br><br><br><br>
+                  </div>
+                  
+                  
+                  
+                  
+                  <!-- 자기소개서 추가(복사할 거) -->
+                  <div style="display: none" class="self_temp">
+	                  <div class='self_this'>
+						 <input type="hidden" id="self_no" name="slist[${i.index }].self_no" value="${self.self_no }">
+						 <button type='button' id='selfDel' name='selfDel'>삭제</button>
+							 <div class="col-sm-10">
+								<div class="form-group">
+									<label for="subject">제목</label> 
+									<input type="text" class="form-control" id="self_name" name="slist[${i.index }].self_name" placeholder="자기소개서 제목" value=${self.self_name }>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label for="message">내용</label>
+									<textarea id="self_content" name="slist[${i.index }].self_content" class="form-control" 
+									placeholder="내용을 입력하세요.">${self.self_content }</textarea>
+								</div>
+							</div>
+					 </div>
+				</div>
     </body>
 </html>

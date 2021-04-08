@@ -67,8 +67,13 @@ public class ResumeController {
 	@PostMapping("/resumeUpdate")
 	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo,
 			PortfolioVO portvo) throws Exception {
+	System.out.println(vo);
+	System.out.println(reqvo.getClist());
+	System.out.println(reqvo.getSlist());
+	System.out.println(portvo);
+	System.out.println(req);
 	resumeservice.updateResuem(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
-	return "resume/resumeUpdate";
+	return "redirect:/getSearchResumeList";
 	}
 
 	// 이력서 수정폼

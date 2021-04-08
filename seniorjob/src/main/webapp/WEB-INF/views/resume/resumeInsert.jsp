@@ -61,8 +61,6 @@
 		var openWin = window.open("preview",
                 "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
 	})
-
-
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
