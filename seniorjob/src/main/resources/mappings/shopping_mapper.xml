@@ -41,11 +41,27 @@
  	</insert>
  	
  	<!-- 김찬곤 추가 -->
+ 	<!-- 멘토 상세페이지_장바구니 취소 -->
+ 	<delete id="deleteMentoringBasket" parameterType="com.company.shopping.service.ShoppingVO">
+ 		DELETE FROM SHOPPING
+ 		WHERE ID = #{id}
+ 		AND MENTORING_NUMBER = #{mentoring_number} 
+ 	</delete>
+ 	
+ 	<!-- 김찬곤 추가 -->
  	<!-- 멘토 상세페이지_장바구니 중복 체크 -->
  	<select id="BasketCheck" resultType="int">
  		SELECT COUNT(*) FROM SHOPPING
  		WHERE ID = #{id}
  		AND MENTORING_NUMBER = #{mentoring_number}
  	</select>
-	
+ 	
+ 	<!-- 김찬곤 추가 -->
+ 	<!-- 멘토 상세페이지_장바구니 단건 조회 -->
+ 	<select id="getSearchBasket" resultType="com.company.shopping.service.ShoppingVO">
+ 		SELECT * FROM SHOPPING
+ 		WHERE ID = #{id}
+ 		AND MENTORING_NUMBER = #{mentoring_number}
+ 	</select>
+ 	
  </mapper>

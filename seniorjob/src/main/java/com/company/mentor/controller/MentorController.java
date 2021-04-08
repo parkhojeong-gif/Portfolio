@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.company.mentor.common.FileRenamePolicy;
 import com.company.mentor.service.MentorSearchVO;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringService;
 import com.company.mentoring.service.MentoringVO;
+import com.company.portfolio.service.FileRenamePolicy;
 import com.company.service_center.PagingVO;
 
 @Controller

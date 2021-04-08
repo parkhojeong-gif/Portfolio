@@ -52,9 +52,16 @@ public class ShoppingServiceImpl implements ShoppingService {
 		int result = dao.insertMentoringBasket(vo);
 		return result;
 	}
+	public int deleteMentoringBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 취소
+		int result = dao.deleteShopping(vo);
+		return result;
+	}
 	public int BasketCheck(ShoppingVO vo) { // 멘토 상세페이지_장바구니 중복 체크
 		int result = dao.BasketCheck(vo);
 		return result;
+	}
+	public ShoppingVO getSearchBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 단건 조회
+		return dao.getSearchBasket(vo);
 	}
 
 

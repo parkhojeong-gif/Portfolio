@@ -13,15 +13,9 @@
 	<!-- 멘토 팔로우  -->
 	<insert id="MentorFollow" parameterType="com.company.following.service.FollowingVO" >
 		INSERT INTO FOLLOWING
-		(
-		ID, 
-		MENTOR_ID
-		)
+					( ID, MENTOR_ID )
 		VALUES
-		(
-		#{id},
-		#{mentor_id}
-		)
+					( #{id}, #{mentor_id} )
 	</insert>
 	
 	<!-- 멘토 팔로우 취소 -->

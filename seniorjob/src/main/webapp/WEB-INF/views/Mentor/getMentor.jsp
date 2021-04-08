@@ -175,6 +175,7 @@ input{
 					<p>
 					<div>
 						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 담기</button>
+						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 취소</button>
 						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
 					</div>
 					</div>
@@ -186,6 +187,7 @@ input{
 <script>
 
 	$(function() {
+		
 		
 		var formData = { "id" : $('#id').val(),
 						 "mentoring_number":$('#mentoring_number').val(),
