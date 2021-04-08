@@ -141,5 +141,16 @@ public class UsersServiceImpl implements UsersService {
 		
 		return usersmapper.idCheck(vo);
 	}
-
+	
+	@Override
+	public int emailCheck(String email) {
+		
+		return usersmapper.emailCheck(email);
+	}
+	
+	@Override
+	public UsersVO kakaoCheck(UsersVO vo) {
+		
+		return usersmapper.kakaoCheck(vo);
+	}
 }

@@ -15,7 +15,9 @@ public interface UsersMapper {
 	public int idCheck(UsersVO vo); //아이디 중복체크
 	//이메일발송
 	public void sendEmail(UsersVO vo, String div) throws Exception;
-	// 회원정보(패스워드 변경 겸용) 변경
+	// 회원정보 변경
 	public int updateInfo(UsersVO vo) throws Exception;
+	public int emailCheck(String email); //email 중복체크 
+	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
 
 }
