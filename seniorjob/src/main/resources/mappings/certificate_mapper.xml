@@ -14,14 +14,14 @@
 	</select>
 	<insert id="insertCerti">
 		INSERT INTO CERTIFICATE(CERTI_NO, 
-								RESUME_NO, 
+								RESUME_NO,
 								CERTI_KINDS, 
 								CERTI_NAME, 
 								CERTI_PLACE, 
 								ACCEPT, 
 								CERTI_DATE)
 		VALUES					(( SELECT NVL(MAX(CERTI_NO), 0) +1 FROM CERTIFICATE  ), 
-								 #{resume_no}
+								 #{resume_no},
 								 #{certi_kinds}, 
 								 #{certi_name}, 
 								 #{certi_place}, 
@@ -48,6 +48,6 @@
 			   ACCEPT, 
 			   CERTI_DATE
 		FROM   CERTIFICATE
-		WHERE  CERTI_NO = #{certi_no}
+		WHERE  RESUME_NO = #{resume_no}
 	</select>
  </mapper>

@@ -41,6 +41,13 @@
 		WHERE ID = #{id}    
 	</select>
 	
+	<!-- kakao session login -->
+	<select id ="kakaoCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
+		SELECT ID
+		FROM USERS
+		WHERE ID = #{id}    
+	</select>
+	
 	<!-- 아이디 중복체크 -->
 	<select id="idCheck" resultType="int">
 	SELECT COUNT(*) FROM USERS
@@ -54,22 +61,28 @@
 	AND PASSWORD = #{password}
 	</select>
 	
+	<!-- email 중복체크 -->
+	<select id="emailCheck" resultType="int">
+	SELECT COUNT(*) FROM USERS
+	WHERE EMAIL = #{email}
+	</select>
+	
 	<!-- 회원가입 -->
 	<insert id="insertUsers" parameterType="com.company.users.service.UsersVO">
-	INSERT INTO USERS(ID,
-					PASSWORD,
-					ADDRESS,
-					PHONENUM,
-					EMAIL,
-					BIRTH,
-					NAME)
-	VALUES(			#{id},
-					#{password},
-					#{address},
-					#{phonenum},
-					#{email},
-					#{birth},
-					#{name})
+	INSERT INTO USERS(<if test="id != null and id !=''">ID</if>
+					<if test="password != null and password !=''">,PASSWORD</if>
+					<if test="address != null and address !=''">,ADDRESS</if>
+					<if test="phonenum != null and phonenum !=''">,PHONENUM</if>
+					<if test="email != null and email !=''">,EMAIL</if>
+					<if test="birth != null and birth !=''">,BIRTH</if>
+					<if test="name != null and name !=''">,NAME</if>)
+	VALUES(			<if test="id != null and id !=''">#{id}</if>
+					<if test="password != null and password !=''">,#{password}</if>
+					<if test="address != null and address !=''">,#{address}</if>
+					<if test="phonenum != null and phonenum !=''">,#{phonenum}</if>
+					<if test="email != null and email !=''">,#{email}</if>
+					<if test="birth != null and birth !=''">,#{birth}</if>
+					<if test="name != null and name !=''">,#{name}</if>)
 	</insert>
 	
 	<!-- 패스워드 변경 -->
@@ -88,5 +101,4 @@
 						 <if test="name !=null and name !=''">NAME= #{name},</if>	
 						 WHERE ID = #{id}
 	</update>
-	
 	</mapper>

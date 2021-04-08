@@ -11,4 +11,5 @@ public class CertificateVO2 {
 	private String certi_place;		//
 	private String accept;			//
 	private String certi_date;		//
+	private String[] certi_arrang;
 }

@@ -19,6 +19,8 @@
 
 	<!-- 정적 컨텐츠: css, img, js -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/image/**" location="/image/" />
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,6 +40,17 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
+	
+	<!-- 일반 파일 업로드 경로 -->
+	<resources mapping="/image/**" location="c:/upload" />
+	
+	
+	<!-- multipart 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	 <beans:property name="maxUploadSize" value="100000000" />
+	 <beans:property name="maxInMemorySize" value="100000000" />
+	 </beans:bean>
+	 
 	<!-- @Transactional 어노테이션 처리 -->
 	<tx:annotation-driven
 		transaction-manager="txManager" />
@@ -59,11 +72,6 @@
 			advice-ref="txAdvice" />
  	</aop:config>
 
-	<!-- MultipartResolver 설정 -->
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="100000000" />
-		<beans:property name="maxInMemorySize" value="100000000" />
-	</beans:bean>
+
 	
 </beans:beans>

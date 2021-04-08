@@ -34,7 +34,7 @@ public class SelfInfoServiceImpl implements SelfInfoService{
 	}
 
 	@Override
-	public Self_InfoVO getSelf(Self_InfoVO vo) {
+	public List<Self_InfoVO> getSelf(Self_InfoVO vo) {
 		return selfinfoMapper.getSelf(vo);
 	}
 
