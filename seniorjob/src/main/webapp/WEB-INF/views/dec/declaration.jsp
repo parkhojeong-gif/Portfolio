@@ -24,8 +24,8 @@
 						<div class="card-header">신고 데이터 테이블</div>
 						<div class="card-body">
 						<div class="dataTable-search">
-								<input class="dataTable-input" placeholder="Search..."
-									type="text">
+							<input name="search" placeholder="Search..." type="search"/>
+							<button style="position : static; right : 200px;">검색</button>
 							</div>
 							<table class='table table-striped' id="table1">
 								<thead>

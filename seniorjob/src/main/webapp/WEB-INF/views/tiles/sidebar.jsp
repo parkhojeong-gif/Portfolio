@@ -9,7 +9,7 @@
 
 
 					<li class='sidebar-title'>관리자 페이지</li>
-					<a href="/" class='sidebar-link'> <i data-feather="user" width="20"></i> <span>메인으로</span>
+					<a href="/manager" class='sidebar-link'> <i data-feather="user" width="20"></i> <span>메인으로</span>
 					</a>
 
 					<li class='sidebar-title'>관리 목록</li>

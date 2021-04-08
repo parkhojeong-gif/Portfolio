@@ -18,7 +18,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	//메인으로
-	@RequestMapping("/")
+	@RequestMapping("/manager")
 	public String AdminMain() {
 	
 		return "AdminMain";
