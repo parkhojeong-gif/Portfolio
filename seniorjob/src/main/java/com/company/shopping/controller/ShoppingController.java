@@ -37,13 +37,17 @@ public class ShoppingController {
 	}
 	
 	// 김찬곤 추가
-	// 멘토 상세페이지_장바구니 담기
-	@RequestMapping(value="/insertMentoringBasket", method=RequestMethod.POST)
+	// 멘토 상세페이지_장바구니 중복 체크&장바구니 담기
 	@ResponseBody
-	public String insertMentoringBasket(MentoringVO mVo, ShoppingVO sVo, Model model) {
-		//ShoppingVO basketChk = spService.BasketCheck(sVo);
-			spService.insertMentoringBasket(mVo);
-			return "redirect:/getMentor";
+	@RequestMapping(value="BasketCheck")
+	public int BasketCheck(ShoppingVO vo) {
+		int result = spService.BasketCheck(vo);
+		if(result==0) {
+			spService.insertMentoringBasket(vo);
+			return result;
+		}else {
+			return result;	
+		}
 	}
 	
-}
+} // end of class

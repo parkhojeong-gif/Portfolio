@@ -21,6 +21,6 @@ public int insertShopping(ShoppingVO vo);
 	public List<ShoppingVO> getSearchPay(ShoppingVO vo); //마이페이지_결제내역
 	
 	// 김찬곤 추가
-	public void insertMentoringBasket(MentoringVO vo); // 멘토 상세페이지_장바구니 담기
-	public ShoppingVO BasketCheck(ShoppingVO vo); // 멘토 상세페이지_장바구니 중복 체크
+	public int insertMentoringBasket(ShoppingVO vo); // 멘토 상세페이지_장바구니 담기
+	public int BasketCheck(ShoppingVO vo); // 멘토 상세페이지_장바구니 중복 체크
 }

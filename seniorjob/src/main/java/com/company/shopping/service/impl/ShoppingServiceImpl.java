@@ -48,10 +48,13 @@ public class ShoppingServiceImpl implements ShoppingService {
 	}
 
 	// 김찬곤 추가
-	public void insertMentoringBasket(MentoringVO vo) { // 멘토 상세페이지_장바구니 담기
+	public int insertMentoringBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 담기
+		int result = dao.insertMentoringBasket(vo);
+		return result;
 	}
-	public ShoppingVO BasketCheck(ShoppingVO vo) { // 멘토 상세페이지_장바구니 중복 체크
-		return dao.BasketCheck(vo);
+	public int BasketCheck(ShoppingVO vo) { // 멘토 상세페이지_장바구니 중복 체크
+		int result = dao.BasketCheck(vo);
+		return result;
 	}
 
 
