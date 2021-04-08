@@ -35,89 +35,175 @@
                                         <!-- End of  -->  
                                     </div>
 
-                                    <div class="search-row">  
+									<div class="search-row">
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="영업">
+												영업
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 인사/총무
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="인사">
+												인사
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 마케팅/MD
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="총무">
+												총무
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 광고/홍보
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="마케팅">
+												마케팅
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Swimming Pool(1190)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="광고">
+												광고
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 2 Stories(4600)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="회계">
+												회계
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+									</div>
+									
+									<div class="search-row">
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="재무">
+												재무
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Emergency Exit(200)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="해외">
+												해외
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Laundry Room(10073)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="유통">
+												유통
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="무역">
+												무역
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Jog Path(1503)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="전략">
+												전략
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 26' Ceilings(1200)
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-                                    </div>  
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="기획">
+												기획
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+									</div>
+									
+									<div class="search-row">
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="생산">
+												생산
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="공기업">
+												공기업
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="IT">
+												IT
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="디자인">
+												디자인
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="교육">
+												교육
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+
+									<div class="form-group">
+										<div class="checkbox">
+											<label> <input type="checkbox" name="mentor_duty" value="컨설팅">
+												컨설팅
+											</label>
+										</div>
+									</div>
+									<!-- End of  -->
+									<br>
+									<hr>
+								</div>
+                                     
                                     <!-- End of 직무별 멘토찾기  -->
                                      
                                       <!-- 지역별 멘토찾기 -->
@@ -140,7 +226,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 마케팅/MD
+                                                    <input type="checkbox" name="mentoring_location" value="서울특별시">서울특별시
                                                 </label>
                                             </div>
                                         </div>
@@ -149,7 +235,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 광고/홍보
+                                                    <input type="checkbox" name="mentoring_location" value="부산광역시">부산광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -158,7 +244,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> Swimming Pool(1190)
+                                                    <input type="checkbox" name="mentoring_location" value="대구광역시">대구광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -167,7 +253,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 2 Stories(4600)
+                                                    <input type="checkbox" name="mentoring_location" value="인천광역시">인천광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -176,7 +262,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> Emergency Exit(200)
+                                                    <input type="checkbox" name="mentoring_location" value="광주광역시">광주광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -185,7 +271,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> Laundry Room(10073)
+                                                    <input type="checkbox" name="mentoring_location" value="울산광역시">울산광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -194,19 +280,12 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> Jog Path(1503)
+                                                    <input type="checkbox" name="mentoring_location" value="세종특별자치시"> 세종특별자치시
                                                 </label>
                                             </div>
                                         </div>
                                         <!-- End of  --> 
 
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 26' Ceilings(1200)
-                                                </label>
-                                            </div>
-                                        </div>
                                         </div>
                                         <!-- End of  --> 
                    						<!-- End of 지역별 멘토찾기 -->
@@ -262,7 +341,7 @@
                         <div class="blog-asside-right pl0">
                             <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">멘토등록</h3>
+                                    <h3 class="panel-title">멘토등록 / 멘토링등록</h3>
                                 </div>
                                 <div class="panel-body search-widget">
                                     <form name="mentorRegisterForm" class="form-inline">
@@ -314,8 +393,7 @@
 	// 로그아웃 상태에서 멘토 등록 클릭 시
 	function loginCheck(){
 		alert("로그인 또는 회원가입이 필요한 항목입니다.");
-		var url = "loginCheckAlert";
-		window.open(url, "로그인/회원가입", "width=500, height=450");
+		location.href = "login"; // 로그인 페이지로 이동
 	}
 	
 	// 로그인 상태에서 멘토 등록 클릭 시

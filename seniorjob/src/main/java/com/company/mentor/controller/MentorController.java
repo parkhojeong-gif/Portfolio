@@ -120,7 +120,7 @@ public class MentorController {
 					// 멘토 등록 오류 발생 시 해당 페이지로 리턴
 					// 오류 발생 조건: 빈칸 제출
 					model.addAttribute("msg", "멘토 등록 처리 실패. 다시 작성 해주세요.");
-					model.addAttribute("url", "Mentor/mentorListForm");
+					model.addAttribute("url", "MentorListForm");
 					return "common/Fail"; 
 				}
 			}

@@ -63,7 +63,7 @@ h3 {
 					<h2>어떤 멘토를 찾고 싶으세요?</h2>
 					<div class="search-form wow pulse" data-wow-delay="0.8s">
 
-						<form action="getMentorList" class=" form-inline" method="post">
+						<form action="MentorListForm" class=" form-inline" method="post">
 
 							<h3>지역</h3>
 							<div class="col-md-12">
