@@ -17,5 +17,5 @@ public interface CertificateMapper {
 	//삭제
 	public int deleteCerti(CertificateVO2 vo);
 	//단건 조회
-	public CertificateVO2 getCerti(CertificateVO2 vo);
+	public List<CertificateVO2> getCerti(CertificateVO2 vo);
 }

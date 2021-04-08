@@ -15,5 +15,5 @@ public interface Self_InfoMapper {
 	//삭제
 	public int deleteSelf(Self_InfoVO vo);
 	//단건조회
-	public Self_InfoVO getSelf(Self_InfoVO vo);
+	public List<Self_InfoVO> getSelf(Self_InfoVO vo);
 }
