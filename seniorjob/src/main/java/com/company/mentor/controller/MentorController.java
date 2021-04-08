@@ -6,16 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.company.mentor.common.FileRenamePolicy;
+
+import com.company.mentor.service.MentorSearchVO;
+import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
-import com.company.mentor.service.impl.MentorMapper;
+import com.company.mentoring.service.MentoringService;
+import com.company.mentoring.service.MentoringVO;
+import com.company.portfolio.service.FileRenamePolicy;
+import com.company.service_center.PagingVO;
 
 @Controller
 public class MentorController {
 	
-	@Autowired MentorMapper mentorMapper;
+	@Autowired MentorService mentorService;
+	@Autowired MentoringService mentoringService;
 	
 		// 로그인, 회원가입 미비 시 호출되는 페이지
 		// 로그아웃 상태에서 멘토등록 클릭하면 호출
@@ -23,11 +30,41 @@ public class MentorController {
 		public String loginCheckAlert() {
 			return "Mentor/loginCheckAlert";
 		}
+		
+		@RequestMapping("/MentorListForm")
+		public String MentorListForm() {
+			return "Mentor/mentorListForm";
+		}
 	
-		// 멘토 리스트 페이지 호출
+		// 멘토 리스트 페이지 호출 + 페이징
 		@RequestMapping("/MentorList")
-		public String MentorList(Model model) {
-			model.addAttribute("list", mentorMapper.MentorList());
+		public String MentorList(PagingVO pVo, Model model, MentorSearchVO vo, 
+				@RequestParam(value="nowPage", required=false)String nowPage,
+				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+			
+			int total = mentorService.getCountMentor();
+			if(nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "5";
+			}else if(nowPage==null) {
+				nowPage="1";
+			}else if(cntPerPage==null) {
+				cntPerPage="5";
+			}
+			pVo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			vo.setStart(pVo.getStart());
+			vo.setEnd(pVo.getEnd());
+			if(vo.getOptionValue()==null) {
+				model.addAttribute("list", mentorService.getSearchMentor(vo));
+			}
+			else if(vo.getOptionValue().equals("최신순")) {
+				model.addAttribute("list", mentorService.getMentorByDate(vo));
+			}else if(vo.getOptionValue().equals("인기순")) {
+				model.addAttribute("list", mentorService.getMentorByFollow(vo));
+			}
+			
+			model.addAttribute("paging", pVo);
+			
 			return "Mentor/mentorList";
 		}
 		
@@ -40,7 +77,7 @@ public class MentorController {
 		// 멘토 등록 요청
 		@RequestMapping("/MentorRegisterProc") // RequestMapping 설정만 해도 GET,POST 둘 다 사용가능
 		public String MentorRegisterProc(Model model, MentorVO vo) throws Exception {
-			MentorVO mentorCheck = mentorMapper.mentorRegisterCheck(vo); // 멘토 등록 여부 확인
+			MentorVO mentorCheck = mentorService.mentorRegisterCheck(vo); // 멘토 등록 여부 확인
 			if(mentorCheck != null) {
 				model.addAttribute("msg", "이미 멘토로 등록하셨습니다. 마이페이지를 확인하세요.");
 				model.addAttribute("url", "MentorList");
@@ -76,23 +113,26 @@ public class MentorController {
 					licenseFile.transferTo(licenseRename);
 					careerFile.transferTo(careerRename);
 
-					mentorMapper.MentorRegisterProc(vo);
-					return "Mentor/mentorRegisterSuccess";
+					mentorService.MentorRegisterProc(vo);
+					model.addAttribute("msg", "멘토 등록 완료");
+					model.addAttribute("url", "Mentor/mentorListForm");
+					return "common/Success";
 				}else {
 					// 멘토 등록 오류 발생 시 해당 페이지로 리턴
 					// 오류 발생 조건: 빈칸 제출
 					model.addAttribute("msg", "멘토 등록 처리 실패. 다시 작성 해주세요.");
-					model.addAttribute("url", "MentorList");
-					return "Mentor/registerAlert"; 
+					model.addAttribute("url", "Mentor/mentorListForm");
+					return "common/Fail"; 
 				}
 			}
 		}
 		
 		// 멘토 상세 페이지 호출
 		@RequestMapping("/getMentor")
-		public String getMentor(Model model, MentorVO vo) {
-			model.addAttribute("list", mentorMapper.getMentor(vo));
+		public String getMentor(Model model, MentorVO mVo, MentoringVO mtrVo) {
+			model.addAttribute("list", mentorService.getMentor(mVo));
+			model.addAttribute("mentoring", mentoringService.getMentoring(mtrVo));
 			return "Mentor/getMentor";
 		}
-
+			
 }

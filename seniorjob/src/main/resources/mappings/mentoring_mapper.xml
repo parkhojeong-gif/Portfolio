@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.company.mentoring.service.impl.MentoringMapper">
-
-	<!-- 멘토링 조회, 양소민 추가 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.company.mentoring.service.impl.MentoringMapper">
+ 
+ 	<!-- 멘토링 등록 -->
+	<insert id="MentoringRegisterProc" parameterType="com.company.mentoring.service.MentoringVO" >
+	
+		INSERT INTO MENTORING
+		(
+		MENTORING_NUMBER,
+		MENTORING_NAME,
+		MENTORING_LIMIT,
+		MENTORING_CONTENT,
+		MENTORING_PHOTO,
+		MENTORING_PRICE,
+		MENTOR_ID,	
+		MENTORING_BEGIN_DATE,
+		MENTORING_END_DATE
+		)
+		VALUES
+		(
+		SEQ_MENTORING.NEXTVAL,
+		#{mentoring_name},
+		#{mentoring_limit},
+		#{mentoring_content},
+		#{mentoring_photo},
+		#{mentoring_price},
+		#{mentor_id},
+		#{mentoring_begin_date},
+		#{mentoring_end_date}
+		)
+		
+	</insert>
+	
+	<!-- 멘토 멘토링 코스 조회 -->
+	<select id="getMentoring" resultType="com.company.mentoring.service.MentoringVO">
+		SELECT * FROM MENTORING
+		WHERE MENTOR_ID = #{mentor_id}
+	</select>
+	
+	<!-- 멘토링 상세조회-->
+	<!-- 양소민 -->
 	<select id="getSearchMentoring" resultType="MentoringVO">
 		SELECT
 				NAME,

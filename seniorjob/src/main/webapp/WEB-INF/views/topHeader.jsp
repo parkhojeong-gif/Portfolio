@@ -89,25 +89,27 @@
                 <div class="collapse navbar-collapse yamm" id="navigation">
                 
                <a href="/">홈으로가기</a>
-               <c:if test="${empty users}">
+               <c:choose>
+                <c:when test="${users.auth eq 'ADMIN'}">
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>	 
+               </c:when>
+               <c:when test="${users.auth eq 'USER'}">
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+				</c:when>
+				<c:when test="${not empty userInfo}">
+               	<h5>${sessionScope.userInfo.kakaoId}님의 페이지입니다.</h5>
+				</c:when>
+           		<c:when test="${users.auth eq 'MENTOR'}">
+               	<h5>${sessionScope.users.id}님의 페이지입니다.</h5>
+				</c:when>	
+               <c:otherwise>
                     <div class="button navbar-right">
                         <button class="navbar-btn nav-button wow bounceInRight login" onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>
                         <button class="navbar-btn nav-button wow fadeInRight" onclick="location.href='insertUsers'" data-wow-delay="0.48s">회원가입</button>
                     </div>
-               </c:if>    
-               <c:if test="${users.auth eq 'ADMIN'}">
-               <h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               		 <button class="navbar-btn nav-button wow bounceInRight login" onclick="" data-wow-delay="0.45s">관리자페이지</button>
-              	<form action="logout" method="get">
-						<input type="submit" value="logout">
-				</form>
-               </c:if>
-               <c:if test="${users.auth eq 'USER'}">
-               <h5>${sessionScope.users.id}님의 페이지입니다.</h5>
-               	<form action="logout" method="get">
-						<input type="submit" value="logout">
-				</form>
-               </c:if>
+               </c:otherwise>             
+               </c:choose>
+              
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                             <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">채용공고 <b class="caret"></b></a>
@@ -130,7 +132,7 @@
 
 
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="">채용공고</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorListForm">멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                         <li class="dropdown yamm-fw" data-wow-delay="0.4s">
                             <a href="inquire" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
@@ -145,38 +147,32 @@
                                                         <a href="inquire">문의하기</a>
                                                     </li>
                                                     <li>
-                                                        <a href="index-2.html">문의 목록</a>
+                                                        <a href="inquireList">문의 목록</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>결제/환불</h5>
+                                                <h5><a href="serviceCenterQna">결제/환불</a></h5>
                                                 <ul>
-                                                    <li><a href="blog.html">Blog listing</a>  </li>
-                                                    <li><a href="single.html">Blog Post (full)</a>  </li>
-                                                    <li><a href="single-right.html">Blog Post (Right)</a>  </li>
-                                                    <li><a href="single-left.html">Blog Post (left)</a>  </li>
-                                                    <li><a href="contact.html">Contact style (1)</a> </li>
-                                                    <li><a href="contact-3.html">Contact style (2)</a> </li>
-                                                    <li><a href="contact_3.html">Contact style (3)</a> </li>
-                                                    <li><a href="faq.html">FAQ page</a> </li> 
-                                                    <li><a href="404.html">404 page</a>  </li>
+                                                	<li>
+                                                        <a href="serviceCenterQna">질문 목록</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>신청/취소</h5>
+                                                <h5><a href="inquire">신청/취소</a></h5>
                                                 <ul>
-                                                    <li><a href="property-1.html">Property pages style (1)</a> </li>
-                                                    <li><a href="property-2.html">Property pages style (2)</a> </li>
-                                                    <li><a href="property-3.html">Property pages style (3)</a> </li>
+                                                	<li>
+                                                        <a href="inquireList">질문 목록</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-3">
-                                                <h5>화상면접사용법</h5>
+                                                <h5><a href="inquire">화상면접사용법</a></h5>
                                                 <ul> 
-                                                    <li><a href="submit-property.html">Submit - step 1</a> </li>
-                                                    <li><a href="submit-property.html">Submit - step 2</a> </li>
-                                                    <li><a href="submit-property.html">Submit - step 3</a> </li> 
+                                                	<li>
+                                                        <a href="inquireList">사용법 목록</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -189,7 +185,13 @@
                         <c:if test="${not empty users }">
 							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
                         </c:if>
+                        <c:if test="${not empty userInfo }">
+							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
+                        </c:if>
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHome">마이페이지</a></li>
+                        <c:if test="${users.auth eq 'ADMIN'}">
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="">관리자페이지</a></li>
+                        </c:if>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

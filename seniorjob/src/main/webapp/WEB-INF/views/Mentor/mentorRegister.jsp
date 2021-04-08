@@ -8,11 +8,9 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #f1f1f1;
 }
-
 #regForm {
   background-color:#e1e1ea;
   margin: 100px auto;
@@ -21,11 +19,9 @@ body {
   width: 70%;
   min-width: 300px;
 }
-
 h1 {
   text-align: center;  
 }
-
 input {
   padding: 10px;
   width: 100%;
@@ -33,17 +29,14 @@ input {
   font-family: Raleway;
   border: 1px solid #aaaaaa;
 }
-
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
   background-color: #ffdddd;
 }
-
 /* Hide all steps by default: */
 .tab {
   display: none;
 }
-
 button {
   background-color: #4CAF50;
   color: #ffffff;
@@ -53,15 +46,12 @@ button {
   font-family: Raleway;
   cursor: pointer;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
 #prevBtn {
   background-color: #bbbbbb;
 }
-
 /* Make circles that indicate the steps of the form: */
 .step {
   height: 15px;
@@ -73,11 +63,9 @@ button:hover {
   display: inline-block;
   opacity: 0.5;
 }
-
 .step.active {
   opacity: 1;
 }
-
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #4CAF50;
@@ -158,10 +146,10 @@ button:hover {
     <p><input placeholder="멘토소개" oninput="this.className = ''" name="mentor_introduce"></p>
     <p><input placeholder="주요경력" oninput="this.className = ''" name="mentor_career" type="text"></p>
   </div>
-  <div class="tab">멘토 확인
+  <div class="tab">멘토 인증
   	<p />
-  	<p>프로필 사진</p>
   	<div>
+  	<p>프로필 사진</p>
   		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image" id="profilePhoto">
     	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file">
   	</div>
@@ -172,12 +160,13 @@ button:hover {
     <p>경력 증명서</p>
     <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate_file">
   </div>
+  
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">이전</button>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">다음</button>
     </div>
-  </div>
+  </div>	
   <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
@@ -192,9 +181,25 @@ button:hover {
 <!-- Footer area-->
 
 <script>
+//로딩 이미지 출력
+//출처: https://kkamikoon.tistory.com/168 [컴퓨터를 다루다]
+function LoadingWithMask() {
+  //화면의 높이와 너비를 구합니다.
+  var maskHeight = $(document).height();
+  var maskWidth  = window.document.body.clientWidth;
+   
+  var loadingImg ='';
+    
+  loadingImg +="<div id='loadingImg'>";
+  loadingImg +=" <img src='../resources/assets/img/common/LoadingImg.gif' style='position: relative; display: block; margin: 0px auto;'/>";
+  loadingImg +="</div>"; 
+  //화면에 레이어 추가
+  $('#regForm').append(loadingImg)
+  //로딩중 이미지 표시
+  $('#loadingImg').show();
+}
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
-
 function showTab(n) {
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
@@ -212,8 +217,14 @@ function showTab(n) {
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
+  
+  if(n == 2){
+	  document.getElementById("nextBtn").innerHTML = "등록완료"; // 마지막 페이지에 버튼 이름을 '등록완료'로 변경
+  }else if(n != (x.length - 1)){
+	  document.getElementById("nextBtn").innerHTML = "다음"; // 등록완료 버튼 페이지에서 뒤로가기 클릭 시 다시 '다음'으로 버튼 이름 변경
+  }
+  console.log("페이지 번호 = " + n);
 }
-
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -225,14 +236,21 @@ function nextPrev(n) {
   currentTab = currentTab + n;
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
+    // 일정 시간 지난 후 submit
+    document.getElementsByClassName('step')[0].style.display = "none";
+    document.getElementsByClassName('step')[1].style.display = "none";
+    document.getElementsByClassName('step')[2].style.display = "none";
+    document.getElementsByClassName('step')[3].style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("prevBtn").style.display = "none";
+    setTimeout('document.getElementById("regForm").submit()', 2000); // 2초 후 실행
+    LoadingWithMask(); // 로딩 이미지 출력
     return false;
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
+  
 }
-
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -254,7 +272,6 @@ function validateForm() {
   }
   return valid; // return the valid status
 }
-
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");

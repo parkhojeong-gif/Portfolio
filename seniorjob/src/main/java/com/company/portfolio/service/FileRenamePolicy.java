@@ -1,4 +1,4 @@
-package com.company.mentor.common;
+package com.company.portfolio.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,11 +11,10 @@ public class FileRenamePolicy {
 	    String body = null;
 	    String ext = null;
 	 
-	    // .을 기준으로 파일명, 확장자 분리
 	    int dot = name.lastIndexOf(".");
 	    if (dot != -1) {                              //확장자가 없을때
-	      body = name.substring(0, dot); // . 앞에
-	      ext = name.substring(dot); // . 뒤에
+	      body = name.substring(0, dot);
+	      ext = name.substring(dot);
 	    } else {                                     //확장자가 있을때
 	      body = name;
 	      ext = "";
@@ -33,10 +32,10 @@ public class FileRenamePolicy {
 	  }
 	 
 	  private static boolean createNewFile(File f) {
-	    try {
+	    try { 
 	      return f.createNewFile();                        //존재하는 파일이 아니면
 	    }catch (IOException ignored) {
 	      return false;
 	    }
-	  }
+	}
 }

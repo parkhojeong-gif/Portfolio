@@ -1,32 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>loginCheckAlert.jsp</title>
 </head>
 <body>
 
-<h3>·Î±×ÀÎ ¶Ç´Â È¸¿ø°¡ÀÔÀÌ ÇÊ¿äÇÕ´Ï´Ù.</h3>
-<input class="button btn largesearch-btn" value="·Î±×ÀÎ" type="button" onclick="goLoginForm()">
-<input class="button btn largesearch-btn" value="È¸¿ø°¡ÀÔ" type="button" onclick="goJoinForm()">
+<!-- í™”ë©´ ìˆ˜ì • https://codepen.io/DovydasLiniovas/pen/ZmQBzM -->
+
+<h3>ë¡œê·¸ì¸ ë˜ëŠ” íšŒì›ê°€ì…ì´ í•„ìš”í•©ë‹ˆë‹¤.</h3>
+<input class="button btn largesearch-btn" value="ë¡œê·¸ì¸" type="button" onclick="goLoginForm()">
+<input class="button btn largesearch-btn" value="íšŒì›ê°€ì…" type="button" onclick="goJoinForm()">
 
 <div class="notify"><span id="notifyType" class=""></span></div>
 
 <script>
 
-// ÀÓ½Ã·Î È£ÃâµÈ ÇöÀç Ã¢À» ´İ°í ¸ŞÀÎ Ã¢(ºÎ¸ğÃ¢)¿¡¼­ ÆäÀÌÁö ÀüÈ¯À» ½ÃÅ°´Â ÇÔ¼ö ¼³Á¤
-// Âü°í: https://lgzhyu3.tistory.com/51
-
+// ì„ì‹œë¡œ í˜¸ì¶œëœ í˜„ì¬ ì°½ì„ ë‹«ê³  ë©”ì¸ ì°½(ë¶€ëª¨ì°½)ì—ì„œ í˜ì´ì§€ ì „í™˜ì„ ì‹œí‚¤ëŠ” í•¨ìˆ˜ ì„¤ì •
+// ì°¸ê³ : https://lgzhyu3.tistory.com/51
 	function goLoginForm(){
-		opener.document.location.href = "login"; // ºÎ¸ğÃ¢À» ÇØ´ç ÁÖ¼Ò·Î ¹Ù²Ş
-		window.close(); // ÇöÀç Ã¢ ´İ±â
+		opener.document.location.href = "login"; // ë¶€ëª¨ì°½ì„ í•´ë‹¹ ì£¼ì†Œë¡œ ë°”ê¿ˆ
+		window.close(); // í˜„ì¬ ì°½ ë‹«ê¸°
 	}
-	
 	function goJoinForm(){
-		opener.document.location.href = "insertUsers"; // ºÎ¸ğÃ¢À» ÇØ´ç ÁÖ¼Ò·Î ¹Ù²Ş
-		window.close(); // ÇöÀç Ã¢ ´İ±â
+		opener.document.location.href = "insertUsers"; // ë¶€ëª¨ì°½ì„ í•´ë‹¹ ì£¼ì†Œë¡œ ë°”ê¿ˆ
+		window.close(); // í˜„ì¬ ì°½ ë‹«ê¸°
 	}
 </script>
 </body>

@@ -31,4 +31,6 @@
 	title from service_center
 	 WHERE SEQ = #{seq} 
 	</select>
+	
+	
  </mapper>

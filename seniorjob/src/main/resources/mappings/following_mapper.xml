@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.following.service.impl.FollowingMapper">
+
+	<!-- 단건 조회 -->
+	<select id="getMentorFollowing" resultType="com.company.following.service.FollowingVO">
+		SELECT ID, MENTOR_ID
+		FROM FOLLOWING
+		WHERE ID = #{id}	
+	</select>
+	
+	<!-- 멘토 팔로우  -->
+	<insert id="MentorFollow" parameterType="com.company.following.service.FollowingVO" >
+		INSERT INTO FOLLOWING
+					( ID, MENTOR_ID )
+		VALUES
+					( #{id}, #{mentor_id} )
+	</insert>
+	
+	<!-- 멘토 팔로우 취소 -->
+	<delete id="deleteMentorFollow">
+		DELETE FROM FOLLOWING
+		WHERE MENTOR_ID = #{mentor_id}
+	</delete>
+	
+	<!-- 팔로우 중복 확인 -->
+	<select id="mentorFollowCheck" resultType="com.company.following.service.FollowingVO" parameterType="com.company.following.service.FollowingVO">
+		SELECT ID, MENTOR_ID
+		FROM FOLLOWING
+		<where>
+			<if test="id != null and id != ''">
+				ID = #{id}
+			</if>
+			<if test="mentor_id != null and mentor_id != ''">
+				AND MENTOR_ID = #{mentor_id}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

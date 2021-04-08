@@ -15,9 +15,18 @@ public interface UsersMapper {
 	public int idCheck(UsersVO vo); //아이디 중복체크
 	//이메일발송
 	public void sendEmail(UsersVO vo, String div) throws Exception;
+<<<<<<< HEAD
 	// 패스워드 변경
+=======
+	// 회원정보 변경
+>>>>>>> branch 'main' of https://github.com/aekgmla77/seniorjob.git
 	public int updateInfo(UsersVO vo) throws Exception;
+<<<<<<< HEAD
 	
 	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
+=======
+	public int emailCheck(String email); //email 중복체크 
+	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
+>>>>>>> branch 'main' of https://github.com/aekgmla77/seniorjob.git
 
 }

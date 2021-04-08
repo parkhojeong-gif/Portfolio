@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,175 +9,150 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+/*이전 글, 다음 글 기능  */
+function pagePre() {
+	var sel = document.getElementById('preId').value;
+	if(sel == 0){
+		window.alert("이전 글이 없습니다");
+	}else{
+	location.href="getService_Center?seq=${num.prev }";
+	}
+	}
+function pageNext() {
+	var sel = document.getElementById('preId2').value;
+	if(sel == 0){
+		window.alert("다음 글이 없습니다");
+	}else{
+	location.href="getService_Center?seq=${num.next }";
+	}
+	}
+$(function(){
+	$("#btnUpd").on("click", function(){
+		//location.href ="updateEmp?employee_id=${emp.employee_id}"
+		location.assign("updateService_CenterForm?seq=${gongji.seq}");
+
+	});
+	
+	
+});
+	
+/*이전 글, 다음 글 기능  */
+</script>
 <body>
 <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
-                    <div class="blog-lst col-md-12 pl0">
-                        <section id="id-100" class="post single">
-
-                            <div class="post-header single">
-                                <div class="">
-                                    <h2 class="wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">${gongji.title }</h2>
-                                    <div class="title-line wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;"></div>
+                    <jsp:include page="sevice_left.jsp"></jsp:include>
+ 
+                    
+                    <div class="col-md-8 single-property-content ">
+                        <div class="row">
+                        <h2 class="wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft; text-align: center;">${gongji.title }</h2>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="col-sm-6">
+                              <p class="author-category">
+                                  By <a href="#">${gongji.id }</a>
+                              </p>
+                       </div>
+                       
+                       <div class="col-sm-6 right">
+                             <p class="date-comments">
+                              <a href="#"><i class="fa fa-calendar-o"></i><fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd"/></a>
+                              <a href="#"><i class="fa fa-check"></i>${gongji.click }</a>
+                             </p>
+                       </div>
+<!--       추후 중분류 활용하여 이벤트 상태 표시                      <div class="property-meta entry-meta clearfix ">   
+                                <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-tag">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                                        <path class="meta-icon" fill-rule="evenodd" clip-rule="evenodd" fill="#FFA500" d="M47.199 24.176l-23.552-23.392c-.504-.502-1.174-.778-1.897-.778l-19.087.09c-.236.003-.469.038-.696.1l-.251.1-.166.069c-.319.152-.564.321-.766.529-.497.502-.781 1.196-.778 1.907l.092 19.124c.003.711.283 1.385.795 1.901l23.549 23.389c.221.218.482.393.779.523l.224.092c.26.092.519.145.78.155l.121.009h.012c.239-.003.476-.037.693-.098l.195-.076.2-.084c.315-.145.573-.319.791-.539l18.976-19.214c.507-.511.785-1.188.781-1.908-.003-.72-.287-1.394-.795-1.899zm-35.198-9.17c-1.657 0-3-1.345-3-3 0-1.657 1.343-3 3-3 1.656 0 2.999 1.343 2.999 3 0 1.656-1.343 3-2.999 3z"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="property-info-entry">
+                                        <span class="property-info-label">Status</span>
+                                        <span class="property-info-value">For Sale</span>
+                                    </span>
                                 </div>
-                                <div class="row wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;">
-                                    <div class="col-sm-6">
-                                        <p class="author-category">
-                                            By <a href="#">${gongji.id }</a>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-6 right">
-                                        <p class="date-comments">
-                                            <a href="single.html"><i class="fa fa-calendar-o"></i>${gongji.w_date }</a>
-                                            <a href="single.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
-                                        </p>
-                                    </div>
+
+                                <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info icon-area">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                                        <path class="meta-icon" fill="#FFA500" d="M46 16v-12c0-1.104-.896-2.001-2-2.001h-12c0-1.103-.896-1.999-2.002-1.999h-11.997c-1.105 0-2.001.896-2.001 1.999h-12c-1.104 0-2 .897-2 2.001v12c-1.104 0-2 .896-2 2v11.999c0 1.104.896 2 2 2v12.001c0 1.104.896 2 2 2h12c0 1.104.896 2 2.001 2h11.997c1.106 0 2.002-.896 2.002-2h12c1.104 0 2-.896 2-2v-12.001c1.104 0 2-.896 2-2v-11.999c0-1.104-.896-2-2-2zm-4.002 23.998c0 1.105-.895 2.002-2 2.002h-31.998c-1.105 0-2-.896-2-2.002v-31.999c0-1.104.895-1.999 2-1.999h31.998c1.105 0 2 .895 2 1.999v31.999zm-5.623-28.908c-.123-.051-.256-.078-.387-.078h-11.39c-.563 0-1.019.453-1.019 1.016 0 .562.456 1.017 1.019 1.017h8.935l-20.5 20.473v-8.926c0-.562-.455-1.017-1.018-1.017-.564 0-1.02.455-1.02 1.017v11.381c0 .562.455 1.016 1.02 1.016h11.39c.562 0 1.017-.454 1.017-1.016 0-.563-.455-1.019-1.017-1.019h-8.933l20.499-20.471v8.924c0 .563.452 1.018 1.018 1.018.561 0 1.016-.455 1.016-1.018v-11.379c0-.132-.025-.264-.076-.387-.107-.249-.304-.448-.554-.551z"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="property-info-entry">
+                                        <span class="property-info-label">Area</span>
+                                        <span class="property-info-value">3500<b class="property-info-unit">Sq Ft</b></span>
+                                    </span>
                                 </div>
-                                <div class="image wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;"> 
-                                    <img src="assets/img/blog2.jpg" class="img-responsive" alt="Example blog post alt">
+
+                                <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-bed">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                                        <path class="meta-icon" fill="#FFA500" d="M21 48.001h-19c-1.104 0-2-.896-2-2v-31c0-1.104.896-2 2-2h19c1.106 0 2 .896 2 2v31c0 1.104-.895 2-2 2zm0-37.001h-19c-1.104 0-2-.895-2-1.999v-7.001c0-1.104.896-2 2-2h19c1.106 0 2 .896 2 2v7.001c0 1.104-.895 1.999-2 1.999zm25 37.001h-19c-1.104 0-2-.896-2-2v-31c0-1.104.896-2 2-2h19c1.104 0 2 .896 2 2v31c0 1.104-.896 2-2 2zm0-37.001h-19c-1.104 0-2-.895-2-1.999v-7.001c0-1.104.896-2 2-2h19c1.104 0 2 .896 2 2v7.001c0 1.104-.896 1.999-2 1.999z"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="property-info-entry">
+                                        <span class="property-info-label">Bedrooms</span>
+                                        <span class="property-info-value">3</span>
+                                    </span>
                                 </div>
-                            </div> 
 
-                            <div id="post-content" class="post-body single wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">
-                                <p>
-                                    <strong>${gongji.content }</strong> 
-                                    senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas
-                                    semper. <em>Aenean ultricies mi vitae est.</em> 
-                                    Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean
-                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-                                <p>
-                                    <img src="assets/img/blog10.jpg" class="img-responsive" alt="Example blog post alt">
-                                </p>
-
-                                <h2>Header Level 2</h2>
-                                <ol>
-                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                                    <li>Aliquam tincidunt mauris eu risus.</li>
-                                </ol>
-
-                                <blockquote>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada
-                                        tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
-                                    </p>
-                                </blockquote>
-
-                                <h3>Header Level 3</h3>
-
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
-                                </p><ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-                                    <li>Aliquam tincidunt mauris eu risus.</li>
-                                </ul>
-                                <p>
-                                    <img src="assets/img/blog.jpg" class="img-responsive" alt="Example blog post alt">
-                                </p>
-                                <p>
-                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                                    condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros
-                                    eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
-                                </p>
-
+                                <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-bath">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
+                                        <path class="meta-icon" fill="#FFA500" d="M37.003 48.016h-4v-3.002h-18v3.002h-4.001v-3.699c-4.66-1.65-8.002-6.083-8.002-11.305v-4.003h-3v-3h48.006v3h-3.001v4.003c0 5.223-3.343 9.655-8.002 11.305v3.699zm-30.002-24.008h-4.001v-17.005s0-7.003 8.001-7.003h1.004c.236 0 7.995.061 7.995 8.003l5.001 4h-14l5-4-.001.01.001-.009s.938-4.001-3.999-4.001h-1s-4 0-4 3v17.005000000000003h-.001z"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="property-info-entry">
+                                        <span class="property-info-label">Bathrooms</span>
+                                        <span class="property-info-value">3.5</span>
+                                    </span>
+                                </div>
+                            </div> -->
+                            <!-- .property-meta -->
+							<br><br>
+                            <div class="section">
+                             <h4 class="s-property-title">${gongji.category_b }</h4>
+                                <div class="s-property-content">
+                                    <h3>${gongji.content }Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>
+                                </div>
                             </div>
-                            <div class="post-footer single wow fadeInBottum animated animated" style="visibility: visible;">
+                            <!-- End description area  -->
+                            <input type="hidden" id="preId" value="${num.prev }">
+                            <input type="hidden" id="preId2" value="${num.next }">                            
+							<div class="post-footer single wow fadeInBottum animated animated" style="visibility: visible;">
                                 <ul class="pager">
-                                    <li class="previous"><a href="#"><i class=""></i>← Older </a></li>
-                                    <li class="next disabled"><a href="#">Newer →<i class=""></i> </a></li>
+ 						                               
+                                    <li class="previous"><a href="#" onclick="pagePre()"><i class=""></i>← 이전 글 </a></li>
+                                    <li class="next"><a href="#" onclick="pageNext()">다음 글 →<i class=""></i> </a></li>
                                 </ul> 
-                            </div>    
-
-                        </section> 
-
-                        <section class="about-autor">
-
-                        </section>
-
-                        <section id="comments" class="comments wow fadeInRight animated animated" style="visibility: visible; animation-name: fadeInRight;"> 
-                            <h4 class="text-uppercase wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">3 comments</h4>
-
-
-                            <div class="row comment">
-                                <div class="col-sm-3 col-md-2 text-center-xs">
-                                    <p>
-                                        <img src="assets/img/client-face1.png" class="img-responsive img-circle" alt="">
-                                    </p>
-                                </div>
-                                <div class="col-sm-9 col-md-10">
-                                    <h5 class="text-uppercase">Julie Alma</h5>
-                                    <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2011 at 12:00 am</p>
-                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-                                        Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                    <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a>
-                                    </p>
-                                </div>
+                            <!-- 수정/삭제-->
+                            <div class="button navbar-right">
+                        		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
+                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_Center?seq=${gongji.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
+                    		</div>
+                    		<br><br><br><br><br><br>
+                              <!-- 수정/삭제-->
                             </div>
-                            <!-- /.comment -->
+                            <br>
+                              <br>
+                            <hr>
+                            <p onclick="pagePre()"><이전 글><c:if test="${num.prev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${num.prev ne 0 }">${num.prev_title }</c:if></p>
+                            <hr>			
+                             <p onclick="pageNext()"><다음 글><c:if test="${num.next eq 0 }">다음 글이 없습니다.</c:if><c:if test="${num.next ne 0 }">${num.next_title }</c:if></p>
+                            <hr>			
 
 
-                            <div class="row comment last">
 
-                                <div class="col-sm-3 col-md-2 text-center-xs">
-                                    <p>
-                                        <img src="assets/img/client-face2.png" class="img-responsive img-circle" alt="">
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-9 col-md-10">
-                                    <h5 class="text-uppercase">Louise Armero</h5>
-                                    <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2012 at 12:00 am</p>
-                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.
-                                        Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                                    <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a>
-                                    </p>
-                                </div>
-
-                            </div>
-                            <!-- /.comment -->
-                        </section>
-
-                        <section id="comment-form" class="add-comments">
-                            <h4 class="text-uppercase wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">Leave comment</h4>
-                            <form>
-                                <div class="row wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="name">Name <span class="required">*</span>
-                                            </label>
-                                            <input class="form-control" id="name" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="email">Email <span class="required">*</span>
-                                            </label>
-                                            <input class="form-control" id="email" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="comment">Comment <span class="required">*</span>
-                                            </label>
-                                            <textarea class="form-control" id="comment" rows="4"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft;">
-                                    <div class="col-sm-12 text-right">
-                                        <button class="btn btn-primary"><i class="fa fa-comment-o"></i> Post comment</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </section>
-                    </div>                                 
+                            <!-- End video area  -->
+                        </div>
+                    </div>              
+                 
                 </div>
 
             </div>

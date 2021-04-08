@@ -33,7 +33,7 @@ public class PortfolioServiceImpl implements PortfolioService{
 	}
 
 	@Override
-	public PortfolioVO getPort(PortfolioVO vo) {
+	public List<PortfolioVO> getPort(PortfolioVO vo) {
 		return portmapper.getPort(vo);
 	}
 

@@ -30,38 +30,38 @@
                            		   <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">사진</label>
-                                            <input type="file" class="form-control" id="image">
+                                            <input type="file" class="form-control" id="image" value=${resumeVO.image }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">이름</label>
-                                            <input type="text" class="form-control" id="resume_name" value="김자바">
+                                            <input type="text" class="form-control" id="resume_name" value=${resumeVO.resume_name }>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastname">생년월일</label>
-                                            <input type="text" class="form-control" id="resume_birth" value="000101">
+                                            <input type="text" class="form-control" id="resume_birth" value=${resumeVO.resume_birth }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="resume_email" value="success@gmail.com">
+                                            <input type="text" class="form-control" id="resume_email" value=${resumeVO.resume_email }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">휴대폰 번호</label>
-                                            <input type="text" class="form-control" id="resume_phone" value="010.1111.1111">
+                                            <input type="text" class="form-control" id="resume_phone" value=${resumeVO.resume_phone }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">주소</label>
-                                            <input type="text" class="form-control" id="resume_address" value="대구광역시">
+                                            <input type="text" class="form-control" id="resume_address" value=${resumeVO.resume_address }>
                                         </div>
                                     </div>
 									<br><br><br><br><br><br><br><br><br><br><br>
@@ -70,32 +70,32 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">학교명</label>
-                                            <input type="text" class="form-control" id="resume_school" value="예담대학교">
+                                            <input type="text" class="form-control" id="resume_school" value=${resumeVO.resume_address }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">지역</label>
-                                            <input type="text" class="form-control" id="resume_area" value="대구">
+                                            <input type="text" class="form-control" id="resume_area" value=${resumeVO.resume_area }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">입학일</label>
-                                            <input type="date" class="form-control" id="resume_start" value="2018/01/01">
+                                            <input type="date" class="form-control" id="resume_start" value=${resumeVO.resume_start }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="subject">졸업일</label>
-                                            <input type="date" class="form-control" id="resume_end" value="2021/01/01">
+                                            <input type="date" class="form-control" id="resume_end" value=${resumeVO.resume_end }>
                                         </div>
                                     </div>
                                     <h3>지도내용</h3>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="message"></label>
-                                            <textarea id="collection" name="collection" class="form-control" placeholder="지도내용을 입력하세요."></textarea>
+                                            <textarea id="collection" name="collection" class="form-control" placeholder="지도내용을 입력하세요.">${resumeVO.collection }</textarea>
                                         </div>
                                     </div>
                                     <br><br><br><br><br><br><br><br><br>

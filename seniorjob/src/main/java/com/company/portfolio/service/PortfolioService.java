@@ -12,5 +12,5 @@ public interface PortfolioService {
 	//수정
 	public int updatePort(PortfolioVO vo);
 	//단건 조회
-	public PortfolioVO getPort(PortfolioVO vo);
+	public List<PortfolioVO> getPort(PortfolioVO vo);
 }

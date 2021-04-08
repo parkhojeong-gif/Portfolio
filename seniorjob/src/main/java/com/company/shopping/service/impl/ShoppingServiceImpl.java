@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.mentoring.service.MentoringVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
@@ -44,6 +45,23 @@ public class ShoppingServiceImpl implements ShoppingService {
 	@Override
 	public List<ShoppingVO> getSearchPay(ShoppingVO vo) { //마이페이지_결제내역
 		return dao.getSearchPay(vo);
+	}
+
+	// 김찬곤 추가
+	public int insertMentoringBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 담기
+		int result = dao.insertMentoringBasket(vo);
+		return result;
+	}
+	public int deleteMentoringBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 취소
+		int result = dao.deleteShopping(vo);
+		return result;
+	}
+	public int BasketCheck(ShoppingVO vo) { // 멘토 상세페이지_장바구니 중복 체크
+		int result = dao.BasketCheck(vo);
+		return result;
+	}
+	public ShoppingVO getSearchBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 단건 조회
+		return dao.getSearchBasket(vo);
 	}
 
 
