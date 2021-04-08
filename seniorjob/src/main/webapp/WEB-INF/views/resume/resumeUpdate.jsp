@@ -22,17 +22,6 @@
 		window.print();
 	}
 	
-	/* 이미지 수정 */
-	
-	$("image").change(function(){
-		if(this.files && this.files[0]){
-			var reader = new FileReader;
-			reader.onload = function(data){
-				$(".select_img").attr("src", data.target.result).width(500);
-			}
-		}
-	})
-	
 	/* 자격증 추가 */
 	$(document).on("click", "#certiPl", function(){  
 		var count = $(".certi_this").length;
@@ -53,7 +42,7 @@
 	$(document).on("click", "#selfPl", function(){
 		var count = $(".self_this").length;
 		var self_temp = $(".self_temp").html();
-		self_temp = self_temp.replace(/\[\]/g, "["+count+"]")
+		self_temp = self_temp.replace(/\[\]/g, "["+count+"]") // [] 찾아서 숫자 바꿔주기
 		$("div[id=self_ad]").append(self_temp);
 	})
 	
@@ -71,6 +60,18 @@
 		document.frm.cnt.value = cnt;
 	}
 	
+	/* 이미지 미리보기 */
+	function setImage(event) {
+		var reader = new FileReader();
+
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			document.querySelector("div#image_container").appendChild(img);
+		}
+		reader.readAsDataURL(event.target.files[0]);
+		
+	}
 	
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
@@ -100,9 +101,10 @@
                                         <div class="form-group">
                                             <label>사진</label>
                                             <div class="select_img">
-                                            <input type="file" multiple="multiple" name="uploadFile"> 
-                                            <img src="image/${resumeVO.image }">
-                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }">
+	                                            <input type="file" multiple="multiple" name="uploadFile"  multiple="multiple" onchange="setImage(event)"> 
+	                                            <img src="image/${resumeVO.image }">
+	                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }">
+	                                            <div id="image_container" name="image_container" class="select_img"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -155,13 +157,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>입학일</label>
-                                            <input type="text" class="form-control" id="resume_start" name="resume_start" value=${resumeVO.resume_start }>
+                                            <input type="date" class="form-control" id="resume_start" name="resume_start" value=${resumeVO.resume_start }>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>졸업일</label>
-                                            <input type="text" class="form-control" id="resume_end" name="resume_end" value=${resumeVO.resume_end }>
+                                            <input type="date" class="form-control" id="resume_end" name="resume_end" value=${resumeVO.resume_end }>
                                         </div>
                                     </div>
                                     <br><br><br><br><br><br><br><br><br>
@@ -217,7 +219,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>취득일</label>
-                                            <input type="text" class="form-control" id="certi_date" name="clist.certi_date[${i.index }]" value=${certi.certi_date }>
+                                            <input type="date" class="form-control" id="certi_date" name="clist.certi_date[${i.index }]" value=${certi.certi_date }>
                                         </div>
                                     </div>
                                     <br><br><br><br><br><br><br><br><br><br>
@@ -326,7 +328,7 @@
                      <div class="col-sm-6">
                          <div class="form-group">
                              <label>취득일</label>
-                                <input type="text" class="form-control"  name="clist[${i.index }].certi_date" value=${certi.certi_date }>
+                                <input type="date" class="form-control"  name="clist[${i.index }].certi_date" value=${certi.certi_date }>
                          </div>
                      </div>
                   <br><br><br><br><br><br><br><br><br><br>
