@@ -9,15 +9,16 @@
 
 
 					<li class='sidebar-title'>관리자 페이지</li>
-					<a href="/manager" class='sidebar-link'> <i data-feather="user" width="20"></i> <span>메인으로</span>
+					<a href="/manager" class='sidebar-link'> <i data-feather="layers" width="20"></i> <span>관리자 메인으로</span>
 					</a>
-
+					<a href="/" class='sidebar-link'> <i data-feather="home" width="20"></i> <span>홈페이지 메인으로</span>
+					</a>
+					
 					<li class='sidebar-title'>관리 목록</li>
 
 					<li class="sidebar-item"><a href="./user"
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>회원관리</span>
 					</a></li>
-
 
 					<li class="sidebar-item  "><a href="./mentor"
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토관리</span>
@@ -26,8 +27,6 @@
 					<li class="sidebar-item  "><a href="/declaration"
 						class='sidebar-link'> <i data-feather="alert-circle" width="20"></i> <span>신고관리</span>
 					</a></li>
-
-		
 
 					<li class="sidebar-item  has-sub"><a href="#"
 						class='sidebar-link'> <i data-feather="trending-up" width="20"></i>
@@ -66,4 +65,3 @@
 						</ul></li>
 
 				</ul>
-
