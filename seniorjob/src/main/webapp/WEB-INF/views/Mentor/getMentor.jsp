@@ -45,7 +45,7 @@ html {
 }
 
 .container {
-  padding: 0 16px;
+  padding: 30px;
 }
 .container2{
 
@@ -86,7 +86,6 @@ html {
 .class{float:left}
 input{
         width:100%;
-        height:100px;
         font-size:20px;
       	background_color:#ffffff;
       	float:left;
@@ -110,7 +109,7 @@ input{
 	<div class="row">
 		<div class="column">
 			<div class="card">
-				<div style="width: 200px; height: 150px; float: left;">
+				<div style="width: 200px; height: 150px; display:block">
 					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
 				</div>
 				<div class="container">
@@ -128,7 +127,6 @@ input{
 					</p>
 					<div style="border:1px solid black; padding-bottom:20px;">
 						<div style="float:left; margin-right:30px;">진행중인 멘토링: </div>
-						<div style="float:left; margin-left:30px;">멘토링 횟수: </div>
 						<div style="float:left; margin-left:30px;">팔로워 숫자: </div>
 					</div>
 					<p>
@@ -147,6 +145,11 @@ input{
 		<p>
 		<hr>
 		<p>
+		<form id="mentoringForm" name="mentoringForm" action="insertMentoringBasket" method="post">
+		<input type="hidden" id="id" name="id" value="${list.id }">
+		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
+		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
+		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
@@ -154,29 +157,60 @@ input{
 				</div>
 				<div class="container">
 					<p>
-						멘토링 제목: <b>${list.usersVO.name }</b>
+						멘토링 제목: <b>${mentoring.mentoring_name }</b>
 					</p>
 					<p class="title">
-						멘토링 코스 시작/종료일: <b>${list.mentoring_kind }</b>
+						멘토링 코스 시작일: <b>${mentoring.mentoring_begin_date }</b>
+					</p>
+					<p class="title">
+						멘토링 코스 종료일: <b>${mentoring.mentoring_end_date }</b>
 					</p>
 					<p>
-						정원: <b>${list.mentor_company_name }</b>
+						정원: <b>${mentoring.mentoring_limit }</b>
 					</p>
-					<br>
+					<br>	
 						<b>멘토링 코스 내용</b>
 					<br>
-						<input type="text">
+						<textarea style="margin: 0px; width: 1019px; height: 143px;">${mentoring.mentoring_content }</textarea>
 					<p>
 					<div>
-						<button class="button" style="float:left; width:200px; height:100px;">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; height:100px; margin-left:10px; ">멘토링 신청하기</button>
+						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 담기</button>
+						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 취소</button>
+						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
 					</div>
 					</div>
 				</div>
 			</div>
+			</form>
 		
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
+
+	$(function() {
+		
+		
+		var formData = { "id" : $('#id').val(),
+						 "mentoring_number":$('#mentoring_number').val(),
+						 "men_start":$('#men_start').val(),
+						 "met_end":$('#met_end').val() }
+
+		// 장바구니 담기
+		$('#BasketBtn').click(function() {
+			$.ajax({
+				url : "BasketCheck",
+				//type : "post",
+				dataType : "json",
+				data : formData,
+				success : function(result) {
+					if (result == 1) {
+						alert("이미 장바구니에 담았습니다.");
+					} else {
+						alert("장바구니에 담았습니다.");
+					}
+				}
+			});
+		});
+	}); // end of function
 
 	// 로그인 여부 확인
 	function loginCheck() {
@@ -184,15 +218,15 @@ input{
 		var url = "loginCheckAlert";
 		window.open(url, "로그인/회원가입", "width=500, height=450");
 	}
-	
+
 	// 멘토 팔로우
 	function mentorFollow() {
 		var msg = confirm("멘토를 팔로우 하시겠습니까?");
-		if(msg==true){
+		if (msg == true) {
 			var getMentorInfo = document.getMentorInfo;
 			getMentorInfo.action = "MentorFollow";
 			getMentorInfo.submit();
-		}else if (msg == false){
+		} else if (msg == false) {
 			alert("취소");
 		}
 	}

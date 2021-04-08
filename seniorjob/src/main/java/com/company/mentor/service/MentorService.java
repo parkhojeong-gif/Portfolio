@@ -1,14 +1,10 @@
-package com.company.mentor.service.impl;
+package com.company.mentor.service;
 
 import java.util.List;
 
-import com.company.mentor.service.MentorSearchVO;
-import com.company.mentor.service.MentorVO;
+public interface MentorService {
 
-public interface MentorMapper {
-	
 	public List<MentorVO> MentorList(); // 멘토 리스트 페이지 호출
-	
 	public List<MentorVO> getMentorList(MentorVO vo); // 검색
 	public List<MentorVO> getKeywordSearch(String searchKeyword); // 키워드 검색
 	public List<MentorVO> getAgeSearch(String searchAge); // 연령 검색
@@ -24,6 +20,4 @@ public interface MentorMapper {
 	
 	public List<MentorVO> getMentorByDate(MentorSearchVO vo); // 멘토리스트 세부검색: 최신순
 	public List<MentorVO> getMentorByFollow(MentorSearchVO vo); // 멘토리스트 세부검색: 인기순
-	
-
 }

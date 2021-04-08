@@ -51,8 +51,8 @@
 		MENTOR_DUTY,
 		ID,
 		MENTORING_AGE,
-		MENTORING_LOCATION
-			
+		MENTORING_LOCATION,
+		MENTOR_DATE
 		)
 		VALUES(
 		SEQ_MENTOR.NEXTVAL,
@@ -69,8 +69,8 @@
 		#{mentor_duty},
 		#{id},
 		#{mentoring_age},
-		#{mentoring_location}
-		
+		#{mentoring_location},
+		sysdate
 		)
 	</insert>
 	
@@ -102,6 +102,23 @@
 				) A
 			)
 		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- 세부검색: 최신순(멘토등록일자 기준) -->
+	<select id="getMentorByDate" resultType="com.company.mentor.service.MentorVO">
+		SELECT * FROM MENTOR
+   		ORDER BY MENTOR_DATE DESC
+	</select>
+	
+	<!-- 세부검색: 인기순(팔로우숫자 기준) -->
+	<select id="getMentorByFollow" resultType="com.company.mentor.service.MentorVO">
+		SELECT M.MENTOR_ID, COUNT(F.ID) "followingVO.followNum"
+		
+			FROM MENTOR M, FOLLOWING F
+			WHERE M.MENTOR_ID = F.MENTOR_ID
+			
+		GROUP BY M.MENTOR_ID
+		ORDER BY "followingVO.followNum" DESC
 	</select>
 	
  </mapper>	

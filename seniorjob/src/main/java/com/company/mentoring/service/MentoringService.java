@@ -14,6 +14,6 @@ public int insertMentoring(MentoringVO vo);
 	
 	public List<MentoringVO> getSearchMentoring(MentoringVO vo);
 
-
+	public void MentoringRegisterProc(MentoringVO vo); // 멘토링 등록
 
 }

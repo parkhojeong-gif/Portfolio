@@ -13,15 +13,9 @@
 	<!-- 멘토 팔로우  -->
 	<insert id="MentorFollow" parameterType="com.company.following.service.FollowingVO" >
 		INSERT INTO FOLLOWING
-		(
-		ID, 
-		MENTOR_ID
-		)
+					( ID, MENTOR_ID )
 		VALUES
-		(
-		#{id},
-		#{mentor_id}
-		)
+					( #{id}, #{mentor_id} )
 	</insert>
 	
 	<!-- 멘토 팔로우 취소 -->
@@ -34,9 +28,14 @@
 	<select id="mentorFollowCheck" resultType="com.company.following.service.FollowingVO" parameterType="com.company.following.service.FollowingVO">
 		SELECT ID, MENTOR_ID
 		FROM FOLLOWING
-		WHERE ID = #{id}
+		<where>
+			<if test="id != null and id != ''">
+				ID = #{id}
+			</if>
+			<if test="mentor_id != null and mentor_id != ''">
+				AND MENTOR_ID = #{mentor_id}
+			</if>
+		</where>
 	</select>
-	
-	
 	
 </mapper>
