@@ -137,7 +137,7 @@
 
 
                         <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="job">채용공고</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href=MentorList>멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                          <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenterMain">고객센터</a></li>
 

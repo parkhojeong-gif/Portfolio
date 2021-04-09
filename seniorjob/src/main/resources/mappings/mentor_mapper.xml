@@ -106,7 +106,13 @@
 	
 	<!-- 세부검색: 최신순(멘토등록일자 기준) -->
 	<select id="getMentorByDate" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM MENTOR
+		SELECT * FROM(
+			SELECT ROWNUM RN, A.* FROM(
+				SELECT * FROM MENTOR
+				ORDER BY MENTOR_ID
+				) A
+			)
+		WHERE RN BETWEEN #{start} AND #{end}
    		ORDER BY MENTOR_DATE DESC
 	</select>
 	

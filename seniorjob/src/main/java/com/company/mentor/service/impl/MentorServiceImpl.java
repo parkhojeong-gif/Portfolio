@@ -16,7 +16,7 @@ public class MentorServiceImpl implements MentorService {
 
 	// 멘토 전체 리스트 조회
 	public List<MentorVO> MentorList() {
-		return null;
+		return mentorMapper.MentorList();
 	}
 
 	// 전체검색 / 지역 검색 / 직무 검색
@@ -65,6 +65,16 @@ public class MentorServiceImpl implements MentorService {
 
 	// 멘토리스트 상세 검색: 인기순
 	public List<MentorVO> getMentorByFollow(MentorSearchVO vo) {
+		return mentorMapper.getMentorByFollow(vo);
+	}
+
+	@Override
+	public List<MentorVO> getMentorByDate(MentorVO vo) {
+		return mentorMapper.getMentorByDate(vo);
+	}
+
+	@Override
+	public List<MentorVO> getMentorByFollow(MentorVO vo) {
 		return mentorMapper.getMentorByFollow(vo);
 	}
 

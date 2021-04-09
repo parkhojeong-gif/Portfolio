@@ -22,8 +22,8 @@ public interface MentorMapper {
 	public int getCountMentor(); // 게시물 총 개수
 	public List<MentorVO> getSearchMentor(MentorSearchVO vo); // 페이징 처리된 게시글 조회
 	
-	public List<MentorVO> getMentorByDate(MentorSearchVO vo); // 멘토리스트 세부검색: 최신순
-	public List<MentorVO> getMentorByFollow(MentorSearchVO vo); // 멘토리스트 세부검색: 인기순
+	public List<MentorVO> getMentorByDate(MentorVO vo); // 멘토리스트 세부검색: 최신순
+	public List<MentorVO> getMentorByFollow(MentorVO vo); // 멘토리스트 세부검색: 인기순
 	
 
 }
