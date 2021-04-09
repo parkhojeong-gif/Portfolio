@@ -179,7 +179,7 @@ input{
 					<p>
 					<div>
 						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
+						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button" onclick="mentoringPayForm()">멘토링 신청하기</button>
 					</div>
 					</div>
 				</div>
@@ -261,8 +261,9 @@ input{
 
 	// 로그인 여부 확인
 	function loginCheck(){
-		alert("로그인 또는 회원가입이 필요한 항목입니다.");
-		location.href = "login"; // 로그인 페이지로 이동
+			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
+				location.href = "login"; // 로그인 페이지로 이동
+			}
 	}
 	// 멘토 팔로우
 	function mentorFollow() {
@@ -273,6 +274,13 @@ input{
 			getMentorInfo.submit();
 		} else if (msg == false) {
 			alert("취소");
+		}
+	}
+	
+	// 멘토링 신청하기
+	function mentoringPayForm(){
+		if(confirm("멘토링을 신청하시겠습니까?")){
+			location.href = "Mentor/mentoringPayForm";
 		}
 	}
 </script>

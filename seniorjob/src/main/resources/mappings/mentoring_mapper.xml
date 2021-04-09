@@ -74,6 +74,14 @@
 		WHERE ID='123'
 	</select>
 	
+	<!-- 멘토링 중복 체크 -->
+	<select id="MentoringRegisterCheck" resultType="com.company.mentoring.service.MentoringVO">
+		select 
+			MENTORING_BEGIN_DATE, MENTORING_END_DATE
+		fROM 
+			MENTORING
+		WHERE MENTORING_BEGIN_DATE = #{mentoring_begin_date}
+	</select>
 
 
 </mapper>

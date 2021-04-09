@@ -74,7 +74,7 @@ public class MentoringController {
 	public String MentoringRegisterProc(Model model, MentoringVO vo) {
 		mtService.MentoringRegisterProc(vo);
 		model.addAttribute("msg", "멘토링 등록 완료");
-		model.addAttribute("url", "MentorList");
+		model.addAttribute("url", "MentorListForm");
 		return "common/Success";
 	}
 	
