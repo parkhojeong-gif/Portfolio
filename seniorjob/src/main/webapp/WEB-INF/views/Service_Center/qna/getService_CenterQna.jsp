@@ -134,7 +134,7 @@ $(function(){
                             <!-- 수정/삭제-->
                             <div class="button navbar-right">
                         		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
-                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_Center?seq=${gongji.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
+                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_CenterQna?seq=${gongji.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
                     		</div>
                     		<br><br><br><br><br><br>
                               <!-- 수정/삭제-->
