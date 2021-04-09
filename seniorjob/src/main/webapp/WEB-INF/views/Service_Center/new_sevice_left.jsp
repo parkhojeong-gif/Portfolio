@@ -35,13 +35,7 @@
 
 
 	<!-- property area -->
-	<div class="col-md-12 single-property-content ">
-		<div>
-			<h5>
-				홈 > 고객센터 홈
-				</h5>
-		</div>
-	</div>
+
 	<div class="col-md-2 p0 padding-top-20">
 		<div class="blog-asside-right pr0">
 			<hr class="my-hr3">
@@ -87,13 +81,13 @@
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading" onclick="location.href='seniorTimes'">
-					<h3 class="panel-title">문의목록</h3>
+					<h3 class="panel-title">내문의목록</h3>
 				</div>
 			</div>
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='seniorTimes'">
-					<h3 class="panel-title">관리자페이지</h3><!--문의 전체조회  -->
+				<div class="panel-heading" onclick="location.href='getInquireList'">
+					<h3 class="panel-title">목록전체조회</h3><!--문의 전체조회  -->
 				</div>
 			</div>
 			<hr class="my-hr3">

@@ -14,24 +14,24 @@ public class InquireController {
 	@Autowired InquireMapper inquireMapper;
 	@RequestMapping("/inquire")
 	public String inquire() {
-		return "inquire";		  			//문의사항
+		return "inquire";		  			
 	}
 	
-	@RequestMapping("/inquireInsert")
+	@RequestMapping("/inquireInsert") //문의하기 등록폼
 	public String inquireInsert() {
-		return "inquireInsert";		  		 //문의사항 등록
+		return "inquireInsert";		  		
 	}
 	
-	@RequestMapping("/inquireList")
-	public String inquireList() {
-		return "inquireList";}	
-		//문의사항 목록
-	
-	
-	@RequestMapping("/getInquireList")	//문의 리스트
+	@RequestMapping("/getInquireList")	//문의하기 전체조회
 	public String getInquireList(Model model) {
 		model.addAttribute("list", inquireMapper.getInquireList());
 		return "/inquire/getInquireList";
+	}
+	
+	@RequestMapping("/getInquire")	//문의하기 단건조회
+	public String getInquire(Model model, InquireVO vo) {
+		model.addAttribute("list",inquireMapper.getInquire(vo));
+		return "/inquire/getInquire";			
 	}
 	@RequestMapping("/insertInquire") //문의 등록 폼
 	public String insertInquire(InquireVO vo) {
