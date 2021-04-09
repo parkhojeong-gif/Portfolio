@@ -36,10 +36,7 @@
         <link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
         <link rel="stylesheet" href="resources/assets/css/style.css">
         <link rel="stylesheet" href="resources/assets/css/responsive.css">
-        <!--summernote  -->
-		
-		<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-		<!--summernote  -->
+
     </head>
     <body>
 
