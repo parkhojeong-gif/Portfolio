@@ -117,6 +117,54 @@ public class Service_CenterImpl implements Service_CenterService{
 		return dao.insertService_CenterQna(vo);
 	}
 
+	@Override
+	public void updateService_CenterQna(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		dao.updateService_CenterQna(vo);
+	}
+	//==============================================신청취소========================================================
+	@Override
+	public List<Service_CenterVO> listQna2(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQna2(scri);
+	}
+
+	@Override
+	public int listCountQna2(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listCountQna2(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> searchServiceQna2(String searchKeyword) {
+		// TODO Auto-generated method stub
+		return dao.searchServiceQna2(searchKeyword);
+	}
+
+	@Override
+	public Service_CenterVO getService_CenterQna2(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		return dao.getService_CenterQna2(vo);
+	}
+
+	@Override
+	public Service_CenterVO preNextQna2(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		return dao.preNextQna2(vo);
+	}
+
+	@Override
+	public int insertService_CenterQna2(Service_CenterVO vo) {
+		// TODO Auto-generated method stub
+		return dao.insertService_CenterQna2(vo);
+	}
+
+	@Override
+	public void updateService_CenterQna2(Service_CenterVO vo) {
+		//
+		dao.updateService_CenterQna2(vo);
+	}
+
 	
 
 }

@@ -36,6 +36,10 @@
         <link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
         <link rel="stylesheet" href="resources/assets/css/style.css">
         <link rel="stylesheet" href="resources/assets/css/responsive.css">
+        <!--summernote  -->
+		
+		<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+		<!--summernote  -->
     </head>
     <body>
 
@@ -131,57 +135,12 @@
                         </li>
 
 
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="">채용공고</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorListForm">멘토리스트</a></li>
+
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="job">채용공고</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
-                        <li class="dropdown yamm-fw" data-wow-delay="0.4s">
-                            <a href="inquire" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">고객센터<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="yamm-content">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h5><a href="inquire">문의</a></h5>
-                                                <ul>
-                                                    <li>
-                                                        <a href="inquire">문의하기</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="inquireList">문의 목록</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5><a href="serviceCenterQna">결제/환불</a></h5>
-                                                <ul>
-                                                	<li>
-                                                        <a href="serviceCenterQna">질문 목록</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5><a href="inquire">신청/취소</a></h5>
-                                                <ul>
-                                                	<li>
-                                                        <a href="inquireList">질문 목록</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5><a href="inquire">화상면접사용법</a></h5>
-                                                <ul> 
-                                                	<li>
-                                                        <a href="inquireList">사용법 목록</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.yamm-content -->
-                                </li>
-                            </ul>
-                        </li>
-                        
+                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenterMain">고객센터</a></li>
+
                         <c:if test="${not empty users }">
 							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
                         </c:if>

@@ -19,41 +19,35 @@
 
 
 				<jsp:include page="Service_Center/sevice_left.jsp"></jsp:include>
-				<form action="seniorTimes">
-					<input type="text" name="keyword" value="노인"><br> <input
-						type="submit" name="검색" value="검색">
-				</form>
-				<hr>
-				<table>
-					<tr>
-						<td height="3" colspan="6" bgcolor="pink"></td>
-					</tr>
+				<div
+					class="col-md-9 pr-40 padding-top-40 properties-page user-properties">
+					<div class="section additional-details">
+						<form action="seniorTimes">
+							<!-- <input type="text" name="keyword" value=""><br> <input
+								type="submit" name="검색" value="검색"> -->
+						<button type="submit" class="btn btn-primary btn-lg" formaction="seniorTimes" name="keyword" value='고용정책'>고용정책</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="seniorTimes" name="keyword" value='취업자수'>취업자</button>
+						
+						</form>
 
-					<c:forEach items="${seniorTimes }" var="b">
-						<tr>
-							<td colspan="4" width="800">${b.title }</td>
-						</tr>
+							<hr>
+							<table class="table table-hover">
+								<c:forEach items="${seniorTimes }" var="b">
+									<tr>
+										<td colspan="4" width="800">${b.title }</td>
+									</tr>
 
-						<tr>
-							<td width="200"><a href="${b.originallink }">${b.originallink }</a></td>
-							<td width="200">${b.link }</td>
-						</tr>
+									<tr>
+										<td width="400"><a href="${b.originallink }">${b.description }</a></td>
 
-						<tr>
-							<td colspan="6">${b.description }</td>
-						</tr>
+									</tr>
+								</c:forEach>
 
-						<tr>
-							<td colspan="6" height="1" width="1000" bgcolor="pink"></td>
-						</tr>
-					</c:forEach>
-				</table>
-
-
-
+							</table>
+					</div>
+				</div>
 			</div>
 		</div>
-
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
