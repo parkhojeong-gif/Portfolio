@@ -150,6 +150,12 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
+                                            <label>전공</label>
+                                            <input type="text" class="form-control" id="resume_major" name="resume_major" value=${resumeVO.resume_major }>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
                                             <label>지역</label>
                                             <input type="text" class="form-control" id="resume_area" name="resume_area" value=${resumeVO.resume_area }>
                                         </div>

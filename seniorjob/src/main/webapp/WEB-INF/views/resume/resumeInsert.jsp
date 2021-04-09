@@ -244,6 +244,12 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
+									<label>전공</label> 
+									<input type="text" class="form-control" id="resume_major" name="resume_major" data-name="전공">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
 									<label>지역</label> 
 									<input type="text" class="form-control" id="resume_area" name="resume_area" data-name="지역">
 								</div>

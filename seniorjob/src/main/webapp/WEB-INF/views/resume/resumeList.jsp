@@ -28,7 +28,7 @@
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
                             <form action="" method="post" name="frm">  
 								<div class="section property-features" align="center"> 
-								<input type="text" name="id" id="id" value=${users }>
+								<input type="text" name="id" id="id" value=${users.id }>
                                     <h4 class="s-property-title">이력서 제목 | 수정 | 삭제 | 인쇄/PDF | WORD 변환 | 첨삭</h4>
                                     <c:forEach items="${list }" var = "resume">  
                                     	<ul>
