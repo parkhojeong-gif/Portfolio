@@ -55,5 +55,21 @@ public interface Service_CenterService {
 	public Service_CenterVO preNextQna(Service_CenterVO vo);
 	// 결제환불 등록
 	public int insertService_CenterQna(Service_CenterVO vo);
-
+	// 결제환불 수정
+	public void updateService_CenterQna(Service_CenterVO vo);
+	// =========================================신청취소=================================================
+	// 페이징 처리 및 신청취소 전체 조회
+	public List<Service_CenterVO> listQna2(SearchCriteria scri);
+	// 신청취소 게시물 총갯수
+	public int listCountQna2(SearchCriteria scri);
+	// 신청취소 게시글 검색
+	public List<Service_CenterVO> searchServiceQna2(String searchKeyword);
+	// 신청취소 단건조회
+	public Service_CenterVO getService_CenterQna2(Service_CenterVO vo);
+	// 신청취소게시물 단건조회 후 이전/다음글
+	public Service_CenterVO preNextQna2(Service_CenterVO vo);
+	// 신청취소 등록
+	public int insertService_CenterQna2(Service_CenterVO vo);
+	// 신청취소 수정
+	public void updateService_CenterQna2(Service_CenterVO vo);
 }

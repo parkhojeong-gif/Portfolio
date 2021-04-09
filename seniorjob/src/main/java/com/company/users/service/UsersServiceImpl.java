@@ -141,6 +141,7 @@ public class UsersServiceImpl implements UsersService {
 		
 		return usersmapper.idCheck(vo);
 	}
+
 	
 	@Override
 	public int emailCheck(String email) {
@@ -153,4 +154,23 @@ public class UsersServiceImpl implements UsersService {
 		
 		return usersmapper.kakaoCheck(vo);
 	}
+
+	@Override
+	public int updateInfo(UsersVO vo) throws Exception {
+		return usersmapper.updateInfo(vo);
+	}
+
+	@Override
+	public int insertCerti(UsersVO vo) {
+		return usersmapper.insertCerti(vo);
+	}
+
+	@Override
+	public int updateUsersProc(UsersVO vo) {
+		return usersmapper.updateUsersProc(vo);
+	}
+
+
+	
+	
 }

@@ -69,7 +69,13 @@
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-bars"></i> 등록하기</button>
                             </div>
                             <div class="col-sm-6 text-left">
-                                   <button class="btn btn-primary"><i class="fa fa-reply"></i> <a href="serviceCenterQna" onclick="return confirm('목록으로 돌아가시겠습니까?');">목록으로</a></button>
+                                   <button class="btn btn-primary" onclick="return confirm('목록으로 돌아가시겠습니까?');"><i class="fa fa-reply"></i>
+                               
+                                   		<a href="serviceCenterQna"
+                                   			>
+                                   			목록으로
+                                   		</a>
+                                   </button>
                             </div>
 							<br> <br> <br> <br>
 								<br><br><br>

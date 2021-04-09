@@ -40,7 +40,9 @@
 		WHERE MENTOR_ID = #{mentor_id}
 	</select>
 	
-	<select id="getSearchMentoring" resultType="MentoringVO">
+	<!-- 멘토링 상세조회-->
+	<!-- 양소민 -->
+	<select id="getSearchMentoring" resultType="com.company.mentoring.service.MentoringVO">
 		SELECT
 				NAME,
 				MENTORING_NUMBER,
@@ -59,9 +61,10 @@
 				MET_END,
 				ID
 		FROM MYMENTORINGVU
-		WHERE ID='123'
+		WHERE ID=#{id}
 	</select>
 	
+
 
 
 </mapper>

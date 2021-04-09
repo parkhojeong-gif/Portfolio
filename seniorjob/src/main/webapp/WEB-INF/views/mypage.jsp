@@ -41,7 +41,6 @@
 	<!-- property area -->
 
 
-
 	<div class="col-md-3 p0 padding-top-40">
 		<div class="blog-asside-right pr0">
 
@@ -68,6 +67,11 @@
 							</a>
 							</li>
 						</ul>
+						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='updateInfo'">
+								<h3 class="panel-title">비밀번호 변경</h3>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

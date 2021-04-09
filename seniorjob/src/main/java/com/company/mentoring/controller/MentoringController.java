@@ -3,6 +3,9 @@ package com.company.mentoring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,12 +83,15 @@ public class MentoringController {
 	
 	//양소민 추가
 	@GetMapping("/getSearchMentoring")   //마이페이지_내가 만든 멘토링
-	public String getSearchMentoring(MentoringVO vo, Model model) {
-		model.addAttribute("list", mtService.getSearchMentoring(vo));
+	public String getSearchMentoring(MentoringVO vo, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		vo.setId(id);									
+		model.addAttribute("list", mtService.getSearchMentoring(vo)); 
 		return "mypage/mentoringCourse";
 	}
 	
-	@RequestMapping("/requestMentoring")   //마이페이지_내가 만든 멘토링
+	@RequestMapping("/requestMentoring")   //멘토링 일정 요청 
 	public String requestMentoring(String mentorid, String menteeid, String schedule_name, Model model) {
 		System.out.println(mentorid);
 		System.out.println(menteeid);
@@ -97,5 +103,10 @@ public class MentoringController {
 		return "mypage/mentoringRequest";
 	}
 	
+	@GetMapping("/getMentoring") //멘토링 상세 페이지
+	public String getMentoring(MentoringVO vo, Model model) {
+		model.addAttribute("md", mtService.getMentoring(vo));
+		return "Mentoring/getMentoring";
+	}
 	
 }

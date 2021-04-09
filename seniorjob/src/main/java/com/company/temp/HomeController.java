@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +97,10 @@ public class HomeController {
 	
 
 	@RequestMapping("/mypageHome")
-	public String mypageHome() {
+	public String mypageHome(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String name = (String) session.getAttribute("name");
+		model.addAttribute("name", name);
 		return "mypage/mypageHome";
 	}
 	

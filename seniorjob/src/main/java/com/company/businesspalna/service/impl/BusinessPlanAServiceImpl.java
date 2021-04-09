@@ -1,6 +1,7 @@
 package com.company.businesspalna.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,21 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 	@Override
 	public int insertBusinessPlanA(BusinessPalnAVO vo) {
 		return dao.insertBusinessPlanA(vo);
+	}
+	
+	@Override
+	public int insertBusinessPlanB(BusinessPalnAVO vo) {
+		return dao.insertBusinessPlanB(vo);
+	}
+
+	@Override
+	public int insertBusinessPlanC(BusinessPalnAVO vo) {
+		return dao.insertBusinessPlanC(vo);
+	}
+
+	@Override
+	public int insertBusinessPlanD(BusinessPalnAVO vo) {
+		return dao.insertBusinessPlanD(vo);
 	}
 
 	@Override
@@ -37,5 +53,32 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 	public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo) {
 		return dao.getSearchBusinessPlanA(vo);
 	}
+
+	@Override
+	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo) {
+		return dao.getBpExcel(vo);
+	}
+
+	@Override
+	public String getSeq() {
+		return dao.getSeq();
+	}
+
+	@Override
+	public List<BusinessPalnAVO> getSearchBusinessPlanB(BusinessPalnAVO vo) {
+		return dao.getSearchBusinessPlanB(vo);
+	}
+
+	@Override
+	public List<BusinessPalnAVO> getSearchBusinessPlanC(BusinessPalnAVO vo) {
+		return dao.getSearchBusinessPlanC(vo);
+	}
+
+	@Override
+	public List<BusinessPalnAVO> getSearchBusinessPlanD(BusinessPalnAVO vo) {
+		return dao.getSearchBusinessPlanD(vo);
+	}
+
+
 
 }
