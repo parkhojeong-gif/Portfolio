@@ -9,16 +9,8 @@
  				TO_CHAR(schedule_end,'yyyy-mm-dd')||'T'||schedule_end_TIME||':00Z' AS "END"
 		FROM SCHEDULE 
 		WHERE
-		<choose>
-			<when test="auth == 'MENTOR'">
-			MENTORID=#{mentorid}
-			</when>
-			<when test="auth == 'USER'">
-			MENTEEID=#{menteeid} 
-			</when>
-			<otherwise>
-			</otherwise>
-		</choose>
+			(MENTORID=#{mentorid} or
+			MENTEEID=#{menteeid}) 
 		AND 
 		STATE='accept'
 	</select>

@@ -26,5 +26,5 @@ public interface UsersService {
 	
 	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
 
-	
+	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가	
 }

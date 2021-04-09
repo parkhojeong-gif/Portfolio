@@ -89,7 +89,7 @@ public class UsersController {
 	}
 
 	@RequestMapping("/updateUsersProc") // 유저 수정처리  //양소민 수정
-	public String updateInquireProc(UsersVO vo, BindingResult bresult) {
+	public String updateUsersProc(UsersVO vo, BindingResult bresult) {
 		usersMapper.updateUsers(vo);
 		return "redirect:/updateUsers";
 	}
