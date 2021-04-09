@@ -40,7 +40,7 @@ public class ResumeController {
 	@RequestMapping("/getSearchResumeList")
 	public String getSearchResumeList(Model model, HttpServletRequest req, ResumeVO vo) {
 		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("users.id");
+		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		model.addAttribute("list", resumemapper.getSearchResumeList(vo));
 		return "resume/resumeList";
@@ -57,7 +57,7 @@ public class ResumeController {
 	public String resumeInsert(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo, 
 			PortfolioVO portvo) throws Exception {
 		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("users");
+		String id = (String) session.getAttribute("id");
 		System.out.println(id);
 		vo.setId(id);
 		resumeservice.insertResume(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
@@ -68,11 +68,11 @@ public class ResumeController {
 	@PostMapping("/resumeUpdate")
 	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo,
 			PortfolioVO portvo) throws Exception {
+	HttpSession session = req.getSession();
+	String id = (String) session.getAttribute("id");
+	System.out.println(id);
+	vo.setId(id);
 	System.out.println(vo);
-	System.out.println(reqvo.getClist());
-	System.out.println(reqvo.getSlist());
-	System.out.println(portvo);
-	System.out.println(req);
 	resumeservice.updateResuem(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
 	return "redirect:/getSearchResumeList";
 	}

@@ -1,5 +1,8 @@
 package com.company.following.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +18,16 @@ public class FollowingController {
 	
 	//팔로우 목록
 	@RequestMapping("/following")
-	public String following() {
+	public String following(HttpServletRequest req, FollowingVO vo) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		return "following";				  
 	}
 	
 	// 멘토 팔로우
 	@RequestMapping("/MentorFollow")
-	public String getMentorFollow(Model model, FollowingVO vo) {
+	public String getMentorFollow(HttpServletRequest req, Model model, FollowingVO vo) {
 		
 		FollowingVO followCheck = followService.mentorFollowCheck(vo);
 		// 팔로우 중복 체크

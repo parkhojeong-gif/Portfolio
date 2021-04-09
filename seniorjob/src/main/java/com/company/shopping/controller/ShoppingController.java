@@ -1,5 +1,7 @@
 package com.company.shopping.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.company.mentoring.service.MentoringVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
@@ -21,10 +21,21 @@ public class ShoppingController {
 	
 	@Autowired ShoppingService spService;
 	
-	@RequestMapping("/shopping")
-	public String shopping() {
-		return "shopping";		  			//장바구니
+	@RequestMapping("/shopping")    //장바구니 이동
+//	@SessionAttributes({"cart"})
+	public String shopping(ShoppingVO vo, HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		//cart가 없으면 생성(하는중)
+		if(! model.containsAttribute("cart")) {
+			model.addAttribute("cart", new ArrayList<ShoppingVO>());
+		}
+		session.setAttribute("id", id);
+		return "shopping";		  			
 	}
+
+	
 	
 	//양소민 추가
 	@GetMapping("/getSearchShopping")   //마이페이지_수강중인 멘토링
@@ -59,6 +70,12 @@ public class ShoppingController {
 		}else {
 			return result;
 		}
+	}
+	
+	@RequestMapping("/goShopping")
+	@ResponseBody
+	public String goShopping() {
+		return "";
 	}
 	
 } // end of class

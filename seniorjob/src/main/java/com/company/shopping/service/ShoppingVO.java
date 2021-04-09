@@ -17,4 +17,8 @@ public class ShoppingVO { //주문정보
 	private String mentoring_content;
 	private String mentoring_photo;
 	private String mentoring_price;
+	
+	
+	//송다희 추가
+	private String price;
 }

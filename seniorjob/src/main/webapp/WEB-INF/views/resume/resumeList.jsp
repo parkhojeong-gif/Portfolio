@@ -31,6 +31,7 @@
 								<input type="text" name="id" id="id" value=${users.id }>
                                     <h4 class="s-property-title">이력서 제목 | 수정 | 삭제 | 인쇄/PDF | WORD 변환 | 첨삭</h4>
                                     <c:forEach items="${list }" var = "resume">  
+                                    <c:if test="${resume.id eq users.id }">
                                     	<ul>
                                         <li><a>${resume.resume_title }</a></li> 
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">수정</button></a></li>
@@ -41,6 +42,7 @@
                                     	<li><button type="button" onclick="location.href='collection?resume_no=${resume.resume_no}'">보기</button>&nbsp;
                                     	    <button type="button" onclick="location=''">보내기</button></li>
                                     	</ul>
+                                    </c:if>	
                                     </c:forEach>
                                 </div>
                             </form>

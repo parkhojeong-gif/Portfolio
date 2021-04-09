@@ -1,3 +1,5 @@
+<%@page import="org.springframework.web.servlet.mvc.condition.ProducesRequestCondition"%>
+<%@ page import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -94,13 +96,17 @@ input{
 </head>
 <body>
 
+<%
+	session.setAttribute("id", request.getParameter("users.id"));
+%>
+
+
 
   <div class="about-section">
   <h1>${list.usersVO.name } 멘토님의 페이지</h1>
   <p>Some text about who we are and what we do.</p>
   <p>Resize the browser window to see that this page is responsive by the way.</p>
 </div>
-
 <h2 style="text-align:center">Our Team</h2>
 <form name="getMentorInfo">
 <input type="hidden" name="id" value="${users.id }">
@@ -150,6 +156,8 @@ input{
 		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
+		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
+		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
@@ -182,11 +190,13 @@ input{
 				</div>
 			</div>
 			</form>
+			
+			
 		
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
-	$(function() {
+	/* $(function() {
 		
 		
 		var formData = { "id" : $('#id').val(),
@@ -210,7 +220,39 @@ input{
 				}
 			});
 		});
-	}); // end of function
+	}); // end of function */
+	
+	
+	/* //장바구니로 이동
+	$(document).on("click", "#BasketBtn", function(){
+		alert("장바구니에 담았습니다.");
+		var yn = confirm("장바구니로 이동하시겠습니까?");
+		if(yn){
+			location.href="productAdd";
+		}
+	}) */
+	
+	//장바구니 sessionstorage
+	$(function(){
+		var item = [{name:"id", value:$('#id').val()},
+					{name:"name", value:$('#mentoring_name').val()},	
+					{name:"start", value:$("#men_start").val()},
+					{name:"end", value:$("#men_end").val()},
+					{name:"price", value:$("#mentoring_price").val()},
+					];
+			console.log(localStorage.setItem('${id}', JSON.stringify(item)));
+			$(document).on("click", "#BasketBtn", function(){
+				$.ajax({
+// 					url: "BasketCheck",
+					data: localStorage.setItem("item", JSON.stringify(item)),
+					success: function(response){
+						console.log(response);
+					}
+				})
+			})
+	})
+	
+	
 
 	// 로그인 여부 확인
 	function loginCheck() {
