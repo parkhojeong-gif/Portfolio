@@ -4,9 +4,9 @@
 
 	<!-- 일정 조회, 마이페이지 홈에있는 calendar에서 확인 가능 -->
 	<select id="getSearchSchedule" parameterType="ScheduleVO" resultType="map">
-		SELECT SCHEDULE_NAME AS "TITLE",
-  				TO_CHAR(schedule_start,'yyyy-mm-dd')||'T'||schedule_start_TIME||':00Z' AS "START",
- 				TO_CHAR(schedule_end,'yyyy-mm-dd')||'T'||schedule_end_TIME||':00Z' AS "END"
+		SELECT SCHEDULE_NAME AS "title",
+  				TO_CHAR(schedule_start,'yyyy-mm-dd')||'T'||schedule_end_TIME AS "start",
+ 				TO_CHAR(schedule_end,'yyyy-mm-dd')||'T'||schedule_start_TIME AS "end"
 		FROM SCHEDULE 
 		WHERE
 			(MENTORID=#{mentorid} or
@@ -40,8 +40,8 @@
 					VALUES(SCHEDULE_SEQ.NEXTVAL,
 							#{schedule_name},
 							#{schedule_con},
-							SYSDATE,
-							SYSDATE+5,
+							#{schedule_start},
+							#{schedule_end},
 							'request',
 							#{menteeid},
 							#{mentorid},
@@ -56,6 +56,15 @@
 		UPDATE SCHEDULE 
 		SET 
 		STATE='accept' 
+		WHERE 
+		SEQ=#{seq}
+	</update>
+	
+	<!-- 멘티가 요청 거절할 시  -->
+	<update id="updateScheduleReject" parameterType="ScheduleVO">
+		UPDATE SCHEDULE 
+		SET 
+		STATE='reject' 
 		WHERE 
 		SEQ=#{seq}
 	</update>

@@ -18,12 +18,18 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
         	
           initialView: 'dayGridMonth',
-          eventSources : [{
-          		url : "getSearchSchedule",
-          		success : function(result) {
-          			console.log(result);
-          		}
-          }]
+          eventSources: [
+
+        	    // your event source
+        	    {
+        	      url: 'getSearchSchedule'
+        	      }
+        	    
+
+        	    // any other sources...
+
+        	  ]
+          
         });
         calendar.render();
         
@@ -55,7 +61,7 @@ function showContents(result) {
 		dl=$('<dl />');
 		dt=$('<dt />').attr("class","title").html(list.MENTORID+"가 <br />"+"다음 요청을 보냈습니다. <br />"+list.SCHEDULE_NAME+"<br />");
 		but=$('<button />').attr("type","button").attr("onclick","location.href='updateSchedule?seq="+list.SEQ+"'").html("승낙<br />");
-		but2=$('<button />').attr("type","button").attr("onclick","#").html("거절<br />");
+		but2=$('<button />').attr("type","button").attr("onclick","location.href='updateScheduleReject?seq="+list.SEQ+"'").html("거절<br />");
 		
 		$(dt).append(but);
 		$(dt).append(but2);

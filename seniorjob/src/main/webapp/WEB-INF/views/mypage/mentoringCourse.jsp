@@ -8,7 +8,12 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script>
+function detail(id) {
+	var url = "getMentor?mentor_id="+id;
+	window.open(url);
+}
+</script>
  <jsp:include page="../topHeader.jsp"></jsp:include>
     <body>
 
@@ -47,7 +52,7 @@
                                         <input type="hidden" name="schedule_name" value="${list.mentoring_name }">
                                         
                                         <div class="item-entry overflow">
-                                            <h5><a href="property-1.html">${list.mentoring_name }</a></h5>
+                                            <h5><span onclick="detail('${list.mentor_id}')">${list.mentoring_name }</span></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>${list.mentoring_begin_date } - ${list.mentoring_end_date }</b></span>
                                             <span class="proerty-price pull-right" > 멘티 : ${list.name }</span>

@@ -2,6 +2,7 @@ package com.company.users.service;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -169,6 +170,12 @@ public class UsersServiceImpl implements UsersService {
 	public int updateUsersProc(UsersVO vo) {
 		return usersmapper.updateUsersProc(vo);
 	}
+
+	@Override
+	public List<String> getCertiList(UsersVO vo) {
+		return usersmapper.getCertiList(vo);
+	}
+
 
 
 	

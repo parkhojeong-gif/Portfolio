@@ -1,6 +1,7 @@
 package com.company.users.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,10 +22,13 @@ public interface UsersService {
 	public int emailCheck(String email); //email 중복체크
 	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
 	
+	//양소민
 	// 회원정보(패스워드 변경 겸용) 변경
 	public int updateInfo(UsersVO vo) throws Exception;
 	
 	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
 
-	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가	
+	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리
+	
+	public List<String> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
 }

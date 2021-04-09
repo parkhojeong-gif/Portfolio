@@ -1,6 +1,9 @@
 package com.company.users.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -89,8 +92,13 @@ public class UsersController {
 	}
 
 	@RequestMapping("/updateUsersProc") // 유저 수정처리  //양소민 수정
-	public String updateUsersProc(UsersVO vo, BindingResult bresult) {
-		usersMapper.updateUsers(vo);
+	public String updateUsersProc(UsersVO vo, BindingResult bresult, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		System.out.println("vo:"+vo);
+		usersMapper.updateUsersProc(vo);
+		
 		return "redirect:/updateUsers";
 	}
 
@@ -254,6 +262,29 @@ public class UsersController {
 		usersService.insertCerti(vo);
 		return "redirect:/";
 		
+		
+	}
+	
+	@RequestMapping("/getCertiList") //자격증, 경력인증서 조회
+	@ResponseBody
+	public Map getCertiList(UsersVO vo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		
+		usersService.getCertiList(vo);
+		
+		List<String> list = new ArrayList<String>();
+		list.add(vo.getCerti_name());
+		list.add(vo.getCerti_place());
+		list.add(vo.getCerti_no());
+		list.add(vo.getCerti_date());
+		Map map = new HashMap<String, Object>();
+		map.put("data", list);
+		System.out.println("list:" + list);
+		
+		
+		return map;
 		
 	}
 
