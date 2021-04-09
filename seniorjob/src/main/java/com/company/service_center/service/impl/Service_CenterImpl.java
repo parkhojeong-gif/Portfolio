@@ -164,7 +164,4 @@ public class Service_CenterImpl implements Service_CenterService{
 		//
 		dao.updateService_CenterQna2(vo);
 	}
-
-	
-
 }

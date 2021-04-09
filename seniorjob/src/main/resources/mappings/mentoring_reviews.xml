@@ -2,35 +2,84 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.mentoring_reviews.service.impl.Mentoring_ReviewsMapper">
-	<select id="getMentoring_ReviewsList" resultType="Mentoring_ReviewsVO">
-	select 
-		seq,
-		category_a,
-		category_b,
-		to_char(w_date, 'yyyy-mm-dd') as w_date,
-		click,
-		content,
-		r_file,
-		id,
-		mentoring_number,
-		title
-		from mentoring_reviews
+	<!-- 후기 등록 SQL 문구 작성 페이지 ============================================================== -->
+
+<!-- 후기 페이징 (offset limit) 처리, <![CDATA[]]> 문자열로 처리 -->
+<select id="pagingMenReview" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
+	<![CDATA[ 
+	SELECT * FROM MENTORING_REVIEWS 
+				WHERE ROWNUM >= 1
+				AND ROWNUM <= 6 
+				ORDER BY SEQ DESC
+	]]>			
+</select>
+
+<!-- 후기 전체조회 -->
+<select id="getMenReview" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
+	SELECT * FROM MENTORING_REVIEWS
+</select>
+
+<!-- 후기 단건조회 -->
+<select id="getSearchMenReview" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
+	SELECT * FROM MENTORING_REVIEWS
+	WHERE SEQ = #{seq}
+</select>
+
+<!-- 후기 등록 -->
+<insert id="insertMenReview" parameterType="Mentoring_ReviewsVO">
+	INSERT INTO MENTORING_REVIEWS(SEQ,
+				CATEGORY_A,
+				CATEGORY_B,
+				W_DATE,
+				CONTENT,
+				CLICK,
+				R_FILE,
+				ID,
+				MENTORING_NUMBER,
+				TITLE) 
+	values ((SELECT NVL(MAX(SEQ),0)+1 FROM mentoring_reviews),
+				#{category_a},
+				#{category_b}, 
+				to_date(sysdate, 'yyyy_MM_dd'),
+				#{content},
+				'0',
+				'파일없음',
+				#{id},
+				#{mentoring_number},
+				#{title})			 				
+</insert>
+
+<!-- 후기 수정 -->
+<update id="updateMenReview" parameterType="Mentoring_ReviewsVO"> 
+ UPDATE MENTORING_REVIEWS
+ 	<set>
+ 		title = #{title},
+ 		content = #{content}
+ 	</set>
+ WHERE SEQ = #{seq}	
+</update>
+
+<!-- 후기 삭제 -->
+<delete id="deleteMenReview" parameterType="Mentoring_ReviewsVO">
+	DELETE FROM MENTORING_REVIEWS 
+				WHERE ID = #{id}
+</delete>
+
+<!-- 후기 조회수 증가 -->
+<update id="upnumMenReview" parameterType="Mentoring_ReviewsVO">
+	UPDATE MENTORING_REVIEWS SET
+		CLICK = NVL((CLICK),0)+1
+		WHERE SEQ = #{seq}
+</update>	
 	
-	
-	</select>
-		<select id="getMentoring_Reviews" resultType="Mentoring_ReviewsVO"
-				parameterType="Mentoring_ReviewsVO">
-	select seq,
-	category_a,
-	category_b,
-	to_char(w_date, 'yyyy-mm-dd') as w_date,
-	click,
-	content,
-	s_file,
-	id,
-	title from service_center
-	 WHERE SEQ = #{seq} 
-	</select>
-	
+<!-- 인기 조회수 후기 페이지 띄우기 -->
+<select id="pupMenUp" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
+	<![CDATA[ 
+	SELECT * FROM MENTORING_REVIEWS
+			WHERE ROWNUM >= 1
+			AND ROWNUM <= 2 
+			ORDER BY CLICK DESC 
+	]]>	
+</select>	
 	
  </mapper>

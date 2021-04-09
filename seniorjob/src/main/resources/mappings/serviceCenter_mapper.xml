@@ -284,5 +284,6 @@
 	</set>
 					where SEQ = #{seq}
 	</update>
+
  </mapper>
  

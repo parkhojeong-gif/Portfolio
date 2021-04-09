@@ -196,4 +196,5 @@ public class Service_CenterController {
 		return "/Service_Center/qna/serviceCenterMain2";
 
 	}
+	
 }
