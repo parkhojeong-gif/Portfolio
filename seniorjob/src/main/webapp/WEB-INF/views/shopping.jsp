@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	ArrayList<MentoringVO> shopping = null;
-
 	Object obj = session.getAttribute("cart");
 	
 	if(obj == null){
@@ -43,14 +42,14 @@
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">종료일자</span>
 						</li>
 						
-						<%
+						<%-- <%
 							if(shopping.size() == 0){
 								out.println("<span class='col-xs-6 col-sm-4 col-md-1 add-d-title'>");
 									out.println("장바구니에 담긴 상품이 없습니다.");
 								out.println("</span>");
 							} else{
 								int totalSum = 0, total = 0;
-								DecimalFormat df = new DecimalFormat("\#,##0");
+								DecimalFormat df = new DecimalFormat("");
 								for(int i = 0; i < shopping.size(); i++){
 									ShoppingVO shoppvo = shopping.get(i);
 									out.println("<span class='col-xs-6 col-sm-4 col-md-1 add-d-title'>");
@@ -71,7 +70,7 @@
 									out.println("</span>");
 								}
 							}
-						%>
+						%> --%>
 
 <!-- 						<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">1</span> -->
 <!-- 						<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry"> -->
