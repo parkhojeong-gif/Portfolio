@@ -119,7 +119,7 @@ $(function(){
                             <div class="section">
                              <h4 class="s-property-title">${gongji.category_b }</h4>
                                 <div class="s-property-content">
-                                    <h3>${gongji.content }Nulla quis dapibus nisl. Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies                                </p>
+                                    <p><h3>${gongji.content }</h3></p>
                                 </div>
                             </div>
                             <!-- End description area  -->
