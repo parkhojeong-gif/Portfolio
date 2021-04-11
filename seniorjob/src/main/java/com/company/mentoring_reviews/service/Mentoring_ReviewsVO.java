@@ -18,4 +18,11 @@ public class Mentoring_ReviewsVO { //멘토링 후기
 	private String id; //아이디
 	private int mentoring_number; //멘토링 코스번호
 	private String title; //글 제목
+	
+	//글 이전 다음
+	private int menPrev; //이전글의 글번호를 담을 필드
+	private String menPrev_title; // 이전 글의 글제목 담을 필드
+	private int menNext; //다음글의 글번호를 담을 필드
+	private String menNext_title; //다음글의 글제목을 담을 필드
+	
 }

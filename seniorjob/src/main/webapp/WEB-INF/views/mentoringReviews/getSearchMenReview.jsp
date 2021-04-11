@@ -18,7 +18,7 @@ function pagePre() {
 	if(sel == 0){
 		window.alert("이전 글이 없습니다");
 	}else{
-	location.href="getSearchMenReview?seq=${num.prev }";
+	location.href="getSearchMenReview?seq=${num.menPrev }";
 	}
 	}
 function pageNext() {
@@ -26,7 +26,7 @@ function pageNext() {
 	if(sel == 0){
 		window.alert("다음 글이 없습니다");
 	}else{
-	location.href="getSearchMenReview?seq=${num.next }";
+	location.href="getSearchMenReview?seq=${num.menNext }";
 	}
 	}
 $(function(){
@@ -135,7 +135,7 @@ $(function(){
                             <!-- 수정/삭제-->
                             <div class="button navbar-right">
                         		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
-                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteMenReviews?seq=${menlist.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
+                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteMenReviews?seq=${menslist.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
                     		</div>
                     		<br><br><br><br><br><br>
                               <!-- 수정/삭제-->
@@ -143,9 +143,9 @@ $(function(){
                             <br>
                               <br>
                             <hr>
-                            <p onclick="pagePre()"><이전 글><c:if test="${num.prev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${num.prev ne 0 }">${num.prev_title }</c:if></p>
+                            <p onclick="pagePre()"><이전 글><c:if test="${num.menPrev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${num.menPrev ne 0 }">${num.menPrev_title }</c:if></p>
                             <hr>			
-                             <p onclick="pageNext()"><다음 글><c:if test="${num.next eq 0 }">다음 글이 없습니다.</c:if><c:if test="${num.next ne 0 }">${num.next_title }</c:if></p>
+                             <p onclick="pageNext()"><다음 글><c:if test="${num.menNext eq 0 }">다음 글이 없습니다.</c:if><c:if test="${num.menNext ne 0 }">${num.menNext_title }</c:if></p>
                             <hr>			
 
 

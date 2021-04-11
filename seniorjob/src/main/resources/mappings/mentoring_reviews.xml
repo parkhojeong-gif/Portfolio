@@ -4,25 +4,73 @@
  <mapper namespace="com.company.mentoring_reviews.service.impl.Mentoring_ReviewsMapper">
 	<!-- 후기 등록 SQL 문구 작성 페이지 ============================================================== -->
 
-<!-- 후기 페이징 (offset limit) 처리, <![CDATA[]]> 문자열로 처리 -->
-<select id="pagingMenReview" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
-	<![CDATA[ 
-	SELECT * FROM MENTORING_REVIEWS 
-				WHERE ROWNUM >= 1
-				AND ROWNUM <= 6 
-				ORDER BY SEQ DESC
-	]]>			
-</select>
+<!--후기 페이징 처리(1) 페이지 갯수 체크  -->
+	<select id="listCount"  parameterType="MenSearchCriteria" resultType="int">
+		SELECT COUNT(SEQ) 
+		FROM MENTORING_REVIEWS
+		WHERE 1=1 and CATEGORY_A='대분류' 
+		<include refid="search"></include>
+		AND SEQ > 0	  
+	</select>
+	
+	<!--후기 검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+				<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'w'.toString()">AND ID LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+	
+<!--후기 페이징 처리(2) 페이지 처리 후 게시글 조회  -->
+	<select id="list" resultType="Mentoring_ReviewsVO" parameterType="Mentoring_ReviewsVO">
+		SELECT 	SEQ,
+				CATEGORY_A,
+				CATEGORY_B,
+				W_DATE,
+				CLICK,
+				CONTENT,
+				R_FILE,
+				ID,
+				TITLE 
+		FROM (SELECT 	    SEQ,
+							CATEGORY_A,
+						    CATEGORY_B,
+							W_DATE,
+						    CLICK,
+							CONTENT,
+							R_FILE,
+							ID,
+							TITLE, ROW_NUMBER() OVER(ORDER BY SEQ DESC) AS RNUM
+							FROM MENTORING_REVIEWS
+							where 1=1 and CATEGORY_A='대분류' 
+							<include refid="search"></include>
+							) MENTORING_REVIEWS WHERE RNUM
+							BETWEEN #{rowStart} AND #{rowEnd}
+							ORDER BY SEQ DESC
 
-<!-- 후기 전체조회 -->
-<select id="getMenReview" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
-	SELECT * FROM MENTORING_REVIEWS
-</select>
+	</select>	
+	
+<!--공지사항 이전글, 다음글-->
+<select id="preNext" resultType="Mentoring_ReviewsVO" parameterType="Mentoring_ReviewsVO">
+	SELECT SEQ, MENPREV, MENPREV_TITLE, MENNEXT, MENNEXT_TITLE 
+			FROM (
+  					SELECT  SEQ, 
+    						LAG(SEQ,1) OVER(ORDER BY SEQ) MENPREV,
+						    LAG(TITLE,1) OVER(ORDER BY SEQ) MENPREV_TITLE,    
+						    LEAD(SEQ,1) OVER(ORDER BY SEQ) MENNEXT, 
+						    LEAD(TITLE,1) OVER(ORDER BY SEQ) MENNEXT_TITLE
+ 		FROM MENTORING_REVIEWS
+ 		WHERE CATEGORY_A='대분류' )
+ 		WHERE SEQ= #{seq}  
+</select>	
 
 <!-- 후기 단건조회 -->
 <select id="getSearchMenReview" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
-	SELECT * FROM MENTORING_REVIEWS
-	WHERE SEQ = #{seq}
+	SELECT SEQ, CATEGORY_A, CATEGORY_B, W_DATE,
+	CLICK, CONTENT, R_FILE, ID, TITLE FROM MENTORING_REVIEWS
+	WHERE SEQ = #{seq}  AND CATEGORY_A='대분류' 
 </select>
 
 <!-- 후기 등록 -->
@@ -40,7 +88,7 @@
 	values ((SELECT NVL(MAX(SEQ),0)+1 FROM mentoring_reviews),
 				#{category_a},
 				#{category_b}, 
-				to_date(sysdate, 'yyyy_MM_dd'),
+				sysdate,
 				#{content},
 				'0',
 				'파일없음',
@@ -51,18 +99,16 @@
 
 <!-- 후기 수정 -->
 <update id="updateMenReview" parameterType="Mentoring_ReviewsVO"> 
- UPDATE MENTORING_REVIEWS
- 	<set>
- 		title = #{title},
- 		content = #{content}
- 	</set>
+ UPDATE MENTORING_REVIEWS SET
+ 			title = #{title},
+ 			content = #{content}
  WHERE SEQ = #{seq}	
 </update>
 
 <!-- 후기 삭제 -->
 <delete id="deleteMenReview" parameterType="Mentoring_ReviewsVO">
 	DELETE FROM MENTORING_REVIEWS 
-				WHERE ID = #{id}
+				WHERE SEQ = #{seq}
 </delete>
 
 <!-- 후기 조회수 증가 -->
@@ -74,12 +120,7 @@
 	
 <!-- 인기 조회수 후기 페이지 띄우기 -->
 <select id="pupMenUp" parameterType="Mentoring_ReviewsVO" resultType="Mentoring_ReviewsVO">
-	<![CDATA[ 
-	SELECT * FROM MENTORING_REVIEWS
-			WHERE ROWNUM >= 1
-			AND ROWNUM <= 2 
-			ORDER BY CLICK DESC 
-	]]>	
+	UPDATE MENTORING_REVIEWS SET CLICK = CLICK + 1 WHERE SEQ = #{seq}
 </select>	
 	
  </mapper>

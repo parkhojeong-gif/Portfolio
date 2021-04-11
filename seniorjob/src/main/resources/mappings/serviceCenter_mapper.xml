@@ -21,7 +21,7 @@
 		<include refid="search"></include>
 		AND SEQ > 0	  
 	</select>
-	<!--공지사항 -검색 -->
+	<!--공지사항 검색 -->
 	<sql id="search">
 		<if test="searchType != null">
 				<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>

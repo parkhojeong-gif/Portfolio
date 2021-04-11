@@ -25,33 +25,33 @@
 					<!-- /.row -->
 					<div align="center">
 						<h2>후기 수정</h2>
-						<input type="text" value="${list.seq }">
+						<input type="text" value="${menslist.seq }">
 					</div>
 					<hr>
-					<form id="frm" action="updateService_CenterQna2?seq=${list.seq }"  method="post" name="frm" >
+					<form id="frm" action="updateMenReviewsProc?seq=${menslist.seq }"  method="post" name="frm" >
 							<h3>글 작성</h3>
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>제목</label> 
-									<input type="text" class="form-control" id="title" name="title" size=10 value="${list.title }">
+									<input type="text" class="form-control" id="title" name="title" size=10 value="${menslist.title }">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>작성자</label> 
-									<input type="text" class="form-control" id="id" name="id" value="${list.id }" readonly="readonly">
+									<input type="text" class="form-control" id="id" name="id" value="${menslist.id }" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>작성일자</label> 
-									<input type="text" class="form-control" name="" readonly="readonly" value="${list.w_date }" readonly="readonly" >
+									<input type="text" class="form-control" name="" readonly="readonly" value="<fmt:formatDate value="${menslist.w_date }" pattern="YYYY-MM-dd"/>">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<select name="category_b" id="category_b">
-										<option value="">${list.category_b }</option>
+										<option value="">${menslist.category_b }</option>
 										<option value="신청">신청</option>
 										<option value="취소">취소</option>
 										<option value="기타">기타</option>
@@ -61,7 +61,7 @@
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>내용</label> <br>
-									<textarea id="content" name="content" rows="10" cols="90" style="resize: none;">${list.content }</textarea>
+									<textarea id="content" name="content" rows="10" cols="90" style="resize: none;">${menslist.content }</textarea>
 								</div>
 							</div>
 							<br> <br> <br> <br> <br> <br> <br>
