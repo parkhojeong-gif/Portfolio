@@ -90,6 +90,7 @@ input{
       	background_color:#ffffff;
       	float:left;
       }
+h1{text-align:center; padding: 20px}
 </style>
 </head>
 <body>
@@ -148,7 +149,8 @@ input{
 		<hr>
 		<p>
 		
-		<!-- 멘토링 정보 -->
+		<!-- 멘토링 정보(멘토링 등록 정보가 있을 때만 출력 -->
+	<c:if test="${not empty mentoring.mentoring_number }">
 		<form id="mentoringForm" name="mentoringForm" method="post">
 		<input type="hidden" id="id" name="id" value="${list.id }">
 		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
@@ -185,7 +187,10 @@ input{
 				</div>
 			</div>
 			</form>
-		
+		</c:if>
+		<c:if test="${empty mentoring.mentoring_number }">
+			<h1 class="display-3">- 등록된 멘토링이 없습니다 -</h1>
+		</c:if>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
@@ -218,6 +223,19 @@ input{
 				});
 			});
 		} // end of getBasket
+		
+		/* $('#PayBtn').click(function(){ // 멘토링 신청하기(작성중)
+			$.ajax({
+				url:
+				dataType:
+				data:
+				success:function(result){
+					if(result==0){
+						alert("");
+					}
+				}
+			});
+		}); */
 		
 		function getFollow(){ // 멘토 팔로우
 			
@@ -258,7 +276,7 @@ input{
 				});
 			});
 		} // end of deleteFollow
-
+		
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
@@ -280,7 +298,7 @@ input{
 	// 멘토링 신청하기
 	function mentoringPayForm(){
 		if(confirm("멘토링을 신청하시겠습니까?")){
-			location.href = "Mentor/mentoringPayForm";
+			location.href = "mentoringPayForm";
 		}
 	}
 </script>

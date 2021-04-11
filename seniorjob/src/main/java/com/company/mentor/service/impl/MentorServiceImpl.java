@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.following.service.FollowingVO;
 import com.company.mentor.service.MentorSearchVO;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
@@ -14,19 +13,14 @@ public class MentorServiceImpl implements MentorService {
 	
 	@Autowired MentorMapper mentorMapper;
 
-	// 멘토 전체 리스트 조회
-	public List<MentorVO> MentorList() {
-		return mentorMapper.MentorList();
-	}
-
 	// 전체검색 / 지역 검색 / 직무 검색
 	public List<MentorVO> getMentorList(MentorVO vo) {
 		return mentorMapper.getMentorList(vo);
 	}
 
 	// 키워드 검색
-	public List<MentorVO> getKeywordSearch(String searchKeyword) {
-		return mentorMapper.getKeywordSearch(searchKeyword);
+	public List<MentorVO> getKeywordSearch(MentorVO vo) {
+		return mentorMapper.getKeywordSearch(vo);
 	}
 
 	// 연령 검색

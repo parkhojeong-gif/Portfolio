@@ -6,6 +6,8 @@ import com.company.mentoring.service.MentoringVO;
 
 public interface MentoringMapper {
 	
+	public List<MentoringVO> getMentoringList(MentoringVO vo); // 멘토링 리스트
+	
 	public int insertMentoring(MentoringVO vo);
 	
 	public int updateMentoring(MentoringVO vo);

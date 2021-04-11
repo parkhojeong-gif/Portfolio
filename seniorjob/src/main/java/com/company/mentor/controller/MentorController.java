@@ -8,9 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,9 +19,6 @@ import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringService;
 import com.company.mentoring.service.MentoringVO;
 import com.company.portfolio.service.FileRenamePolicy;
-import com.company.service_center.PageMaker;
-import com.company.service_center.PagingVO;
-import com.company.service_center.SearchCriteria;
 
 @Controller
 public class MentorController {
@@ -39,9 +34,15 @@ public class MentorController {
 		}
 		
 		// 멘토 리스트 페이지 호출
-		@RequestMapping("/MentorList")
-		public String MentorList(Model model) {
-			model.addAttribute("list", mentorService.MentorList());
+		@RequestMapping("/getMentorList")
+		public String MentorList(Model model,MentorVO vo) {
+			model.addAttribute("list", mentorService.getMentorList(vo));
+			return "Mentor/mentorList";
+		}
+		
+		@RequestMapping("/getKeywordSearch")
+		public String getKeywordSearch(Model model, MentorVO vo) {
+			model.addAttribute("list", mentorService.getKeywordSearch(vo));
 			return "Mentor/mentorList";
 		}
 		

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.company.mentor.service.impl.MentorMapper;
-import com.company.users.service.impl.UsersMapper;
 
 /**
  * Handles requests for the application home page.

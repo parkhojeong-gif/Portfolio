@@ -49,4 +49,9 @@ public class MentoringServiceImpl implements MentoringService {
 		return dao.MentoringRegisterCheck(vo);
 	}
 
+	@Override
+	public List<MentoringVO> getMentoringList(MentoringVO vo) {
+		return dao.getMentoringList(vo);
+	}
+
 }

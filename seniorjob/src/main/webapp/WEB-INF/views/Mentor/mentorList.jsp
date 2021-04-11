@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시니어잡</title>
+<title>시니어잡/멘토</title>
 </head>
 <style>
 	h3{text-align:left}
