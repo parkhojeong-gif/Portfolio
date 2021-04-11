@@ -8,4 +8,20 @@
 	select * from inquire
 	
 	</select>
+	<!--  -->
+	<!--문의 목록전체조회 -> 단건조회-->
+	<select id="getInquire" resultType="InquireVO" parameterType="InquireVO">
+	
+	select * from inquire where SEQ=#{seq}
+	</select>
+	<!--  -->
+	<!--문의하기 글 작성 -->
+	<insert id="insertInquire"  parameterType="InquireVO">
+	insert into inquire( seq, category_a, category_b, w_date, click, content, i_file, status,
+	id, title) values((SELECT NVL(MAX(SEQ),0)+1 FROM inquire), #{category_a}, 	#{category_b}, 
+	SYSDATE, '0', #{content}, '파일없음', '미답변',#{id}, #{title})	
+	</insert> 
+	<!--  -->
+	
+	
  </mapper>

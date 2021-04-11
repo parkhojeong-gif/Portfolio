@@ -74,7 +74,7 @@
 			</div>
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='seniorTimes'">
+				<div class="panel-heading" onclick="location.href='insertInquireForm'">
 					<h5 class="panel-title">문의하기</h5>
 				</div>
 			</div>

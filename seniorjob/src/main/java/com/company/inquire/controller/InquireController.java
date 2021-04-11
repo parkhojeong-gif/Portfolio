@@ -15,9 +15,9 @@ public class InquireController {
 		return "inquire";		  			
 	}
 	
-	@RequestMapping("/inquireInsert") //문의하기 등록폼
-	public String inquireInsert() {
-		return "inquireInsert";		  		
+	@RequestMapping("/insertInquireForm") //문의 등록 폼
+	public String insertInquire(InquireVO vo) {
+		return "/inquire/inquireInsert";
 	}
 	
 	@RequestMapping("/getInquireList")	//문의하기 전체조회
@@ -31,11 +31,7 @@ public class InquireController {
 		model.addAttribute("list",inquireMapper.getInquire(vo));
 		return "/inquire/getInquire";			
 	}
-	@RequestMapping("/insertInquire") //문의 등록 폼
-	public String insertInquire(InquireVO vo) {
-		return "/inquire/insertInquire";
-	}
-	@RequestMapping("/insertInquireProc") //문의 등록
+	@RequestMapping("/insertInquire") //문의 등록
 	public String insertInquireProc(InquireVO vo) {
 		inquireMapper.insertInquire(vo);
 		return "redirect:/getInquireList";

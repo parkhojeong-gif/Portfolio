@@ -38,14 +38,14 @@
 
 					<table class="table table-striped">
 						<tr>
-							<th>구분</th>
+							<th >구분</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
 						</tr>
 						<c:forEach items="${list }" var="b">
 							<tr>
-								<td>${b.category_a }</td>
+								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.category_a }</td>
 								<td>${b.title }</td>
 								<td>${b.id }</td>
 								<td>${b.w_date }</td>
