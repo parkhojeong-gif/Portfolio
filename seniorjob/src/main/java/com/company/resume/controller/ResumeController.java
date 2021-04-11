@@ -19,7 +19,6 @@ import com.company.resume.service.ResumeVO;
 import com.company.resume.service.impl.ResumeMapper;
 import com.company.self_info.service.Self_InfoVO;
 import com.company.self_info.service.impl.Self_InfoMapper;
-import com.company.users.service.UsersVO;
 
 @Controller
 public class ResumeController {

@@ -4,12 +4,12 @@
  <mapper namespace="com.company.mentor.service.impl.MentorMapper">
  
  	<!-- 멘토 리스트 페이지 호출  -->
- 	<select id="MentorList" resultType="com.company.mentor.service.MentorVO">
+ 	<select id="MentorList" resultType="MentorVO">
  		SELECT * FROM MENTOR
  	</select>
  
  	<!-- 전체검색 / 지역 검색 / 직무 검색  --> 
-	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
+	<select id="getMentorList" resultType="MentorVO">
 		SELECT * FROM MENTOR
 		<where>
 		<if test="mentoring_location != null and mentoring_location != ''">
@@ -22,19 +22,19 @@
 	</select>
 	
 	<!-- 키워드 검색 -->
-	<select id="getKeywordSearch" resultType="com.company.mentor.service.MentorVO">
+	<select id="getKeywordSearch" resultType="MentorVO">
 		SELECT * FROM MENTOR
 		WHERE MENTORING_KIND LIKE '%'||#{searchKeyword}||'%' 
 	</select>
 	
 	<!-- 연령 검색 -->
-	<select id="getAgeSearch" resultType="com.company.mentor.service.MentorVO">
+	<select id="getAgeSearch" resultType="MentorVO">
 		SELECT * FROM MENTOR
 				WHERE MENTORING_AGE = #{searchAge}			
 	</select>
 	
 	<!-- 멘토 등록 -->
-	<insert id="MentorRegisterProc" parameterType="com.company.mentor.service.MentorVO">
+	<insert id="MentorRegisterProc" parameterType="MentorVO">
 		INSERT INTO MENTOR
 		(
 		MENTOR_ID,
@@ -75,13 +75,13 @@
 	</insert>
 	
 	<!-- 멘토 등록 중복 체크 -->
-	<select id="mentorRegisterCheck" resultType="com.company.mentor.service.MentorVO" parameterType="com.company.mentor.service.MentorVO">
+	<select id="mentorRegisterCheck" resultType="MentorVO" parameterType="MentorVO">
 		SELECT * FROM MENTOR
 		WHERE ID = #{id}
 	</select>
 	
 	<!-- 멘토 상세페이지 -->
-	<select id="getMentor" resultType="com.company.mentor.service.MentorVO" parameterType="com.company.mentor.service.MentorVO">
+	<select id="getMentor" resultType="MentorVO" parameterType="MentorVO">
 	SELECT U.name "usersVO.name", M.*
 	FROM USERS U, MENTOR M
 	WHERE U.ID = M.ID
@@ -94,7 +94,7 @@
 	</select>
 	
 	<!--페이징 처리(2) 페이지 처리 후 지정된 범위의 멘토 조회  -->
-	<select id="getSearchMentor" resultType="com.company.mentor.service.MentorVO">
+	<select id="getSearchMentor" resultType="MentorVO">
 		SELECT * FROM(
 			SELECT ROWNUM RN, A.* FROM(
 				SELECT * FROM MENTOR
@@ -105,13 +105,13 @@
 	</select>
 	
 	<!-- 세부검색: 최신순(멘토등록일자 기준) -->
-	<select id="getMentorByDate" resultType="com.company.mentor.service.MentorVO">
+	<select id="getMentorByDate" resultType="MentorVO">
 		SELECT * FROM MENTOR
    		ORDER BY MENTOR_DATE DESC
 	</select>
 	
 	<!-- 세부검색: 인기순(팔로우숫자 기준) -->
-	<select id="getMentorByFollow" resultType="com.company.mentor.service.MentorVO">
+	<select id="getMentorByFollow" resultType="MentorVO">
 		SELECT M.MENTOR_ID, COUNT(F.ID) "followingVO.followNum"
 		
 			FROM MENTOR M, FOLLOWING F

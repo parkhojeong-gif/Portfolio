@@ -2,7 +2,6 @@ package com.company.service_center.service.impl;
 
 import java.util.List;
 
-import com.company.service_center.Criteria;
 import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterVO;

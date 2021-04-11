@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
-import com.company.service_center.Criteria;
 import com.company.service_center.PageMaker;
-import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterVO;
 import com.company.service_center.service.impl.Service_CenterMapper;

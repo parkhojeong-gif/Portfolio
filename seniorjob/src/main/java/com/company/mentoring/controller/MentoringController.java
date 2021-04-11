@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
-import com.company.mentor.service.impl.MentorMapper;
 import com.company.mentoring.service.MentoringService;
 import com.company.mentoring.service.MentoringVO;
-import com.company.mentoring.service.impl.MentoringMapper;
 
 @Controller
 public class MentoringController {
