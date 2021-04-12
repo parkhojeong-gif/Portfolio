@@ -9,20 +9,6 @@
 		WHERE ID=#{id}
 	</select>
 	
-	<select id="getSearchBusinessPlanB" resultType="BusinessPalnAVO">
-		SELECT * FROM BUSINESSPLANB
-		WHERE ID=#{id}
-	</select>
-	
-	<select id="getSearchBusinessPlanC" resultType="BusinessPalnAVO">
-		SELECT * FROM BUSINESSPLANC
-		WHERE ID=#{id}
-	</select>
-	
-	<select id="getSearchBusinessPlanD" resultType="BusinessPalnAVO">
-		SELECT * FROM BUSINESSPLAND
-		WHERE ID=#{id}
-	</select>
 	
 	
 	<!-- 사업계획서 엑셀로 다운로드할 때 사업계획서 단건조회 -->
@@ -32,27 +18,33 @@
 	</select>
 	
 	<!-- 사업계획서 번호. 마지막으로 쓰인 sequence의 다음 값을 가져온다. -->
-	<select id="getSeq" resultType="String">
+	<select id="getSeq" resultType="int">
 		SELECT BUSINESS_SEQ.NEXTVAL FROM DUAL
 	</select>
 	
 	<!-- 사업계획서 단건조회 -->
-	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
-		SELECT *
-		FROM BUSINESSPLANA A 
-		<if test="pHidden != null and pHidden != ''">
-		 JOIN BUSINESSPLANB B
-		ON A.SEQ = B.SEQ
-		</if>
-		<if test="mHidden != null">
-		JOIN BUSINESSPLANC C
-		ON A.SEQ = C.SEQ
-		</if>
-		<if test="sHidden != null">
-		JOIN BUSINESSPLAND D
-		ON A.SEQ = D.SEQ
-		</if> 
-		WHERE A.SEQ = #{SEQ}
+	<select id="getBusinessPlanA" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO" statementType="CALLABLE">
+		{call BUSINESS_SELECT_PROCEDURE( #{seq},
+										 #{business_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{business_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{business_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{title, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{prod_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{prod_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{prod_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{phidden, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_d, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{mhidden, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{selling_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{selling_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{selling_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{shidden, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String}
+										 
+		 )}
+		
 	</select>
 	
 	<!-- 사업계획서 등록 -->
@@ -61,12 +53,14 @@
 							BUSINESS_A,
 							BUSINESS_B,
 							BUSINESS_C,
-							ID)
+							ID,
+							TITLE)
 					VALUES(#{seq},
 							#{business_a},
 							#{business_b},
 							#{business_c},
-							#{id}
+							#{id},
+							#{title}
 							) 
 	</insert>
 	
@@ -82,7 +76,7 @@
 							#{prod_a},
 							#{prod_b},
 							#{prod_c},
-							#{pHidden},
+							#{phidden},
 							#{id}
 							) 
 	</insert>
@@ -101,7 +95,7 @@
 							#{market_b},
 							#{market_c},
 							#{market_d},
-							#{mHidden},
+							#{mhidden},
 							#{id}
 							) 
 	</insert>
@@ -118,7 +112,7 @@
 							#{selling_a},
 							#{selling_b},
 							#{selling_c},
-							#{sHidden},
+							#{shidden},
 							#{id}
 							) 
 	</insert>
@@ -137,9 +131,8 @@
 	
 	
 	<!-- 사업계획서 삭제 -->
-	<delete id="deleteBusinessPlanA" parameterType="BusinessPalnAVO">
-	DELETE FROM BUSINESSPLANA 
-	WHERE SEQ=#{seq}
+	<delete id="deleteBusinessPlanA" parameterType="BusinessPalnAVO" statementType="CALLABLE">
+	{call BUSINESS_DELETE_PROCEDURE( #{seq})}
 	</delete>
 	
 	

@@ -28,24 +28,21 @@ public class BusinessPlanAController {
 	
 
 	
-	@GetMapping("/getSearchBusinessPlanA") //사업계획서 리스트 //수정중, 작동안됨.
+	@GetMapping("/getSearchBusinessPlanA") //사업계획서 리스트 
 	public String getSearchBusinessPlanA(BusinessPalnAVO vo, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		model.addAttribute("list1", bpService.getSearchBusinessPlanA(vo));
-		model.addAttribute("list2", bpService.getSearchBusinessPlanB(vo));
-		model.addAttribute("list3", bpService.getSearchBusinessPlanC(vo));
-		model.addAttribute("list4", bpService.getSearchBusinessPlanD(vo));
-		//System.out.println(model);
+		model.addAttribute("list", bpService.getSearchBusinessPlanA(vo));
+		System.out.println(model);
 		return "business/getSearchBusinessPlanA";
 	}
 	
 	
-	@RequestMapping("/getBusinessPlanA")			//사업계획서 하나만 조회. //수정중, 작동안됨.
+	@RequestMapping("/getBusinessPlanA")			//사업계획서 하나만 조회. 
 	public String getBusinessPlanA(BusinessPalnAVO vo, Model model) {
-		System.out.println("pHidden:"+vo);
-		model.addAttribute("bp", bpService.getBusinessPlanA(vo));
+		bpService.getBusinessPlanA(vo);
+		model.addAttribute("bp", vo);
 		return "business/getBusinessPlanA";
 	}
 	
@@ -59,18 +56,20 @@ public class BusinessPlanAController {
 	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request ) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id"); //login할 때 session에 저장해둔 id 값을 꺼내씀.
-		String seq = bpService.getSeq();
+		int seq = bpService.getSeq();
 		vo.setId(id);
 		vo.setSeq(seq);
+		System.out.println("prodDiv"+vo.getPhidden());
+		System.out.println("id"+vo.getId());
 		bpService.insertBusinessPlanA(vo);
-		System.out.println("prodDiv"+vo.getPHidden());
-		if(vo.getPHidden() != null) {
+		
+		if(vo.getPhidden() != null) {
 			bpService.insertBusinessPlanB(vo);
 		};
-		if(vo.getMHidden() != null) {
+		if(vo.getMhidden() != null) {
 			bpService.insertBusinessPlanC(vo);
 		};
-		if(vo.getSHidden() != null) {
+		if(vo.getShidden() != null) {
 			bpService.insertBusinessPlanD(vo);
 		};
 		
@@ -81,7 +80,9 @@ public class BusinessPlanAController {
 	
 	@GetMapping("/updateBusinessPlanA")			//수정페이지로
 	public String updateBusinessPlanA(BusinessPalnAVO vo, Model model) {
-		model.addAttribute("bp", bpService.getBusinessPlanA(vo));
+		bpService.getBusinessPlanA(vo);
+		model.addAttribute("bpp", vo);
+		System.out.println("update:"+model);
 		return "/business/updateBusinessPlanA";
 	}
 

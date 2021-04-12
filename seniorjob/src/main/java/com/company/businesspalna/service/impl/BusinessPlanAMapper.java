@@ -14,7 +14,7 @@ public interface BusinessPlanAMapper {
 		public int insertBusinessPlanD(BusinessPalnAVO vo);
 		
 		//등록시 sequence번호 가져오기
-		public String getSeq();
+		public int getSeq();
 		
 		//사업계획서 수정
 		public int updateBusinessPlanA(BusinessPalnAVO vo);
@@ -27,9 +27,6 @@ public interface BusinessPlanAMapper {
 		
 		//등록된 사업계획서 목록 조회
 		public List<BusinessPalnAVO> getSearchBusinessPlanA(BusinessPalnAVO vo);
-		public List<BusinessPalnAVO> getSearchBusinessPlanB(BusinessPalnAVO vo);
-		public List<BusinessPalnAVO> getSearchBusinessPlanC(BusinessPalnAVO vo);
-		public List<BusinessPalnAVO> getSearchBusinessPlanD(BusinessPalnAVO vo);
 		
 		//사업계획서 엑셀로 다운로드
 		public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
