@@ -38,5 +38,5 @@ public interface Mentoring_ReviewsService {
 			public boolean upnumMenReview(Mentoring_ReviewsVO vo);
 			
 			// 후기 게시물 단건조회 후 이전/다음글
-			public Mentoring_ReviewsVO preNext(Mentoring_ReviewsVO vo);
+			public Mentoring_ReviewsVO menPreNext(Mentoring_ReviewsVO vo);
 }

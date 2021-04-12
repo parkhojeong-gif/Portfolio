@@ -41,8 +41,8 @@ public class Mentoring_ReviewsController {
 		model.addAttribute("menslist", mentoring_ReviewsMapper.getSearchMenReview(vo));
 		mentoring_ReviewsMapper.upnumMenReview(vo); // 조회수 증가
 
-		model.addAttribute("num", mentoring_ReviewsMapper.preNext(vo));
-		mentoring_ReviewsMapper.preNext(vo); // 게시글 이전/다음
+		model.addAttribute("mennum", mentoring_ReviewsMapper.menPreNext(vo));
+		mentoring_ReviewsMapper.menPreNext(vo); // 게시글 이전/다음
 		
 		return "/mentoringReviews/getSearchMenReview";
 	}

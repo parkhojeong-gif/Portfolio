@@ -34,7 +34,7 @@
 						<h2>후기 등록하기</h2>
 					</div>
 					<hr>
-					<form id="frm" action="insertService_Center" method="post"
+					<form id="frm" action="insertMenReviewsProc" method="post"
 						name="frm">
 						<h3>글 작성</h3>
 
@@ -57,14 +57,13 @@
 							</div>
 						</div>
 						<input type="hidden" name="category_a" id="category_a"
-							value="공지사항">
+							value="대분류">
 						<div class="col-sm-6">
 							<div class="form-group">
 								<select name="category_b" id="category_b">
 									<option value="">카테고리</option>
-									<option value="이벤트">이벤트</option>
-									<option value="점검">점검</option>
-									<option value="안내">안내</option>
+									<option value="대분류">대분류</option>
+									<option value="중분류">중분류</option>
 								</select>
 							</div>
 						</div>

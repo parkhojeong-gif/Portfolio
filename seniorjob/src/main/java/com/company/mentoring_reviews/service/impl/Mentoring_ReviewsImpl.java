@@ -76,9 +76,9 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 	}
 
 	@Override
-	public Mentoring_ReviewsVO preNext(Mentoring_ReviewsVO vo) {
+	public Mentoring_ReviewsVO menPreNext(Mentoring_ReviewsVO vo) {
 		// TODO Auto-generated method stub
-		return dao.preNext(vo);
+		return dao.menPreNext(vo);
 	}
 
 }

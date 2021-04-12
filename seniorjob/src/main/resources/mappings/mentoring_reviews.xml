@@ -53,7 +53,7 @@
 	</select>	
 	
 <!--공지사항 이전글, 다음글-->
-<select id="preNext" resultType="Mentoring_ReviewsVO" parameterType="Mentoring_ReviewsVO">
+<select id="menPreNext" resultType="Mentoring_ReviewsVO" parameterType="Mentoring_ReviewsVO">
 	SELECT SEQ, MENPREV, MENPREV_TITLE, MENNEXT, MENNEXT_TITLE 
 			FROM (
   					SELECT  SEQ, 

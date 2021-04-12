@@ -18,7 +18,7 @@ function pagePre() {
 	if(sel == 0){
 		window.alert("이전 글이 없습니다");
 	}else{
-	location.href="getSearchMenReview?seq=${num.menPrev }";
+	location.href="getSearchMenReview?seq=${mennum.menPrev}";
 	}
 	}
 function pageNext() {
@@ -26,7 +26,7 @@ function pageNext() {
 	if(sel == 0){
 		window.alert("다음 글이 없습니다");
 	}else{
-	location.href="getSearchMenReview?seq=${num.menNext }";
+	location.href="getSearchMenReview?seq=${mennum.menNext}";
 	}
 	}
 $(function(){
@@ -123,15 +123,15 @@ $(function(){
                                     <h3>${menslist.content }</h3><p></p>
                                 </div>
                             </div>
-                           <%--  <!-- End description area  -->
-                            <input type="hidden" id="preId" value="${num.prev }">
-                            <input type="hidden" id="preId2" value="${num.next }">                            
-							<div class="post-footer single wow fadeInBottum animated animated" style="visibility: visible;">
+                            <!-- End description area  -->
+                            <input type="hidden" id="preId" value="${mennum.menPrev }">
+                            <input type="hidden" id="preId2" value="${mennum.menNext }">                            
+							<!-- <div class="post-footer single wow fadeInBottum animated animated" style="visibility: visible;">
                                 <ul class="pager">
  						                               
                                     <li class="previous"><a href="#" onclick="pagePre()"><i class=""></i>← 이전 글 </a></li>
                                     <li class="next"><a href="#" onclick="pageNext()">다음 글 →<i class=""></i> </a></li>
-                                </ul>  --%>
+                                </ul>   -->
                             <!-- 수정/삭제-->
                             <div class="button navbar-right">
                         		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
@@ -143,12 +143,10 @@ $(function(){
                             <br>
                               <br>
                             <hr>
-                            <p onclick="pagePre()"><이전 글><c:if test="${num.menPrev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${num.menPrev ne 0 }">${num.menPrev_title }</c:if></p>
+                            <p onclick="pagePre()"><이전 글><c:if test="${mennum.menPrev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${mennum.menPrev ne 0 }">${mennum.menPrev_title }</c:if></p>
                             <hr>			
-                             <p onclick="pageNext()"><다음 글><c:if test="${num.menNext eq 0 }">다음 글이 없습니다.</c:if><c:if test="${num.menNext ne 0 }">${num.menNext_title }</c:if></p>
+                             <p onclick="pageNext()"><다음 글><c:if test="${mennum.menNext eq 0 }">다음 글이 없습니다.</c:if><c:if test="${mennum.menNext ne 0 }">${mennum.menNext_title }</c:if></p>
                             <hr>			
-
-
 
                             <!-- End video area  -->
                         </div>
