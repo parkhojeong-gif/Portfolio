@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="userList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+</script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 			<div class="main-content container-fluid">
 				<div class="page-title">
@@ -28,6 +35,19 @@
 							<input name="search" placeholder="Search..." type="search"/>
 							<button style="position : static; right : 200px;">검색</button>
 						</div><br>
+						<%-- <div id="outter">
+						<div style="float: right;">
+							<select id="cntPerPage" name="sel" onchange="selChange()">
+								<option value="5"
+									<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+								<option value="10"
+									<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+								<option value="15"
+									<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+								<option value="20"
+									<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+							</select>
+						</div> --%>
 							<table class='table table-striped' id="table1">
 								<thead>
 									<tr>
@@ -44,7 +64,7 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="users" items="${list}">
+								<c:forEach items="${viewAll}" var="users">
 									<tr>
 										<td>${users.id }</td>
 										<td>${users.name }</td>
@@ -52,7 +72,7 @@
 										<td>${users.address }</td>
 										<td>${users.birth }</td>
 										<td>${users.email }</td>
-										<td> </td>
+										<td>${users.mentor_career_certificate}</td>
 										<td><span class="badge bg-success" href="#info"
 											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
 										<td><a href="#exampleModalLong" class="edit"
@@ -64,6 +84,25 @@
 								</c:forEach>	
 								</tbody>
 							</table>
+							<div style="display: block; text-align: center;">		
+								<c:if test="${paging.startPage != 1 }">
+									<a href="/userList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+								</c:if>
+								<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+									<c:choose>
+										<c:when test="${p == paging.nowPage }">
+											<b>${p }</b>
+										</c:when>
+										<c:when test="${p != paging.nowPage }">
+											<a href="/userList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${paging.endPage != paging.lastPage}">
+									<a href="/userList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+								</c:if>
+							</div>
+							
 						</div>
 					</div>
 

@@ -1,15 +1,10 @@
 package com.company.temp;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 @Controller
@@ -18,17 +13,17 @@ public class ManagerController {
 	private static final Logger logger = LoggerFactory.getLogger(ManagerController.class);
 	
 	//메인으로
-	@RequestMapping("/manager")
-	public String ManagerMain() {
+	@RequestMapping("/")
+	public String manager() {
 	
-		return "ManagerMain";
+		return "manager";
 	}
 	//회원관리
-	@RequestMapping("/user")
-	public String userPage() {
-		
-		return "user"; 
-	}
+	/*
+	 * @RequestMapping("/user") public String user() {
+	 * 
+	 * return "user"; }
+	 */
 	//멘토관리
 	@RequestMapping("/mentor")
 	public String mentor() {
@@ -39,7 +34,7 @@ public class ManagerController {
 	@RequestMapping("/declaration")
 	public String declaration() {
 		
-		return "dec/declaration"; 
+		return "declaration"; 
 	}
 	//매출종합관리
 	@RequestMapping("/sum")

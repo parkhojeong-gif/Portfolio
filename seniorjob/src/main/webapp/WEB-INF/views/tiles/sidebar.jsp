@@ -9,14 +9,14 @@
 
 
 					<li class='sidebar-title'>관리자 페이지</li>
-					<a href="/manager" class='sidebar-link'> <i data-feather="layers" width="20"></i> <span>관리자 메인으로</span>
+					<a href="/" class='sidebar-link'> <i data-feather="layers" width="20"></i> <span>관리자 메인으로</span>
 					</a>
-					<a href="/" class='sidebar-link'> <i data-feather="home" width="20"></i> <span>홈페이지 메인으로</span>
+					<a href="" class='sidebar-link'> <i data-feather="home" width="20"></i> <span>홈페이지 메인으로</span>
 					</a>
 					
 					<li class='sidebar-title'>관리 목록</li>
 
-					<li class="sidebar-item"><a href="./user"
+					<li class="sidebar-item"><a href="./userList"
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>회원관리</span>
 					</a></li>
 
@@ -24,7 +24,7 @@
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토관리</span>
 					</a></li>
 
-					<li class="sidebar-item  "><a href="/declaration"
+					<li class="sidebar-item  "><a href="./declaration"
 						class='sidebar-link'> <i data-feather="alert-circle" width="20"></i> <span>신고관리</span>
 					</a></li>
 
@@ -45,22 +45,21 @@
 
 						<ul class="submenu ">
 
-							<li><a href="/community">공지사항</a></li>
+							<li><a href="././community">공지사항</a></li>
 
-							<li><a href="/com_later">후기</a></li>
+							<li><a href="././com_later">후기</a></li>
 
 						</ul></li>
 
-					<li class="sidebar-item  has-sub"><a href="#"
-						class='sidebar-link'> <i data-feather="file-text"></i>
+					<li class="sidebar-item  has-sub"><a href="#" class='sidebar-link'> <i data-feather="file-text"></i>
 							<span>고객센터</span>
 					</a>
 
 						<ul class="submenu ">
 
-							<li><a href="/service">결제/환불</a></li>
+							<li><a href="././service">결제/환불</a></li>
 
-							<li><a href="/service2">취소/신청</a></li>
+							<li><a href="././service2">취소/신청</a></li>
 
 						</ul></li>
 
