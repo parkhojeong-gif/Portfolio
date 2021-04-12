@@ -1,7 +1,5 @@
 package com.company.shopping.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,21 +15,25 @@ import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
 @Controller
+@SessionAttributes({"cart"})
 public class ShoppingController {
 	
 	@Autowired ShoppingService spService;
 	
-	@RequestMapping("/shopping")    //장바구니 이동
-//	@SessionAttributes({"cart"})
+	@RequestMapping(value="/shopping")    //장바구니 이동
+//	@ResponseBody
 	public String shopping(ShoppingVO vo, HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
-		vo.setId(id);
+		System.out.println(id);
+		/*
+		 * ArrayList<String> arr = (ArrayList<String>)
+		 * (session.getAttribute("cartlist"));
+		 * 
+		 * if(session.getAttribute("cartlist") == null) { arr = new ArrayList<String>();
+		 * } session.setAttribute("cartlist", arr);
+		 */
 		//cart가 없으면 생성(하는중)
-		if(! model.containsAttribute("cart")) {
-			model.addAttribute("cart", new ArrayList<ShoppingVO>());
-		}
-		session.setAttribute("id", id);
 		return "shopping";		  			
 	}
 

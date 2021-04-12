@@ -223,35 +223,54 @@ input{
 	}); // end of function */
 	
 	
-	/* //장바구니로 이동
+	
+	
+	
+
+/* 	$(function(){
+      var name = $('#mentoring_name').val();
+      var price = $("#mentoring_price").val();
+      var start = $("#men_start").val();
+      var end = $("#met_end").val();
+      var number = $("#mentoring_number").val();
+      var arr = [];
+      arr[number] = {"number":number, "name":name, "price" : price, "start":start, "end":end};
+      console.log(arr);
+      localStorage.setItem(number, JSON.stringify(arr));
+	  console.log(localStorage.getItem(number));
+         $(document).on("click", "#BasketBtn", function(){
+            $.ajax({
+               url: "shopping",
+               data: localStorage.getItem(number),
+               method : "post",
+               success: function(response){
+                  console.log(response);
+               }
+            })
+         })
+   }) */
+   
+   
 	$(document).on("click", "#BasketBtn", function(){
-		alert("장바구니에 담았습니다.");
-		var yn = confirm("장바구니로 이동하시겠습니까?");
+		var yn = confirm("장바구니에 담으시겠습니까?");
 		if(yn){
-			location.href="productAdd";
+			 var name = $('#mentoring_name').val();
+		     var price = $("#mentoring_price").val();
+		     var start = $("#men_start").val();
+		     var end = $("#met_end").val();
+		     var number = $("#mentoring_number").val();
+		     var arr = localStorage.getItem("arr");
+		     if(arr == null)
+		     	arr = {};
+		     arr[number] = {"number":number, "name":name, "price" : price, "start":start, "end":end};
+		     for(num of number)
+		     	localStorage.setItem("arr"+[num], JSON.stringify(arr));
+		     console.log(arr);
+		     console.log(localStorage.getItem("arr"+[num]));
+		     mentoringForm.action = "shopping";
+		     mentoringForm.submit();
 		}
-	}) */
-	
-	//장바구니 sessionstorage
-	$(function(){
-		var item = [{name:"id", value:$('#id').val()},
-					{name:"name", value:$('#mentoring_name').val()},	
-					{name:"start", value:$("#men_start").val()},
-					{name:"end", value:$("#men_end").val()},
-					{name:"price", value:$("#mentoring_price").val()},
-					];
-			console.log(localStorage.setItem('${id}', JSON.stringify(item)));
-			$(document).on("click", "#BasketBtn", function(){
-				$.ajax({
-// 					url: "BasketCheck",
-					data: localStorage.setItem("item", JSON.stringify(item)),
-					success: function(response){
-						console.log(response);
-					}
-				})
-			})
 	})
-	
 	
 
 	// 로그인 여부 확인
