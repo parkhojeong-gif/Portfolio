@@ -64,6 +64,21 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 		return dao.getSeq();
 	}
 
+	@Override
+	public int updateBusinessPlanB(BusinessPalnAVO vo) {
+		return dao.updateBusinessPlanB(vo);
+	}
+
+	@Override
+	public int updateBusinessPlanC(BusinessPalnAVO vo) {
+		return dao.updateBusinessPlanC(vo);
+	}
+
+	@Override
+	public int updateBusinessPlanD(BusinessPalnAVO vo) {
+		return dao.updateBusinessPlanD(vo);
+	}
+
 	
 
 

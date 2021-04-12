@@ -267,25 +267,16 @@ public class UsersController {
 	
 	@RequestMapping("/getCertiList") //자격증, 경력인증서 조회
 	@ResponseBody
-	public Map getCertiList(UsersVO vo, HttpServletRequest request) {
+	public List<Map> getCertiList(UsersVO vo, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		
-		usersService.getCertiList(vo);
-		
-		List<String> list = new ArrayList<String>();
-		list.add(vo.getCerti_name());
-		list.add(vo.getCerti_place());
-		list.add(vo.getCerti_no());
-		list.add(vo.getCerti_date());
-		Map map = new HashMap<String, Object>();
-		map.put("data", list);
-		System.out.println("list:" + list);
-		
-		
-		return map;
-		
+		List<Map> list = usersService.getCertiList(vo);
+		return list;
 	}
+	
+	
+
+	
 
 }

@@ -13,10 +13,6 @@
 
 <script>
 
-/* $(document).ready( function () {
-    $('#myTable').DataTable({
-    	});
-    }); */
 
     
     $(document).ready( function () {
@@ -25,7 +21,7 @@
         	success : showContents,
         	error : showErrors
     	})
-    });
+    }); 
 
 
 function showErrors(result) {
@@ -34,6 +30,10 @@ function showErrors(result) {
 
 function showContents(result) {
 	console.log(result);
+	for(list of result ) {
+		document.getElementById("myTable").innerHTML += list.no;
+		
+	}
 }
 
     function DaumPostcode() {
@@ -174,13 +174,23 @@ function showContents(result) {
 
                             </div>
                             
-                            <div class="profiel-header">
+                            <div class="profiel-header" id="myTable">
                                 
                                 <hr>
                                 <h3>
                                     <b>자격증 목록</b>
                                 </h3>
-                                <table id="myTable">
+                                <table border="1">
+                                	<thead>
+                                	<tr>
+                                		<th>자격증이름</th>
+                                		<th>발행처</th>
+                                		<th>자격증번호</th>
+                                		<th>취득일자</th>
+                                	</tr>
+                                	</thead>
+                                	<tbody>
+                                	</tbody>
                                 
                                 </table>
                                 
@@ -197,12 +207,23 @@ function showContents(result) {
                             </div>
                             <br>
                             <br><br>
-                               <div class="profiel-header">
+                               <div class="profiel-header" id="tableCerti">
                                 
                                 <hr>
                                 <h3>
                                     <b>경력인증서 목록</b>
                                 </h3>
+                                <table border="1">
+                                	<thead>
+                                	<tr>
+                                		<th>경력인증서</th>
+                                		
+                                	</tr>
+                                	</thead>
+                                	<tbody>
+                                	</tbody>
+                                
+                                </table>
                             </div>
                           
                           

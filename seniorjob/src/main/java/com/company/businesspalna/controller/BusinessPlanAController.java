@@ -82,13 +82,24 @@ public class BusinessPlanAController {
 	public String updateBusinessPlanA(BusinessPalnAVO vo, Model model) {
 		bpService.getBusinessPlanA(vo);
 		model.addAttribute("bpp", vo);
-		System.out.println("update:"+model);
 		return "/business/updateBusinessPlanA";
 	}
 
 	@PostMapping("/updateBusinessPlanA")			//수정처리
-	public String updateBusinessPlanAProc(BusinessPalnAVO vo) {
+	public String updateBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request ) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		bpService.updateBusinessPlanA(vo);
+		if(vo.getPhidden() != null) {
+			bpService.updateBusinessPlanB(vo);
+		};
+		if(vo.getMhidden() != null) {
+			bpService.updateBusinessPlanC(vo);
+		};
+		if(vo.getShidden() != null) {
+			bpService.updateBusinessPlanD(vo);
+		};
 		return "redirect:/getSearchBusinessPlanA";
 	}
 

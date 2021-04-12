@@ -18,6 +18,9 @@ public interface BusinessPlanAMapper {
 		
 		//사업계획서 수정
 		public int updateBusinessPlanA(BusinessPalnAVO vo);
+		public int updateBusinessPlanB(BusinessPalnAVO vo);
+		public int updateBusinessPlanC(BusinessPalnAVO vo);
+		public int updateBusinessPlanD(BusinessPalnAVO vo);
 		
 		//사업계획서 삭제
 		public int deleteBusinessPlanA(BusinessPalnAVO vo);

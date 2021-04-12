@@ -134,7 +134,7 @@
 	</insert>
 	
 	<!-- 마이페이지에서 자격증/경력인증서 조회 -->
-	<select id="getCertiList" resultType="UsersVO">
+	<select id="getCertiList" resultType="map">
 	SELECT NO,
 			CERTI_NAME,
 			CERTI_PLACE,

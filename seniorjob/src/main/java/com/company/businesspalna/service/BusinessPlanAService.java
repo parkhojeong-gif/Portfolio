@@ -16,6 +16,9 @@ public interface BusinessPlanAService {
 	
 	//사업계획서 수정
 	public int updateBusinessPlanA(BusinessPalnAVO vo);
+	public int updateBusinessPlanB(BusinessPalnAVO vo);
+	public int updateBusinessPlanC(BusinessPalnAVO vo);
+	public int updateBusinessPlanD(BusinessPalnAVO vo);
 	
 	//사업계획서 삭제
 	public int deleteBusinessPlanA(BusinessPalnAVO vo);
@@ -28,5 +31,6 @@ public interface BusinessPlanAService {
 	
 	//사업계획서 엑셀로 다운로드
 	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
+	
 
 }

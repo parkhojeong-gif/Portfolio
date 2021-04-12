@@ -124,10 +124,45 @@
 	<set>
 		BUSINESS_A =#{business_a},
 		BUSINESS_B=#{business_b},
-		BUSINESS_C=#{business_c}
+		BUSINESS_C=#{business_c},
+		title=#{title}
+		
 	</set> 
 	WHERE SEQ=#{seq}
 	</update>
+
+	<update id="updateBusinessPlanB" parameterType="BusinessPalnAVO">
+	UPDATE BUSINESSPLANB
+	<set>
+		prod_a =#{prod_a},
+		prod_b=#{prod_b},
+		prod_c=#{prod_c}
+	</set> 
+	WHERE SEQ=#{seq}
+	</update>
+	
+		<update id="updateBusinessPlanC" parameterType="BusinessPalnAVO">
+	UPDATE BUSINESSPLANC
+	<set>
+		market_a =#{market_a},
+		market_b=#{market_b},
+		market_c=#{market_c},
+		market_d=#{market_d},
+		
+	</set> 
+	WHERE SEQ=#{seq}
+	</update>
+	
+		<update id="updateBusinessPlanD" parameterType="BusinessPalnAVO">
+	UPDATE BUSINESSPLANAD
+	<set>
+		selling_a =#{selling_a},
+		selling_b=#{selling_b},
+		selling_c=#{selling_c}
+	</set> 
+	WHERE SEQ=#{seq}
+	</update>
+
 	
 	
 	<!-- 사업계획서 삭제 -->

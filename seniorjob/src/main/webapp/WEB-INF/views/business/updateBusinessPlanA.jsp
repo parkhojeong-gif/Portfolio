@@ -50,19 +50,49 @@ $( document ).ready(function() {
     var mhidden = frm.mhidden.value;
     var shidden = frm.shidden.value;
     
-    if(phidden != null) {
+    if(phidden == 1) {
+    	console.log("1");
     	prodAdd();
+    	if(mhidden == 1) {
+    		console.log("2");
+    		marketAdd();
+    		if(shidden == 1) {
+    			console.log("3");
+    			//sellAdd();
+    		} //end of shidden
+    		
+    		else {
+    			console.log("4");
+    		}
+    	} //end of mhidden 
+    	
+    	else { 
+    		if(shidden == 1) {
+    			console.log("5");
+        			sellAdd();
+    			}
+    		}
+    	} // end of phidden
+    
+    else{
+    		if(mhidden == 1) {
+    			console.log("6");
+        		marketAdd();
+        		if(shidden == 1) {
+        			console.log("7");
+        			sellAdd();
+    			}
+        	} else {
+        		if(shidden == 1) {
+        			console.log("8");
+            			sellAdd();
+        			}
+        		}
     }
     
-    if(mhidden != null) {
-        console.log(mhidden);
-        }
-    
-    if(shidden != null) {
-        console.log(shidden);
-        }
-    
 });
+
+
 
 function prodAdd() {
 	
@@ -81,11 +111,11 @@ function prodAdd() {
 	var colSmDiv = $('<div />').attr("class", "col-sm-12");
 	var formGDiv = $('<div />').attr("class", "form-group");
 	var labelA = $('<label />').attr("for","prod_a").html("제품(서비스)명");
-	var textAreaA = $('<textarea />').attr("name","prod_a").attr("id", "prod_a").attr("class", "form-control");
+	var textAreaA = $('<textarea />').attr("name","prod_a").attr("id", "prod_a").attr("class", "form-control").html("${bpp.prod_a}");
 	var labelB = $('<label />').attr("for","prod_b").html("제품(서비스)소개");
-	var textAreaB = $('<textarea />').attr("name","prod_b").attr("id", "prod_b").attr("class", "form-control");
+	var textAreaB = $('<textarea />').attr("name","prod_b").attr("id", "prod_b").attr("class", "form-control").html("${bpp.prod_b}");
 	var labelC = $('<label />').attr("for","prod_c").html("제품(서비스)차별성");
-	var textAreaC = $('<textarea />').attr("name","prod_c").attr("id", "prod_c").attr("class", "form-control");
+	var textAreaC = $('<textarea />').attr("name","prod_c").attr("id", "prod_c").attr("class", "form-control").html("${bpp.prod_c}");
 	
 	
 	$(prodDiv).append(hidden);
@@ -130,13 +160,13 @@ function marketAdd() {
 	var colSmDiv = $('<div />').attr("class", "col-sm-12");
 	var formGDiv = $('<div />').attr("class", "form-group");
 	var labelA = $('<label />').attr("for","market_a").html("국내외 목표시장");
-	var textAreaA = $('<textarea />').attr("name","market_a").attr("id", "market_a").attr("class", "form-control");
+	var textAreaA = $('<textarea />').attr("name","market_a").attr("id", "market_a").attr("class", "form-control").html("${bpp.market_a}");
 	var labelB = $('<label />').attr("for","market_b").html("국내외 관련기술(제품) 동향");
-	var textAreaB = $('<textarea />').attr("name","market_b").attr("id", "market_b").attr("class", "form-control");
+	var textAreaB = $('<textarea />').attr("name","market_b").attr("id", "market_b").attr("class", "form-control").html("${bpp.market_b}");
 	var labelC = $('<label />').attr("for","market_c").html("경쟁사 현황");
-	var textAreaC = $('<textarea />').attr("name","market_c").attr("id", "market_c").attr("class", "form-control");
+	var textAreaC = $('<textarea />').attr("name","market_c").attr("id", "market_c").attr("class", "form-control").html("${bpp.market_c}");
 	var labelD = $('<label />').attr("for","market_d").html("시장창출 가능성");
-	var textAreaD = $('<textarea />').attr("name","market_d").attr("id", "market_d").attr("class", "form-control");
+	var textAreaD = $('<textarea />').attr("name","market_d").attr("id", "market_d").attr("class", "form-control").html("${bpp.market_d}");
 	
 	$(marketDiv).append(hidden);
 	
@@ -191,11 +221,11 @@ function sellAdd() {
 	var colSmDiv = $('<div />').attr("class", "col-sm-12");
 	var formGDiv = $('<div />').attr("class", "form-group");
 	var labelA = $('<label />').attr("for","selling_a").html("제품홍보방법");
-	var textAreaA = $('<textarea />').attr("name","selling_a").attr("id", "selling_a").attr("class", "form-control");
+	var textAreaA = $('<textarea />').attr("name","selling_a").attr("id", "selling_a").attr("class", "form-control").html("${bpp.selling_a}");
 	var labelB = $('<label />').attr("for","selling_b").html("수익창출방안");
-	var textAreaB = $('<textarea />').attr("name","selling_b").attr("id", "selling_b").attr("class", "form-control");
+	var textAreaB = $('<textarea />').attr("name","selling_b").attr("id", "selling_b").attr("class", "form-control").html("${bpp.selling_b}");
 	var labelC = $('<label />').attr("for","selling_c").html("시장성공요인");
-	var textAreaC = $('<textarea />').attr("name","selling_c").attr("id", "selling_c").attr("class", "form-control");
+	var textAreaC = $('<textarea />').attr("name","selling_c").attr("id", "selling_c").attr("class", "form-control").html("${bpp.selling_c}");
 	
 	$(sellingDiv).append(hidden);
 	
@@ -251,10 +281,12 @@ function sellAdd() {
 	</div>
 	<!-- Body content -->
 
-<form action="#" method="post" name="frm">
-<input type="text" id="phidden" name="phidden" value="${bpp.phidden}">
-<input type="text" id="mhidden" name="mhidden" value="${bpp.mhidden}">
-<input type="text" id="shidden" name="shidden" value="${bpp.shidden}">
+<form action="updateBusinessPlanA" method="post" name="frm">
+<input type="hidden" id="phidden" name="phidden" value="${bpp.phidden}">
+<input type="hidden" id="mhidden" name="mhidden" value="${bpp.mhidden}">
+<input type="hidden" id="shidden" name="shidden" value="${bpp.shidden}">
+<input type="hidden" id="seq" name="seq" value="${bpp.seq}">
+
 
 	<!-- property area -->
 	<div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
@@ -270,28 +302,28 @@ function sellAdd() {
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="title">제목</label>
-									<textarea name="title" id="title" class="form-control"></textarea>
+									<textarea name="title" id="title" class="form-control">${bpp.title }</textarea>
 								</div>
 							</div>
 						
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="business_a">사업의 배경과 필요성</label>
-									<textarea name="business_a" id="business_a" class="form-control"></textarea>
+									<textarea name="business_a" id="business_a" class="form-control">${bpp.business_a }</textarea>
 								</div>
 							</div>
 
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="business_b">사업의 목적</label>
-									<textarea name="business_b" id="business_b" class="form-control"></textarea>
+									<textarea name="business_b" id="business_b" class="form-control">${bpp.business_b }</textarea>
 								</div>
 							</div>
 
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="business_c">사업 기대효과</label>
-									<textarea name="business_c" id="business_c" class="form-control"></textarea>
+									<textarea name="business_c" id="business_c" class="form-control">${bpp.business_c }</textarea>
 								</div>
 							</div>
 					</div>

@@ -30,5 +30,5 @@ public interface UsersService {
 
 	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리
 	
-	public List<String> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
+	public List<Map> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
 }

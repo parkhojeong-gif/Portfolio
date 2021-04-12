@@ -172,7 +172,7 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public List<String> getCertiList(UsersVO vo) {
+	public List<Map> getCertiList(UsersVO vo) {
 		return usersmapper.getCertiList(vo);
 	}
 
