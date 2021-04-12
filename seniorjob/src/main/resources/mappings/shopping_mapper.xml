@@ -6,9 +6,9 @@
  
  	<!-- 양소민 추가 -->
  	<!-- 마이페이지_수강중인 멘토링 -->
-	<select id="getSearchShopping" resultType="ShoppingVO">
-		SELECT * FROM MENTORINGVU 
-		WHERE ID='somTest'
+	<select id="getSearchShopping" resultType="com.company.shopping.service.ShoppingVO">
+		SELECT * FROM SHOPPING 
+		WHERE ID=#{id}
 	</select>
 	
 	<!-- 양소민 추가 -->
@@ -74,10 +74,34 @@
  	</update>
  	
  	<!-- 김찬곤 추가 -->
+ 	<!-- 멘토링 결제_장바구니에 담지 않고 바로 결제할 때 -->
+ 	<insert id="mentoringPayProc" parameterType="com.company.shopping.service.ShoppingVO">
+ 		INSERT INTO SHOPPING(
+							SHOPPING_NO,
+							ID,
+							MENTORING_NUMBER,
+							S_DATE,
+							MEN_START,
+							MET_END,
+							S_STATE
+							)
+		VALUES				((SELECT NVL(MAX(SHOPPING_NO),0)+1 FROM SHOPPING),
+							#{id},
+							#{mentoring_number},
+							sysdate,
+							to_date(#{men_start},'YYYY/MM/DD HH24:MI:SS'),
+							to_date(#{met_end},'YYYY/MM/DD HH24:MI:SS'),
+							'구매완료'
+							)
+ 	</insert>
+ 	
+ 	<!-- 김찬곤 추가 -->
  	<!-- 결제 중복체크 -->
  	<select id="paymentChk" resultType="int" >
  		SELECT COUNT(*) FROM SHOPPING
  		WHERE ID = #{id}
  		AND S_STATE = '구매완료'
  	</select>
+ 	
+ 	
  </mapper>

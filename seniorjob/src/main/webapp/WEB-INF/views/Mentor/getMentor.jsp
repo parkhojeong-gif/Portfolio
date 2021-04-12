@@ -105,7 +105,7 @@ h1{text-align:center; padding: 20px}
 <h2 style="text-align:center">Our Team</h2>
 <form name="getMentorInfo" method="post">
 <input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
-<input type="hidden" name="id" id="id" value="${id }">
+<input type="hidden" name="id" id="id" value="${list.id }">
 	<div class="row">
 		<div class="column">
 			<div class="card">

@@ -76,5 +76,11 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return result;
 	}
 
+	 // 멘토링 결제_장바구니에 담지 않고 바로 결제할 때
+	public int mentoringPayProc(ShoppingVO vo) {
+		int result = dao.mentoringPayProc(vo);
+		return result;
+	}
+
 
 }

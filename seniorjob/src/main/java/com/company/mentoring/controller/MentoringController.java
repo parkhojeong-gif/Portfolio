@@ -57,13 +57,14 @@ public class MentoringController {
 	
 	// 멘토링 결제페이지
 	@RequestMapping("/mentoringPayForm")
-	public String mentoringPayForm(Model model, MentoringVO mtrVo, MentorVO mVo, HttpServletRequest request) {
+	public String mentoringPayForm(Model model, MentoringVO mtrVo, MentorVO mVo, ShoppingVO sVo, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		UsersVO users = (UsersVO) session.getAttribute("users");
 		if(users != null) {
-			model.addAttribute("users",users);
+			model.addAttribute("users",users); // 세션 정보
 			model.addAttribute("mentoring", mtService.getMentoring(mtrVo)); // 멘토링 정보
 			model.addAttribute("mentor", mentorService.getMentor(mVo)); // 멘토 정보
+			model.addAttribute("shopping", shoppingService.getSearchShopping(sVo));
 		}else {
 			model.addAttribute("msg", "로그인한 사용자만 이용가능합니다.");
 			model.addAttribute("url", "getMentorList");
@@ -75,13 +76,13 @@ public class MentoringController {
 	
 	// 멘토링 결제 처리
 	@RequestMapping("/mentoringPayProc")
-	public int mentoringPayProc(ShoppingVO sVo, MentoringVO mVo) {
-		int result = shoppingService.BasketCheck(sVo);
-		if(result==0) { // 테이블에 값이 없으면
-			shoppingService.mentoringPayProcBasket(sVo); // Update
+	public int mentoringPayProc(ShoppingVO vo) {
+		int result = shoppingService.BasketCheck(vo);
+		if(result==0) { // 테이블에 값이 없으면(장바구니에 있으면)
+			shoppingService.mentoringPayProcBasket(vo); // Update
 			return result;
-		}else { // 테이블에 값이 있으면
-			mtService.insertMentoring(mVo); // Insert
+		}else { // 테이블에 값이 있으면(장바구니에 없으면)
+			shoppingService.mentoringPayProc(vo); // Insert
 			return result;
 		}
 	}
