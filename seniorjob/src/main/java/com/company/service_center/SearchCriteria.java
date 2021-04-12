@@ -6,7 +6,7 @@ public class SearchCriteria extends Criteria{
 	private String keyword = "";
 	private String optionValue;
 	
-	public String getOptionValue() {
+	public String getOptionValue() {		//최신순 , 조회수순을 하기 위한 것
 		return optionValue;
 	}
 	public void setOptionValue(String optionValue) {

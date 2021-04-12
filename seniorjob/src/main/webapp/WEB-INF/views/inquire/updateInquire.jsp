@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="col-md-12 single-property-content ">
 				<div>
-					<h5>홈 > 목록전체조회 </h5>
+					<h5>사이트맵 적는 부분</h5>
 				</div>
 			</div>
 			<div class="row">
@@ -30,36 +30,14 @@
 				<div id="optionVal"
 					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
 
-
-
-
-
-					<!--목록 게시판  -->
-					
-					<table class="table table-striped">
-						<tr>
-							<th >구분</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>상태</th>
-						</tr>
-						<c:forEach items="${list }" var="b">
-							<tr>
-								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.category_a }</td>
-								<td>${b.title }</td>
-								<td>${b.id }</td>
-								<td>${b.w_date }</td>
-								<td>${b.status }</td>
-							</tr>
-						</c:forEach>
-					</table>
-					<!--목록 게시판  -->
+					<!--작성부분  -->
 
 
 
 
 
+
+					<!--작성부분  -->
 				</div>
 			</div>
 		</div>

@@ -30,27 +30,25 @@
 				<div id="optionVal"
 					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
 
-
+		
 
 
 
 					<!--목록 게시판  -->
-					
+				<input type="hidden" id="id" name="id" value="${id }" >
 					<table class="table table-striped">
 						<tr>
 							<th >구분</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
-							<th>상태</th>
 						</tr>
 						<c:forEach items="${list }" var="b">
 							<tr>
-								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.category_a }</td>
-								<td>${b.title }</td>
-								<td>${b.id }</td>
-								<td>${b.w_date }</td>
-								<td>${b.status }</td>
+								<td onclick="location.href='getUserInquire?seq=${b.seq}'">${b.category_a }</td>
+								<td  onclick="location.href='getUserInquire?seq=${b.seq}'">${b.title }</td>
+								<td  onclick="location.href='getUserInquire?seq=${b.seq}'">${b.id }</td>
+								<td  onclick="location.href='getUserInquire?seq=${b.seq}'">${b.w_date }</td>
 							</tr>
 						</c:forEach>
 					</table>

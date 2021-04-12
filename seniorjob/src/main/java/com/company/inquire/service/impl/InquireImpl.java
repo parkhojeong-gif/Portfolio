@@ -1,12 +1,14 @@
 package com.company.inquire.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.inquire.service.InquireService;
 import com.company.inquire.service.InquireVO;
+import com.company.inquire.service.Inquire_AnswerVO;
 
 @Service
 public class InquireImpl implements InquireService{
@@ -40,6 +42,30 @@ public class InquireImpl implements InquireService{
 	public List<InquireVO> getInquireList() {
 		// TODO 문의 전체조회
 		return dao.getInquireList();
+	}
+
+	@Override
+	public List<InquireVO> userInquireList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.userInquireList(map);
+	}
+
+	@Override
+	public InquireVO getUserInquire(InquireVO vo) {
+		// TODO Auto-generated method stub
+		return dao.getUserInquire(vo);
+	}
+
+	@Override
+	public int insertAnswer(Inquire_AnswerVO avo) {
+		// TODO Auto-generated method stub
+		return dao.insertAnswer(avo);
+	}
+
+	@Override
+	public boolean updateConfirm(InquireVO vo) {
+		// TODO Auto-generated method stub
+		return dao.updateConfirm(vo);
 	}
 
 }

@@ -80,7 +80,7 @@
 			</div>
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='seniorTimes'">
+				<div class="panel-heading" onclick="location.href='userInquireList'">
 					<h3 class="panel-title">내문의목록</h3>
 				</div>
 			</div>

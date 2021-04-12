@@ -56,7 +56,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label>작성자</label> <input type="text" class="form-control"
-									id="id" name="id">
+									id="id" name="id" value="${id }" readonly="readonly">
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -65,11 +65,11 @@
 									id='currentDate' name="resume_email" readonly="readonly">
 							</div>
 						</div>
-						<input type="hidden" name="category_a" id="category_a"
-							value="문의하기">
+						<input type="hidden" name="category_b" id="category_b"
+							value="없음">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<select name="category_b" id="category_b">
+								<select name="category_a" id="category_a">
 									<option value="">카테고리</option>
 									<option value="결제">결제</option>
 									<option value="환불">환불</option>
