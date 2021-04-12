@@ -8,6 +8,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="topHeader.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
 	<!-- property area -->
 	<div class="properties-area recent-property"
@@ -18,6 +19,7 @@
 				<div class="section additional-details">
 
 					<h4 class="s-property-title">${sessionScope.users.id}님의장바구니</h4>
+					<input type="button" id="del" name="del" value="삭제">
 					<hr>
 					<c:if test="${sessionScope.users.id eq users.id }">
 					<ul>
@@ -52,6 +54,7 @@
 	</div>
 	<script>
 	// localstorage 배열 숫자 증가시키는 중(controller에서 number 가져오면 null값 나옴.)
+	// localstorage 저장된 값 불러와서 붙이기
 	var num = 1;
 	let output;
 	while(num < num.length)
@@ -84,6 +87,12 @@
 				+ ars[item].end + "</span>"
 	}
 	div.innerHTML = span;
+	
+	
+	// checkbox 누르면 삭제
+	$(document).on("click", "#del", function(){
+		
+	})
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
