@@ -11,7 +11,7 @@
  	</select>
  	
  	<!-- 멘토링 등록 -->
-	<insert id="MentoringRegisterProc" parameterType="com.company.mentoring.service.MentoringVO" >
+	<insert id="insertMentoring" parameterType="com.company.mentoring.service.MentoringVO" >
 	
 		INSERT INTO MENTORING
 		(

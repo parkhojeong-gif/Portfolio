@@ -320,7 +320,7 @@ hr{
 }*/
 h1{text-align:center}
 </style>
-<h1 class="display-3">멘토링 신청/결제</h1>
+
 <div class="container wrapper">
             <div class="row cart-head">
                 <div class="container">
@@ -329,23 +329,35 @@ h1{text-align:center}
                 </div>
                 <div class="row">
                     <div style="display: table; margin: auto;">
-                        <span class="step step_complete"> <a href="#" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
-                        <span class="step step_complete"> <a href="#" class="check-bc">Checkout</a> <span class="step_line "> </span> <span class="step_line step_complete"> </span> </span>
-                        <span class="step_thankyou check-bc step_complete">Thank you</span>
+                    	<!-- Spring 이동기능 참고: https://m.blog.naver.com/10hsb04/221671582487 -->
+                        <button type="button" class="btn btn-primary" onclick="history.back(-1)">뒤로가기</button>
+                        <button type="button" class="btn btn-primary">메인페이지</button>
                     </div>
                 </div>
                 <div class="row">
                     <p></p>
                 </div>
                 </div>
-            </div>    
+            </div>   
+            <div class="container">
+	            <h1 class="display-3">멘토링 신청/결제</h1> 
+            </div>
+            <p></p>
+            <form onsubmit="mentoringPayProc" method="post">
+            <input type="hidden" name="mentoring_number" id="mentoring_number" value="${mentoring.mentoring_number }">
+            <input type="hidden" name="mentoring_limit" id="mentoring_limit" value="${mentoring.mentoring_limit }">
+            <input type="hidden" name="mentoring_content" id="mentoring_content" value="${mentoring.mentoring_content }">
+            <input type="hidden" name="mentoring_photo" id="mentoring_photo" value="${mentoring.mentoring_photo }">
+            <input type="hidden" name="mentor_id" id="mentor_id" value="${mentoring.mentor_id }">
+            <input type="hidden" name="mentoring_begin_date" id="mentoring_begin_date" value="${mentoring.mentoring_begin_date }">
+            <input type="hidden" name="mentoring_end_date" id="mentoring_end_date" value="${mentoring.mentoring_end_date }">
+            
             <div class="row cart-body">
-                <form class="form-horizontal" method="post" action="">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            Review Order <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
+                            결제 정보 <div class="pull-right"><small><a class="afix-1" href="#">장바구니 수정</a></small></div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -353,163 +365,167 @@ h1{text-align:center}
                                     <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">Product name</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>1</span></small></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>25.00</h6>
-                                </div>
-                            </div>
-                            <div class="form-group"><hr /></div>
-                            <div class="form-group">
-                                <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
-                                </div>
-                                <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">Product name</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>1</span></small></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>25.00</h6>
-                                </div>
-                            </div>
-                            <div class="form-group"><hr /></div>
-                            <div class="form-group">
-                                <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
-                                </div>
-                                <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">Product name</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>2</span></small></div>
-                                </div>
-                                <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>50.00</h6>
+                                    <div class="col-xs-12">${mentoring.mentoring_name }</div>
+                                    <div class="col-xs-12"><small>${mentor.usersVO.name }</small></div>
+                                    <div class="col-xs-12"><small>${mentoring.s_date } ~ ${mentoring.e_date}</small></div>
                                 </div>
                             </div>
                             <div class="form-group"><hr /></div>
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <strong>Subtotal</strong>
-                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <small>Shipping</small>
-                                    <div class="pull-right"><span>-</span></div>
-                                </div>
-                            </div>
-                            <div class="form-group"><hr /></div>
-                            <div class="form-group">
-                                <div class="col-xs-12">
-                                    <strong>Order Total</strong>
-                                    <div class="pull-right"><span>$</span><span>150.00</span></div>
+                                    <strong>결제 금액</strong>
+                                    <div class="pull-right"><span>${mentoring.mentoring_price }</span><span>원</span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--REVIEW ORDER END-->
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
-                    <!--SHIPPING METHOD-->
-                    <div class="panel panel-info">
-                        <div class="panel-heading">Address</div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <h4>Shipping Address</h4>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Country:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" name="country" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-xs-12">
-                                    <strong>First Name:</strong>
-                                    <input type="text" name="first_name" class="form-control" value="" />
-                                </div>
-                                <div class="span1"></div>
-                                <div class="col-md-6 col-xs-12">
-                                    <strong>Last Name:</strong>
-                                    <input type="text" name="last_name" class="form-control" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Address:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" name="address" class="form-control" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>City:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" name="city" class="form-control" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>State:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" name="state" class="form-control" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
-                                <div class="col-md-12">
-                                    <input type="text" name="zip_code" class="form-control" value="" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>Email Address:</strong></div>
-                                <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--SHIPPING METHOD END-->
                     <!--CREDIT CART PAYMENT-->
                     <div class="panel panel-info">
-                        <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span>결제정보</div>
+                        <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span>결제 방식 선택</div>
                         <div class="panel-body">
+                        
                             <div class="form-group">
-                                <div class="col-md-12"><strong>카드결제</strong></div>
-                                <div class="col-md-12">
-                                    <select id="CreditCardType" name="CreditCardType" class="form-control">
-                                        <option value="5">Visa</option>
-                                        <option value="6">MasterCard</option>
-                                        <option value="7">American Express</option>
-                                        <option value="8">Discover</option>
-                                    </select>
-                                </div>
+                                <div class="col-md-12"><strong></strong></div>
+                                <div class="col-md-12"><button type="button" class="btn btn-primary btn-block" onclick="requestPay()">카드결제</button></div>
                             </div>
+                            
                             <div class="form-group">
-                                <div class="col-md-12"><strong>토스</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_number" value="" /></div>
+                                <div class="col-md-12"><strong></strong></div>
+                                <div class="col-md-12"><button type="submit" class="btn btn-primary btn-block">토스</button></div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-12"><strong>카카오페이</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
+                            
+							<div class="form-group">
+                                <div class="col-md-12"><strong></strong></div>
+                                <div class="col-md-12"><button type="submit" name="kakaoPay" id="kakaoPay" class="btn btn-primary btn-block">카카오 페이</button></div>
                             </div>
+                            
                             <div class="form-group">
-                                <div class="col-md-12"><strong>삼성페이</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <button type="submit" class="btn btn-primary btn-submit-fix">결제하기</button>
-                                </div>
+                                <div class="col-md-12"><strong></strong></div>
+                                <div class="col-md-12"><button type="button" class="btn btn-primary btn-block">삼성페이</button></div>
                             </div>
                         </div>
                     </div>
                     <!--CREDIT CART PAYMENT END-->
+                    
+                 <!--REVIEW ORDER END-->
                 </div>
-                
-                </form>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
+                    <!--SHIPPING METHOD-->
+                    <div class="panel panel-info">
+                        <div class="panel-heading">신청 정보</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>멘토링 정보</h4>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <div class="col-md-12"><strong>멘토링 이름</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="mentoring_name" value="${mentoring.mentoring_name }" readonly/>
+                                </div>
+                            </div>                            
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>멘토 이름</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="country" value="${mentor.usersVO.name }" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>멘토링 기간</strong></div>
+                                <div class="col-md-12">
+                                    START<input type="text" class="form-control" name="s_date" value="${mentoring.s_date }" readonly/>
+                                    END<input type="text" class="form-control" name="e_date" value="${mentoring.e_date}" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>신청인(멘티) 정보</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>이름</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="name" class="form-control" value="${users.name }" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>아이디</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="id" id="id" class="form-control" value="${users.id }" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>연락처</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="phonenum" class="form-control" value="${users.phonenum }" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>이메일</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="email" class="form-control" value="${users.email }" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--SHIPPING METHOD END-->
+                    
+                </div>
             </div>
+            </form>
             <div class="row cart-footer">
         
             </div>
     </div>
+    
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script>
+	function requestPay(){
+		
+		var formData1
+		var formData2 = { "id" : $('#id').val(),"mentoring_number" : $('#mentoring_number').val() }
+		
+		$.ajax({ // 결제 중복체크
+			url : "paymentChk",
+			dataType : "json",
+			data : formData,
+			success:function(result){
+				if(result==0){
+					IMP.init("imp36880135");
+					IMP.request_pay({
+					pg: "html5_inicis",
+				    pay_method: "card",
+				    merchant_uid: ${mentoring.mentoring_number},
+				    name: ${mentoring.mentoring_name},
+				    amount: 1,
+				    buyer_name: ${users.name},
+				    buyer_tel: "010-4242-4242",
+				},function(response){
+					if(response.success){
+						alert("결제 완료");
+						$.ajax({ // 데이타 삽입or업로드
+							url:"mentoringPayProc",
+							dataType : "json",
+							method:"post",
+					        data: 
+						}).done(function(data){
+							switch(data.status){
+							case:"vbankIssued";
+								break;
+							case:"success";
+								break;
+							}
+						});
+					}else{
+						alert("결제 실패" + response.error_msg);
+					}
+				});
+						}
+					}
+				});
+		
+		
+	} // end of function
+</script>

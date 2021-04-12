@@ -101,4 +101,19 @@
 						 <if test="name !=null and name !=''">NAME= #{name},</if>	
 						 WHERE ID = #{id}
 	</update>
+	
+	<!-- 김찬곤 / 단건 조회 -->
+	<select id ="getUsersForPayment" resultType="com.company.users.service.UsersVO" parameterType="map">
+	SELECT     ID
+			  ,PASSWORD
+			  ,ADDRESS
+			  ,PHONENUM
+			  ,EMAIL
+			  ,BIRTH
+			  ,AUTH
+			  ,NAME
+			  ,LOG_DATE
+			  FROM USERS
+	WHERE ID = #{id}		  
+	</select>
 	</mapper>

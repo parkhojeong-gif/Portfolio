@@ -104,9 +104,8 @@ h1{text-align:center; padding: 20px}
 
 <h2 style="text-align:center">Our Team</h2>
 <form name="getMentorInfo" method="post">
-<input type="hidden" name="user_id" id="user_id" value="${users.id }">
 <input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
-
+<input type="hidden" name="id" id="id" value="${id }">
 	<div class="row">
 		<div class="column">
 			<div class="card">
@@ -153,6 +152,7 @@ h1{text-align:center; padding: 20px}
 	<c:if test="${not empty mentoring.mentoring_number }">
 		<form id="mentoringForm" name="mentoringForm" method="post">
 		<input type="hidden" id="id" name="id" value="${list.id }">
+		<input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
 		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
@@ -295,12 +295,12 @@ h1{text-align:center; padding: 20px}
 		}
 	}
 	
-	// 멘토링 신청하기
-	function mentoringPayForm(){
-		if(confirm("멘토링을 신청하시겠습니까?")){
-			location.href = "mentoringPayForm";
+	// 멘토링 신청페이지 이동
+	function mentoringPayForm(){ 
+			if(confirm("멘토링을 신청하시겠습니까?")){
+				location.href = "mentoringPayForm?mentor_id=${list.mentor_id}";
+			}
 		}
-	}
 </script>
 
 </body>

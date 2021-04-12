@@ -1,6 +1,7 @@
 package com.company.users.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.users.service.UsersVO;
 
@@ -19,5 +20,7 @@ public interface UsersMapper {
 	public int updateInfo(UsersVO vo) throws Exception;
 	public int emailCheck(String email); //email 중복체크 
 	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
+	
+	public List<UsersVO> getUsersForPayment(Map<String, Object> map); // 김찬곤 / 단건 조회
 
 }

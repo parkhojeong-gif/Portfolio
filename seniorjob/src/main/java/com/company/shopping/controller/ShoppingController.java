@@ -50,4 +50,17 @@ public class ShoppingController {
 		}
 	}
 	
+	// 김찬곤 추가
+	// 멘토 상세페이지_장바구니 중복 체크&장바구니 담기
+	@ResponseBody
+	@RequestMapping(value="paymentChk")
+	public int paymentChk(ShoppingVO vo, Model model) {
+		int result = spService.paymentChk(vo);
+		if(result==0) {
+			return result;
+		}else {
+			return result;
+		}
+	}
+	
 } // end of class
