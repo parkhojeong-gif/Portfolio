@@ -83,7 +83,8 @@
 							S_DATE,
 							MEN_START,
 							MET_END,
-							S_STATE
+							S_STATE,
+							MEN_PRICE
 							)
 		VALUES				((SELECT NVL(MAX(SHOPPING_NO),0)+1 FROM SHOPPING),
 							#{id},
@@ -91,7 +92,8 @@
 							sysdate,
 							to_date(#{men_start},'YYYY/MM/DD HH24:MI:SS'),
 							to_date(#{met_end},'YYYY/MM/DD HH24:MI:SS'),
-							'구매완료'
+							'구매완료',
+							#{mentoring_price}
 							)
  	</insert>
  	

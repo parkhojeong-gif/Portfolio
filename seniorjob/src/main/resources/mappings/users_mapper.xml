@@ -32,10 +32,13 @@
 
 	
 	<!-- login -->
+	<!-- 김찬곤 PHONENUM, EMAIL 추가(210413) -->
 	<select id ="logCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
 		SELECT ID,
 			   PASSWORD,
 			   NAME,
+			   PHONENUM,
+			   EMAIL,
 			   AUTH	
 		FROM USERS
 		WHERE ID = #{id}    

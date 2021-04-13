@@ -344,10 +344,7 @@ h1{text-align:center}
             </div>
             <p></p>
             <input type="hidden" name="mentoring_number" id="mentoring_number" value="${mentoring.mentoring_number }">
-            <input type="hidden" name="men_start" id="men_start" value="${mentoring.mentoring_begin_date }">
-            <input type="hidden" name="met_end" id="met_end" value="${mentoring.mentoring_end_date }">
-            <input type="hidden" name="shopping_no" id="shopping_no" value="${shopping.shopping_no }">
-            
+            <input type="hidden"  name="mentoring_price" id="mentoring_price" value="${mentoring.mentoring_price }">
             <div class="row cart-body">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
@@ -387,7 +384,7 @@ h1{text-align:center}
                             
                             <div class="form-group">
                                 <div class="col-md-12"><strong></strong></div>
-                                <div class="col-md-12"><button type="submit" class="btn btn-primary btn-block">토스</button></div>
+                                <div class="col-md-12"><button type="submit" class="btn btn-primary btn-block" name="PayByToss" id="PayByToss">토스</button></div>
                             </div>
                             
 							<div class="form-group">
@@ -430,8 +427,8 @@ h1{text-align:center}
                             <div class="form-group">
                                 <div class="col-md-12"><strong>멘토링 기간</strong></div>
                                 <div class="col-md-12">
-                                    START<input type="text" class="form-control" name="s_date" value="${mentoring.s_date }" readonly/>
-                                    END<input type="text" class="form-control" name="e_date" value="${mentoring.e_date}" readonly/>
+                                    START<input type="text" class="form-control" name="s_date" id="s_date" value="${mentoring.s_date }" readonly/>
+                                    END<input type="text" class="form-control" name="e_date" id="e_date" value="${mentoring.e_date}" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -474,56 +471,74 @@ h1{text-align:center}
             </div>
     </div>
     
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
-	$(function(){
-		$('#PayByCard').click(function(){
-		
-		var formData1 = { "id" : $('#id').val(),"mentoring_number" : $('#mentoring_number').val() }
-		var formData2 = { "id" : $('#id').val(),
-						  "mentoring_number" : $('#mentoring_number').val(),
-						  "men_start" : $('#men_start').val(),
-						  "men_end" : $('#men_end').val() }
-		
-		$.ajax({ // 결제 중복체크
-			url : "paymentChk",
-			dataType : "json",
-			data : formData1,
-			success:function(result){
-				if(result==0){
-					IMP.init("imp36880135"); // 인증 키
-					IMP.request_pay({ // 결제 실행
-					pg: "html5_inicis", // 결제방식(이니시스)
-				    pay_method: "card", // 결제수단
-				    merchant_uid: "${mentoring.mentoring_number}", // 상품번호
-				    name: "${mentoring.mentoring_name}", // 상품이름
-				    //amount: "${mentoring.mentoring_price}", // 상품가격
-				    amount: 1000, // Test용 변수
-				    buyer_name: "${users.name}", // 구매자 이름
-				    buyer_tel: "010-7143-2153", // 구매자 연락처
-				},function(response){
-					if(response.success){
-						alert("결제 완료");
-						$.ajax({ // 데이터 삽입or업로드
-							url:"mentoringPayProc",
-							dataType : "json",
-							method: "post",
-					        data: formData2,
-					        success:function(response){
-					        	
-					        }
-						})
+	
+	$(function() { // 카드결제
+		$('#PayByCard').click(function() {
+
+			var formData1 = {
+				"id" : $('#id').val(),
+				"mentoring_number" : $('#mentoring_number').val()
+			}
+			var formData2 = {
+				"id" : $('#id').val(),
+				"mentoring_number" : $('#mentoring_number').val(),
+				"men_start" : $('#s_date').val(),
+				"met_end" : $('#e_date').val(),
+				"mentoring_price" : $('#mentoring_price').val()
+			}
+
+			$.ajax({ // 결제 중복체크
+				url : 'paymentChk',
+				dataType : 'json',
+				data : formData1,
+				success : function(result) {
+					if (result == 0) {
+						IMP.init('imp36880135'); // 인증 키
+						IMP.request_pay({ // 결제 실행
+							pg : 'html5_inicis', // 결제방식(이니시스)
+							pay_method : 'card', // 결제수단
+							merchant_uid : 'merchant_' + new Date().getTime(),
+							//merchant_uid: "${mentoring.mentoring_number}", // 상품번호(재사용 불가)
+							name : '${mentoring.mentoring_name}', // 상품이름
+							//amount: "${mentoring.mentoring_price}", // 상품가격
+							amount : 1000, // Test용 변수
+							buyer_name : '${users.name}', // 구매자 이름
+							buyer_tel : '${users.phonenum}' // 구매자 연락처
+						}, function(response) {
+							if (response.success) {
+								alert('결제가 완료되었습니다');
+								$.ajax({ // 데이터 삽입or업로드
+									url : 'mentoringPayProc',
+									dataType : 'json',
+									data : formData2,
+									success : function(response) {
+										if (response.code != 200) {
+											alert('결제실패');
+										} else {
+											alert('결제성공');
+										}
+									},
+									error : function(response) {
+										console.log('error = ' + response);
+									}
+								})
+							} else {
+								alert('결제실패 / ' + response.error_msg);
+							}
+						});
+					} else {
+						alert("이미 구매하신 멘토링 입니다.");
 					}
-				});
-						}
-					}
-				});
+				}
+			});
 		});
 	});
-		
-	function getMain(){ // 메인페이지 이동
-		if(confirm("메인페이지로 이동하시겠습니까?")){
+
+	function getMain() { // 메인페이지 이동
+		if (confirm("메인페이지로 이동하시겠습니까?")) {
 			location.href = "getMain";
 		}
 	}

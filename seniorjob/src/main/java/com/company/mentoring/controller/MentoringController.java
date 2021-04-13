@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
@@ -64,7 +65,6 @@ public class MentoringController {
 			model.addAttribute("users",users); // 세션 정보
 			model.addAttribute("mentoring", mtService.getMentoring(mtrVo)); // 멘토링 정보
 			model.addAttribute("mentor", mentorService.getMentor(mVo)); // 멘토 정보
-			model.addAttribute("shopping", shoppingService.getSearchShopping(sVo));
 		}else {
 			model.addAttribute("msg", "로그인한 사용자만 이용가능합니다.");
 			model.addAttribute("url", "getMentorList");
@@ -75,14 +75,15 @@ public class MentoringController {
 	}
 	
 	// 멘토링 결제 처리
+	@ResponseBody
 	@RequestMapping("/mentoringPayProc")
 	public int mentoringPayProc(ShoppingVO vo) {
 		int result = shoppingService.BasketCheck(vo);
-		if(result==0) { // 테이블에 값이 없으면(장바구니에 있으면)
-			shoppingService.mentoringPayProcBasket(vo); // Update
-			return result;
-		}else { // 테이블에 값이 있으면(장바구니에 없으면)
+		if(result==0) { // 테이블에 값이 없으면(장바구니에 없으면)
 			shoppingService.mentoringPayProc(vo); // Insert
+			return result;
+		}else { // 테이블에 값이 있으면(장바구니에 있으면)
+			shoppingService.mentoringPayProcBasket(vo); // Update
 			return result;
 		}
 	}

@@ -59,5 +59,4 @@ public class ShoppingController {
 			return result;
 		}
 	}
-	
 } // end of class
