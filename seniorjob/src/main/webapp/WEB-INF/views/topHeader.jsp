@@ -126,7 +126,7 @@
                         <c:if test="${not empty userInfo }">
 							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
                         </c:if>
-                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHo	me">마이페이지</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="mypageHome">마이페이지</a></li>
                         <c:if test="${users.auth eq 'ADMIN'}">
                         <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="">관리자페이지</a></li>
                         </c:if>

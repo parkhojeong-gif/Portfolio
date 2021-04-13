@@ -82,5 +82,10 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return result;
 	}
 
+	// 결제 내역 가져오기
+	public ShoppingVO getPayInfo(ShoppingVO vo) {
+		return dao.getPayInfo(vo);
+	}
+
 
 }

@@ -479,7 +479,7 @@
 	}
 	
 	// 세부검색(최신순, 인기순)
-	/* function optionSelect(obj){
+	function optionSelect(obj){
 		var param = $('#items_per_page').val();
 		$.ajax({
 			url: "optionValueChk",
@@ -521,6 +521,6 @@
 				} // end of paging
 			} // end of success
 		}); // end of ajax
-	} */
+	}
 	
 </script>

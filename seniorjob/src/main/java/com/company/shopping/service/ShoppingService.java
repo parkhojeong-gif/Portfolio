@@ -28,5 +28,6 @@ public int insertShopping(ShoppingVO vo);
 	public int mentoringPayProcBasket(ShoppingVO vo); // 멘토링 결제_장바구니에 담겼을 때
 	public int mentoringPayProc(ShoppingVO vo); // 멘토링 결제_장바구니에 담지 않고 바로 결제할 때
 	public int paymentChk(ShoppingVO vo); // 결제 중복체크
+	public ShoppingVO getPayInfo(ShoppingVO vo); // 결제 내역 가져오기
 	
 }

@@ -343,6 +343,7 @@ h1{text-align:center}
 	            <h1 class="display-3">멘토링 신청/결제</h1> 
             </div>
             <p></p>
+            <form name="paymentFrm" id="paymentFrm" method="post">
             <input type="hidden" name="mentoring_number" id="mentoring_number" value="${mentoring.mentoring_number }">
             <input type="hidden"  name="mentoring_price" id="mentoring_price" value="${mentoring.mentoring_price }">
             <div class="row cart-body">
@@ -466,6 +467,7 @@ h1{text-align:center}
                     
                 </div>
             </div>
+            </form>
             <div class="row cart-footer">
         
             </div>
@@ -477,7 +479,7 @@ h1{text-align:center}
 	
 	$(function() { // 카드결제
 		$('#PayByCard').click(function() {
-
+			
 			var formData1 = {
 				"id" : $('#id').val(),
 				"mentoring_number" : $('#mentoring_number').val()
@@ -516,9 +518,11 @@ h1{text-align:center}
 									data : formData2,
 									success : function(response) {
 										if (response.code != 200) {
-											alert('결제실패');
+												var paymentFrm = document.paymentFrm;
+												paymentFrm.action = "PaymentSuccessForm";
+												paymentFrm.submit();
 										} else {
-											alert('결제성공');
+											alert('결제실패');
 										}
 									},
 									error : function(response) {

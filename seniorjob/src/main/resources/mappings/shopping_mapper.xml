@@ -105,5 +105,13 @@
  		AND S_STATE = '구매완료'
  	</select>
  	
+ 	<!-- 김찬곤 추가 -->
+ 	<!-- 결제 완료값 가져오기 / API 활용한 결제내역 호출 못해서 요거 사용중임 -->
+ 	<select id="getPayInfo" resultType="com.company.shopping.service.ShoppingVO">
+ 		SELECT * FROM SHOPPING
+ 		WHERE ID = #{id}
+ 		AND MENTORING_NUMBER = #{mentoring_number}
+ 		AND S_STATE = '구매완료'
+ 	</select>
  	
  </mapper>

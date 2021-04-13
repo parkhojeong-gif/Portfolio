@@ -88,6 +88,13 @@ public class MentoringController {
 		}
 	}
 	
+	// 결제 완료 페이지 호출
+	@RequestMapping("/PaymentSuccessForm")
+	public String PaymentSuccess(Model model, ShoppingVO vo) {
+		model.addAttribute("shopping", shoppingService.getPayInfo(vo));
+		return "Mentoring/PaymentSuccess";
+	}
+	
 	//양소민 추가
 	@GetMapping("/getSearchMentoring")   //마이페이지_내가 만든 멘토링
 	public String getSearchMentoring(MentoringVO vo, Model model) {
