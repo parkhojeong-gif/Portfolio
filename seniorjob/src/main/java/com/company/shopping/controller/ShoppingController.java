@@ -11,33 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.company.mentoring.service.MentoringVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
 @Controller
-@SessionAttributes({"cart"})
 public class ShoppingController {
 	
 	@Autowired ShoppingService spService;
-	
-	@RequestMapping(value="/shopping")    //장바구니 이동
-//	@ResponseBody
-	public String shopping(ShoppingVO vo, HttpServletRequest req, Model model) {
-		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("id");
-		System.out.println(id);
-		/*
-		 * ArrayList<String> arr = (ArrayList<String>)
-		 * (session.getAttribute("cartlist"));
-		 * 
-		 * if(session.getAttribute("cartlist") == null) { arr = new ArrayList<String>();
-		 * } session.setAttribute("cartlist", arr);
-		 */
-		//cart가 없으면 생성(하는중)
-		return "shopping";		  			
-	}
-
-	
 	
 	//양소민 추가
 	@GetMapping("/getSearchShopping")   //마이페이지_수강중인 멘토링
@@ -74,10 +55,5 @@ public class ShoppingController {
 		}
 	}
 	
-	@RequestMapping("/goShopping")
-	@ResponseBody
-	public String goShopping() {
-		return "";
-	}
 	
 } // end of class

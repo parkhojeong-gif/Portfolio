@@ -96,10 +96,6 @@ input{
 </head>
 <body>
 
-<%
-	session.setAttribute("id", request.getParameter("users.id"));
-%>
-
 
 
   <div class="about-section">
@@ -151,12 +147,16 @@ input{
 		<p>
 		<hr>
 		<p>
-		<form id="mentoringForm" name="mentoringForm" action="insertMentoringBasket" method="post">
+		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
 		<input type="hidden" id="id" name="id" value="${list.id }">
+		<input type="hidden" id="user_id" name="user_id" value="${users.id }">
 		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
 		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
+		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.mentoring_begin_date }">
+		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
+		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
 		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
 		<div class="column2">
 			<div class="card">
@@ -182,7 +182,7 @@ input{
 						<textarea style="margin: 0px; width: 1019px; height: 143px;">${mentoring.mentoring_content }</textarea>
 					<p>
 					<div>
-						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 담기</button>
+						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button" onclick="insertC()">장바구니 담기</button>
 						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 취소</button>
 						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
 					</div>
@@ -196,82 +196,64 @@ input{
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
-	/* $(function() {
+	 /*  $(function() {
 		
-		
-		var formData = { "id" : $('#id').val(),
-						 "mentoring_number":$('#mentoring_number').val(),
-						 "men_start":$('#men_start').val(),
-						 "met_end":$('#met_end').val() }
+		var formData = { 
+						 "mentoring_name":$('#mentoring_name').val(),
+						 "cart_start":$('#men_start').val(),
+						 "cart_end":$('#met_end').val(),
+						 "cart_price":$('#mentoring_price').val(),
+						 "id" : $('#user_id').val()
+						}
+						 
 
 		// 장바구니 담기
 		$('#BasketBtn').click(function() {
 			$.ajax({
-				url : "BasketCheck",
-				//type : "post",
+				url : "BasketChecks",
+				type : "post",
 				dataType : "json",
 				data : formData,
 				success : function(result) {
-					if (result == 1) {
+					console.log(result);
+					  if (result != 0) {
 						alert("이미 장바구니에 담았습니다.");
 					} else {
 						alert("장바구니에 담았습니다.");
-					}
+					} 
 				}
 			});
 		});
-	}); // end of function */
+	}); // end of function  */   
+	
+	
+	 /* var formData = { 
+			 "mentoring_name":$('#mentoring_name').val(),
+			 "cart_start":$('#men_start').val(),
+			 "cart_end":$('#met_end').val(),
+			 "cart_price":$('#mentoring_price').val(),
+			 "id" : $('#user_id').val()
+			}; */
+	 function insertC(){
+		 alert("장바구니에 담았습니다.")
+			var yn = confirm("장바구니로 이동하시겠습니까?");
+			if(yn){
+				mentoringForm.action = "insertCart";
+				mentoringForm.submit();
+			}
+	 }
 	
 	
 	
-	
-	
-
-/* 	$(function(){
-      var name = $('#mentoring_name').val();
-      var price = $("#mentoring_price").val();
-      var start = $("#men_start").val();
-      var end = $("#met_end").val();
-      var number = $("#mentoring_number").val();
-      var arr = [];
-      arr[number] = {"number":number, "name":name, "price" : price, "start":start, "end":end};
-      console.log(arr);
-      localStorage.setItem(number, JSON.stringify(arr));
-	  console.log(localStorage.getItem(number));
-         $(document).on("click", "#BasketBtn", function(){
-            $.ajax({
-               url: "shopping",
-               data: localStorage.getItem(number),
-               method : "post",
-               success: function(response){
-                  console.log(response);
-               }
-            })
-         })
-   }) */
-   
-   
-	$(document).on("click", "#BasketBtn", function(){
-		var yn = confirm("장바구니에 담으시겠습니까?");
+	/*  $(document).on("click", "#BasketBtn", function(){
+		alert("장바구니에 담았습니다.")
+		var yn = confirm("장바구니로 이동하시겠습니까?");
 		if(yn){
-			 var name = $('#mentoring_name').val();
-		     var price = $("#mentoring_price").val();
-		     var start = $("#men_start").val();
-		     var end = $("#met_end").val();
-		     var number = $("#mentoring_number").val();
-		     var arr = localStorage.getItem("arr");
-		     if(arr == null)
-		     	arr = {};
-		     arr[number] = {"number":number, "name":name, "price" : price, "start":start, "end":end};
-		     for(num of number)
-		     	localStorage.setItem("arr"+[num], JSON.stringify(arr));
-		     console.log(arr);
-		     console.log(localStorage.getItem("arr"+[num]));
-		     mentoringForm.action = "shopping";
-		     mentoringForm.submit();
+			mentoringForm.action = "insertCart?cart_start=" + $('#men_start').val()+"&cart_end=" + $('#met_end').val()+"&cart_price=" + $('#mentoring_price').val()+"&id="+$('#user_id').val()
+			mentoringForm.submit();
 		}
-	})
-	
+	})    */
+
 
 	// 로그인 여부 확인
 	function loginCheck() {

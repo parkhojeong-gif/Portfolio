@@ -11,17 +11,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
 	<!-- property area -->
-	<div class="properties-area recent-property"
-		style="background-color: #FFF;">
+	<div class="properties-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row" id="list">
 
 				<div class="section additional-details">
-
 					<h4 class="s-property-title">${sessionScope.users.id}님의장바구니</h4>
-					<input type="button" id="del" name="del" value="삭제">
 					<hr>
-					<c:if test="${sessionScope.users.id eq users.id }">
+					<input class="col-xs-6 col-sm-4 col-md-2 add-d-title" type="button" id="del" name="del" value="삭제">
+					<c:if test="${vo.id eq users.id }">
 					<ul>
 						<li>
 							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">번호</span>
@@ -53,46 +51,7 @@
 		</div>
 	</div>
 	<script>
-	// localstorage 배열 숫자 증가시키는 중(controller에서 number 가져오면 null값 나옴.)
-	// localstorage 저장된 값 불러와서 붙이기
-	var num = 1;
-	let output;
-	while(num < num.length)
-		output = localStorage.getItem("arr"+[num]);
-		console.log("arr"+[num])
-		num++;
-	num += num;
-	console.log(output)
-	let ars = JSON.parse(output);
-	console.log(ars)
-	
-	// 					        alert(JSON.parse(localStorage.getItem("ar")))
-	var div = document.getElementById("ul");
-	var span;
-	for (item in ars) {
-		span = "<input class='col-xs-6 col-sm-8 col-md-1 add-d-entry' type='checkbox'>"
-				+ "<span class='col-xs-6 col-sm-8 col-md-1 add-d-entry'>"
-				+ ars[item].number
-				+ "</span>"
-				+ "<span class='col-xs-6 col-sm-8 col-md-3 add-d-entry'>"
-				+ ars[item].name
-				+ "</span>"
-				+ "<span class='col-xs-6 col-sm-8 col-md-1 add-d-entry'>"
-				+ ars[item].price
-				+ "</span>"
-				+ "<span class='col-xs-6 col-sm-8 col-md-3 add-d-entry'>"
-				+ ars[item].start
-				+ "</span>"
-				+ "<span class='col-xs-6 col-sm-8 col-md-3 add-d-entry'>"
-				+ ars[item].end + "</span>"
-	}
-	div.innerHTML = span;
-	
-	
-	// checkbox 누르면 삭제
-	$(document).on("click", "#del", function(){
-		
-	})
+
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
