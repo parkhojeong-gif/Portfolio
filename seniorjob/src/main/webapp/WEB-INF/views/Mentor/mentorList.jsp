@@ -9,13 +9,15 @@
 <style>
 	h3{text-align:left}
 	#clickMentor{cursor:pointer}
+	h1{text-align:center}
 </style>
 <body>
 
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
-
+<h1 class="display-4">멘토 리스트</h1>
+<div id="listResult"></div>
           <!-- property area -->
         <div class="properties-area recent-property" style="background-color: #FFF;">
             <div class="container">   
@@ -26,7 +28,7 @@
                 <!-- 직무별 멘토찾기  -->
                 	<div class="col-md-12 padding-bottom-40 large-search"> 
                         <div class="search-form wow pulse">
-                            <form action="" class=" form-inline">
+                            <form action="" class=" form-inline" name="mtListFrm">
                                 <div class="col-md-12 ">
                                     <div class="search-row">   
                                         <div class="">
@@ -38,7 +40,7 @@
 									<div class="search-row">
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="영업">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="영업">
 												영업
 											</label>
 										</div>
@@ -47,7 +49,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="인사">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="인사">
 												인사
 											</label>
 										</div>
@@ -56,7 +58,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="총무">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="총무">
 												총무
 											</label>
 										</div>
@@ -65,7 +67,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="마케팅">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="마케팅">
 												마케팅
 											</label>
 										</div>
@@ -74,7 +76,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="광고">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="광고">
 												광고
 											</label>
 										</div>
@@ -83,7 +85,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="회계">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="회계">
 												회계
 											</label>
 										</div>
@@ -93,7 +95,7 @@
 									
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="재무">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="재무">
 												재무
 											</label>
 										</div>
@@ -102,7 +104,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="해외">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="해외">
 												해외
 											</label>
 										</div>
@@ -111,7 +113,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="유통">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="유통">
 												유통
 											</label>
 										</div>
@@ -122,7 +124,7 @@
 									<div class="search-row">
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="무역">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="무역">
 												무역
 											</label>
 										</div>
@@ -131,7 +133,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="전략">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="전략">
 												전략
 											</label>
 										</div>
@@ -140,7 +142,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="기획">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="기획">
 												기획
 											</label>
 										</div>
@@ -150,7 +152,7 @@
 									
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="생산">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="생산">
 												생산
 											</label>
 										</div>
@@ -159,7 +161,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="공기업">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="공기업">
 												공기업
 											</label>
 										</div>
@@ -168,7 +170,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="IT">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="IT">
 												IT
 											</label>
 										</div>
@@ -177,7 +179,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="디자인">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="디자인">
 												디자인
 											</label>
 										</div>
@@ -186,7 +188,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="교육">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="교육">
 												교육
 											</label>
 										</div>
@@ -195,7 +197,7 @@
 
 									<div class="form-group">
 										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" value="컨설팅">
+											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="컨설팅">
 												컨설팅
 											</label>
 										</div>
@@ -214,20 +216,12 @@
                                         		</div>
                                     		</div>
                                     		
-                                    		<div class="search-row">  
-                                    		<div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> 인사/총무
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
+                                    <div class="search-row">  
 
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="서울특별시">서울특별시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="서울특별시">서울특별시
                                                 </label>
                                             </div>
                                         </div>
@@ -236,7 +230,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="부산광역시">부산광역시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="부산광역시">부산광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -245,7 +239,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="대구광역시">대구광역시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="대구광역시">대구광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -254,7 +248,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="인천광역시">인천광역시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="인천광역시">인천광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -263,7 +257,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="광주광역시">광주광역시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="광주광역시">광주광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -272,7 +266,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="울산광역시">울산광역시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="울산광역시">울산광역시
                                                 </label>
                                             </div>
                                         </div>
@@ -281,7 +275,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="mentoring_location" value="세종특별자치시"> 세종특별자치시
+                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="세종특별자치시"> 세종특별자치시
                                                 </label>
                                             </div>
                                         </div>
@@ -303,7 +297,7 @@
                                     		<div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 40대
+                                                    <input type="checkbox" name="mentoring_age" id="mentoring_age" value="40대"> 40대
                                                 </label>
                                             </div>
                                         </div>
@@ -312,7 +306,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 50대
+                                                    <input type="checkbox" name="mentoring_age" id="mentoring_age" value="50대"> 50대
                                                 </label>
                                             </div>
                                         </div>
@@ -321,7 +315,7 @@
                                         <div class="col-sm-3">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox"> 60대
+                                                    <input type="checkbox" name="mentoring_age" id="mentoring_age" value="60대"> 60대
                                                 </label>
                                             </div>
                                         </div>
@@ -332,6 +326,10 @@
                             </form>
                         </div>
                     </div>
+                    
+                    <!-- 검색 결과 개수 -->
+                    <div id="searchCnt" name="searchCnt"></div>
+                    <!-- 검색 결과 개수 -->
                     
 				<div class="col-md-9 padding-top-40 properties-page" id="optionVal">
 
@@ -354,24 +352,29 @@
 					</div>
 					<!-- 멘토 세부검색(최신순/인기순) -->
 					
+<!-- 멘토 리스트 출력 -->	
+	
+	
+	
+<!-- End of 멘토 리스트 출력 -->		
+			
 					<!-- 멘토 리스트 출력 -->
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
 
 							<c:forEach var="mentor" items="${list }">
 
-								<div class="col-sm-6 col-md-4 p0"
-									onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
+								<div class="col-sm-6 col-md-4 p0" id="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
 											<img src="../resources/assets/img/mentor/photoDefault.jpg">
 										</div>
 
 										<div class="item-entry overflow">
-											<h5>${mentor.mentor_company_name }</h5>
-											<br> <a>${mentor.mentor_department_name } </a>
+											<h5 id="mentor_company_name" >${mentor.mentor_company_name }</h5>
+											<br> <a id="mentor_department_name">${mentor.mentor_department_name } </a>
 											<div class="dot-hr"></div>
-											<span class="pull-left"><b>${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_kind" >${mentor.mentoring_kind }</b></span>
 										</div>
 									</div>
 								</div>
@@ -380,6 +383,8 @@
 						</div>
 					</div>
 					<!-- 멘토 리스트 출력 -->
+					
+					
 
 					<!-- 페이징 -->
 					<div id="paging"></div>
@@ -486,41 +491,38 @@
 			data: {"optionValue": param},
 			dataType: "json",
 			success:function(result){
-				$('#items_per_page').val(""); // 태그 초기화
-				$('#list-type').remove();
+				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-					var div1 = $("<div>").attr({id:"list-type", class:"proerty-th"});
-					var div2 = $("<div>").attr("class", "col-sm-6 col-md-4 p0", "onclick", "location.href=getMentor?mentor_id=").text(response[i].mentor_id)
-										 .append($("<div>")).attr("class", "box-two proerty-item")
-										 .append($("<div>")).attr("class", "item-thumb").append($("<img>")).attr("src", "../resources/assets/img/mentor/photoDefault.jpg");
-					var div3 = $("<div>").attr("class", "item-entry overflow").append($("<h5>")).text(response[i].mentor_company_name)
-																			  .append($("<br>")).append($("<a>")).text(response[i].mentor_department_name)
-																			  .append($("<div>")).attr("class", "dot-hr")
-																			  .append($("<span>")).attr("class", "pull-left")
-																			  .append($("<b>")).text(response[i].mentoring_kind);
-					div1.append(div2, div3);
-					$('#mtList').append(div1);
+					
+				var div2 = $("<div>").attr({ id:"list-type",'class':"proerty-th" });
+				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"  });
+				var div4 = $("<div>").attr("class", "box-two proerty-item");
+				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","../resources/assets/img/mentor/photoDefault.jpg"));
+				var div6 = $("<div>").attr("class","item-entry overflow");
+					var h5 = $("<h5>").attr("id","mentor_company_name").text(response[i].mentor_company_name).append($("<br>"));
+					var a = $("<a>").attr("id","mentor_department_name").text(response[i].mentor_department_name);
+					var div7 = $("<div>").attr("class","dot-hr");
+					var span = $("<span>").attr("class","pull-left");
+					var b = $("<b>").attr("id","mentoring_kind").text(response[i].mentoring_kind);
+					
+				div6.append(h5, a, div7, span, b);
+				div4.append(div5, div6);
+				div3.append(div4);
+				div2.append(div3);
+				$('#mtList').append(div2);
 				});
-				//paging버튼
-				$("#paging").empty();
-				var totalRecord = result.paging.totalRecord;
-				var lastPage = result.paging.lastPage;
-				var page = result.paging.page;
-				var pageSize = result.paging.pageSize;
-				var endPage = result.paging.endPage;
-				var startPage = result.paging.startPage;
-				if (startPage > 1) {
-					$("#paging").append("<a href='#' onclick='MentorList("+ (startPage - 1) + ")'>" + "&laquo;"+ "</a>");
-				}
-				for (i = startPage; i <= endPage; i++) {
-					$("#paging").append("<a href='#' onclick='MentorList(" + (i) + ")'>"+ i + "</a>");
-				}
-				if (lastPage > endPage) {
-					$("#paging").append("<a href='#' onclick='MentorList("+ (endPage + 1) + ")'>" + "&raquo;"+ "</a>");
-				} // end of paging
 			} // end of success
 		}); // end of ajax
 	}
+	
+	// 세부검색 https://dlgkstjq623.tistory.com/356  
+	//https://taesikman1.tistory.com/78
+	var chkboxValues = [];
+	$("input:checkbox[name='mentoring_location']").each(function(){
+		if(this.checked){
+			chkboxValues.push($(this).val());
+		}
+	});
 	
 </script>

@@ -20,7 +20,7 @@ h1{text-align:center}
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
 
-<h1 class="display-2">멘토링 전체 리스트</h1>
+<h1 class="display-4">멘토링 리스트</h1>
 
 <!-- 멘토 리스트 출력 -->
 <c:forEach var="mentoring" items="${list }">

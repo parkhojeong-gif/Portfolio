@@ -495,7 +495,7 @@ h1{text-align:center}
 			$.ajax({ // 결제 중복체크
 				url : 'paymentChk',
 				dataType : 'json',
-				data : formData1,
+				data : formData1, // == paymentFrm.serialize()
 				success : function(result) {
 					if (result == 0) {
 						IMP.init('imp36880135'); // 인증 키
