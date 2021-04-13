@@ -68,4 +68,10 @@ public class InquireImpl implements InquireService{
 		return dao.updateConfirm(vo);
 	}
 
+	@Override
+	public List<Inquire_AnswerVO> userAnswerList(Inquire_AnswerVO avo) {
+		// TODO Auto-generated method stub
+		return dao.userAnswerList(avo);
+	}
+
 }

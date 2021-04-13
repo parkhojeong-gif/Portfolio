@@ -5,7 +5,7 @@
  <!--문의하기 목록 전체조회  -->
 	<select id="getInquireList" resultType="InquireVO" parameterType="InquireVO">
 	
-	select * from inquire
+	select * from inquire order by seq desc
 	
 	</select>
 	<!--  -->
@@ -27,7 +27,7 @@
 	
 	<!--유저 내문의 목록 조회  -->
 	<select id="userInquireList" resultType="InquireVO" parameterType="map">
-	select * from inquire where id= #{id}
+	select * from inquire where id= #{id} order by seq desc
 	</select>
 	<!--  -->
 	
@@ -59,6 +59,11 @@
 	<update id="updateConfirm" parameterType="InquireVO">
   		UPDATE inquire SET status = '답변완료' WHERE SEQ = #{seq}
 	</update>
+	<!--유저 답변 목록  -->
+	<select id="userAnswerList" resultType="Inquire_AnswerVO" parameterType="Inquire_AnswerVO">
+	select * from Inquiry_Answer where seq= #{seq}
 	
+	
+	</select>
 	
  </mapper>
