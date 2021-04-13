@@ -260,7 +260,7 @@ public class UsersController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		usersService.insertCerti(vo);
-		return "redirect:/";
+		return "/users/throughCerti";
 		
 		
 	}

@@ -29,9 +29,27 @@ function showErrors(result) {
 }
 
 function showContents(result) {
-	console.log(result);
-	for(list of result ) {
-		document.getElementById("myTable").innerHTML += list.no;
+	var list = result;
+	for(certi of list ) {
+		
+		let tr = $('<tr />');
+		let td1 = $('<td />').html(certi.CERTI_NAME);
+		let td2 = $('<td />').html(certi.CERTI_NO);
+		let td3 = $('<td />').html(certi.CERTI_DATE);
+		let td4 = $('<td />').html(certi.CERTI_PLACE);
+		
+		$(tr).append(td1);
+		$(tr).append(td2);
+		$(tr).append(td3);
+		$(tr).append(td4);
+		$('#certi').append(tr);
+		
+		let tr2 = $('<tr />');
+		let td5 = $('<td />').html(certi.CARRER_CERTI);
+		$(tr2).append(td5);
+		$('#career').append(tr2);
+		
+		
 		
 	}
 }
@@ -80,6 +98,7 @@ function showContents(result) {
     function insertCerti() {
     	var url="popCerti";
     	window.open(url,"","width=500,height=600");
+    	
     }
     
     function insertCareer() {
@@ -174,13 +193,13 @@ function showContents(result) {
 
                             </div>
                             
-                            <div class="profiel-header" id="myTable">
+                            <div class="profiel-header">
                                 
                                 <hr>
                                 <h3>
                                     <b>자격증 목록</b>
                                 </h3>
-                                <table border="1">
+                                <table border="1" align="center">
                                 	<thead>
                                 	<tr>
                                 		<th>자격증이름</th>
@@ -189,9 +208,11 @@ function showContents(result) {
                                 		<th>취득일자</th>
                                 	</tr>
                                 	</thead>
-                                	<tbody>
-                                	</tbody>
+                                	<tbody id="certi">
+                                	
                                 
+                                	</tbody>
+                                		
                                 </table>
                                 
                                 
@@ -207,20 +228,20 @@ function showContents(result) {
                             </div>
                             <br>
                             <br><br>
-                               <div class="profiel-header" id="tableCerti">
+                               <div class="profiel-header">
                                 
                                 <hr>
                                 <h3>
                                     <b>경력인증서 목록</b>
                                 </h3>
-                                <table border="1">
+                                <table border="1" align="center">
                                 	<thead>
                                 	<tr>
                                 		<th>경력인증서</th>
                                 		
                                 	</tr>
                                 	</thead>
-                                	<tbody>
+                                	<tbody id="career">
                                 	</tbody>
                                 
                                 </table>

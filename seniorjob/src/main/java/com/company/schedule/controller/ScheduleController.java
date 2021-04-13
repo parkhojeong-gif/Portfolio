@@ -9,6 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -57,6 +60,7 @@ public class ScheduleController {
 		return "schedule/insertScheduleComplete";
 	}
 	
+	
 	//멘티가 멘토의 요청 승낙
 	@RequestMapping("/updateSchedule")
 	public String updateSchedule(String seq, ScheduleVO vo) {
@@ -75,6 +79,35 @@ public class ScheduleController {
 			
 		}
 	
-	
+	//질문등록
+	@GetMapping("/insertQuest")
+	public String insertQuestForm(ScheduleVO vo, Model model) {
+		
+		return "schedule/insertQuest";
+		
+	}
+		
+	@PostMapping("/insertQuest")
+	public String insertQuest(ScheduleVO vo, Model model) {
+		scService.insertQuest(vo);
+		model.addAttribute("msg", "질문등록완료");
+		model.addAttribute("url", "MentorList");
+		return "common/Success";
+	}
 
+	
+	
+	
+	//멘토가 받은 질문 확인
+	@RequestMapping("/getSearchQuest")
+	@ResponseBody
+	public List<Map> getSearchQuest(ScheduleVO vo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMentorid(id);
+		System.out.println("id:"+vo.getMentorid());
+		List<Map> list = scService.getSearchQuest(vo);
+		System.out.println("list:"+list);
+		return list;
+	}
 }

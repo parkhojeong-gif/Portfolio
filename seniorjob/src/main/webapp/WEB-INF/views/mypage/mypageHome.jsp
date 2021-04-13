@@ -42,11 +42,21 @@ $(document).ready(function() {
         	success : showContents,
         	error : showErrors
         })
+        
  
 });	  
+
+$(document).ready(function() {
+$.ajax({
+	url : "getSearchQuest",
+	success : showQuest,
+	error : showErrors
+})
+});	
+
   
 function showErrors(result) {
-	   //console.log(result)
+	   console.log("error")
 	  
 	 }
 	 
@@ -79,6 +89,8 @@ function showContents(result) {
 		
 	}
 }
+
+
 
     </script>
   </head>
