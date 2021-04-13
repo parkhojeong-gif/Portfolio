@@ -100,5 +100,21 @@
 		STATE='quest'
 	</select>
 	
+		<!-- 멘토가 답변.-->
+	<update id="updateQuest" parameterType="ScheduleVO">
+		UPDATE SCHEDULE 
+		SET REPLY=#{reply},
+			STATE='REPLY', 
+			SCHEDULE_END=SYSDATE 
+		WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- 질문 내용 단건조회 -->
+	<select id="getQuest" resultType="ScheduleVO">
+		SELECT *
+		FROM SCHEDULE 
+		WHERE 
+		SEQ=#{seq}
+	</select>
 	
 </mapper>

@@ -24,5 +24,9 @@ public interface ScheduleMapper {
 	public List<Map> getSearchRequest(ScheduleVO vo);
 	
 	public List<Map> getSearchQuest(ScheduleVO vo);
+	
+	public int updateQuest(ScheduleVO vo);
+	
+	public ScheduleVO getQuest(ScheduleVO vo);
 
 }

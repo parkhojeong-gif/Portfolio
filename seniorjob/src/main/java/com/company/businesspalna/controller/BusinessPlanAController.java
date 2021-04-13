@@ -133,7 +133,12 @@ public class BusinessPlanAController {
 		return new ModelAndView("commonExcelView", map);
 	}
 
-
+	@GetMapping("/checkBp")
+	public String checkBp(BusinessPalnAVO vo, Model model) {
+		bpService.getBusinessPlanA(vo);
+		model.addAttribute("bpp", vo);
+		return "/business/checkBusinessPlan";
+	}
 
 
 }

@@ -49,7 +49,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 $.ajax({
 	url : "getSearchQuest",
-	success : showQuest,
+	success : showContents,
 	error : showErrors
 })
 });	
@@ -64,7 +64,7 @@ function showContents(result) {
 	//console.log(result);
 	for(list of result) {
 		console.log(list);
-		let li,a,div,dl,dt, but, but2;
+		let li,a,div,dl,dt, but, but2, but3;
 		li=$('<li />').attr("aria-hidden", "false").attr("style","float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;");
 		a=$('<a />').attr("href","/zf_user/company-review-qst-and-ans").attr("target","_blank").attr("onclick","#").attr("class","link my_notification_card_link").attr("data-gtm_creative","card_main").attr("data-gtm_position","d15");
 		div=$('<div />').attr("class","inner");
@@ -72,9 +72,11 @@ function showContents(result) {
 		dt=$('<dt />').attr("class","title").html(list.MENTORID+"가 <br />"+"다음 요청을 보냈습니다. <br />"+list.SCHEDULE_NAME+"<br />");
 		but=$('<button />').attr("type","button").attr("onclick","location.href='updateSchedule?seq="+list.SEQ+"'").html("승낙<br />");
 		but2=$('<button />').attr("type","button").attr("onclick","location.href='updateScheduleReject?seq="+list.SEQ+"'").html("거절<br />");
+		but3=$('<button />').attr("type","button").attr("onclick","location.href='updateQuest?seq="+list.SEQ+"'").html("답변<br />");
 		
 		$(dt).append(but);
 		$(dt).append(but2);
+		$(dt).append(but3);
 		
 		$(dl).append(dt);
 		$(div).append(dl);

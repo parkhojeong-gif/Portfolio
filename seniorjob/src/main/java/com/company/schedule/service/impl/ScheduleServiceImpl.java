@@ -58,6 +58,16 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public List<Map> getSearchQuest(ScheduleVO vo) {
 		return dao.getSearchQuest(vo);
 	}
+
+	@Override
+	public int updateQuest(ScheduleVO vo) {
+		return dao.updateQuest(vo);
+	}
+
+	@Override
+	public ScheduleVO getQuest(ScheduleVO vo) {
+		return dao.getQuest(vo);
+	}
 	
 	
 

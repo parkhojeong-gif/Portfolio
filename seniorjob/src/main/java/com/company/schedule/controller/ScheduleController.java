@@ -110,4 +110,24 @@ public class ScheduleController {
 		System.out.println("list:"+list);
 		return list;
 	}
+	
+	//멘토가 질문에 답변하는 창으로 이동
+	
+	@GetMapping("/updateQuest")
+	public String updateQuestForm(ScheduleVO vo, Model model) {
+		model.addAttribute("list", scService.getQuest(vo));
+		
+		return "schedule/updateQuest";
+		
+	}
+	
+	
+	//멘토가 질문에 답변
+	@PostMapping("/updateQuest")
+	public String updateQuest(String seq, ScheduleVO vo) {
+		vo.setSeq(seq);
+		scService.updateQuest(vo);
+		return "mypage/mypageHome";
+		
+	}
 }
