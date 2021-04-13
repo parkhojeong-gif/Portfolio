@@ -63,7 +63,7 @@
 										<th>삭제</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="tbody">
 								<c:forEach items="${viewAll}" var="users">
 									<tr>
 										<td>${users.id }</td>
@@ -75,11 +75,8 @@
 										<td>${users.mentor_career_certificate}</td>
 										<td><span class="badge bg-success" href="#info"
 											class="info" data-bs-toggle="modal" onclick="">승급</span></td>
-										<td><a href="#exampleModalLong" class="edit"
-											data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
-										<td><a href="#delete" class="delete"
-											data-bs-toggle="modal" onclick=""> <i
-												data-feather="alert-circle"></i></a></td>
+										<td><a href="#exampleModalLong" class="edit" data-bs-toggle="modal" onclick="click_seq()"> <i data-feather="edit"></i></a></td>
+										<td><a href="#delete" class="delete" data-bs-toggle="modal"><i data-feather="alert-circle"></i></a></td>
 									</tr>
 								</c:forEach>	
 								</tbody>
@@ -161,7 +158,7 @@
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
 										<input type="text" class="form-control" placeholder="ID"
-											id="first-name-icon" name="id">
+											id="id" name="id" readonly="readonly">
 										<div class="form-control-icon">
 											<i data-feather="user"></i>
 										</div>
@@ -174,7 +171,7 @@
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="text" class="form-control" placeholder="Name" id="first-name-icon" name="name">
+										<input type="text" class="form-control" placeholder="Name" id="name" name="name">
 										<div class="form-control-icon">
 											<i data-feather="user"></i>
 										</div>
@@ -187,7 +184,7 @@
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="email" class="form-control" placeholder="Email" id="first-name-icon" name="email">
+										<input type="email" class="form-control" placeholder="Email" id="email" name="email">
 										<div class="form-control-icon">
 											<i data-feather="mail"></i>
 										</div>
@@ -200,7 +197,7 @@
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="text" class="form-control" placeholder="Mobile" name="phonenum">
+										<input type="text" class="form-control" placeholder="Mobile" id="phonenum" name="phonenum">
 										<div class="form-control-icon">
 											<i data-feather="phone"></i>
 										</div>
@@ -213,14 +210,14 @@
 							<div class="col-md-8">
 								<div class="form-group has-icon-left">
 									<div class="position-relative">
-										<input type="text" class="form-control" placeholder="Address" name="address">
+										<input type="text" class="form-control" placeholder="Address" id="address" name="address">
 										<div class="form-control-icon">
 											<i data-feather="file"></i>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="card-body">
+						<!-- 	<div class="card-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-12">
 										<p>File</p>
@@ -231,34 +228,31 @@
 											<span class="form-file-button">Browse</span>
 											</label>
 										</div>
-									</div>
+									</div> -->
 									<div class="modal-footer">
 										<button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
 											<i class="bx bx-x d-block d-sm-none"></i> <span
 												class="d-none d-sm-block">닫기</span>
 										</button>
 
-										<button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-											<i class="bx bx-check d-block d-sm-none"></i> <span
-												class="d-none d-sm-block">수정</span>
+										<button type="button" id="btnup" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+											<i class="bx bx-check d-block d-sm-none"></i> <span class="d-none d-sm-block">수정</span>
 										</button>
 									</div>
 								</div>
 							</div>
+				  		</form>
 						</div>
 					</div>
-				  </form>
 				</div>
-			</div>
-		</div>
-	</div>
+		
 
 
 	<!--삭제 Modal -->
 	<div class="modal fade text-left" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel120" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
 			<div class="modal-content">
-			<form action="deleteUsers" method="post">
+			<form name ="deleteUser" action="deleteUser" method="post">
 				<div class="modal-header bg-danger">
 					<h5 class="modal-title white" id="myModalLabel120">회원삭제</h5>
 					<button type="button" class="close" data-bs-dismiss="modal"
@@ -284,22 +278,61 @@
 	
 <!-- 수정 modal 창 -->
 <script>
-$(function(){
+//$(function(){			 
+			function click_seq(obj){
+				$("#table1 tbody tr").click(function(){ 	
+					var tr = $(this);
+					var td = tr.children();
+					var no = td.eq(0).text();
+			  	
+		   	$.ajax({
+		    		url : 'getUserList',
+		    		type : 'get',
+					data : {"id": no},	
+		    		dataType: 'json',
+		    		success: function(result){
+		    			$("#exampleModalLong").on('show.bs.modal', function(event){
+			    			
+		    				var add =
+		    				
+			   				$("#exampleModalLong").find('[name=id]').val();
+							$("#exampleModalLong").find('[name=name]').val();
+							$("#exampleModalLong").find('[name=email]').val();
+							$("#exampleModalLong").find('[name=phonenum]').val();
+							$("#exampleModalLong").find('[name=address]').val(); 
+		    			
+		    			} 
+		    		
+		    		});
+		   		
+		   	
+				})
+			  }	
+		    		
+		  //});		
+		    /* 	
+				var set = ('${viewAll}');
+					
+					console.log(set);
+					for(i = 0; i < set.length; i++){
+						
+						
+					}	
+		   
+		    
+		    
 	
-	$("#exampleModalLong").on('show.bs.modal', function(){
-		var button = $(event.delegateTarget);
-		let edit = button.closest('tr').find('td');
-		$("#exampleModalLong").find('[name=id]').val(edit.eq(0).text());
-		$("#exampleModalLong").find('[name=name]').val(edit.eq(1).text());
-		$("#exampleModalLong").find('[name=email]').val(edit.eq(5).text());
-		$("#exampleModalLong").find('[name=phonenum]').val(edit.eq(2).text());
-		$("#exampleModalLong").find('[name=address]').val(edit.eq(4).text());
+					
+					
+ */	
+<!-- 삭제 modal 창 -->
+	/* $("#delete").on('show.bs.modal', function(){
 		
-	});
+			
+	})
+	 */
 	
-	$("#delete").on('show.bs.modal', function(){
-		var button = $(event.delegateTarget);
-		let del = button.closest('tr').find('td').eq(0).text();
-	});
-})
+//});
+
+
 </script>

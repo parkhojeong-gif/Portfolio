@@ -43,13 +43,15 @@ public class manUserController {
 	}
 	//회원 수정 폼
 	@RequestMapping("/updateUser")
-	public String updateUser(userVO vo) {
+	public String updateUser(userVO vo, Model model) {
+		model.addAttribute("upuser", manusermapper.updateUser(vo));
 		return "user";
 	}
 	
+	//회원 수정 
 	@RequestMapping("/updateUserProc")
 	public String updateUserProc(userVO vo) {
-		return "redirect:/";
+		return "redirect:/user";
 	}
 	
 	//회원 삭제

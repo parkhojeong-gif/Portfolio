@@ -97,7 +97,7 @@
             </nav>
 
             <div class="main-content container-fluid">
-                           <tiles:insertAttribute name="content"/>
+                   <tiles:insertAttribute name="content"/>
             </div>
 
             <footer>

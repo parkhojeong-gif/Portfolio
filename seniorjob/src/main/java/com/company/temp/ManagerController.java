@@ -18,12 +18,16 @@ public class ManagerController {
 	
 		return "manager";
 	}
-	//회원관리
 	/*
+	 * //회원관리
+	 * 
 	 * @RequestMapping("/user") public String user() {
 	 * 
-	 * return "user"; }
+	 * return "user";
+	 * 
+	 * }
 	 */
+	
 	//멘토관리
 	@RequestMapping("/mentor")
 	public String mentor() {

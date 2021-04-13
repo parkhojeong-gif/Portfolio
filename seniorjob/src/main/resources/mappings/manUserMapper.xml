@@ -32,7 +32,8 @@
  </select>
  <!-- 회원 수정 -->
  <update id="updateUser" parameterType="com.company.manager.user.userVO">
- 	UPDATE USERS SET(  PHONENUM = #{phonenum}
+ 	UPDATE USERS SET(   NAME = #{name}
+ 					   ,PHONENUM = #{phonenum}
  					   ,ADDRESS = #{address}	
  					   ,EMAIL = #{email}
  					   )			
