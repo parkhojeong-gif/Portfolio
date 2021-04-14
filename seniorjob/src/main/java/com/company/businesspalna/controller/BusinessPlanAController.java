@@ -171,6 +171,7 @@ public class BusinessPlanAController {
 		String id = (String) session.getAttribute("id");
 		vo.setMentorId(id);
 		model.addAttribute("list", bpService.checkP(vo));
+System.out.println("model:"+model);
 		return "/Mentor/checkP";
 	}
 	
