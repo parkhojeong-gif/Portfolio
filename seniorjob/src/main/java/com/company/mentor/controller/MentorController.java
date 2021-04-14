@@ -132,6 +132,10 @@ public class MentorController {
 				List<MentorVO> list = mentorService.getMentorByFollow(vo);
 				map.put("list", list);
 			}
+			else if(vo.getOptionValue().equals("")) {
+				List<MentorVO> list = mentorService.getMentorList(vo);
+				map.put("list", list);
+			}
 			return map;
 		}
 }
