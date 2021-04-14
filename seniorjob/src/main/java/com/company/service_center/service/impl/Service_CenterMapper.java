@@ -2,7 +2,6 @@ package com.company.service_center.service.impl;
 
 import java.util.List;
 
-import com.company.service_center.Criteria;
 import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterVO;
@@ -35,6 +34,8 @@ public interface Service_CenterMapper {
 
 	// 페이징 처리 및 공지사항 전체 조회
 	public List<Service_CenterVO> list(SearchCriteria scri);
+	public List<Service_CenterVO> listDate(SearchCriteria scri); //최신날짜순
+	public List<Service_CenterVO> listClick(SearchCriteria scri); //조회수순
 
 	// 공지사항 게시물 총갯수
 	public int listCount(SearchCriteria scri);

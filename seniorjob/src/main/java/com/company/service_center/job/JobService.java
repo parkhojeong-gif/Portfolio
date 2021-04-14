@@ -1,6 +1,5 @@
 package com.company.service_center.job;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 @Service
 public class JobService {
 	public List<JobVO> crawling(String cd) throws Exception{

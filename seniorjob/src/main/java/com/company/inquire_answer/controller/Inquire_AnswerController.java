@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.inquire_answer.service.Inquire_AnswerVO;
+import com.company.inquire.service.Inquire_AnswerVO;
 import com.company.inquire_answer.service.impl.Inquire_AnswerMapper;
 
 @Controller

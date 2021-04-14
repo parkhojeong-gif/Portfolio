@@ -35,7 +35,7 @@ public class WordView extends AbstractTemplateView{
 		MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();  //MainDocumentPart 클래스는 기본 document.xml 부분 의 표현을 보유합니다 
 
 
-		org.docx4j.wml.Document wmlDocumentEl = (org.docx4j.wml.Document) documentPart.getContents();
+		org.docx4j.wml.Document wmlDocumentEl = documentPart.getContents();
 		String xml = XmlUtils.marshaltoString(wmlDocumentEl);
 
 
@@ -64,10 +64,12 @@ public class WordView extends AbstractTemplateView{
 	}
 
 	
-	 public boolean checkResource(Locale locale) { return
+	 @Override
+	public boolean checkResource(Locale locale) { return
 	 getApplicationContext().getResource(getUrl()).exists(); }
 	 
-	 protected boolean isUrlRequired() {
+	 @Override
+	protected boolean isUrlRequired() {
 	        return false;
 	}
 	

@@ -1,14 +1,9 @@
-package com.company.inquire.service.impl;
+package com.company.inquire.service;
 
 import java.util.List;
 import java.util.Map;
 
-import com.company.inquire.service.InquireVO;
-import com.company.inquire.service.Inquire_AnswerVO;
-
-
-
-public interface InquireMapper {
+public interface InquireService {
 	//등록
 	public int insertInquire(InquireVO vo);
 	//수정
@@ -30,4 +25,5 @@ public interface InquireMapper {
 	public boolean updateConfirm(InquireVO vo);
 	//답변 작성 리스트 조회
 	public List<Inquire_AnswerVO> userAnswerList(Inquire_AnswerVO avo);
+	
 }

@@ -11,6 +11,7 @@ public class FollowServiceImpl implements FollowService{
 	@Autowired FollowingMapper followMapper;
 
 	// 멘토 팔로우 / insert는 리턴값이 void
+	
 	public int MentorFollow(FollowingVO vo) {
 		int result = followMapper.MentorFollow(vo);
 		return result;
