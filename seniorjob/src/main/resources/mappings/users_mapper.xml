@@ -26,6 +26,9 @@
 			  ,AUTH
 			  ,NAME
 			  ,LOG_DATE
+			  ,POSTCODE
+			  ,DETAILADDRESS
+			  ,EXTRAADDRESS
 			  FROM USERS
 	WHERE ID = #{id}		  
 	</select>
@@ -94,16 +97,46 @@
 						 WHERE ID = #{id}
 	</update>
 	
+	<!-- 양소민 수정 -->
 	<!-- 회원정보 업데이트 -->
-	<update id="updateUsers" parameterType="com.company.users.service.UsersVO">
-		UPDATE USERS SET PASSWORD = #{password}, 
-					     <if test="address != null and address !=''">ADDRESS= #{address},</if>		
+	<update id="updateUsersProc" parameterType="com.company.users.service.UsersVO">
+		UPDATE USERS SET <if test="postcode != null and postcode !=''">POSTCODE=#{postcode},</if>
+					     <if test="address != null and address !=''">ADDRESS= #{address},</if>
+					     <if test="extraaddress != null and extraaddress !=	''">EXTRAADDRESS=#{extraaddress},</if>	
+					     <if test="detailaddress != null and detailaddress != ''">DETAILADDRESS=#{detailaddress},</if>
 						 <if test="phonenum !=null and phonenum !=''">PHONENUM= #{phonenum},</if>
 						 <if test="email !=null and email !=''">EMAIL= #{email},</if>
 						 <if test="birth !=null and birth !=''">BIRTH= #{birth},</if>
-						 <if test="name !=null and name !=''">NAME= #{name},</if>	
+						 <if test="name !=null and name !=''">NAME= #{name}</if>	
 						 WHERE ID = #{id}
 	</update>
+
+	
+	<!-- 양소민 추가 -->
+	<!-- 마이페이지에서 자격증/경력인증서 등록 -->
+	<insert id="insertCerti" parameterType="UsersVO">
+	INSERT INTO USERCERTI(ID,
+							NO
+							<if test="certi_name != null and certi_name !=''">,CERTI_NAME</if>
+							<if test="certi_place != null and certi_place !=''">,CERTI_PLACE</if>
+							<if test="certi_no != null and certi_no !=''">,CERTI_NO</if>
+							<if test="certi_date != null and certi_date !=''">,CERTI_DATE</if>
+							<if test="carrer_certi != null and carrer_certi !=''">,CARRER_CERTI</if>
+							)
+				VALUES( 
+							#{id},
+							USERCERTI_SEQ.NEXTVAL
+							<if test="certi_name != null and certi_name !=''">,#{certi_name}</if>
+							<if test="certi_place != null and certi_place !=''">,#{certi_place}</if>
+							<if test="certi_no != null and certi_no !=''">,#{certi_no}</if>
+							<if test="certi_date != null and certi_date !=''">,#{certi_date}</if>
+							<if test="carrer_certi != null and carrer_certi !=''">,#{carrer_certi}</if>
+							
+						)
+				
+	</insert>
+	
+
 	
 	<!-- 김찬곤 / 단건 조회 -->
 	<select id ="getUsersForPayment" resultType="com.company.users.service.UsersVO" parameterType="map">

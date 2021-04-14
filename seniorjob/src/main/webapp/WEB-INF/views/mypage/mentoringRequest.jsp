@@ -41,20 +41,26 @@
 									name="mentorid" type="text" value="${mentorid }" class="form-control" readonly="readonly">
 							</div>
 							<div class="form-group">
-								<label>일정이름<small>(read only)</small></label> <input
-									name="schedule_name" type="text" value="${schedule_name }" class="form-control" readonly="readonly">
+								<label>일정이름<small>(read only)</small></label> <input name="schedule_name" type="text" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>요청내용<small>(required)</small></label> <input
-									name="schedule_con" type="text" class="form-control">
+								<label>요청내용<small>(required)</small></label> <input name="schedule_con" type="text" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>시작일시<small>(required)</small></label> <input
-									name="schedule_start" type="text" class="form-control">
+								<label>시작날짜<small>(required)</small></label> 
+								<input name="schedule_start" type="date" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>종료일시<small>(required)</small></label> <input
-									name="schedule_end" type="text" class="form-control">
+								<label>시작시간<small>(required)</small></label> 
+								<input name="schedule_start_time" type="time" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>종료날짜<small>(required)</small></label> 
+								<input name="schedule_end" type="date" class="form-control">
+							</div>
+							<div class="form-group">
+								<label>종료시간<small>(required)</small></label> 
+								<input name="schedule_end_time" type="time" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>멘티<small>(read only)</small></label> <input

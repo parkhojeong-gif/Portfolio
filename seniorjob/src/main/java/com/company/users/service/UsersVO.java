@@ -1,4 +1,4 @@
-package com.company.users.service;
+  package com.company.users.service;
 
 import java.util.Date;
 
@@ -6,13 +6,13 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-
 import lombok.Data;
 
 
 @Data
 public class UsersVO { //회원테이블
 	//(?=.*[0-9]) 숫자 적어도 하나, (?=.*[a-zA-Z]) 영문 대,소문자 중 적어도 하나, (?=.*\\W) 특수문자 적어도 하나, (?=\\S+$).{8,20} 공백제거, 적어도 8에서 20자 (https://victorydntmd.tistory.com/332)
+
 	@NotEmpty(message="※아이디를 입력하세요.")
 	//@Length(min=5, max = 10, message="※아이디는 최소 5에서 최대 10까지 입력 가능합니다.") 
 	//@Pattern(regexp="(?=.*[a-zA-Z])(?=.*[0-9])(?=\\S+$).{5,10}", message="※아이디 생성시 대소문자와 숫자 조합으로 입력해주세요.")
@@ -43,4 +43,16 @@ public class UsersVO { //회원테이블
 	private Date log_date; //가입일
 	private String distinction;
 	private String accesstoken;
+	
+			//양소민 추가
+			//비밀번호 변경 시 필요
+			private String passwordold; //예전 비밀번호
+			private String passwordck; //비밀번호 확인
+		
+			//자격증,경력증명서 등록시 필요
+			private String certi_name;		//자격증명
+			private String certi_place;		//발행처/기관
+			private String certi_no;		//자격증번호
+			private String certi_date;		//취득일
+			private String carrer_certi;    //경력증명서
 }

@@ -9,21 +9,20 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../../topHeader.jsp"></jsp:include>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <body>
+	<!-- property area -->
+	<div class="content-area recent-property" style="background-color: #FFF;">
+		<div class="container">
+			<div class="row">
+			<!--왼쪽 -->
+			<jsp:include page="../new_sevice_left.jsp"></jsp:include>
+			<!--왼쪽  -->
+					
 	
-	<div id="summernote"></div>
-	<script>
-		$('#summernote').summernote({
-			placeholder : 'Hello stand alone ui',
-			tabsize : 2,
-			height : 100
-		});
-	</script>
-	
+		</div>
+	</div>
+</div>
 	<jsp:include page="../../footer.jsp"></jsp:include>
 </body>
 </html>

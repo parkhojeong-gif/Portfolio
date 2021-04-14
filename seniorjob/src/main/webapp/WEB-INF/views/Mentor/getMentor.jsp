@@ -110,7 +110,7 @@ h1{text-align:center; padding: 20px}
 		<div class="column">
 			<div class="card">
 				<div style="width: 200px; height: 150px; display:block">
-					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
+					<img src="image/${list.mentor_photo }" style="width: 70%">
 				</div>
 				<div class="container">
 					<p>
@@ -159,7 +159,7 @@ h1{text-align:center; padding: 20px}
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
-					<img src="../resources/assets/img/mentor/mentoringCourse.jpg" id="mentoringCourse" style="width:100%">
+					<img src="image/${mentoring.mentor_photo }" id="mentoringCourse" style="width:100%">
 				</div>
 				<div class="container">
 					<p>

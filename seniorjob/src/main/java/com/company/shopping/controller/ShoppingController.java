@@ -1,5 +1,8 @@
 package com.company.shopping.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +25,21 @@ public class ShoppingController {
 	
 	//양소민 추가
 	@GetMapping("/getSearchShopping")   //마이페이지_수강중인 멘토링
-	public String getSearchShopping(ShoppingVO vo, Model model) {
+	public String getSearchShopping(ShoppingVO vo, Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		
 		model.addAttribute("list", spService.getSearchShopping(vo));
+		System.out.println("model:"+model);
 		return "mypage/mentoringStatus";
 	}
 	
 	@GetMapping("/getSearchPay")  //마이페이지_결제내역
-	public String getSearchPay(ShoppingVO vo, Model model) {
+	public String getSearchPay(ShoppingVO vo, Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		model.addAttribute("list", spService.getSearchPay(vo));
 		return "mypage/payDetail";
 	}

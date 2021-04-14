@@ -142,6 +142,7 @@ public class UsersServiceImpl implements UsersService {
 		
 		return usersmapper.idCheck(vo);
 	}
+
 	
 	@Override
 	public int emailCheck(String email) {
@@ -155,6 +156,24 @@ public class UsersServiceImpl implements UsersService {
 		return usersmapper.kakaoCheck(vo);
 	}
 
+	@Override
+	public int updateInfo(UsersVO vo) throws Exception {
+		return usersmapper.updateInfo(vo);
+	}
+
+	@Override
+	public int insertCerti(UsersVO vo) {
+		return usersmapper.insertCerti(vo);
+	}
+
+	@Override
+	public int updateUsersProc(UsersVO vo) {
+		return usersmapper.updateUsersProc(vo);
+	}
+
+
+	
+	
 	// 김찬곤 / 단건 조회
 	public List<UsersVO> getUsersForPayment(Map<String, Object> map) {
 		return usersmapper.getUsersForPayment(map);

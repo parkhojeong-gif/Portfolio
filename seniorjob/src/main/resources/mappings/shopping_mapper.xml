@@ -15,7 +15,7 @@
  	<!-- 마이페이지_결제내역 -->
 	<select id="getSearchPay" resultType="ShoppingVO">
 		SELECT * FROM MENTORINGVU 
-		WHERE ID='somTest'
+		WHERE ID=#{id}
 	</select>
 	
 	<!-- 김찬곤 추가 -->

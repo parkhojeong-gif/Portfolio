@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
-import com.company.service_center.Criteria;
 import com.company.service_center.PageMaker;
-import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 import com.company.service_center.service.Service_CenterVO;
 import com.company.service_center.service.impl.Service_CenterMapper;
@@ -25,9 +23,22 @@ public class Service_CenterController {
 	// 게시판 목록 조회(공지사항)
 	@RequestMapping("/serviceCenter")
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) {
-
-		model.addAttribute("list", service_CenterMapper.list(scri));
-
+		
+		
+		if(scri.getOptionValue()==null) {
+			model.addAttribute("list", service_CenterMapper.list(scri));
+			System.out.println("============================ssqq===========================");
+			System.out.println(scri.getOptionValue());
+		}else if(scri.getOptionValue().equals("최신순")) {
+			System.out.println("============================ssqq1===========================");
+			model.addAttribute("list", service_CenterMapper.listDate(scri));
+			System.out.println(scri.getOptionValue());
+		}else if(scri.getOptionValue().equals("인기순")) {
+			System.out.println("============================ssqq2===========================");
+			model.addAttribute("list", service_CenterMapper.listClick(scri));
+			System.out.println(scri.getOptionValue());
+		}
+		//model.addAttribute("list", service_CenterMapper.list(scri));
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service_CenterMapper.listCount(scri));

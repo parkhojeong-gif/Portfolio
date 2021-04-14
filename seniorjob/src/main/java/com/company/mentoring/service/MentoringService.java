@@ -15,6 +15,8 @@ public interface MentoringService {
 	public MentoringVO getMentoring(MentoringVO vo);
 	
 	public List<MentoringVO> getSearchMentoring(MentoringVO vo);
+	
+	
 
 	public MentoringVO MentoringRegisterCheck(MentoringVO vo); // 멘토링 중복 체크
 }

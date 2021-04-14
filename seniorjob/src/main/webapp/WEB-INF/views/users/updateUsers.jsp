@@ -8,7 +8,62 @@
 <html class="no-js"> <!--<![endif]-->
 
 <jsp:include page="../topHeader.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+<script>
+    function DaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("extraaddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("extraaddress").value = '';
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("detailaddress").focus();
+            }
+        }).open();
+    }
+    
+    function insertCerti() {
+    	var url="popCerti";
+    	window.open(url,"","width=500,height=600");
+    }
+    
+    function insertCareer() {
+    	var url="popCareer";
+    	window.open(url,"","width=500,height=600");
+    }
+</script>
+<body>
   
 
         <!-- property area -->
@@ -22,7 +77,6 @@
 					<div class="section">
 
                         <form action="updateUsersProc" method="post">
-                        <input type="hidden" name="id" value="somTest">
                             <div class="profiel-header">
                                 <h3>
                                     <b>개인정보수정</b> <br>
@@ -41,28 +95,45 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-3 padding-top-25">
+                                <div class="col-sm-10 padding-top-25">
 
                                     <div class="form-group">
                                         <label>이름 <small>(read only)</small></label>
-                                        <input name="name" type="text" class="form-control" value="${list.name }" readonly>
+                                        <input name="name" id="name" type="text" class="form-control" value="${list.name }" readonly>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group">
+                                        <label>우편번호</label>
+                                        <input name="postcode" id="postcode" type="text" class="form-control" value="${list.postcode }">
+                                         
                                     </div>
                                     <div class="form-group">
-                                        <label>주소 <small>
-                                        <input name="address" type="text" class="form-control" value="${list.address }">
-                                    </div> 
+                                    <input type="button" onclick="DaumPostcode()" value="우편번호 찾기">
+                                    </div>
                                     <div class="form-group">
-                                        <label>전화번호 <small>
+                                        <label>주소</label>
+                                        <input name="address" id="address" type="text" class="form-control" value="${list.address }">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>참고항목</label>
+                                        <input name="extraaddress" id="extraaddress" type="text" class="form-control" value="${list.extraaddress }">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>상세주소</label>
+                                        <input name="detailaddress" id="detailaddress" type="text" class="form-control" value="${list.detailaddress }">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>전화번호</label>
                                         <input name="phonenum" type="text" class="form-control" value="${list.phonenum }">
                                     </div> 
-                                </div>
-                                <div class="col-sm-3 padding-top-25">
                                     <div class="form-group">
-                                        <label>이메일 <small>
+                                        <label>이메일</label>
                                         <input name="email" type="email" class="form-control"  value="${list.email }">
                                     </div>
                                     <div class="form-group">
-                                        <label>생년월일 <small>
+                                        <label>생년월일</label>
                                         <input name="birth" type="text" class="form-control"  value="${list.birth }">
                                     </div>
                                     <div class="form-group">
@@ -70,6 +141,7 @@
                                         <input name="auth" type="text" class="form-control"  value="${list.auth }" readonly>
                                     </div>
                                 </div>
+                                
                                 <div class="area_btn col-sm-12 text-center">
 									<button type="submit" class="btn btn-primary">수정</button>
 								</div> 
@@ -80,40 +152,15 @@
                                 
                                 <hr>
                                 <h3>
-                                    <b>자격증 등록</b>
+                                    <b>자격증 목록</b>
                                 </h3>
                             </div>
 
-                            <div class="clear">
-                                
-                                <hr>
-                                <br>
-                                <div class="col-sm-5 col-sm-offset-1">
-                                    <div class="form-group">
-                                        <label>자격증명 :</label>
-                                        <input name="Facebook" type="text" class="form-control" placeholder="https://facebook.com/user">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>발행처/기관 :</label>
-                                        <input name="Twitter" type="text" class="form-control" placeholder="https://Twitter.com/@user">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>자격증번호:</label>
-                                        <input name="website" type="text" class="form-control" placeholder="https://yoursite.com/">
-                                    </div>
-                                     <div class="form-group">
-                                        <label>취득일:</label>
-                                        <input name="website" type="text" class="form-control" placeholder="https://yoursite.com/">
-                                    </div>
-                                </div>  
-
-                             
- 
-                            </div>
+                            
                     
                             <div class="col-sm-5 col-sm-offset-1">
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='등록' />
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
                                 
                                 
                             </div>
@@ -123,33 +170,14 @@
                                 
                                 <hr>
                                 <h3>
-                                    <b>경력인증서 등록</b>
+                                    <b>경력인증서 목록</b>
                                 </h3>
                             </div>
                           
-                            
-                            <div class="clear">
-                                <hr>
-                                <br>
-                              
-                                                                   
-                                        
-                                         
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
-                                                    <p class="help-block">Select multipel images for your property .</p>
-                                                </div>
-                                            </div>
-                                       
-                                  
-                                    <!--  End step 3 -->
-                            </div>
-                            
+                          
                             <div class="col-sm-5 col-sm-offset-1">
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='등록' />
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
                                 <br>
                                 <br>
                             </div>

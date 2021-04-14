@@ -77,17 +77,18 @@
 				MET_END,
 				ID
 		FROM MYMENTORINGVU
-		WHERE ID='123'
+		WHERE ID=#{id}
 	</select>
 	
-	<!-- 멘토링 중복 체크 -->
-	<select id="MentoringRegisterCheck" resultType="com.company.mentoring.service.MentoringVO">
+	<!-- 멘토링 날짜 중복 체크 -->
+	<select id="mentoringRegisterCheck" resultType="com.company.mentoring.service.MentoringVO">
 		select 
 			MENTORING_BEGIN_DATE, MENTORING_END_DATE
 		FROM 
 			MENTORING
 		WHERE MENTORING_BEGIN_DATE = #{mentoring_begin_date}
 	</select>
+
 
 
 </mapper>

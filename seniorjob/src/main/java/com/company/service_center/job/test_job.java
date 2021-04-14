@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class test {
+public class test_job {
 	public static void main(String[] args) {
 
 		String local = "11";

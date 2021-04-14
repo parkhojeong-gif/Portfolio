@@ -6,7 +6,7 @@ import com.company.resume.service.ResumeVO;
 
 public interface ResumeMapper {
 	//이력서 전체조회
-	public List<ResumeVO> getSearchResumeList();
+	public List<ResumeVO> getSearchResumeList(ResumeVO vo);
 	//이력서 등록
 	public int insertResume(ResumeVO vo);
 	//이력서 수정

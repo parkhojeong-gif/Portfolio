@@ -16,11 +16,15 @@ public interface UsersMapper {
 	public int idCheck(UsersVO vo); //아이디 중복체크
 	//이메일발송
 	public void sendEmail(UsersVO vo, String div) throws Exception;
+	// 패스워드 변경
 	// 회원정보 변경
 	public int updateInfo(UsersVO vo) throws Exception;
+	
+	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
 	public int emailCheck(String email); //email 중복체크 
 	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
 	
+	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가	
 	public List<UsersVO> getUsersForPayment(Map<String, Object> map); // 김찬곤 / 단건 조회
 
 }

@@ -18,26 +18,61 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
         	
           initialView: 'dayGridMonth',
-          timeZone: 'UTC',
           eventSources : [{
-          		url : "getSearchSchedule?menteeid=somTest"
-          				
-          }
-          ]
-          
-        
+          		url : "getSearchSchedule",
+          		success : function(result) {
+          			console.log(result);
+          		}
+          }]
         });
         calendar.render();
-       
         
         
       });
       
-
+$(document).ready(function() {
+	$.ajax({
+        	url : "getSearchRequest",
+        	success : showContents,
+        	error : showErrors
+        })
  
-	  
+});	  
   
-     
+function showErrors(result) {
+	   //console.log(result)
+	  
+	 }
+	 
+function showContents(result) {
+	//console.log(result);
+	for(list of result) {
+		console.log(list);
+		let li,a,div,dl,dt, but, but2;
+		li=$('<li />').attr("aria-hidden", "false").attr("style","float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;");
+		a=$('<a />').attr("href","/zf_user/company-review-qst-and-ans").attr("target","_blank").attr("onclick","#").attr("class","link my_notification_card_link").attr("data-gtm_creative","card_main").attr("data-gtm_position","d15");
+		div=$('<div />').attr("class","inner");
+		dl=$('<dl />');
+		dt=$('<dt />').attr("class","title").html(list.MENTORID+"가 <br />"+"다음 요청을 보냈습니다. <br />"+list.SCHEDULE_NAME+"<br />");
+		but=$('<button />').attr("type","button").attr("onclick","location.href='updateSchedule?seq="+list.SEQ+"'").html("승낙<br />");
+		but2=$('<button />').attr("type","button").attr("onclick","#").html("거절<br />");
+		
+		$(dt).append(but);
+		$(dt).append(but2);
+		
+		$(dl).append(dt);
+		$(div).append(dl);
+		
+		
+		$(li).append(a);
+		$(li).append(div);
+		
+		$('#ulId').append(li);
+		
+		
+		
+	}
+}
 
     </script>
   </head>
@@ -56,7 +91,7 @@
 				
 				
 					<div class="section">
-						<h3>열정적인 멘토, 양소민 님</h3>
+						<h3>열정적인 멘토, ${name } 님</h3>
 
 						<div id="wrap_notification">
 							<div class="my_notification complete">
@@ -70,87 +105,21 @@
 								<div class="wrap_cards">
 									<div class="sliders">
 										<!-- 나의 알림 -->
-										<div class="wrap_slider"
-											style="max-width: 1248px; display: block;">
+										<div class="wrap_slider" style="max-width: 1248px; display: block;">
 											<div class="bx-viewport" aria-live="polite"
 												style="width: 100%; overflow: hidden; position: relative; height: 190px;">
-												<ul class="slider my"
-													style="width: 6215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-													<li aria-hidden="false"
-														style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;"><a
-														href="/zf_user/company-review-qst-and-ans" target="_blank"
-														onclick="" class="link my_notification_card_link"
-														data-gtm_creative="card_main" data-gtm_position="d15"></a>
-													<div class="inner">
+												<ul class="slider my" id="ulId" style="width: 6215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+													<li aria-hidden="false" style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;">
+													<a href="/zf_user/company-review-qst-and-ans" target="_blank" onclick="" class="link my_notification_card_link" data-gtm_creative="card_main" data-gtm_position="d15"></a>
+														<div class="inner">
 															<dl>
 																<dt class="title">
 																	홍길동 멘티가<br>이력서를 보냈어요!<br>첨삭해주세요!
 																</dt>
 															</dl>
-														</div></li>
-													<li aria-hidden="false"
-														style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;"><a
-														href="/zf_user/member/profile/introduce-view"
-														target="_parent" onclick=""
-														class="link my_notification_card_link"
-														data-gtm_creative="card_main" data-gtm_position="d17"></a>
-													<div class="inner">
-															<dl>
-																<dt class="title">
-																	김수한무 멘티가<br>사업계획서를 보냈어요!<br>첨삭해주세요!
-																</dt>
-															</dl>
-														</div></li>
-													<li aria-hidden="false"
-														style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;"><a
-														href="/zf_user/member/webvq/svq" target="_parent"
-														onclick="" class="link my_notification_card_link"
-														data-gtm_creative="card_main" data-gtm_position="d19"></a>
-													<div class="inner">
-															<dl>
-																<dt class="title">
-																	모의면접<br>요청이 있습니다.<br>수락하시겠습니까?
-																</dt>
-															</dl>
-														</div></li>
-													<li aria-hidden="false"
-														style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;"><a
-														href="/zf_user/member/profile/school-view" onclick=""
-														target="_parent" class="link my_notification_card_link"
-														data-gtm_creative="card_main" data-gtm_position="d20"></a>
-													<div class="inner">
-															<dl>
-																<dt class="title">
-																	한번 작성해두면<br>이력서 작성이 더 편해집니다.
-																</dt>
-																<dd class="txt">역량과 이력 관리 서비스</dd>
-																<dd class="txt">MY DATA를 입력해두세요~!</dd>
-															</dl>
-														</div></li>
-													<li aria-hidden="true"
-														style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;"><a
-														href="/zf_user/persons/scrap-recruit" onclick=""
-														target="_parent" class="link my_notification_card_link"
-														data-gtm_creative="card_main" data-gtm_position="d22"></a>
-													<div class="inner">
-															<dl>
-																<dt class="title">스크랩, 해볼랩?</dt>
-																<dd class="txt">놓치기 쉬운 공고의</dd>
-																<dd class="txt">일정 알림을 받을 수 있어요.</dd>
-															</dl>
-														</div></li>
-													<li aria-hidden="true"
-														style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;"><a
-														href="/zf_user/member/avatar/list" target="_parent"
-														onclick="" class="link my_notification_card_link"
-														data-gtm_creative="card_main" data-gtm_position="d23"></a>
-													<div class="inner">
-															<dl>
-																<dt class="title">
-																	지원할만한 공고에<br>새로운 공고가 있어요!
-																</dt>
-															</dl>
-														</div></li>
+														</div>
+													</li>
+												
 												</ul>
 											</div>
 										</div>
