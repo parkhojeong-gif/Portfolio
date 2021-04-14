@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.company.manager.declaration.service.impl.manDeclarationMapper">
+<!-- 신고 전체 조회 -->
+ <select id="decList" parameterType="com.company.manager.declaration.declarationVO" resultType="com.company.manager.declaration.declarationVO"> 
+ 	SELECT DECLARATION.*, USERS ID  
+ 	FROM DECLARATION
+ 	JOIN USERS ON USERS.ID = DECLARATION.DEC_DELA
+ </select>
+ <!-- 신고 단건 조회 -->
+ <select id="getDecList" parameterType="com.company.manager.declaration.declarationVO" resultType="com.company.manager.declaration.declarationVO">
+ 	SELECT DECLARATION.*, USERS ID
+ 	FROM DECLARATION
+ 	JOIN USERS ON USERS.ID = DECLARATION.ID
+	WHERE DEC_DELA = #{dec_dela}
+ </select> 
+
+</mapper>
+ 

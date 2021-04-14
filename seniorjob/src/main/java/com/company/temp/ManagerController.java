@@ -28,12 +28,13 @@ public class ManagerController {
 	 * }
 	 */
 	
-	//멘토관리
-	@RequestMapping("/mentor")
-	public String mentor() {
-		
-		return "mentor"; 
-	}
+	/*
+	 * //멘토관리
+	 * 
+	 * @RequestMapping("/mentor") public String mentor() {
+	 * 
+	 * return "mentor"; }
+	 */
 	//신고관리
 	@RequestMapping("/declaration")
 	public String declaration() {

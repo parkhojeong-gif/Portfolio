@@ -20,7 +20,7 @@
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>회원관리</span>
 					</a></li>
 
-					<li class="sidebar-item  "><a href="./mentor"
+					<li class="sidebar-item  "><a href="./mentorList"
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토관리</span>
 					</a></li>
 

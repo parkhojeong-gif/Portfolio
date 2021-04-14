@@ -24,4 +24,5 @@ public class userVO {
 	
 	private String mentor_career_certificate;
 	
+	
 }

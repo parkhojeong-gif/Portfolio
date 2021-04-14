@@ -42,14 +42,14 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="mentor" items="${list}">
+								<c:forEach var="mentor" items="${viewAll}">
 									<tr>
 										<td>${mentor.id }</td>
 										<td>${mentor.name }</td>
 										<td>${mentor.phonenum }</td>
 										<td>${mentor.address }</td>
 										<td>${mentor.email }</td>
-										<td></td>
+										<td>${mentor.mentor_career_certificate }</td>
 										<td><a href="#exampleModalLong" class="edit"
 											data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
 										<td><a href="#delete" class="delete"

@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public userVO getUserList(userVO vo) {
+	public List<userVO> getUserList(userVO vo) {
 		
 		return dao.getUserList(vo);
 	}
@@ -51,9 +51,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int authUser(userVO vo) {
+	public void authUser(userVO vo) {
 		
-		return dao.authUser(vo);
+		 dao.authUser(vo);
 	}
 	
 	

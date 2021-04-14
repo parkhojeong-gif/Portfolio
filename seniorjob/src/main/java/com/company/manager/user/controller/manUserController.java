@@ -1,10 +1,15 @@
 package com.company.manager.user.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.manager.user.userVO;
 import com.company.manager.user.service.impl.manUserMapper;
@@ -37,9 +42,11 @@ public class manUserController {
 	}
 	
 	//회원 단건 조회
+	@ResponseBody
 	@RequestMapping("/getUserList")
-	public String getUserList(userVO vo) {
-		return "user";
+	public List<userVO> getUserList(userVO vo) {
+		return manusermapper.getUserList(vo);
+	
 	}
 	//회원 수정 폼
 	@RequestMapping("/updateUser")
@@ -55,17 +62,20 @@ public class manUserController {
 	}
 	
 	//회원 삭제
+	@ResponseBody
 	@RequestMapping("/deleteUser")
 	public String deleteUser(userVO vo) {
-		return "user";
+		manusermapper.deleteUser(vo);
+		return "redirect:/userList";
+		
 	}
 	
-	
-	
 	//회원 승급
-	@RequestMapping("/authList")
-	public String authList(userVO vo) {
-		return "user";
+	
+	@RequestMapping("/authUser")
+	public String authUser(userVO vo) {
+		manusermapper.authUser(vo);
+		 return "user";
 
 	}
 }
