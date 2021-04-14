@@ -58,7 +58,7 @@ $( document ).ready(function() {
     		marketAdd();
     		if(shidden == 1) {
     			console.log("3");
-    			//sellAdd();
+    			sellAdd();
     		} //end of shidden
     		
     		else {
@@ -365,7 +365,7 @@ function sellAdd() {
 				<button type="" class="btn btn-primary">중간저장</button>
 			</div>
 			<div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">작성완료</button>
+				<button type="submit" class="btn btn-primary">수정완료</button>
 			</div>
 			
 

@@ -26,4 +26,5 @@ public class BusinessPalnAVO { //사업계획서a(필수)
 	private String mhidden;			//국내외 목표시장, 국내외 관련기술(제품)동향, 경쟁사 현황, 시장진출가능성 항목이 존재하는지 안하는지 여부를 체크하기 위한 값.(BusinessC 테이블)
 	private String shidden;			//제품홍보방법, 수익창출방안, 시장성공요인이 존재한느지 안하는지 여부를 체크하기 위한값.(BusinessD 테이블)
 	private String title;			//제목
+	private String mentorId;		//멘토 아이디
 }

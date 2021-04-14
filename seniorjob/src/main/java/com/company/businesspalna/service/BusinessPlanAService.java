@@ -3,6 +3,8 @@ package com.company.businesspalna.service;
 import java.util.List;
 import java.util.Map;
 
+import com.company.mentoring.service.MentoringVO;
+
 public interface BusinessPlanAService {
 	
 	//BusinessPlan A,B,C,D table에 등록 //수정중, 작동안됨.
@@ -32,5 +34,10 @@ public interface BusinessPlanAService {
 	//사업계획서 엑셀로 다운로드
 	public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
 	
+	public List<MentoringVO> ckMenName(MentoringVO vo);
 
+	
+	public int ckUpdate(BusinessPalnAVO vo);
+	
+	public List<BusinessPalnAVO> checkP(BusinessPalnAVO vo);
 }

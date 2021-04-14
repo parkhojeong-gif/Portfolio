@@ -271,31 +271,27 @@ function sellAdd() {
 	
 } // end of sellAdd
 
-function selectText() {
-    var selectionText = "";
-  	//var sp = document.createElement('span');
-	// sp.style.border='1px solid #ffd400';
-    if (document.getSelection) {
-    	
-        selectionText = document.getSelection();
-    } else if (document.selection) {
-        selectionText = document.selection.createRange().text;
-    }
-   // var range = selectionText.getRangeAt(0);
-    //console.log(range);
-   // range.surroundContents(sp);
-    return selectionText;
-}
 
+$(document).ready(function(){
+	$('textarea').mouseup(function(){
+   var txt = '';
+   var sp = document.createElement('span');
+   if (window.getSelection) {
+    txt = window.getSelection();
+	       } else if (document.getSelection) {
+    txt = document.getSelection();
+   } else if (document.selection) {
+    txt = document.selection.createRange().text;
+   } else {
+    return;
+   }
 
-document.onmouseup = function() {
-	var selText = selectText();
-	var selectedTextRegExp = new RegExp(selectedText,"g");
-	var text = $(this).text().replace(selectedTextRegExp, "<span class='highlight'>" + selectedText + "</span>");
-    document.getElementById("console").innerHTML = selectText();
-}
-
-
+   var range = txt.getRangeAt(0);
+   range.surroundContents(sp)
+   //txt = String(txt); // Type Casting	
+    console.log(txt);   
+	});
+});
 </script>
 </head>
 <body>
@@ -317,7 +313,7 @@ document.onmouseup = function() {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2" id="allDiv">
-					
+					<input id="console">
 					<div class="row" id="businessDiv">
 					<hr>
 					<h2>계획사업의 개요</h2>
@@ -351,10 +347,21 @@ document.onmouseup = function() {
 								</div>
 							</div>
 					</div>
+					<div class="row" id="checkDiv">
+					<hr>
+					<h2>첨삭</h2>
+					<br>
 					
+							<div class="col-sm-12">
+								<div class="form-group">
+									<label for="title">지도내용</label>
+									<textarea name="collection" id="collection" readonly="readonly" class="form-control"></textarea>
+								</div>
+							</div>
+					</div>	
+				
 				</div>
 				
-				<div id="console"></div>
 			</div>
 		</div>
 	</div>

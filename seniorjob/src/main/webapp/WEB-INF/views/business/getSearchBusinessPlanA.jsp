@@ -31,6 +31,14 @@ function excelBp(seq) {
 	location.href="getBpExcel?seq="+seq //
 }
 
+function wordBp(seq) {
+	location.href="getBpWord?seq="+seq
+}
+
+function ckBp(seq) {
+	var url = "checkBpForm?seq="+seq;
+	window.open(url,"","width=500,height=600");
+}
 
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
@@ -97,8 +105,9 @@ function excelBp(seq) {
 									<a onclick="updateBp('${list.seq }')" class="btn btn-default btn-border">수정</a>
 									<a onclick="deleteBp('${list.seq }')" class="btn btn-default btn-border">삭제</a>
 									<a onclick="printBp('${list.seq }')" class="btn btn-default btn-border">인쇄</a>
-									<a onclick="excelBp('${list.seq }')" class="btn btn-default btn-border">엑셀저장</a>
-									<a href="single.html" class="btn btn-default btn-border">첨삭요청</a>
+									<!-- <a onclick="excelBp('${list.seq }')" class="btn btn-default btn-border">엑셀저장</a>-->
+									<a onclick="wordBp('${list.seq }')" class="btn btn-default btn-border">워드저장</a>
+									<a onclick="ckBp('${list.seq }')" class="btn btn-default btn-border">첨삭요청</a>
 								</p>
 							</section>
 							<hr>

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.company.businesspalna.service.BusinessPlanAService;
+import com.company.mentoring.service.MentoringVO;
 import com.company.businesspalna.service.BusinessPalnAVO;
 
 @Controller
@@ -34,7 +35,6 @@ public class BusinessPlanAController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		model.addAttribute("list", bpService.getSearchBusinessPlanA(vo));
-		System.out.println(model);
 		return "business/getSearchBusinessPlanA";
 	}
 	
@@ -59,8 +59,6 @@ public class BusinessPlanAController {
 		int seq = bpService.getSeq();
 		vo.setId(id);
 		vo.setSeq(seq);
-		System.out.println("prodDiv"+vo.getPhidden());
-		System.out.println("id"+vo.getId());
 		bpService.insertBusinessPlanA(vo);
 		
 		if(vo.getPhidden() != null) {
@@ -91,13 +89,14 @@ public class BusinessPlanAController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		bpService.updateBusinessPlanA(vo);
-		if(vo.getPhidden() != null) {
+		
+		if("1".equals(vo.getPhidden())) {
 			bpService.updateBusinessPlanB(vo);
 		};
-		if(vo.getMhidden() != null) {
+		if("1".equals(vo.getMhidden())) {
 			bpService.updateBusinessPlanC(vo);
 		};
-		if(vo.getShidden() != null) {
+		if("1".equals(vo.getShidden())) {
 			bpService.updateBusinessPlanD(vo);
 		};
 		return "redirect:/getSearchBusinessPlanA";
@@ -111,7 +110,8 @@ public class BusinessPlanAController {
 	
 	@GetMapping("/printBusinessPlanA")			//인쇄
 	public String printBusinessPlanA(BusinessPalnAVO vo, Model model) {
-		model.addAttribute("bp", bpService.getBusinessPlanA(vo));
+		bpService.getBusinessPlanA(vo);
+		model.addAttribute("bp", vo);
 		return "business/printBusinessPlanA";
 	}
 	
@@ -123,22 +123,56 @@ public class BusinessPlanAController {
 	}
 	
 
-	@RequestMapping("/getBpExcel") //word 다운 수정중
+	@RequestMapping("/getBpExcel") //엑셀 다운
 	public ModelAndView getBpExcel(BusinessPalnAVO vo, HttpServletResponse response) throws IOException{
 		List<Map<String, Object>> list = bpService.getBpExcel(vo);
-		HashMap<String, Object> map = new HashMap<String, Object>(); String[] header = {"BUSINESS_A","BUSINESS_B","BUSINESS_C"};
+		
+		System.out.println("excel:"+bpService.getBpExcel(vo));
+		HashMap<String, Object> map = new HashMap<String, Object>(); 
+		String[] header = {"TITLE","BUSINESS_A","BUSINESS_B","BUSINESS_C","PROD_A","PROD_B","PROD_C","MARKET_A","MARKET_B","MARKET_C","MARKET_D","SELLING_A","SELLING_B","SELLING_C"};
 		map.put("headers", header);
 		map.put("filename", "excel_dept");
 		map.put("datas", list);
 		return new ModelAndView("commonExcelView", map);
 	}
 
+	//첨삭 요청 창으로 이동
 	@GetMapping("/checkBp")
 	public String checkBp(BusinessPalnAVO vo, Model model) {
 		bpService.getBusinessPlanA(vo);
 		model.addAttribute("bpp", vo);
 		return "/business/checkBusinessPlan";
 	}
-
+	
+	//첨삭요청 팝업창
+	@GetMapping("/checkBpForm")
+	public String checkBpForm(MentoringVO vo, Model model, HttpServletRequest request, String seq) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setMenteeId(id);
+		model.addAttribute("ck", bpService.ckMenName(vo));
+		model.addAttribute("seq", seq);
+		return "/business/checkBpForm";
+	};
+	
+	
+	//첨삭요청하면 사업계획서에 멘토아이디 추가
+	@PostMapping("/ckUpdate")
+	public String ckUpdate(BusinessPalnAVO vo) {
+		System.out.println("vo:"+vo);
+		bpService.ckUpdate(vo);
+		return "/users/throughCerti";
+	}
+	
+	//첨삭요청목록
+	@GetMapping("/checkP")
+	public String checkP(BusinessPalnAVO vo, HttpServletRequest request, Model model ) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setMentorId(id);
+		model.addAttribute("list", bpService.checkP(vo));
+		return "/Mentor/checkP";
+	}
+	
 
 }

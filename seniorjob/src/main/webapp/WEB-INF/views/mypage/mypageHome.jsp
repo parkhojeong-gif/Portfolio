@@ -92,6 +92,11 @@ function showContents(result) {
 	}
 }
 
+function checkP() {
+	var url = "checkP";
+	window.open(url,"","width=500,height=600");
+}
+
 
 
     </script>
@@ -119,6 +124,9 @@ function showContents(result) {
 									<li class="select">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')">
 											나의 알림<span class="badge">6</span>
+										</button>
+										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="checkP()">
+											첨삭 요청<span class="badge">6</span>
 										</button>
 									</li>
 								</ul>

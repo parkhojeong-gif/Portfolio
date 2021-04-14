@@ -105,9 +105,7 @@ public class ScheduleController {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		vo.setMentorid(id);
-		System.out.println("id:"+vo.getMentorid());
 		List<Map> list = scService.getSearchQuest(vo);
-		System.out.println("list:"+list);
 		return list;
 	}
 	

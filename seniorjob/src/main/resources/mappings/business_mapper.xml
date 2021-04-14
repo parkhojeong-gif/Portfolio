@@ -12,9 +12,27 @@
 	
 	
 	<!-- 사업계획서 엑셀로 다운로드할 때 사업계획서 단건조회 -->
-	<select id="getBpExcel" resultType="map">
-		SELECT * FROM BUSINESSPLANA
-		WHERE SEQ = #{seq}
+	<select id="getBpExcel" resultType="BusinessPalnAVO" statementType="CALLABLE">
+		{call BUSINESS_SELECT_PROCEDURE( #{seq},
+										 #{business_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{business_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{business_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{title, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{prod_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{prod_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{prod_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{phidden, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{market_d, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{mhidden, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{selling_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{selling_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{selling_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{shidden, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String}
+										 
+		 )}
 	</select>
 	
 	<!-- 사업계획서 번호. 마지막으로 쓰인 sequence의 다음 값을 가져온다. -->
@@ -154,7 +172,7 @@
 	</update>
 	
 		<update id="updateBusinessPlanD" parameterType="BusinessPalnAVO">
-	UPDATE BUSINESSPLANAD
+	UPDATE BUSINESSPLAND
 	<set>
 		selling_a =#{selling_a},
 		selling_b=#{selling_b},
@@ -170,5 +188,28 @@
 	{call BUSINESS_DELETE_PROCEDURE( #{seq})}
 	</delete>
 	
+	<!-- 첨삭요청할 때 멘토링 코스 이름 가져오기 -->
+	<select id="ckMenName" resultType="MentoringVO">
+	SELECT M.MENTORING_NAME as "mentoring_name",
+			M.MENTOR_ID as "mentor_id"
+  	FROM SHOPPING S
+  	JOIN MENTORING M
+  	ON S.MENTORING_NUMBER = M.MENTORING_NUMBER
+  	WHERE S.ID = #{menteeId}
+	</select>
+	
+	<!-- 첨삭요청하면 사업계획서 mentorid 컬럼에 mentorid 추가 -->
+	<update id="ckUpdate" parameterType="BusinessPalnAVO">
+	UPDATE BUSINESSPLANA 
+	SET MENTORID=#{mentorId}
+	WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- 멘토가 첨삭요청 들어온 목록 조회-->
+	<select id="checkP" resultType="BusinessPalnAVO">
+	SELECT * 
+	FROM BUSINESSPLANA 
+	WHERE MENTORID=#{mentorId}
+	</select>
 	
 </mapper>

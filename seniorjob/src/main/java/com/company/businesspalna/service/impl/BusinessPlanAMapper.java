@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.company.businesspalna.service.BusinessPalnAVO;
+import com.company.mentoring.service.MentoringVO;
 
 public interface BusinessPlanAMapper {
 
@@ -33,4 +34,13 @@ public interface BusinessPlanAMapper {
 		
 		//사업계획서 엑셀로 다운로드
 		public List<Map<String, Object>> getBpExcel(BusinessPalnAVO vo);
+		
+		//사업계획서 첨삭요청 멘토링코스 이름 가져오기
+		public List<MentoringVO> ckMenName(MentoringVO vo);
+		
+		//사업계획서 첨삭요청하면 사업계획서 테이블에 멘토아이디 추가
+		public int ckUpdate(BusinessPalnAVO vo);
+		
+		//멘토가 첨삭요청 들어온 사업계획서 목록 조회
+		public List<BusinessPalnAVO> checkP(BusinessPalnAVO vo);
 }

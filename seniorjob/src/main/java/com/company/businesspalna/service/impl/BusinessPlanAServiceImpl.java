@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.businesspalna.service.BusinessPlanAService;
+import com.company.mentoring.service.MentoringVO;
 import com.company.businesspalna.service.BusinessPalnAVO;
 
 @Service
@@ -77,6 +78,21 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 	@Override
 	public int updateBusinessPlanD(BusinessPalnAVO vo) {
 		return dao.updateBusinessPlanD(vo);
+	}
+
+	@Override
+	public List<MentoringVO> ckMenName(MentoringVO vo) {
+		return dao.ckMenName(vo);
+	}
+
+	@Override
+	public int ckUpdate(BusinessPalnAVO vo) {
+		return dao.ckUpdate(vo);
+	}
+
+	@Override
+	public List<BusinessPalnAVO> checkP(BusinessPalnAVO vo) {
+		return dao.checkP(vo);
 	}
 
 	

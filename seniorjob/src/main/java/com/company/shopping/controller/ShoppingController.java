@@ -34,7 +34,6 @@ public class ShoppingController {
 		vo.setId(id);
 		
 		model.addAttribute("list", spService.getSearchShopping(vo));
-		System.out.println("model:"+model);
 		return "mypage/mentoringStatus";
 	}
 	
