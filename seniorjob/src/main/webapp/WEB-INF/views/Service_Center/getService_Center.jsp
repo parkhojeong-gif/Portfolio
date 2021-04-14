@@ -44,7 +44,7 @@ $(function(){
 <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
-                    <jsp:include page="sevice_left.jsp"></jsp:include>
+                    <jsp:include page="new_sevice_left.jsp"></jsp:include>
  
                     
                     <div class="col-md-8 single-property-content ">

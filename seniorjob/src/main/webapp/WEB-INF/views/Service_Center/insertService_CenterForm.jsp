@@ -25,7 +25,7 @@
 		<div class="container">
 			<div class="row">
 
-				<jsp:include page="sevice_left.jsp"></jsp:include>
+				<jsp:include page="new_sevice_left.jsp"></jsp:include>
 				<div
 					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<!--                      <div class="" id="contact1">                         -->
