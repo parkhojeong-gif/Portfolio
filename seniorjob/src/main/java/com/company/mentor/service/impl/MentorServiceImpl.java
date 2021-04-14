@@ -14,59 +14,58 @@ public class MentorServiceImpl implements MentorService {
 	@Autowired MentorMapper mentorMapper;
 
 	// 전체검색 / 지역 검색 / 직무 검색
+	@Override
 	public List<MentorVO> getMentorList(MentorVO vo) {
 		return mentorMapper.getMentorList(vo);
 	}
 
 	// 키워드 검색
+	@Override
 	public List<MentorVO> getKeywordSearch(MentorVO vo) {
 		return mentorMapper.getKeywordSearch(vo);
 	}
 
 	// 연령 검색
+	@Override
 	public List<MentorVO> getAgeSearch(String searchAge) {
 		return mentorMapper.getAgeSearch(searchAge);
 	}
 
 	// 멘토 상세 페이지(단건 조회)
+	@Override
 	public MentorVO getMentor(MentorVO vo) {
 		return mentorMapper.getMentor(vo);
 	}
 
 	// 멘토 등록
+	@Override
 	public void MentorRegisterProc(MentorVO vo) {
 	}
 
 	// 멘토 등록 중복 체크
+	@Override
 	public MentorVO mentorRegisterCheck(MentorVO vo) {
 		return mentorMapper.mentorRegisterCheck(vo);
 	}
 
 	// 멘토 페이징1
+	@Override
 	public int getCountMentor() {
 		return mentorMapper.getCountMentor();
 	}
 
 	// 멘토 페이징2 + 멘토 전체 리스트 조회
+	@Override
 	public List<MentorVO> getSearchMentor(MentorSearchVO vo) {
 		return mentorMapper.getSearchMentor(vo);
-	}
-
-	// 멘토리스트 상세 검색: 최신순 
-	public List<MentorVO> getMentorByDate(MentorSearchVO vo) {
-		return mentorMapper.getMentorByDate(vo);
-	}
-
-	// 멘토리스트 상세 검색: 인기순
-	public List<MentorVO> getMentorByFollow(MentorSearchVO vo) {
-		return mentorMapper.getMentorByFollow(vo);
 	}
 
 	@Override
 	public List<MentorVO> getMentorByDate(MentorVO vo) {
 		return mentorMapper.getMentorByDate(vo);
 	}
-
+	
+	// 멘토리스트 상세 검색: 인기순
 	@Override
 	public List<MentorVO> getMentorByFollow(MentorVO vo) {
 		return mentorMapper.getMentorByFollow(vo);

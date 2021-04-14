@@ -136,4 +136,12 @@
 		ORDER BY "followingVO.followNum" DESC
 	</select>
 	
+	<!-- SearchBar 검색(직무/지역/나이) -->
+	<select id="getSearch">
+		SELECT * FROM MENTOR
+			WHERE MENTORING_LOCATION LIKE '%'||#{searchKeyword}||'%'
+			OR MENTORING_AGE LIKE '%'||#{searchKeyword}||'%'
+			OR MENTOR_DUTY LIKE '%'||#{searchKeyword}||'%'
+		ORDER BY MENTOR_ID
+	</select>
  </mapper>	
