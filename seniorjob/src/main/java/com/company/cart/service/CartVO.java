@@ -1,8 +1,5 @@
 package com.company.cart.service;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import lombok.Data;
 
 @Data
@@ -16,15 +13,4 @@ public class CartVO {
 	private String count;         
 	private String mentor_id;
 	
-	String[] del;
-	
-	public String getdel1() {
-		if(del == null) {
-			return "";
-		}
-		String result = Arrays.asList(del).stream()
-						.map(s -> "\"" + s + "\"")
-						.collect(Collectors.joining(", "));
-		return result;
-	}
 }

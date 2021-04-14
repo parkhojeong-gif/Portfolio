@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.cart.service.CartService;
 import com.company.cart.service.CartVO;
+import com.company.mentor.service.MentorService;
 import com.company.mentoring.service.MentoringVO;
 
 @Controller
@@ -25,16 +26,26 @@ public class CartController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		model.addAttribute("list", cartservice.getSearchCartList(vo));
+		System.out.println("cart list VO: "+vo);
 		return "cart";
 	}
 	
 	@PostMapping("/insertCart")
-	public String insertCart(HttpServletRequest req, CartVO vo, HttpSession session, MentoringVO mentovo) {
+	public String insertCart(HttpServletRequest req, CartVO vo, HttpSession session, MentoringVO mentovo, Model model) {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		System.out.println(vo);
-		cartservice.insertCart(vo);
-		return "redirect:/cart";
+		String mentor_id = req.getParameter("mentor_id");
+		vo.setMentor_id(mentor_id);
+		int result = cartservice.countCart(vo);    //중복체크(동일한 상품이면 담기지 않음)
+		if(result == 0) {
+			cartservice.insertCart(vo);
+			System.out.println("insert VO: "+vo);
+			return "redirect:/cart";
+		}else {
+			model.addAttribute("msg", "이미 존재하는 상품입니다.");
+			model.addAttribute("url", "cart");
+			return "common/Fail";
+		}
 	}
 	
 	

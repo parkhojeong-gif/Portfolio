@@ -106,7 +106,7 @@ input{
 <h2 style="text-align:center">Our Team</h2>
 <form name="getMentorInfo">
 <input type="hidden" name="id" value="${users.id }">
-<input type="hidden" name="mentor_id" value="${list.mentor_id }">
+<input type="hidden" id="mentor_id" name="mentor_id" value="${list.id }">
 
 	<div class="row">
 		<div class="column">
@@ -148,16 +148,18 @@ input{
 		<hr>
 		<p>
 		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
-		<input type="hidden" id="id" name="id" value="${list.id }">
+		<input type="hidden" id="id" name="id" value="${list.mentor_id }">
 		<input type="hidden" id="user_id" name="user_id" value="${users.id }">
 		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
 		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
+		<!-- 송다희 추가 -->
 		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.mentoring_begin_date }">
 		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
 		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
 		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
+		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.id }">
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
@@ -226,33 +228,16 @@ input{
 		});
 	}); // end of function  */   
 	
-	
-	 /* var formData = { 
-			 "mentoring_name":$('#mentoring_name').val(),
-			 "cart_start":$('#men_start').val(),
-			 "cart_end":$('#met_end').val(),
-			 "cart_price":$('#mentoring_price').val(),
-			 "id" : $('#user_id').val()
-			}; */
-	 function insertC(){
-		 alert("장바구니에 담았습니다.")
-			var yn = confirm("장바구니로 이동하시겠습니까?");
-			if(yn){
-				mentoringForm.action = "insertCart";
-				mentoringForm.submit();
-			}
-	 }
-	
-	
-	
-	/*  $(document).on("click", "#BasketBtn", function(){
+	// 장바구니 담기
+	function insertC(){
 		alert("장바구니에 담았습니다.")
 		var yn = confirm("장바구니로 이동하시겠습니까?");
 		if(yn){
-			mentoringForm.action = "insertCart?cart_start=" + $('#men_start').val()+"&cart_end=" + $('#met_end').val()+"&cart_price=" + $('#mentoring_price').val()+"&id="+$('#user_id').val()
+			mentoringForm.action = "insertCart";
 			mentoringForm.submit();
 		}
-	})    */
+	}
+	
 
 
 	// 로그인 여부 확인

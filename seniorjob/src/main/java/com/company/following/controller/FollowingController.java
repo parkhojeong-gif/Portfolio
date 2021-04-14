@@ -28,7 +28,9 @@ public class FollowingController {
 	// 멘토 팔로우
 	@RequestMapping("/MentorFollow")
 	public String getMentorFollow(HttpServletRequest req, Model model, FollowingVO vo) {
-		
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		FollowingVO followCheck = followService.mentorFollowCheck(vo);
 		// 팔로우 중복 체크
 		if(followCheck != null) {
@@ -39,6 +41,7 @@ public class FollowingController {
 			followService.MentorFollow(vo);
 			model.addAttribute("msg","팔로우 완료");
 			model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
+			System.out.println("팔로잉"+vo);
 			return "common/Success";	
 		}
 	}

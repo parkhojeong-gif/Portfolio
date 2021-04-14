@@ -13,7 +13,7 @@ public interface CartService {
 	public int updateCart(CartVO vo);
 	//단건
 	public CartVO getCart(CartVO vo);
-	
+	//중복체크
 	public int countCart(CartVO vo);
 	//전체삭제
 	public int deleteCartAll(CartVO vo);

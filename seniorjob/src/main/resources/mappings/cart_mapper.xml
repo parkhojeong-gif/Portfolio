@@ -32,14 +32,6 @@
  </delete>
   <delete id="deleteCartAll">
  	DELETE FROM CART WHERE ID = #{id}
- 	<where>
-		<if test="del != null">
-			DEL in
-		<foreach collection="del" item="adr" open="(" close=")" separator=",">
-		${adr}
-		</foreach>	
-		</if>
-	</where>
  </delete>
  <update id="updateCart">
  	UPDATE SET MENTORING_NAME = #{mentoring_name},
