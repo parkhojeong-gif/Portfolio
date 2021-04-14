@@ -1,6 +1,7 @@
 package com.company.users.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,4 +28,5 @@ public interface UsersService {
 	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
 
 	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가	
+	public List<UsersVO> getUsersForPayment(Map<String, Object> map); // 김찬곤 / 단건 조회
 }

@@ -4,8 +4,14 @@
  
  <mapper namespace="com.company.mentoring.service.impl.MentoringMapper">
  
+ 	<!-- 멘토링 리스트 호출 -->
+ 	<select id="getMentoringList" resultType="com.company.mentoring.service.MentoringVO">
+ 		SELECT * FROM MENTORING
+ 		ORDER BY MENTORING_NUMBER
+ 	</select>
+ 	
  	<!-- 멘토링 등록 -->
-	<insert id="MentoringRegisterProc" parameterType="com.company.mentoring.service.MentoringVO" >
+	<insert id="insertMentoring" parameterType="com.company.mentoring.service.MentoringVO" >
 	
 		INSERT INTO MENTORING
 		(
@@ -36,12 +42,22 @@
 	
 	<!-- 멘토 멘토링 코스 조회 -->
 	<select id="getMentoring" resultType="com.company.mentoring.service.MentoringVO">
-		SELECT * FROM MENTORING
+		SELECT
+			    MENTORING_NUMBER,
+				MENTORING_NAME,
+				MENTORING_LIMIT,
+				MENTORING_CONTENT,
+				MENTORING_PHOTO,
+				MENTORING_PRICE,
+				MENTORING_DATA,
+				MENTORING_REQUEST,
+				MENTOR_ID,
+				TO_CHAR(MENTORING_END_DATE, 'YYYY-MM-DD') as s_date,
+				TO_CHAR(MENTORING_BEGIN_DATE, 'YYYY-MM-DD') as e_date
+		FROM MENTORING
 		WHERE MENTOR_ID = #{mentor_id}
 	</select>
 	
-	<!-- 멘토링 상세조회-->
-	<!-- 양소민 -->
 	<select id="getSearchMentoring" resultType="com.company.mentoring.service.MentoringVO">
 		SELECT
 				NAME,
@@ -64,6 +80,14 @@
 		WHERE ID=#{id}
 	</select>
 	
+	<!-- 멘토링 중복 체크 -->
+	<select id="MentoringRegisterCheck" resultType="com.company.mentoring.service.MentoringVO">
+		select 
+			MENTORING_BEGIN_DATE, MENTORING_END_DATE
+		FROM 
+			MENTORING
+		WHERE MENTORING_BEGIN_DATE = #{mentoring_begin_date}
+	</select>
 
 
 

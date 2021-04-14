@@ -7,12 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.company.mentoring.service.MentoringVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
@@ -51,7 +48,7 @@ public class ShoppingController {
 	// 멘토 상세페이지_장바구니 중복 체크&장바구니 담기
 	@ResponseBody
 	@RequestMapping(value="BasketCheck")
-	public int BasketCheck(ShoppingVO vo) {
+	public int BasketCheck(ShoppingVO vo, Model model) {
 		int result = spService.BasketCheck(vo);
 		if(result==0) { // 테이블에 값이 없으면
 			spService.insertMentoringBasket(vo); // 장바구니에 담기
@@ -61,4 +58,16 @@ public class ShoppingController {
 		}
 	}
 	
+	// 김찬곤 추가
+	// 멘토 상세페이지_장바구니 중복 체크&장바구니 담기
+	@ResponseBody
+	@RequestMapping(value="paymentChk")
+	public int paymentChk(ShoppingVO vo, Model model) {
+		int result = spService.paymentChk(vo);
+		if(result==0) {
+			return result;
+		}else {
+			return result;
+		}
+	}
 } // end of class

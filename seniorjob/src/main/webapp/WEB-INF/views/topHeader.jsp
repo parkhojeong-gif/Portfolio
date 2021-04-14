@@ -115,33 +115,12 @@
                </c:choose>
               
                     <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="dropdown ymm-sw " data-wow-delay="0.1s">
-                            <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">채용공고 <b class="caret"></b></a>
-                            <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Home Style 2</a>
-                                </li>
-                                <li>
-                                    <a href="index-3.html">Home Style 3</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Home Style 4</a>
-                                </li>
-                                <li>
-                                    <a href="index-5.html">Home Style 5</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-
-
-                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="job">채용공고</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="MentorList">멘토리스트</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href=getMentorList>멘토</a></li>
+                        <li class="wow fadeInDown" data-wow-delay="0.2s"><a class="" href="getMentoringList">멘토링</a></li>
                         <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenter">커뮤니티</a></li>
                          <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="serviceCenterMain">고객센터</a></li>
 
-                        <c:if test="${not empty users }">
+                        <c:if test="${not empty users}">
 							<li class="wow fadeInDown" data-wow-delay="0.5s"><a href="logout">로그아웃</a></li>
                         </c:if>
                         <c:if test="${not empty userInfo }">

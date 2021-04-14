@@ -2,6 +2,7 @@ package com.company.users.service;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -173,4 +174,8 @@ public class UsersServiceImpl implements UsersService {
 
 	
 	
+	// 김찬곤 / 단건 조회
+	public List<UsersVO> getUsersForPayment(Map<String, Object> map) {
+		return usersmapper.getUsersForPayment(map);
+	}
 }

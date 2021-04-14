@@ -64,5 +64,28 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return dao.getSearchBasket(vo);
 	}
 
+	// 멘토링 결제_장바구니에 담겼을 때 
+	public int mentoringPayProcBasket(ShoppingVO vo) {
+		int result = dao.mentoringPayProcBasket(vo);
+		return result;
+	}
+
+	// 결제 중복체크
+	public int paymentChk(ShoppingVO vo) {
+		int result = dao.paymentChk(vo);
+		return result;
+	}
+
+	 // 멘토링 결제_장바구니에 담지 않고 바로 결제할 때
+	public int mentoringPayProc(ShoppingVO vo) {
+		int result = dao.mentoringPayProc(vo);
+		return result;
+	}
+
+	// 결제 내역 가져오기
+	public ShoppingVO getPayInfo(ShoppingVO vo) {
+		return dao.getPayInfo(vo);
+	}
+
 
 }
