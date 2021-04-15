@@ -7,7 +7,7 @@
  	<!-- 양소민 추가 -->
  	<!-- 마이페이지_수강중인 멘토링 -->
 	<select id="getSearchShopping" resultType="com.company.shopping.service.ShoppingVO">
-		SELECT * FROM SHOPPING 
+		SELECT * FROM MENTORINGVU 
 		WHERE ID=#{id}
 	</select>
 	
