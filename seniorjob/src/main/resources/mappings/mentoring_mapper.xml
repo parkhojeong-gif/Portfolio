@@ -98,12 +98,10 @@
 	 MENTORING_NAME =#{mentoring_name},
 	 MENTORING_LIMIT =#{mentoring_limit},
 	 MENTORING_CONTENT =#{mentoring_content},
-	 MENTORING_PHOTO=#{mentoring_photo},
-	 MENTORING_PRICE=#{mentoring_price},
-	 MENTORING_DATA=#{mentoring_data},
-	 MENTORING_REQUEST=#{mentoring_request},
-	 MENTORING_BEGIN_DATE=#{mentoring_begin_date},
-	 MENTORING_END_DATE=#{mentoring_end_date}
+	 <!-- MENTORING_PHOTO=#{mentoring_photo}, -->
+	 MENTORING_PRICE=#{mentoring_price}
+	 <!-- ,MENTORING_BEGIN_DATE=#{mentoring_begin_date},
+	 MENTORING_END_DATE=#{mentoring_end_date} -->
 	 WHERE MENTORING_NUMBER=#{mentoring_number}
 	</update>
 

@@ -11,6 +11,9 @@
 		WHERE ID=#{id}
 	</select>
 	
+	
+	
+	
 	<!-- 양소민 추가 -->
  	<!-- 마이페이지_결제내역 -->
 	<select id="getSearchPay" resultType="ShoppingVO">

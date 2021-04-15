@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="insertCerti" method="post" name="frm">
+<form action="certiUpload" method="post" name="frm" enctype="multipart/form-data">
             <div class="clear">
                                 <hr>
                                 <br>
@@ -17,8 +17,8 @@
                                          
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
-                                                    <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" name="carrer_certi" id="carrer_certi">
+                                                    <label for="property-images">Chose Files :</label>
+                                                    <input class="form-control" type="file" multiple="multiple" name="uploadFile" id="uploadFile">
                                                 </div>
                                             </div>
                                        

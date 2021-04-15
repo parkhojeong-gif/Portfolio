@@ -6,6 +6,8 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 
@@ -55,4 +57,7 @@ public class UsersVO { //회원테이블
 			private String certi_no;		//자격증번호
 			private String certi_date;		//취득일
 			private String carrer_certi;    //경력증명서
+			
+			//file타입의 값을 담을 vo
+			private MultipartFile[] uploadFile;
 }

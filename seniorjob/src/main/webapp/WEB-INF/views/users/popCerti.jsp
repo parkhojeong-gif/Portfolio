@@ -36,7 +36,7 @@ function submit() {
                                     </div>
                                      <div class="form-group">
                                         <label>취득일:</label>
-                                        <input name="certi_date" id="certi_date" type="text" class="form-control">
+                                        <input name="certi_date" id="certi_date" type="date" class="form-control">
                                     </div>
                                 </div>  
 

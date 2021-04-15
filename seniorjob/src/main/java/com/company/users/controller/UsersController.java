@@ -1,5 +1,8 @@
 package com.company.users.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.users.service.PwValidation;
 import com.company.api.common.Kakaoapi;
+import com.company.portfolio.service.FileRenamePolicy;
 import com.company.users.service.UsersService;
 import com.company.users.service.UsersVO;
 import com.company.users.service.UsersValidation;
@@ -272,7 +277,51 @@ public class UsersController {
 		return list;
 	}
 	
-	
+	//마이페이지에서 경력증명서 등록
+	@RequestMapping("/certiUpload")
+	public String certiUpload(
+		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request, RedirectAttributes rttr ,Model model,UsersVO vo) throws Exception
+	{	
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setId(id);
+		String filenames ="";
+		boolean start = true;
+		
+		for(MultipartFile file : files) {
+			if(file != null && ! file.isEmpty() && file.getSize() > 0) {
+				String filename = file.getOriginalFilename();    //업로드 된 파일의 파일명
+				//파일명 중복체크 -> rename
+				File rename = FileRenamePolicy.rename(new File("C:/upload", filename)); //transfer 하기 전에 이 파일이 있는지 검사
+				  
+				if(! start ) {
+					
+					filenames += ",";
+				} else {
+					start = false;
+				}
+				
+				filenames += rename.getName();
+				System.out.println("1:"+filenames);
+				//임시폴더에서 업로드 폴더로 파일 이동
+				file.transferTo(rename);
+			
+			
+			
+			} else {
+			         model.addAttribute("msg", "Please select at least one mediaFile..");
+			         return "/users/popCareer";
+			      }
+			   }
+				System.out.println("2:"+filenames);
+				vo.setCarrer_certi(filenames);   //vo에 업로드된 파일명을 담아서 DB에 파일이름만 저장할 것
+				System.out.println("3:"+vo.getCarrer_certi());
+				usersService.insertCerti(vo);
+			   model.addAttribute("msg", "Multiple files uploaded successfully.");
+				
+		
+		return "/users/throughCerti";	
+	}
 
 	
 

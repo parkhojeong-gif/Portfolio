@@ -130,15 +130,7 @@ function showContents(result) {
                             </div>
 
                             <div class="clear">
-                                <div class="col-sm-3 col-sm-offset-1">
-                                    <div class="picture-container">
-                                        <div class="picture">
-                                            <img src="assets/img/avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                            <input type="file" id="wizard-picture">
-                                        </div>
-                                        <h6>Choose Picture</h6>
-                                    </div>
-                                </div>
+                          
 
                                 <div class="col-sm-10 padding-top-25">
 
