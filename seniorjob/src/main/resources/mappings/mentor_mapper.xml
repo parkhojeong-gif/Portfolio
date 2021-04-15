@@ -3,31 +3,36 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.mentor.service.impl.MentorMapper">
  
- 	<!-- 멘토 리스트 페이지 호출  -->
- 	<select id="MentorList" resultType="com.company.mentor.service.MentorVO">
- 		SELECT * FROM MENTOR
- 	</select>
- 
  	<!-- 전체검색 / 지역 검색 / 직무 검색  --> 
 	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM MENTOR
-		<where>
-		<if test="mentoring_location != null and mentoring_location != ''">
-			 MENTORING_LOCATION = #{mentoring_location}
-		</if>
-		<if test="mentor_duty != null and mentor_duty != ''">
-			AND MENTOR_DUTY = #{mentor_duty}
-		</if>
-		</where>
+		SELECT M.*, U.AUTH "usersVO.auth"
+		FROM MENTOR M, USERS U
+		WHERE M.ID = U.ID
+		AND U.AUTH = 'MENTOR' 
+			<choose>
+				<when test="mentoring_location != null and mentoring_location != ''">
+					AND MENTORING_LOCATION = #{mentoring_location}
+				</when>
+				<when test="mentoring_age != null and mentoring_age != ''">
+					AND MENTORING_AGE = #{mentoring_age}	
+				</when>
+				<when test="mentor_duty != null and mentor_duty != ''">
+					AND MENTOR_DUTY = #{mentor_duty}
+				</when>
+			</choose>
+		ORDER BY MENTOR_ID
 	</select>
 	
 	<!-- 키워드 검색 -->
 	<select id="getKeywordSearch" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
-		WHERE MENTORING_KIND LIKE '%'||#{searchKeyword}||'%' 
+			WHERE MENTORING_LOCATION LIKE '%'||#{searchKeyword}||'%'
+			OR MENTORING_AGE LIKE '%'||#{searchKeyword}||'%'
+			OR MENTOR_DUTY LIKE '%'||#{searchKeyword}||'%'
+		ORDER BY MENTOR_ID
 	</select>
 	
-	<!-- 연령 검색 -->
+	<!-- 연령 검색 -->	
 	<select id="getAgeSearch" resultType="com.company.mentor.service.MentorVO">
 		SELECT * FROM MENTOR
 				WHERE MENTORING_AGE = #{searchAge}			
@@ -106,8 +111,18 @@
 	
 	<!-- 세부검색: 최신순(멘토등록일자 기준) -->
 	<select id="getMentorByDate" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM MENTOR
-   		ORDER BY MENTOR_DATE DESC
+		<!-- SELECT * FROM(
+			SELECT ROWNUM RN, A.* FROM(
+				SELECT * FROM MENTOR
+				ORDER BY MENTOR_ID
+				) A
+			)
+		WHERE RN BETWEEN #{start} AND #{end}
+   		ORDER BY MENTOR_DATE DESC -->
+   		
+   		SELECT * FROM MENTOR
+		ORDER BY MENTOR_DATE
+   		
 	</select>
 	
 	<!-- 세부검색: 인기순(팔로우숫자 기준) -->
@@ -121,4 +136,12 @@
 		ORDER BY "followingVO.followNum" DESC
 	</select>
 	
+	
+	<!-- 양소민 추가 -->
+	<!-- 멘토 아이디 조회 -->
+	<select id="getMentorId" resultType="string">
+	SELECT MENTOR_ID
+ 	FROM MENTOR
+ 	WHERE ID=#{id}
+	</select>
  </mapper>	

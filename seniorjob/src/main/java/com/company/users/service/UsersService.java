@@ -28,7 +28,8 @@ public interface UsersService {
 	
 	public int insertCerti(UsersVO vo); //자격증/경력인증서 등록
 
+	public List<UsersVO> getUsersForPayment(Map<String, Object> map); // 김찬곤 / 단건 조회
 	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리
 	
-	public List<String> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
+	public List<Map> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
 }

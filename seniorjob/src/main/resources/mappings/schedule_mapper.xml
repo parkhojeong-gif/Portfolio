@@ -69,4 +69,52 @@
 		SEQ=#{seq}
 	</update>
 
+
+	<!-- 멘토에게 질문하기 -->
+	<insert id="insertQuest" parameterType="ScheduleVO">
+		INSERT INTO SCHEDULE(SEQ,
+							MENTORID,
+							SCHEDULE_NAME,
+							SCHEDULE_CON,
+							MENTEEID,
+							STATE,
+							SCHEDULE_START) 
+					VALUES(SCHEDULE_SEQ.NEXTVAL,
+							#{mentorid},
+							#{schedule_name},
+							#{schedule_con},
+							#{menteeid},
+							'quest',
+							sysdate
+							)
+					
+	</insert>
+	
+	<!-- 멘토의 마이페이지 홈에서 질문목록 확인 -->
+	<select id="getSearchQuest" resultType="map">
+		SELECT *
+		FROM SCHEDULE 
+		WHERE 
+		MENTORID=#{mentorid} 
+		AND 
+		STATE='quest'
+	</select>
+	
+		<!-- 멘토가 답변.-->
+	<update id="updateQuest" parameterType="ScheduleVO">
+		UPDATE SCHEDULE 
+		SET REPLY=#{reply},
+			STATE='REPLY', 
+			SCHEDULE_END=SYSDATE 
+		WHERE SEQ=#{seq}
+	</update>
+	
+	<!-- 질문 내용 단건조회 -->
+	<select id="getQuest" resultType="ScheduleVO">
+		SELECT *
+		FROM SCHEDULE 
+		WHERE 
+		SEQ=#{seq}
+	</select>
+	
 </mapper>

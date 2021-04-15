@@ -33,8 +33,8 @@ public class ResumeServiceImpl implements ResumeService {
 	PortfolioMapper portmapper;
 
 	@Override
-	public List<ResumeVO> getSearchResumeList() {
-		return resumemapper.getSearchResumeList();
+	public List<ResumeVO> getSearchResumeList(ResumeVO vo) {
+		return resumemapper.getSearchResumeList(vo);
 	}
 
 	@Override

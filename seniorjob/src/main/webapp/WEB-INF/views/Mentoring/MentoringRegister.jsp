@@ -75,7 +75,7 @@ input[name=m_numOfDays]{font-size:large; color:red}
 </head>
 <body>
 
-<form action="MentoringRegisterProc">
+<form action="MentoringRegisterProc" method="post" onsubmit="mentoringCheck()">
   <div class="container">
     <h1>멘토링 등록</h1>
     <p>모든 빈칸을 채워주세요</p>
@@ -133,7 +133,7 @@ input[name=m_numOfDays]{font-size:large; color:red}
 		// 배열에 담겨 있는 연[0],월[1],일[2]을 사용하여 Date 객체 생성
 		var startDate = new Date(s_dateArr[0], s_dateArr[1], s_dateArr[2]);
 		var endDate = new Date(e_dateArr[0], e_dateArr[1], e_dateArr[2]);
-		var numOfDays = (startDate.getTime()-endDate.getTime()); // 멘토링 총 기간
+		var numOfDays = (endDate.getTime()-startDate.getTime()); // 멘토링 총 기간
 		var cDay = 24*60*60*1000; // 시 * 분 * 초 * 밀리세컨
 		
 		// 날짜를 숫자형태의 날짜 정보로 변환하여 비교(getTime()활용)
@@ -147,7 +147,7 @@ input[name=m_numOfDays]{font-size:large; color:red}
 			$( "input[name='mentoring_begin_date']" ).val('');
 			$( "input[name='mentoring_end_date']" ).val('');
 			return false;
-		}else if(numOfDays >= 7){
+		}else if(numOfDays <= 7){
 			alert("멘토링 코스 최소 기간은 일주일(7일) 입니다.\n기간을 재설정 해주세요.");
 			$( "input[name='mentoring_begin_date']" ).val('');
 			$( "input[name='mentoring_end_date']" ).val('');
@@ -160,6 +160,26 @@ input[name=m_numOfDays]{font-size:large; color:red}
 	// 미리보기
 	function MentoringPreview(){
 		alert("Mentoring Preview");
+	}
+	
+	// 멘토링 등록 중복 체크
+	function mentoringCheck(){
+		var flag = true;
+		$.ajax({
+			url: "MentoringRegisterCheck",
+			data: {"mentoring_begin_date" : $('#mentoring_begin_date').val()},		
+			dataType: "json",
+			success:function(result){
+				if(result == 1){
+					var msg = "해당 기간에 등록된 멘토링이 있습니다.";
+					alert(msg);
+					flag = false;
+				}else{
+					flag = true;
+				}
+			}
+		});
+		return flag;
 	}
 </script>
 

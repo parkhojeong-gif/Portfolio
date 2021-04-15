@@ -7,6 +7,7 @@ import java.util.Map;
 public interface ScheduleService {
 	
 	public int insertSchedule(ScheduleVO vo);
+	public int insertQuest(ScheduleVO vo);
 	
 	public int updateSchedule(ScheduleVO vo);
 
@@ -21,6 +22,10 @@ public interface ScheduleService {
 	
 	public List<Map> getSearchRequest(ScheduleVO vo);
 	
+	public List<Map> getSearchQuest(ScheduleVO vo);
 	
+	public int updateQuest(ScheduleVO vo);
+	
+	public ScheduleVO getQuest(ScheduleVO vo);
 
 }

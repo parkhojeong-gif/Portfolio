@@ -15,7 +15,8 @@
 				 RESUME_END, 
 				 ID, 
 				 IMAGE,
-				 RESUME_TITLE
+				 RESUME_TITLE,
+				 RESUME_MAJOR
 		FROM 	 RESUME
 		ORDER BY RESUME_NO
 	</select>
@@ -33,7 +34,9 @@
 							RESUME_AREA, 
 							RESUME_START, 
 							RESUME_END,
-							RESUME_TITLE
+							RESUME_TITLE,
+							ID,
+							RESUME_MAJOR
 							<if test="image != null and image !=''">
 							,IMAGE
 							</if>
@@ -48,7 +51,9 @@
 							 #{resume_area}, 
 							 #{resume_start}, 
 							 #{resume_end},
-							 #{resume_title}
+							 #{resume_title},
+							 #{id},
+							 #{resume_major}
 							 <if test="image != null and image !=''">
 							 ,#{image}
 							 </if>
@@ -65,7 +70,8 @@
 						  RESUME_START=#{resume_start}, 
 						  RESUME_END=#{resume_end},
 						  IMAGE = #{image},
-						  RESUME_TITLE=#{resume_title}
+						  RESUME_TITLE=#{resume_title},
+						  RESUME_MAJOR=#{resume_major}
 		WHERE 			  RESUME_NO=#{resume_no}
 	</update>
 	<delete id="deleteResume">
@@ -85,7 +91,8 @@
 				RESUME_END, 
 				ID, 
 				IMAGE,
-				RESUME_TITLE
+				RESUME_TITLE,
+				RESUME_MAJOR
 		FROM 	RESUME
 		WHERE   RESUME_NO = #{resume_no}
 	</select>

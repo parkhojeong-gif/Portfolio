@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.company.inquire.service.impl.InquireMapper">
+ <!--문의하기 목록 전체조회  -->
+	<select id="getInquireList" resultType="InquireVO" parameterType="InquireVO">
+	
+	select * from inquire order by seq desc
+	
+	</select>
+	<!--  -->
+	
+	<!--문의 목록전체조회 -> 단건조회-->
+	<select id="getInquire" resultType="InquireVO" parameterType="InquireVO">
+	
+	select * from inquire where SEQ=#{seq}
+	</select>
+	<!--  -->
+	
+	<!--문의하기 글 작성 -->
+	<insert id="insertInquire"  parameterType="InquireVO">
+	insert into inquire( seq, category_a, category_b, w_date, click, content, i_file, status,
+	id, title) values((SELECT NVL(MAX(SEQ),0)+1 FROM inquire), #{category_a}, 	#{category_b}, 
+	SYSDATE, '0', #{content}, '파일없음', '미답변',#{id}, #{title})	
+	</insert> 
+	<!--  -->
+	
+	<!--유저 내문의 목록 조회  -->
+	<select id="userInquireList" resultType="InquireVO" parameterType="map">
+	select * from inquire where id= #{id} order by seq desc
+	</select>
+	<!--  -->
+	
+	<!--유저 내문의 목록 단건조회 -->
+	<select id="getUserInquire" resultType="InquireVO" parameterType="InquireVO">
+	select * from inquire where SEQ=#{seq} and id= #{id}
+	</select>
+	<!--  -->
+	
+	<!--유저 내문의목록 글 수정  -->
+	<update id="updateInquire" parameterType="InquireVO">
+	UPDATE inquire
+	<set>
+	title = #{title},
+	content = #{content},
+	category_a = #{category_a}
+	</set>
+	where SEQ=#{seq} and id= #{id}
+	</update>
+	<!--  -->
+	
+	<!--관리자 답변 작성  -->
+	<insert id="insertAnswer"  parameterType="Inquire_AnswerVO">
+	insert into INQUIRY_ANSWER (SEQ, TITLE, CONTENT, W_DATE, ID, I_SEQ, SEQ_ORD)
+	values(#{seq}, #{title}, #{content}, sysdate, #{id}, (SELECT NVL(MAX(I_SEQ),0)+1 FROM INQUIRY_ANSWER), 0)
+	
+	</insert> 
+	<!--관리자 답변 작성시 답변완료 상태변화  -->
+	<update id="updateConfirm" parameterType="InquireVO">
+  		UPDATE inquire SET status = '답변완료' WHERE SEQ = #{seq}
+	</update>
+	<!--유저 답변 목록  -->
+	<select id="userAnswerList" resultType="Inquire_AnswerVO" parameterType="Inquire_AnswerVO">
+	select * from Inquiry_Answer where seq= #{seq}
+	
+	
+	</select>
+	
+ </mapper>

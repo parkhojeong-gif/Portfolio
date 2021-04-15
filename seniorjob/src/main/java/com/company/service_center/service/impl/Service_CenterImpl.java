@@ -62,13 +62,24 @@ public class Service_CenterImpl implements Service_CenterService{
 		// TODO Auto-generated method stub
 		return dao.searchService(searchKeyword);
 	}
-
+//==========================공지사항 전체조회=========================================
 	@Override
 	public List<Service_CenterVO> list(SearchCriteria scri) {
 		// TODO Auto-generated method stub
 		return dao.list(scri);
 	}
+	@Override
+	public List<Service_CenterVO> listDate(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listDate(scri);
+	}
 
+	@Override
+	public List<Service_CenterVO> listClick(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listClick(scri);
+	}
+//==========================공지사항 전체조회=========================================
 	@Override
 	public int listCount(SearchCriteria scri) {
 		// TODO Auto-generated method stub
@@ -86,6 +97,36 @@ public class Service_CenterImpl implements Service_CenterService{
 		// TODO Auto-generated method stub
 		return dao.listQna(scri);
 	}
+	@Override
+	public List<Service_CenterVO> listQnaPayment(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaPayment(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaRefund(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaRefund(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaRequest(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaRequest(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaCancle(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaCancle(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaGita(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaGita(scri);
+	}
+
 
 	@Override
 	public int listCountQna(SearchCriteria scri) {
@@ -164,6 +205,8 @@ public class Service_CenterImpl implements Service_CenterService{
 		//
 		dao.updateService_CenterQna2(vo);
 	}
+
+
 
 	
 

@@ -13,10 +13,6 @@
 
 <script>
 
-/* $(document).ready( function () {
-    $('#myTable').DataTable({
-    	});
-    }); */
 
     
     $(document).ready( function () {
@@ -25,7 +21,7 @@
         	success : showContents,
         	error : showErrors
     	})
-    });
+    }); 
 
 
 function showErrors(result) {
@@ -33,7 +29,29 @@ function showErrors(result) {
 }
 
 function showContents(result) {
-	console.log(result);
+	var list = result;
+	for(certi of list ) {
+		
+		let tr = $('<tr />');
+		let td1 = $('<td />').html(certi.CERTI_NAME);
+		let td2 = $('<td />').html(certi.CERTI_NO);
+		let td3 = $('<td />').html(certi.CERTI_DATE);
+		let td4 = $('<td />').html(certi.CERTI_PLACE);
+		
+		$(tr).append(td1);
+		$(tr).append(td2);
+		$(tr).append(td3);
+		$(tr).append(td4);
+		$('#certi').append(tr);
+		
+		let tr2 = $('<tr />');
+		let td5 = $('<td />').html(certi.CARRER_CERTI);
+		$(tr2).append(td5);
+		$('#career').append(tr2);
+		
+		
+		
+	}
 }
 
     function DaumPostcode() {
@@ -80,6 +98,7 @@ function showContents(result) {
     function insertCerti() {
     	var url="popCerti";
     	window.open(url,"","width=500,height=600");
+    	
     }
     
     function insertCareer() {
@@ -111,15 +130,7 @@ function showContents(result) {
                             </div>
 
                             <div class="clear">
-                                <div class="col-sm-3 col-sm-offset-1">
-                                    <div class="picture-container">
-                                        <div class="picture">
-                                            <img src="assets/img/avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                            <input type="file" id="wizard-picture">
-                                        </div>
-                                        <h6>Choose Picture</h6>
-                                    </div>
-                                </div>
+                          
 
                                 <div class="col-sm-10 padding-top-25">
 
@@ -180,8 +191,20 @@ function showContents(result) {
                                 <h3>
                                     <b>자격증 목록</b>
                                 </h3>
-                                <table id="myTable">
+                                <table border="1" align="center">
+                                	<thead>
+                                	<tr>
+                                		<th>자격증이름</th>
+                                		<th>발행처</th>
+                                		<th>자격증번호</th>
+                                		<th>취득일자</th>
+                                	</tr>
+                                	</thead>
+                                	<tbody id="certi">
+                                	
                                 
+                                	</tbody>
+                                		
                                 </table>
                                 
                                 
@@ -203,6 +226,17 @@ function showContents(result) {
                                 <h3>
                                     <b>경력인증서 목록</b>
                                 </h3>
+                                <table border="1" align="center">
+                                	<thead>
+                                	<tr>
+                                		<th>경력인증서</th>
+                                		
+                                	</tr>
+                                	</thead>
+                                	<tbody id="career">
+                                	</tbody>
+                                
+                                </table>
                             </div>
                           
                           

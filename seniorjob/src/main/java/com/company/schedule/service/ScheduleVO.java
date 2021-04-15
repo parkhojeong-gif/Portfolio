@@ -16,4 +16,6 @@ public class ScheduleVO {
 	
 	private String schedule_start_time;		//시작시간
 	private String schedule_end_time;		//종료시간
+	
+	private String reply; //답변
 }

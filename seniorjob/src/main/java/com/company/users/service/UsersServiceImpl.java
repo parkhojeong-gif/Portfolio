@@ -172,7 +172,7 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public List<String> getCertiList(UsersVO vo) {
+	public List<Map> getCertiList(UsersVO vo) {
 		return usersmapper.getCertiList(vo);
 	}
 
@@ -180,4 +180,8 @@ public class UsersServiceImpl implements UsersService {
 
 	
 	
+	// 김찬곤 / 단건 조회
+	public List<UsersVO> getUsersForPayment(Map<String, Object> map) {
+		return usersmapper.getUsersForPayment(map);
+	}
 }

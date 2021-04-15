@@ -23,17 +23,17 @@
 					
 					
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='serviceCenter'">
-								<h3 class="panel-title">커뮤니티</h3>
+							<div class="panel-heading" onclick="location.href='#'">
+								<h3 class="panel-title">정보공유</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='serviceCenter'">
-								<h3 class="panel-title">공지사항</h3>
+							<div class="panel-heading" onclick="location.href='job?cd=12'">
+								<h3 class="panel-title">지역별 채용 공고</h3>
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='resumeInsertForm'">
+							<div class="panel-heading" onclick="location.href='#'">
 								<h3 class="panel-title">멘토링 후기</h3>
 							</div>
 						</div>
