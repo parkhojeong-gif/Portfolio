@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.company.manager.user.userVO;
 import com.company.manager.user.service.UserService;
-import com.company.manager.utils.PagingVO;
+import com.company.manager.utils.ManSearchCriteria;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -15,33 +16,15 @@ public class UserServiceImpl implements UserService {
 	@Autowired manUserMapper dao;
 	
 	@Override
-	public List<userVO> userList(userVO vo) {
-		
-		return dao.userList(vo);
-	}
-
-	@Override
-	public List<userVO> selectBoard(PagingVO vo) {
-		
-		return dao.selectBoard(vo);
-	}
-
-	@Override
-	public int countBoard() {
-		
-		return dao.countBoard();
-	}
-
-	@Override
 	public List<userVO> getUserList(userVO vo) {
 		
 		return dao.getUserList(vo);
 	}
 
 	@Override
-	public int updateUser(userVO vo) {
+	public int updateUserProc(userVO vo) {
 		
-		return dao.updateUser(vo);
+		return dao.updateUserProc(vo);
 	}
 
 	@Override
@@ -55,6 +38,28 @@ public class UserServiceImpl implements UserService {
 		
 		 dao.authUser(vo);
 	}
+
+	@Override
+	public List<userVO> userList(ManSearchCriteria scri) {
+		
+		return dao.userList(scri);
+	}
+
+	@Override
+	public int userCount(ManSearchCriteria scri) {
+		
+		return dao.userCount(scri);
+	}
+
+	@Override
+	public List<userVO> searchUser(String searchKeyword) {
+		
+		return dao.searchUser(searchKeyword);
+	}
+
+	
+
+	
 	
 	
 

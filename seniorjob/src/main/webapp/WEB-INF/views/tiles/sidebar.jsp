@@ -24,10 +24,6 @@
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토관리</span>
 					</a></li>
 
-					<li class="sidebar-item  "><a href="./declaration"
-						class='sidebar-link'> <i data-feather="alert-circle" width="20"></i> <span>신고관리</span>
-					</a></li>
-
 					<li class="sidebar-item  has-sub"><a href="#"
 						class='sidebar-link'> <i data-feather="trending-up" width="20"></i>
 							<span>매출관리</span>
@@ -40,27 +36,29 @@
 						</ul></li>
 
 					<li class="sidebar-item  has-sub"><a href="#"
-						class='sidebar-link'> <i data-feather="user"></i> <span>커뮤니티</span>
+						class='sidebar-link'> <i data-feather="user"></i> <span>정보공유</span>
 					</a>
 
 						<ul class="submenu ">
-
-							<li><a href="././community">공지사항</a></li>
 
 							<li><a href="././com_later">후기</a></li>
 
 						</ul></li>
 
 					<li class="sidebar-item  has-sub"><a href="#" class='sidebar-link'> <i data-feather="file-text"></i>
-							<span>고객센터</span>
+							<span>고객센터 게시판</span>
 					</a>
 
 						<ul class="submenu ">
 
-							<li><a href="././service">결제/환불</a></li>
+							<li><a href="././service">문의게시판</a></li>
 
-							<li><a href="././service2">취소/신청</a></li>
-
+							<li><a href="././service2">문의답변</a></li>
+							
+							<li><a href="././servQna">자주하는질문</a></li>
+							
+							<li><a href="././servNotice">공지사항</a></li>	
+							
 						</ul></li>
 
 				</ul>

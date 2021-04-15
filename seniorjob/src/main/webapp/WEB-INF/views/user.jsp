@@ -32,8 +32,17 @@
 			<div class="card-header">회원 데이터 테이블</div>
 			<div class="card-body">
 				<div class="dataTable-search">
-					<input name="search" placeholder="Search..." type="search" />
-					<button style="position: static; right: 200px;">검색</button>
+					<div class="col-xs-2">
+                         <div class="btn-group bootstrap-select show-tick form-control">
+                         	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
+                         	 <select id="basic" name="searchType" class="selectpicker show-tick form-control" tabindex="-98">
+                             <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
+						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+                        </select></div>
+                    </div>
 				</div>
 				<br>
 				<%-- <div id="outter">
@@ -127,15 +136,13 @@
 			</div>
 			<div class="modal-body">이 <span id="authSpan"></span>회원을 멘토로 승급시키겠습니까?</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-light-secondary"
-					data-bs-dismiss="modal">
-					<i class="bx bx-x d-block d-sm-none"></i> <span
-						class="d-none d-sm-block">닫기</span>
+				<button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+					<i class="bx bx-x d-block d-sm-none"></i> 
+					<span class="d-none d-sm-block">닫기</span>
 				</button>
-				<button type="button" class="btn btn-info ml-1" id="btnAuth"
-					data-bs-dismiss="modal">
-					<i class="bx bx-check d-block d-sm-none"></i> <span
-						class="d-none d-sm-block">승인</span>
+				<button type="button" class="btn btn-info ml-1" id="btnAuth" data-bs-dismiss="modal">
+					<i class="bx bx-check d-block d-sm-none"></i> 
+					<span class="d-none d-sm-block">승인</span>
 				</button>
 			</div>
 		</div>
@@ -149,9 +156,9 @@
 	aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form action="updateUsers" method="post">
+			<form action="updateUserProc" method="post">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">회원정보수정</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle"><span id="userSpan"></span>회원 정보 수정</h5>
 					<button type="button" class="close" data-bs-dismiss="modal"
 						aria-label="Close">
 						<i data-feather="x"></i>
@@ -165,8 +172,7 @@
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="text" class="form-control" placeholder="ID"
-										id="id" name="id" readonly="readonly">
+									<input type="text" class="form-control" placeholder="ID" id="id" name="id" readonly="readonly">
 									<div class="form-control-icon">
 										<i data-feather="user"></i>
 									</div>
@@ -179,8 +185,7 @@
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="text" class="form-control" placeholder="Name"
-										id="name" name="name">
+									<input type="text" class="form-control" placeholder="Name" id="name" name="name">
 									<div class="form-control-icon">
 										<i data-feather="user"></i>
 									</div>
@@ -193,8 +198,7 @@
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="email" class="form-control" placeholder="Email"
-										id="email" name="email">
+									<input type="email" class="form-control" placeholder="Email" id="email" name="email">
 									<div class="form-control-icon">
 										<i data-feather="mail"></i>
 									</div>
@@ -207,8 +211,7 @@
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="text" class="form-control" placeholder="Mobile"
-										id="phonenum" name="phonenum">
+									<input type="text" class="form-control" placeholder="Mobile" id="phonenum" name="phonenum">
 									<div class="form-control-icon">
 										<i data-feather="phone"></i>
 									</div>
@@ -221,8 +224,7 @@
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="text" class="form-control" placeholder="Address"
-										id="address" name="address">
+									<input type="text" class="form-control" placeholder="Address" id="address" name="address">
 									<div class="form-control-icon">
 										<i data-feather="file"></i>
 									</div>
@@ -244,14 +246,13 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-light-secondary"
 								data-bs-dismiss="modal">
-								<i class="bx bx-x d-block d-sm-none"></i> <span
-									class="d-none d-sm-block">닫기</span>
+								<i class="bx bx-x d-block d-sm-none"></i> 
+								<span class="d-none d-sm-block">닫기</span>
 							</button>
 
-							<button type="button" id="btnup" class="btn btn-primary ml-1"
-								data-bs-dismiss="modal">
-								<i class="bx bx-check d-block d-sm-none"></i> <span
-									class="d-none d-sm-block">수정</span>
+							<button type="submit" id="btnup" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+								<i class="bx bx-check d-block d-sm-none"></i> 
+								<span class="d-none d-sm-block">수정</span>
 							</button>
 						</div>
 					</div>
@@ -284,8 +285,7 @@
 						<i class="bx bx-x d-block d-sm-none"></i> <span
 							class="d-none d-sm-block">닫기</span>
 					</button>
-					<button type="button" class="btn btn-danger ml-1" id="btndel"
-						data-bs-dismiss="modal">
+					<button type="button" class="btn btn-danger ml-1" id="btndel" data-bs-dismiss="modal">
 						<i class="bx bx-check d-block d-sm-none"></i> <span
 							class="d-none d-sm-block">확인</span>
 					</button>
@@ -302,6 +302,7 @@ $(function(){
 	$("#exampleModalLong").on('show.bs.modal', function(event){
 				console.log(event);	
 		let idx = $(event.relatedTarget).closest('tr').find('td').eq(0).text();
+				$('#userSpan').html(idx);
 		   	$.ajax({
 	    		url : 'getUserList',
 	    		type : 'get',
@@ -324,8 +325,34 @@ $(function(){
 	    				
 	    			}
 				}
-			}) 			
+			})
+			
 	});
+	
+	<!--회원 정보 수정-->
+	$("#btnup").on("click", function(event){
+		let idx =$('#userSpan').html();
+		let idx1 = $('#name').val();
+		let idx2 = $('#email').val();
+		let idx3 = $('#phonenum').val();
+		let idx4 = $('#address').val();
+		$.ajax({
+			url : 'updateUserProc',
+			type: 'POST',
+			data :{id: idx, 
+				   name: idx1, 
+				   email : idx2, 
+				   phonenum : idx3, 
+				   address : idx4},
+			dataType :'text',
+			success: function(result){
+				location.reload();		
+			},error : function(result){
+				alert("x");
+			}
+			
+		})
+	})
 	
 	<!-- delete modal 클릭-->
 	
@@ -344,9 +371,9 @@ $(function(){
 				url: 'deleteUser',
 				type : 'GET',
 				data : {"id": idx},
-				dataType : 'json',
+				dataType : 'text',
 				success : function(result){	
-						 alert("성공");
+					location.reload();
 				}
 			})
 	});
@@ -367,9 +394,9 @@ $(function(){
 			url: 'authUser',
 			type : 'GET',
 			data : {"id":idx},
-			dataType : 'json',
+			dataType : 'text',
 			success : function(result){
-				alert("성공");
+				location.reload();
 				
 			}, error : function(result){
 				//console.log(result);
@@ -377,8 +404,10 @@ $(function(){
 		})
 	})
 });
-		 
-		
+
+
+
+
 
 
 </script>

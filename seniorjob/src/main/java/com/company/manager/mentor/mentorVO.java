@@ -23,9 +23,9 @@ public class mentorVO {
 	private String mentoring_location;
 	private String mentor_confirm_status;
 	private Date mentor_date;
-	
+
 	private String name;
 	private String email;
-	private String address;
 	private String phonenum;
+	private String address;
 }

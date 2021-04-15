@@ -7,38 +7,46 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.company.manager.user.userVO;
 import com.company.manager.user.service.impl.manUserMapper;
-import com.company.manager.utils.PagingVO;
+import com.company.manager.utils.ManPageMaker;
+import com.company.manager.utils.ManSearchCriteria;
+
 
 @Controller
 public class manUserController {
 	
 	@Autowired manUserMapper manusermapper;
- 
-	//페이징 처리 후 게시글 조회 
-	@RequestMapping("/userList")
-	public String boardList(PagingVO vo, Model model
-			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
-		
-		int total = manusermapper.countBoard();
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "5";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+	
+	// 게시판 목록 조회(페이징)
+		@RequestMapping("/userList")
+		public String list(Model model, @ModelAttribute("scri") ManSearchCriteria scri) {
+
+			model.addAttribute("viewAll", manusermapper.userList(scri));
+
+			ManPageMaker pageMaker = new ManPageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(manusermapper.userCount(scri));
+
+			model.addAttribute("pageMaker", pageMaker);
+
+			return "user"; 
 		}
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		model.addAttribute("paging", vo);
-		model.addAttribute("viewAll", manusermapper.selectBoard(vo));
+		
+		
+	// 검색
+	@RequestMapping("/ManSearchService")
+	public String searchService(Model model, @RequestParam("searchKeyword") String searchKeyword) {
+		List<userVO> searchlist = manusermapper.searchUser(searchKeyword);
+		model.addAttribute("searchlist", searchlist);
 		return "user";
+	
 	}
 	
 	//회원 단건 조회
@@ -48,17 +56,13 @@ public class manUserController {
 		return manusermapper.getUserList(vo);
 	
 	}
-	//회원 수정 폼
-	@RequestMapping("/updateUser")
-	public String updateUser(userVO vo, Model model) {
-		model.addAttribute("upuser", manusermapper.updateUser(vo));
-		return "user";
-	}
-	
-	//회원 수정 
+		
+	//회원 수정 처리
 	@RequestMapping("/updateUserProc")
 	public String updateUserProc(userVO vo) {
-		return "redirect:/user";
+		System.out.println("vo:"+ vo);
+		manusermapper.updateUserProc(vo);
+		return "redirect:/userList";
 	}
 	
 	//회원 삭제
@@ -78,4 +82,5 @@ public class manUserController {
 		 return "user";
 
 	}
+	
 }
