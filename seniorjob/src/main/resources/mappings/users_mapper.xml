@@ -157,6 +157,16 @@
 	AND CARRER_CERTI IS NOT NULL 
 	</select>
 
+	 <!-- 자격증 수정 -->
+	<update id="updateCertiForm" parameterType="UsersVO">
+		UPDATE USERCERTI SET CERTI_NAME=#{certi_name},
+			CERTI_PLACE=#{certi_place},
+			CERTI_NO=#{certi_no},
+			CERTI_DATE=#{certi_date} 
+		WHERE NO = #{no}
+	</update>
+	 
+	 
 
 	<!-- 마이페이지에서 경력인증서 삭제 -->
 	<delete id="delCareer" parameterType="UsersVO">
