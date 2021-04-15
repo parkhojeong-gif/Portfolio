@@ -356,7 +356,7 @@ $(document).ready(function(){
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="title">지도내용</label>
-									<textarea name="collection" id="collection" class="form-control"></textarea>
+									<textarea name="collection" id="collection" class="form-control" readonly="readonly">${bpp.collection }</textarea>
 								</div>
 							</div>
 					</div>	

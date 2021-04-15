@@ -46,6 +46,7 @@
 										 #{business_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
 										 #{business_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
 										 #{business_c, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
+										 #{collection, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
 										 #{title, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
 										 #{prod_a, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
 										 #{prod_b, mode=OUT, jdbcType=VARCHAR, javaType=java.lang.String},
@@ -206,10 +207,22 @@
 	</update>
 	
 	<!-- 멘토가 첨삭요청 들어온 목록 조회-->
-	<select id="checkP" resultType="BusinessPalnAVO">
+	<select id="checkP" parameterType="BusinessPalnAVO" resultType="BusinessPalnAVO">
 	SELECT * 
 	FROM BUSINESSPLANA 
 	WHERE MENTORID=#{mentorId}
 	</select>
+	
+	<!--  멘토가 첨삭요청 사업계획서 단건 조회 -->
+	<!-- 사업계획서 수정 -->
+	<update id="collectionUpdate" parameterType="BusinessPalnAVO">
+	UPDATE BUSINESSPLANA 
+	<set>
+		collection=#{collection}
+	</set> 
+	WHERE SEQ=#{seq}
+	</update>
+	
+	
 	
 </mapper>

@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    function detail(){
-    var url ="checkBusinessPlan ";
+    function detail(seq){
+    var url ="checkBusinessPlan?seq="+seq;
     window.open(url);
     }
 </script>
@@ -26,12 +26,13 @@
             <c:forEach items="${list}" var="list">
 			<tr>
                 <td onclick="detail('${list.seq}')">${list.title } </td>
-	<td>${list.id } </td>
+				<td>${list.id } </td>
 			</tr>
+			</c:forEach>
 		</tbody>
-	</table  
+	</table>  
 
-<br>
-</c:forEach>
+
+
 </body>
 </html>

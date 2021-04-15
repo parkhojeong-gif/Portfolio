@@ -43,4 +43,11 @@ public interface BusinessPlanAMapper {
 		
 		//멘토가 첨삭요청 들어온 사업계획서 목록 조회
 		public List<BusinessPalnAVO> checkP(BusinessPalnAVO vo);
+		
+		//멘토가 첨삭요청 사업계획서 단건 조회
+		public BusinessPalnAVO checkBusinessPlan(BusinessPalnAVO vo);
+		
+		//멘토가 첨삭내용 입력
+		public int collectionUpdate(BusinessPalnAVO vo);
+		
 }

@@ -40,4 +40,10 @@ public interface BusinessPlanAService {
 	public int ckUpdate(BusinessPalnAVO vo);
 	
 	public List<BusinessPalnAVO> checkP(BusinessPalnAVO vo);
+	
+	//멘토가 첨삭요청 사업계획서 단건 조회
+			public BusinessPalnAVO checkBusinessPlan(BusinessPalnAVO vo);
+			
+			//멘토가 첨삭내용 입력
+			public int collectionUpdate(BusinessPalnAVO vo);
 }

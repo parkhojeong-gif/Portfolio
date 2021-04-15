@@ -40,6 +40,13 @@ function ckBp(seq) {
 	window.open(url,"","width=500,height=600");
 }
 
+
+function seeCkBp(seq) {
+	var url = "seeCkBp?seq="+seq;
+	window.open(url);
+}
+
+
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <body>
@@ -108,6 +115,7 @@ function ckBp(seq) {
 									<!-- <a onclick="excelBp('${list.seq }')" class="btn btn-default btn-border">엑셀저장</a>-->
 									<a onclick="wordBp('${list.seq }')" class="btn btn-default btn-border">워드저장</a>
 									<a onclick="ckBp('${list.seq }')" class="btn btn-default btn-border">첨삭요청</a>
+									<a onclick="seeCkBp('${list.seq }')" class="btn btn-default btn-border">첨삭보기</a>
 								</p>
 							</section>
 							<hr>

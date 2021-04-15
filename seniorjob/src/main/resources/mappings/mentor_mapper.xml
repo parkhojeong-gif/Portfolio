@@ -121,4 +121,12 @@
 		ORDER BY "followingVO.followNum" DESC
 	</select>
 	
+	
+	<!-- 양소민 추가 -->
+	<!-- 멘토 아이디 조회 -->
+	<select id="getMentorId" resultType="string">
+	SELECT MENTOR_ID
+ 	FROM MENTOR
+ 	WHERE ID=#{id}
+	</select>
  </mapper>	

@@ -95,6 +95,16 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 		return dao.checkP(vo);
 	}
 
+	@Override
+	public BusinessPalnAVO checkBusinessPlan(BusinessPalnAVO vo) {
+		return dao.checkBusinessPlan(vo);
+	}
+
+	@Override
+	public int collectionUpdate(BusinessPalnAVO vo) {
+		return dao.collectionUpdate(vo);
+	}
+
 	
 
 

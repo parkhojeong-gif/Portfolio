@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.company.businesspalna.service.BusinessPlanAService;
+import com.company.mentor.service.MentorService;
+import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringVO;
 import com.company.businesspalna.service.BusinessPalnAVO;
 
@@ -26,7 +28,7 @@ import com.company.businesspalna.service.BusinessPalnAVO;
 public class BusinessPlanAController {
 
 	@Autowired BusinessPlanAService bpService;
-	
+	@Autowired MentorService mtService;
 
 	
 	@GetMapping("/getSearchBusinessPlanA") //사업계획서 리스트 
@@ -166,14 +168,36 @@ public class BusinessPlanAController {
 	
 	//첨삭요청목록
 	@GetMapping("/checkP")
-	public String checkP(BusinessPalnAVO vo, HttpServletRequest request, Model model ) {
+	public String checkP(BusinessPalnAVO vo, MentorVO mvo, HttpServletRequest request, Model model ) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		vo.setMentorId(id);
+		mvo.setId(id);
+		String mId = mtService.getMentorId(mvo);
+		vo.setMentorId(mId);
 		model.addAttribute("list", bpService.checkP(vo));
-System.out.println("model:"+model);
+		System.out.println("model:"+model);
 		return "/Mentor/checkP";
 	}
 	
+	@GetMapping("/checkBusinessPlan") //첨삭 페이지로 이동
+	public String checkBusinessPlan(BusinessPalnAVO vo, Model model) {
+		bpService.getBusinessPlanA(vo);
+		model.addAttribute("bpp", vo);
+		return "business/checkBusinessPlan";
+	}
+	
+	@PostMapping("/collectionUpdate")			//첨삭입력
+	public String collectionUpdate(BusinessPalnAVO vo) {
+		bpService.collectionUpdate(vo);
+		
+		return "mypage/mypageHome";
+	}
+	
+	@GetMapping("/seeCkBp") //첨삭받은 거 확인
+	public String seeCkBp(BusinessPalnAVO vo, Model model) {
+		bpService.getBusinessPlanA(vo);
+		model.addAttribute("bpp", vo);
+		return "business/seeCkBp";
+	}
 
 }
