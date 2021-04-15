@@ -8,7 +8,8 @@
  		   CART_START, 
  		   CART_END, 
  		   CART_PRICE, 
- 		   ID
+ 		   ID,
+ 		   MENTOR_ID
 	FROM   CART
 	ORDER BY CART_NO	
  </select>
@@ -18,13 +19,15 @@
 		 			  CART_START, 
 		 			  CART_END, 
 		 			  CART_PRICE, 
-		 			  ID)
+		 			  ID,
+		 			  MENTOR_ID)
 	values		((SELECT NVL(MAX(CART_NO), 0) + 1 FROM CART),
 				#{mentoring_name},
 				TO_DATE(#{cart_start},'YYYY-MM-DD HH24:MI:SS'),
 				TO_DATE(#{cart_end},'YYYY-MM-DD HH24:MI:SS'),
 				#{cart_price},
-				#{id}
+				#{id},
+				#{mentor_id}
 				)
  </insert>
  <delete id="deleteCart">
@@ -46,7 +49,8 @@
  		   CART_START, 
  		   CART_END, 
  		   CART_PRICE, 
- 		   ID
+ 		   ID,
+ 		   MENTOR_ID
 	FROM   CART
 	WHERE  CART_NO = ${cart_no} 	
  </select>

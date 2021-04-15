@@ -48,13 +48,17 @@ public class CartController {
 		}
 	}
 	
-	
-	@PostMapping("/deleteCart")
+	//cart에서 배열로 받아온 값을 넘겨서 삭제
+	@RequestMapping("/deleteCart")
 	public String deleteCart(CartVO vo, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		cartservice.deleteCart(vo);
+		String[] ajaxMsg = req.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i = 0; i < size; i++) {
+			cartservice.deleteCart(ajaxMsg[i]);
+		}
 		return "redirect:/cart";
 	}
 	

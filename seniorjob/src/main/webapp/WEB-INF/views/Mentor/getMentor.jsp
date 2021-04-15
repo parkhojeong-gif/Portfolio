@@ -159,7 +159,7 @@ input{
 		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
 		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
 		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
-		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.id }">
+		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
@@ -230,8 +230,7 @@ input{
 	
 	// 장바구니 담기
 	function insertC(){
-		alert("장바구니에 담았습니다.")
-		var yn = confirm("장바구니로 이동하시겠습니까?");
+		var yn = confirm("장바구니에 담으시겠습니까?");
 		if(yn){
 			mentoringForm.action = "insertCart";
 			mentoringForm.submit();

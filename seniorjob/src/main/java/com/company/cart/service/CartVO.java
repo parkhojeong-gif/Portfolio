@@ -10,7 +10,6 @@ public class CartVO {
 	private String cart_start;		//주문 시작일
 	private String cart_end;		//주문 만료일
 	private String id;				//아이디
-	private String count;         
-	private String mentor_id;
+	private String mentor_id;		//멘토 아이디   
 	
 }

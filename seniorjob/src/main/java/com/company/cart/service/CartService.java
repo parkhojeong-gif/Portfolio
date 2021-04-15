@@ -8,7 +8,7 @@ public interface CartService {
 	//입력
 	public int insertCart(CartVO vo);
 	//삭제
-	public int deleteCart(CartVO vo);
+	public void deleteCart(String no);
 	//수정
 	public int updateCart(CartVO vo);
 	//단건

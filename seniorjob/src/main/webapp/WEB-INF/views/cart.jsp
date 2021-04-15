@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html class="no-js">
 <jsp:include page="topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function allDel(){
-	var yn = confirm("전체 항목을 삭제하시겠습니까?");
+	var yn = confirm("장바구니를 비우시겠습니까?");
 	if(yn){
-		frm.action = "deleteCartAll";
-		frm.submit();
+		form.action = "deleteCartAll";
+		form.submit();
 	}
 }	
 </script>
@@ -21,12 +20,13 @@ function allDel(){
 		<div class="container">
 			<div class="row" id="list">
 				<div class="section additional-details">
-					<h4 class="s-property-title">${sessionScope.users.id}님의장바구니</h4>
+					<h4 class="s-property-title">${sessionScope.users.id}님의 장바구니</h4>
 					<hr>
 					<form id="form" name="form" method="post">
 					
 					<div align="right">
-						<button class="btn btn-primary" type="submit" id="allCheck" name="allCheck" onclick="allDel()">전체삭제</button>
+						<button class="btn btn-primary" type="submit" id="allCheck" name="allCheck" onclick="allDel()">비우기</button>
+						<button class="btn btn-primary" type="submit" id="delCheck" name="delCheck" onclick="deleteValue()">선택삭제</button>
 					</div>
 					<table class="table">
 					    <thead class="thead-light">
@@ -35,7 +35,8 @@ function allDel(){
 					      <div class="allCheck">
 					      	<input type="checkbox"  id="checkedAll" name="checkedAll"> ALL 
 					      </div>
-					      </th>	
+					      </th>
+					      <th>멘토</th>	
 					      <th>상품명</th>
 					      <th>결제 가능일</th>
 					      <th>결제 만료일</th>
@@ -43,41 +44,47 @@ function allDel(){
 					    </tr>
 					  </thead>
 					  <tbody>
-<%-- 					  <c:set var = "sum" value="0" /> --%>
 					  <c:forEach items="${list }" var="cart">
-					  <c:if test="${cart.id eq users.id }">
+					  <c:choose>
+					  <c:when test="${cart.id eq users.id }">
+					  <c:when test=>
+						<tr>
+							<th>장바구니가 텅 비었습니다.</th>
+						</tr>
+				      </c:when>
 				        <tr>
-				        	<td>
+				        	<th>
 				        		<div class="chBox">
 				        			<input type="checkbox" id="del" name="del" value="${cart.cart_no }" >
 				        		</div>
 				        	</th>
+				        	<td>${cart.mentor_id }</td>
 				            <td><a href="getMentor?mentor_id=${cart.mentor_id }">${cart.mentoring_name }</a></td>
 				            <td>${cart.cart_start }</td>
 				            <td>${cart.cart_end }</td>
 				            <td><input type="text" id="total" name="total" value="${cart.cart_price }"></td>
-				            <td><input type="button" id="delCheck" name="delCheck" onclick="chkDel(${cart.cart_no})" value="삭제"></td>
-				            <!-- <div class="delBtn" align="right">
-								<button type="button" id="delCheck" name="delCheck" >삭제</button>
-							</div> -->
 				        </tr>
-<%-- 				      <c:set var="sum" value="${sum + (cart.cart_price)}" /> --%>
-				      </c:if>  
+				      </c:when>
+				      </c:choose>  
 				      </c:forEach>
+				      <%-- <c:if test="${empty cart}">
+				      	<tr>
+				      		<th>장바구니가 텅 비었습니다.</th>
+				      	</tr>
+				      </c:if> --%>
 					  </tbody>
 					  <tfoot>
 					    <tr align="right">
-					        <td colspan="4">최종 합계</td>
+					        <td colspan="5">최종 합계</td>
 					        <td>
-					        	<input type="text" name="total_sum" id="total_sum">
-<%-- 					        	<div class="sum"><fmt:formatNumber pattern="###,###,###" value="${sum }" />원</div> --%>
+					        	<input type="text" name="total_sum" id="total_sum" readonly="readonly">
 					        </td>
 					    </tr>
 					  </tfoot>
 					</table>
 					<div align="right">
 						<button type="button" class="btn btn-primary">결제하기</button>
-						<button type="button" class="btn btn-primary">목록으로</button>
+						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button>
 					</div>
 					</form>
 					</div>
@@ -87,9 +94,11 @@ function allDel(){
 	</div>
 	<script src="resources/assets/js/icheck.min.js"></script>
 	<script>
-	//css 체크박스 안 먹을 때 .iCheck() 추가;
+	//css 체크박스 안 먹을 때 .iCheck() 추가
 /* 	$('[name=del]').on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed', function(event){
       }).iCheck(); */
+      /* $('input').iCheck('check');    >>     iCheck를 통해서 체크여부 가능 */
+      
     //선택한 항목 값 나오기(최종합계)
 	$('[name=del]').on('ifChanged', function(event){
 		  var sum = 0;
@@ -106,29 +115,87 @@ function allDel(){
 		  }
 		  form.total_sum.value = sum;
 	  }).iCheck();
+      
     
-    //선택 항목 삭제  
-    function chkDel(str){
-    	var chkObj = document.getElementsByName("del");
-    	var chkDelStr = "";
-    	
-    	for(var i = 0; i < chkObj.length; i++){
-    		var chkObjElement = chkObj[i];
-    		if(chkObjElement.checked){
-    			chkDelStr = chkDelStr + chkObjElement.value + "/";
+    /* 선택한 항목만 삭제 */
+    function deleteValue(){
+    	var url = "deleteCart";
+    	var valueArr = new Array();
+    	var list = $('input[name=del]');
+    	for(var i = 0; i < list.length; i++){
+    		if(list[i].checked){
+    			valueArr.push(list[i].value);
     		}
     	}
-    	if(chkDelStr == ''){
-    		alert("선택한 항목이 없습니다.");
-    		return false;
+    	if(valueArr.length == 0){
+    		alert("선택된 항목이 없습니다.");
+    	}else{
+    		var chk = confirm("정말 삭제하시겠습니까?");
+    		$.ajax({
+    			url : url,
+    			type : 'POST',
+    			traditional : true,
+    			data : { valueArr : valueArr},
+    			success : function(response){
+    				console.log(response)
+    				if(response != 0){
+    					alert("삭제 성공");
+    					location.replace("cart");
+    				}else{
+    					alert("삭제 실패");
+    				}
+    			}
+    		});
     	}
-    	chkDelStr = chkDelStr.substring(0, chkDelStr.length-1);
-    	
-    	if(!confirm("해당 항목을 삭제하시겠습니까?"))
-    		return false;
-    		form.action = "deleteCart?cart_no=" + str;
-    		form.submit();
     }
+    
+    
+	//전체선택 누르면 나머지 체크박스도 체크된 상태로 변화
+    $('input[name=checkedAll]').on('ifChanged', function(event){
+    	var sum = 0;
+    	var count = form.del.length;
+    	if($(this).is(":checked")){
+    		$('input[name=del]').iCheck('check');
+    		//전체선택에서도 전체합계 나오게 하기
+    		for(var i = 0; i < count; i++){
+  			  if(form.del[i].checked == true){
+  				  sum += parseInt(form.total[i].value);
+  			      console.log(sum);
+  			    }
+  		     }
+    		 //배열 없이 하나인 목록에서도 전체합계 출력
+    		 if(form.del.checked == true){
+	   			 sum += parseInt(form.total.value);
+	   			 console.log(sum);
+   		 	 }
+    	} else{
+    		$('input[name=del]').iCheck('uncheck');
+    	}
+    	//전체합계 출력
+    	form.total_sum.value = sum;
+    }).iCheck();
+	
+	
+	//목록이 하나라도 풀릴 시, 전체선택 해제
+    /* $('input[name=del]').on('ifChanged', function(event){
+    	var count = $('input[name=del]').length;
+    	if($(this).is(":checked")==false){
+    		$('input[name=checkedAll]').iCheck('uncheck');
+    	}else if($('input[name=del]').is(":checked")){
+    		$('input[name=checkedAll]').iCheck('check');
+    	}
+    }) */
+    
+    $('input[name=del]').on('ifChanged', function(event){
+    	var count = $('input[name=del]').length;
+    	for(var i = 0; i < count; i++){
+    		if($('input[name=del]'[i]).is(":checked") == false){
+    			$('input[name=checkedAll]').iCheck('uncheck');
+    		}else {
+    			$('input[name=checkedAll]').iCheck('check');
+    		}
+    	}
+    })
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
