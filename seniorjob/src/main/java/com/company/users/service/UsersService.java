@@ -35,4 +35,5 @@ public interface UsersService {
 	public List<Map> getCarList(UsersVO vo); //자격증, 경력증명서 조회
 	public UsersVO selCareer(UsersVO vo); //경력인증서 파일 이름 가져오기
 	public int delCareer(UsersVO vo); //경력인증서 삭제
+	public int updateCerti(UsersVO vo);		//수정
 }
