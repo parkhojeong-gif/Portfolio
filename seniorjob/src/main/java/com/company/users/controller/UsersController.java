@@ -280,6 +280,16 @@ public class UsersController {
 		return list;
 	}
 	
+	@RequestMapping("/getCarList") //자격증, 경력인증서 조회
+	@ResponseBody
+	public List<Map> getCarList(UsersVO vo, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		List<Map> list = usersService.getCarList(vo);
+		return list;
+	}
+	
 	//마이페이지에서 경력증명서 등록
 	@RequestMapping("/certiUpload")
 	public String certiUpload(

@@ -22,6 +22,43 @@
         	error : showErrors
     	})
     }); 
+    
+    $(document).ready( function () {
+    	$.ajax({
+    		url : "getCarList",
+        	success : function (result) {
+        		var list = result;
+        		for(certi of list ) {
+        			
+        			
+        			let tr2 = $('<tr />');
+        			let td5 = $('<td />').html(certi.CARRER_CERTI);
+        			let td6 = $('<td />');
+        			
+        			let inp1 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
+        			//let no = certi.NO;
+        			$(inp1).on('click', function() {
+        				console.log(this);
+        				var no = this.title;
+        				location.href="delCareer?no="+no;
+        			})
+        			$(td6).append(inp1);
+        			
+        			$(tr2).append(td5);
+        			$(tr2).append(td6);
+        			$('#career').append(tr2);
+        			
+        			
+        			
+        		}
+        		
+        		
+        	},
+        	error : function() {
+        		console.log("error입니다.");
+        	}
+    	})
+    }); 
 
 
 function showErrors(result) {
@@ -44,29 +81,14 @@ function showContents(result) {
 		$(tr).append(td4);
 		$('#certi').append(tr);
 		
-		let tr2 = $('<tr />');
-		let td5 = $('<td />').html(certi.CARRER_CERTI);
-		let td6 = $('<td />');
-		
-		let inp1 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
-		//let no = certi.NO;
-		$(inp1).on('click', function() {
-			console.log(this);
-			var no = this.title;
-			location.href="delCareer?no="+no;
-		})
-		$(td6).append(inp1);
-		
-		$(tr2).append(td5);
-		$(tr2).append(td6);
-		$('#career').append(tr2);
-		
-		
+	
 		
 	}
 	
 	
 }
+
+
 
 
 

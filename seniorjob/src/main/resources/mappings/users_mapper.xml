@@ -136,16 +136,25 @@
 				
 	</insert>
 	
-	<!-- 마이페이지에서 자격증/경력인증서 조회 -->
+	<!-- 마이페이지에서 자격증 조회 -->
 	<select id="getCertiList" resultType="map">
 	SELECT NO,
 			CERTI_NAME,
 			CERTI_PLACE,
 			CERTI_NO,
-			CERTI_DATE,
+			CERTI_DATE
+	FROM USERCERTI
+	WHERE ID=#{id}
+	AND CERTI_NAME IS NOT NULL 
+	</select>
+
+	<!-- 마이페이지에서 경력인증서 조회 -->
+	<select id="getCarList" resultType="map">
+	SELECT NO,
 			CARRER_CERTI 
 	FROM USERCERTI
-	WHERE ID=#{id} 
+	WHERE ID=#{id}
+	AND CARRER_CERTI IS NOT NULL 
 	</select>
 
 

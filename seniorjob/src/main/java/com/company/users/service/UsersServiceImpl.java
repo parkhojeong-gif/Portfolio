@@ -194,4 +194,9 @@ public class UsersServiceImpl implements UsersService {
 	public int delCareer(UsersVO vo) {
 		return usersmapper.delCareer(vo);
 	}
+
+	@Override
+	public List<Map> getCarList(UsersVO vo) {
+		return usersmapper.getCarList(vo);
+	}
 }
