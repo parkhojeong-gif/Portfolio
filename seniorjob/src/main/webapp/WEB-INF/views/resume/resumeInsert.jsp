@@ -52,7 +52,19 @@
 			document.querySelector("div#image_container").appendChild(img);
 		}
 		reader.readAsDataURL(event.target.files[0]);
+		
 	}
+	
+	
+	$("image").change(function(){
+		if(this.files && this.files[0]){
+			var reader = new FileReader;
+			reader.onload = function(data){
+				$(".select_img").attr("src", data.target.result).width(500);
+			}
+		}
+	})
+	
 </script>
 <!-- 미리보기(preview) -->
 <script>
@@ -164,6 +176,7 @@
 					<div align="center">
 						<h2>이력서 등록</h2>
 					</div>
+					<input type="hidden" name="id" id="id" value="${user }">
 					<h5>이력서 항목</h5>
 					<a href="">자격증</a> 
 					<a href="#step1" data-toggle="tab"><button type="button">보기+</button></a> &nbsp;&nbsp; 
@@ -227,6 +240,12 @@
 								<div class="form-group">
 									<label>학교명</label> 
 									<input type="text" class="form-control" id="resume_school" name="resume_school" data-name="학교">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>전공</label> 
+									<input type="text" class="form-control" id="resume_major" name="resume_major" data-name="전공">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -353,9 +372,6 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
-<!-- 									<button type="button" class="btn btn-primary" name="middle" id="middle"> -->
-<!-- 										<i class="fa fa-envelope-o"></i>중간저장 -->
-<!-- 									</button> -->
 								</div>
 								<br><br><br>
 						</form>

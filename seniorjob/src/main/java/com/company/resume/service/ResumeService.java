@@ -11,7 +11,7 @@ import com.company.self_info.service.Self_InfoVO;
 
 public interface ResumeService {
 	//이력서 전체조회
-	public List<ResumeVO> getSearchResumeList();
+	public List<ResumeVO> getSearchResumeList(ResumeVO vo);
 	//이력서 등록
 	public void insertResume(ResumeVO vo, List<CertificateVO2> clist, List<Self_InfoVO> slist, PortfolioVO portvo, HttpServletRequest req) throws IllegalStateException, IOException;
 	//이력서 수정
