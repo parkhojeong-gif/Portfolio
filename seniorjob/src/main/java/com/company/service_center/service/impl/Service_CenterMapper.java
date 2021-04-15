@@ -46,6 +46,11 @@ public interface Service_CenterMapper {
 	// =========================================결제환불=================================================
 	// 페이징 처리 및 결제환불 전체 조회
 	public List<Service_CenterVO> listQna(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaPayment(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaRefund(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaRequest(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaCancle(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaGita(SearchCriteria scri);
 
 	// 결제환불 게시물 총갯수
 	public int listCountQna(SearchCriteria scri);

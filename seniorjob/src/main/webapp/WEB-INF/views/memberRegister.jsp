@@ -328,7 +328,9 @@
 	<div class="content-area error-page"
 		style="background-color: #FCFCFC; padding-bottom: 55px;">
 		<div class="container">
+		 <div class="col-md-12 pr-30 padding-top-40">
 			<div class="row">
+			<div class="col-md-3"></div>
 				<div class="col-md-6">
 					<div class="box-for overflow" id="form">
 						<div class="col-md-12 col-xs-12 register-blocks">
@@ -411,6 +413,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>

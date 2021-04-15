@@ -45,7 +45,11 @@ public interface Service_CenterService {
 	// =========================================결제환불=================================================
 	// 페이징 처리 및 결제환불 전체 조회
 	public List<Service_CenterVO> listQna(SearchCriteria scri);
-
+	public List<Service_CenterVO> listQnaPayment(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaRefund(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaRequest(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaCancle(SearchCriteria scri);
+	public List<Service_CenterVO> listQnaGita(SearchCriteria scri);
 	// 결제환불 게시물 총갯수
 	public int listCountQna(SearchCriteria scri);
 
@@ -59,6 +63,14 @@ public interface Service_CenterService {
 	public int insertService_CenterQna(Service_CenterVO vo);
 	// 결제환불 수정
 	public void updateService_CenterQna(Service_CenterVO vo);
+	
+	
+	
+	
+	
+	
+	
+	
 	// =========================================신청취소=================================================
 	// 페이징 처리 및 신청취소 전체 조회
 	public List<Service_CenterVO> listQna2(SearchCriteria scri);
@@ -74,4 +86,6 @@ public interface Service_CenterService {
 	public int insertService_CenterQna2(Service_CenterVO vo);
 	// 신청취소 수정
 	public void updateService_CenterQna2(Service_CenterVO vo);
+	//=====================================================================
+	
 }
