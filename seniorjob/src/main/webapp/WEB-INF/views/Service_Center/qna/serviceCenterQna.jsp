@@ -8,101 +8,193 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
+<style>
+</style>
 <jsp:include page="../../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-	
-</script>
 
+
+	
 <body>
 	<!-- property area -->
-	<div class="content-area recent-property" style="background-color: #FFF;">
+	<div class="content-area recent-property"
+		style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
+				<div id="div1"
+					class="col-md-12 pr-30 padding-top-40 properties-page user-properties">
 
-			
-			<jsp:include page="sevice_left.jsp"></jsp:include>
-				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-				<div class="section additional-details">
-					<h4 class="s-property-title">결제환불</h4>
-					<ul>
-						<li>
-							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">카테고리</span>
-							<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">제목</span>
-							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성자</span>
-							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
-							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
-						</li>
-						<c:forEach items="${list }" var="gongji">
-							<span onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_b }</span>
-							<span onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${gongji.title }</span>
-							<span onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.id }</span>
-							<span onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry"><fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd"/></span>
-							<span onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.click }</span>
-						</c:forEach>
-						</ul>
 				</div>
-				
-		<div class="col-md-9 pr-50 padding-top-40 properties-page user-properties">		
-		<div class="pagination">	
-		 			<ul>
-    						<c:if test="${pageMaker.prev}">
-    						<li><a href="serviceCenterQna${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-    						</c:if> 
 
-    						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    						<li><a href="serviceCenterQna${pageMaker.makeSearch(idx)}">${idx}</a></li>
-    						</c:forEach>
-			
-    						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-    						<li><a href="serviceCenterQna${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-    						</c:if> 
-					  </ul>
-		</div>
-		</div>
-				
-		<div class="col-md-12 pr-30 padding-top-40 properties-page user-properties">		
-				<form role="form" method="get">
-				<div class="search">			
-					<br>
+				<jsp:include page="../new_sevice_left.jsp"></jsp:include>
+				<div
+					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
+					<div class="section additional-details">
+						<h4 class="s-property-title">자주 묻는 질문</h4>
+						<div class="col-md-12 pr-30">
+							<h5>카테고리 설정</h5>
+							<form  id="sddw">
+							<label>전체<input type="checkbox" id="cs_biz_form"
+								name="cs_biz_form" value="" ></label>
+							<label >결제<input type="checkbox" id="cs_biz_form"
+								name="cs_biz_form" value="결제" ></label>
+							<label>환불<input type="checkbox" id="cs_biz_form"
+								name="cs_biz_form" value="환불" ></label>
+							<label>신청<input type="checkbox" id="cs_biz_form"
+								name="cs_biz_form" value="신청" ></label>
+							<label>취소<input type="checkbox" id="cs_biz_form"
+								name="cs_biz_form" value="취소" ></label>
+							<label>기타<input type="checkbox" id="cs_biz_form"
+								name="cs_biz_form" value="기타" ></label>
+								<input type="hidden" id="sebubtn">
+							</form>	
 						</div>
-					<div class="col-xs-2">
-                         <div class="btn-group bootstrap-select show-tick form-control">
-                         	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
-                         	 <select id="basic" name="searchType" class="selectpicker show-tick form-control" tabindex="-98">
-                             <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
-						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-                        </select></div>
-                    </div>
-                    <div class="col-xs-7">
-					<div class="input-group">
-                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
-                             <span class="input-group-btn">
-                    <button class="btn btn-primary subscribe" id="searchBtn" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                    <button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterFormQna'" >등록</button>
-                    <script>
+
+
+						<ul>
+							<li><span class="col-xs-6 col-sm-4 col-md-2 add-d-title">카테고리</span>
+								<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">제목</span> <span
+								class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성자</span> <span
+								class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span> <span
+								class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span></li>
+							<c:forEach items="${list }" var="gongji">
+								<span
+									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
+									class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_b }</span>
+								<span
+									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
+									class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${gongji.title }</span>
+								<span
+									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
+									class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.id }</span>
+								<span
+									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
+									class="col-xs-6 col-sm-8 col-md-2 add-d-entry"><fmt:formatDate
+										value="${gongji.w_date }" pattern="yyyy-MM-dd" /></span>
+								<span
+									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
+									class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.click }</span>
+							</c:forEach>
+						</ul>
+					</div>
+
+					<div
+						class="col-md-9 pr-50 padding-top-40 properties-page user-properties">
+						<div class="pagination">
+							<ul>
+								<c:if test="${pageMaker.prev}">
+									<li><a
+										href="serviceCenterQna${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+								</c:if>
+
+								<c:forEach begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}" var="idx">
+									<li><a href="serviceCenterQna${pageMaker.makeSearch(idx)}">${idx}</a></li>
+								</c:forEach>
+
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li><a
+										href="serviceCenterQna${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+
+					<div
+						class="col-md-12 pr-30 padding-top-40 properties-page user-properties">
+						<form role="form" method="get">
+							<div class="search">
+								<br>
+							</div>
+							<div class="col-xs-2">
+								<div class="btn-group bootstrap-select show-tick form-control">
+									<div class="dropdown-menu open"
+										style="max-height: 640.781px; overflow: hidden; min-height: 109px;">
+										<ul class="dropdown-menu inner" role="menu"
+											style="max-height: 629.781px; overflow-y: auto; min-height: 98px;">
+											<li data-original-index="0" class=""><a tabindex="0"
+												class="" style="" data-tokens="null"><span class="text">
+														-Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+											<li data-original-index="1" class=""><a tabindex="0"
+												class="" style="" data-tokens="null"><span class="text">Rent
+												</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+											<li data-original-index="2" class="selected"><a
+												tabindex="0" class="" style="" data-tokens="null"><span
+													class="text">Boy</span><span
+													class="glyphicon glyphicon-ok check-mark"></span></a></li>
+											<li data-original-index="3"><a tabindex="0" class=""
+												style="" data-tokens="null"><span class="text">used</span><span
+													class="glyphicon glyphicon-ok check-mark"></span></a></li>
+										</ul>
+									</div>
+									<select id="basic" name="searchType"
+										class="selectpicker show-tick form-control" tabindex="-98">
+										<option value="n"
+											<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
+										<option value="t"
+											<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+										<option value="c"
+											<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+										<option value="w"
+											<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+										<option value="tc"
+											<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-7">
+								<div class="input-group">
+									<input class="form-control" name="keyword" id="keywordInput"
+										value="${scri.keyword}"
+										style="text-align: center; height: 45px;" type="text"
+										placeholder="내용 입력 "> <span class="input-group-btn">
+										<button class="btn btn-primary subscribe" id="searchBtn"
+											type="button">
+											<i class="pe-7s-paper-plane pe-2x"></i>
+										</button>
+										<button class="btn btn-primary subscribe" id="searchBtn"
+											type="button"
+											onclick="location.href='insertService_CenterFormQna'">등록</button>
+										<script>
 			      $(function(){
 			        $('#searchBtn').click(function() {
 			          self.location = "serviceCenterQna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 			        });
 			      });   
 			    </script>
-                           </span>
-                   </div>
-                   </div>
-                </form>
-                </div>
-                </div>
-                
-                
-			
-		</div>
+									</span>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+
+
+			</div>
 		</div>
 	</div>
-	
+
 	<jsp:include page="../../footer.jsp"></jsp:include>
+<script>
+//카테고리 체크검색(결제/환불/신청...)
+
+$(function(){
+	//체크 초기화
+	$('[value=${param.optionValue}]').iCheck('check');
+	
+	//체크 검색
+	$('[name="cs_biz_form"]').on('ifClicked', function(){
+		var param = 'optionValue='+$(this).val();
+		location.href='serviceCenterQna?'+param;
+	});
+	
+});	
+
+</script>
+<script>
+
+
+</script>
 </body>
 </html>

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.mentoring.service.MentoringVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
@@ -48,20 +47,47 @@ public class ShoppingServiceImpl implements ShoppingService {
 	}
 
 	// 김찬곤 추가
+	@Override
 	public int insertMentoringBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 담기
 		int result = dao.insertMentoringBasket(vo);
 		return result;
 	}
+	@Override
 	public int deleteMentoringBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 취소
 		int result = dao.deleteShopping(vo);
 		return result;
 	}
+	@Override
 	public int BasketCheck(ShoppingVO vo) { // 멘토 상세페이지_장바구니 중복 체크
 		int result = dao.BasketCheck(vo);
 		return result;
 	}
+	@Override
 	public ShoppingVO getSearchBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 단건 조회
 		return dao.getSearchBasket(vo);
+	}
+
+	// 멘토링 결제_장바구니에 담겼을 때 
+	public int mentoringPayProcBasket(ShoppingVO vo) {
+		int result = dao.mentoringPayProcBasket(vo);
+		return result;
+	}
+
+	// 결제 중복체크
+	public int paymentChk(ShoppingVO vo) {
+		int result = dao.paymentChk(vo);
+		return result;
+	}
+
+	 // 멘토링 결제_장바구니에 담지 않고 바로 결제할 때
+	public int mentoringPayProc(ShoppingVO vo) {
+		int result = dao.mentoringPayProc(vo);
+		return result;
+	}
+
+	// 결제 내역 가져오기
+	public ShoppingVO getPayInfo(ShoppingVO vo) {
+		return dao.getPayInfo(vo);
 	}
 
 

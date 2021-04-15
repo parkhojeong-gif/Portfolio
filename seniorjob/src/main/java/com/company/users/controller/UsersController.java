@@ -1,15 +1,15 @@
 package com.company.users.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,8 +89,13 @@ public class UsersController {
 	}
 
 	@RequestMapping("/updateUsersProc") // 유저 수정처리  //양소민 수정
-	public String updateUsersProc(UsersVO vo, BindingResult bresult) {
-		usersMapper.updateUsers(vo);
+	public String updateUsersProc(UsersVO vo, BindingResult bresult, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		System.out.println("vo:"+vo);
+		usersMapper.updateUsersProc(vo);
+		
 		return "redirect:/updateUsers";
 	}
 
@@ -252,9 +257,23 @@ public class UsersController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		usersService.insertCerti(vo);
-		return "redirect:/";
+		return "/users/throughCerti";
 		
 		
 	}
+	
+	@RequestMapping("/getCertiList") //자격증, 경력인증서 조회
+	@ResponseBody
+	public List<Map> getCertiList(UsersVO vo, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		List<Map> list = usersService.getCertiList(vo);
+		return list;
+	}
+	
+	
+
+	
 
 }

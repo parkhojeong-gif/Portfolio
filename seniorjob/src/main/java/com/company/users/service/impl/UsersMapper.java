@@ -1,6 +1,7 @@
 package com.company.users.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.users.service.UsersVO;
 
@@ -23,6 +24,8 @@ public interface UsersMapper {
 	public int emailCheck(String email); //email 중복체크 
 	public UsersVO kakaoCheck(UsersVO vo); //카카오로그인체크
 	
-	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가	
+	public List<UsersVO> getUsersForPayment(Map<String, Object> map); // 김찬곤 / 단건 조회
+	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가
+	public List<Map> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
 
 }

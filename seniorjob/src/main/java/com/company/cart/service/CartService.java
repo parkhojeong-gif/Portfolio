@@ -7,8 +7,10 @@ public interface CartService {
 	public List<CartVO> getSearchCartList(CartVO vo);
 	//입력
 	public int insertCart(CartVO vo);
-	//삭제
+	//선택 삭제
 	public void deleteCart(String no);
+	//개별 삭제
+	public int deleteSub(CartVO vo);
 	//수정
 	public int updateCart(CartVO vo);
 	//단건

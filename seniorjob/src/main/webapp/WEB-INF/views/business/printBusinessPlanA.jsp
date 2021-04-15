@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>사업계획서 상세페이지</title>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>인쇄미리보기</title>
 <script type="text/javascript">
 function divPrint() {
 	var initBody = document.body.innerHTML;
@@ -17,13 +17,11 @@ function divPrint() {
 </head>
 <body>
 <div id="divId">
-
+<h2>인쇄 미리보기</h2>
 ${bp.seq }<br>
 ${bp.business_a }<br>
 ${bp.business_b}<br>		
 ${bp.business_c}<br>		
-${bp.id}<br>		
-${bp.collection}<br>		
 ${bp.prod_a}<br>		
 ${bp.prod_b}<br>	
 ${bp.prod_c}<br>		

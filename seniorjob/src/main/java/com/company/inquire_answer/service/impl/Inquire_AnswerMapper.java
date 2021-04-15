@@ -2,7 +2,7 @@ package com.company.inquire_answer.service.impl;
 
 import java.util.List;
 
-import com.company.inquire_answer.service.Inquire_AnswerVO;
+import com.company.inquire.service.Inquire_AnswerVO;
 
 public interface Inquire_AnswerMapper {
 	//등록

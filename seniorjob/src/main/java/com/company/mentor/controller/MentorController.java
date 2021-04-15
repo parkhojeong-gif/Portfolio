@@ -1,22 +1,28 @@
 package com.company.mentor.controller;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.company.mentor.common.Paging;
 import com.company.mentor.service.MentorSearchVO;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringService;
 import com.company.mentoring.service.MentoringVO;
 import com.company.portfolio.service.FileRenamePolicy;
-import com.company.service_center.PagingVO;
+import com.company.users.service.UsersVO;
 
 @Controller
 public class MentorController {
@@ -31,40 +37,16 @@ public class MentorController {
 			return "Mentor/loginCheckAlert";
 		}
 		
-		@RequestMapping("/MentorListForm")
-		public String MentorListForm() {
-			return "Mentor/mentorListForm";
+		// 멘토 리스트 페이지 호출
+		@RequestMapping("/getMentorList")
+		public String MentorList(Model model,MentorVO vo) {
+			model.addAttribute("list", mentorService.getMentorList(vo));
+			return "Mentor/mentorList";
 		}
-	
-		// 멘토 리스트 페이지 호출 + 페이징
-		@RequestMapping("/MentorList")
-		public String MentorList(PagingVO pVo, Model model, MentorSearchVO vo, 
-				@RequestParam(value="nowPage", required=false)String nowPage,
-				@RequestParam(value="cntPerPage", required=false)String cntPerPage) {
-			
-			int total = mentorService.getCountMentor();
-			if(nowPage == null && cntPerPage == null) {
-				nowPage = "1";
-				cntPerPage = "5";
-			}else if(nowPage==null) {
-				nowPage="1";
-			}else if(cntPerPage==null) {
-				cntPerPage="5";
-			}
-			pVo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-			vo.setStart(pVo.getStart());
-			vo.setEnd(pVo.getEnd());
-			if(vo.getOptionValue()==null) {
-				model.addAttribute("list", mentorService.getSearchMentor(vo));
-			}
-			else if(vo.getOptionValue().equals("최신순")) {
-				model.addAttribute("list", mentorService.getMentorByDate(vo));
-			}else if(vo.getOptionValue().equals("인기순")) {
-				model.addAttribute("list", mentorService.getMentorByFollow(vo));
-			}
-			
-			model.addAttribute("paging", pVo);
-			
+		
+		@RequestMapping("/getKeywordSearch")
+		public String getKeywordSearch(Model model, MentorVO vo) {
+			model.addAttribute("list", mentorService.getKeywordSearch(vo));
 			return "Mentor/mentorList";
 		}
 		
@@ -115,13 +97,13 @@ public class MentorController {
 
 					mentorService.MentorRegisterProc(vo);
 					model.addAttribute("msg", "멘토 등록 완료");
-					model.addAttribute("url", "Mentor/mentorListForm");
+					model.addAttribute("url", "MentorList");
 					return "common/Success";
 				}else {
 					// 멘토 등록 오류 발생 시 해당 페이지로 리턴
 					// 오류 발생 조건: 빈칸 제출
 					model.addAttribute("msg", "멘토 등록 처리 실패. 다시 작성 해주세요.");
-					model.addAttribute("url", "Mentor/mentorListForm");
+					model.addAttribute("url", "MentorList");
 					return "common/Fail"; 
 				}
 			}
@@ -134,5 +116,26 @@ public class MentorController {
 			model.addAttribute("mentoring", mentoringService.getMentoring(mtrVo));
 			return "Mentor/getMentor";
 		}
+		
+		// 멘토 세부검색(최신순, 인기순)
+		@ResponseBody
+		@RequestMapping("/optionValueChk")
+		public Map<String, Object> optionValueChk(Model model, MentorSearchVO vo) {
 			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			if(vo.getOptionValue().equals("최신순")) {
+				List<MentorVO> list = mentorService.getMentorByDate(vo);
+				map.put("list", list);
+			}
+			else if(vo.getOptionValue().equals("인기순")) {
+				List<MentorVO> list = mentorService.getMentorByFollow(vo);
+				map.put("list", list);
+			}
+			else if(vo.getOptionValue().equals("")) {
+				List<MentorVO> list = mentorService.getMentorList(vo);
+				map.put("list", list);
+			}
+			return map;
+		}
 }

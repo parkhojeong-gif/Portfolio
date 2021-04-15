@@ -48,4 +48,9 @@ public class CartServiceImpl implements CartService{
 		return cartmapper.deleteCartAll(vo);
 	}
 
+	@Override
+	public int deleteSub(CartVO vo) {
+		return cartmapper.deleteSub(vo);
+	}
+
 }

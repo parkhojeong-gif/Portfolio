@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="insertCerti" method="post" name="frm">
             <div class="clear">
                                 <hr>
                                 <br>
@@ -17,8 +18,7 @@
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
-                                                    <p class="help-block">Select multipel images for your property .</p>
+                                                    <input class="form-control" type="file" name="carrer_certi" id="carrer_certi">
                                                 </div>
                                             </div>
                                        
@@ -28,10 +28,11 @@
                             
                             <div class="col-sm-5 col-sm-offset-1">
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='등록' />
+                                <button type="submit" class="btn btn-primary">등록</button>
                                 <br>
                                 <br>
                             </div>
-                            
+                          
+</form>                            
 </body>
 </html>

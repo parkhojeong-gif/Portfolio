@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.following.service.FollowService;
 import com.company.following.service.FollowingVO;
@@ -18,48 +19,35 @@ public class FollowingController {
 	
 	//팔로우 목록
 	@RequestMapping("/following")
-	public String following(HttpServletRequest req, FollowingVO vo) {
+	public String following(HttpServletRequest req, FollowingVO vo, Model model) {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
+		model.addAttribute("list", followService.getMentorList(vo));
 		return "following";				  
 	}
 	
 	// 멘토 팔로우
-	@RequestMapping("/MentorFollow")
-	public String getMentorFollow(HttpServletRequest req, Model model, FollowingVO vo) {
-		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("id");
-		vo.setId(id);
-		FollowingVO followCheck = followService.mentorFollowCheck(vo);
-		// 팔로우 중복 체크
-		if(followCheck != null) {
-			model.addAttribute("msg", "이미 팔로우된 멘토입니다.");
-			model.addAttribute("url", "getMentor?mentor_id="+vo.getMentor_id());
-			return "common/Fail";
-		}else {
+	@ResponseBody
+	@RequestMapping("/mentorFollowCheck")
+	public int mentorFollowCheck(FollowingVO vo) {
+		int result = followService.mentorFollowCheck(vo);
+		if(result == 0) {
 			followService.MentorFollow(vo);
-			model.addAttribute("msg","팔로우 완료");
-			model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
-			System.out.println("팔로잉"+vo);
-			return "common/Success";	
+			return result;
+		}else {
+			return result;
 		}
 	}
 	
 	// 멘토 팔로우 취소
+	@ResponseBody
 	@RequestMapping("/deleteMentorFollow")
-	public String deleteMentorFollow(Model model, FollowingVO vo) {
-		FollowingVO followCheck = followService.mentorFollowCheck(vo);
-		if(followCheck==null) {
-			model.addAttribute("msg", "팔로우 하지 않은 멘토입니다.");
-			model.addAttribute("url", "getMentor?mentor_id="+vo.getMentor_id());
-			return "common/Fail";
-		}else {
-			followService.deleteMentorFollow(vo);
-			model.addAttribute("msg","팔로우 취소 완료");
-			model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
-			return "common/Success";
-		}
+	public int deleteMentorFollow(FollowingVO vo) {
+		int result = followService.deleteMentorFollow(vo);
+		return result;
 	}
+	
+	
 	
 }

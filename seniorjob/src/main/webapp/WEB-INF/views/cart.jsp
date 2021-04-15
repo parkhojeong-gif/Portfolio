@@ -52,13 +52,14 @@ function allDel(){
 							<th>장바구니가 텅 비었습니다.</th>
 						</tr>
 				      </c:when> --%>
+						
 				        <tr>
 				        	<th>
 				        		<div class="chBox">
 				        			<input type="checkbox" id="del" name="del" value="${cart.cart_no }" >
 				        		</div>
 				        	</th>
-				        	<td>${cart.mentor_id }</td>
+				        	<td id="mentor_id" name="mentor_id">${cart.mentor_id }</td>
 				            <td><a href="getMentor?mentor_id=${cart.mentor_id }">${cart.mentoring_name }</a></td>
 				            <td>${cart.cart_start }</td>
 				            <td>${cart.cart_end }</td>
@@ -83,8 +84,8 @@ function allDel(){
 					  </tfoot>
 					</table>
 					<div align="right">
-						<button type="button" class="btn btn-primary">결제하기</button>
-						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button>
+						<button type="button" class="btn btn-primary" onclick="mentoringPayForm()">결제하기</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='getMentorList'">상품 둘러보기</button>
 					</div>
 					</form>
 					</div>
@@ -196,6 +197,18 @@ function allDel(){
     		}
     	}
     })
+    
+    // 결제하기
+	function mentoringPayForm(){
+		var mentorId;
+		var yn = confirm("결제 하시겠습니까?");
+		if(yn){
+			if($("input[name=del]").is(":checked")){
+				mentorId=$("#mentor_id").html();
+				location.href = "mentoringPayForm?mentor_id="+mentorId;
+				}
+			}
+		}
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

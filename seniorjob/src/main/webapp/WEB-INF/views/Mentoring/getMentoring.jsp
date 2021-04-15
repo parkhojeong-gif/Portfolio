@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>멘토링 상세페이지</title>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>시니어잡/멘토링상세</title>
 </head>
 <body>
-${md.mentoring_number }<br/>
-${md.mentoring_name}<br/>
-${md.mentoring_limit}<br/>
-${md.mentoring_content}<br/>
-${md.mentoring_photo}<br/>
-${md.mentoring_price}<br/>
-${md.mentoring_data}<br/>
-${md.mentoring_request}<br/>
-${md.mentor_id}<br/>
-${md.mentoring_end_date}<br/>
-${md.mentoring_begin_date}<br/>
+<!-- topHeader -->
+<jsp:include page="../topHeader.jsp" />
+<!-- topHeader -->
 
+<!-- Footer area-->
+<jsp:include page="../footer.jsp" />
+<!-- Footer area-->
 </body>
 </html>

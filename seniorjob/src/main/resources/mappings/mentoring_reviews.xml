@@ -15,10 +15,9 @@
 		mentoring_number,
 		title
 		from mentoring_reviews
-	
-	
 	</select>
-		<select id="getMentoring_Reviews" resultType="Mentoring_ReviewsVO"
+	
+	<select id="getMentoring_Reviews" resultType="Mentoring_ReviewsVO"
 				parameterType="Mentoring_ReviewsVO">
 	select seq,
 	category_a,
