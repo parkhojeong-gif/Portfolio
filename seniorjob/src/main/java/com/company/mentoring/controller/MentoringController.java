@@ -41,6 +41,13 @@ public class MentoringController {
 		return "Mentoring/mentoringList";
 	}
 	
+	// 멘토링 키워드 검색
+	@RequestMapping("/getKeywordMentoring")
+	public String getKeywordMentoring(Model model, MentoringVO vo) {
+		model.addAttribute("list", mtService.getKeywordMentoring(vo));
+		return "Mentoring/mentoringList"; 
+	}
+	
 	// 멘토링 단건조회
 	@RequestMapping("/getMentoring")
 	public String getMentoring(Model model, MentoringVO vo) {

@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
 <link href="resources/css/main.css" rel="stylesheet" />
 
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500" rel="stylesheet" />
+<link href="resources/mentoringSearchBar/css/main.css" rel="stylesheet" />
+
 </head>
 <body>
 	<!-- topHeader -->
@@ -100,10 +103,41 @@
       </form>
     </div>
     
-	
-	<!-- 지역별 검색 -->
+    <!-- 멘토링 검색 -->
+    <div class="s002">
+      <form onsubmit="checkValueNullMentoring()" method="post" name="MentoringsearchFrm">
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              </svg>
+            </div>
+            <input id="search" name="searchKeyword" value="" type="text" placeholder="멘토링 이름 검색" />
+          </div>
+          <div class="input-field second-wrap">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+              </svg>
+            </div>
+            <input type="date" class="datepicker" id="depart" name="s_date" type="text" placeholder="멘토링 시작일" />
+          </div>
+          <div class="input-field third-wrap">
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path>
+              </svg>
+            </div>
+            <input type="date" class="datepicker" id="return" name="e_date" type="text" placeholder="멘토링 종료일" />
+          </div>
+          <div class="input-field fifth-wrap">
+            <button type="submit" class="btn-search">SEARCH</button>
+          </div>
+        </div>
+      </form>
+    </div>
+	<!-- End of 멘토링 검색 -->
 
-<!-- End of 지역별 검색 -->
 <script src="resources/js/extention/choices.js"></script>
 <script>
 
@@ -120,7 +154,7 @@
 		}
 	}
 	
-	// 상세검색 값 체크
+	// 멘토 상세검색 값 체크
 	function checkValueNull(){
 		var dutyChk = $("[name='mentor_duty']").val();
 		var locationChk = $("[name='mentoring_location']").val();
@@ -132,7 +166,6 @@
 			searchFrm.action = "getMentorList";
 			searchFrm.submit();
 		}
-		
 	}
 	
 	// 연령 검색 값 체크
@@ -192,8 +225,24 @@
          deleteAll[i].click();
        }
      });
+     
+     
+     flatpickr(".datepicker",
+    	      {});
+
+    	    </script>
+    	    <script>
+    	      const choices = new Choices('[data-trigger]',
+    	      {
+    	        searchEnabled: false,
+    	        itemSelectText: '',
+    	      });
 
 </script>
+
+	<script src="resources/mentoringSearchBar/js/extention/choices.js"></script>
+    <script src="resources/mentoringSearchBar/js/extention/flatpickr.js"></script>
+
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>

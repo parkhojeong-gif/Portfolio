@@ -7,7 +7,19 @@
  	<!-- 멘토링 리스트 호출 -->
  	<select id="getMentoringList" resultType="com.company.mentoring.service.MentoringVO">
  		SELECT * FROM MENTORING
+			<if test="mentoring_begin_date != null and mentoring_begin_date != '' and mentoring_end_date != null and mentoring_end_date != ''">
+				WHERE mentoring_begin_date BETWEEN ${s_date} AND #{e_date}
+			</if>
+			<if test="mentoring_end_date != null and mentoring_end_date != ''">
+				AND mentoring_end_date BETWEEN ${s_date} AND #{e_date}
+			</if>
  		ORDER BY MENTORING_NUMBER
+ 	</select>
+ 	
+ 	<!-- 키워드 검색 -->
+ 	<select id="getKeywordMentoring" resultType="com.company.mentoring.service.MentoringVO">
+     	SELECT * FROM MENTORING
+     		WHERE MENTORING_NAME LIKE '%'||#{searchKeyword}||'%'
  	</select>
  	
  	<!-- 멘토링 등록 -->

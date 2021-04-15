@@ -76,4 +76,9 @@ public class MentoringServiceImpl implements MentoringService {
 		return dao.getMentoringList(vo);
 	}
 
+	@Override
+	public List<MentoringVO> getKeywordMentoring(MentoringVO vo) {
+		return dao.getKeywordMentoring(vo);
+	}
+
 }

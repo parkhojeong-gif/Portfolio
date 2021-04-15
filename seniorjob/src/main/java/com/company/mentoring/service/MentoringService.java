@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MentoringService {
 	
-	public List<MentoringVO> getMentoringList(MentoringVO vo); // 멘토링 리스트
+	public List<MentoringVO> getMentoringList(MentoringVO vo); // 硫섑넗留� 由ъ뒪�듃
+	public List<MentoringVO> getKeywordMentoring(MentoringVO vo); // 멘토링 키워드 검색
 	
 	public void insertMentoring(MentoringVO vo, HttpServletRequest request) throws IllegalStateException, IOException;
 	
@@ -19,5 +20,5 @@ public interface MentoringService {
 	
 	public List<MentoringVO> getSearchMentoring(MentoringVO vo);
 
-	public List<MentoringVO> mentoringRegisterCheck(MentoringVO vo); // 멘토링 중복 체크
+	public List<MentoringVO> mentoringRegisterCheck(MentoringVO vo); // 硫섑넗留� 以묐났 泥댄겕
 }
