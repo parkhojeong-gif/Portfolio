@@ -199,4 +199,6 @@ public class UsersServiceImpl implements UsersService {
 	public List<Map> getCarList(UsersVO vo) {
 		return usersmapper.getCarList(vo);
 	}
+	
+	@Override	public int updateCerti(UsersVO vo) {		return usersmapper.updateCerti(vo);	}
 }
