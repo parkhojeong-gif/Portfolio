@@ -49,7 +49,7 @@ public class UsersVO { //회원테이블
 			private String passwordold; //예전 비밀번호
 			private String passwordck; //비밀번호 확인
 		
-			//자격증,경력증명서 등록시 필요
+			//자격증,경력증명서 등록,조회시 필요
 			private String certi_name;		//자격증명
 			private String certi_place;		//발행처/기관
 			private String certi_no;		//자격증번호

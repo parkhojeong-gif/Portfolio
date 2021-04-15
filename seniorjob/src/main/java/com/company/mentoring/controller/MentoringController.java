@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -126,5 +127,25 @@ public class MentoringController {
 		model.addAttribute("md", mtService.getMentoring(vo));
 		return "Mentoring/getMentoring";
 	}
+	
+	@GetMapping("updateMentoringForm") //멘토링 수정 페이지로 이동
+	public String updateMentoringForm(Model model, MentoringVO vo) {
+		mtService.getMentoringDetail(vo);
+		model.addAttribute("menDetail", mtService.getMentoringDetail(vo));
+		
+		return "/Mentoring/updateMentoringForm";
+		
+	}
+	
+	@PostMapping("/updateMentoring") //멘토링 수정 처리
+	public String updateMentoring(MentoringVO vo, HttpServletRequest request) {
+		mtService.updateMentoring(vo);
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		vo.setId(id);
+		return "redirect:/getSearchMentoring";
+		
+	}
+	
 	
 }

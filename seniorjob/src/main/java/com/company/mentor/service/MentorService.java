@@ -19,4 +19,6 @@ public interface MentorService {
 	
 	public List<MentorVO> getMentorByDate(MentorVO vo); // 멘토리스트 세부검색: 최신순
 	public List<MentorVO> getMentorByFollow(MentorVO vo); // 멘토리스트 세부검색: 인기순
+	
+	public String getMentorId(MentorVO vo);// 멘토 아이디 조회
 }

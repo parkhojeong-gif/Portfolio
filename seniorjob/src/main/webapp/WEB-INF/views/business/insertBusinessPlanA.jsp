@@ -52,7 +52,7 @@ function prodAdd() {
 	} else {
 	
 	var prodDiv = $('<div />').attr("class", "row").attr("id", "prodDiv");
-	var hidden = $('<input />').attr("type","hidden").attr("id","pHidden").attr("name","pHidden").attr("value","1");
+	var hidden = $('<input />').attr("type","hidden").attr("id","phidden").attr("name","phidden").attr("value","1");
 	var br = $('<br />');
 	var hr = $('<hr />');
 	var h2 = $('<h2 />').html("생산제품의 소개");
@@ -101,7 +101,7 @@ function marketAdd() {
 	
 	
 	var marketDiv = $('<div />').attr("class", "row").attr("id", "marketDiv");
-	var hidden = $('<input />').attr("type","hidden").attr("id","mHidden").attr("name","mHidden").attr("value","1");
+	var hidden = $('<input />').attr("type","hidden").attr("id","mhidden").attr("name","mhidden").attr("value","1");
 	var br = $('<br />');
 	var hr = $('<hr />');
 	var h2 = $('<h2 />').html("시장현황 및 전망");
@@ -162,7 +162,7 @@ function sellAdd() {
 	
 	
 	var sellingDiv = $('<div />').attr("class", "row").attr("id", "sellingDiv");
-	var hidden = $('<input />').attr("type","hidden").attr("id","sHidden").attr("name","sHidden").attr("value","1");
+	var hidden = $('<input />').attr("type","hidden").attr("id","shidden").attr("name","shidden").attr("value","1");
 	var br = $('<br />');
 	var hr = $('<hr />');
 	var h2 = $('<h2 />').html("판매계획");
@@ -240,6 +240,13 @@ function sellAdd() {
 					<hr>
 					<h2>계획사업의 개요</h2>
 					<br>
+					
+					<div class="col-sm-12">
+								<div class="form-group">
+									<label for="title">제목</label>
+									<textarea name="title" id="title" class="form-control"></textarea>
+								</div>
+							</div>
 						
 							<div class="col-sm-12">
 								<div class="form-group">

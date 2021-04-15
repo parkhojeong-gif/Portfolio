@@ -171,6 +171,12 @@ public class UsersServiceImpl implements UsersService {
 		return usersmapper.updateUsersProc(vo);
 	}
 
+	@Override
+	public List<Map> getCertiList(UsersVO vo) {
+		return usersmapper.getCertiList(vo);
+	}
+
+
 
 	
 	

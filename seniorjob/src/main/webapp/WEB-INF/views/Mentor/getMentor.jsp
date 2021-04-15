@@ -1,3 +1,5 @@
+<%@page import="org.springframework.web.servlet.mvc.condition.ProducesRequestCondition"%>
+<%@ page import="java.util.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -96,12 +98,12 @@ h1{text-align:center; padding: 20px}
 <body>
 
 
+
   <div class="about-section">
   <h1>${list.usersVO.name } 멘토님의 페이지</h1>
   <p>Some text about who we are and what we do.</p>
   <p>Resize the browser window to see that this page is responsive by the way.</p>
 </div>
-
 <h2 style="text-align:center">Our Team</h2>
 <form name="getMentorInfo" method="post">
 <input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
@@ -150,12 +152,19 @@ h1{text-align:center; padding: 20px}
 		
 		<!-- 멘토링 정보(멘토링 등록 정보가 있을 때만 출력 -->
 	<c:if test="${not empty mentoring.mentoring_number }">
-		<form id="mentoringForm" name="mentoringForm" method="post">
-		<input type="hidden" id="id" name="id" value="${list.id }">
-		<input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
+		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
+		<input type="hidden" id="id" name="id" value="${list.mentor_id }">
+		<input type="hidden" id="user_id" name="user_id" value="${users.id }">
 		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
+		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
+		<!-- 송다희 추가 -->
+		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.mentoring_begin_date }">
+		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
+		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
+		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
+		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
@@ -180,8 +189,8 @@ h1{text-align:center; padding: 20px}
 						<textarea style="margin: 0px; width: 1019px; height: 143px;" readonly>${mentoring.mentoring_content }</textarea>
 					<p>
 					<div>
-						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button" onclick="mentoringPayForm()">멘토링 신청하기</button>
+						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button" onclick="insertC()">장바구니 담기</button>
+						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
 					</div>
 					</div>
 				</div>
@@ -199,40 +208,33 @@ h1{text-align:center; padding: 20px}
 		getFollow(); // 멘토팔로우
 		deleteFollow(); // 멘토팔로우 취소
 	}); // end of function
+	 /*  $(function() {
 		
 		function getBasket(){ // 장바구니 담기
 		
-			var formData2 = { "id" : $('#id').val(),
-							 "mentoring_number":$('#mentoring_number').val(),
-							 "men_start":$('#men_start').val(),
-							 "met_end":$('#met_end').val() }
-	
-			$('#BasketBtn').click(function() {
-				$.ajax({
-					url : "BasketCheck",
-					//type : "post",
-					dataType : "json",
-					data : formData2,
-					success : function(result) {
-						if (result == 1) {
-							alert("이미 장바구니에 담았습니다.");
-						} else {
-							alert("장바구니에 담았습니다.");
+		var formData = { 
+						 "mentoring_name":$('#mentoring_name').val(),
+						 "cart_start":$('#men_start').val(),
+						 "cart_end":$('#met_end').val(),
+						 "cart_price":$('#mentoring_price').val(),
+						 "id" : $('#user_id').val()
 						}
-					}
-				});
-			});
-		} // end of getBasket
-		
-		/* $('#PayBtn').click(function(){ // 멘토링 신청하기(작성중)
+						 
+
+		// 장바구니 담기
+		$('#BasketBtn').click(function() {
 			$.ajax({
-				url:
-				dataType:
-				data:
-				success:function(result){
-					if(result==0){
-						alert("");
-					}
+				url : "BasketChecks",
+				type : "post",
+				dataType : "json",
+				data : formData,
+				success : function(result) {
+					console.log(result);
+					  if (result != 0) {
+						alert("이미 장바구니에 담았습니다.");
+					} else {
+						alert("장바구니에 담았습니다.");
+					} 
 				}
 			});
 		}); */
@@ -277,6 +279,20 @@ h1{text-align:center; padding: 20px}
 			});
 		} // end of deleteFollow
 		
+		});
+	}); // end of function  */   
+	
+	// 장바구니 담기
+	function insertC(){
+		var yn = confirm("장바구니에 담으시겠습니까?");
+		if(yn){
+			mentoringForm.action = "insertCart";
+			mentoringForm.submit();
+		}
+	}
+	
+
+
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){

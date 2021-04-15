@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.businesspalna.service.BusinessPlanAService;
+import com.company.mentoring.service.MentoringVO;
 import com.company.businesspalna.service.BusinessPalnAVO;
 
 @Service
@@ -60,25 +61,51 @@ public class BusinessPlanAServiceImpl implements BusinessPlanAService {
 	}
 
 	@Override
-	public String getSeq() {
+	public int getSeq() {
 		return dao.getSeq();
 	}
 
 	@Override
-	public List<BusinessPalnAVO> getSearchBusinessPlanB(BusinessPalnAVO vo) {
-		return dao.getSearchBusinessPlanB(vo);
+	public int updateBusinessPlanB(BusinessPalnAVO vo) {
+		return dao.updateBusinessPlanB(vo);
 	}
 
 	@Override
-	public List<BusinessPalnAVO> getSearchBusinessPlanC(BusinessPalnAVO vo) {
-		return dao.getSearchBusinessPlanC(vo);
+	public int updateBusinessPlanC(BusinessPalnAVO vo) {
+		return dao.updateBusinessPlanC(vo);
 	}
 
 	@Override
-	public List<BusinessPalnAVO> getSearchBusinessPlanD(BusinessPalnAVO vo) {
-		return dao.getSearchBusinessPlanD(vo);
+	public int updateBusinessPlanD(BusinessPalnAVO vo) {
+		return dao.updateBusinessPlanD(vo);
 	}
 
+	@Override
+	public List<MentoringVO> ckMenName(MentoringVO vo) {
+		return dao.ckMenName(vo);
+	}
+
+	@Override
+	public int ckUpdate(BusinessPalnAVO vo) {
+		return dao.ckUpdate(vo);
+	}
+
+	@Override
+	public List<BusinessPalnAVO> checkP(BusinessPalnAVO vo) {
+		return dao.checkP(vo);
+	}
+
+	@Override
+	public BusinessPalnAVO checkBusinessPlan(BusinessPalnAVO vo) {
+		return dao.checkBusinessPlan(vo);
+	}
+
+	@Override
+	public int collectionUpdate(BusinessPalnAVO vo) {
+		return dao.collectionUpdate(vo);
+	}
+
+	
 
 
 }
