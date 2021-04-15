@@ -17,4 +17,6 @@ public interface MentoringMapper {
 	public List<MentoringVO> getSearchMentoring(MentoringVO vo);
 
 	public void MentoringRegisterProc(MentoringVO vo); // 멘토링 등록
+	
+	public MentoringVO getMentoringDetail(MentoringVO vo); //멘토링 코스 상세조회 
 }

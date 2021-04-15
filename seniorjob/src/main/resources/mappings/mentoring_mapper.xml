@@ -40,7 +40,7 @@
 		WHERE MENTOR_ID = #{mentor_id}
 	</select>
 	
-	<!-- 멘토링 상세조회-->
+	<!-- 멘토링 list 조회-->
 	<!-- 양소민 -->
 	<select id="getSearchMentoring" resultType="com.company.mentoring.service.MentoringVO">
 		SELECT
@@ -64,7 +64,43 @@
 		WHERE ID=#{id}
 	</select>
 	
+	
+	
+	<!-- 멘토링 코스 수정 -->
+	<update id="updateMentoring" parameterType="MentoringVO">
+	 UPDATE  MENTORING
+	 SET 
+	 MENTORING_NAME =#{mentoring_name},
+	 MENTORING_LIMIT =#{mentoring_limit},
+	 MENTORING_CONTENT =#{mentoring_content},
+	 MENTORING_PHOTO=#{mentoring_photo},
+	 MENTORING_PRICE=#{mentoring_price},
+	 MENTORING_DATA=#{mentoring_data},
+	 MENTORING_REQUEST=#{mentoring_request},
+	 MENTORING_BEGIN_DATE=#{mentoring_begin_date},
+	 MENTORING_END_DATE=#{mentoring_end_date}
+	 WHERE MENTORING_NUMBER=#{mentoring_number}
+	</update>
 
 
+	<!-- 멘토링 코스 상세조회 -->
+	<select id="getMentoringDetail" resultType="MentoringVO">
+	 SELECT
+	 MENTORING_NUMBER, 
+	 MENTORING_NAME, 
+	 MENTORING_LIMIT,
+	 MENTORING_CONTENT, 
+	 MENTORING_PHOTO, 
+	 MENTORING_PRICE, 
+	 MENTORING_DATA, 
+	 MENTORING_REQUEST,
+	 MENTOR_ID, 
+	 TO_CHAR(MENTORING_BEGIN_DATE, 'yyyy-mm-dd') AS "mentoring_begin_date",
+	 TO_CHAR(MENTORING_END_DATE,'yyyy-mm-dd') AS "mentoring_end_date",
+	 MENTORING_CLICK,
+	 MENTORING_OPEN_DATE 
+	 FROM MENTORING
+	 WHERE MENTORING_NUMBER = #{mentoring_number}
+	</select>
 
 </mapper>

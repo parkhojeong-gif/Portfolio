@@ -109,4 +109,24 @@ public class MentoringController {
 		return "Mentoring/getMentoring";
 	}
 	
+	@GetMapping("updateMentoringForm") //멘토링 수정 페이지로 이동
+	public String updateMentoringForm(Model model, MentoringVO vo) {
+		mtService.getMentoringDetail(vo);
+		model.addAttribute("menDetail", mtService.getMentoringDetail(vo));
+		
+		return "/Mentoring/updateMentoringForm";
+		
+	}
+	
+	@PostMapping("updateMentoring") //멘토링 수정 처리
+	public String updateMentoring(MentoringVO vo, HttpServletRequest request) {
+		mtService.updateMentoring(vo);
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		vo.setId(id);
+		return "redirect:/getSearchMentoring";
+		
+	}
+	
+	
 }

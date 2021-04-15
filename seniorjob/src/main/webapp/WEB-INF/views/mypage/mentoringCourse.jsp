@@ -16,7 +16,7 @@ function detail(id) {
 
 
 function update(num) {
-	location.href="#?mentoring_number="+num //
+	location.href="updateMentoringForm?mentoring_number="+num //
 }
 </script>
  <jsp:include page="../topHeader.jsp"></jsp:include>

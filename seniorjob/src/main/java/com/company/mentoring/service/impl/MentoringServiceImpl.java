@@ -42,4 +42,9 @@ public class MentoringServiceImpl implements MentoringService {
 	public void MentoringRegisterProc(MentoringVO vo) {
 	}
 
+	@Override
+	public MentoringVO getMentoringDetail(MentoringVO vo) {
+		return dao.getMentoringDetail(vo);
+	}
+
 }
