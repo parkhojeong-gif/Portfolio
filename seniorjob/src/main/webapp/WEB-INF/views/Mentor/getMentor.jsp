@@ -159,7 +159,7 @@ h1{text-align:center; padding: 20px}
 		<div class="column2">
 			<div class="card">
 				<div style="width: 200px; height: 150px; float: left;">
-					<img src="image/${mentoring.mentor_photo }" id="mentoringCourse" style="width:100%">
+					<img src="image/${mentoring.mentoring_photo }" id="mentoringCourse" style="width:100%">
 				</div>
 				<div class="container">
 					<p>
@@ -224,28 +224,13 @@ h1{text-align:center; padding: 20px}
 			});
 		} // end of getBasket
 		
-		/* $('#PayBtn').click(function(){ // 멘토링 신청하기(작성중)
-			$.ajax({
-				url:
-				dataType:
-				data:
-				success:function(result){
-					if(result==0){
-						alert("");
-					}
-				}
-			});
-		}); */
-		
 		function getFollow(){ // 멘토 팔로우
-			
-			var formData1 = { "id" : $('#user_id').val(),"mentor_id":$('#mentor_id').val() }
 			
 			$('#followBtn').click(function(){
 				$.ajax({
 					url: "mentorFollowCheck",
 					dataType: "json", 
-					data: formData1,
+					data: { "id" : $('#id').val(),"mentor_id":$('#mentor_id').val() },
 					success:function(result){
 						if(result == 0){
 							alert("팔로우 완료");
@@ -259,13 +244,11 @@ h1{text-align:center; padding: 20px}
 		
 		function deleteFollow(){ // 멘토 팔로우 취소
 			
-			var formData1 = { "id" : $('#user_id').val(),"mentor_id":$('#mentor_id').val() }
-			
 			$('#followCancelBtn').click(function(){
 				$.ajax({
 					url: "deleteMentorFollow",
 					dataType: "json", 
-					data: formData1,
+					data: { "id" : $('#user_id').val(),"mentor_id":$('#mentor_id').val() },
 					success:function(result){
 						if(result == 0){
 							alert("팔로우하지 않은 멘토입니다.");

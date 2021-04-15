@@ -1,5 +1,7 @@
 package com.company.mentoring.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -15,6 +17,8 @@ public class MentoringVO {  //멘토링 코스
 	private String mentor_id;	//멘토 id
 	private String mentoring_end_date;	//멘토링 코스 종료일
 	private String mentoring_begin_date;	//멘토링 코스 시작일
+	
+	private MultipartFile mentoring_photo_file; // 멘토링 사진 파일
 	
 	private String s_date; // 멘토링 시작일 alias
 	private String e_date; // 멘토링 종료일 alias

@@ -168,7 +168,7 @@
 		}
 	}
 	
-	// 로그인 상태에서 멘토 등록 클릭 시
+	// 멘토 등록
 	function MentorRegister(){
 		var param = $('#id').val();
 		var mentorRegisterForm = document.mentorRegisterForm;
@@ -177,11 +177,12 @@
 	}
 	
 	// 멘토링 등록
-	function MentoringRegister(){
-		function MentorRegister(){
+		function MentoringRegister(){
 			var param = $('#id').val();
-			var 
-	}
+			var mentorRegisterForm = document.mentorRegisterForm;
+			mentorRegisterForm.action = "MentoringRegister?id="+param;
+			mentorRegisterForm.submit();
+		}
 	
 	// 세부검색(최신순, 인기순)
 	function optionSelect(obj){
@@ -194,11 +195,11 @@
 				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-					
+				
 				var div2 = $("<div>").attr({ id:"list-type",'class':"proerty-th" });
-				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"  });
+				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");
-				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","../resources/assets/img/mentor/photoDefault.jpg"));
+				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","image/"+response[i].mentor_photo));
 				var div6 = $("<div>").attr("class","item-entry overflow");
 					var h5 = $("<h5>").attr("id","mentor_company_name").text(response[i].mentor_company_name).append($("<br>"));
 					var a = $("<a>").attr("id","mentor_department_name").text(response[i].mentor_department_name);
@@ -214,6 +215,14 @@
 				});
 			} // end of success
 		}); // end of ajax
+		
+		$('#mtList').on('click','#mentor_id',function(){
+		var param = $(event.target).closest('#mentor_id').data('id');
+		location.href='getMentor?mentor_id='+param;
+	});
+		
 	}
+	
+	
 	
 </script>

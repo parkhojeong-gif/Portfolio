@@ -8,7 +8,7 @@ public interface MentoringMapper {
 	
 	public List<MentoringVO> getMentoringList(MentoringVO vo); // 멘토링 리스트
 	
-	public int insertMentoring(MentoringVO vo);
+	public void insertMentoring(MentoringVO vo);
 	
 	public int updateMentoring(MentoringVO vo);
 	
@@ -18,5 +18,5 @@ public interface MentoringMapper {
 	
 	public List<MentoringVO> getSearchMentoring(MentoringVO vo);
 
-	public MentoringVO MentoringRegisterCheck(MentoringVO vo); // 멘토링 중복 체크
+	public List<MentoringVO> mentoringRegisterCheck(MentoringVO vo); // 멘토링 중복 체크
 }

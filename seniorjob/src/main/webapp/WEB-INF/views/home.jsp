@@ -9,11 +9,15 @@
 <title>시니어잡</title>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
 <link href="resources/css/main.css" rel="stylesheet" />
+
 </head>
 <body>
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
 	<!-- topHeader -->
+	
+	
+	<!-- 멘토 검색 -->
 	 <div class="s009">
       <form onsubmit="checkValueNull()" method="post" name="searchFrm">
         <div class="inner-form">
@@ -95,7 +99,8 @@
         </div>
       </form>
     </div>
-
+    
+	
 	<!-- 지역별 검색 -->
 
 <!-- End of 지역별 검색 -->

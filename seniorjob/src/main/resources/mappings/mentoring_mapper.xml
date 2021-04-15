@@ -82,11 +82,11 @@
 	
 	<!-- 멘토링 날짜 중복 체크 -->
 	<select id="mentoringRegisterCheck" resultType="com.company.mentoring.service.MentoringVO">
-		select 
-			MENTORING_BEGIN_DATE, MENTORING_END_DATE
-		FROM 
-			MENTORING
-		WHERE MENTORING_BEGIN_DATE = #{mentoring_begin_date}
+		SELECT * 
+			FROM MENTORING
+		WHERE MENTORING_BEGIN_DATE BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}   
+		AND MENTORING_END_DATE BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}   
+		AND MENTOR_ID = #{mentor_id}
 	</select>
 
 

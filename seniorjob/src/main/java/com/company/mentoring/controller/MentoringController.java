@@ -1,8 +1,10 @@
 package com.company.mentoring.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -60,6 +62,29 @@ public class MentoringController {
 		}
 	}
 	
+	// 멘토링 등록 처리
+	@RequestMapping("/mentoringRegisterCheck")
+	public String mentoringRegisterCheck(Model model, MentoringVO vo, HttpServletRequest request) throws IllegalStateException, IOException {
+		//Map<String, Object> map = new HashMap<String, Object>();
+		List<MentoringVO> list = mtService.mentoringRegisterCheck(vo);
+			mtService.insertMentoring(vo, request);
+			model.addAttribute("msg", "멘토링 등록 완료");
+			model.addAttribute("url", "getMentorList");
+			return "common/Success";
+	}
+	
+	// 멘토링 미리보기 페이지 호출
+	@RequestMapping("/mentoringPreview")
+	public String mentoringPreviewForm() {
+		return "Mentoring/mentoringPreview";
+	}
+	
+	// 멘토링 미리보기 페이지 호출용
+	@RequestMapping("/MentoringRegisterForm")
+	public String MentoringRegisterForm() {
+		return "Mentoring/MentoringRegister";
+	}
+	
 	// 멘토링 결제페이지
 	@RequestMapping("/mentoringPayForm")
 	public String mentoringPayForm(Model model, MentoringVO mtrVo, MentorVO mVo, ShoppingVO sVo, HttpServletRequest request) {
@@ -87,7 +112,8 @@ public class MentoringController {
 			shoppingService.mentoringPayProc(vo); // Insert
 			return result;
 		}else { // 테이블에 값이 있으면(장바구니에 있으면)
-			shoppingService.mentoringPayProcBasket(vo); // Update
+			// Cart 삭제
+			shoppingService.mentoringPayProc(vo); // Insert
 			return result;
 		}
 	}
