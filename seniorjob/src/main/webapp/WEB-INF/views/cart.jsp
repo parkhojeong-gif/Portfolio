@@ -47,11 +47,11 @@ function allDel(){
 					  <c:forEach items="${list }" var="cart">
 					  <c:choose>
 					  <c:when test="${cart.id eq users.id }">
-					  <c:when test=>
+					  <%-- <c:when test="${cart.id eq users.id and empty cart }">
 						<tr>
 							<th>장바구니가 텅 비었습니다.</th>
 						</tr>
-				      </c:when>
+				      </c:when> --%>
 				        <tr>
 				        	<th>
 				        		<div class="chBox">
