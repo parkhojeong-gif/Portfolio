@@ -13,6 +13,11 @@ function detail(id) {
 	var url = "getMentor?mentor_id="+id;
 	window.open(url);
 }
+
+
+function update(num) {
+	location.href="#?mentoring_number="+num //
+}
 </script>
  <jsp:include page="../topHeader.jsp"></jsp:include>
     <body>
@@ -60,6 +65,7 @@ function detail(id) {
 
                                         </div>
                                          <button type="submit" class="btn btn-primary">멘토링 요청</button>
+                                         <a onclick="update('${list.mentoring_number }')" class="btn btn-default btn-border">수정</a>
                                         </form>
                                     </div>
                                 </div>                             
