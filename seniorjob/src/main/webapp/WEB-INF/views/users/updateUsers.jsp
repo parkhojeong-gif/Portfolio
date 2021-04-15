@@ -75,6 +75,23 @@ function showContents(result) {
 		let td3 = $('<td />').html(certi.CERTI_DATE);
 		let td4 = $('<td />').html(certi.CERTI_PLACE);
 		
+		let td5 = $('<td />');
+		let td6 = $('<td />');
+		let inp1 = $('<input />').attr('type','button').attr('value',"수정").attr('title',certi.NO);
+		let inp2 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
+		
+		$(inp1).on('click', function() {
+        				console.log(this);
+        				var no = this.title;
+        				location.href="updateCertiForm?no="+no;
+        			});
+		$(inp2).on('click', function() {
+        				console.log(this);
+        				var no = this.title;
+        				location.href="deleteCerti?no="+no;
+        			});
+        	$(td5).append(inp1);
+		$(td6).append(inp2);
 		$(tr).append(td1);
 		$(tr).append(td2);
 		$(tr).append(td3);
@@ -237,6 +254,8 @@ function showContents(result) {
                                 		<th>발행처</th>
                                 		<th>자격증번호</th>
                                 		<th>취득일자</th>
+						<th>수정</th>
+						<th>삭제</th>
                                 	</tr>
                                 	</thead>
                                 	<tbody id="certi">
