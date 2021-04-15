@@ -148,7 +148,7 @@
 						href="getMentoringList" style="text-align: center"><strong><h4>멘토링</h4></strong></a></li>
 					<li class="wow fadeInDown" data-wow-delay="0.3s"
 						style="width: 150px; height: 100px"><a class=""
-						href="serviceCenter" style="text-align: center"><strong><h4>정보공유</h4></strong></a></li>
+						href="job?cd=12" style="text-align: center"><strong><h4>정보공유</h4></strong></a></li>
 					<li class="wow fadeInDown" data-wow-delay="0.3s"
 						style="width: 150px; height: 100px"><a class=""
 						href="serviceCenterMain" style="text-align: center"><strong><h4>고객센터</h4></strong></a></li>

@@ -26,8 +26,10 @@
 			<div class="row">
 
 				<jsp:include page="new_sevice_left.jsp"></jsp:include>
+				<div class="col-md-1 pr-30  properties-page user-properties">
+				</div>
 				<div
-					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+					class="col-md-9 pr-30  properties-page user-properties">
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
@@ -60,7 +62,7 @@
 							value="공지사항">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<select name="category_b" id="category_b">
+								<select name="category_b" id="category_b" required="required">
 									<option value="">카테고리</option>
 									<option value="이벤트">이벤트</option>
 									<option value="점검">점검</option>
@@ -74,9 +76,9 @@
 								<textarea id="summernote" name="content"></textarea>
 								<script>
 									$('#summernote').summernote({
-										placeholder : 'Hello stand alone ui',
+										placeholder : '공지사항을 입력해주세요',
 										tabsize : 2,
-										height : 100
+										height : 400
 									});
 								</script>
 								<br>

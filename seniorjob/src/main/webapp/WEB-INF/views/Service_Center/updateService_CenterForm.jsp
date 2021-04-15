@@ -9,7 +9,14 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 
 <body>
 	<!-- property area -->
@@ -19,17 +26,19 @@
 			<div class="row">
 			
 			<jsp:include page="new_sevice_left.jsp"></jsp:include>
+			<div class="col-md-1 pr-30 properties-page user-properties">
+			</div>
 		<div
-					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+					class="col-md-9 pr-30 properties-page user-properties">
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
 						<h2>공지사항 수정</h2>
-						<input type="text" value="${list.seq }">
+						
 					</div>
 					<hr>
 					<form id="frm" action="updateService_Center?seq=${list.seq }"  method="post" name="frm" >
-							<h3>글 작성</h3>
+							
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>제목</label> 
@@ -44,8 +53,8 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
-									<label>작성일자</label> 
-									<input type="text" class="form-control" name="" readonly="readonly" value="${list.w_date }" readonly="readonly" >
+									<<label>작성일자</label> <input type="date" class="form-control"
+									id='currentDate' name="resume_email" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -61,7 +70,14 @@
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>내용</label> <br>
-									<textarea id="content" name="content" rows="10" cols="90" style="resize: none;">${list.content }</textarea>
+									<textarea id="summernote" name="content" rows="10" cols="90" style="resize: none;">${list.content }</textarea>
+									<script>
+									$('#summernote').summernote({
+										placeholder : '공지사항을 입력해주세요',
+										tabsize : 2,
+										height : 400
+									});
+								</script>
 								</div>
 							</div>
 							<br> <br> <br> <br> <br> <br> <br>
@@ -80,7 +96,23 @@
 			</div>
 		</div>
 	</div>
-	
+	<script>
+		document.getElementById('currentDate').value = new Date().toISOString()
+				.substring(0, 10);
+
+		$(document).ready(function() {
+			//여기 아래 부분
+			$('#summernote').summernote({
+				height : 300, // 에디터 높이
+				minHeight : null, // 최소 높이
+				maxHeight : null, // 최대 높이
+				focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+				lang : "ko-KR", // 한글 설정
+				placeholder : '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
+
+			});
+		});
+	</script>
 	<!--         </div> -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

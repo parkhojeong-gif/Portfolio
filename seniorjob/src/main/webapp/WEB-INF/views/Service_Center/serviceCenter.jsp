@@ -40,7 +40,7 @@ $(function(){
 				</div>
 				<div id="optionVal"
 					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-
+					<h4>공지사항 게시판</h4>
 					<div class="section additional-details">
 
 						<div class="items-per-page">
@@ -52,7 +52,9 @@ $(function(){
 									<option value="최신순">최신순</option>
 									<option value="인기순">조회수순</option>
 								</select> <input type="hidden" id="sebubtn">
+								<button style="float: right" class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterForm'">등록</button>
 							</div>
+							<br>
 							<!--/ .sel-->
 						</div>
 
@@ -169,7 +171,6 @@ $(function(){
 				</div>
 				<!--등록버튼  -->
 				<div class="col-md-2  properties-page user-properties">
-				<button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterForm'">등록</button>
 				</div>
 				
 				<div

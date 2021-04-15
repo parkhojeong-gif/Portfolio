@@ -41,17 +41,17 @@ $(function(){
 /*이전 글, 다음 글 기능  */
 </script>
 <body>
-<div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+<div class="content-area blog-page " style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
                     <jsp:include page="new_sevice_left.jsp"></jsp:include>
  
-                    
-                    <div class="col-md-8 single-property-content ">
+                    <div class="col-md-1 padding-top-40 properties-page user-properties">
+                    </div>
+                    <div class="col-md-9  properties-page user-properties">
                         <div class="row">
                         <h2 class="wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft; text-align: center;">${gongji.title }</h2>
                         <br>
-                        <hr>
                         <br>
                         <div class="col-sm-6">
                               <p class="author-category">
@@ -69,8 +69,8 @@ $(function(){
                             <!-- .property-meta -->
 							<br><br>
                             <div class="section">
-                             <h4 class="s-property-title">${gongji.category_b }</h4>
-                                <div class="s-property-content">
+                             <h4 style="height: 70px" class="s-property-title">${gongji.category_b }</h4>
+                                <div style="width: 400px; height: 300px"class="s-property-content">
                                     <p><h3>${gongji.content }</h3></p>
                                 </div>
                             </div>
@@ -78,11 +78,6 @@ $(function(){
                             <input type="hidden" id="preId" value="${num.prev }">
                             <input type="hidden" id="preId2" value="${num.next }">                            
 							<div class="post-footer single wow fadeInBottum animated animated" style="visibility: visible;">
-                                <ul class="pager">
- 						                               
-                                    <li class="previous"><a href="#" onclick="pagePre()"><i class=""></i>← 이전 글 </a></li>
-                                    <li class="next"><a href="#" onclick="pageNext()">다음 글 →<i class=""></i> </a></li>
-                                </ul> 
                             <!-- 수정/삭제-->
                             <div class="button navbar-right">
                         		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>

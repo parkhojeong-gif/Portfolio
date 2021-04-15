@@ -36,7 +36,7 @@
 
 	<!-- property area -->
 
-	<div class="col-md-2 p0 padding-top-20">
+	<div class="col-md-2 p0 padding-top-40">
 		<div class="blog-asside-right pr0">
 			<hr class="my-hr3">
 			<div
@@ -61,7 +61,7 @@
 			<hr class="my-hr3">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='#'">
+				<div class="panel-heading" onclick="location.href='serviceCenterQna'">
 					<h3 class="panel-title">자주하는 질문</h3>
 				</div>
 			</div>
