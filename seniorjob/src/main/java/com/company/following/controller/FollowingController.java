@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.following.service.FollowService;
 import com.company.following.service.FollowingVO;
+import com.company.mentoring.service.MentoringVO;
 
 @Controller
 public class FollowingController {
@@ -26,22 +27,29 @@ public class FollowingController {
 	}
 	
 	// 멘토 팔로우
+	// 송다희 수정
 	@RequestMapping("/MentorFollow")
-	public String getMentorFollow(HttpServletRequest req, Model model, FollowingVO vo) {
+	public String getMentorFollow(HttpServletRequest req, Model model, FollowingVO vo, MentoringVO mentovo) {
 		
 		FollowingVO followCheck = followService.mentorFollowCheck(vo);
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
 		// 팔로우 중복 체크
 		if(followCheck != null) {
 			model.addAttribute("msg", "이미 팔로우된 멘토입니다.");
 			model.addAttribute("url", "getMentor?mentor_id="+vo.getMentor_id());
 			return "common/Fail";
 		}else {
+			vo.setId(id);
+			vo.setMentor_id(mentovo.getMentor_id());
 			followService.MentorFollow(vo);
+			System.out.println(vo);
 			model.addAttribute("msg","팔로우 완료");
 			model.addAttribute("url","getMentor?mentor_id="+vo.getMentor_id());
 			return "common/Success";	
 		}
 	}
+	
 	
 	// 멘토 팔로우 취소
 	@RequestMapping("/deleteMentorFollow")

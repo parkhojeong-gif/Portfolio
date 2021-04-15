@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.company.mentor.service.impl.MentorMapper;
-import com.company.users.service.impl.UsersMapper;
 
 /**
  * Handles requests for the application home page.
@@ -42,8 +41,10 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		
 		return "home";
 	}
+	
 	
 	// 메인 페이지 호출
 	@RequestMapping("/getMain")

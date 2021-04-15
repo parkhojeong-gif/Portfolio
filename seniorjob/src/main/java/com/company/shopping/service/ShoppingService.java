@@ -24,4 +24,5 @@ public int insertShopping(ShoppingVO vo);
 	public int deleteMentoringBasket(ShoppingVO vo); // 멘토 상세페이지_장바구니 취소
 	public int BasketCheck(ShoppingVO vo); // 멘토 상세페이지_장바구니 중복 체크
 	public ShoppingVO getSearchBasket(ShoppingVO vo); // 멘토 상세페이지_장바구니 단건 조회
+
 }

@@ -63,6 +63,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 	public ShoppingVO getSearchBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 단건 조회
 		return dao.getSearchBasket(vo);
 	}
+	
 
 
 }

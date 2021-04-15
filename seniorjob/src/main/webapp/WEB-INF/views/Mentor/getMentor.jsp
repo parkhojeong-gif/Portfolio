@@ -97,7 +97,7 @@ input{
 <body>
 
 <%
-	session.setAttribute("id", request.getParameter("users.id"));
+	session.setAttribute("id", request.getParameter("id"));
 %>
 
 
@@ -232,19 +232,23 @@ input{
 		}
 	}) */
 	
-	//장바구니 sessionstorage
+	//장바구니 localStorage
+	
+	
+	
 	$(function(){
-		var item = [{name:"id", value:$('#id').val()},
-					{name:"name", value:$('#mentoring_name').val()},	
-					{name:"start", value:$("#men_start").val()},
-					{name:"end", value:$("#men_end").val()},
-					{name:"price", value:$("#mentoring_price").val()},
-					];
-			console.log(localStorage.setItem('${id}', JSON.stringify(item)));
+		var name = $('#mentoring_name').val();
+		var price = $("#mentoring_price").val();
+		var start = $("#men_start").val();
+		var end = $("#met_end").val();
+		var number = $("#mentoring_number").val();
+		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
+		var local = localStorage.setItem('products', item)
+		console.log(JSON.stringify(item));
 			$(document).on("click", "#BasketBtn", function(){
 				$.ajax({
-// 					url: "BasketCheck",
-					data: localStorage.setItem("item", JSON.stringify(item)),
+					url: "cart",
+					data: JSON.stringify(local),
 					success: function(response){
 						console.log(response);
 					}

@@ -11,28 +11,55 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.company.mentoring.service.MentoringVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 
 @Controller
 public class ShoppingController {
 	
+	
 	@Autowired ShoppingService spService;
 	
-	@RequestMapping("/shopping")    //장바구니 이동
-//	@SessionAttributes({"cart"})
-	public String shopping(ShoppingVO vo, HttpServletRequest req, Model model) {
-		HttpSession session = req.getSession();
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/cart")    //장바구니 이동
+	@ResponseBody
+	public String cart(HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		vo.setId(id);
-		//cart가 없으면 생성(하는중)
-		if(! model.containsAttribute("cart")) {
-			model.addAttribute("cart", new ArrayList<ShoppingVO>());
+		
+		ArrayList<MentoringVO> cart = null;
+		Object obj = session.getAttribute("cart");
+		if(obj == null) {
+			cart = new ArrayList<MentoringVO>();
+		}else {
+			cart = (ArrayList<MentoringVO>) obj;
 		}
-		session.setAttribute("id", id);
-		return "shopping";		  			
+		
+		String name = request.getParameter("mentoring_name");
+		String price = request.getParameter("mentoring_price");
+		
+		int pos = -1;
+		for(int i = 0; i < cart.size(); i++) {
+			MentoringVO vo = cart.get(i);
+			if(vo.getMentoring_name().equals(name)) {
+				pos = 1;
+				vo.setMentoring_number(vo.getMentoring_number() + 1);
+				break;
+			}
+		}
+		
+		if(pos == -1) {
+			MentoringVO vo = new MentoringVO();
+			vo.setMentoring_name(name);
+			vo.setMentoring_price(Integer.parseInt(price));
+			vo.setMentoring_number(1);
+			cart.add(vo);
+		}
+		session.setAttribute("cart", cart);
+		System.out.println("장바구니에 담았습니다.");
+		return "shopping";
 	}
 
 	
