@@ -148,6 +148,19 @@
 	WHERE ID=#{id} 
 	</select>
 
+
+	<!-- 마이페이지에서 경력인증서 삭제 -->
+	<delete id="delCareer" parameterType="UsersVO">
+	DELETE FROM USERCERTI 
+	WHERE NO=#{no} 
+	</delete>
+	
+	<!-- 마이페이지에서 경력인증서 파일 이름 가져오기 -->
+	<select id="selCareer" resultType="UsersVO">
+	SELECT CARRER_CERTI 
+	FROM USERCERTI 
+	WHERE NO=#{no}
+	</select>
 	
 	<!-- 김찬곤 / 단건 조회 -->
 	<select id ="getUsersForPayment" resultType="com.company.users.service.UsersVO" parameterType="map">
@@ -163,4 +176,5 @@
 			  FROM USERS
 	WHERE ID = #{id}		  
 	</select>
+	
 	</mapper>

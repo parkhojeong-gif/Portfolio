@@ -27,5 +27,6 @@ public interface UsersMapper {
 	public List<UsersVO> getUsersForPayment(Map<String, Object> map); // 김찬곤 / 단건 조회
 	public int updateUsersProc(UsersVO vo); //개인정보 수정 처리, 양소민 추가
 	public List<Map> getCertiList(UsersVO vo); //자격증, 경력증명서 조회
-
+	public UsersVO selCareer(UsersVO vo); //경력인증서 파일 이름 가져오기
+	public int delCareer(UsersVO vo); //경력인증서 삭제
 }

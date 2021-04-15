@@ -46,13 +46,29 @@ function showContents(result) {
 		
 		let tr2 = $('<tr />');
 		let td5 = $('<td />').html(certi.CARRER_CERTI);
+		let td6 = $('<td />');
+		
+		let inp1 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
+		//let no = certi.NO;
+		$(inp1).on('click', function() {
+			console.log(this);
+			var no = this.title;
+			location.href="delCareer?no="+no;
+		})
+		$(td6).append(inp1);
+		
 		$(tr2).append(td5);
+		$(tr2).append(td6);
 		$('#career').append(tr2);
 		
 		
 		
 	}
+	
+	
 }
+
+
 
     function DaumPostcode() {
         new daum.Postcode({
@@ -105,6 +121,7 @@ function showContents(result) {
     	var url="popCareer";
     	window.open(url,"","width=500,height=600");
     }
+    
     
 
 </script>
@@ -230,10 +247,12 @@ function showContents(result) {
                                 	<thead>
                                 	<tr>
                                 		<th>경력인증서</th>
+                                		<th>삭제</th>
                                 		
                                 	</tr>
                                 	</thead>
                                 	<tbody id="career">
+                                	
                                 	</tbody>
                                 
                                 </table>
@@ -257,7 +276,7 @@ function showContents(result) {
                             
                             	<hr>
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='회원탈퇴' />
+                                <!-- <input type='button' class='btn btn-finish btn-primary' name='finish' value='회원탈퇴' /> -->
                             </div>
                     </form>
 

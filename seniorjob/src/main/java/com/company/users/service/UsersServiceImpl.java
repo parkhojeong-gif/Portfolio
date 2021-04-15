@@ -184,4 +184,14 @@ public class UsersServiceImpl implements UsersService {
 	public List<UsersVO> getUsersForPayment(Map<String, Object> map) {
 		return usersmapper.getUsersForPayment(map);
 	}
+
+	@Override
+	public UsersVO selCareer(UsersVO vo) {
+		return usersmapper.selCareer(vo);
+	}
+
+	@Override
+	public int delCareer(UsersVO vo) {
+		return usersmapper.delCareer(vo);
+	}
 }

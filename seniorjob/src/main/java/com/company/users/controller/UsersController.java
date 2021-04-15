@@ -12,7 +12,9 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +49,7 @@ public class UsersController {
 
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
+	
 
 	@RequestMapping("/getUsersList") // 전체조회
 	public String userstest(Model model) {
@@ -280,7 +283,7 @@ public class UsersController {
 	//마이페이지에서 경력증명서 등록
 	@RequestMapping("/certiUpload")
 	public String certiUpload(
-		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request, RedirectAttributes rttr ,Model model,UsersVO vo) throws Exception
+		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request,Model model,UsersVO vo) throws Exception
 	{	
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
@@ -322,6 +325,19 @@ public class UsersController {
 		
 		return "/users/throughCerti";	
 	}
+	
+	//마이페이지에서 경력증명서 삭제
+	@RequestMapping("/delCareer")
+	public String certiDelete(UsersVO vo) {
+		UsersVO usersVo =  usersService.selCareer(vo);
+		String fileName = usersVo.getCarrer_certi();
+		new File("C:\\upload\\"+(fileName)).delete();  // 삭제
+		usersService.delCareer(vo);
+		return "redirect:/updateUsers";
+		
+	}
+	
+			
 
 	
 
