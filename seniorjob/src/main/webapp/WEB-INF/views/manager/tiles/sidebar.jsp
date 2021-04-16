@@ -35,8 +35,7 @@
 
 						</ul></li>
 
-					<li class="sidebar-item  has-sub"><a href="#"
-						class='sidebar-link'> <i data-feather="user"></i> <span>정보공유</span>
+					<li class="sidebar-item  has-sub"><a href="#" class='sidebar-link'> <i data-feather="user"></i> <span>정보공유</span>
 					</a>
 
 						<ul class="submenu ">

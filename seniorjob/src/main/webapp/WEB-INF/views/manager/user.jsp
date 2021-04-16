@@ -32,23 +32,24 @@
 			<div class="card-header">회원 데이터 테이블</div>
 			<div class="card-body">
 				<div class="dataTable-search">
-				<form role="form" method="get">
-					<div class="col-xs-2">
-                         <div class="btn-group bootstrap-select show-tick form-control" style="width: 200px;">
+				<form role="form" method="get" action="ManSearchService">
+					<div class="col-xs-12">
+                         <div class="btn-group bootstrap-select show-tick form-control" style="width: 500px; ">
                          	 <div class="dropdown-menu open" style="max-height: 200px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 100px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
-                         <select id="basic" name="searchType" class="form-select" tabindex="-98">
-                             <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
+                         <select id="basic" name="searchType" class="form-select" style="width:200px;" tabindex="-98">
+                              <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
-						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
-                        </select></div>
-                        </div>
-                        <div class="col-xs-7">
+						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>id</option>
+                        </select>
 							<div class="input-group">
-                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 100px;" type="text" placeholder="내용 입력 ">
+                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 200px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
                              <span class="input-group-btn">
-                             	<button class="btn btn-primary subscribe" id="searchBtn" type="button"><i data-feather="edit"></i>검색</button>
+                             	<button class="btn btn-primary subscribe" id="searchBtn" style="" type="button"><i data-feather="edit"></i>검색</button>
 							 </span>
                     		</div>
+                        </div>
+                        </div>
+                        <div class="col-xs-7">
 						</div>
 				</form>
 						

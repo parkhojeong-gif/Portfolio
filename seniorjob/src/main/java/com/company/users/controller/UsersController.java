@@ -128,6 +128,7 @@ public class UsersController {
 		UsersVO users = usersMapper.kakaoCheck(vo);
 		System.out.println(users);
 
+		session.setAttribute("accessToken", accessToken);
 		session.setAttribute("userInfo", userInfo);
 		
 		if (users == null) {
@@ -173,6 +174,8 @@ public class UsersController {
 	// logout
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
+		String access_token = (String) session.getAttribute("access_Token");
+		kakaoapi.kakaoLogout(access_token);
 		session.invalidate();
 		return "redirect:/";
 	}

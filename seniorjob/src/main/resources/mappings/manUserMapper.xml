@@ -27,11 +27,12 @@
 	
 <!--후기 페이징 처리(2) 페이지 처리 후 게시글 조회(전체조회)  -->
 <select id="userList" resultType="com.company.manager.user.userVO" parameterType="com.company.manager.user.userVO">
-	select *
-	from ( SELECT id, address, phonenum, email, birth, auth, name, log_date,
+	SELECT *
+	FROM (SELECT id, address, phonenum, email, birth, auth, name, log_date,
 	mentor_career_certificate,
 	ROW_NUMBER() OVER(ORDER BY id DESC) AS RNUM
 	FROM V_USERS where 1=1 )V_USERS WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 
+	<include refid="search"></include>
 	ORDER BY ID DESC
 </select>	
   
