@@ -33,17 +33,22 @@
 			<div class="card-body">
 				<div class="dataTable-search">
 					<div class="col-xs-2">
-                         <div class="btn-group bootstrap-select show-tick form-control">
-                         	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
-                         	 <select id="basic" name="searchType" class="selectpicker show-tick form-control" tabindex="-98">
+                         <div class="btn-group bootstrap-select show-tick form-control" style="width: 200px;">
+                         	 <div class="dropdown-menu open" style="max-height: 200px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 100px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
+                         <select id="basic" name="searchType" class="form-select" tabindex="-98">
                              <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
-						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+						      <option value="m"<c:out value="${scri.searchType eq 'm' ? 'selected' : ''}"/>>경력증명서</option>
+						      <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
+						      <option value="i"<c:out value="${scri.searchType eq 'i' ? 'selected' : ''}"/>>ID</option>
                         </select></div>
-                    </div>
-				</div>
+                        <div class="col-xs-7">
+							<div class="input-group">
+                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 100px;" type="text" placeholder="내용 입력 ">
+                             <span class="input-group-btn">
+                             	<button class="btn btn-primary subscribe" id="searchBtn" type="button"><i data-feather="edit"></i>검색</button>
+							 </span>
+                    		</div>
+						</div>
 				<br>
 				<%-- <div id="outter">
 						<div style="float: right;">
@@ -92,27 +97,23 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<div style="display: block; text-align: center;">
-					<c:if test="${paging.startPage != 1 }">
-						<a
-							href="/userList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-					</c:if>
-					<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-						var="p">
-						<c:choose>
-							<c:when test="${p == paging.nowPage }">
-								<b>${p }</b>
-							</c:when>
-							<c:when test="${p != paging.nowPage }">
-								<a
-									href="/userList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-							</c:when>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${paging.endPage != paging.lastPage}">
-						<a
-							href="/userList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-					</c:if>
+				 <div class="card-body">
+                       <nav aria-label="Page navigation example">
+                          <ul class="pagination pagination-primary  justify-content-center">
+    						<c:if test="${pageMaker.prev}">
+    						<li><a href="userList${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+    						</c:if> 
+
+    						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    						<li><a href="userList${pageMaker.makeSearch(idx)}">${idx}</a></li>
+    						</c:forEach>
+			
+    						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+    						<li><a href="userList${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+    						</c:if> 
+					  	  </ul>
+                      </nav>
+					</div>
 				</div>
 
 			</div>
@@ -405,6 +406,12 @@ $(function(){
 	})
 });
 
+<!--검색-->
+	
+	 	$('#searchBtn').click(function() {
+		 self.location = "userList" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+		});
+	  
 
 
 
