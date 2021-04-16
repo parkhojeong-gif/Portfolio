@@ -22,10 +22,10 @@ public interface Service_CenterService {
 	// 조회수 증가
 	public boolean updateClick(Service_CenterVO vo);
 
-	// 게시물 총 갯수
+	// 게시물 총 갯수 사용안함
 	public int countBoard();
 
-	// 페이징 처리 게시글 조회
+	// 페이징 처리 게시글 조회 사용안함
 	public List<Service_CenterVO> selectBoard(PagingVO vo);
 
 	// 게시글 검색
