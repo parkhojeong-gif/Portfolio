@@ -77,7 +77,7 @@
 								<c:when test="${users.auth eq 'ADMIN'}">
 									<li style="width: 450px; height: 40px">
 									<a href="#">${sessionScope.users.id} 관리자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="#">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="managerMain">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'USER'}">
