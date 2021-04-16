@@ -8,10 +8,10 @@
  	<select id="getMentoringList" resultType="com.company.mentoring.service.MentoringVO">
  		SELECT * FROM MENTORING
 			<if test="mentoring_begin_date != null and mentoring_begin_date != '' and mentoring_end_date != null and mentoring_end_date != ''">
-				WHERE mentoring_begin_date BETWEEN ${s_date} AND #{e_date}
+				WHERE mentoring_begin_date BETWEEN ${mentoring_begin_date} AND #{mentoring_end_date}
 			</if>
 			<if test="mentoring_end_date != null and mentoring_end_date != ''">
-				AND mentoring_end_date BETWEEN ${s_date} AND #{e_date}
+				AND mentoring_end_date BETWEEN ${mentoring_begin_date} AND #{mentoring_end_date}
 			</if>
  		ORDER BY MENTORING_NUMBER
  	</select>
