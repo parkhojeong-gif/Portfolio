@@ -71,31 +71,33 @@ function showContents(result) {
 		
 		let tr = $('<tr />');
 		let td1 = $('<td />').html(certi.CERTI_NAME);
-		let td2 = $('<td />').html(certi.CERTI_NO);
-		let td3 = $('<td />').html(certi.CERTI_DATE);
-		let td4 = $('<td />').html(certi.CERTI_PLACE);
-		
+		let td2 = $('<td />').html(certi.CERTI_PLACE);
+		let td3 = $('<td />').html(certi.CERTI_NO);
+		let td4 = $('<td />').html(certi.CERTI_DATE);
 		let td5 = $('<td />');
 		let td6 = $('<td />');
 		let inp1 = $('<input />').attr('type','button').attr('value',"수정").attr('title',certi.NO);
 		let inp2 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
 		
 		$(inp1).on('click', function() {
-        				console.log(this);
         				var no = this.title;
-        				location.href="updateCertiForm?no="+no;
+        				var url="updateCertiForm?no="+no;
+        		    	window.open(url,"","width=500,height=600");
         			});
 		$(inp2).on('click', function() {
         				console.log(this);
         				var no = this.title;
         				location.href="deleteCerti?no="+no;
         			});
-        	$(td5).append(inp1);
+        $(td5).append(inp1);
 		$(td6).append(inp2);
+		
 		$(tr).append(td1);
 		$(tr).append(td2);
 		$(tr).append(td3);
 		$(tr).append(td4);
+		$(tr).append(td5);
+		$(tr).append(td6);
 		$('#certi').append(tr);
 		
 	

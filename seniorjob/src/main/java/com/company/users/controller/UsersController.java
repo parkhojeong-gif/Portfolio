@@ -277,6 +277,8 @@ public class UsersController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		List<Map> list = usersService.getCertiList(vo);
+		System.out.println("getCertiList:"+list);
+		
 		return list;
 	}
 	
@@ -347,7 +349,31 @@ public class UsersController {
 		
 	}
 	
+	//마이페이지 자격증 수정 폼
+	@RequestMapping("/updateCertiForm")
+	public String updateCertiForm(UsersVO vo, Model model) {
+		
+		model.addAttribute("cer", usersService.getCerti(vo));
+		return "/users/updatePopCerti";
+	}
+	
+	//마이페이지 자격증 수정처리
+	@RequestMapping("/updateCerti") 
+	public String updateCerti(UsersVO vo) {
+		
+		System.out.println("updateCerti:"+vo.getCerti_date());
+		usersService.updateCerti(vo);
+		return "/users/throughCerti";
+	}
+	
+	//마이페이지에서 자격증 삭제
+		@RequestMapping("/deleteCerti")
+		public String deleteCerti(UsersVO vo) {
+			usersService.delCareer(vo);
+			return "redirect:/updateUsers";
 			
+		}
+				
 
 	
 

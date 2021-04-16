@@ -143,6 +143,7 @@
 			CERTI_PLACE,
 			CERTI_NO,
 			CERTI_DATE
+			 <!-- TO_CHAR(CERTI_DATE,'YYYY-MM-DD') AS "certi_date"  -->
 	FROM USERCERTI
 	WHERE ID=#{id}
 	AND CERTI_NAME IS NOT NULL 
@@ -181,6 +182,16 @@
 	WHERE NO=#{no}
 	</select>
 	
+	<!-- 마이페이지 자격증 단건 조회 -->
+	<select id="getCerti" resultType="UsersVO">
+	SELECT NO,
+			CERTI_NAME,
+			CERTI_PLACE,
+			CERTI_NO,
+			CERTI_DATE
+	FROM USERCERTI
+	WHERE NO=#{no}
+	</select> 
 	<!-- 김찬곤 / 단건 조회 -->
 	<select id ="getUsersForPayment" resultType="com.company.users.service.UsersVO" parameterType="map">
 	SELECT     ID

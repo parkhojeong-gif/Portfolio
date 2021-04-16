@@ -85,35 +85,17 @@ function seeCkBp(seq) {
 								</div>
 
 								<div class="row">
-									<div class="col-sm-6">
-										<p class="author-category">
-											by <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a>
-										</p>
-									</div>
-									<div class="col-sm-6 right">
-										<p class="date-comments">
-											<a href="single.html"><i class="fa fa-calendar-o"></i>
-												June 20, 2013</a> <a href="single.html"><i
-												class="fa fa-comment-o"></i> 8 Comments</a>
-										</p>
-									</div>
+									
+									
 								</div>
-								<div class="image wow fadeInLeft animated">
-									<a href="single.html"> <img src="assets/img/blog2.jpg"
-										class="img-responsive" alt="Example blog post alt">
-									</a>
-								</div>
-								<p class="intro">Pellentesque habitant morbi tristique
-									senectus et netus et malesuada fames ac turpis egestas.
-									Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
-									sit amet, ante. Donec eu libero sit amet quam egestas semper.
-									Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+								
+								<p class="intro">${list.business_a }</p>
 								<p class="read-more">
 									<a onclick="updateBp('${list.seq }')" class="btn btn-default btn-border">수정</a>
 									<a onclick="deleteBp('${list.seq }')" class="btn btn-default btn-border">삭제</a>
 									<a onclick="printBp('${list.seq }')" class="btn btn-default btn-border">인쇄</a>
 									<!-- <a onclick="excelBp('${list.seq }')" class="btn btn-default btn-border">엑셀저장</a>-->
-									<a onclick="wordBp('${list.seq }')" class="btn btn-default btn-border">워드저장</a>
+									<%-- <a onclick="wordBp('${list.seq }')" class="btn btn-default btn-border">워드저장</a> --%>
 									<a onclick="ckBp('${list.seq }')" class="btn btn-default btn-border">첨삭요청</a>
 									<a onclick="seeCkBp('${list.seq }')" class="btn btn-default btn-border">첨삭보기</a>
 								</p>

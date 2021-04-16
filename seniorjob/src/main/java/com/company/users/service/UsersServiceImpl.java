@@ -201,4 +201,14 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	@Override	public int updateCerti(UsersVO vo) {		return usersmapper.updateCerti(vo);	}
+
+	@Override
+	public int deleteCerti(UsersVO vo) {
+		return usersmapper.deleteCerti(vo);
+	}
+
+	@Override
+	public UsersVO getCerti(UsersVO vo) {
+		return usersmapper.getCerti(vo);
+	}
 }
