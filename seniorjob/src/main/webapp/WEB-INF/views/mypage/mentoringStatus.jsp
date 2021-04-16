@@ -53,7 +53,7 @@ function detail(id) {
                                         <div class="item-entry overflow">
                                             <h5><span onclick="detail('${list.mentor_id}')">${list.mentoring_name } </span></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b>${list.men_start }-${list.met_end }</b></span>
+                                            <span class="pull-left"><b>${list.men_start}-${list.met_end}</b></span>
                                             <span class="proerty-price pull-right">수강중</span>
                                             <p style="display: none;">${list.mentoring_content }</p>
 
