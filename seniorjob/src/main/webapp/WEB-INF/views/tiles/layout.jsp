@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지</title>
 
-    <link rel="stylesheet" href="resources/assets/css/bootstrap.css">
-    <link rel="stylesheet" href="resources/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="resources/assets/css/app.css">
-    <link rel="shortcut icon" href="resources/assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="resources/manager/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/manager/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="resources/manager/assets/css/app.css">
+    <link rel="shortcut icon" href="resources/manager/assets/images/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -80,7 +80,7 @@
                             <a href="#" data-bs-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar me-1">
-                                    <img src="resources/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                                    <img src="resources/manager/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
                                 <div class="d-none d-md-block d-lg-inline-block">${users.auth eq 'ADMIN'}님 안녕하세요.</div>
                             </a>
@@ -113,11 +113,11 @@
             </footer>
         </div>
     </div>
-    <script src="resources/assets/js/feather-icons/feather.min.js"></script>
-    <script src="resources/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="resources/assets/js/app.js"></script>
+    <script src="resources/manager/assets/js/feather-icons/feather.min.js"></script>
+    <script src="resources/manager/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="resources/manager/assets/js/app.js"></script>
 
-    <script src="resources/assets/js/main.js"></script>
+    <script src="resources/manager/assets/js/main.js"></script>
 </body>
 
 </html>

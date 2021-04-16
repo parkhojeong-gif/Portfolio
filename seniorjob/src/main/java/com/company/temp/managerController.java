@@ -13,7 +13,7 @@ public class managerController {
 	private static final Logger logger = LoggerFactory.getLogger(managerController.class);
 	
 	//메인으로
-	@RequestMapping("/")
+	@RequestMapping("/managerMain")
 	public String manager() {
 	
 		return "manager";
