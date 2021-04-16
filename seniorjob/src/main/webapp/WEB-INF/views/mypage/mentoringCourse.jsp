@@ -61,7 +61,7 @@ function update(num) {
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>${list.mentoring_begin_date } - ${list.mentoring_end_date }</b></span>
                                             <span class="proerty-price pull-right" > 멘티 : ${list.name }</span>
-                                            <p style="display: none;">수강기간:${list.men_start }-${list.met_end }/멘토링횟수:3회</p>
+                                            <p style="display: none;">수강기간:${list.men_start }-${list.met_end }</p>
 
                                         </div>
                                          <button type="submit" class="btn btn-primary">멘토링 요청</button>
