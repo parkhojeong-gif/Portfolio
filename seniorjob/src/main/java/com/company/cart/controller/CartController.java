@@ -76,4 +76,14 @@ public class CartController {
 		cartservice.deleteCartAll(vo);
 		return "redirect:/cart";
 	}
+	
+	@RequestMapping("/deleteSub")
+	public String deleteSub(CartVO vo, HttpServletRequest req, Model model) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		cartservice.deleteSub(vo);
+		model.addAttribute("cartlist", cartservice.deleteSub(vo));
+		return "redirect:/cart";
+	}
 }

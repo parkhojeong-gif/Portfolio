@@ -160,8 +160,8 @@ h1{text-align:center; padding: 20px}
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
 		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
 		<!-- 송다희 추가 -->
-		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.mentoring_begin_date }">
-		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
+		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.s_date }">
+		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.e_date }">
 		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
 		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
 		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
