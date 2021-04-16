@@ -47,13 +47,13 @@ function detail(id) {
                             <div id="list-type" class="proerty-th-list">
                                 <div class="col-md-4 p0">
                                     <div class="box-two proerty-item">
-                                        <div class="item-thumb">
+                                        <!-- <div class="item-thumb">
                                             <a href="property-1.html" ><img src=#></a>
-                                        </div>
+                                        </div> -->
                                         <div class="item-entry overflow">
                                             <h5><span onclick="detail('${list.mentor_id}')">${list.mentoring_name } </span></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b>${list.men_start }-${list.met_end }</b></span>
+                                            <span class="pull-left"><b>${list.men_start}-${list.met_end}</b></span>
                                             <span class="proerty-price pull-right">수강중</span>
                                             <p style="display: none;">${list.mentoring_content }</p>
 
@@ -64,20 +64,7 @@ function detail(id) {
                             </div>
                         </div>
 					</c:forEach>
-                        <div class="section"> 
-                            <div class="pull-right">
-                                <div class="pagination">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>                
-                        </div>
+                        
 
                     </div>       
 

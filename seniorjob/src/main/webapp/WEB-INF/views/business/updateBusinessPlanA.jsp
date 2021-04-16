@@ -273,6 +273,8 @@ function sellAdd() {
 
 
 </script>
+
+
 </head>
 <body>
 
@@ -294,7 +296,7 @@ function sellAdd() {
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2" id="allDiv">
 					
-					<div class="row" id="businessDiv">
+					<div class="row" id="businessDiv" >
 					<hr>
 					<h2>계획사업의 개요</h2>
 					<br>
@@ -329,8 +331,9 @@ function sellAdd() {
 					</div>
 					
 				</div>
-				
-				
+
+					
+				</div> 
 			</div>
 		</div>
 	</div>
@@ -361,9 +364,9 @@ function sellAdd() {
 			<div class="area_btn col-sm-12 text-center">
 				<button type="" class="btn btn-primary">미리보기</button>
 			</div>
-			<div class="area_btn col-sm-12 text-center">
+			<!--<div class="area_btn col-sm-12 text-center">
 				<button type="" class="btn btn-primary">중간저장</button>
-			</div>
+			</div>-->
 			<div class="area_btn col-sm-12 text-center">
 				<button type="submit" class="btn btn-primary">수정완료</button>
 			</div>
@@ -372,6 +375,36 @@ function sellAdd() {
 		</div>
 	</div>
 </form>
+
+				<button id="testBtn" class="btn"  data-toggle="modal" data-target="#testModal" >모달 테스트</button>
+				
+				
+				
+				<!-- modal test -->
+				<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">모달테스트</h5>
+									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">X</span>
+									</button>
+							</div>
+							<div class="modal-body">
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				<script>
+				$('#testModal').on('show.bs.modal', function (event) {
+					var modal = $(this);
+					var title = modal.find('#title').val();
+					$('.modal-body').append(title);
+				})
+	</script>
 
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>

@@ -46,24 +46,20 @@
 							<div class="form-group">
 								<label>멘토링 코스 내용</label> <input name="mentoring_content" type="text" value="${menDetail.mentoring_content }" class="form-control">
 							</div>
-							<div class="form-group">
+							<%-- <div class="form-group">
 								<label>멘토링 코스 이미지</label> <input name="mentoring_photo" type="text" value="${menDetail.mentoring_photo }" class="form-control">
-							</div>
+							</div> --%>
 							<div class="form-group">
 								<label>멘토링 코스 금액</label> <input name="mentoring_price" type="number" value="${menDetail.mentoring_price }" class="form-control">
 							</div>
-							<div class="form-group">
-								<label>멘토링 코스 자료</label> <input name="mentoring_data" type="text" value="${menDetail.mentoring_data }" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>멘토링 코스 요청사항</label> <input name="mentoring_request" type="text" value="${menDetail.mentoring_request }" class="form-control">
-							</div>
-							<div class="form-group">
+							
+							
+							<%-- <div class="form-group">
 								<label>멘토링 코스 시작일</label> <input name="mentoring_begin_date" type="date" value="${menDetail.mentoring_begin_date }" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>멘토링 코스 종료일</label> <input name="mentoring_end_date" type="date" value="${menDetail.mentoring_end_date }" class="form-control">
-							</div>
+							</div> --%>
 						</div>
 						<div class="col-sm-10 col-sm-offset-1">
 							<button type="submit" class="btn btn-primary">수정</button>

@@ -14,6 +14,8 @@ public class PwValidation implements Validator {
 	public void validate(Object target, Errors errors) {
 		UsersVO users = (UsersVO)target;
 
+		
+		
 		//password 체크
 		if(users.getPasswordold() == null || users.getPasswordold().isEmpty())
 			errors.rejectValue("passwordold", null, "※패스워드를 입력해주세요");
@@ -29,6 +31,7 @@ public class PwValidation implements Validator {
 		//비밀번호 일치여부
 		if(users.getPassword() != users.getPasswordck())
 			errors.rejectValue("passwordck", null, "※비밀번호가 일치하지 않습니다.");
+		
 
 	}
 

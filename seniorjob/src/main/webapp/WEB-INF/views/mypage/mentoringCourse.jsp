@@ -61,7 +61,7 @@ function update(num) {
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>${list.mentoring_begin_date } - ${list.mentoring_end_date }</b></span>
                                             <span class="proerty-price pull-right" > 멘티 : ${list.name }</span>
-                                            <p style="display: none;">수강기간:${list.men_start }-${list.met_end }/멘토링횟수:3회</p>
+                                            <p style="display: none;">수강기간:${list.men_start }-${list.met_end }</p>
 
                                         </div>
                                          <button type="submit" class="btn btn-primary">멘토링 요청</button>
@@ -73,20 +73,7 @@ function update(num) {
                             </div>
                         </div>
 						</c:forEach>
-                        <div class="section"> 
-                            <div class="pull-right">
-                                <div class="pagination">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>                
-                        </div>
+                        
 
                     </div>       
 

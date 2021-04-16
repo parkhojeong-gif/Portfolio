@@ -136,19 +136,62 @@
 				
 	</insert>
 	
-	<!-- 마이페이지에서 자격증/경력인증서 조회 -->
+	<!-- 마이페이지에서 자격증 조회 -->
 	<select id="getCertiList" resultType="map">
 	SELECT NO,
 			CERTI_NAME,
 			CERTI_PLACE,
 			CERTI_NO,
-			CERTI_DATE,
-			CARRER_CERTI 
+			CERTI_DATE
+			 <!-- TO_CHAR(CERTI_DATE,'YYYY-MM-DD') AS "certi_date"  -->
 	FROM USERCERTI
-	WHERE ID=#{id} 
+	WHERE ID=#{id}
+	AND CERTI_NAME IS NOT NULL 
 	</select>
 
+	<!-- 마이페이지에서 경력인증서 조회 -->
+	<select id="getCarList" resultType="map">
+	SELECT NO,
+			CARRER_CERTI 
+	FROM USERCERTI
+	WHERE ID=#{id}
+	AND CARRER_CERTI IS NOT NULL 
+	</select>
+
+	 <!-- 자격증 수정 -->
+	<update id="updateCerti" parameterType="UsersVO">
+		UPDATE USERCERTI SET CERTI_NAME=#{certi_name},
+			CERTI_PLACE=#{certi_place},
+			CERTI_NO=#{certi_no},
+			CERTI_DATE=#{certi_date} 
+		WHERE NO = #{no}
+	</update>
+	 
+	 
+
+	<!-- 마이페이지에서 경력인증서 삭제 -->
+	<delete id="delCareer" parameterType="UsersVO">
+	DELETE FROM USERCERTI 
+	WHERE NO=#{no} 
+	</delete>
 	
+	<!-- 마이페이지에서 경력인증서 파일 이름 가져오기 -->
+	<select id="selCareer" resultType="UsersVO">
+	SELECT CARRER_CERTI 
+	FROM USERCERTI 
+	WHERE NO=#{no}
+	</select>
+	
+	<!-- 마이페이지 자격증 단건 조회 -->
+	<select id="getCerti" resultType="UsersVO">
+	SELECT NO,
+			CERTI_NAME,
+			CERTI_PLACE,
+			CERTI_NO,
+			CERTI_DATE
+	FROM USERCERTI
+	WHERE NO=#{no}
+	</select> 
 	<!-- 김찬곤 / 단건 조회 -->
 	<select id ="getUsersForPayment" resultType="com.company.users.service.UsersVO" parameterType="map">
 	SELECT     ID
@@ -163,4 +206,5 @@
 			  FROM USERS
 	WHERE ID = #{id}		  
 	</select>
+	
 	</mapper>
