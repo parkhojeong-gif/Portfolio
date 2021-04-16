@@ -346,6 +346,10 @@ h1{text-align:center}
             <form name="paymentFrm" id="paymentFrm" method="post">
             <input type="hidden" name="mentoring_number" id="mentoring_number" value="${mentoring.mentoring_number }">
             <input type="hidden"  name="mentoring_price" id="mentoring_price" value="${mentoring.mentoring_price }">
+            
+            <!-- 송다희 추가 -->
+            <input type="text"  name="cart_no" id="cart_no" value="${cart }">
+            
             <div class="row cart-body">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->

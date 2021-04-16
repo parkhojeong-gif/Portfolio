@@ -1,5 +1,7 @@
 package com.company.following.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,12 @@ public class FollowServiceImpl implements FollowService{
 	public int mentorFollowCheck(FollowingVO vo) {
 		int result = followMapper.mentorFollowCheck(vo);
 		return result;
+	}
+	@Override
+	//송다희 추가
+	//나의 팔로우 목록
+	public List<FollowingVO> getMentorList(FollowingVO vo) {
+		return followMapper.getMentorList(vo);
 	}
 
 }

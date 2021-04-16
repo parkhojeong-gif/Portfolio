@@ -1,6 +1,8 @@
 package com.company.mentoring.controller;
 
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,8 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.company.cart.service.CartService;
+import com.company.cart.service.CartVO;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringService;
@@ -32,6 +37,7 @@ public class MentoringController {
 	@Autowired MentoringService mtService;
 	@Autowired UsersService usersService;
 	@Autowired ShoppingService shoppingService;
+	@Autowired CartService cartservice;
 
 	// 멘토링 검색
 	@RequestMapping("/getMentoringList")
@@ -63,9 +69,17 @@ public class MentoringController {
 	
 	// 멘토링 결제페이지
 	@RequestMapping("/mentoringPayForm")
-	public String mentoringPayForm(Model model, MentoringVO mtrVo, MentorVO mVo, ShoppingVO sVo, HttpServletRequest request) {
+	public String mentoringPayForm(Model model, MentoringVO mtrVo, MentorVO mVo, ShoppingVO sVo, CartVO cvo, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		UsersVO users = (UsersVO) session.getAttribute("users");
+		// 송다희 추가
+		/*
+		 * String del = request.getParameter("cartNo"); cvo.setCart_no(del);
+		 * System.out.println(del); model.addAttribute("cart",
+		 * cartservice.getCart(cvo);
+		 * System.out.println("cart_no:================="+cvo);
+		 */
+		
 		if(users != null) {
 			model.addAttribute("users",users); // 세션 정보
 			model.addAttribute("mentoring", mtService.getMentoring(mtrVo)); // 멘토링 정보
@@ -82,10 +96,16 @@ public class MentoringController {
 	// 멘토링 결제 처리
 	@ResponseBody
 	@RequestMapping("/mentoringPayProc")
-	public int mentoringPayProc(ShoppingVO vo) {
+	public int mentoringPayProc(ShoppingVO vo, CartVO cvo) {
 		int result = shoppingService.BasketCheck(vo);
 		if(result==0) { // 테이블에 값이 없으면(장바구니에 없으면)
 			shoppingService.mentoringPayProc(vo); // Insert
+			
+			/*
+			 * //카트 해당 항목 삭제 cartservice.deleteSub(cvo);
+			 * System.out.println("====================================cvo:" + cvo);
+			 */
+			 
 			return result;
 		}else { // 테이블에 값이 있으면(장바구니에 있으면)
 			shoppingService.mentoringPayProcBasket(vo); // Update

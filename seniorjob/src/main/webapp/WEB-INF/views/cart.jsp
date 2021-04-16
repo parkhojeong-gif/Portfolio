@@ -38,8 +38,8 @@ function allDel(){
 					      </th>
 					      <th>멘토</th>	
 					      <th>상품명</th>
-					      <th>결제 가능일</th>
-					      <th>결제 만료일</th>
+					      <th>코스 시작일</th>
+					      <th>코스 종료일</th>
 					      <th>가격</th>
 					    </tr>
 					  </thead>
@@ -47,14 +47,13 @@ function allDel(){
 					  <c:forEach items="${list }" var="cart">
 					  <c:choose>
 					  <c:when test="${cart.id eq users.id }">
-						
 				        <tr>
 				        	<th>
 				        		<div class="chBox">
 				        			<input type="checkbox" id="del" name="del" value="${cart.cart_no }" >
 				        		</div>
 				        	</th>
-				        	<td>${cart.mentor_id }</td>
+				        	<td><input type="text" id="mentor_id" name="mentor_id" value="${cart.mentor_id }"></td>
 				            <td><a href="getMentor?mentor_id=${cart.mentor_id }">${cart.mentoring_name }</a></td>
 				            <td>${cart.cart_start }</td>
 				            <td>${cart.cart_end }</td>
@@ -62,12 +61,12 @@ function allDel(){
 				        </tr>
 				      </c:when>
 				      </c:choose>  
-				      </c:forEach>
-				      <%-- <c:if test="${empty cart}">
+				     <%--  <c:if test="${cart eq null or empty cart}">
 				      	<tr>
 				      		<th>장바구니가 텅 비었습니다.</th>
 				      	</tr>
 				      </c:if> --%>
+				      </c:forEach>
 					  </tbody>
 					  <tfoot>
 					    <tr align="right">
@@ -79,8 +78,8 @@ function allDel(){
 					  </tfoot>
 					</table>
 					<div align="right">
-						<button type="button" class="btn btn-primary">결제하기</button>
-						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button>
+						<button type="button" class="btn btn-primary" onclick="mentoringPayForm()">결제하기</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='getMentorList'">상품 둘러보기</button>
 					</div>
 					</form>
 					</div>
@@ -192,6 +191,34 @@ function allDel(){
     		}
     	}
     })
+    
+    // 결제하기(선택한 체크박스의 아이디 값 찾기)
+	function mentoringPayForm(){
+		var mentorId;
+		var del;
+		var chk = $("input[name=del]:checked");
+		var checked = $(this).iCheck('checked');
+		var yn = confirm("결제 하시겠습니까?");
+		// 상품 선택 안 하고 결제하기 누를 때 발생.
+		if(chk.length == 0){
+			alert("상품을 선택해주세요.");
+			return;
+		}
+		if(yn){
+			mentorId = $("input[name=del]:checked").closest("tr").find("#mentor_id").val();
+			del = $("input[name=del]:checked").val()
+			/* if(checked){
+				$("input[name=del]:checked").iCheck("disabled", true);
+			}else{
+				
+			} */
+			location.href = "mentoringPayForm?mentor_id="+mentorId;
+// 			location.href = "deleteSub?cart_no="+cartNo;
+			/*  +"&cart_no="+ cartNo 
+				+"&deleteSub?cart_no="+cartNo
+			*/
+		}
+	}
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
