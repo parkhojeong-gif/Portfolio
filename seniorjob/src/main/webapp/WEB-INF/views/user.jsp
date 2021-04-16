@@ -32,15 +32,16 @@
 			<div class="card-header">회원 데이터 테이블</div>
 			<div class="card-body">
 				<div class="dataTable-search">
+				<form role="form" method="get">
 					<div class="col-xs-2">
                          <div class="btn-group bootstrap-select show-tick form-control" style="width: 200px;">
                          	 <div class="dropdown-menu open" style="max-height: 200px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 100px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
                          <select id="basic" name="searchType" class="form-select" tabindex="-98">
                              <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
-						      <option value="m"<c:out value="${scri.searchType eq 'm' ? 'selected' : ''}"/>>경력증명서</option>
-						      <option value="n"<c:out value="${scri.searchType eq 'n' ? 'selected' : ''}"/>>이름</option>
-						      <option value="i"<c:out value="${scri.searchType eq 'i' ? 'selected' : ''}"/>>ID</option>
+						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
+						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
                         </select></div>
+                        </div>
                         <div class="col-xs-7">
 							<div class="input-group">
                              <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 100px;" type="text" placeholder="내용 입력 ">
@@ -49,6 +50,8 @@
 							 </span>
                     		</div>
 						</div>
+				</form>
+						
 				<br>
 				<%-- <div id="outter">
 						<div style="float: right;">
@@ -412,9 +415,5 @@ $(function(){
 		 self.location = "userList" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 		});
 	  
-
-
-
-
 
 </script>

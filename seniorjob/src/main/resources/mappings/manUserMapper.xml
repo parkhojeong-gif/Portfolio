@@ -20,9 +20,8 @@
 <!--후기 검색 -->
 	<sql id="search">
 		<if test="searchType != null">
-				<if test="searchType == 'm'.toString()">AND mentor_career_certificate LIKE '%' || #{keyword} || '%'</if>
-				<if test="searchType == 'n'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
-				<if test="searchType == 'i'.toString()">AND id LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'name'.toString()">AND name LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'id'.toString()">AND id LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
 	
