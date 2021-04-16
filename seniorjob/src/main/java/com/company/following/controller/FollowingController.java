@@ -32,7 +32,6 @@ public class FollowingController {
 			return result;
 		}
 	}
-	
 	// 멘토 팔로우 취소
 	@ResponseBody
 	@RequestMapping("/deleteMentorFollow")

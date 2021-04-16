@@ -1597,9 +1597,9 @@ padding: 0 0 0.5em;
 .pr0 {
     padding-right: 0px !important;
 }
-.pl0 {
+/* .pl0 {
     padding-left:0px !important;
-}
+} */
 .pl-10 {
     padding-left: 10px !important;
 }
@@ -1840,7 +1840,7 @@ proerty-th-list
     clear: both;
     padding: 5px 0px;
     margin-top: 15px;
-    background-color: #EDEDED;
+    /* background-color: #EDEDED; */
     color: #555;
 }
 .property-icon img{

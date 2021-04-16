@@ -45,10 +45,10 @@
                         <div class="tab-pane active" id="tab1">
                             <form onsubmit="return checkValueNull()" name="searchFrm">
                                 <div class="input-group input-group-big">
-                                    <label class="label" id="search">키워드 검색</label>
-                                    <input class="input--style-1" type="text" name="searchKeyword" value="" placeholder="ex)마케팅,경리,경영">
+                                    <label class="label" id="search">키워드 검색(직무/지역/연령)</label>
+                                    <input class="input--style-1" type="text" name="searchKeyword" value="" placeholder="ex)마케팅,영업,IT">
                                 </div>
-                                <div class="row row-space">
+<!--                                 <div class="row row-space">
                                     <div class="col-3">
                                         <div class="input-group">
                                             <label class="label">직무</label>
@@ -113,7 +113,7 @@
                                     </div>
                                     
                                 </div>
-                                <button class="btn-submit m-t-0" type="submit">search</button>
+ -->                                <button class="btn-submit m-t-0" type="submit">search</button>
                             </form>
                         </div>
                         <div class="tab-pane" id="tab2">

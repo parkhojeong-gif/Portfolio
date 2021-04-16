@@ -10,6 +10,14 @@
 	h3{text-align:left}
 	#clickMentor{cursor:pointer}
 	h1{text-align:center}
+	
+#sidebar { 
+	right: 0;
+	padding-top: 110px;
+}
+#sidebar ul { 
+	padding: 10px; 
+}
 </style>
 <body>
 
@@ -49,7 +57,6 @@
 	
 	
 <!-- End of 멘토 리스트 출력 -->		
-			
 					<!-- 멘토 리스트 출력 -->
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
@@ -63,10 +70,12 @@
 										</div>
 
 										<div class="item-entry overflow">
-											<h5 id="mentor_company_name" >${mentor.mentor_company_name }</h5>
-											<br> <a id="mentor_department_name">${mentor.mentor_department_name } </a>
+											<h5 id="mentor_company_name" >직무: ${mentor.mentor_duty }</h5>
+											<br> <a id="mentor_department_name">부서: ${mentor.mentor_department_name } </a>
 											<div class="dot-hr"></div>
-											<span class="pull-left"><b id="mentoring_kind" >${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_kind" >멘토링 종류: ${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_location" >멘토링 종류: ${mentor.mentoring_location }</b></span>
+											<span class="pull-left"><b id="mentoring_age" >멘토링 연령: ${mentor.mentoring_age }</b></span>
 										</div>
 									</div>
 								</div>
@@ -75,46 +84,15 @@
 						</div>
 					</div>
 					<!-- 멘토 리스트 출력 -->
-					
-					
-
-					<!-- 페이징 -->
-					<div id="paging"></div>
-					<%-- <div style="align: center">
-						<c:if test="${paging.startPage != 1 }">
-							<a
-								href="/MentorList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-						</c:if>
-						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-							var="p">
-							<c:choose>
-								<c:when test="${p == paging.nowPage }">
-									<b>${p }</b>
-								</c:when>
-								<c:when test="${p != paging.nowPage }">
-									<a
-										href="/MentorList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-								</c:when>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${paging.endPage != paging.lastPage}">
-							<a
-								href="/MentorList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-						</c:if>
-					</div> --%>
-					<!-- 페이징 -->
-					
 				</div>
-				
-                    
                     <!-- 플로팅 배너 -->
-                    <div class="col-md-3 pl0 padding-top-40" id="">
+                    <div class="col-md-3 pl0 padding-top-40" id="sidebar" style="position: absolute;">
                         <div class="blog-asside-right pl0">
                             <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">멘토등록 / 멘토링등록</h3>
+                                    <h3 class="panel-title">멘토등록</h3>
                                 </div>
-                                <div class="panel-body search-widget">
+                                <div class="panel-body search-widget" >
                                     <form name="mentorRegisterForm" class="form-inline">
                                     <input type="hidden" name="id" id="id" value="${users.id }">
                                    		<fieldset >
@@ -140,16 +118,16 @@
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
                                                 </c:if>
+                                                <div class="button btn largesearch-btn" style="cursor:pointer;" onclick="window.scrollTo(0,0);">TOP</div>
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
                                     </form>
                                 </div>
                             </div>
-
-                            <!-- End of 플로팅 배너 -->
                         </div>
                     </div>
+                    <!-- End of 플로팅 배너 -->
                 </div>           
             </div>
         </div>
@@ -223,6 +201,21 @@
 		
 	}
 	
-	
-	
+	/* 플로팅 배너 */
+	$(function() {
+		var offset = $("#sidebar").offset();
+		var topPadding = 300;
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > offset.top) {
+				$("#sidebar").stop().animate({
+					marginTop: $(window).scrollTop() - offset.top + topPadding
+				});
+			} else {
+				$("#sidebar").stop().animate({
+					marginTop: 0
+				});
+			};
+		});
+	});
+	/* 플로팅 배너 */
 </script>
