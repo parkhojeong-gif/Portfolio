@@ -32,6 +32,11 @@
 	$(document).on("click", "#pricec", function(){
 		$(".priceMenu .pricesub").slideToggle();
 	})
+/* 개인정보 수정 토클(누르면 메뉴 나오기) */
+	$(".selfsub").hide();
+	$(document).on("click", "#selfc", function(){
+		$(".SelfMenu .selfsub").slideToggle();
+	})
 </script>
 <body>
 
@@ -109,7 +114,7 @@
 								<a href="getSearchPay"> <span class="txt">결제내역</span></a>
 							</li>
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="shopping"> <span class="txt">장바구니</span></a>
+								<a href="cart"> <span class="txt">장바구니</span></a>
 							</li>
 						</ul>
 					</div>	
@@ -117,9 +122,9 @@
 			</div>
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
-					<div class="priceMenu" id="priM">
-						<h3 class="panel-title"><div id="pricec">장바구니/개인정보 수정</div></h3>
-						<ul class="pricesub">
+					<div class="SelfMenu" id="selfM">
+						<h3 class="panel-title"><div id="selfc">개인정보 수정</div></h3>
+						<ul class="selfsub">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="updateUsers?id=somTest"> <span class="txt">개인정보/경력 수정</span></a>
 							</li>
@@ -128,9 +133,6 @@
 							</li>
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="following"> <span class="txt">나의 팔로우 목록</span></a>
-							</li>
-							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="myWriteList"> <span class="txt">내 글 목록</span></a>
 							</li>
 						</ul>
 					</div>	

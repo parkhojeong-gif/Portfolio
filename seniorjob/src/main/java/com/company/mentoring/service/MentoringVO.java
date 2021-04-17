@@ -17,6 +17,9 @@ public class MentoringVO {  //멘토링 코스
 	private String mentoring_end_date;	//멘토링 코스 종료일
 	private String mentoring_begin_date;	//멘토링 코스 시작일
 	
+	private String s_date; // 멘토링 시작일 alias
+	private String e_date; // 멘토링 종료일 alias
+	
 	//양소민 추가(마이페이지 내가 만든 멘토링에 사용)
 	private String name; //멘토링 코스를 수강중인 멘티의 이름
 	private String men_start; //멘티가 멘토링을 시작한 날짜

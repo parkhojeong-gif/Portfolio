@@ -1,17 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
-<html class="no-js"> <!--<![endif]-->
+
+<html> 
 
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
 <script>
+
+
+    
+    $(document).ready( function () {
+    	$.ajax({
+    		url : "getCertiList",
+        	success : showContents,
+        	error : showErrors
+    	})
+    }); 
+
+
+function showErrors(result) {
+	console.log("error");
+}
+
+function showContents(result) {
+	var list = result;
+	for(certi of list ) {
+		
+		let tr = $('<tr />');
+		let td1 = $('<td />').html(certi.CERTI_NAME);
+		let td2 = $('<td />').html(certi.CERTI_NO);
+		let td3 = $('<td />').html(certi.CERTI_DATE);
+		let td4 = $('<td />').html(certi.CERTI_PLACE);
+		
+		$(tr).append(td1);
+		$(tr).append(td2);
+		$(tr).append(td3);
+		$(tr).append(td4);
+		$('#certi').append(tr);
+		
+		let tr2 = $('<tr />');
+		let td5 = $('<td />').html(certi.CARRER_CERTI);
+		$(tr2).append(td5);
+		$('#career').append(tr2);
+		
+		
+		
+	}
+}
+
     function DaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -56,12 +98,15 @@
     function insertCerti() {
     	var url="popCerti";
     	window.open(url,"","width=500,height=600");
+    	
     }
     
     function insertCareer() {
     	var url="popCareer";
     	window.open(url,"","width=500,height=600");
     }
+    
+
 </script>
 <body>
   
@@ -154,6 +199,23 @@
                                 <h3>
                                     <b>자격증 목록</b>
                                 </h3>
+                                <table border="1" align="center">
+                                	<thead>
+                                	<tr>
+                                		<th>자격증이름</th>
+                                		<th>발행처</th>
+                                		<th>자격증번호</th>
+                                		<th>취득일자</th>
+                                	</tr>
+                                	</thead>
+                                	<tbody id="certi">
+                                	
+                                
+                                	</tbody>
+                                		
+                                </table>
+                                
+                                
                             </div>
 
                             
@@ -172,6 +234,17 @@
                                 <h3>
                                     <b>경력인증서 목록</b>
                                 </h3>
+                                <table border="1" align="center">
+                                	<thead>
+                                	<tr>
+                                		<th>경력인증서</th>
+                                		
+                                	</tr>
+                                	</thead>
+                                	<tbody id="career">
+                                	</tbody>
+                                
+                                </table>
                             </div>
                           
                           

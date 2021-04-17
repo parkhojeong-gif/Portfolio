@@ -35,7 +35,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 	}
 
 	@Override
-	public List<Map> getSearchSchedule(ScheduleVO vo) {
+	public List<Map<String, String>> getSearchSchedule(ScheduleVO vo) {
 		return dao.getSearchSchedule(vo);
 	}
 
@@ -43,5 +43,32 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public List<Map> getSearchRequest(ScheduleVO vo) {
 		return dao.getSearchRequest(vo);
 	}
+
+	@Override
+	public int updateScheduleReject(ScheduleVO vo) {
+		return dao.updateScheduleReject(vo);
+	}
+
+	@Override
+	public int insertQuest(ScheduleVO vo) {
+		return dao.insertQuest(vo);
+	}
+
+	@Override
+	public List<Map> getSearchQuest(ScheduleVO vo) {
+		return dao.getSearchQuest(vo);
+	}
+
+	@Override
+	public int updateQuest(ScheduleVO vo) {
+		return dao.updateQuest(vo);
+	}
+
+	@Override
+	public ScheduleVO getQuest(ScheduleVO vo) {
+		return dao.getQuest(vo);
+	}
+	
+	
 
 }

@@ -1,5 +1,7 @@
 package com.company.following.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +13,26 @@ public class FollowServiceImpl implements FollowService{
 	@Autowired FollowingMapper followMapper;
 
 	// 멘토 팔로우 / insert는 리턴값이 void
-	public void MentorFollow(FollowingVO vo) {
-		
+	
+	public int MentorFollow(FollowingVO vo) {
+		int result = followMapper.MentorFollow(vo);
+		return result;
 	}
-
 	// 멘토 팔로우 취소
-	public void deleteMentorFollow(FollowingVO vo) {
-		
+	public int deleteMentorFollow(FollowingVO vo) {
+		int result = followMapper.deleteMentorFollow(vo);
+		return result;
 	}
-
 	// 팔로우 중복 확인
-	public FollowingVO mentorFollowCheck(FollowingVO vo) {
-		return followMapper.mentorFollowCheck(vo);
+	public int mentorFollowCheck(FollowingVO vo) {
+		int result = followMapper.mentorFollowCheck(vo);
+		return result;
+	}
+	@Override
+	//송다희 추가
+	//나의 팔로우 목록
+	public List<FollowingVO> getMentorList(FollowingVO vo) {
+		return followMapper.getMentorList(vo);
 	}
 
 }

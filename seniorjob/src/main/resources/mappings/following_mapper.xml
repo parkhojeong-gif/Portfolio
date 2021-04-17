@@ -19,23 +19,25 @@
 	</insert>
 	
 	<!-- 멘토 팔로우 취소 -->
-	<delete id="deleteMentorFollow">
+	<delete id="deleteMentorFollow" parameterType="com.company.following.service.FollowingVO">
 		DELETE FROM FOLLOWING
 		WHERE MENTOR_ID = #{mentor_id}
 	</delete>
 	
 	<!-- 팔로우 중복 확인 -->
-	<select id="mentorFollowCheck" resultType="com.company.following.service.FollowingVO" parameterType="com.company.following.service.FollowingVO">
-		SELECT ID, MENTOR_ID
+	<select id="mentorFollowCheck" resultType="int">
+		SELECT COUNT(*)
 		FROM FOLLOWING
-		<where>
-			<if test="id != null and id != ''">
-				ID = #{id}
-			</if>
-			<if test="mentor_id != null and mentor_id != ''">
-				AND MENTOR_ID = #{mentor_id}
-			</if>
-		</where>
+		WHERE ID = #{id}
+		AND MENTOR_ID = #{mentor_id}
+	</select>
+	
+	<!-- 송다희 추가 -->
+	<!-- 팔로우 전체 목록 -->
+	<select id="getMentorList" resultType="com.company.following.service.FollowingVO">
+		SELECT ID,
+			   MENTOR_ID
+		FROM   FOLLOWING	   
 	</select>
 	
 </mapper>

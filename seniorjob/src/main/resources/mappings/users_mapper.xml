@@ -35,10 +35,13 @@
 
 	
 	<!-- login -->
+	<!-- 김찬곤 PHONENUM, EMAIL 추가(210413) -->
 	<select id ="logCheck" resultType="com.company.users.service.UsersVO" parameterType ="com.company.users.service.UsersVO">
 		SELECT ID,
 			   PASSWORD,
 			   NAME,
+			   PHONENUM,
+			   EMAIL,
 			   AUTH	
 		FROM USERS
 		WHERE ID = #{id}    
@@ -133,5 +136,31 @@
 				
 	</insert>
 	
+	<!-- 마이페이지에서 자격증/경력인증서 조회 -->
+	<select id="getCertiList" resultType="map">
+	SELECT NO,
+			CERTI_NAME,
+			CERTI_PLACE,
+			CERTI_NO,
+			CERTI_DATE,
+			CARRER_CERTI 
+	FROM USERCERTI
+	WHERE ID=#{id} 
+	</select>
 
+	
+	<!-- 김찬곤 / 단건 조회 -->
+	<select id ="getUsersForPayment" resultType="com.company.users.service.UsersVO" parameterType="map">
+	SELECT     ID
+			  ,PASSWORD
+			  ,ADDRESS
+			  ,PHONENUM
+			  ,EMAIL
+			  ,BIRTH
+			  ,AUTH
+			  ,NAME
+			  ,LOG_DATE
+			  FROM USERS
+	WHERE ID = #{id}		  
+	</select>
 	</mapper>
