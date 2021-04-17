@@ -4,6 +4,8 @@
  
  <mapper namespace="com.company.mentoring.service.impl.MentoringMapper">
  
+ <!-- 김찬곤 ============================================================================  -->
+ 
  	<!-- 멘토링 리스트 호출 -->
  	<select id="getMentoringList" resultType="com.company.mentoring.service.MentoringVO">
  		SELECT * FROM MENTORING
@@ -100,7 +102,13 @@
 		AND MENTORING_END_DATE BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}   
 		AND MENTOR_ID = #{mentor_id}
 	</select>
+	
+	<!-- 진행중인 멘토링 카운트 -->
+	<select id="getMentoringCnt" resultType="int">
+		SELECT COUNT(*) FROM MENTORING
+		WHERE MENTOR_ID = #{mentor_id}
+	</select>
 
-
+<!-- End of 김찬곤 ============================================================================  -->
 
 </mapper>

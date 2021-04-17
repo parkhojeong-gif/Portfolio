@@ -28,5 +28,11 @@ public class FollowServiceImpl implements FollowService{
 		int result = followMapper.mentorFollowCheck(vo);
 		return result;
 	}
+	// 멘토 팔로우 카운트
+	@Override
+	public int getFollowCnt(FollowingVO vo) {
+		int result = followMapper.getFollowCnt(vo);
+		return result;
+	}
 
 }

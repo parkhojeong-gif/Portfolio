@@ -50,19 +50,13 @@
 							<!--/ .items-per-page-->
 						</div>
 					</div>
-					<!-- 멘토 세부검색(최신순/인기순) -->
+					<!-- End of 멘토 세부검색(최신순/인기순) -->
 					
-<!-- 멘토 리스트 출력 -->	
-	
-	
-	
-<!-- End of 멘토 리스트 출력 -->		
 					<!-- 멘토 리스트 출력 -->
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
 
 							<c:forEach var="mentor" items="${list }">
-
 								<div class="col-sm-6 col-md-4 p0" id="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
@@ -80,54 +74,40 @@
 									</div>
 								</div>
 							</c:forEach>
-
 						</div>
 					</div>
-					<!-- 멘토 리스트 출력 -->
+					<!-- End of 멘토 리스트 출력 -->
+					
 				</div>
                     <!-- 플로팅 배너 -->
-                    <div class="col-md-3 pl0 padding-top-40" id="sidebar" style="position: absolute;">
-                        <div class="blog-asside-right pl0">
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">멘토등록</h3>
-                                </div>
-                                <div class="panel-body search-widget" >
-                                    <form name="mentorRegisterForm" class="form-inline">
-                                    <input type="hidden" name="id" id="id" value="${users.id }">
-                                   		<fieldset >
-                                            <div class="row">
-                                                <div class="col-xs-12">  
-                                                    <a href=""><img src="../resources/assets/img/mentor/mentoring.jpg"></a>
-                                                </div>  
-                                            </div>
-                                        </fieldset>
-
-                                        <fieldset >
-                                            <div class="row">
-                                                <div class="col-xs-12">  
-                                                <c:if test="${empty users }">
+                    <div class="col-md-3 p0 padding-top-40" id="sidebar">
+					<div class="blog-asside-right">
+						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading">
+								<h3 class="panel-title">멘토 등록</h3>
+							</div>
+							<form name="mentorRegisterForm" class="form-inline">
+							<div class="panel-body search-widget">
+								<input type="hidden" name="id" id="id" value="${users.id }">
+								<div class="panel-body search-widget">
+									<div class="row">
+										<div class="col-xs-12">
+												<c:if test="${empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
                                                 </c:if>
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="MentorRegister()">
                                                 </c:if>
-                                                <c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="loginCheck()">
-                                                </c:if>
-                                                <c:if test="${not empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
-                                                </c:if>
-                                                <div class="button btn largesearch-btn" style="cursor:pointer;" onclick="window.scrollTo(0,0);">TOP</div>
-                                                </div>  
-                                            </div>
-                                        </fieldset>                                     
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of 플로팅 배너 -->
+											<div class="button btn largesearch-btn" style="cursor: pointer;" onclick="window.scrollTo(0,0);">TOP</div>
+										</div>
+									</div>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+                <!-- End of 플로팅 배너 -->
                 </div>           
             </div>
         </div>

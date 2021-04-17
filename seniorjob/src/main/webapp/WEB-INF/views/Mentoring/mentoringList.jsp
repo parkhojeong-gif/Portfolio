@@ -28,8 +28,7 @@ h1{text-align:center}
 <!-- topHeader -->
 	<h1 class="display-4">멘토링 리스트</h1>
 	
-	<!-- 멘토 리스트 출력 -->
-	
+	<!-- 멘토링 리스트 출력 -->
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
@@ -41,19 +40,19 @@ h1{text-align:center}
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
 									
-										<a href="property-1.html"><img src="image/${mentoring.mentoring_photo }"></a>
+										<img src="image/${mentoring.mentoring_photo }">
 									</div>
 									<div class="item-entry overflow">
-										<h5>
+										<h5>	
 											<a href="property-1.html">멘토링 이름: ${mentoring.mentoring_name }</a>
 										</h5>
 										<div class="dot-hr"></div>
-										<span class="pull-left"><b>멘토 아이디: </b>${mentoring.mentor_id }</span> <span
+										<span class="pull-left"><b>멘토 이름: </b>${mentoring.mentor_id }</span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
 										<p style="display: none;">멘토링 내용: ${mentoring.mentoring_content }</p>
 										<div class="property-icon">
 											<div class="dealer-action pull-right">
-												<a href="submit-property.html" class="button">상세보기 </a> <a href="#" class="button delete_user_car">장바구니</a>
+												<a href="getMentoringChanGon?mentor_id=${mentoring.mentor_id }" class="button">상세보기 </a>
 											</div>
 										</div>
 									</div>
@@ -63,10 +62,8 @@ h1{text-align:center}
 						</div>
 					</div>
 				</div>
-			
-				<!-- 멘토 리스트 출력 -->
 				
-					<!-- 플로팅 배너 -->
+				<!-- 플로팅 배너 -->
 				<div class="col-md-3 p0 padding-top-40" id="sidebar">
 					<div class="blog-asside-right">
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -79,7 +76,12 @@ h1{text-align:center}
 								<div class="panel-body search-widget">
 									<div class="row">
 										<div class="col-xs-12">
-											<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
+												<c:if test="${empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
+                                                </c:if>
+                                                <c:if test="${not empty users }">
+													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
+                                                </c:if>
 											<div class="button btn largesearch-btn" style="cursor: pointer;" onclick="window.scrollTo(0,0);">TOP</div>
 										</div>
 									</div>
@@ -89,15 +91,24 @@ h1{text-align:center}
 						</div>
 					</div>
 				</div>
-				<!-- 플로팅 배너 -->
+				<!-- End of 플로팅 배너 -->
+				
 			</div>
 		</div>
 	</div>
+	<!-- End of 멘토 리스트 출력 -->
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->		
 
 <script>
+
+//로그아웃 상태에서 멘토등록 클릭 시
+function loginCheck(){
+	if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
+		location.href = "login"; // 로그인 페이지로 이동
+	}
+}
 
 //멘토링 등록
 function MentoringRegister(){

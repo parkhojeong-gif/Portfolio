@@ -24,6 +24,8 @@ public class MentorController {
 	@Autowired MentorService mentorService;
 	@Autowired MentoringService mentoringService;
 	
+//	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
+	
 		// 로그인, 회원가입 미비 시 호출되는 페이지
 		// 로그아웃 상태에서 멘토등록 클릭하면 호출
 		@RequestMapping("loginCheckAlert")
@@ -81,7 +83,7 @@ public class MentorController {
 		// 멘토 상세 페이지 호출
 		@RequestMapping("/getMentor")
 		public String getMentor(Model model, MentorVO mVo, MentoringVO mtrVo) {
-			model.addAttribute("list", mentorService.getMentor(mVo));
+			model.addAttribute("mentor", mentorService.getMentor(mVo));
 			model.addAttribute("mentoring", mentoringService.getMentoring(mtrVo));
 			return "Mentor/getMentor";
 		}
@@ -107,5 +109,5 @@ public class MentorController {
 			}
 			return map;
 		}
-		
+//		--------------------------------------------------------End of 김찬곤-----------------------------------------------------------------------------------------------------		
 }

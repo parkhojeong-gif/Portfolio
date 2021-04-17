@@ -57,7 +57,7 @@ public class MentoringServiceImpl implements MentoringService {
 	}
 
 	@Override
-	public MentoringVO getMentoring(MentoringVO vo) {
+	public List<MentoringVO> getMentoring(MentoringVO vo) {
 		return dao.getMentoring(vo);
 	}
 
@@ -79,6 +79,13 @@ public class MentoringServiceImpl implements MentoringService {
 	@Override
 	public List<MentoringVO> getKeywordMentoring(MentoringVO vo) {
 		return dao.getKeywordMentoring(vo);
+	}
+
+	// 진행중인 멘토링 카운트 
+	@Override
+	public int getMentoringCnt(MentoringVO vo) {
+		int result = dao.getMentoringCnt(vo);
+		return result;
 	}
 
 }

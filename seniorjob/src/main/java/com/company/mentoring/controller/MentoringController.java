@@ -2,9 +2,7 @@ package com.company.mentoring.controller;
 
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,6 +31,8 @@ public class MentoringController {
 	@Autowired MentoringService mtService;
 	@Autowired UsersService usersService;
 	@Autowired ShoppingService shoppingService;
+	
+//	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 
 	// 멘토링 검색
 	@RequestMapping("/getMentoringList")
@@ -49,9 +49,10 @@ public class MentoringController {
 	}
 	
 	// 멘토링 단건조회
-	@RequestMapping("/getMentoring")
-	public String getMentoring(Model model, MentoringVO vo) {
-		model.addAttribute("list", mtService.getMentoring(vo));
+	@RequestMapping("/getMentoringChanGon")
+	public String getMentoring(Model model, MentoringVO mtVo, MentorVO mVo) {
+		model.addAttribute("mentoring", mtService.getMentoring(mtVo));
+		model.addAttribute("mentor",mentorService.getMentor(mVo));
 		return "Mentoring/getMentoring";
 	}
 	
@@ -72,8 +73,6 @@ public class MentoringController {
 	// 멘토링 등록 처리
 	@RequestMapping("/mentoringRegisterCheck")
 	public String mentoringRegisterCheck(Model model, MentoringVO vo, HttpServletRequest request) throws IllegalStateException, IOException {
-		//Map<String, Object> map = new HashMap<String, Object>();
-		List<MentoringVO> list = mtService.mentoringRegisterCheck(vo);
 			mtService.insertMentoring(vo, request);
 			model.addAttribute("msg", "멘토링 등록 완료");
 			model.addAttribute("url", "getMentorList");
@@ -131,6 +130,24 @@ public class MentoringController {
 		model.addAttribute("shopping", shoppingService.getPayInfo(vo));
 		return "Mentoring/PaymentSuccess";
 	}
+	
+	// 멘토링 개수
+	@ResponseBody
+	@RequestMapping("getMentoringCnt")
+	public int getMentoringCnt(MentoringVO vo) {
+		int result = mtService.getMentoringCnt(vo);
+		return result;
+	}
+	
+	// 멘토링 리스트 윈도우
+	@RequestMapping("/mentoringListWindow")
+	public String mentoringListWindow(MentoringVO mtVo, MentorVO mVo, Model model) {
+		model.addAttribute("mentoring", mtService.getMentoring(mtVo));
+		model.addAttribute("mentor",mentorService.getMentor(mVo));
+		return "Mentoring/mentoringListWindow";
+	}
+	
+//	--------------------------------------------------------End of 김찬곤-----------------------------------------------------------------------------------------------------
 	
 	//양소민 추가
 	@GetMapping("/getSearchMentoring")   //마이페이지_내가 만든 멘토링
