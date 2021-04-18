@@ -183,6 +183,7 @@
             </div>
         </div>
 
+
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
@@ -244,7 +245,6 @@
 				}
 			});
 		}
-		
 		
 		function getFollowCnt(){ // 팔로우 개수
 			$.ajax({

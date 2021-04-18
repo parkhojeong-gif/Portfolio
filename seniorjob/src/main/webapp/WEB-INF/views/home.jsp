@@ -9,6 +9,7 @@
 <title>시니어잡</title>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
 <link href="resources/css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 <!-- Icons font CSS-->
     <link href="resources/mainSearchBar/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -24,7 +25,8 @@
 
 <style>
 .slider-content{position:absolute}
-.form-inline .form-control{width:50%}!important;
+.form-inline{margin:20px}
+#mentorSearchBtn{cursor:pointer}
 </style>
 </head>
 <body>
@@ -51,13 +53,13 @@
                         <p>업의 현장에 종사하는 분들의 지식과 전문성을 활용해 꿈을 이뤄 나가는 과정에서 즉시 가치가 창출 될 수 있도록 지원합니다.</p>
                         <div class="search-form wow pulse" data-wow-delay="0.8s">
 
-                            <form class=" form-inline" onsubmit="return checkValueNull()" name="searchFrm">
+                            <form class=" form-inline" name="searchFrm">
 
                                     <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" name="searchKeyword" value="" placeholder="ex)마케팅,영업,IT">
 							<div class="form-group">
 								<div class="row row-space">
 									<div class="col-2"></div>
-									<button class="btn-submit m-t-0" type="submit">search</button>
+									<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchBtn"></i>	
 								</div>
 							</div>
 						</form>
@@ -78,7 +80,6 @@
 										<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
 									</div>
 								</div>
-								
 							</div>
 							<div class="form-group">
 							<div class="row row-space">
@@ -223,26 +224,25 @@
     </div> -->
 	<!-- End of 멘토링 검색 -->
 
-<script src="resources/js/extention/choices.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	
-	// 멘토 상세검색 값 체크 및 검색 구현
-	function checkValueNull(){
-		var keywordChk = $("[name='searchKeyword']").val();
-		var dutyChk = $("[name='mentor_duty']").val();
-		var locationChk = $("[name='mentoring_location']").val();
-		var ageChk = $("[name='mentoring_age']").val();
-		if(keywordChk=="" && dutyChk=="" && locationChk=="" && ageChk==""){
-			alert("검색 조건을 하나 또는 여러개 선택하세요");
-			return false;
-		}else if(keywordChk != null){
-			searchFrm.action = "getKeywordSearch";
-			searchFrm.submit();
-		}else{
-			searchFrm.action = "getMentorList";
-			searchFrm.submit();
-		}
-	}
+	$('#mentorSearchBtn').click(function(){
+		// 멘토 상세검색 값 체크 및 검색 구현
+			var keywordChk = $("[name='searchKeyword']").val();
+			if(keywordChk==""){
+				alert("검색 키워드를 입력하세요.");
+				return false;
+			}else if(keywordChk != null){
+				searchFrm.action = "getKeywordSearch";
+				searchFrm.submit();
+			}else{
+				searchFrm.action = "getMentorList";
+				searchFrm.submit();
+			}
+	});
+	
+	
 	
 	// 멘토링 날짜 검색 유효성 체크
 	function checkDateNull(){

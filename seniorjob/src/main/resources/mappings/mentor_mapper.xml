@@ -7,7 +7,7 @@
  
  	<!-- 전체검색 / 지역 검색 / 직무 검색  --> 
 	<select id="getMentorList" resultType="com.company.mentor.service.MentorVO">
-		SELECT M.*, U.AUTH "usersVO.auth"
+		SELECT M.*, U.AUTH "usersVO.auth", U.NAME "usersVO.name"
 		FROM MENTOR M, USERS U
 		WHERE M.ID = U.ID
 		AND U.AUTH = 'MENTOR' 

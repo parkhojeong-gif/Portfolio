@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>시니어잡/멘토링</title>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 <style>
 .card-body {
     -ms-flex: 1 1 auto;
@@ -81,12 +83,11 @@ h1{text-align:center}
 									<div class="row">
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()" style="background:#FDC600; color:#fff">
                                                 </c:if>
                                                 <c:if test="${not empty users }">
-													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
+													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()" style="background:#FDC600; color:#fff">
                                                 </c:if>
-											<div class="button btn largesearch-btn" style="cursor: pointer;" onclick="window.scrollTo(0,0);">TOP</div>
 										</div>
 									</div>
 								</div>
@@ -101,6 +102,10 @@ h1{text-align:center}
 		</div>
 	</div>
 	<!-- End of 멘토 리스트 출력 -->
+	
+<!-- TOP버튼 / https://seo6285.tistory.com/189-->
+      	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
+      	<!-- TOP버튼 -->
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->		

@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>시니어잡/멘토</title>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </head>
 <style>
 	h3{text-align:left}
@@ -17,6 +19,17 @@
 }
 #sidebar ul { 
 	padding: 10px; 
+}
+
+.modal{ position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none; }
+.modal_content{
+  width:400px; height:200px;
+  background:#fff; border-radius:10px;
+  position:relative; top:50%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px; cursor:pointer;
 }
 </style>
 <body>
@@ -66,15 +79,14 @@
 										<c:if test="${empty mentor.mentor_photo }">
 											<img src="resources/assets/img/mentor/photoDefault.jpg">
 										</c:if>
-										</div>
+										</div>	
 
 										<div class="item-entry overflow">
-											<h5 id="mentor_company_name" >직무: ${mentor.mentor_duty }</h5>
-											<br> <a id="mentor_department_name">부서: ${mentor.mentor_department_name } </a>
+											<h5 id="mentor_company_name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
 											<div class="dot-hr"></div>
-											<span class="pull-left"><b id="mentoring_kind" >멘토링 종류: ${mentor.mentoring_kind }</b></span>
-											<span class="pull-left"><b id="mentoring_location" >멘토링 종류: ${mentor.mentoring_location }</b></span>
-											<span class="pull-left"><b id="mentoring_age" >멘토링 연령: ${mentor.mentoring_age }</b></span>
+											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit">멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_location" ><b class="property-info-unit">멘토링 지역:</b> ${mentor.mentoring_location }</b></span>
+											<span class="pull-left"><b id="mentoring_age" ><b class="property-info-unit">멘토링 연령:</b> ${mentor.mentoring_age }</b></span>
 										</div>
 									</div>
 								</div>
@@ -98,12 +110,11 @@
 									<div class="row">
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()" style="background:#FDC600; color:#fff">
                                                 </c:if>
                                                 <c:if test="${not empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="MentorRegister()">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="MentorRegister()" style="background:#FDC600; color:#fff">
                                                 </c:if>
-											<div class="button btn largesearch-btn" type="button" style="cursor: pointer;" onclick="window.scrollTo(0,0);">TOP</div>
 										</div>
 									</div>
 								</div>
@@ -116,7 +127,17 @@
                 </div>           
             </div>
         </div>
+        <!-- TOP버튼 / https://seo6285.tistory.com/189-->
+      	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
+      	<!-- TOP버튼 -->
+      	<button id="modal_on">모달창</button>
+      	<!-- 모달 테스트 -->
+      	<div class="modal"> 
+      	<div class="modal_content" title="클릭하면 창이 닫힙니다."> 여기에 모달창 내용을 적어줍니다.<br> 이미지여도 좋고 글이어도 좋습니다. </div>
+      	</div>
+      	<!-- 모달 테스트 -->
 
+<div id="footerBottom">footer</div>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
@@ -188,19 +209,29 @@
 	
 	/* 플로팅 배너 */
 	$(function() {
-		var offset = $("#sidebar").offset();
-		var topPadding = 300;
+		var offset = $("#sidebar").offset(); // 선택요소 좌표 가져오기
+		var topPadding = 300; 
 		$(window).scroll(function() {
-			if ($(window).scrollTop() > offset.top) {
-				$("#sidebar").stop().animate({
+			if ($(window).scrollTop() > offset.top) { // 윈도우 스크롤바가 sidebar 보다 높이 위치한다면
+				$("#sidebar").stop().animate({ // 더이상 따라오지 않고 멈추기
 					marginTop: $(window).scrollTop() - offset.top + topPadding
 				});
-			} else {
+			} else{ // 윈도우 스크롤바가 sidebar 보다 낮게 위치한다면
 				$("#sidebar").stop().animate({
 					marginTop: 0
 				});
-			};
+			}; 
 		});
 	});
+	
+	// 모달 테스트
+	$(function(){ 
+		$("#modal_on").click(function(){ 
+			$(".modal").fadeIn(); 
+			}); 
+		$(".modal_content").click(function(){
+			$(".modal").fadeOut(); }); 
+		});
+
 	/* 플로팅 배너 */
 </script>
