@@ -27,5 +27,7 @@ public interface ScheduleService {
 	public int updateQuest(ScheduleVO vo);
 	
 	public ScheduleVO getQuest(ScheduleVO vo);
+	
+	public List<Map> getSearchMentoringDate(ScheduleVO vo);
 
 }

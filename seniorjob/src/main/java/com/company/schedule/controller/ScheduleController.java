@@ -1,5 +1,8 @@
 package com.company.schedule.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -125,6 +128,53 @@ public class ScheduleController {
 		vo.setSeq(seq);
 		scService.updateQuest(vo);
 		return "mypage/mypageHome";
+		
+	}
+	
+	//영상통화 버튼
+	@RequestMapping("/videoCallButton")
+	public String videoCallButton(HttpServletRequest request, ScheduleVO vo) {
+		//오늘 날짜 구하기
+		Date date = new Date();
+		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMdd");
+		String today = dF.format(date);
+		//System.out.println(today);
+		
+		//로그인한 아이디를 mentorId와 menteeId에 저장
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMenteeid(id);
+		vo.setMentorid(id);
+		
+		//id를 통회 스케줄 조회
+		List<Map> list = scService.getSearchMentoringDate(vo);
+		
+		//System.out.println("list:"+list);
+		
+		for(Map<String, Object> map:list) {
+			/*
+			 * for(Map.Entry<String, Object> entry:map.entrySet()){ String key =
+			 * entry.getKey(); Object value = entry.getValue(); System.out.println("key: " +
+			 * key + " | value: " + value); if(entry.getValue() == today) {
+			 * 
+			 * } }
+			 */
+			/*
+			 * Iterator<Object> itValue = map.values().iterator(); while(itValue.hasNext()){
+			 * System.out.println(itValue.next());
+			 * 
+			 * }
+			 */
+			
+			
+		}
+		
+		
+		
+		//String endDate = ;
+		
+		return null;
+		
 		
 	}
 }

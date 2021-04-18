@@ -117,4 +117,17 @@
 		SEQ=#{seq}
 	</select>
 	
+	
+	<select id="getSearchMentoringDate" parameterType="ScheduleVO" resultType="map">
+		SELECT TO_CHAR(SCHEDULE_START,'YYYYMMDD') AS "SCHEDULE_START",
+  				TO_CHAR(SCHEDULE_END,'YYYYMMDD') AS "SCHEDULE_END",
+  				SEQ
+  		FROM SCHEDULE 
+  		WHERE
+			(MENTORID=#{mentorid} OR
+			MENTEEID=#{menteeid}) 
+		AND 
+		STATE='accept'
+	</select>
+	
 </mapper>
