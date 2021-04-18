@@ -139,4 +139,9 @@ public class ResumeController {
 		model.addAttribute("portvo", portmapper.getPort(portvo));
 		return "resume/collection"; 
 	}
+	
+	@RequestMapping("/testing")
+	public String testing() {
+		return "resume/test";
+	}
 }

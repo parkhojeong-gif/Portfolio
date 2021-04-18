@@ -86,7 +86,7 @@ function allDel(){
 				</div>
 			</div>
 		</div>
-	</div>
+<!-- 	</div> -->
 	<script src="resources/assets/js/icheck.min.js"></script>
 	<script>
 	//css 체크박스 안 먹을 때 .iCheck() 추가
