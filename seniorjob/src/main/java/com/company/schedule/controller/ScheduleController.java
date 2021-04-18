@@ -134,7 +134,8 @@ public class ScheduleController {
 	
 	//영상통화 버튼
 	@RequestMapping("/videoCallButton")
-	public String videoCallButton(HttpServletRequest request, ScheduleVO vo) {
+	@ResponseBody
+	public boolean videoCallButton(HttpServletRequest request, ScheduleVO vo) {
 		//오늘 날짜 구하기
 		Date date = new Date();
 		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -171,13 +172,15 @@ public class ScheduleController {
 				  String start = (String) map.get("SCHEDULE_START");
 				  String end = (String) map.get("SCHEDULE_END");
 				  Long startInt = Long.parseLong(start);
-				  System.out.println("startInt:"+startInt);
+				  Long endInt = Long.parseLong(end);
+				  //System.out.println("startInt:"+startInt);
 				  //System.out.println("startInt:"+startInt);
 				  
 				  
-//				  if(start <= inToday && inToday <= end ) {
-//					  
-//				  }
+				  if(start <= inToday && inToday <= end ) {
+					  return true;
+					  
+				  } else return false;
 			  
 			  }
 			 
