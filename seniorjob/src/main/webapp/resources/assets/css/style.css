@@ -167,6 +167,8 @@ input[type="search"]::-webkit-search-decoration {
     font-weight: 400;
     opacity: 0.8;
     padding: 8px 16px;
+    border: 1px solid black;
+    margin: 5px;
 }
 .btn-round{
     border-width: 1px;
@@ -311,7 +313,7 @@ input[type="search"]::-webkit-search-decoration {
 .search-form {
     background-color: #fff;
     border-radius: 5px;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     border: 1px solid #E6E6E6;
     box-sizing: border-box;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -2609,11 +2611,11 @@ padding-bottom: 15px;
     display: inline-block;
     width: 100%;
 }
-.large-search .search-form .form-inline .form-control, .form-inline .form-control,
+/* .large-search .search-form .form-inline .form-control, .form-inline .form-control,
 .large-search .search-form .bootstrap-select button.dropdown-toggle ,
 .large-search .search-form .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
     width:100%;
-}
+} */
 .large-search .search-row{
     overflow: hidden;
 }

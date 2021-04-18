@@ -60,7 +60,12 @@
 								<div class="col-sm-6 col-md-4 p0" id="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
+										<c:if test="${not empty mentor.mentor_photo }">
 											<img src="image/${mentor.mentor_photo }">
+										</c:if>
+										<c:if test="${empty mentor.mentor_photo }">
+											<img src="resources/assets/img/mentor/photoDefault.jpg">
+										</c:if>
 										</div>
 
 										<div class="item-entry overflow">
@@ -98,7 +103,7 @@
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="MentorRegister()">
                                                 </c:if>
-											<div class="button btn largesearch-btn" style="cursor: pointer;" onclick="window.scrollTo(0,0);">TOP</div>
+											<div class="button btn largesearch-btn" type="button" style="cursor: pointer;" onclick="window.scrollTo(0,0);">TOP</div>
 										</div>
 									</div>
 								</div>

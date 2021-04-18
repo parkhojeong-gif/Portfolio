@@ -356,12 +356,10 @@ h1{text-align:center}
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
+                                    <img class="img-responsive" src="image/${mentoring.mentoring_photo }" />
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">${mentoring.mentoring_name }</div>
-                                    <div class="col-xs-12"><small>${mentor.usersVO.name }</small></div>
-                                    <div class="col-xs-12"><small>${mentoring.s_date } ~ ${mentoring.e_date}</small></div>
                                 </div>
                             </div>
                             <div class="form-group"><hr /></div>
@@ -375,27 +373,11 @@ h1{text-align:center}
                     </div>
                     <!--CREDIT CART PAYMENT-->
                     <div class="panel panel-info">
-                        <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span>결제 방식 선택</div>
+                        <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span>결제</div>
                         <div class="panel-body">
-                        
                             <div class="form-group">
                                 <div class="col-md-12"><strong></strong></div>
-                                <div class="col-md-12"><button type="button" class="btn btn-primary btn-block" name="PayByCard" id="PayByCard">카드결제</button></div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="col-md-12"><strong></strong></div>
-                                <div class="col-md-12"><button type="submit" class="btn btn-primary btn-block" name="PayByToss" id="PayByToss">토스</button></div>
-                            </div>
-                            
-							<div class="form-group">
-                                <div class="col-md-12"><strong></strong></div>
-                                <div class="col-md-12"><button type="submit" name="kakaoPay" id="kakaoPay" class="btn btn-primary btn-block">카카오 페이</button></div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="col-md-12"><strong></strong></div>
-                                <div class="col-md-12"><button type="button" class="btn btn-primary btn-block">삼성페이</button></div>
+                                <div class="col-md-12"><button type="button" class="btn btn-primary btn-block" name="PayByCard" id="PayByCard">결제</button></div>
                             </div>
                         </div>
                     </div>

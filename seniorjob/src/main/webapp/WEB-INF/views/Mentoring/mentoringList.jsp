@@ -37,6 +37,9 @@ h1{text-align:center}
 						<div id="list-type" class="proerty-th-list">
 							<div class="col-md-4 p0">
 							<c:forEach var="mentoring" items="${list }">
+							<form action="getSearchMentoringChanGon">
+							<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
+							<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
 									
@@ -47,16 +50,17 @@ h1{text-align:center}
 											<a href="property-1.html">멘토링 이름: ${mentoring.mentoring_name }</a>
 										</h5>
 										<div class="dot-hr"></div>
-										<span class="pull-left"><b>멘토 이름: </b>${mentoring.mentor_id }</span> <span
+										<span class="pull-left"><b>멘토 ID: </b>${mentoring.mentor_id }</span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
 										<p style="display: none;">멘토링 내용: ${mentoring.mentoring_content }</p>
 										<div class="property-icon">
 											<div class="dealer-action pull-right">
-												<a href="getMentoringChanGon?mentor_id=${mentoring.mentor_id }" class="button">상세보기 </a>
+											<input type="submit" value="상세보기">
 											</div>
 										</div>
 									</div>
 								</div>
+								</form>
 							</c:forEach>	
 							</div>
 						</div>

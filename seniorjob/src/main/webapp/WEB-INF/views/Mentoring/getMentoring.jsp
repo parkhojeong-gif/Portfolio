@@ -12,11 +12,13 @@
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
-
+<form id="submitFrm" name="submitFrm">
+<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
+	 <input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
-                    <div class="page-head-content">
+                    <div class="page-head-content" style="color:black">
                         <h1 class="page-title">${mentor.usersVO.name}<b class="property-info-unit">멘토의 멘토링</b></h1>  
                     </div>
                 </div>
@@ -47,7 +49,7 @@
                         </div>
                         <div class="single-property-wrapper">
                             <div class="single-property-header">                                          
-                                <h1 class="property-title pull-left">멘토링 이름: ${mentoring.mentoring_name }</h1>
+                                <h1 class="property-title pull-left"><b>${mentoring.mentoring_name }</b></h1>
                             </div>
 
                             <div class="property-meta entry-meta clearfix ">   
@@ -215,12 +217,11 @@
                                         </div>
 
                                         <div class="clear">
-                                            <ul class="dealer-contacts">                                       
-                                                <li><i class="pe-7s-home strong"> </i>:멘토 근무지: ${mentor.mentor_company_name } </li>
-                                                <li><i class="pe-7s-speaker strong"> </i>멘토링 영역: ${mentor.mentoring_kind }</li>
-                                                <li><i class="pe-7s-map-marker strong"> </i>멘토링 지역: ${mentor.mentoring_location }</li>
+                                            <ul class="dealer-contacts">     
+                                                <li><i class="pe-7s-user strong"> </i><b class="property-info-unit">이름: </b>${mentor.usersVO.name }</li>
+                                                <li><i class="pe-7s-home strong"> </i><b class="property-info-unit">회사: </b>${mentor.mentor_company_name }</li>
+                                                <li><i class="pe-7s-notebook strong"> </i><b class="property-info-unit">직무: </b>${mentor.mentor_duty }</li>
                                             </ul>
-                                            <p>${mentor.mentor_introduce }</p>
                                         </div>
 
                                     </div>
@@ -233,12 +234,7 @@
                                     <h3 class="panel-title"></h3>
                                 </div> --> 
                                 <div class="panel-body search-widget">
-                                    <form action="" class=" form-inline"> 
                                     	<input type="hidden" id="id" name="id" value="${mentor.id }">
-										<input type="hidden" name="mentor_id" id="mentor_id" value="${mentoring.mentor_id }">
-										<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
-										<input type="hidden" id="men_start" name="men_start" value="${mentoring.s_date  }">
-										<input type="hidden" id="met_end" name="met_end" value="${mentoring.e_date  }">
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
@@ -247,7 +243,6 @@
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
-                                    </form>
                                 </div>
                             </div>
 							<!-- End of 장바구니담기/결제하기  -->
@@ -322,13 +317,16 @@
 
             </div>
         </div>
+</form>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
 //멘토링 신청페이지 이동
 function mentoringPayForm(){ 
+		var Frm = document.submitFrm;
 		if(confirm("멘토링을 신청하시겠습니까?")){
-			location.href = "mentoringPayForm?mentor_id=${mentoring.mentor_id}";
+			Frm.action = "mentoringPayForm";
+			Frm.submit();
 		}
 	}
 </script>

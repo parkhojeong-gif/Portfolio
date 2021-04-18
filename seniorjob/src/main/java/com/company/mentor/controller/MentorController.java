@@ -84,7 +84,6 @@ public class MentorController {
 		@RequestMapping("/getMentor")
 		public String getMentor(Model model, MentorVO mVo, MentoringVO mtrVo) {
 			model.addAttribute("mentor", mentorService.getMentor(mVo));
-			model.addAttribute("mentoring", mentoringService.getMentoring(mtrVo));
 			return "Mentor/getMentor";
 		}
 		

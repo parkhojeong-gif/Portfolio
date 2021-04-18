@@ -24,14 +24,16 @@
 
 <!--CSS list style with number cicles background -->
 <div class="numberlist">
+	 <form name="submitFrm" action="getSearchMentoringChanGon">
 	 <ol>
 	 <c:forEach var="mt" items="${mentoring }">
-	  	<li><a href="#" onclick="getSearchMentoring()">${mt.mentoring_name }</a></li>
+	 <input type="hidden" id="mentor_id" name="mentor_id" value="${mt.mentor_id }">
+	 <input type="hidden" id="mentoring_number" name="mentoring_number" value="${mt.mentoring_number }">
+	  	<li><a href="#" onclick="getMentoring()">${mt.mentoring_name }</a></li>
 	 </c:forEach>
 	 </ol>
+	 </form>
 </div>
-
-
 
 <!--CSS list style with arrow images -->
 
@@ -39,11 +41,9 @@
 <div class="clr"></div>
             <!-- freshdesignweb top bar -->
             <div class="freshdesignweb-buttom">
-                <a href="http://www.freshdesignweb.com" target="_blank">Home</a>
+                <a href="#" target="_blank" onclick="getMain()">Home</a>
                 <span class="right">
-                    <a href="http://www.freshdesignweb.com/css-list-style-tutorial.html">
-                        닫기
-                    </a>
+                    <a href="#" onclick="closeWindow()">닫기</a>
                 </span>
                 <div class="clr"></div>
             </div><!--/ freshdesignweb top bar -->
@@ -66,8 +66,17 @@ get_container.style.height =  get_height1 + 'px';
     var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
   })();
   
-function getSearchMentoring(){
-	alert("click");
+function closeWindow(){
+	window.close();
+}
+function getMain(){
+	opener.document.location.href = "getMain";
+	window.close();
+}
+function getMentoring(){
+	if(confirm("해당 멘토링 페이지로 이동하시겠습니까?")){
+		document.submitFrm.submit();
+	}
 }
 </script>
 

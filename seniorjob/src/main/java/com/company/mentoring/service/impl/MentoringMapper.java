@@ -21,4 +21,5 @@ public interface MentoringMapper {
 	public List<MentoringVO> mentoringRegisterCheck(MentoringVO vo); // 硫섑넗留� 以묐났 泥댄겕
 	
 	public int getMentoringCnt(MentoringVO vo); // 진행중인 멘토링 카운트 
+	public MentoringVO getSearchMentoringChanGon(MentoringVO vo); // 멘토링 단건 조회_김찬곤
 }

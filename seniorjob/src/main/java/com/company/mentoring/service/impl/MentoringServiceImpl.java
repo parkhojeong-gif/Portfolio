@@ -19,7 +19,9 @@ public class MentoringServiceImpl implements MentoringService {
 	
 	@Autowired MentoringMapper dao;
 
-	// 멘토링 등록
+//	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
+	
+	// 멘토링 등록_김찬곤
 	@Override
 	public void insertMentoring(MentoringVO vo, HttpServletRequest request) throws IllegalStateException, IOException {
 		
@@ -45,6 +47,38 @@ public class MentoringServiceImpl implements MentoringService {
 			dao.insertMentoring(vo);
 		}
 	}
+	
+	// 김찬곤	
+	@Override
+	public List<MentoringVO> mentoringRegisterCheck(MentoringVO vo) {
+		return dao.mentoringRegisterCheck(vo);
+	}
+	// 김찬곤
+	@Override
+	public List<MentoringVO> getMentoringList(MentoringVO vo) {
+		return dao.getMentoringList(vo);
+	}
+
+	// 김찬곤
+	@Override
+	public List<MentoringVO> getKeywordMentoring(MentoringVO vo) {
+		return dao.getKeywordMentoring(vo);
+	}
+
+	// 진행중인 멘토링 카운트_김찬곤 
+	@Override
+	public int getMentoringCnt(MentoringVO vo) {
+		int result = dao.getMentoringCnt(vo);
+		return result;
+	}
+
+	// 멘토링 단건 조회_김찬곤
+	@Override
+	public MentoringVO getSearchMentoringChanGon(MentoringVO vo) {
+		return dao.getSearchMentoringChanGon(vo);
+	}
+	
+//	-------------------------------------------------------- End of 김찬곤-----------------------------------------------------------------------------------------------------
 
 	@Override
 	public int updateMentoring(MentoringVO vo) {
@@ -64,28 +98,6 @@ public class MentoringServiceImpl implements MentoringService {
 	@Override
 	public List<MentoringVO> getSearchMentoring(MentoringVO vo) {
 		return dao.getSearchMentoring(vo);
-	}
-
-	@Override
-	public List<MentoringVO> mentoringRegisterCheck(MentoringVO vo) {
-		return dao.mentoringRegisterCheck(vo);
-	}
-
-	@Override
-	public List<MentoringVO> getMentoringList(MentoringVO vo) {
-		return dao.getMentoringList(vo);
-	}
-
-	@Override
-	public List<MentoringVO> getKeywordMentoring(MentoringVO vo) {
-		return dao.getKeywordMentoring(vo);
-	}
-
-	// 진행중인 멘토링 카운트 
-	@Override
-	public int getMentoringCnt(MentoringVO vo) {
-		int result = dao.getMentoringCnt(vo);
-		return result;
 	}
 
 }

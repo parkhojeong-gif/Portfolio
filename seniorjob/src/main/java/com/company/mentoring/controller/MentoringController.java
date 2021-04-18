@@ -2,7 +2,6 @@ package com.company.mentoring.controller;
 
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -98,7 +97,7 @@ public class MentoringController {
 		UsersVO users = (UsersVO) session.getAttribute("users");
 		if(users != null) {
 			model.addAttribute("users",users); // 세션 정보
-			model.addAttribute("mentoring", mtService.getMentoring(mtrVo)); // 멘토링 정보
+			model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtrVo)); // 멘토링 정보
 			model.addAttribute("mentor", mentorService.getMentor(mVo)); // 멘토 정보
 		}else {
 			model.addAttribute("msg", "로그인한 사용자만 이용가능합니다.");
@@ -145,6 +144,14 @@ public class MentoringController {
 		model.addAttribute("mentoring", mtService.getMentoring(mtVo));
 		model.addAttribute("mentor",mentorService.getMentor(mVo));
 		return "Mentoring/mentoringListWindow";
+	}
+	
+	// 멘토링 단건 조회_김찬곤
+	@RequestMapping("/getSearchMentoringChanGon")
+	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model) {
+		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo));
+		model.addAttribute("mentor",mentorService.getMentor(mVo));
+		return "Mentoring/getMentoring";
 	}
 	
 //	--------------------------------------------------------End of 김찬곤-----------------------------------------------------------------------------------------------------
