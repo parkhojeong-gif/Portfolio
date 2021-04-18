@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -136,9 +137,10 @@ public class ScheduleController {
 	public String videoCallButton(HttpServletRequest request, ScheduleVO vo) {
 		//오늘 날짜 구하기
 		Date date = new Date();
-		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMddHHmmss");
 		String today = dF.format(date);
-		//System.out.println(today);
+		Long inToday = Long.parseLong(today);
+		System.out.println("inToday:"+inToday);
 		
 		//로그인한 아이디를 mentorId와 menteeId에 저장
 		HttpSession session = request.getSession();
@@ -152,19 +154,33 @@ public class ScheduleController {
 		//System.out.println("list:"+list);
 		
 		for(Map<String, Object> map:list) {
-			/*
-			 * for(Map.Entry<String, Object> entry:map.entrySet()){ String key =
-			 * entry.getKey(); Object value = entry.getValue(); System.out.println("key: " +
-			 * key + " | value: " + value); if(entry.getValue() == today) {
-			 * 
-			 * } }
-			 */
-			/*
-			 * Iterator<Object> itValue = map.values().iterator(); while(itValue.hasNext()){
-			 * System.out.println(itValue.next());
-			 * 
-			 * }
-			 */
+			
+//			  for(Map.Entry<String, Object> entry:map.entrySet()){ 
+//				  String key = entry.getKey(); 
+//				  Object value = entry.getValue(); 
+//			  System.out.println("key: " + key + " | value: " + value); 
+//			  if(entry.getValue() == today) {
+//			  
+//			   } 
+//			  }
+			 
+			  Set<String> KeySet = map.keySet();
+			  Iterator<String> keyIterator = KeySet.iterator(); 
+			  while(keyIterator.hasNext()){
+				  String key = keyIterator.next();
+				  String start = (String) map.get("SCHEDULE_START");
+				  String end = (String) map.get("SCHEDULE_END");
+				  Long startInt = Long.parseLong(start);
+				  System.out.println("startInt:"+startInt);
+				  //System.out.println("startInt:"+startInt);
+				  
+				  
+//				  if(start <= inToday && inToday <= end ) {
+//					  
+//				  }
+			  
+			  }
+			 
 			
 			
 		}
