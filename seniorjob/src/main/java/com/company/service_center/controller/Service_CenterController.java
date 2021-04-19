@@ -25,7 +25,7 @@ public class Service_CenterController {
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		
 		
-		if(scri.getOptionValue()==null) {
+		if(scri.getOptionValue()==null || scri.getOptionValue()=="") {
 			model.addAttribute("list", service_CenterMapper.list(scri));
 			System.out.println("============================ssqq===========================");
 			System.out.println(scri.getOptionValue());
@@ -99,7 +99,7 @@ public class Service_CenterController {
 	@RequestMapping("serviceCenterQna") // 결제/환불 목록 조회
 	public String listQna(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 
-		if(scri.getOptionValue()==null) {
+		if(scri.getOptionValue()==null || scri.getOptionValue()=="" ) {
 			model.addAttribute("list", service_CenterMapper.listQna(scri));
 			System.out.println("============================ssqq===========================");
 			System.out.println(scri.getOptionValue());

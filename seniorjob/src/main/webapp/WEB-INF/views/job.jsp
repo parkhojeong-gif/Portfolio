@@ -9,11 +9,21 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="topHeader.jsp"></jsp:include>
-<script type="text/javascript">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
 function openWindowPop(url, name){
     var options = 'top=10, left=50, width=800, height=900, status=no, menubar=no, toolbar=no, resizable=no';
     window.open(url, name, options);
 }
+
+$(function() {
+    $( '#cd' ).click( function() {
+      $('#cd').removeClass('class','btn btn-default btn-lg');
+      $(this).addClass('btn btn-primary btn-lg');
+    });
+  });
+
 </script>
 <body>
 	<!-- property area -->
@@ -32,15 +42,15 @@ function openWindowPop(url, name){
 				<div class="section additional-details">
 				<form action="job">
 						
-						<button type="submit" class="btn btn-primary btn-lg" formaction="job" name="cd" value='11'>서울</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='12'>부산</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='13'>대구</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='14'>인천</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='15'>광주</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='16'>대전</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='17'>울산</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='16'>대전</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" name="cd" value='17'>울산</button>
+						<button type="submit" class="btn btn-primary btn-lg" onclick="" formaction="job" id="cd"name="cd" value='11'>서울</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='12'>부산</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='13'>대구</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='14'>인천</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='15'>광주</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='16'>대전</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='17'>울산</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='16'>대전</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='17'>울산</button>
 				</form>
 				<table class="table table-hover">
 					<tr>

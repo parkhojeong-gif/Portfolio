@@ -155,7 +155,7 @@
 										<button class="btn btn-primary subscribe" id="searchBtn"
 											type="button"
 											onclick="location.href='insertService_CenterFormQna'">등록</button>
-										<script>
+				<script>
 			      $(function(){
 			        $('#searchBtn').click(function() {
 			          self.location = "serviceCenterQna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());

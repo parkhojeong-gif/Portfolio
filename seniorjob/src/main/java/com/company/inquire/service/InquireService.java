@@ -17,13 +17,26 @@ public interface InquireService {
 	
 	//전체문의목록
 	// 전체문의목록 게시물 총갯수
-	public int inquireCount(SearchCriteria scri);
+	public int inquireCount(SearchCriteria scri); //전체 게시글 
+	public int inquireCountY(SearchCriteria scri);//전체 게시글 중 답변완료
+	public int inquireCountN(SearchCriteria scri);//전체 게시글 중 미답변
+	public int inquireCount2(SearchCriteria scri);
 	
 	//전체문의목록 게시글 검색
 	public List<InquireVO> searchInquire(String searchKeyword);
 	
 	//전체 검색 조회
 	public List<InquireVO> getInquireList(SearchCriteria scri);
+	public List<InquireVO> getInquireList2(SearchCriteria scri); //결제
+	public List<InquireVO> getInquireList3(SearchCriteria scri); //환불
+	public List<InquireVO> getInquireList4(SearchCriteria scri); //신청
+	public List<InquireVO> getInquireList5(SearchCriteria scri); //취소
+	public List<InquireVO> getInquireList6(SearchCriteria scri); //기타
+	
+	public List<InquireVO> getInquireListY(SearchCriteria scri); //전체 답변완료
+	public List<InquireVO> getInquireListN(SearchCriteria scri); //전체 답변완료
+	
+	
 	//===============================================//
 	
 	//유저 내문의목록조회

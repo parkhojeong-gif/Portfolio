@@ -11,20 +11,7 @@
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-//세부검색(최신순, 조회수순)
-function optionSelect(obj){
-	var param = 'optionValue='+$('#items_per_page').val();
-	location.href='serviceCenter?'+(obj==""?"":param);
-}
-// 함수 실행
-$(function(){
-	$('#sebuBtn').click(function(){
-	optionSelect("");	
-})	
-});
 
-</script>
 
 <body>
 	<!-- property area -->
@@ -49,10 +36,10 @@ $(function(){
 								<select id="items_per_page" name="per_page"
 									onchange="optionSelect(this)">
 									<option value="">선택</option>
-									<option value="최신순">최신순</option>
-									<option value="인기순">조회수순</option>
+									<option value="최신순" id="select1">최신순</option>
+									<option value="인기순" id="select2">조회수순</option>
 								</select> <input type="hidden" id="sebubtn">
-								<button style="float: right" class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertService_CenterForm'">등록</button>
+								<button style="float: right" class="btn btn-primary subscribe"  type="button" onclick="location.href='insertService_CenterForm'">등록</button>
 							</div>
 							<br>
 							<!--/ .sel-->
@@ -68,15 +55,11 @@ $(function(){
 							</tr>
 							<c:forEach items="${list }" var="gongji">
 								<tr>
-									<td
-										onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.category_b }</td>
-									<td
-										onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.title }</td>
-									<td
-										onclick="location.href='getService_Center?seq=${gongji.seq }'"><fmt:formatDate
-											value="${gongji.w_date }" pattern="yyyy-MM-dd" /></td>
-									<td
-										onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.click }</td>
+									<td onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.category_b }</td>
+									<td onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.title }</td>
+									<td onclick="location.href='getService_Center?seq=${gongji.seq }'">
+										<fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd" /></td>
+									<td onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.click }</td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -138,32 +121,19 @@ $(function(){
 										type="button">
 										<i class="pe-7s-paper-plane pe-2x"></i>
 									</button>
-
 									<script>
-											$(function() {
-												$('#searchBtn')
-														.click(
-																function() {
-																	self.location = "serviceCenter"
-																			+ '${pageMaker.makeQuery(1)}'
-																			+ "&searchType="
-																			+ $(
-																					"select option:selected")
-																					.val()
-																			+ "&keyword="
-																			+ encodeURIComponent($(
-																					'#keywordInput')
-																					.val());
-																});
-											});
-											$(function() {
-												$('#searchBtn').click(function(){
-																		self.location = ""
-												})		
-											}
-											
-											
-										</script>
+									$(function(){
+										  $('#searchBtn').click(function() {
+											  var seLocation = "serviceCenter" + '${pageMaker.makeQuery(1)}' 
+										    				+ "&searchType=" + $("#basic option:selected").val() 
+										    				+ "&keyword=" + encodeURIComponent($('#keywordInput').val())
+										    				+ "&optionValue=" + getURLParams(location.search).optionValue;
+											  console.log(seLocation);
+											  self.location = seLocation;
+										  });
+										});   
+									</script>
+									
 								</span>
 							</div>
 						</div>
@@ -211,7 +181,30 @@ $(function(){
 			</div>
 		</div>
 	</div>
+<script>
+//세부검색(최신순, 조회수순)
+function optionSelect(obj){
+	var param = 'optionValue='+$('#items_per_page').val();
+	location.href='serviceCenter?'+(obj==""?"":param);
+	
+}
+function getURLParams(url) {
+    var result = {};
+    url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function(s, k, v) { result[k] = decodeURIComponent(v); });
+    return result;
+}
 
+ $(function(){
+	if(getURLParams(location.search).optionValue == '최신순'){
+		$('#select1').attr('selected','selected')
+	}else if(getURLParams(location.search).optionValue == '인기순'){
+		$('#select2').attr('selected','selected')
+	}
+}); 
+
+
+
+</script>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

@@ -34,7 +34,7 @@ function click_seq(obj){
 				var td2 = $("<td>").text(response[i].title);
 				var tr2 = $("<tr>");
 				var td2_1 = $("<td>").html("내용");
-				var td2_2 = $("<td>").text(response[i].content);
+				var td2_2 = $("<td>").html(response[i].content);
 				table1.append(tr1, tr2);
 				tr1.append(td1,td2);
 				tr2.append(td2_1,td2_2);
@@ -95,7 +95,12 @@ function click_seq(obj){
 								<td onclick="location.href='getUserInquire?seq=${b.seq}'">${b.id }</td>
 								<td onclick="location.href='getUserInquire?seq=${b.seq}'">${b.w_date }</td>
 								<td onclick="location.href='getUserInquire?seq=${b.seq}'">${b.status}</td>
-								<td><button type="button" id="#" onclick="click_seq()" class="btn btn-primary"data-toggle="modal" data-target="#myModal">답변확인</button></td>
+								<td>
+								<c:if test="${b.status  eq '답변완료'}">
+								<button type="button" id="#" onclick="click_seq()" class="btn btn-primary"data-toggle="modal" data-target="#myModal">답변확인</button>
+								</c:if>
+								</td>
+								
 							</tr>
 						</c:forEach>
 					</table>
