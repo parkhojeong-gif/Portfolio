@@ -183,7 +183,6 @@
             </div>
         </div>
 
-
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
@@ -238,7 +237,7 @@
 				data: { "mentor_id": ${mentor.mentor_id} },
 				success:function(result){
 					var span = $('<span>').attr({ "id" : "mtCnt" , "class" : "property-info-value" });
-					var a = $('<a>').attr({'href' : '#' , "onclick" : "window.open('mentoringListWindow?mentor_id=${mentor.mentor_id}','멘토링 리스트',  'width=716px, height=220px, resizable = no')"}).text(result);
+					var a = $('<a>').attr({'href' : '#' , "onclick" : "window.open('mentoringListWindow?mentor_id=${mentor.mentor_id}','멘토링 리스트',  'width=716px, height=278px, resizable = no')"}).text(result);
 					var b = $('<b>').attr("class", "property-info-unit").text('건');
 					span.append(a, b);
 					$('#mentoringCnt').append(span);

@@ -20,24 +20,20 @@
 #sidebar ul { 
 	padding: 10px; 
 }
-
-.modal{ position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none; }
-.modal_content{
-  width:400px; height:200px;
-  background:#fff; border-radius:10px;
-  position:relative; top:50%; left:50%;
-  margin-top:-100px; margin-left:-200px;
-  text-align:center;
-  box-sizing:border-box; padding:74px 0;
-  line-height:23px; cursor:pointer;
+#mainCopy{
+	font-size: 40px;
+	padding:30px; 
+	font-family:'Spoqa Han Sans'; 
+	font-weight: 300;
 }
 </style>
 <body>
 
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
+<h1 class="display-4" id="mainCopy">나에게 꼭 맞는 멘토를 찾아보세요!</h1>
+<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토 프로필 카드를 클릭하면 멘토의 상세 프로필 정보 확인이 가능합니다.</footer>
 <!-- topHeader -->
-<h1 class="display-4">멘토 리스트</h1>
 <div id="listResult"></div>
           <!-- property area -->
         <div class="properties-area recent-property" style="background-color: #FFF;">
@@ -110,7 +106,7 @@
 									<div class="row">
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()" style="background:#FDC600; color:#fff">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="MentorRegister()" style="background:#FDC600; color:#fff">
@@ -130,12 +126,28 @@
         <!-- TOP버튼 / https://seo6285.tistory.com/189-->
       	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
       	<!-- TOP버튼 -->
-      	<button id="modal_on">모달창</button>
-      	<!-- 모달 테스트 -->
-      	<div class="modal"> 
-      	<div class="modal_content" title="클릭하면 창이 닫힙니다."> 여기에 모달창 내용을 적어줍니다.<br> 이미지여도 좋고 글이어도 좋습니다. </div>
-      	</div>
-      	<!-- 모달 테스트 -->
+      	
+      	<!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					로그인 또는 회원가입이 필요한 항목입니다.
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-primary" style="display:none">로그인</button> <!-- 레이아웃 정렬용 태그(사용X) -->
+					<button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='insertUsers'">회원가입</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->
 
 <div id="footerBottom">footer</div>
 <!-- Footer area-->
@@ -145,13 +157,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
-	// 로그아웃 상태에서 멘토 등록 클릭 시
-	function loginCheck(){
-		if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
-			location.href = "login"; // 로그인 페이지로 이동
-		}
-	}
-	
 	// 멘토 등록
 	function MentorRegister(){
 		var param = $('#id').val();

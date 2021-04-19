@@ -34,16 +34,13 @@
 	<jsp:include page="topHeader.jsp" />
 	<!-- topHeader -->
 	
-	<!-- test -->
-
+	<!-- 검색 -->
         <div class="slider-area">
             <div class="slider">
                 <div id="bg-slider" class="owl-carousel owl-theme">
-
                     <div class="item"><img src="resources/assets/img/slide1/slider-image-1.jpg" alt="Mirror Edge"></div> 
                     <div class="item"><img src="resources/assets/img/slide1/slider-image-2.jpg" alt="The Last of us"></div> 
                     <div class="item"><img src="resources/assets/img/slide1/slider-image-4.jpg" alt="GTA V"></div>   
-
                 </div>
             </div>
             <div class="container slider-content">
@@ -52,30 +49,27 @@
                         <h2>시니어잡에 오신것을 환영합니다.</h2>
                         <p>업의 현장에 종사하는 분들의 지식과 전문성을 활용해 꿈을 이뤄 나가는 과정에서 즉시 가치가 창출 될 수 있도록 지원합니다.</p>
                         <div class="search-form wow pulse" data-wow-delay="0.8s">
-
                             <form class=" form-inline" name="searchFrm">
-
-                                    <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" name="searchKeyword" value="" placeholder="ex)마케팅,영업,IT">
+                                    <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" name="searchKeyword" value="" placeholder="멘토 직무 검색 ex)마케팅,영업,IT">
 							<div class="form-group">
 								<div class="row row-space">
 									<div class="col-2"></div>
 									<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchBtn"></i>	
 								</div>
 							</div>
-						</form>
+							</form>
                         </div>
-
+					
+					<!-- 멘토링 검색 -->
 					<div class="search-form wow pulse" data-wow-delay="0.8s">
-
 						<form class=" form-inline" method="POST" action="getMentoringList" onsubmit="return checkDateNull()">
-
 							<div class="row row-space">
-								<div class="col-2">
+								<div class="col-4">
 									<div class="input-group">
 										<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required>
 									</div>
 								</div>
-								<div class="col-2">
+								<div class="col-4">
 									<div class="input-group">
 										<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
 									</div>
@@ -89,140 +83,32 @@
 							</div>
 						</form>
 					</div>
-
+					<!-- End of 멘토링 검색 -->
+					
 				</div>
                 </div>
             </div>
         </div>
-
-
-        <!-- property area -->
-
-
-          <!-- Footer area-->
-	<!-- test -->
-	
-	
-    
-    <!-- 멘토링 검색 -->
-		<!-- <div class="page-wrapper bg-img-1 p-t-200 p-b-120" style="position: absolute">
-        <div class="wrapper wrapper--w900">
-            <div class="card card-4">
-                <div class="card-body">
-                    <ul class="tab-list">
-                        <li class="tab-list__item active">
-                            <a class="tab-list__link" href="#tab1" data-toggle="tab">멘토</a>
-                        </li>
-                        <li class="tab-list__item">
-                            <a class="tab-list__link" href="#tab2" data-toggle="tab">멘토링</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab1">
-                            <form onsubmit="return checkValueNull()" name="searchFrm">
-                                <div class="input-group input-group-big">
-                                    <label class="label" id="search">키워드 검색(직무/지역/연령)</label>
-                                    <input class="input--style-1" type="text" name="searchKeyword" value="" placeholder="ex)마케팅,영업,IT">
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <label class="label">직무</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="mentor_duty">
-                                                    <option value="">직무</option>
-								                    <option>IT</option>
-								                    <option>영업</option>
-								                    <option>인사</option>
-								                    <option>총무</option>
-								                    <option>마케팅</option>
-								                    <option>광고</option>
-								                    <option>회계</option>
-								                    <option>재무</option>
-								                    <option>해외</option>
-								                    <option>유통</option>
-								                    <option>무역</option>
-								                    <option>전략</option>
-								                    <option>기획</option>
-								                    <option>생산</option>
-								                    <option>공기업</option>
-								                    <option>디자인</option>
-								                    <option>교육</option>
-								                    <option>컨설팅</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <label class="label">지역</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="mentoring_location">
-                                                     <option value="">지역</option>
-													<option>서울특별시</option>
-													<option>부산광역시</option>
-													<option>대구광역시</option>
-													<option>인천광역시</option>
-													<option>광주광역시</option>
-													<option>대전광역시</option>
-													<option>울산광역시</option>
-													<option>세종특별자치시</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="input-group">
-                                            <label class="label">연령:</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="mentoring_age">
-                                                    <option value="">연령</option>
-								                    <option>40대</option>
-								                    <option>50대</option>
-								                    <option>60대</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <button class="btn-submit m-t-0" type="submit">search</button>
-                            </form>
-                        </div>
-                        <div class="tab-pane" id="tab2">
-                            <form method="POST" action="getMentoringList" onsubmit="return checkDateNull()">
-                                
-                                
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">멘토링 시작일</label>
-                                            <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">멘토링 종료일</label>
-                                            <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                    </div>
-                                        <button class="btn-submit m-t-0" type="submit">search</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-	<!-- End of 멘토링 검색 -->
+      <!-- End of 검색 -->
+      
+      <!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					검색 키워드를 입력하세요.
+			      </div>
+			      <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
@@ -231,18 +117,14 @@
 		// 멘토 상세검색 값 체크 및 검색 구현
 			var keywordChk = $("[name='searchKeyword']").val();
 			if(keywordChk==""){
-				alert("검색 키워드를 입력하세요.");
+				$('#myModal').modal().show();
 				return false;
-			}else if(keywordChk != null){
-				searchFrm.action = "getKeywordSearch";
-				searchFrm.submit();
 			}else{
-				searchFrm.action = "getMentorList";
+				alert(keywordChk + "직무를 가진 멘토를 검색합니다.");
+				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}
 	});
-	
-	
 	
 	// 멘토링 날짜 검색 유효성 체크
 	function checkDateNull(){

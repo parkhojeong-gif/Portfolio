@@ -22,14 +22,20 @@ h1{text-align:center}
 #sidebar ul { 
 	padding: 10px; 
 }
+#mainCopy{
+	font-size: 40px;
+	padding:30px; 
+	font-family:'Spoqa Han Sans'; 
+	font-weight: 300;
+}
 </style>
 </head>
 <body>
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
-	<h1 class="display-4">멘토링 리스트</h1>
-	
+	<h1 class="display-4" id="mainCopy">현직자 멘토와 함께 직무경험을 쌓아보세요!</h1>
+	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토링을 클릭하면 해당 멘토링 상세 정보 확인이 가능합니다.</footer>
 	<!-- 멘토링 리스트 출력 -->
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
@@ -55,11 +61,9 @@ h1{text-align:center}
 										<span class="pull-left"><b>멘토 ID: </b>${mentoring.mentor_id }</span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
 										<p style="display: none;">멘토링 내용: ${mentoring.mentoring_content }</p>
-										<div class="property-icon">
 											<div class="dealer-action pull-right">
-											<input type="submit" value="상세보기">
+												<input type="submit" value="상세보기">
 											</div>
-										</div>
 									</div>
 								</div>
 								</form>
@@ -83,7 +87,7 @@ h1{text-align:center}
 									<div class="row">
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()" style="background:#FDC600; color:#fff">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>
                                                 <c:if test="${not empty users }">
 													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()" style="background:#FDC600; color:#fff">
@@ -104,8 +108,31 @@ h1{text-align:center}
 	<!-- End of 멘토 리스트 출력 -->
 	
 <!-- TOP버튼 / https://seo6285.tistory.com/189-->
-      	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
-      	<!-- TOP버튼 -->
+<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
+<!-- TOP버튼 -->
+      	
+		<!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					로그인 또는 회원가입이 필요한 항목입니다.
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-primary" style="display:none">로그인</button> <!-- 레이아웃 정렬용 태그(사용X) -->
+					<button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='insertUsers'">회원가입</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->     	
+      	
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->		
