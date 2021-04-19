@@ -141,7 +141,6 @@ public class ScheduleController {
 		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMddHHmmss");
 		String today = dF.format(date);
 		Long inToday = Long.parseLong(today);
-		System.out.println("inToday:"+inToday);
 		
 		//로그인한 아이디를 mentorId와 menteeId에 저장
 		HttpSession session = request.getSession();
@@ -152,47 +151,32 @@ public class ScheduleController {
 		//id를 통회 스케줄 조회
 		List<Map> list = scService.getSearchMentoringDate(vo);
 		
-		//System.out.println("list:"+list);
 		
 		for(Map<String, Object> map:list) {
 			
-//			  for(Map.Entry<String, Object> entry:map.entrySet()){ 
-//				  String key = entry.getKey(); 
-//				  Object value = entry.getValue(); 
-//			  System.out.println("key: " + key + " | value: " + value); 
-//			  if(entry.getValue() == today) {
-//			  
-//			   } 
-//			  }
 			 
-			  Set<String> KeySet = map.keySet();
-			  Iterator<String> keyIterator = KeySet.iterator(); 
-			  while(keyIterator.hasNext()){
-				  String key = keyIterator.next();
-				  String start = (String) map.get("SCHEDULE_START");
-				  String end = (String) map.get("SCHEDULE_END");
-				  Long startInt = Long.parseLong(start);
-				  Long endInt = Long.parseLong(end);
-				  //System.out.println("startInt:"+startInt);
-				  //System.out.println("startInt:"+startInt);
-				  
-				  
-				  if(start <= inToday && inToday <= end ) {
-					  return true;
+			for(String mapKey : map.keySet()) {
+				String start = (String) map.get("SCHEDULE_START");
+				String end = (String) map.get("SCHEDULE_END");
+				Long startInt = Long.parseLong(start);
+				Long endInt = Long.parseLong(end);
+				if(startInt <= inToday) {
+					System.out.println("startInt"+startInt);
 					  
-				  } else return false;
+					  if(inToday <= endInt) {
+						  System.out.println("endInt"+endInt);
+						  return true;
+					  } else {continue;}
+					  
+					  
+				  } else {return false;}
+			}
 			  
-			  }
 			 
 			
 			
-		}
-		
-		
-		
-		//String endDate = ;
-		
-		return null;
+		} //end of for
+		return false;
 		
 		
 	}

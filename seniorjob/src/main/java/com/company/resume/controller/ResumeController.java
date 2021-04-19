@@ -6,11 +6,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.businesspalna.service.BusinessPlanAService;
 import com.company.certificate.service.CertificateVO2;
 import com.company.certificate.service.impl.CertificateMapper;
+import com.company.mentoring.service.MentoringVO;
 import com.company.portfolio.service.PortfolioVO;
 import com.company.portfolio.service.impl.PortfolioMapper;
 import com.company.resume.service.ResumeRequestVO;
@@ -33,6 +36,8 @@ public class ResumeController {
 	PortfolioMapper portmapper;
 	@Autowired
 	CertificateMapper certimapper;
+	@Autowired
+	BusinessPlanAService bpService;
 
 	
 	// 이력서 전체조회
@@ -138,5 +143,16 @@ public class ResumeController {
 		model.addAttribute("certivo", certimapper.getCerti(certivo));
 		model.addAttribute("portvo", portmapper.getPort(portvo));
 		return "resume/collection"; 
+	}
+	
+	//첨삭요청 팝업창
+	@GetMapping("/checkReForm")
+	public String checkReForm(MentoringVO vo, Model model, HttpServletRequest request, String resume_no) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setMenteeId(id);
+		model.addAttribute("ck", bpService.ckMenName(vo));
+		model.addAttribute("resume_no", resume_no);
+		return "/resume/checkReForm";
 	}
 }

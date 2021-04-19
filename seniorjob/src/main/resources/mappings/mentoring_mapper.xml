@@ -50,7 +50,6 @@
 				MENTORING_PHOTO,
 				MENTORING_PRICE,
 				MENTORING_DATA,
-				MENTORING_REQUEST,
 				MENTOR_ID,
 				TO_CHAR(MENTORING_END_DATE, 'YYYY-MM-DD') as s_date,
 				TO_CHAR(MENTORING_BEGIN_DATE, 'YYYY-MM-DD') as e_date
@@ -62,25 +61,35 @@
 	<!-- 양소민 -->
 	<select id="getSearchMentoring" resultType="com.company.mentoring.service.MentoringVO">
 		SELECT
-				NAME,
-				MENTORING_NUMBER,
-				MENTORING_NAME,
-				MENTORING_LIMIT,
-				MENTORING_CONTENT,
-				MENTORING_PHOTO,
-				MENTORING_PRICE,
-				MENTORING_DATA,
-				MENTORING_REQUEST,
-				MENTOR_ID,
-				MENTORING_END_DATE,
-				MENTORING_BEGIN_DATE,
-				MENTEEID,
-				MEN_START,
-				MET_END,
-				ID
+				
+				TO_CHAR(MEN_START,'YYYY-MM-DD') AS "men_start",
+				TO_CHAR(MET_END,'YYYY-MM-DD') AS "met_end",
+				ID,
+				MENTEEID
 		FROM MYMENTORINGVU
+		WHERE MENTORING_NUMBER=#{mentoring_number}
+	</select>
+	
+	<select id="getMyMentoringListSom" resultType="com.company.mentoring.service.MentoringVO">
+		SELECT 
+		I.MENTORING_NUMBER,
+		I.MENTORING_NAME,
+		I.MENTORING_LIMIT,
+		I.MENTORING_CONTENT,
+		I.MENTORING_PHOTO,
+		I.MENTORING_PRICE,
+		I.MENTORING_DATA,
+		I.MENTOR_ID,
+		TO_CHAR(I.MENTORING_END_DATE,'YYYY-MM-DD') AS "mentoring_end_date",
+		TO_CHAR(I.MENTORING_BEGIN_DATE,'YYYY-MM-DD') AS "mentoring_begin_date",
+		M.ID
+		 FROM MENTORING I
+		
+		JOIN MENTOR M
+		ON I.MENTOR_ID=M.MENTOR_ID
 		WHERE ID=#{id}
 	</select>
+	
 	
 	<!-- 멘토링 중복 체크 -->
 	<select id="MentoringRegisterCheck" resultType="com.company.mentoring.service.MentoringVO">
@@ -115,8 +124,7 @@
 	 MENTORING_CONTENT, 
 	 MENTORING_PHOTO, 
 	 MENTORING_PRICE, 
-	 MENTORING_DATA, 
-	 MENTORING_REQUEST,
+	 MENTORING_DATA,
 	 MENTOR_ID, 
 	 TO_CHAR(MENTORING_BEGIN_DATE, 'yyyy-mm-dd') AS "mentoring_begin_date",
 	 TO_CHAR(MENTORING_END_DATE,'yyyy-mm-dd') AS "mentoring_end_date",

@@ -20,5 +20,7 @@ public interface MentoringMapper {
 
 	public MentoringVO MentoringRegisterCheck(MentoringVO vo); // 멘토링 중복 체크
 	
-	public MentoringVO getMentoringDetail(MentoringVO vo); //멘토링 코스 상세조회 
+	public MentoringVO getMentoringDetail(MentoringVO vo); //멘토링 코스 상세조회
+	
+	public List<MentoringVO> getMyMentoringListSom(MentoringVO vo); 
 }

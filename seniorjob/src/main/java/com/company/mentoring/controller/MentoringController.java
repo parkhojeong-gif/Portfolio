@@ -101,12 +101,12 @@ public class MentoringController {
 	}
 	
 	//양소민 추가
-	@GetMapping("/getSearchMentoring")   //마이페이지_내가 만든 멘토링
+	@GetMapping("/getMyMentoringListSom")   //마이페이지_내가 만든 멘토링
 	public String getSearchMentoring(MentoringVO vo, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
 		vo.setId(id);									
-		model.addAttribute("list", mtService.getSearchMentoring(vo)); 
+		model.addAttribute("list", mtService.getMyMentoringListSom(vo)); 
 		return "mypage/mentoringCourse";
 	}
 	
@@ -143,8 +143,17 @@ public class MentoringController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
 		vo.setId(id);
-		return "redirect:/getSearchMentoring";
+		return "redirect:/getMyMentoringListSom";
 		
+	}
+	
+	@GetMapping("/menteeList")
+	public String menteeList(MentoringVO vo, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		vo.setId(id);
+		model.addAttribute("list", mtService.getSearchMentoring(vo));
+		return "/Mentoring/menteeList";
 	}
 	
 	

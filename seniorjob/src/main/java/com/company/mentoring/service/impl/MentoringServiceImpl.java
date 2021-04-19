@@ -53,4 +53,9 @@ public class MentoringServiceImpl implements MentoringService {
 		return dao.getMentoringDetail(vo);
 	}
 
+	@Override
+	public List<MentoringVO> getMyMentoringListSom(MentoringVO vo) {
+		return dao.getMyMentoringListSom(vo);
+	}
+
 }

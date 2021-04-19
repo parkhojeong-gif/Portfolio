@@ -99,7 +99,7 @@
 								<a href="getSearchShopping"> <span class="txt">수강중인 멘토링</span></a>
 							</li>
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="getSearchMentoring"> <span class="txt">내가 만든 멘토링</span></a>
+								<a href="getMyMentoringListSom"> <span class="txt">내가 만든 멘토링</span></a>
 							</li>
 						</ul>
 					</div>	

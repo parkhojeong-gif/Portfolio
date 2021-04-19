@@ -9,10 +9,46 @@
 <title>시니어잡</title>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
 <link href="resources/css/main.css" rel="stylesheet" />
+<style>
+
+#slidemenu{background:#12cf3d;position:absolute;width:100px;top:50px;right:10px;}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$.ajax({
+		url:'/videoCallButton',
+		success : function(result) {
+			
+			if(result == true) {
+				console.log("trueIf");
+				$("#slidemenu").show();
+				
+			} else {
+				console.log("else");
+				$("#slidemenu").hide();
+			}
+		},
+		error : function() {
+			console.log("error");
+			$("#slidemenu").hide();
+		}
+	});
+	 var currentPosition = parseInt($("#slidemenu").css("top"));
+    $(window).scroll(function() {
+        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+        $("#slidemenu").stop().animate({"top":position+currentPosition+"px"},1000);
+    });
+});
+</script>
 </head>
 <body>
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
+	<!-- side slide menu -->
+	<div id="slidemenu">
+		<a href="#">영상면접</a>
+	</div>
 	<!-- topHeader -->
 	 <div class="s009">
       <form onsubmit="checkValueNull()" method="post" name="searchFrm">
