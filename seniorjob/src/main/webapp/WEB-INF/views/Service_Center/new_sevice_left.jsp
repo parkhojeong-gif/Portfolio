@@ -30,41 +30,45 @@
 </style>
 
 <body>
-
-
-
-
 	<!-- property area -->
 
 	<div class="col-md-2 p0 padding-top-20">
 		<div class="blog-asside-right pr0">
 			<hr class="my-hr3">
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='serviceCenter'">
-					<h3 class="panel-title">고객센터 게시판</h3>
-				</div>
-			</div>
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading" onclick="location.href='serviceCenter'">
 					<h3 class="panel-title">공지사항</h3>
 				</div>
 			</div>
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading"
 					onclick="location.href='#'">
 					<h3 class="panel-title">서식자료실</h3>
 				</div>
 			</div>
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='serviceCenter'">
+								<h3 class="panel-title">커뮤니티</h3>
+							</div>
+						</div>
+			
 			<hr class="my-hr3">
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading" onclick="location.href='#'">
 					<h3 class="panel-title">자주하는 질문</h3>
 				</div>
 			</div>
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='Impression'">
+								<h3 class="panel-title">멘토링 후기</h3>
+							</div>
+						</div>
+			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='seniorTimes'">
+								<h3 class="panel-title">시니어타임즈</h3>
+							</div>
+						</div>			
 			<hr class="my-hr3">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -93,7 +97,7 @@
 			<hr class="my-hr3">
 		</div>
 	</div>
-	
+</div>	
 	
 </body>
 </html>

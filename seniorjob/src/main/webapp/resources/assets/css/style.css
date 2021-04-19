@@ -332,7 +332,6 @@ input[type="search"]::-webkit-search-decoration {
     width: 700px;
     margin-top: 20px;
     margin-bottom: 20px;
-    border: 1px solid black; /* 김찬곤 */
 }
 .form-control {
     display: block;

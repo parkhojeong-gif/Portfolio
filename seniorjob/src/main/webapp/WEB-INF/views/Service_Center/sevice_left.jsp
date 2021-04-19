@@ -33,7 +33,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='resumeInsertForm'">
+							<div class="panel-heading" onclick="location.href='mentoringReviews'">
 								<h3 class="panel-title">멘토링 후기</h3>
 							</div>
 						</div>

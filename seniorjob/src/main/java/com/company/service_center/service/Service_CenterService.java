@@ -74,4 +74,5 @@ public interface Service_CenterService {
 	public int insertService_CenterQna2(Service_CenterVO vo);
 	// 신청취소 수정
 	public void updateService_CenterQna2(Service_CenterVO vo);
-}
+	
+}	
