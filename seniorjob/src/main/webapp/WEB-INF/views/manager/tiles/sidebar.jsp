@@ -31,7 +31,7 @@
 
 						<ul class="submenu ">
 
-							<li><a href="./sum">매출 종합 관리</a></li>
+							<li><a href="./sumList">매출 종합 관리</a></li>
 
 						</ul></li>
 

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><!-- google bar chart -->
 
 <div class="main-content container-fluid">
 	<div class="page-title">
@@ -27,110 +31,84 @@
 		<div class="card">
 			<div class="card-header"></div>
 			<div class="card-content">
-				<div class="card-body">
-					<div class="dataTable-search">
-						<input class="dataTable-input" placeholder="Search..." type="text">
-					</div>
-				</div>
+
 				<section class="section">
 					<div class="row">
-						<div class="col-md-6">
-							<div class="card">
-								<div class="card-header">
-									<h4 class="card-title">월별 매출</h4>
-								</div>
-								<div class="card-body">
-									<canvas id="bar"></canvas>
-								</div>
-							</div>
-						</div>
+
 						<div class="row">
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">월별 매출 합계 현황</h4>
+										<h4 class="card-title">매출 조회</h4>
+										<form action="summonth">
+											<div id="chart_div">
+											</div>
+											
+										</form>
 									</div>
 									<div class="card-content">
 										<div class="card-body">
-											<div class="row">
-												<div class="col-md-6"></div>
+											<div class="dataTable-search">
+												<form role="form" method="get" action="sumList">
+													<div class="row">
+														<div class="col-md-6 mb-4">
+															<h6>년도</h6>
+
+															<fieldset class="form-group">
+																<select class="form-select" id="year" name="year" >
+																	<option>2021</option>
+																</select>
+															</fieldset>
+														</div>
+														<div class="col-md-6 mb-4">
+															<h6>월</h6>
+
+															<fieldset class="form-group">
+																<select class="form-select" id="month" name="month">
+																	<option>12</option>
+																	<option>11</option>
+																	<option>10</option>
+																	<option>09</option>
+																	<option>08</option>
+																	<option>07</option>
+																	<option>06</option>
+																	<option>05</option>
+																	<option>04</option>
+																	<option>03</option>
+																	<option>02</option>
+																	<option>01</option>
+																</select>
+															</fieldset>
+														</div>
+														<div class="col-md-6 mb-4">
+															<span>주문 합계 : ${monsum}</span>
+															<button type="button" id="btn_submit">검색</button>
+														</div>
+													</div>
+												</form>
 											</div>
-											<div class="col-md-6 mb-4">
-												<h6>Basic Choices</h6>
-												<p>
-													Use
-													<code>.choices</code>
-													class for basic choices control.
-												</p>
-												<div class="form-group">
-													<select class="choices form-select">
-														<option value="square">Square</option>
-														<option value="rectangle">Rectangle</option>
-														<option value="rombo">Rombo</option>
-														<option value="romboid">Romboid</option>
-														<option value="trapeze">Trapeze</option>
-														<option value="traible">Triangle</option>
-														<option value="polygon">Polygon</option>
-													</select>
-												</div>
-												<button a href="#" class="btn btn-success">검색</button>
-											</div>
 
-											<!-- table bordered -->
-											<div class="table-responsive">
-												<table class="table table-bordered mb-0">
-													<thead>
+											<table class='table table-striped' style="font-size: 11px;"
+												id="table1">
+												<thead>
+													<tr>
+														<th>멘토링 코스번호</th>
+														<th>ID</th>
+														<th>결제주문일</th>
+														<th>주문금액</th>
+													</tr>
+												</thead>
+												<tbody id="tbody">
+													<c:forEach items="${sumList}" var="sumList">
 														<tr>
-															<th>멘토링코스번호</th>
-															<th>멘토ID</th>
-															<th>주문일</th>
-															<th>월별 매출 종합</th>
+															<td>${sumList.mentoring_number }</td>
+															<td>${sumList.id }</td>
+															<td><fmt:formatDate value="${sumList.s_date }" pattern="yyyy-MM-dd" /></td>
+															<td>${sumList.men_price }</td>
 														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="text-bold-500">001</td>
-															<td></td>
-															<td class="text-bold-500">UI/UX</td>
-															<td>Remote</td>
-															<td>Austin,Taxes</td>
-
-														</tr>
-														<tr>
-															<td class="text-bold-500">Morgan Vanblum</td>
-															<td>$13/hr</td>
-															<td class="text-bold-500">Graphic concepts</td>
-															<td>Remote</td>
-															<td>Shangai,China</td>
-
-														</tr>
-														<tr>
-															<td class="text-bold-500">Tiffani Blogz</td>
-															<td>$15/hr</td>
-															<td class="text-bold-500">Animation</td>
-															<td>Remote</td>
-															<td>Austin,Texas</td>
-
-														</tr>
-														<tr>
-															<td class="text-bold-500">Ashley Boul</td>
-															<td>$15/hr</td>
-															<td class="text-bold-500">Animation</td>
-															<td>Remote</td>
-															<td>Austin,Texas</td>
-
-														</tr>
-														<tr>
-															<td class="text-bold-500">Mikkey Mice</td>
-															<td>$15/hr</td>
-															<td class="text-bold-500">Animation</td>
-															<td>Remote</td>
-															<td>Austin,Texas</td>
-
-														</tr>
-													</tbody>
-												</table>
-											</div>
+													</c:forEach>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
@@ -145,4 +123,75 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		var qStr = window.location.href.split("?")[1];
+		   if(qStr != null){
+		      var dt = qStr.split('&')[0].split('=')[1];
+		      var yy = dt.substr(0,4);
+		      var mm = dt.substr(4,2);
+		      	$("#year").val(yy);
+				$("#month").val(mm);
+		   }else{
+			   var today = new Date();
+				$("#year").val(today.getFullYear());
+				$("#month").val(fillZero(today.getMonth()+1));
+		   }
+	});
+	
+	$("#btn_submit").on("click",function(){
+		var year = parseInt($("#year").val(), 10);
+		var month = parseInt($("#month").val(), 10);
+		
+		var sDate = year+''+fillZero(month);
+			month ++;
+		if(month > 12){
+			year++;
+			month = 1;
+		}		
+		var eDate = year+''+fillZero(month);
+		
+		location.href = "/sumList?" + "sDate=" + sDate + "&eDate=" + eDate;
+	});
+	
+	function fillZero(_val){
+		if(_val < 10){
+			_val = '0'+_val;
+		}
+		return _val;
+	}
+	console.log(fillZero(-1));
+	
+	<!--구글 차트-->
+	
+	google.charts.load('current', {packages: ['corechart', 'bar']});
+	google.charts.setOnLoadCallback(drawBasic);
+
+	function drawBasic() {
+	
+
+	      var data = google.visualization.arrayToDataTable([
+	        ['2021년도', '월 합계 금액',],
+	       
+	      ]);
+
+	      var options = {
+	        title: '월별 매출 합계',
+	        chartArea: {width: '50%'},
+	        hAxis: {
+	          title: '금액(원)',
+	          minValue: 0
+	        },
+	        vAxis: {
+	          title: '월'
+	        }
+	      };
+
+	      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+	      chart.draw(data, options);
+	    }
+	
+	
+</script>
 
