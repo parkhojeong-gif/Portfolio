@@ -8,6 +8,6 @@ public class VideoController {
 
 	@RequestMapping("/video")
 	public String video() {
-		return "WebRTC/video";
+		return "webrtc/video";
 	}
 }

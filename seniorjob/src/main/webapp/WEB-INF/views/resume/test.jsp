@@ -9,17 +9,13 @@
 <body>
 <div>테스트중입니다.</div>
 
-<h1>Video</h1>
-	<video id="localVideo" autoplay playsinline></video>
-	<video id="localVideo" autoplay playsinline></video>
-	
-	<div>
-		<button id="startButton">Start</button>
-		<button id="callButton">Call</button>
-		<button id="hangupButton">Hang Up</button>
-	</div>
-	
-	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-	<script src="resources/webrtc/testing.js"></script>
+ <div id="videos">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
+
+ 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  	<script src="/socket.io/socket.io.js"></script>
+	<script src="resources/webrtc/testing2.js"></script>
 </body>
 </html>
