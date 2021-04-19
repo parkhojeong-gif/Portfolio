@@ -17,12 +17,47 @@ function openWindowPop(url, name){
     window.open(url, name, options);
 }
 
-$(function() {
-    $( '#cd' ).click( function() {
-      $('#cd').removeClass('class','btn btn-default btn-lg');
-      $(this).addClass('btn btn-primary btn-lg');
-    });
-  });
+function getURLParams(url) {
+    var result = {};
+    url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function(s, k, v) { result[k] = decodeURIComponent(v); });
+    return result;
+}
+
+ $(function(){
+	if(getURLParams(location.search).cd == '11'){
+		$('#cd15').attr('class','btn btn-default btn-lg')
+		$('#cd14').attr('class','btn btn-default btn-lg')
+		$('#cd13').attr('class','btn btn-default btn-lg')
+		$('#cd12').attr('class','btn btn-default btn-lg')
+		$('#cd11').attr('class','btn btn-primary btn-lg')
+	}else if(getURLParams(location.search).cd == '12'){
+		$('#cd15').attr('class','btn btn-default btn-lg')
+		$('#cd14').attr('class','btn btn-default btn-lg')
+		$('#cd13').attr('class','btn btn-default btn-lg')
+		$('#cd11').attr('class','btn btn-default btn-lg')
+		$('#cd12').attr('class','btn btn-primary btn-lg')
+	}else if(getURLParams(location.search).cd == '13'){
+		$('#cd15').attr('class','btn btn-default btn-lg')
+		$('#cd14').attr('class','btn btn-default btn-lg')
+		$('#cd12').attr('class','btn btn-default btn-lg')
+		$('#cd11').attr('class','btn btn-default btn-lg')
+		$('#cd13').attr('class','btn btn-primary btn-lg')
+	}else if(getURLParams(location.search).cd == '14'){
+		$('#cd15').attr('class','btn btn-default btn-lg')
+		$('#cd13').attr('class','btn btn-default btn-lg')
+		$('#cd12').attr('class','btn btn-default btn-lg')
+		$('#cd11').attr('class','btn btn-default btn-lg')
+		$('#cd14').attr('class','btn btn-primary btn-lg')
+	}else if(getURLParams(location.search).cd == '15'){
+		$('#cd14').attr('class','btn btn-default btn-lg')
+		$('#cd13').attr('class','btn btn-default btn-lg')
+		$('#cd12').attr('class','btn btn-default btn-lg')
+		$('#cd11').attr('class','btn btn-default btn-lg')
+		$('#cd15').attr('class','btn btn-primary btn-lg')
+	}
+}); 
+
+
 
 </script>
 <body>
@@ -42,15 +77,15 @@ $(function() {
 				<div class="section additional-details">
 				<form action="job">
 						
-						<button type="submit" class="btn btn-primary btn-lg" onclick="" formaction="job" id="cd"name="cd" value='11'>서울</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='12'>부산</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='13'>대구</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='14'>인천</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='15'>광주</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='16'>대전</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='17'>울산</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='16'>대전</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd"name="cd" value='17'>울산</button>
+						<button type="submit" class="btn btn-primary btn-lg" formaction="job" id="cd11"name="cd" value='11'>서울</button>
+						<button type="submit" class="btn btn-default btn-lg"  formaction="job" id="cd12"name="cd" value='12'>부산</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd13"name="cd" value='13'>대구</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd14"name="cd" value='14'>인천</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd15"name="cd" value='15'>광주</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd16"name="cd" value='16'>대전</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd17"name="cd" value='17'>울산</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd18"name="cd" value='16'>대전</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd19"name="cd" value='17'>울산</button>
 				</form>
 				<table class="table table-hover">
 					<tr>
