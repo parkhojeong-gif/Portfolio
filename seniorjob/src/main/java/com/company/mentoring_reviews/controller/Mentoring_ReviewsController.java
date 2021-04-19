@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
 import com.company.mentoring_reviews.service.PagingMaker;
@@ -89,6 +90,12 @@ public class Mentoring_ReviewsController {
 		return "redirect:/mentoringReviews";
 	}
 	
-
+	// 인기 조회수 후기 페이지 띄우기_김찬곤
+	@ResponseBody
+	@RequestMapping("/getPopularArticleList")
+	public List<Mentoring_ReviewsVO> getPopularArticleList(Mentoring_ReviewsVO vo){
+		List<Mentoring_ReviewsVO> list = mentoring_ReviewsMapper.getPopularArticleList(vo);
+		return list;
+	}
 	
 }

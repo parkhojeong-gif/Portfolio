@@ -19,7 +19,8 @@ public class MentorServiceImpl implements MentorService {
 	
 	@Autowired MentorMapper mentorMapper;
 
-
+//	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
+	
 	// 전체검색 / 지역 검색 / 직무 검색
 	@Override
 	public List<MentorVO> getMentorList(MentorVO vo) {
@@ -115,6 +116,10 @@ public class MentorServiceImpl implements MentorService {
 	public List<MentorVO> getMentorByFollow(MentorVO vo) {
 		return mentorMapper.getMentorByFollow(vo);
 	}
+//	-------------------------------------------------------- End of 김찬곤-----------------------------------------------------------------------------------------------------
 
-
+	@Override
+	public String getMentorId(MentorVO vo) {
+		return mentorMapper.getMentorId(vo);
+	}
 }

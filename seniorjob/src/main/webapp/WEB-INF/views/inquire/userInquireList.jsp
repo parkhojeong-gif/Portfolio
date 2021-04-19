@@ -33,7 +33,7 @@ function click_seq(obj){
 				var td1 = $("<td>").text("제목");
 				var td2 = $("<td>").text(response[i].title);
 				var tr2 = $("<tr>");
-				var td2_1 = $("<td>").text("내용");
+				var td2_1 = $("<td>").html("내용");
 				var td2_2 = $("<td>").text(response[i].content);
 				table1.append(tr1, tr2);
 				tr1.append(td1,td2);
@@ -61,19 +61,14 @@ function click_seq(obj){
 	<div class="content-area recent-property"
 		style="background-color: #FFF;">
 		<div class="container">
-			<div class="col-md-12 single-property-content ">
-				<div>
-					<h5>홈 > 목록전체조회</h5>
-				</div>
-			</div>
 			<div class="row">
 				<div
-					class="col-md-12 pr-30 padding-top-40 properties-page user-properties"></div>
+					class="col-md-1 pr-30 padding-top-40 properties-page user-properties"></div>
 				<!--왼쪽 -->
 				<jsp:include page="../Service_Center/new_sevice_left.jsp"></jsp:include>
 				<!--왼쪽  -->
 				<div id="optionVal"
-					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
+					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 
 
 

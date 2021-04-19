@@ -25,36 +25,39 @@ $(function(){
 <div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">
                 <div class="row">
+                <div class="col-md-12 pr-30 padding-top-40">
+                <div class="col-md-3">
+                </div>
                 <div class="col-md-6">
                     <div class="box-for overflow">                         
                         <div class="col-md-12 col-xs-12 login-blocks">
-                            <h2>Login : </h2> 
+                            <h2 style="text-align: center; width: 500px">Login</h2> 
                             <form:form modelAttribute ="usersVO" action="loginProc" method="post" name="UsersVO">
                                 <div class="form-group">
-                                    <label for="id">Id</label>
-                                    <form:input path="id"/><form:errors path="id" cssClass="error"/>${message}
+                                    <label for="id"></label>
+                                    <form:input path="id" placeholder="아이디 입력" /><form:errors path="id" cssClass="error"/>${message}
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <form:input path="password" type="password"/><form:errors path="password" cssClass="error"/><br>${message2}
+                                    <label for="password"></label>
+                                    <form:input path="password" type="password" placeholder="비밀번호 입력"/><form:errors path="password" cssClass="error"/><br>${message2}
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-default"> Log in</button>
+									<button type="submit" class="btn btn-default btn-lg btn-block">Log in</button>
                                 </div>
+                                <br>
                             </form:form>
-                            <br>
-                            	<button id="findpw" name="findpw">비밀번호를 잊으셨습니까?</button>
-                            <br>
-                            <h2>Social login :  </h2> 
-                            
-                            <p>
-                            <button type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=3cab068ec0c75ace569fa7942cb9c9f5&redirect_uri=http://localhost/kakaologin&response_type=code'">
-                            	<img src="resources/kakaobutton/kakao_login_medium_narrow.png">
+                           
+                            <button style="width: 505.5px; height: 46px"class="btn btn-primary btn-lg btn-block"   type="button" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=3cab068ec0c75ace569fa7942cb9c9f5&redirect_uri=http://localhost/kakaologin&response_type=code'">
+                            카카오 로그인
+                            </button> 
+                             <br>
+                            <button id="findpw" name="findpw" style="width: 505.5px; height: 46px"class="btn btn-info"   type="button">
+                            아이디/비밀번호 찾기
                             </button> 
                             
-                            </p> 
                         </div>
                     </div>
+                </div>
                 </div>
                 </div> 
             </div>

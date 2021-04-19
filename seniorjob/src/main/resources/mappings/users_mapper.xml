@@ -136,6 +136,17 @@
 				
 	</insert>
 	
+	<!-- 마이페이지에서 자격증/경력인증서 조회 -->
+	<select id="getCertiList" resultType="map">
+	SELECT NO,
+			CERTI_NAME,
+			CERTI_PLACE,
+			CERTI_NO,
+			CERTI_DATE,
+			CARRER_CERTI 
+	FROM USERCERTI
+	WHERE ID=#{id} 
+	</select>
 
 	
 	<!-- 김찬곤 / 단건 조회 -->

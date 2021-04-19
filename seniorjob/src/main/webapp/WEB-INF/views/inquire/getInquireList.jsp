@@ -16,22 +16,20 @@
 	<div class="content-area recent-property"
 		style="background-color: #FFF;">
 		<div class="container">
-			<div class="col-md-12 single-property-content ">
-				<div>
-					<h5>홈 > 목록전체조회 </h5>
-				</div>
-			</div>
 			<div class="row">
 				<div
 					class="col-md-12 pr-30 padding-top-40 properties-page user-properties"></div>
 				<!--왼쪽 -->
 				<jsp:include page="../Service_Center/new_sevice_left.jsp"></jsp:include>
 				<!--왼쪽  -->
+				<div class="col-md-1 pr-30 padding-top-40 properties-page user-properties">
+				</div>
 				<div id="optionVal"
-					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
+					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 
-
-
+					
+				<h5 style="text-align: center;">전체 문의 목록</h5>
+				<br>
 
 
 					<!--목록 게시판  -->

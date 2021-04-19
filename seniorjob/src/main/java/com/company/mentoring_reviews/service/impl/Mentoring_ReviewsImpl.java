@@ -81,4 +81,10 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 		return dao.menPreNext(vo);
 	}
 
+	// 인기 조회수 후기 페이지 띄우기_김찬곤
+	@Override
+	public List<Mentoring_ReviewsVO> getPopularArticleList(Mentoring_ReviewsVO vo) {
+		return dao.getPopularArticleList(vo);
+	}
+
 }

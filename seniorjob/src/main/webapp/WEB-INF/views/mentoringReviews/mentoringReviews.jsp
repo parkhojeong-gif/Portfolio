@@ -10,9 +10,37 @@
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+#mainCopy{
+	font-size: 40px;
+	padding:30px; 
+	font-family:'Spoqa Han Sans'; 
+	font-weight: 300;
+}
+h1{text-align:center}
+</style>
 <body>
-
-	<!-- property area -->
+<h1 class="display-4" id="mainCopy">멘토링 후기</h1>
+<footer class="blockquote-footer" style="text-align:center">수강생들의 생생한 후기를 살펴보세요!</footer>
+<hr>
+       <!-- 멘토링 후기 인기순위 -->
+            <div class="container">  
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2"> 
+                        <div class="" id="contact1">   
+                        <h4 class="s-property-title">많이본 후기</h4>
+					<div class="row" id="popArticles">
+						<div class="col-sm-4">
+							<p class="text-muted"></p>
+						</div>
+					</div>
+				</div>
+                    </div>    
+                </div>
+            </div>
+       <!-- End of 멘토링 후기 인기순위 -->
+<hr>
+	<!-- 메인 콘텐츠 -->
 	<div class="properties-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
@@ -20,17 +48,18 @@
 			<jsp:include page="../Service_Center/sevice_left.jsp"></jsp:include>
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section additional-details">
-					<h4 class="s-property-title">멘토링 후기</h4>
+					<h4 class="s-property-title">전체 멘토링 후기</h4>
 					<ul>
-						<li><span class="col-xs-6 col-sm-4 col-md-2 add-d-title">카테고리</span>
-							<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">제목</span>
+						<li>
+							<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">직무</span>
+							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">제목</span>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성자</span>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
 						</li>
 						<c:forEach items="${list }" var="rev">
-							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.category_a }</span>
-							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-4 add-d-entry">${rev.title }</span>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-4 add-d-entry">${rev.category_a }</span>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.title }</span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.id }</span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry"><fmt:formatDate value="${rev.w_date }" pattern="yyyy-MM-dd"/></span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.click }</span>
@@ -96,7 +125,28 @@
 		</div>
 		</div>
 </div>
+<!-- End of 메인 콘텐츠 -->	
+
+<jsp:include page="../footer.jsp"></jsp:include>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+	$(function(){
+		getPopularArticleList();
+	});
 	
-	<jsp:include page="../footer.jsp"></jsp:include>
+	function getPopularArticleList(){
+		$.ajax({
+			url: "getPopularArticleList",
+			dataType: "json", 
+			success:function(result){
+				console.log(result);
+				for(i=0; i<result.length; i++){
+					$('.text-muted').text(result[i].content);
+				}
+			}
+		});
+	}
+</script>
 </body>
 </html>

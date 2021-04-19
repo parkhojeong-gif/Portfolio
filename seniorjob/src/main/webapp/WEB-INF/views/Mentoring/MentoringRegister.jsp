@@ -93,10 +93,36 @@ input[name=m_numOfDays]{font-size:large; color:red}
 	<input type="date" placeholder="Enter Date" name="mentoring_end_date" id="mentoring_end_date" required>
 	
 	<div id="m_numOfDays">
-		<label for="date"><b>멘토링 기간</b></label>
-		<input type="text" name="m_numOfDays" id="m_numOfDays" required> 일간 진행
+		<label for="date"><b>멘토링 기간</b></label> 
+		<input name="m_numOfDays" id="m_numOfDays" value="">
 	</div>
-
+	
+	<label for="name"><b>멘토링 분야</b></label>
+    <select name="mentoring_kind" id="mentoring_kind" required>
+					<option value="">선택</option>
+					<option>IT</option>
+					<option>영업</option>
+					<option>인사</option>
+					<option>총무</option>
+					<option>마케팅</option>
+					<option>광고</option>
+					<option>회계</option>
+					<option>재무</option>
+					<option>해외</option>
+					<option>유통</option>
+					<option>무역</option>
+					<option>전략</option>
+					<option>기획</option>
+					<option>생산</option>
+					<option>공기업</option>
+					<option>디자인</option>
+					<option>교육</option>
+					<option>컨설팅</option>
+	</select>
+				
+	<br>
+	<p>	
+	
     <label for="psw-repeat"><b>정원</b></label>
     <input type="text" placeholder="멘토링 정원을 입력하세요" name="mentoring_limit" id="psw-repeat" required>
     <hr>
@@ -110,8 +136,7 @@ input[name=m_numOfDays]{font-size:large; color:red}
     <label for="psw"><b>멘토링 금액</b></label>
     <input type="text" placeholder="금액을 입력하세요" name="mentoring_price" id="psw" required>
     
-    <button type="submit" class="registerbtn">멘토링 등록하기</button>
-    <button type="button" class="registerbtn" name="preview" id="preview">미리보기</button>
+    <button type="submit" class="registerbtn" style="background:#FDC600">멘토링 등록하기</button>
   </div>
   
   <div class="container signin">

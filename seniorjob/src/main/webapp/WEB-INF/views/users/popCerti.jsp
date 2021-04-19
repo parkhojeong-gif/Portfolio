@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>자격증 등록</title>
+<script>
+function submit() {
+	var frm = document.frm;
+	frm.submit();
+}
+
+
+</script>
 </head>
 <body>
 <form action="insertCerti" method="post" name="frm">
@@ -37,7 +45,7 @@
                             </div>
                     
                             <div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">등록</button>
+				<button onclick="submit()" class="btn btn-primary">등록</button>
 			</div>
 </form>
 </body>

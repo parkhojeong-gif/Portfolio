@@ -62,7 +62,7 @@
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label>작성일자</label> <input type="date" class="form-control"
-									id='currentDate' name="resume_email" readonly="readonly">
+									id='currentDate' name="resume_email" readonly="readonly" >
 							</div>
 						</div>
 						<input type="hidden" name="category_b" id="category_b"
@@ -87,7 +87,7 @@
 									$('#summernote').summernote({
 										placeholder : 'Hello stand alone ui',
 										tabsize : 2,
-										height : 100
+										height : 400
 									});
 								</script>
 								<br>

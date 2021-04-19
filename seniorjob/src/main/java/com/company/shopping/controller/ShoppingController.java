@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
@@ -18,11 +19,6 @@ public class ShoppingController {
 	
 	@Autowired ShoppingService spService;
 	
-	@RequestMapping("/shopping")
-	public String shopping() {
-		return "shopping";		  			//장바구니
-	}
-	
 	//양소민 추가
 	@GetMapping("/getSearchShopping")   //마이페이지_수강중인 멘토링
 	public String getSearchShopping(ShoppingVO vo, Model model,HttpServletRequest request) {
@@ -31,7 +27,6 @@ public class ShoppingController {
 		vo.setId(id);
 		
 		model.addAttribute("list", spService.getSearchShopping(vo));
-		System.out.println("model:"+model);
 		return "mypage/mentoringStatus";
 	}
 	
@@ -70,4 +65,5 @@ public class ShoppingController {
 			return result;
 		}
 	}
+	
 } // end of class

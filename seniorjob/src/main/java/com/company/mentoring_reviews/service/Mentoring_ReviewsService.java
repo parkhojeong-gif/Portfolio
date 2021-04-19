@@ -39,4 +39,6 @@ public interface Mentoring_ReviewsService {
 			
 			// 후기 게시물 단건조회 후 이전/다음글
 			public Mentoring_ReviewsVO menPreNext(Mentoring_ReviewsVO vo);
+			
+			public List<Mentoring_ReviewsVO> getPopularArticleList(Mentoring_ReviewsVO vo); // 인기 조회수 후기 페이지 띄우기_김찬곤
 }

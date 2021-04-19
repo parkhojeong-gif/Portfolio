@@ -55,10 +55,10 @@ h1{text-align:center}
 									</div>
 									<div class="item-entry overflow">
 										<h5>	
-											<a href="property-1.html">멘토링 이름: ${mentoring.mentoring_name }</a>
+											<a href="property-1.html">${mentoring.mentoring_name }</a>
 										</h5>
 										<div class="dot-hr"></div>
-										<span class="pull-left"><b>멘토 ID: </b>${mentoring.mentor_id }</span> <span
+										<span class="pull-left"><b>${mentoring.mentoring_kind }</b></span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
 										<p style="display: none;">멘토링 내용: ${mentoring.mentoring_content }</p>
 											<div class="dealer-action pull-right">

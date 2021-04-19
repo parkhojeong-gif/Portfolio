@@ -19,6 +19,8 @@ public class Mentoring_ReviewsVO { //멘토링 후기
 	private int mentoring_number; //멘토링 코스번호
 	private String title; //글 제목
 	
+	private String mentoringVO; // mentoring 테이블에서 값 가져오는 alias_김찬곤
+	
 	//글 이전 다음
 	private int menPrev; //이전글의 글번호를 담을 필드
 	private String menPrev_title; // 이전 글의 글제목 담을 필드

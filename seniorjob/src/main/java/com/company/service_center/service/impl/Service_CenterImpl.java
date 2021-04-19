@@ -97,6 +97,36 @@ public class Service_CenterImpl implements Service_CenterService{
 		// TODO Auto-generated method stub
 		return dao.listQna(scri);
 	}
+	@Override
+	public List<Service_CenterVO> listQnaPayment(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaPayment(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaRefund(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaRefund(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaRequest(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaRequest(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaCancle(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaCancle(scri);
+	}
+
+	@Override
+	public List<Service_CenterVO> listQnaGita(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.listQnaGita(scri);
+	}
+
 
 	@Override
 	public int listCountQna(SearchCriteria scri) {
@@ -169,8 +199,6 @@ public class Service_CenterImpl implements Service_CenterService{
 		// TODO Auto-generated method stub
 		return dao.insertService_CenterQna2(vo);
 	}
-
-	@Override
 	public void updateService_CenterQna2(Service_CenterVO vo) {
 		//
 		dao.updateService_CenterQna2(vo);

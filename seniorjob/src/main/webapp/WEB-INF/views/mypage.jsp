@@ -32,6 +32,11 @@
 	$(document).on("click", "#pricec", function(){
 		$(".priceMenu .pricesub").slideToggle();
 	})
+/* 개인정보 수정 토클(누르면 메뉴 나오기) */
+	$(".selfsub").hide();
+	$(document).on("click", "#selfc", function(){
+		$(".SelfMenu .selfsub").slideToggle();
+	})
 </script>
 <body>
 
@@ -67,11 +72,6 @@
 							</a>
 							</li>
 						</ul>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='updateInfo'">
-								<h3 class="panel-title">비밀번호 변경</h3>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -114,15 +114,28 @@
 								<a href="getSearchPay"> <span class="txt">결제내역</span></a>
 							</li>
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href=""> <span class="txt">장바구니</span></a>
+								<a href="cart"> <span class="txt">장바구니</span></a>
 							</li>
 						</ul>
 					</div>	
 				</div>
 			</div>
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='updateUsers?id=somTest'">
-					<h3 class="panel-title">개인정보/경력 수정</h3>
+				<div class="panel-heading">
+					<div class="SelfMenu" id="selfM">
+						<h3 class="panel-title"><div id="selfc">개인정보 수정</div></h3>
+						<ul class="selfsub">
+							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
+								<a href="updateUsers?id=somTest"> <span class="txt">개인정보/경력 수정</span></a>
+							</li>
+							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
+								<a href="updateInfo"> <span class="txt">비밀번호 변경</span></a>
+							</li>
+							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
+								<a href="following"> <span class="txt">나의 팔로우 목록</span></a>
+							</li>
+						</ul>
+					</div>	
 				</div>
 			</div>
 		</div>

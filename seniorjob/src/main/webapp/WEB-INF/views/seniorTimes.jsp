@@ -27,9 +27,12 @@
 								type="submit" name="검색" value="검색"> -->
 						<button type="submit" class="btn btn-primary btn-lg" formaction="seniorTimes" name="keyword" value='고용정책'>고용정책</button>
 						<button type="submit" class="btn btn-default btn-lg" formaction="seniorTimes" name="keyword" value='취업자수'>취업자</button>
-						
 						</form>
-
+						<form action="seniorTimes">
+						<label for="keyword">
+						<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력해주세요"><button type="submit">검색</button>
+						</label>
+						</form>
 							<hr>
 							<table class="table table-hover">
 								<c:forEach items="${seniorTimes }" var="b">
