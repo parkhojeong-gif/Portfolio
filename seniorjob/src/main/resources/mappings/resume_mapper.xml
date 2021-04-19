@@ -96,4 +96,26 @@
 		FROM 	RESUME
 		WHERE   RESUME_NO = #{resume_no}
 	</select>
+	
+	<update id="ckReUpdateSom" parameterType="ResumeVO">
+	UPDATE RESUME
+	SET MENTORID=#{mentorId}
+	WHERE RESUME_NO=#{resume_no}
+	</update>
+	
+	<!-- 멘토가 첨삭요청 들어온 목록 조회 -->
+	<select id="checkR"  resultType="ResumeVO">
+	SELECT * 
+	FROM RESUME
+	WHERE MENTORID=#{mentorId}
+	</select>
+	
+	<!-- 첨삭등록 -->
+	<update id="colReUpdate" parameterType="ResumeVO">
+	UPDATE RESUME
+	<set>
+	COLLECTION=#{collection}
+	</set>
+	WHERE RESUME_NO=#{resume_no}
+	</update>
  </mapper>

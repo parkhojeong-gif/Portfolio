@@ -143,4 +143,19 @@ public class ResumeServiceImpl implements ResumeService {
 		return resumemapper.getResume(vo);
 	}
 
+	@Override
+	public int ckReUpdateSom(ResumeVO vo) {
+		return resumemapper.ckReUpdateSom(vo);
+	}
+
+	@Override
+	public List<ResumeVO> checkR(ResumeVO vo) {
+		return resumemapper.checkR(vo);
+	}
+
+	@Override
+	public int colReUpdate(ResumeVO vo) {
+		return resumemapper.colReUpdate(vo);
+	}
+
 }

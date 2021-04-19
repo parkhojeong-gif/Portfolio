@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.businesspalna.service.BusinessPlanAService;
 import com.company.certificate.service.CertificateVO2;
 import com.company.certificate.service.impl.CertificateMapper;
+import com.company.mentor.service.MentorService;
+import com.company.mentor.service.MentorVO;
+import com.company.mentoring.service.MentoringService;
 import com.company.mentoring.service.MentoringVO;
 import com.company.portfolio.service.PortfolioVO;
 import com.company.portfolio.service.impl.PortfolioMapper;
@@ -38,7 +41,8 @@ public class ResumeController {
 	CertificateMapper certimapper;
 	@Autowired
 	BusinessPlanAService bpService;
-
+	@Autowired
+	MentorService mtService;
 	
 	// 이력서 전체조회
 	@RequestMapping("/getSearchResumeList")
@@ -147,12 +151,47 @@ public class ResumeController {
 	
 	//첨삭요청 팝업창
 	@GetMapping("/checkReForm")
-	public String checkReForm(MentoringVO vo, Model model, HttpServletRequest request, String resume_no) {
+	public String checkReForm(MentoringVO vo, Model model, HttpServletRequest request,String resume_no) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setMenteeId(id);
 		model.addAttribute("ck", bpService.ckMenName(vo));
 		model.addAttribute("resume_no", resume_no);
 		return "/resume/checkReForm";
+	}
+	
+	//첨삭 요청하면 이력서에 멘토 아이디 추가
+	@PostMapping("/ckReUpdateSom")
+	public String ckReUpdateSom(ResumeVO vo) {
+		System.out.println("resumevo:"+vo);
+		resumeservice.ckReUpdateSom(vo);
+		
+		return "/users/throughCerti";
+		
+	}
+	
+	//이력서 첨삭요청 목록
+	@GetMapping("/checkR")
+	public String checkR(ResumeVO vo, MentorVO mvo, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		mvo.setId(id);
+		String mId = mtService.getMentorId(mvo);
+		System.out.println("mId:"+mId);
+		vo.setMentorId(mId);
+		model.addAttribute("list", resumeservice.checkR(vo));
+		
+		return "/Mentor/checkR";
+	}
+	
+	//첨삭 등록
+	@RequestMapping("/colReUpdate")
+	public String colReUpdate(ResumeVO vo, Model model) {
+		System.out.println("vo:"+vo);
+		resumeservice.colReUpdate(vo);
+		
+		model.addAttribute("msg", "첨삭 등록이 완료되었습니다.");
+		model.addAttribute("url", "mypage/mypageHome");
+		return "common/Success";
 	}
 }

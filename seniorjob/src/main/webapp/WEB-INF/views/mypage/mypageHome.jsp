@@ -96,6 +96,11 @@ function checkP() {
 	window.open(url,"","width=500,height=600");
 }
 
+function checkR() {
+	var url = "checkR";
+	window.open(url,"","width=500,height=600");
+}
+
 
 
     </script>
@@ -127,6 +132,11 @@ function checkP() {
 										<c:if test="${auth eq 'MENTOR' }">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="checkP()">
 											첨삭 요청<span class="badge">6</span>
+										</button>
+										</c:if>
+										<c:if test="${auth eq 'MENTOR' }">
+										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="checkR()">
+											이력서 첨삭 요청<span class="badge">6</span>
 										</button>
 										</c:if>
 									</li>

@@ -18,8 +18,8 @@
         		}
         	}
         	
-        	function ckRe(no) {
-        		var url = "checkReForm?resume_no="+no;
+        	function ckRe(num) {
+        		var url = "checkReForm?resume_no="+num;
         		window.open(url,"","width=500, height=600");
         	}
         </script>
@@ -45,7 +45,7 @@
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">인쇄/PDF</button></a></li>
                                     	<li><a><button type="button" onclick="location.href='resumeWord?resume_no=${resume.resume_no}'">WORD 변환</button></a></li>
                                     	<li><button type="button" onclick="location.href='collection?resume_no=${resume.resume_no}'">보기</button>&nbsp;
-                                    	    <button type="button" onclick="location.href='ckRe('${resume.resume_no}')">보내기</button></li>
+                                    	    <button type="button" onclick="ckRe('${resume.resume_no}')">보내기</button></li>
                                     	</ul>
                                     </c:if>	
                                     </c:forEach>
