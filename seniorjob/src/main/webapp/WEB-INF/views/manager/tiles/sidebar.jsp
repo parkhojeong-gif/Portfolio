@@ -20,27 +20,27 @@
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>회원관리</span>
 					</a></li>
 
-					<li class="sidebar-item  "><a href="./mentorList"
-						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토관리</span>
+					<li class="sidebar-item"><a href="#"
+						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토링관리</span>
 					</a></li>
 
-					<li class="sidebar-item  has-sub"><a href="#"
+					<li class="sidebar-item"><a href="./sumList"
 						class='sidebar-link'> <i data-feather="trending-up" width="20"></i>
 							<span>매출관리</span>
 					</a>
 
-						<ul class="submenu ">
+						<!-- <ul class="submenu ">
 
 							<li><a href="./sumList">매출 종합 관리</a></li>
 
-						</ul></li>
+						</ul> --></li>
 
-					<li class="sidebar-item  has-sub"><a href="#" class='sidebar-link'> <i data-feather="user"></i> <span>정보공유</span>
+				<!-- 	<li class="sidebar-item  has-sub"><a href="#" class='sidebar-link'> <i data-feather="user"></i> <span>정보공유</span>
 					</a>
 
 						<ul class="submenu ">
 
-							<li><a href="./com_later">후기</a></li>
+							<li><a href="./mentoringReviews">후기</a></li>
 
 						</ul></li>
 
@@ -50,14 +50,14 @@
 
 						<ul class="submenu ">
 
-							<li><a href="./service">문의게시판</a></li>
+							<li><a href="./inquire">문의게시판</a></li>
 
-							<li><a href="./service2">문의답변</a></li>
+							<li><a href="./inquiryAnswer">문의답변</a></li>
 							
 							<li><a href="./servQna">자주하는질문</a></li>
 							
 							<li><a href="./servNotice">공지사항</a></li>	
 							
-						</ul></li>
+						</ul></li> -->
 
 				</ul>

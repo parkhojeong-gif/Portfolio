@@ -81,7 +81,7 @@
 															</fieldset>
 														</div>
 														<div class="col-md-6 mb-4">
-															<span>주문 합계 : ${monsum}</span>
+															${monsum}
 															<button type="button" id="btn_submit">검색</button>
 														</div>
 													</div>
@@ -103,7 +103,7 @@
 														<tr>
 															<td>${sumList.mentoring_number }</td>
 															<td>${sumList.id }</td>
-															<td><fmt:formatDate value="${sumList.s_date }" pattern="yyyy-MM-dd" /></td>
+															<td><fmt:formatDate value="${sumList.s_date}" pattern="yyyy-MM-dd" /></td>
 															<td>${sumList.men_price }</td>
 														</tr>
 													</c:forEach>
@@ -170,13 +170,28 @@
 	function drawBasic() {
 	
 
-	      var data = google.visualization.arrayToDataTable([
-	        ['2021년도', '월 합계 금액',],
+		 var data = new google.visualization.DataTable();
 	       
-	      ]);
-
+	       data.addColumn('string', '2021년도');
+	       data.addColumn('number', '월 합계 금액');
+	        
+	      var arr = [];
+	      $.ajax({
+	        	url : "summonth",
+	        	async : false,  
+	        	dataType : "json",
+	        	success : function(result){
+	        		console.log(result);
+	        		for(o of result) {     
+	        			arr.push([o.SMONTH, o.SUMMON]);
+	        		}
+	        		console.log(arr);
+	        	} 
+	        });
+	        data.addRows(arr);
+	        
 	      var options = {
-	        title: '월별 매출 합계',
+	        title: '월별 합계 매출',
 	        chartArea: {width: '50%'},
 	        hAxis: {
 	          title: '금액(원)',

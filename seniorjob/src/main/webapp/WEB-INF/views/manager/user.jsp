@@ -291,8 +291,7 @@
 							class="d-none d-sm-block">닫기</span>
 					</button>
 					<button type="button" class="btn btn-danger ml-1" id="btndel" data-bs-dismiss="modal">
-						<i class="bx bx-check d-block d-sm-none"></i> <span
-							class="d-none d-sm-block">확인</span>
+						<i class="bx bx-check d-block d-sm-none"></i> <span class="d-none d-sm-block">확인</span>
 					</button>
 				</div>
 			</form>
@@ -365,7 +364,6 @@ $(function(){
 		let idx = $(event.relatedTarget).closest('tr').find('td').eq(0).text();
 			console.log(idx);
 		$('#delspan').html(idx);
-		
 	});
 	
 	<!-- 삭제 modal 창 -->
@@ -404,7 +402,7 @@ $(function(){
 				location.reload();
 				
 			}, error : function(result){
-				//console.log(result);
+				alert("이미 mentor입니다.");
 			}
 		})
 	})

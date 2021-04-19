@@ -14,7 +14,5 @@ public class sumVO {
 	private Date s_date;
 	private String s_state;
 	private int men_price;
-	
-	private String smonth;
-	private String summon;
+
 }
