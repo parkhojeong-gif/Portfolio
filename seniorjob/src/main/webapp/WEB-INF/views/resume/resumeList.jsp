@@ -44,7 +44,7 @@
                                     	<!-- 인쇄랑 PDF 저장 같이 됨. -->
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">인쇄/PDF</button></a></li>
                                     	<li><a><button type="button" onclick="location.href='resumeWord?resume_no=${resume.resume_no}'">WORD 변환</button></a></li>
-                                    	<li><button type="button" onclick="location.href='collection?resume_no=${resume.resume_no}'">보기</button>&nbsp;
+                                    	<li><button type="button" onclick="location.href='seeCkRe?resume_no=${resume.resume_no}'">보기</button>&nbsp;
                                     	    <button type="button" onclick="ckRe('${resume.resume_no}')">보내기</button></li>
                                     	</ul>
                                     </c:if>	

@@ -191,7 +191,17 @@ public class ResumeController {
 		resumeservice.colReUpdate(vo);
 		
 		model.addAttribute("msg", "첨삭 등록이 완료되었습니다.");
-		model.addAttribute("url", "mypage/mypageHome");
+		model.addAttribute("url", "mypageHome");
 		return "common/Success";
+	}
+	
+	//첨삭보기
+	@GetMapping("/seeCkRe")
+	public String seeCkRe(Model model, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo, PortfolioVO portvo) {
+		model.addAttribute("resumeVO", resumemapper.getResume(vo));
+		model.addAttribute("selfvo", selfmapper.getSelf(selfvo));
+		model.addAttribute("certivo", certimapper.getCerti(certivo));
+		model.addAttribute("portvo", portmapper.getPort(portvo));
+		return "resume/seeCkRe";
 	}
 }
