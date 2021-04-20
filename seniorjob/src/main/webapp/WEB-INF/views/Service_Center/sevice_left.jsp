@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='job?cd=12'">
+							<div class="panel-heading" onclick="location.href='job?cd=11'">
 								<h3 class="panel-title">지역별 채용 공고</h3>
 							</div>
 						</div>
@@ -38,7 +38,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='seniorTimes'">
+							<div class="panel-heading" onclick="location.href='seniorTimes?keyword=고용정책'">
 								<h3 class="panel-title">시니어타임즈</h3>
 							</div>
 						</div>

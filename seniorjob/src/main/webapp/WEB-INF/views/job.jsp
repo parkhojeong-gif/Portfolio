@@ -13,7 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function openWindowPop(url, name){
-    var options = 'top=10, left=50, width=800, height=900, status=no, menubar=no, toolbar=no, resizable=no';
+    var options = 'top=10, left=950, width=1100, height=900, status=no, menubar=no, toolbar=no, resizable=no';
     window.open(url, name, options);
 }
 
@@ -24,42 +24,74 @@ function getURLParams(url) {
 }
 
  $(function(){
-	if(getURLParams(location.search).cd == '11'){
-		$('#cd15').attr('class','btn btn-default btn-lg')
-		$('#cd14').attr('class','btn btn-default btn-lg')
-		$('#cd13').attr('class','btn btn-default btn-lg')
-		$('#cd12').attr('class','btn btn-default btn-lg')
-		$('#cd11').attr('class','btn btn-primary btn-lg')
-	}else if(getURLParams(location.search).cd == '12'){
-		$('#cd15').attr('class','btn btn-default btn-lg')
-		$('#cd14').attr('class','btn btn-default btn-lg')
-		$('#cd13').attr('class','btn btn-default btn-lg')
-		$('#cd11').attr('class','btn btn-default btn-lg')
-		$('#cd12').attr('class','btn btn-primary btn-lg')
-	}else if(getURLParams(location.search).cd == '13'){
-		$('#cd15').attr('class','btn btn-default btn-lg')
-		$('#cd14').attr('class','btn btn-default btn-lg')
-		$('#cd12').attr('class','btn btn-default btn-lg')
-		$('#cd11').attr('class','btn btn-default btn-lg')
-		$('#cd13').attr('class','btn btn-primary btn-lg')
-	}else if(getURLParams(location.search).cd == '14'){
-		$('#cd15').attr('class','btn btn-default btn-lg')
-		$('#cd13').attr('class','btn btn-default btn-lg')
-		$('#cd12').attr('class','btn btn-default btn-lg')
-		$('#cd11').attr('class','btn btn-default btn-lg')
-		$('#cd14').attr('class','btn btn-primary btn-lg')
-	}else if(getURLParams(location.search).cd == '15'){
-		$('#cd14').attr('class','btn btn-default btn-lg')
-		$('#cd13').attr('class','btn btn-default btn-lg')
-		$('#cd12').attr('class','btn btn-default btn-lg')
-		$('#cd11').attr('class','btn btn-default btn-lg')
-		$('#cd15').attr('class','btn btn-primary btn-lg')
+	 for (var i = 11; i < 27; i++) {
+		 console.log(i);
+		 console.log(getURLParams(location.search).cd);
+	 	if(getURLParams(location.search).cd == i){
+			$('#cd'+i).attr('class','btn btn-primary btn-lg')
+			
+		}else{ 
+			$('#cd'+i).attr('class','btn btn-default btn-lg')
+		}
 	}
+	 
+	
 }); 
 
 
 
 </script>
+<style>
+#cd11{
+ margin-left:20px;
+}
+#cd12{
+ margin-left:35px;
+}
+#cd13{
+ margin-left:35px;
+}
+#cd14{
+ margin-left:35px;
+}
+#cd15{
+ margin-left:35px;
+}
+#cd16{
+ margin-left:35px;
+}
+#cd17{
+ margin-left:35px;
+}
+#cd18{
+ margin-left:35px;
+}
+#cd19{
+ margin-left:20px;
+}
+#cd20{
+ margin-left:35px;
+}
+#cd21{
+ margin-left:35px;
+}
+#cd22{
+ margin-left:35px;
+}
+#cd23{
+ margin-left:35px;
+}
+#cd24{
+ margin-left:35px;
+}
+#cd25{
+ margin-left:35px;
+}
+#cd26{
+ margin-left:35px;
+}
+
+</style>
 <body>
 	<!-- property area -->
 	<!-- property area -->
@@ -73,8 +105,10 @@ function getURLParams(url) {
 
 				
 				
-				<div class="col-md-10 pr-40 padding-top-40 properties-page user-properties">
+				<div class="col-md-10 pr-40  properties-page user-properties">
 				<div class="section additional-details">
+				<h4><strong>지역 선택</strong></h4>
+				<hr>
 				<form action="job">
 						
 						<button type="submit" class="btn btn-primary btn-lg" formaction="job" id="cd11"name="cd" value='11'>서울</button>
@@ -84,8 +118,17 @@ function getURLParams(url) {
 						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd15"name="cd" value='15'>광주</button>
 						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd16"name="cd" value='16'>대전</button>
 						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd17"name="cd" value='17'>울산</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd18"name="cd" value='16'>대전</button>
-						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd19"name="cd" value='17'>울산</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd18"name="cd" value='18'>경기</button>
+						<br><hr>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd19"name="cd" value='19'>강원</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd20"name="cd" value='20'>충북</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd21"name="cd" value='21'>충남</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd22"name="cd" value='22'>전북</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd23"name="cd" value='23'>전남</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd24"name="cd" value='24'>경북</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd25"name="cd" value='25'>경남</button>
+						<button type="submit" class="btn btn-default btn-lg" formaction="job" id="cd26"name="cd" value='26'>제주</button>
+						<hr>
 				</form>
 				<table class="table table-hover">
 					<tr>
@@ -97,11 +140,11 @@ function getURLParams(url) {
 
 					<c:forEach items="${job }" var="a">
 						<tr>
-							<td>${a.companyName }</td>
+							<td><strong>${a.companyName }</strong></td>
 							<td colspan="3" >
-							<a href="javascript:openWindowPop('${a.companyUrl }', 'popup');">
+							<p><a href="javascript:openWindowPop('${a.companyUrl }', 'popup');">
 							${a.incruit }
-							</a><br>
+							</a></p>
 							${a.incruit2nd }</td>
 							<td>${a.incruit3nd }</td>
 							<td>${a.incruitDday }</td>

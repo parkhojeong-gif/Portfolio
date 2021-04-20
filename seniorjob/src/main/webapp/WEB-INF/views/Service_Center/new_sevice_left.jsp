@@ -26,7 +26,13 @@
 	height: 3px;
 	background: #ccc;
 }
-.
+#hideBtn{
+	width: 180px;
+}
+#hideBtnSub{
+	width: 180px;
+}
+
 </style>
 
 <body>
@@ -40,38 +46,19 @@
 		<div class="blog-asside-right pr0">
 			<hr class="my-hr3">
 			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='serviceCenter'">
-					<h3 class="panel-title">고객센터 게시판</h3>
-				</div>
-			</div>
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='serviceCenter'">
+				class="panel panel-default sidebar-menu wow fadeInRight animated ">
+				<div class="panel-heading " onclick="location.href='serviceCenter'">
 					<h3 class="panel-title">공지사항</h3>
-				</div>
-			</div>
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading"
-					onclick="location.href='#'">
-					<h3 class="panel-title">서식자료실</h3>
 				</div>
 			</div>
 			<hr class="my-hr3">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading" onclick="location.href='serviceCenterQna'">
-					<h3 class="panel-title">자주하는 질문</h3>
+					<h3 class="panel-title">FAQ</h3>
 				</div>
 			</div>
 			<hr class="my-hr3">
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='#'">
-					<h3 class="panel-title">문의 게시판</h3>
-				</div>
-			</div>
 			<c:if test="${empty users }">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -88,6 +75,7 @@
 				</div>
 			</div>
 			</c:if>
+			
 			<c:if test="${empty users }">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -104,24 +92,32 @@
 				</div>
 			</div>
 			</c:if>
-			<c:if test="${users.auth eq 'ADMIN' }">
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='getInquireList'">
-					<h3 class="panel-title">목록전체조회</h3><!--문의 전체조회  -->
+			<hr class="my-hr3">
+			<c:if test="${users.auth eq 'ADMIN'}">
+			<div class="dropdown">
+
+				<button class="btn  btn-primary  dropdown-toggle"
+					data-toggle="dropdown" id="hideBtn">관리자 기능</button>
+
+				<div class="dropdown-menu" id="hideBtnSub">
+
+					<a class="dropdown-item" onclick="location.href='insertService_CenterForm'">공지사항 등록</a><br><br> 
+					<a class="dropdown-item" href="#">FAQ 등록</a><br><br> 
+					<a class="dropdown-item" onclick="location.href='getInquireList'">문의전체조회</a>
+
 				</div>
 			</div>
-			</c:if>
 			<hr class="my-hr3">
+			</c:if>
+
 		</div>
 	</div>
 	<script>
-	function loginCheck(){
-		if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
-			location.href = "login"; // 로그인 페이지로 이동
+		function loginCheck() {
+			if (confirm("로그인 또는 회원가입이 필요한 항목입니다.")) {
+				location.href = "login"; // 로그인 페이지로 이동
+			}
 		}
-	}
-	
 	</script>
 	
 </body>

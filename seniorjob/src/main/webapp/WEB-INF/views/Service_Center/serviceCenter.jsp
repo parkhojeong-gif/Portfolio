@@ -12,6 +12,50 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<style>
+ th {
+    text-align: left;
+    height: 40px;
+    padding: 7px 5px;
+    background: #f7f7f7;
+    font-weight: 700;
+}
+.board-list-search {
+    margin-top: 30px;
+    padding: 60px;
+    padding-bottom: 101px;
+    border: 1px solid #e0e0e0;
+    background-color: #fafafa;
+}
+select#items_per_page {
+    width: 111px;
+    /* padding-bottom: 5px; */
+    margin-bottom: 16px;
+    /* size: a3; */
+    height: 40px;
+    /* text-align: center; */
+    text-align-last: center;
+}
+button.btn.dropdown-toggle.btn-default {
+    width: 144px;
+    /* margin-right: -5px; */
+    padding-right: -1px;
+    top: 0px;
+    right: 43px;
+    height: 47px;
+    text-align-last: center;
+    color: #000000;
+}
+input#keywordInput {
+    width: 522px;
+    height: 48px;
+    text-align: center;
+}
+button#searchBtn {
+    width: 89px;
+    height: 48px;
+}
+</style>
 
 <body>
 	<!-- property area -->
@@ -27,19 +71,69 @@
 				</div>
 				<div id="optionVal"
 					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-					<h4>공지사항 게시판</h4>
+					<h4><strong id="strongTitle">공지사항</strong></h4>
+					<p><img src = "resources/assets/img/hojeong/123.png"/></p>
+					<div class="section additional-details board-list-search">
+					<form role="form" method="get">
+					<div class="col-xs-2">
+							<div class="btn-group bootstrap-select show-tick form-control">
+								
+								<select id="basic" name="searchType"
+									class="selectpicker show-tick form-control" tabindex="-98">
+									<option value="t"
+										<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+									<option value="c"
+										<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+									<option value="w"
+										<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+									<option value="tc"
+										<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+								</select>
+							</div>
+					</div>
+					<div class="col-xs-7">
+							<div class="input-group">
+								<input class="form-control" name="keyword" id="keywordInput"
+									value="${scri.keyword}"
+									
+									type="text" placeholder="내용 입력 "> <span
+									class="input-group-btn">
+									<button class="btn btn-primary subscribe" id="searchBtn"
+										type="button">
+										<i class="pe-7s-paper-plane pe-2x"></i>
+									</button>
+									<script>
+									$(function(){
+										  $('#searchBtn').click(function() {
+											  var seLocation = "serviceCenter" + '${pageMaker.makeQuery(1)}' 
+										    				+ "&searchType=" + $("#basic option:selected").val() 
+										    				+ "&keyword=" + encodeURIComponent($('#keywordInput').val())
+										    				+ "&optionValue=" + getURLParams(location.search).optionValue;
+											  console.log(seLocation);
+											  self.location = seLocation;
+										  });
+										});   
+									</script>
+									
+								</span>
+							</div>
+						</div>
+						</form>	
+					
+					</div>
+					
 					<div class="section additional-details">
 
 						<div class="items-per-page">
 							<label for="items_per_page"></label>
-							<div class="sel">
+							<div class="sel" style="float: right;">
 								<select id="items_per_page" name="per_page"
 									onchange="optionSelect(this)">
 									<option value="">선택</option>
 									<option value="최신순" id="select1">최신순</option>
 									<option value="인기순" id="select2">조회수순</option>
 								</select> <input type="hidden" id="sebubtn">
-								<button style="float: right" class="btn btn-primary subscribe"  type="button" onclick="location.href='insertService_CenterForm'">등록</button>
+								
 							</div>
 							<br>
 							<!--/ .sel-->
@@ -70,74 +164,6 @@
 				<!--검색기능  -->
 				<div
 					class="col-md-10  properties-page user-properties">
-					<form role="form" method="get">
-						<div class="search">
-							<br>
-						</div>
-						<div class="col-xs-2">
-							<div class="btn-group bootstrap-select show-tick form-control">
-								<div class="dropdown-menu open"
-									style="max-height: 640.781px; overflow: hidden; min-height: 109px;">
-									<ul class="dropdown-menu inner" role="menu"
-										style="max-height: 629.781px; overflow-y: auto; min-height: 98px;">
-										<li data-original-index="0" class=""><a tabindex="0"
-											class="" style="" data-tokens="null"><span class="text">
-													-Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										<li data-original-index="1" class=""><a tabindex="0"
-											class="" style="" data-tokens="null"><span class="text">Rent
-											</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										<li data-original-index="2" class="selected"><a
-											tabindex="0" class="" style="" data-tokens="null"><span
-												class="text">Boy</span><span
-												class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										<li data-original-index="3"><a tabindex="0" class=""
-											style="" data-tokens="null"><span class="text">used</span><span
-												class="glyphicon glyphicon-ok check-mark"></span></a></li>
-									</ul>
-								</div>
-								<select id="basic" name="searchType"
-									class="selectpicker show-tick form-control" tabindex="-98">
-									<option value="n"
-										<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
-									<option value="t"
-										<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-									<option value="c"
-										<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-									<option value="w"
-										<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-									<option value="tc"
-										<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-xs-7">
-							<div class="input-group">
-								<input class="form-control" name="keyword" id="keywordInput"
-									value="${scri.keyword}"
-									style="text-align: center; height: 45px; width: 500px"
-									type="text" placeholder="내용 입력 "> <span
-									class="input-group-btn">
-									<button class="btn btn-primary subscribe" id="searchBtn"
-										type="button">
-										<i class="pe-7s-paper-plane pe-2x"></i>
-									</button>
-									<script>
-									$(function(){
-										  $('#searchBtn').click(function() {
-											  var seLocation = "serviceCenter" + '${pageMaker.makeQuery(1)}' 
-										    				+ "&searchType=" + $("#basic option:selected").val() 
-										    				+ "&keyword=" + encodeURIComponent($('#keywordInput').val())
-										    				+ "&optionValue=" + getURLParams(location.search).optionValue;
-											  console.log(seLocation);
-											  self.location = seLocation;
-										  });
-										});   
-									</script>
-									
-								</span>
-							</div>
-						</div>
-					</form>
 				</div>
 				<!--등록버튼  -->
 				<div class="col-md-2  properties-page user-properties">
@@ -148,7 +174,7 @@
 						</div>
 					<!--페이징  -->
 					<div
-						class="col-md-6  padding-top-40 properties-page user-properties">
+						class="col-md-6   properties-page user-properties">
 						<div class="pagination" style="float: center">
 							<ul>
 								<c:if test="${pageMaker.prev}">

@@ -152,7 +152,7 @@
 											type="button">
 											<i class="pe-7s-paper-plane pe-2x"></i>
 										</button>
-										<button class="btn btn-primary subscribe" id="searchBtn"
+										<button class="btn btn-primary subscribe" id="searchBtn2"
 											type="button"
 											onclick="location.href='insertService_CenterFormQna'">등록</button>
 				<script>

@@ -25,7 +25,7 @@ public class Service_CenterController {
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		
 		
-		if(scri.getOptionValue()==null || scri.getOptionValue()=="") {
+		if(scri.getOptionValue()!="최신순" && scri.getOptionValue()!="인기순") {
 			model.addAttribute("list", service_CenterMapper.list(scri));
 			System.out.println("============================ssqq===========================");
 			System.out.println(scri.getOptionValue());
@@ -95,7 +95,7 @@ public class Service_CenterController {
 		return "redirect:/serviceCenter";
 	}
 
-//	--------------------------------------------------------결제환불-----------------------------------------------------------------------------------------------------
+//	--------------------------------------------------------faq-----------------------------------------------------------------------------------------------------
 	@RequestMapping("serviceCenterQna") // 결제/환불 목록 조회
 	public String listQna(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 
@@ -175,10 +175,10 @@ public class Service_CenterController {
 
 
 	// ==================================고객센터 main=============================
-	@RequestMapping("/serviceCenterMain")
+	@RequestMapping("/inquire")
 	public String serviceCenterMain(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		
-		return "/Service_Center/qna/serviceCenterMain";
+		return "/inquire";
 	}
 	
 }

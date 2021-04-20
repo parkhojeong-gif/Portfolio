@@ -24,10 +24,7 @@ import com.company.service_center.SearchCriteria;
 @Controller
 public class InquireController {
 	@Autowired InquireMapper inquireMapper;
-	@RequestMapping("/inquire")
-	public String inquire() {
-		return "inquire";		  			
-	}
+
 	
 	@RequestMapping("/insertInquireForm") //문의 등록 폼
 	public String insertInquire(InquireVO vo) {
