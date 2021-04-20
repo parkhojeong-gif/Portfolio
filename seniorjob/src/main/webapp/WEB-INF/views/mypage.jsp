@@ -10,33 +10,18 @@
 <!--<![endif]-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+.ul-none-som {
+display:none;
+}
+</style>
 <script>
-/* 이력서 토글(누르면 메뉴 나오기)  hide 작동이 안 됨.  */ 
-	$(".resumesub").hide();
-	$(document).on("click", "#resc", function() {
-		$(".resumeMenu .resumesub").slideToggle();
-	})
+	$(document).on("click",".toggle-som",function() {
 	
-/* 사업계획서 토글(누르면 메뉴 나오기) */
-	$(".busisub").hide();
-	$(document).on("click", "#busic", function(){
-		$(".busiMenu .busisub").slideToggle();
-	})
-/* 멘토링 현황 토글(누르면 메뉴 나오기) */	
-	$(".mentosub").hide();
-	$(document).on("click", "#mentoc", function(){
-		$(".mentoMenu .mentosub").slideToggle();
-	})
-/* 나의 결제정보 토글(누르면 메뉴 나오기) */
-	$(".pricesub").hide();
-	$(document).on("click", "#pricec", function(){
-		$(".priceMenu .pricesub").slideToggle();
-	})
-/* 개인정보 수정 토클(누르면 메뉴 나오기) */
-	$(".selfsub").hide();
-	$(document).on("click", "#selfc", function(){
-		$(".SelfMenu .selfsub").slideToggle();
-	})
+		var tar = event.target;
+		$(tar).parent().parent().children('ul').slideToggle();
+	
+	});
 </script>
 <body>
 
@@ -59,10 +44,10 @@
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
 					<div class="resumeMenu" id="resM">
-						<h3 class="panel-title">
-							<div id="resc">이력서</div>
+						<h3 class="panel-title" >
+							<span class="toggle-som" >이력서</span>
 						</h3>
-						<ul class="resumesub">
+						<ul class="resumesub ul-none-som" id="resumesub">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="resumeInsertForm"> <span class="txt">이력서 등록</span>
 							</a>
@@ -78,8 +63,8 @@
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
 					<div class="busiMenu" id="busiM">
-						<h3 class="panel-title"><div id="busic">사업계획서</div></h3>
-						<ul class="busisub">
+						<h3 class="panel-title"><span class="toggle-som" >사업계획서</span></h3>
+						<ul class="busisub ul-none-som">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="insertBusinessPlanA"> <span class="txt">사업계획서 등록</span></a>
 							</li>
@@ -93,8 +78,8 @@
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
 					<div class="mentoMenu" id="mentoM">
-						<h3 class="panel-title"><div id="mentoc">멘토링 현황</div></h3>
-						<ul class="mentosub">
+						<h3 class="panel-title"><span class="toggle-som" >멘토링 현황</span></h3>
+						<ul class="mentosub ul-none-som">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="getSearchShopping"> <span class="txt">수강중인 멘토링</span></a>
 							</li>
@@ -108,8 +93,8 @@
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
 					<div class="priceMenu" id="priM">
-						<h3 class="panel-title"><div id="pricec">나의 결제정보</div></h3>
-						<ul class="pricesub">
+						<h3 class="panel-title"><span class="toggle-som" >나의 결제정보</span></h3>
+						<ul class="pricesub ul-none-som">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="getSearchPay"> <span class="txt">결제내역</span></a>
 							</li>
@@ -123,8 +108,8 @@
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
 					<div class="SelfMenu" id="selfM">
-						<h3 class="panel-title"><div id="selfc">개인정보 수정</div></h3>
-						<ul class="selfsub">
+						<h3 class="panel-title"><span class="toggle-som" >개인정보 수정</span></h3>
+						<ul class="selfsub ul-none-som">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="updateUsers?id=somTest"> <span class="txt">개인정보/경력 수정</span></a>
 							</li>

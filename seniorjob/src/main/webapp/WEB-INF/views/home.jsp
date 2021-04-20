@@ -44,16 +44,17 @@ $(document).ready(function() {
 			
 			if(result == true) {
 				console.log("trueIf");
-				$("#slidemenu").show();
+				var div = $('<div />').attr('id','slidemenu');
+				var a = $('<a />').attr('href','#').html('영상면접');
+				$(div).append(a);
+				$("#slideDiv").append(div);
 				
 			} else {
 				console.log("else");
-				$("#slidemenu").hide();
 			}
 		},
 		error : function() {
 			console.log("error");
-			$("#slidemenu").hide();
 		}
 	});
 	 var currentPosition = parseInt($("#slidemenu").css("top"));
@@ -68,9 +69,8 @@ $(document).ready(function() {
 <body>
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
-	<!-- side slide menu -->
-	<div id="slidemenu">
-		<a href="#">영상면접</a>
+	<div id="slideDiv">
+	
 	</div>
 	<!-- topHeader -->
 	

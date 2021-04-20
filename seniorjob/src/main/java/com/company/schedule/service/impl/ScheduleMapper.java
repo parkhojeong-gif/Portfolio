@@ -31,4 +31,6 @@ public interface ScheduleMapper {
 
 	
 	public List<Map> getSearchMentoringDate(ScheduleVO vo);
+	
+	public List<ScheduleVO> replyQuestFormSom(ScheduleVO vo);
 }

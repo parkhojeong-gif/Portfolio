@@ -9,7 +9,6 @@
 <html class="no-js">
 <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<jsp:include page="../topHeader.jsp"></jsp:include>
 
 
 
@@ -19,7 +18,6 @@
 	<div class="container">
 		<div class="row">
 
-			<jsp:include page="../mypage.jsp" />
 			<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties  profiel-container">
 			
 
@@ -41,25 +39,25 @@
 									name="mentorid" type="text" value="${mentorid }" class="form-control" readonly="readonly">
 							</div>
 							<div class="form-group">
-								<label>일정이름<small>(read only)</small></label> <input name="schedule_name" type="text" class="form-control">
+								<label>일정이름</label> <input name="schedule_name" type="text" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>요청내용<small>(required)</small></label> <input name="schedule_con" type="text" class="form-control">
+								<label>요청내용</label> <input name="schedule_con" type="text" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>시작날짜<small>(required)</small></label> 
+								<label>시작날짜</label> 
 								<input name="schedule_start" type="date" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>시작시간<small>(required)</small></label> 
+								<label>시작시간</label> 
 								<input name="schedule_start_time" type="time" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>종료날짜<small>(required)</small></label> 
+								<label>종료날짜</label> 
 								<input name="schedule_end" type="date" class="form-control">
 							</div>
 							<div class="form-group">
-								<label>종료시간<small>(required)</small></label> 
+								<label>종료시간</label> 
 								<input name="schedule_end_time" type="time" class="form-control">
 							</div>
 							<div class="form-group">
@@ -86,7 +84,6 @@
 	</div>
 </div>
 
-<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>

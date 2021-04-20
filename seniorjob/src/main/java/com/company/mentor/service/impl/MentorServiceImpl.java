@@ -122,4 +122,9 @@ public class MentorServiceImpl implements MentorService {
 	public String getMentorId(MentorVO vo) {
 		return mentorMapper.getMentorId(vo);
 	}
+
+	@Override
+	public String getMentorName(String menId) {
+		return mentorMapper.getMentorName(menId);
+	}
 }

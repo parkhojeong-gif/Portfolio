@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.company.mentor.service.MentorService;
+import com.company.mentor.service.MentorVO;
 import com.company.schedule.service.ScheduleService;
 import com.company.schedule.service.ScheduleVO;
 
@@ -25,7 +27,7 @@ import com.company.schedule.service.ScheduleVO;
 public class ScheduleController {
 	
 	@Autowired ScheduleService scService;
-	
+	@Autowired MentorService mtService;
 	
 	
 	//마이홈페이지에 있는 calendar에서 일정이 보이는데, mentor와 mentee가 일정을 공유. mentorid와 menteeid에 각각 로그인된 아이디를 넣으면 조회가 가능하다고 생각했으나, mentor가 mentee일 수도 있다는 경우를 고려하지 않아 수정 필요.
@@ -58,9 +60,11 @@ public class ScheduleController {
 	
 	//멘토가 멘티에게 멘토링 요청
 	@RequestMapping("/insertSchedule") 
-	public String insertScheduleProc(ScheduleVO vo) {
+	public String insertScheduleProc(ScheduleVO vo, Model model) {
+		model.addAttribute("msg", "요청이 완료되었습니다.");
+		model.addAttribute("url", "throughCerti");
 		scService.insertSchedule(vo);
-		return "schedule/insertScheduleComplete";
+		return "common/Success";
 	}
 	
 	
@@ -84,8 +88,11 @@ public class ScheduleController {
 	
 	//질문등록
 	@GetMapping("/insertQuest")
-	public String insertQuestForm(ScheduleVO vo, Model model) {
-		
+	public String insertQuestForm(ScheduleVO vo, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMenteeid(id);
+		model.addAttribute("vo", vo);
 		return "schedule/insertQuest";
 		
 	}
@@ -94,7 +101,7 @@ public class ScheduleController {
 	public String insertQuest(ScheduleVO vo, Model model) {
 		scService.insertQuest(vo);
 		model.addAttribute("msg", "질문등록완료");
-		model.addAttribute("url", "MentorList");
+		model.addAttribute("url", "throughCerti");
 		return "common/Success";
 	}
 
@@ -104,10 +111,12 @@ public class ScheduleController {
 	//멘토가 받은 질문 확인
 	@RequestMapping("/getSearchQuest")
 	@ResponseBody
-	public List<Map> getSearchQuest(ScheduleVO vo, HttpServletRequest request) {
+	public List<Map> getSearchQuest(MentorVO mVo, ScheduleVO vo, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		vo.setMentorid(id);
+		mVo.setId(id);
+		String mId = mtService.getMentorId(mVo);
+		vo.setMentorid(mId);
 		List<Map> list = scService.getSearchQuest(vo);
 		return list;
 	}
@@ -129,6 +138,28 @@ public class ScheduleController {
 		vo.setSeq(seq);
 		scService.updateQuest(vo);
 		return "mypage/mypageHome";
+		
+	}
+	
+	//답변 목록 확인 창으로 이동
+	@GetMapping("/replyQuestFormSom")
+	public String replyQuestFormSom(ScheduleVO vo, Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMenteeid(id);
+		model.addAttribute("list", scService.replyQuestFormSom(vo));
+		return "mypage/replyQuestFormSom";
+	}
+	
+	//답변 상세보기
+	@GetMapping("/replyDetailSom")
+	public String replyDetailSom(ScheduleVO vo, Model model, MentorVO mVo) {
+		ScheduleVO quest = scService.getQuest(vo);
+		model.addAttribute("vo",quest);
+		String menId = quest.getMentorid();
+		String menName = mtService.getMentorName(menId);
+		model.addAttribute("menName", menName);
+		return "mypage/replyDetailSom";
 		
 	}
 	

@@ -8,6 +8,13 @@
 <title>멘토 상세 페이지</title>
 <!-- fontawesome cdn -->
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script>
+//멘토에게 질문하기
+function insertQueSom(id) {
+	var url="insertQuest?mentorid="+id;
+	window.open(url,"","width=500,height=600");
+}
+</script>
 </head>
 <body>
 <!-- topHeader -->
@@ -170,7 +177,7 @@
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우" id="BasketBtn" type="button">
                                                 </c:if>
-                                                    <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="" type="button">
+                                                    <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="insertQueSom('${mentor.mentor_id }')" type="button">
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
@@ -440,6 +447,8 @@
 				location.href = "mentoringPayForm?mentor_id=${list.mentor_id}";
 			}
 		}
+	
+	
 	
 </script>
 
