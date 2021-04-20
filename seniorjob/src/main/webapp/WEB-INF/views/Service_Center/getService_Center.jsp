@@ -50,18 +50,23 @@ $(function(){
                     </div>
                     <div class="col-md-9  properties-page user-properties">
                         <div class="row">
+                        
+                        
                         <h2 class="wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft; text-align: center;">${gongji.title }</h2>
                         <br>
                         <br>
                         <div class="col-sm-6">
                               <p class="author-category">
-                                  By <a href="#">${gongji.id }</a>
+                                  작성자 <a href="#">${gongji.id }</a>
                               </p>
                        </div>
-                       
-                       <div class="col-sm-6 right">
+                       <div class="col-sm-2 left">
                              <p class="date-comments">
                               <a href="#"><i class="fa fa-calendar-o"></i><fmt:formatDate value="${gongji.w_date }" pattern="yyyy-MM-dd"/></a>
+                             </p>
+                       </div>
+                       <div class="col-sm-4 right">
+                             <p class="date-comments">
                               <a href="#"><i class="fa fa-check"></i>${gongji.click }</a>
                              </p>
                        </div>

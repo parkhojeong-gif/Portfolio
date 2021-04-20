@@ -21,7 +21,7 @@
     font-weight: 700;
 }
 .board-list-search {
-    margin-top: 30px;
+    margin-top: 85px;
     padding: 60px;
     padding-bottom: 101px;
     border: 1px solid #e0e0e0;
@@ -55,6 +55,9 @@ button#searchBtn {
     width: 89px;
     height: 48px;
 }
+div#img1 {
+    bottom: 10px;
+}
 </style>
 
 <body>
@@ -71,8 +74,10 @@ button#searchBtn {
 				</div>
 				<div id="optionVal"
 					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-					<h4><strong id="strongTitle">공지사항</strong></h4>
+					<div class="col-md-3 pr-30" id="img1">
 					<p><img src = "resources/assets/img/hojeong/123.png"/></p>
+					</div>
+					<h4><strong>시니어잡의 새로운 소식을 알려드립니다.</strong></h4>
 					<div class="section additional-details board-list-search">
 					<form role="form" method="get">
 					<div class="col-xs-2">

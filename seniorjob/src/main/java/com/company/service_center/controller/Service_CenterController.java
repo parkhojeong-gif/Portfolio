@@ -2,6 +2,9 @@ package com.company.service_center.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -72,7 +75,10 @@ public class Service_CenterController {
 	}
 
 	@RequestMapping("/insertService_Center") // 공지사항 등록
-	public String insertService_CenterProc(Service_CenterVO vo) {
+	public String insertService_CenterProc(Service_CenterVO vo,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		service_CenterMapper.insertService_Center(vo);
 		return "redirect:/serviceCenter";
 	}
