@@ -18,11 +18,28 @@
 	font-weight: 300;
 }
 h1{text-align:center}
+#contentArea{
+	margin-left:40px;
+	border: 1px solid black;
+	border-radius: 8px;
+	padding: 10px;
+}
+.text-muted {
+  padding: 3px;
+  float:left;
+	-webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+}
+
+.text-muted:hover {
+	cursor:pointer;
+    margin-top: 5px;
+}
 </style>
 <body>
 <h1 class="display-4" id="mainCopy">멘토링 후기</h1>
 <footer class="blockquote-footer" style="text-align:center">수강생들의 생생한 후기를 살펴보세요!</footer>
-<hr>
        <!-- 멘토링 후기 인기순위 -->
             <div class="container">  
                 <div class="row">
@@ -30,16 +47,13 @@ h1{text-align:center}
                         <div class="" id="contact1">   
                         <h4 class="s-property-title">많이본 후기</h4>
 					<div class="row" id="popArticles">
-						<div class="col-sm-4">
-							<p class="text-muted"></p>
-						</div>
 					</div>
 				</div>
                     </div>    
                 </div>
             </div>
        <!-- End of 멘토링 후기 인기순위 -->
-<hr>
+       
 	<!-- 메인 콘텐츠 -->
 	<div class="properties-area recent-property" style="background-color: #FFF;">
 		<div class="container">
@@ -142,7 +156,10 @@ h1{text-align:center}
 			success:function(result){
 				console.log(result);
 				for(i=0; i<result.length; i++){
-					$('.text-muted').text(result[i].content);
+					var div = $('<div>').attr('class', 'col-sm-4');
+					var p = $('<p>').attr( {'class' : 'text-muted', 'id' : 'contentArea'} ).text("No."+ i + ' ' + result[i].content);
+					div.append(p);
+					$('#popArticles').append(div);
 				}
 			}
 		});
