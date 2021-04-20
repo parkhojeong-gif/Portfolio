@@ -85,6 +85,11 @@
 		var openWin = window.open("preview",
                 "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
 	})
+	
+	$(document).on("click", "#video", function(){
+		window.open("https://192.168.0.56:85",
+                "영상", "width=900, height=900, resizable = no, scrollbars = no");
+	})
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
@@ -379,6 +384,7 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
+									<button name="video" id="video">영상</button>
 								</div>
 								<br><br><br>
 						</form>

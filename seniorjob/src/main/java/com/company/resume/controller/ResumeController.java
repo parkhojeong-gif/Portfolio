@@ -140,8 +140,9 @@ public class ResumeController {
 		return "resume/collection"; 
 	}
 	
-	@RequestMapping("/testing")
-	public String testing() {
-		return "resume/test";
+	//영상통화
+	@RequestMapping("/videoIn")
+	public String videoIn() {
+		return "videoIn";
 	}
 }
