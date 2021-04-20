@@ -34,10 +34,10 @@ public class MentorServiceImpl implements MentorService {
 
 	}
 
-	// 연령 검색
+	// 멘토 직무 검색
 	@Override
-	public List<MentorVO> getAgeSearch(String searchAge) {
-		return mentorMapper.getAgeSearch(searchAge);
+	public List<MentorVO> getSearchMentorDuty(MentorVO vo) {
+		return mentorMapper.getSearchMentorDuty(vo);
 	}
 
 	// 멘토 상세 페이지(단건 조회)

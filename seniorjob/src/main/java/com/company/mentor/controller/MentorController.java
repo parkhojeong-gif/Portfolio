@@ -40,9 +40,17 @@ public class MentorController {
 			return "Mentor/mentorList";
 		}
 		
+		// 메인페이지 키워드 검색
 		@RequestMapping("/getKeywordSearch")
 		public String getKeywordSearch(Model model, MentorVO vo) {
 			model.addAttribute("list", mentorService.getKeywordSearch(vo));
+			return "Mentor/mentorList";
+		}
+		
+		// 메인페이지 직무 검색
+		@RequestMapping("getSearchMentorDuty")
+		public String getSearchMentorDuty(MentorVO vo, Model model) {
+			model.addAttribute("list", mentorService.getSearchMentorDuty(vo));
 			return "Mentor/mentorList";
 		}
 		

@@ -9,7 +9,7 @@ public interface MentorMapper {
 	
 	public List<MentorVO> getMentorList(MentorVO vo); // 검색
 	public List<MentorVO> getKeywordSearch(MentorVO vo); // 키워드 검색
-	public List<MentorVO> getAgeSearch(String searchAge); // 연령 검색
+	public List<MentorVO> getSearchMentorDuty(MentorVO vo); // 멘토 직무 검색
 
 	public MentorVO getMentor(MentorVO vo); // 멘토 상세페이지
 	
@@ -24,5 +24,6 @@ public interface MentorMapper {
 	public List<MentorVO> getMentorByFollow(MentorVO vo); // 멘토리스트 세부검색: 인기순
 	
 	public String getMentorId(MentorVO vo);// 멘토 아이디 조회
+	
 
 }

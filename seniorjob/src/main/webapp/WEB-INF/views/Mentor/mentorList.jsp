@@ -26,6 +26,14 @@
 	font-family:'Spoqa Han Sans'; 
 	font-weight: 300;
 }
+/* 
+이미지 사이즈 손쉽게 맞추기
+참고: https://nykim.work/86 */
+#myPhoto{ 
+  width: 253px;
+  height: 253px;
+  object-fit: cover;
+}
 </style>
 <body>
 
@@ -70,7 +78,7 @@
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
 										<c:if test="${not empty mentor.mentor_photo }">
-											<img src="image/${mentor.mentor_photo }">
+											<img src="image/${mentor.mentor_photo }" id="myPhoto">
 										</c:if>
 										<c:if test="${empty mentor.mentor_photo }">
 											<img src="resources/assets/img/mentor/photoDefault.jpg">
@@ -79,6 +87,7 @@
 
 										<div class="item-entry overflow">
 											<h5 id="mentor_company_name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
+											<h5 id="mentor_duty" ><b class="property-info-unit">직무</b>${mentor.mentor_duty }</h5>
 											<div class="dot-hr"></div>
 											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit">멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
 											<span class="pull-left"><b id="mentoring_location" ><b class="property-info-unit">멘토링 지역:</b> ${mentor.mentoring_location }</b></span>
@@ -149,7 +158,6 @@
 			</div>
       	<!-- 모달 팝업 -->
 
-<div id="footerBottom">footer</div>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
@@ -229,14 +237,4 @@
 		});
 	});
 	
-	// 모달 테스트
-	$(function(){ 
-		$("#modal_on").click(function(){ 
-			$(".modal").fadeIn(); 
-			}); 
-		$(".modal_content").click(function(){
-			$(".modal").fadeOut(); }); 
-		});
-
-	/* 플로팅 배너 */
 </script>

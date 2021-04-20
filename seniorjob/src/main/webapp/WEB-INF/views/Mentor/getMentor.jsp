@@ -114,7 +114,6 @@
                             </div>
 
 
-<<<<<<< HEAD
                             <!-- <div class="section property-video"> 
                                 <h4 class="s-property-title">Property Video</h4> 
                                 <div class="video-thumb">
@@ -165,7 +164,7 @@
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                 <c:if test="${empty users }">
-                                                	<input class="button btn largesearch-btn" value="멘토 팔로우" id="BasketBtn" type="button" onclick="loginCheck()">
+                                                	<input class="button btn largesearch-btn" value="멘토 팔로우" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>  
                                                 <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우" id="BasketBtn" type="button">
@@ -185,115 +184,33 @@
 
             </div>
         </div>
+        
+        <!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					로그인 또는 회원가입이 필요한 항목입니다.
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-primary" style="display:none">로그인</button> <!-- 레이아웃 정렬용 태그(사용X) -->
+					<button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='insertUsers'">회원가입</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
-	
-=======
-
-  <div class="about-section">
-  <h1>${list.usersVO.name } 멘토님의 페이지</h1>
-  <p>Some text about who we are and what we do.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
-</div>
-<h2 style="text-align:center">Our Team</h2>
-<form name="getMentorInfo" method="post">
-<input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
-<input type="hidden" name="id" id="id" value="${list.id }">
-	<div class="row">
-		<div class="column">
-			<div class="card">
-				<div style="width: 200px; height: 150px; display:block">
-					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
-				</div>
-				<div class="container">
-					<p>
-						이름: <b>${list.usersVO.name }</b>
-					</p>
-					<p class="title">
-						멘토링 분야: <b>${list.mentoring_kind }</b>
-					</p>
-					<p>
-						회사 이름: <b>${list.mentor_company_name }</b>
-					</p>
-					<p>
-						부서 이름: <b>${list.mentor_department_name }</b>
-					</p>
-					<div style="border:1px solid black; padding-bottom:20px;">
-						<div style="float:left; margin-right:30px;">진행중인 멘토링: </div>
-						<div style="float:left; margin-left:30px;">팔로워 숫자: </div>
-					</div>
-					<p>
-					<c:if test="${empty users }">
-						<button class="button" type="button" onclick="loginCheck()">팔로우</button>
-					</c:if>
-					<c:if test="${not empty users }">
-						<button class="button" type="button" id="followBtn">팔로우</button>
-					</c:if>
-					<c:if test="${not empty users }">
-						<button class="button" type="button" id="followCancelBtn">팔로우 취소</button>
-					</c:if>
-					</div>
-				</div>
-			</div>
-		</div>
-		</form>
-		<p>
-		<hr>
-		<p>
 		
-		<!-- 멘토링 정보(멘토링 등록 정보가 있을 때만 출력 -->
-	<c:if test="${not empty mentoring.mentoring_number }">
-		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
-		<input type="hidden" id="id" name="id" value="${list.mentor_id }">
-		<input type="hidden" id="user_id" name="user_id" value="${users.id }">
-		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
-		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
-		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
-		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
-		<!-- 송다희 추가 -->
-		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.mentoring_begin_date }">
-		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
-		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
-		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
-		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
-		<div class="column2">
-			<div class="card">
-				<div style="width: 200px; height: 150px; float: left;">
-					<img src="../resources/assets/img/mentor/mentoringCourse.jpg" id="mentoringCourse" style="width:100%">
-				</div>
-				<div class="container">
-					<p>
-						멘토링 제목: <b>${mentoring.mentoring_name }</b>
-					</p>
-					<p class="title">
-						멘토링 코스 시작일: <b>${mentoring.s_date }</b>
-					</p>
-					<p class="title">
-						멘토링 코스 종료일: <b>${mentoring.e_date }</b>
-					</p>
-					<p>
-						정원: <b>${mentoring.mentoring_limit }</b>
-					</p>
-					<br>	
-						<b>멘토링 코스 내용</b>
-					<br>
-						<textarea style="margin: 0px; width: 1019px; height: 143px;" readonly>${mentoring.mentoring_content }</textarea>
-					<p>
-					<div>
-						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button" onclick="insertC()">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
-					</div>
-					</div>
-				</div>
-			</div>
-			</form>
-		</c:if>
-		<c:if test="${empty mentoring.mentoring_number }">
-			<h1 class="display-3">- 등록된 멘토링이 없습니다 -</h1>
-		</c:if>
->>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
@@ -304,8 +221,6 @@
 	}); // end of function
 	 /*  $(function() {
 		
-<<<<<<< HEAD
-=======
 		function getBasket(){ // 장바구니 담기
 		
 		var formData = { 
@@ -335,7 +250,6 @@
 			});
 		}); */
 		
->>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
@@ -370,7 +284,6 @@
 			});
 		} // end of deleteFollow
 		
-<<<<<<< HEAD
 		function getMentoringCnt(){ // 진행중인 멘토링 개수
 			$.ajax({
 				url: "getMentoringCnt",
@@ -400,10 +313,6 @@
 			});
 		}
 		
-=======
-		});
-	}); // end of function  */   
-	
 	// 장바구니 담기
 	function insertC(){
 		var yn = confirm("장바구니에 담으시겠습니까?");
@@ -412,16 +321,7 @@
 			mentoringForm.submit();
 		}
 	}
-	
 
-
->>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
-	// 로그인 여부 확인
-	function loginCheck(){
-			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
-				location.href = "login"; // 로그인 페이지로 이동
-			}
-	}
 	// 멘토 팔로우
 	function mentorFollow() {
 		var msg = confirm("멘토를 팔로우 하시겠습니까?");
