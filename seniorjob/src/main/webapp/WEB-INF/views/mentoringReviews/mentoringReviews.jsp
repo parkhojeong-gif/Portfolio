@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -8,104 +9,161 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <jsp:include page="../topHeader.jsp"></jsp:include>
-<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+#mainCopy{
+	font-size: 40px;
+	padding:30px; 
+	font-family:'Spoqa Han Sans'; 
+	font-weight: 300;
+}
+h1{text-align:center}
+#contentArea{
+	margin-left:40px;
+	border: 1px solid black;
+	border-radius: 8px;
+	padding: 10px;
+}
+.text-muted {
+  padding: 3px;
+  float:left;
+	-webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+}
 
-	<!-- property area -->
-	<div class="properties-area recent-property"
-		style="background-color: #FFF;">
+.text-muted:hover {
+	cursor:pointer;
+    margin-top: 5px;
+}
+</style>
+<body>
+<h1 class="display-4" id="mainCopy">멘토링 후기</h1>
+<footer class="blockquote-footer" style="text-align:center">수강생들의 생생한 후기를 살펴보세요!</footer>
+       <!-- 멘토링 후기 인기순위 -->
+            <div class="container">  
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2"> 
+                        <div class="" id="contact1">   
+                        <h4 class="s-property-title">많이본 후기</h4>
+					<div class="row" id="popArticles">
+					</div>
+				</div>
+                    </div>    
+                </div>
+            </div>
+       <!-- End of 멘토링 후기 인기순위 -->
+       
+	<!-- 메인 콘텐츠 -->
+	<div class="properties-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
 
-				<div class="col-md-3 p0 padding-top-40">
-					<div class="blog-asside-right pr0">
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
-								<h3 class="panel-title">커뮤니티</h3>
-							</div>
-						</div>
-						<hr>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='serviceCenter'">
-								<h3 class="panel-title">공지사항</h3>
-							</div>
-						</div>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading">
-								<h3 class="panel-title">멘토링 후기</h3>
-							</div>
-						</div>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='seniorTimes'">
-								<h3 class="panel-title">시니어 타임즈</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-					
-					<h4 class="s-property-title">인기글 목록</h4>
-					<hr>
-					<div align="center">
-						<img src=resources/assets/img/client-face1.png width="100px">&nbsp;&nbsp;&nbsp;&nbsp;
-						<img src=resources/assets/img/client-face2.png width="100px">&nbsp;&nbsp;&nbsp;&nbsp;
-						<img src=resources/assets/img/client-face1.png width="100px">&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- 						<input type="text">ㅇㅇㅇ 멘토를 만나고 인생이 바뀌었습니다. -->
-					</div>
-<!-- 					<input type="text" placeholder="멘토링을 시작한 후..."> -->
-					
+			<jsp:include page="../Service_Center/sevice_left.jsp"></jsp:include>
+				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 				<div class="section additional-details">
-
-					<h4 class="s-property-title">멘토링 후기</h4>
-					
-
+					<h4 class="s-property-title">전체 멘토링 후기</h4>
 					<ul>
-						<li><span class="col-xs-6 col-sm-4 col-md-1 add-d-title">글번호</span>
-							<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">제목</span>
-							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">작성자</span>
+						<li>
+							<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">직무</span>
+							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">제목</span>
+							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성자</span>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
-							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">조회수</span>
+							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
 						</li>
 						<c:forEach items="${list }" var="rev">
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${rev.seq }</span>
-							<span class="col-xs-6 col-sm-8 col-md-3 add-d-entry">${rev.title }</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${rev.id }</span>
-							<span class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${rev.w_date }</span>
-							<span class="col-xs-6 col-sm-8 col-md-1 add-d-entry">${rev.click }</span>
-						<br>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-4 add-d-entry">${rev.category_a }</span>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.title }</span>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.id }</span>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry"><fmt:formatDate value="${rev.w_date }" pattern="yyyy-MM-dd"/></span>
+							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.click }</span>
 						</c:forEach>	
 					</ul>
-					<hr>
-					<!-- 검색 -->
-					<div class="search_help" align="right">
-			        <form action="/zf_user/help/help-word/help-search">
-			            <label for="helpSearchInput" class="copy">
-			            </label>
-			            <select>
-							<option value="">제목</option>
-							<option value="">내용</option>
-							<option value="">전체</option>
-						</select>
-<!-- 						<div align="right"> -->
-<!-- 			            	<input id="helpSearchInput" name="keyword" class="input_search_help" type="text" placeholder="특수문자는 제외 하고 입력해주세요" value=""> -->
-<!-- 			            </div> -->
-			            <button class="btn_search_help" type="submit">
-			                <span class="blind">검색하기</span>
-			            </button>
-			        </form>
-<!--   				  </div> -->
-					<!-- 검색 -->
-<!-- 					<div class="col-sm-3" align="right"> -->
-<!-- 						<select> -->
-<!-- 							<option value="">공지</option> -->
-<!-- 							<option value="">이벤트</option> -->
-<!-- 						</select> -->
-<!-- 						<button type="button">검색하기</button> -->
-<!--                         <input type="text" class="form-control" id="find" value="검색할 내용을 입력하세요."> -->
-<!--                     </div> -->
-				</div>
 			</div>
+			
+			<div class="col-md-9 pr-50 padding-top-40 properties-page user-properties">		
+			<div class="pagination">	
+		 			<ul>
+    					<c:if test="${pagingMaker.prev}">
+    					<li><a href="mentoringReviews${pagingMaker.makeSearch(pagingMaker.startPage - 1)}">이전</a></li>
+    					</c:if> 
+
+    					<c:forEach begin="${pagingMaker.startPage}" end="${pagingMaker.endPage}" var="idx">
+    					<li><a href="mentoringReviews${pagingMaker.makeSearch(idx)}">${idx}</a></li>
+    					</c:forEach>
+			
+    					<c:if test="${pagingMaker.next && pagingMaker.endPage > 0}">
+    					<li><a href="mentoringReviews${pagingMaker.makeSearch(pagingMaker.endPage + 1)}">다음</a></li>
+    					</c:if> 
+					  </ul>
+			</div>
+			</div>	
+			
+			<div class="col-md-12 pr-30 padding-top-40 properties-page user-properties">		
+				<form role="form" method="get">
+				<div class="search">			
+					<br>
+						</div>
+					<div class="col-xs-2">
+                         <div class="btn-group bootstrap-select show-tick form-control">
+                         	 <div class="dropdown-menu open" style="max-height: 640.781px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 629.781px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
+                         	 <select id="basic" name="searchType" class="selectpicker show-tick form-control" tabindex="-98">
+                             <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
+						      <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+						      <option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+						      <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+						      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+                        </select></div>
+                    </div>
+                    <div class="col-xs-7">
+					<div class="input-group">
+                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center;  height:45px;" type="text" placeholder="내용 입력 ">
+                             <span class="input-group-btn">
+                    <button class="btn btn-primary subscribe" id="searchBtn" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
+                    <button class="btn btn-primary subscribe" id="searchBtn" type="button" onclick="location.href='insertMenReviews'" >등록</button>
+                    <script>
+			      $(function(){
+			        $('#searchBtn').click(function() {
+			          self.location = "mentoringReviews" + '${pagingMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+			        });
+			      });   
+			    </script>
+                           </span>
+                   </div>
+                   </div>
+                </form>
+                </div>
+                </div>
+					
+					
+		</div>
 		</div>
 </div>
-	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
+<!-- End of 메인 콘텐츠 -->	
+
+<jsp:include page="../footer.jsp"></jsp:include>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+	$(function(){
+		getPopularArticleList();
+	});
+	
+	function getPopularArticleList(){
+		$.ajax({
+			url: "getPopularArticleList",
+			dataType: "json", 
+			success:function(result){
+				console.log(result);
+				for(i=0; i<result.length; i++){
+					var div = $('<div>').attr('class', 'col-sm-4');
+					var p = $('<p>').attr( {'class' : 'text-muted', 'id' : 'contentArea'} ).text("No."+ i + ' ' + result[i].content);
+					div.append(p);
+					$('#popArticles').append(div);
+				}
+			}
+		});
+	}
+</script>
 </body>
 </html>

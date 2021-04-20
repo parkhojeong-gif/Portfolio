@@ -180,5 +180,9 @@ public class Service_CenterController {
 		
 		return "/Service_Center/qna/serviceCenterMain";
 	}
-	
+	@RequestMapping("/serviceCenterMain2")
+	public String serviceCenterMain2() {
+		return "/Service_Center/qna/serviceCenterMain2";
+
+	}
 }

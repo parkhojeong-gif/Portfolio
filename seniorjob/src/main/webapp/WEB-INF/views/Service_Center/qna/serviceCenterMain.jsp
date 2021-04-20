@@ -18,8 +18,6 @@
 			<!--왼쪽 -->
 			<jsp:include page="../new_sevice_left.jsp"></jsp:include>
 			<!--왼쪽  -->
-					
-	
 		</div>
 	</div>
 </div>

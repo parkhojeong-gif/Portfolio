@@ -70,11 +70,7 @@ button:hover {
 .step.finish {
   background-color: #4CAF50;
 }
-#profilePhoto {
-  width: 300px;
-  height: 150px;
-  object-fit: cover;
-}
+img{max-width:30%}!important;
 </style>
 <body>
 
@@ -150,8 +146,11 @@ button:hover {
   	<p />
   	<div>
   	<p>프로필 사진</p>
-  		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image" id="profilePhoto">
-    	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file">
+  		<div id="profilePhoto">
+  		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image">
+  		</div>
+    	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file" onchange="setImage(event)">
+  		<div id="image_container" name="image_container" class="select_img"></div>
   	</div>
     <p />
     <p>자격증 선택</p>
@@ -197,7 +196,9 @@ function LoadingWithMask() {
   $('#regForm').append(loadingImg)
   //로딩중 이미지 표시
   $('#loadingImg').show();
-}
+}// End of 로딩 이미지 출력
+
+
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 function showTab(n) {
@@ -281,6 +282,29 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+/* 이미지 미리보기 */
+function setImage(event) {
+	var reader = new FileReader();
+
+	reader.onload = function(event){
+		$('#profilePhoto').empty();
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		document.querySelector("#profilePhoto").appendChild(img);
+	}
+	reader.readAsDataURL(event.target.files[0]);
+	
+}
+
+$("image").change(function(){
+	if(this.files && this.files[0]){
+		var reader = new FileReader;
+		reader.onload = function(data){
+			$(".select_img").attr("src", data.target.result).width(500);
+		}
+	}
+})
 </script>
 
 

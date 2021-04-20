@@ -21,6 +21,8 @@
 		WHERE ID=#{id}
 	</select>
 	
+<!-- 김찬곤 ============================================================================  -->
+
 	<!-- 김찬곤 추가 -->
  	<!-- 멘토 상세페이지_장바구니 담기 -->
  	<insert id="insertMentoringBasket" parameterType="com.company.shopping.service.ShoppingVO">
@@ -117,4 +119,6 @@
  		AND S_STATE = '구매완료'
  	</select>
  	
+<!-- End of 김찬곤 ============================================================================  -->
+
  </mapper>
