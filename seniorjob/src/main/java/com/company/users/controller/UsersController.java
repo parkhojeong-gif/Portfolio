@@ -200,7 +200,23 @@ public class UsersController {
 			return "success";
 		}
 	}
-
+	//아이디 찾기 페이지 이동
+	@RequestMapping("/findId")
+	public String findId(UsersVO vo){
+		
+		return "findId";
+	}
+	
+	// 아이디 찾기
+	@ResponseBody
+	@RequestMapping("/findIdProc")
+	public List<UsersVO> findIdCheck(UsersVO vo){
+		List<UsersVO> list = usersMapper.findId(vo);
+		System.out.println("asdf:" + list);
+			return list;
+	}
+	
+	
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
 	public void findPwGET() throws Exception {

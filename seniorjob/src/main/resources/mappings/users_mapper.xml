@@ -60,6 +60,14 @@
 	WHERE ID = #{id}
 	</select>
 	
+	<!-- 아이디 찾기(전화번호, 이메일로 비교) -->
+	<select id="findId" resultType="String">
+	SELECT ID 
+	FROM USERS 
+	<if test="name != null">WHERE NAME = #{name}</if>
+	<if test="email != null">AND EMAIL = #{email}</if>
+	</select> 
+	
 	<!-- 패스워드 체크 -->
 	<select id ="passCheck" resultType="int">
 	SELECT COUNT(*) FROM USERS

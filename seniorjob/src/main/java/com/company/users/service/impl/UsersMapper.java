@@ -3,6 +3,8 @@ package com.company.users.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.company.users.service.UsersVO;
 
 public interface UsersMapper {
@@ -16,6 +18,10 @@ public interface UsersMapper {
 	public int idCheck(UsersVO vo); //아이디 중복체크
 	//이메일발송
 	public void sendEmail(UsersVO vo, String div) throws Exception;
+	//아이디 찾기 (전화번호, 이메일) 
+	public List<UsersVO> findId(UsersVO vo);
+	//비밀번호찾기
+	public void findPw(HttpServletResponse resp, UsersVO vo) throws Exception;
 	// 패스워드 변경
 	// 회원정보 변경
 	public int updateInfo(UsersVO vo) throws Exception;

@@ -11,7 +11,13 @@ $(function(){
 	$("#findpw").click(function(){
 	window.open("findpw", "a", "width=400, height=400, left=100, top=50"); 
 	})
+
+	$("#findId").click(function(){
+	window.open("findId", "a", "width=400, height=400, left=100, top=50"); 
+	})
 })
+
+
 
 </script>
 <style>
@@ -49,8 +55,11 @@ $(function(){
                             카카오 로그인
                             </button> 
                              <br>
-                            <button id="findpw" name="findpw" style="width: 505.5px; height: 46px"class="btn btn-info"   type="button">
-                            아이디/비밀번호 찾기
+                            <button id="findId" name="findId" style="width: 505.5px; height: 46px"class="btn btn-info" type="button">
+                           	아이디 찾기
+                            </button> 
+                            <button id="findpw" name="findpw" style="width: 505.5px; height: 46px"class="btn btn-info" type="button">
+                            비밀번호 찾기
                             </button> 
                             
                         </div>

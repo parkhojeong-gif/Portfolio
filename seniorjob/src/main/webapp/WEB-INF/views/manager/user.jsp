@@ -39,10 +39,11 @@
                          <select id="basic" name="searchType" class="form-select" style="width:200px;" tabindex="-98">
                               <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
-						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>id</option>
+						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
+						      <option value="auth"<c:out value="${scri.searchType eq 'auth' ? 'selected' : ''}"/>>회원등급</option>
                         </select>
 							<div class="input-group">
-                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 200px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
+                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 230px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
                              <span class="input-group-btn">
                              	<button class="btn btn-primary subscribe" id="searchBtn" style="" type="button"><i data-feather="edit"></i>검색</button>
 							 </span>
@@ -73,11 +74,11 @@
 							<th>ID</th>
 							<th>회원 이름</th>
 							<th>회원 전화번호</th>
-							<th>회원 주소</th>
+							<!--<th>회원 주소</th>-->
 							<th>생일</th>
 							<th>회원 이메일</th>
 							<th>경력증명서</th>
-							<th>등급</th>
+							<th>회원상태</th>
 							<th>승급</th>
 							<th>수정</th>
 							<th>삭제</th>
@@ -89,7 +90,7 @@
 								<td>${users.id }</td>
 								<td>${users.name }</td>
 								<td>${users.phonenum }</td>
-								<td>${users.address }</td>
+								<!-- <td>${users.address }</td> -->
 								<td>${users.birth }</td>
 								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
@@ -223,7 +224,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<!-- <div class="col-md-4">
 							<label>Address</label>
 						</div>
 						<div class="col-md-8">
@@ -235,7 +236,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- 	<div class="card-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-12">
@@ -325,7 +326,7 @@ $(function(){
 	    					$("#exampleModalLong").find('[name=name]').val(name);
 	    					$("#exampleModalLong").find('[name=email]').val(email);
 	    					$("#exampleModalLong").find('[name=phonenum]').val(phonenum);
-	    					$("#exampleModalLong").find('[name=address]').val(address); 
+	    					//$("#exampleModalLong").find('[name=address]').val(address); 
 	    				
 	    			}
 				}
@@ -400,10 +401,9 @@ $(function(){
 			dataType : 'text',
 			success : function(result){
 				location.reload();
-				
-			}, error : function(result){
-				alert("이미 mentor입니다.");
-			}
+			
+			} 
+			
 		})
 	})
 });

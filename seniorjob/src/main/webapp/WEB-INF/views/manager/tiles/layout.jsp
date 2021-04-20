@@ -82,7 +82,7 @@
                                 <div class="avatar me-1">
                                     <img src="resources/manager/assets/images/avatar/avatar-s-1.png" alt="" srcset="">
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">${users.auth eq 'ADMIN'}님 안녕하세요.</div>
+                                <div class="d-none d-md-block d-lg-inline-block" value="${sessionScope.users.auth eq 'ADMIN'}">ADMIN 님 안녕하세요!</div>
                             </a>
                             <!-- <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>

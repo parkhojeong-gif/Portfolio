@@ -16,7 +16,7 @@
 			<div class="col-12 col-md-6 order-md-2 order-first">
 				<nav aria-label="breadcrumb" class='breadcrumb-header'>
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="/">메인</a></li>
+						<li class="breadcrumb-item"><a href="managerMain">메인</a></li>
 						<li class="breadcrumb-item active" aria-current="page">매출종합관리</li>
 					</ol>
 				</nav>
@@ -80,9 +80,9 @@
 																</select>
 															</fieldset>
 														</div>
-														<div class="col-md-6 mb-4">
-															${monsum}
-															<button type="button" id="btn_submit">검색</button>
+														<div class="col-md-6 mb-4" style="width:1500px; height:100px;">
+															<span style="float:right;">월 매출 합계 :$ ${monsum} 원 </span><br>
+															<button type="button" id="btn_submit" style="float:right;">검색</button>
 														</div>
 													</div>
 												</form>
