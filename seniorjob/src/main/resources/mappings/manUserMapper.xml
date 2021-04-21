@@ -68,4 +68,10 @@
  	WHERE ID = #{id}
  </update>
  
+ <!-- 회원 강등 -->
+ <update id="authDownUser" parameterType="com.company.manager.user.userVO">
+ 	UPDATE USERS SET AUTH = 'USER' 
+ 	WHERE ID = #{id}
+ </update>
+ 
  </mapper>

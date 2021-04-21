@@ -432,6 +432,16 @@ $(function(){
 			
 		})
 	})
+	
+	<!--회원 강등 modal click-->
+	$("#down").on('show.bs.modal', function(event){
+		let idx = $(event.relatedTarget).closest('tr').find('td').eq(0).text();
+		console.log(idx);
+		$('#authDownSpan').html(idx);
+	});
+	
+	<!-- 회원 강등 modal 창-->
+	
 });
 
 <!--검색-->
