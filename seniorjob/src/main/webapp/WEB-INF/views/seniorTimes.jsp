@@ -127,7 +127,7 @@ height: 41px !important;
 						
 						<form action="seniorTimes">
 							<label for="keyword">
-								<div class="col-md-2"><input size="170"type="text" id="keyword" class="form-control" name="keyword" placeholder="취업 관련 키워드를 입력해주세요"></div>
+								<div class="col-md-2"><input size="170"type="text" id="keyword" class="form-control" name="keyword" placeholder="취업 관련 키워드를 입력해주세요" required="required"></div>
 								<div class="col-md-2" style="float: right"><button class="btn btn-success"type="submit" title="검색">검색</button></div>
 							</label>
 							<br>

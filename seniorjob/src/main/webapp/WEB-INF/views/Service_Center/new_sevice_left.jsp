@@ -32,7 +32,9 @@
 #hideBtnSub{
 	width: 180px;
 }
-
+a.dropdown-item {
+    padding: 39px;
+}
 </style>
 
 <body>
@@ -101,8 +103,8 @@
 
 				<div class="dropdown-menu" id="hideBtnSub">
 
-					<a class="dropdown-item" onclick="location.href='insertService_CenterForm'">공지사항 등록</a><br><br> 
-					<a class="dropdown-item" href="#">FAQ 등록</a><br><br> 
+					<a class="dropdown-item" onclick="location.href='insertService_CenterForm'">공지사항 등록</a><hr> 
+					<a class="dropdown-item" onclick="location.href='insertService_CenterFormQna'">FAQ 등록</a><hr>
 					<a class="dropdown-item" onclick="location.href='getInquireList'">문의전체조회</a>
 
 				</div>

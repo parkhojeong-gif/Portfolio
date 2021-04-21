@@ -33,7 +33,7 @@
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
-						<h2>결제환불 질문 등록</h2>
+						<h2>FAQ 등록</h2>
 					</div>
 					<hr>
 					<form id="frm" action="insertService_CenterQna"  method="post" name="frm" >
@@ -41,13 +41,13 @@
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>제목</label> 
-									<input type="text" class="form-control" id="title" name="title" size=10>
+									<input type="text" class="form-control" id="title" name="title" size=10 required="required">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label>작성자</label> 
-									<input type="text" class="form-control" id="id" name="id">
+									<input type="text" class="form-control" id="id" name="id"value="${id }" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -87,7 +87,10 @@
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-bars"></i> 등록하기</button>
                             </div>
                             <div class="col-sm-6 text-left">
-                                   <button class="btn btn-primary" onclick="return confirm('목록으로 돌아가시겠습니까?');"><i class="fa fa-reply"></i> <a href="serviceCenterQna" >목록으로</a></button>
+                            <a href="serviceCenterQna" onclick="return confirm('목록으로 돌아가시겠습니까?');">
+                                   <button type="button"class="btn btn-primary" >
+                                   <i class="fa fa-reply" ></i> 목록으로</button>
+                            </a>       
                             </div>
 							<br> <br> <br> <br>
 								<br><br><br>

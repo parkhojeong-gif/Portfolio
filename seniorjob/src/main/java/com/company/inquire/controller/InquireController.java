@@ -139,12 +139,17 @@ public class InquireController {
 		String id = (String) session.getAttribute("id");	//연결된 세션 id값 vo에 담기
 		vo.setId(id);
 		inquireMapper.insertInquire(vo);
-		return "redirect:/getInquireList";
+		return "redirect:/userInquireList";
 	}
 
 
 	@RequestMapping("/deleteInquire")	//문의 삭제
 	public String deleteInquire(InquireVO vo) {
+		inquireMapper.deleteInquire(vo);
+		return "redirect:/userInquireList";
+	}
+	@RequestMapping("/deleteInquireAdmin")	//관리자가 문의 삭제
+	public String deleteInquireAdmin(InquireVO vo) {
 		inquireMapper.deleteInquire(vo);
 		return "redirect:/getInquireList";
 	}

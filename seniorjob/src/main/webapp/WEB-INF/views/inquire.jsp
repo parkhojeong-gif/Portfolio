@@ -47,7 +47,7 @@
 						<br><br>
 					</div>
 					<div class="input-group" align="center">
-						<input class="form-control" name="keyword" id="keywordInput" value="${scri.keyword}"type="text" placeholder="궁금하신 사항을 입력해주세요">
+						<input class="form-control" name="keyword" id="keywordInput" value="${scri.keyword}"type="text" placeholder="궁금하신 사항을 입력해주세요" required="required">
 						<span class="input-group-btn">
 							<button class="btn btn-primary subscribe" id="searchBtn" type="button">검색</button>
 						</span>

@@ -11,6 +11,41 @@
 <jsp:include page="../topHeader.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function click_seq(obj){
+	$("#example tr").click(function(){ 	
+		var tr = $(this);
+		var td = tr.children();
+		var no = td.eq(0).text();
+	console.log(no);
+ 	$.ajax({
+		url:"/getAnswer",
+		data :{seq : no},
+		dataType : "json",
+		success: function(result){
+			$('#modal-body').val(""); // 태그 초기화
+			$('#modal-body').remove();
+			var response = result.list;
+			$.each(response, function(i){
+				var table1 = $("<table>").attr({id:"modal-body", class:"table table-hover" });
+				var tr1 = $("<tr>");
+				var td1 = $("<td>").text("제목");
+				var td2 = $("<td>").text(response[i].title);
+				var tr2 = $("<tr>");
+				var td2_1 = $("<td>").html("내용");
+				var td2_2 = $("<td>").html(response[i].content);
+				table1.append(tr1, tr2);
+				tr1.append(td1,td2);
+				tr2.append(td2_1,td2_2);
+				$("#table_body").append(table1);
+			})
+			
+		}		
+	}); 
+})
+	};
+
+</script>
 <body>
 	<!-- property area -->
 	<div class="content-area recent-property"
@@ -34,9 +69,10 @@
 
 					<!--목록 게시판  -->
 					
-					<table class="table table-striped">
+					<table class="table table-striped" id="example">
 						<tr>
-							<th >구분</th>
+							<th>번호</th>
+							<th>구분</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
@@ -44,11 +80,19 @@
 						</tr>
 						<c:forEach items="${list }" var="b">
 							<tr>
+								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.seq}</td>
 								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.category_a }</td>
 								<td>${b.title }</td>
 								<td>${b.id }</td>
 								<td>${b.w_date }</td>
-								<td>${b.status }</td>
+								<td>
+								<c:if test="${b.status eq '답변완료'}">
+								<button type="button" id="#" onclick="click_seq()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변확인</button>
+								</c:if>
+								<c:if test="${b.status eq '미답변'}">
+								${b.status }
+								</c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -81,22 +125,6 @@
 							<div class="btn-group bootstrap-select show-tick form-control">
 								<div class="dropdown-menu open"
 									style="max-height: 640.781px; overflow: hidden; min-height: 109px;">
-									<ul class="dropdown-menu inner" role="menu"
-										style="max-height: 629.781px; overflow-y: auto; min-height: 98px;">
-										<li data-original-index="0" class=""><a tabindex="0"
-											class="" style="" data-tokens="null"><span class="text">
-													-Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										<li data-original-index="1" class=""><a tabindex="0"
-											class="" style="" data-tokens="null"><span class="text">Rent
-											</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										<li data-original-index="2" class="selected"><a
-											tabindex="0" class="" style="" data-tokens="null"><span
-												class="text">Boy</span><span
-												class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										<li data-original-index="3"><a tabindex="0" class=""
-											style="" data-tokens="null"><span class="text">used</span><span
-												class="glyphicon glyphicon-ok check-mark"></span></a></li>
-									</ul>
 								</div>
 								<select id="basic" name="searchType"
 									class="selectpicker show-tick form-control" tabindex="-98">
@@ -202,7 +230,46 @@ function getURLParams(url) {
 							</ul>
 						</div>
 					</div>
-
+					
+				<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="myModalLabel">답변 확인</h4>
+								</div>
+								<div class="modal-body" id="table_body">
+								<!--실제 내용 부분  -->
+								<table class="table table-hover" id="modal-body">
+								
+								<c:forEach items="${answer }" var="c">
+									<tr>
+									<td colspan="2">제목</td>
+									<td colspan="3">${c.title }</td>
+									</tr>
+									<tr>
+									<td colspan="2"rowspan="2">내용</td>
+									<td colspan="3" rowspan="3">${c.content }</td>
+									</tr>
+								</c:forEach>								
+								
+								</table>
+								<!--실제 내용 부분  -->
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">목록으로</button>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
 
 
 				</div>

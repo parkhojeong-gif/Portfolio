@@ -86,11 +86,12 @@
 							</button>
 						</div>
 						<div class="col-sm-6 text-left">
-							<button class="btn btn-primary"
-								onclick="return confirm('목록으로 돌아가시겠습니까?');">
-								<i class="fa fa-reply"></i> <a href="serviceCenterQna">
-									목록으로 </a>
+						<a href="serviceCenterQna" onclick="return confirm('목록으로 돌아가시겠습니까?');">
+							<button type="button" class="btn btn-primary">
+								<i class="fa fa-reply"></i> 
+									목록으로 
 							</button>
+						</a>	
 						</div>
 						<br> <br> <br> <br> <br>
 						<br>

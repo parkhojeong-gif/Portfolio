@@ -21,8 +21,34 @@ $(function(){
 	
 	
 });
+
+function deleteConfirm(){
+	var delCon = confirm("삭제하시겠습니까?");
+	if(delCon == true){
+		location.href='deleteInquire?seq=${list.seq}';
+	}else if(delCon == false){
+		
+	}
 	
+}	
 </script>
+<style>
+th {
+    width: 96px;
+}
+td#content1 {
+    height: 324px;
+}
+div#col1 {
+    height: 18px;
+}
+button#btnUpd {
+    margin-left: 610px;
+}
+div#col2 {
+    top: 25px;
+}
+</style>
 <body>
 	<!-- property area -->
 	<div class="content-area recent-property"
@@ -38,57 +64,51 @@ $(function(){
 					class="col-md-9 properties-page user-properties">
 
 					<!--작성부분  -->
-<div class="col-md-8 single-property-content ">
+					<div class="col-md-12 single-property-content ">
                         <div class="row">
-                        <h2 class="wow fadeInLeft animated animated" style="visibility: visible; animation-name: fadeInLeft; text-align: center;">${list.title }</h2>
                         <br>
-                        <hr>
-                        <br>
-                        <div class="col-sm-6">
-                              <p class="author-category">
-                                  By <a href="#">${list.id }</a>
-                              </p>
+                         <div class="col-sm-12" id="col1">
                        </div>
-                       
-                       <div class="col-sm-6 right">
-                             <p class="date-comments">
-                              <a href="#"><i class="fa fa-calendar-o"></i><fmt:formatDate value="${list.w_date }" pattern="yyyy-MM-dd"/></a>
-                              <a href="#"><i class="fa fa-check"></i>${list.click }</a>
-                             </p>
+                       <div class="col-sm-12" id="col2">
+                        <table class="table">
+                        	<tr>
+                        		<th colspan="1">제목</th>
+                        		<td colspan="7">${list.title }</td>
+                        	</tr>
+                        	<tr>
+								<td>작성일자</td>
+								<td><fmt:formatDate value="${list.w_date }" pattern="yyyy-MM-dd"/></td>
+                        	</tr>
+                        	<tr>
+                        		<td>분류</td>
+								<td>${list.category_a }</td>
+                        	
+                        	</tr>
+                        	<tr>
+                        		<td>작성자</td>
+								<td>${list.id }</td>
+                        	</tr>
+                        	<tr>
+                        		<td rowspan="10" id="content1">내용</td>
+                        		<td rowspan="10" id="content2">${list.content }</td>
+                        	</tr>
+                        </table>
                        </div>
-
-                            <!-- .property-meta -->
-							<br><br>
-                            <div class="section">
-                             <h4 class="s-property-title">${list.category_a }</h4>
-                                <div class="s-property-content">
-                                    <p><h3>${list.content }</h3></p>
-                                </div>
-                            </div>
                             <!-- End description area  -->
                             <input type="hidden" id="preId" value="${num.prev }">
                             <input type="hidden" id="preId2" value="${num.next }">                            
 							<div class="post-footer single wow fadeInBottum animated animated" style="visibility: visible;">
-                                <ul class="pager">
- 						                               
-                                    <li class="previous"><a href="#" onclick="pagePre()"><i class=""></i>← 이전 글 </a></li>
-                                    <li class="next"><a href="#" onclick="pageNext()">다음 글 →<i class=""></i> </a></li>
-                                </ul> 
                             <!-- 수정/삭제-->
-                            <div class="button navbar-right">
+                            <div class="button navbar-center">
+								<button class="navbar-btn nav-button wow bounceInRight login animated" onclick="location.href='userInquireList'" data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;">목록</button>                            
                         		<button class="navbar-btn nav-button wow bounceInRight login animated"  data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"id="btnUpd">수정</button>
-                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="location.href='deleteService_Center?seq=${list.seq}'" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
+                        		<button class="navbar-btn nav-button wow fadeInRight animated" onclick="deleteConfirm()" data-wow-delay="0.48s" style="visibility: visible; animation-delay: 0.48s; animation-name: fadeInRight;">삭제</button>
                     		</div>
                     		<br><br><br><br><br><br>
                               <!-- 수정/삭제-->
                             </div>
                             <br>
                               <br>
-                            <hr>
-                            <p onclick="pagePre()"><이전 글><c:if test="${num.prev eq 0 }">이전 글이 없습니다.</c:if><c:if test="${num.prev ne 0 }">${num.prev_title }</c:if></p>
-                            <hr>			
-                             <p onclick="pageNext()"><다음 글><c:if test="${num.next eq 0 }">다음 글이 없습니다.</c:if><c:if test="${num.next ne 0 }">${num.next_title }</c:if></p>
-                            <hr>			
 
 
 

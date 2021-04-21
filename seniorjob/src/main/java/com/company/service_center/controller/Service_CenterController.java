@@ -156,7 +156,10 @@ public class Service_CenterController {
 	}
 
 	@RequestMapping("/insertService_CenterQna") // 결제환불 등록
-	public String insertService_CenterProcQna(Service_CenterVO vo) {
+	public String insertService_CenterProcQna(Service_CenterVO vo,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		service_CenterMapper.insertService_CenterQna(vo);
 		return "redirect:/serviceCenterQna";
 	}

@@ -142,7 +142,7 @@
 	<!--문의하기 글 작성 -->
 	<insert id="insertInquire"  parameterType="InquireVO">
 	insert into inquire( seq, category_a, category_b, w_date, click, content, i_file, status,
-	id, title) values((SELECT NVL(MAX(SEQ),0)+1 FROM inquire), #{category_a}, 	#{category_b}, 
+	id, title) values(inq_seq.nextval, #{category_a}, 	#{category_b}, 
 	SYSDATE, '0', #{content}, '파일없음', '미답변',#{id}, #{title})	
 	</insert> 
 	<!--  -->
@@ -174,7 +174,7 @@
 	<!--관리자 답변 작성  -->
 	<insert id="insertAnswer"  parameterType="Inquire_AnswerVO">
 	insert into INQUIRY_ANSWER (SEQ, TITLE, CONTENT, W_DATE, ID, I_SEQ, SEQ_ORD)
-	values(#{seq}, #{title}, #{content}, sysdate, #{id}, (SELECT NVL(MAX(I_SEQ),0)+1 FROM INQUIRY_ANSWER), 0)
+	values(#{seq}, #{title}, #{content}, sysdate, #{id}, inq_seq2.nextval, 0)
 	
 	</insert> 
 	<!--관리자 답변 작성시 답변완료 상태변화  -->
@@ -187,5 +187,10 @@
 	
 	
 	</select>
+	<!--유저 문의 글 삭제  -->
+	<delete id="deleteInquire" parameterType="InquireVO">
+	DELETE FROM inquire 
+	WHERE SEQ=#{seq}
+	</delete>
 	
  </mapper>
