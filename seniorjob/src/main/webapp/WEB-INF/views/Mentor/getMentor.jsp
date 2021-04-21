@@ -159,15 +159,19 @@
                                 </div> --> 
                                 <div class="panel-body search-widget">
                                     <form action="" class=" form-inline"> 
-                                    	<input type="hidden" id="id" name="id" value="${mentor.id }">
+                                    	<input type="hidden" id="mentor_id" name="mentor_id" value="${mentor.mentor_id }">
+                                    	<input type="hidden" id="id" name="id" value="${users.id }">
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                 <c:if test="${empty users }">
                                                 	<input class="button btn largesearch-btn" value="멘토 팔로우" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>  
-                                                <c:if test="${not empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 팔로우" id="BasketBtn" type="button">
+                                                <c:if test="${empty following && not empty users}">
+                                                    <input class="button btn largesearch-btn" value="멘토 팔로우" id="followBtn" type="button">
+                                                </c:if>
+                                                <c:if test="${not empty following }">
+                                                    <input class="button btn largesearch-btn" value="멘토 팔로우 취소" id="followCancelBtn" type="button">
                                                 </c:if>
                                                     <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="" type="button">
                                                 </div>  
@@ -259,25 +263,27 @@
 					success:function(result){
 						if(result == 0){
 							alert("팔로우 완료");
+							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
 						}else{
 							alert("이미 팔로우된 멘토입니다");
 						}
 					}
 				});
 			});
-		} // end of getFollow
+		}
 		
 		function deleteFollow(){ // 멘토 팔로우 취소
 			$('#followCancelBtn').click(function(){
 				$.ajax({
 					url: "deleteMentorFollow",
 					dataType: "json", 
-					data: { "id" : $('#user_id').val(),"mentor_id":$('#mentor_id').val() },
+					data: { "id" : $('#id').val(),"mentor_id":$('#mentor_id').val() },
 					success:function(result){
 						if(result == 0){
 							alert("팔로우하지 않은 멘토입니다.");
 						}else{
 							alert("팔로우 취소 완료");
+							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
 						}
 					}
 				});
@@ -307,6 +313,7 @@
 				success:function(result){
 					var span = $('<span>').attr("class", "property-info-value").text(result);
 					var b = $('<b>').attr("class", "property-info-unit").text('명');
+					
 					span.append(b);
 					$('#followCnt').append(span);
 				}
@@ -322,25 +329,6 @@
 		}
 	}
 
-	// 멘토 팔로우
-	function mentorFollow() {
-		var msg = confirm("멘토를 팔로우 하시겠습니까?");
-		if (msg == true) {
-			var getMentorInfo = document.getMentorInfo;
-			getMentorInfo.action = "MentorFollow";
-			getMentorInfo.submit();
-		} else if (msg == false) {
-			alert("취소");
-		}
-	}
-	
-	// 멘토링 신청페이지 이동
-	function mentoringPayForm(){ 
-			if(confirm("멘토링을 신청하시겠습니까?")){
-				location.href = "mentoringPayForm?mentor_id=${list.mentor_id}";
-			}
-		}
-	
 </script>
 
 </body>

@@ -48,6 +48,18 @@ public class FollowingController {
 		int result = followService.getFollowCnt(vo);
 		return result;
 	}
+	
+	// 단건 조회
+	@ResponseBody
+	@RequestMapping("getMentorFollowing")
+	public FollowingVO getMentorFollowing(FollowingVO vo) {
+		FollowingVO result = followService.getMentorFollowing(vo);
+		if(result != null) {
+			return result;
+		}else {
+			return null;
+		}
+	}
 //	--------------------------------------------------------End of 김찬곤-----------------------------------------------------------------------------------------------------	
 	
 	

@@ -48,6 +48,7 @@ h1{text-align:center}
 							<form action="getSearchMentoringChanGon">
 							<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
 							<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
+							<input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mentoring.mentoring_kind }">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
 									
@@ -60,7 +61,7 @@ h1{text-align:center}
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
-										<p style="display: none;">${mentoring.mentoring_content }</p>
+										<p style="display: none;">${mentoring.mentoring_introduce }</p>
 											<div class="dealer-action pull-right">
 												<input type="submit" value="상세보기">
 											</div>

@@ -45,6 +45,7 @@ function allDel(){
 					  </thead>
 					  <tbody>
 					  <c:forEach items="${list }" var="cart">
+					  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${cart.mtNum.mentoring_number }">
 					  <c:choose>
 					  <c:when test="${cart.id eq users.id }">
 						
@@ -79,7 +80,7 @@ function allDel(){
 					  </tfoot>
 					</table>
 					<div align="right">
-						<button type="button" class="btn btn-primary">결제하기</button>
+						<button type="button" class="btn btn-primary" onclick="mentoringPayForm()">결제하기</button>
 						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button>
 					</div>
 					</form>
@@ -192,6 +193,35 @@ function allDel(){
     		}
     	}
     })
+    
+     // 결제하기(선택한 체크박스의 아이디 값 찾기)
+	function mentoringPayForm(){
+		var mentorId;
+		var del;
+		var chk = $("input[name=del]:checked");
+		var checked = $(this).iCheck('checked');
+		var yn = confirm("결제 하시겠습니까?");
+		// 상품 선택 안 하고 결제하기 누를 때 발생.
+		if(chk.length == 0){
+			alert("상품을 선택해주세요.");
+			return;
+		}
+		if(yn){
+			/* mentorId = $("input[name=del]:checked").closest("tr").find("#mentor_id").val();
+			del = $("input[name=del]:checked").val() */
+			/* if(checked){
+				$("input[name=del]:checked").iCheck("disabled", true);
+			}else{
+				
+			} */
+			location.href = "mentoringPayForm?mentoring_number="+mentorId;
+// 			location.href = "deleteSub?cart_no="+cartNo;
+			/*  +"&cart_no="+ cartNo 
+				+"&deleteSub?cart_no="+cartNo
+			*/
+		}
+	}
+    
 	</script>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

@@ -102,7 +102,7 @@ public class MentoringController {
 			model.addAttribute("mentor", mentorService.getMentor(mVo)); // 멘토 정보
 		}else {
 			model.addAttribute("msg", "로그인한 사용자만 이용가능합니다.");
-			model.addAttribute("url", "getMentorList");
+			model.addAttribute("url", "getMentoringList");
 			return "common/Fail"; 
 		}
 		
@@ -150,8 +150,9 @@ public class MentoringController {
 	// 멘토링 단건 조회_김찬곤
 	@RequestMapping("/getSearchMentoringChanGon")
 	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model) {
-		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo));
-		model.addAttribute("mentor",mentorService.getMentor(mVo));
+		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo)); // 멘토링 정보
+		model.addAttribute("mentor",mentorService.getMentor(mVo)); // 멘토 정보
+		model.addAttribute("relatedMentoring", mtService.getRelatedMentoring(mtVo)); // 유사한 멘토링
 		return "Mentoring/getMentoring";
 	}
 	

@@ -96,7 +96,6 @@ input[name=m_numOfDays]{font-size:large; color:red}
 		<label for="date"><b>멘토링 기간</b></label> 
 		<input name="m_numOfDays" id="m_numOfDays" value="">
 	</div>
-	
 	<label for="name"><b>멘토링 분야</b></label>
     <select name="mentoring_kind" id="mentoring_kind" required>
 					<option value="">선택</option>
@@ -119,15 +118,16 @@ input[name=m_numOfDays]{font-size:large; color:red}
 					<option>교육</option>
 					<option>컨설팅</option>
 	</select>
-				
-	<br>
-	<p>	
-	
-    <label for="psw-repeat"><b>정원</b></label>
+	<br>	
+	<p>		
+    <label for="psw-repeat" ><b>정원</b></label>
     <input type="text" placeholder="멘토링 정원을 입력하세요" name="mentoring_limit" id="psw-repeat" required>
     <hr>
-
-    <label for="psw"><b>내용</b></label>
+	
+    <label for="psw"><b>멘토링 소개</b></label>
+    <input type="text" placeholder="멘토링 소개" id="content" name="mentoring_introduce" required>
+    
+    <label for="psw"><b>멘토링 내용</b></label>
     <textarea id="content" name="mentoring_content" rows="10" cols="90" style="height:200px; display:block; margin:15px; width:1345px"></textarea>
     
     <label for="psw"><b>멘토링 코스 이미지</b></label>

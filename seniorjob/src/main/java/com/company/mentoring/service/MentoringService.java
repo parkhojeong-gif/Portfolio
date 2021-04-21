@@ -29,6 +29,8 @@ public interface MentoringService {
 	public MentoringVO getSearchMentoringChanGon(MentoringVO vo); // 멘토링 단건 조회_김찬곤
 
 	public MentoringVO MentoringRegisterCheck(MentoringVO vo); // 멘토링 중복 체크
+	
+	public List<MentoringVO> getRelatedMentoring(MentoringVO vo); // 멘토링 상세페이지_유사한 멘토링 출력
 
 //-------------------------------------------------------- End of 김찬곤-----------------------------------------------------------------------------------------------------
 

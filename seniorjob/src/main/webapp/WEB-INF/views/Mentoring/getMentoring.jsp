@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,9 +13,16 @@
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
-<form id="submitFrm" name="submitFrm">
-<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
-	 <input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
+<form id="submitFrm" name="submitFrm" method="post">
+	<input type="hidden" id="id" name="id" value="${mentor.mentor_id }">
+	<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
+	<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
+	<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
+	<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
+	<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
+	<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.s_date }">
+	<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.e_date }">
+	<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
@@ -36,9 +44,6 @@
                             <div class="light-slide-item">            
                                 <div class="clearfix">
                                     <div class="favorite-and-print">
-                                        <a class="add-to-fav" href="#login-modal" data-toggle="modal">
-                                            <i class="fa fa-star-o"></i>
-                                        </a>
                                         <a class="printer-icon " href="javascript:window.print()">
                                             <i class="fa fa-print"></i> 
                                         </a>
@@ -52,7 +57,17 @@
                                 <h1 class="property-title pull-left"><b>${mentoring.mentoring_name }</b></h1>
                             </div>
 
-                            <div class="property-meta entry-meta clearfix ">   
+                            <div class="property-meta entry-meta clearfix "> 
+                            
+                            	<div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-tag">
+                                   	 	<i class="fal fa-file-search fa-3x" style="color:#FFA500"></i>
+                                    </span>
+                                    <span class="property-info-entry">
+                                        <span class="property-info-label">멘토링 분야</span>
+                                        <span class="property-info-value">${mentoring.mentoring_kind }</span>
+                                    </span>
+                                </div>  
 
                                 <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-tag">
@@ -127,66 +142,22 @@
                             <div class="section">
                                 <h4 class="s-property-title">멘토링 소개</h4>
                                 <div class="s-property-content">
-                                    <p>${mentoring.mentoring_content} </p>
+                                    <p>${mentoring.mentoring_introduce} </p>
                                 </div>
                             </div>
                             <!-- End description area  -->
 
-                            <div class="section additional-details">
-
-                                <h4 class="s-property-title">멘토링 후기</h4>
-
-                                <ul class="additional-details-list clearfix">
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Built In</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2003</span>
-                                    </li>
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Parking</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">2 Or More Spaces,Covered Parking,Valet Parking</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Yes</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">View</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal View,Direct ew</span>
-                                    </li>
-
-                                    <li>
-                                        <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Waterfront Description:</span>
-                                        <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">Intracoastal Front,Ocean Access</span>
-                                    </li> 
-
-                                </ul>
-                            </div>  
-                            <!-- End additional-details area  -->
-
-                            <div class="section property-features">      
-
-                                <h4 class="s-property-title">멘토링 문의</h4>                            
-                                <ul>
-                                    <li><a href="properties.html">Swimming Pool</a></li>   
-                                    <li><a href="properties.html">3 Stories</a></li>
-                                    <li><a href="properties.html">Central Cooling</a></li>
-                                    <li><a href="properties.html">Jog Path 2</a></li>
-                                    <li><a href="properties.html">2 Lawn</a></li>
-                                    <li><a href="properties.html">Bike Path</a></li>
-                                </ul>
-
+                            <div class="section">
+                                <h4 class="s-property-title">멘토링 내용</h4>
+                                <div class="s-property-content">
+                                    <p>${mentoring.mentoring_content} </p>
+                                </div>
                             </div>
-                            <!-- End features area  -->
-
-                            <!-- <div class="section property-video"> 
-                                <h4 class="s-property-title">Property Video</h4> 
+                            <!-- End description area  -->
+                            <!-- End additional-details area  -->
+                            
+                             <!-- <div class="section property-video"> 
+                                <h4 class="s-property-title"></h4> 
                                 <div class="video-thumb">
                                     <a class="video-popup" href="yout" title="Virtual Tour">
                                         <img src="assets/img/property-video.jpg" class="img-responsive wp-post-image" alt="Exterior">            
@@ -194,6 +165,18 @@
                                 </div>
                             </div> -->
                             <!-- End video area  -->
+
+                            <div class="section property-features">    
+                                <h4 class="s-property-title">멘토링 후기</h4>   
+                                 <ul>
+                                    <li><a href="properties.html">Swimming Pool</a></li>   
+                                </ul>
+                                <ul>
+                                    <li><a href="properties.html">Swimming Pool</a></li>   
+                                </ul>
+							</div>
+                            <!-- End features area  -->
+                            
                         </div>
                     </div>
 
@@ -238,7 +221,7 @@
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">  
-                                                    <input class="button btn largesearch-btn" value="장바구니 담기" id="BasketBtn" type="button">
+                                                    <input class="button btn largesearch-btn" value="장바구니 담기" id="BasketBtn" type="button" onclick="insertC()">
                                                     <input class="button btn largesearch-btn" value="바로구매" onclick="mentoringPayForm()" type="button">
                                                 </div>  
                                             </div>
@@ -253,60 +236,18 @@
                                 </div>
                                 <div class="panel-body recent-property-widget">
                                     <ul>
+                                    <c:forEach var="rtMentoring" items="${relatedMentoring }">
                                         <li>
                                             <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
+                                                <a href="getSearchMentoringChanGon?mentor_id=${rtMentoring.mentor_id }&mentoring_number=${rtMentoring.mentoring_number }&mentoring_kind=${rtMentoring.mentoring_kind}">
+                                                <img src="image/${rtMentoring.mentoring_photo }"></a>
                                             </div>
                                             <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
+                                                <h6> <a href="getSearchMentoringChanGon?mentor_id=${rtMentoring.mentor_id }&mentoring_number=${rtMentoring.mentoring_number }&mentoring_kind=${rtMentoring.mentoring_kind}">
+                                                ${rtMentoring.mentoring_name } </a></h6>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-1.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-3.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
+s                                        </li>
+s                                     </c:forEach>  
                                     </ul>
                                 </div>
                             </div>
@@ -320,6 +261,16 @@
 </form>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
+
+//장바구니 담기
+function insertC(){
+	var yn = confirm("장바구니에 담으시겠습니까?");
+	var Frm = document.submitFrm;
+	if(yn){
+		Frm.action = "insertCart";
+		Frm.submit();
+	}
+}
 
 //멘토링 신청페이지 이동
 function mentoringPayForm(){ 

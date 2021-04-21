@@ -20,52 +20,6 @@
 	
 <!-- 김찬곤 ============================================================================  -->
 
-	<!-- 김찬곤 추가 -->
- 	<!-- 멘토 상세페이지_장바구니 담기 -->
- 	<insert id="insertMentoringBasket" parameterType="com.company.shopping.service.ShoppingVO">
- 		INSERT INTO SHOPPING(
-							SHOPPING_NO,
-							ID,
-							MENTORING_NUMBER,
-							S_DATE,
-							MEN_START,
-							MET_END,
-							S_STATE
-							)
-		VALUES				((SELECT NVL(MAX(SHOPPING_NO),0)+1 FROM SHOPPING),
-							#{id},
-							#{mentoring_number},
-							sysdate,
-							to_date(#{men_start},'YYYY/MM/DD HH24:MI:SS'),
-							to_date(#{met_end},'YYYY/MM/DD HH24:MI:SS'),
-							'장바구니'
-							)
- 	</insert>
- 	
- 	<!-- 김찬곤 추가 -->
- 	<!-- 멘토 상세페이지_장바구니 취소 -->
- 	<delete id="deleteMentoringBasket" parameterType="com.company.shopping.service.ShoppingVO">
- 		DELETE FROM SHOPPING
- 		WHERE ID = #{id}
- 		AND MENTORING_NUMBER = #{mentoring_number} 
- 	</delete>
- 	
- 	<!-- 김찬곤 추가 -->
- 	<!-- 멘토 상세페이지_장바구니 중복 체크 -->
- 	<select id="BasketCheck" resultType="int">
- 		SELECT COUNT(*) FROM SHOPPING
- 		WHERE ID = #{id}
- 		AND MENTORING_NUMBER = #{mentoring_number}
- 	</select>
- 	
- 	<!-- 김찬곤 추가 -->
- 	<!-- 멘토 상세페이지_장바구니 단건 조회 -->
- 	<select id="getSearchBasket" resultType="com.company.shopping.service.ShoppingVO">
- 		SELECT * FROM SHOPPING
- 		WHERE ID = #{id}
- 		AND MENTORING_NUMBER = #{mentoring_number}
- 	</select>
- 	
  	<!-- 김찬곤 추가 -->
  	<!-- 멘토링 결제_장바구니에 담겼을 때 -->
  	<update id="mentoringPayProcBasket" parameterType="com.company.shopping.service.ShoppingVO">
