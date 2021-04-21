@@ -48,8 +48,10 @@ $(document).ready(function() {
 				var div = $('<div />').attr('id','slidemenu');
 				var a = $('<a />').attr('onclick','video()').html('영상면접');
 				var a2 = $('<a />').attr('onclick','resum()').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
+				var a3 = $('<a />').attr('onclick','chatt()').html('채팅'); //나중에 영상면접 화면에 붙일 것.
 				$(div).append(a);
 				$(div).append(a2);
+				$(div).append(a3);
 				$("#slideDiv").append(div);
 				
 			} else {
@@ -76,6 +78,11 @@ function resum(){
 	//console.log(num)
 	window.open("popResumeGetForm?resume_no="+num,
             "이력서", "width=900, height=900, resizable = no, scrollbars = no");
+}
+
+function chatt() {
+	window.open("chat",
+            "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
 }
 </script>
 

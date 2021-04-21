@@ -86,10 +86,10 @@
 	})
 	
 	//자격증 불러오기
-	$(document).on("click", "#certiSearchSom", function(){
+	/* $(document).on("click", "#certiSearchSom", function(){
 		window.name="parentForm"; //부모창 이름
 		window.open("popCertiSeeResume",
-                "자격증", "width=900, height=900, resizable = no, scrollbars = no");
+                "자격증", "width=900, height=900, resizable = no, scrollbars = no"); */
 	
 	$(document).on("click", "#video", function(){
 		window.open("https://192.168.0.56:85",
