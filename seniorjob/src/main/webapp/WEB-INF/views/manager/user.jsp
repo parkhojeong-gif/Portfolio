@@ -83,7 +83,16 @@
 								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
 								<td>${users.auth}</td>
-								<td><span class="badge bg-success" href="#info" class="info" data-bs-toggle="modal">승급</span></td>
+								<td>
+									<c:choose>
+										<c:when test="${users.auth eq 'USER'}">
+											<span class="badge bg-success" href="#info" class="info" data-bs-toggle="modal">승급</span>
+										</c:when>
+										<c:when test="${users.auth eq 'MENTOR'}">
+											<span class="badge bg-danger" href="#down" class="down" data-bs-toggle="modal">강등</span>
+										</c:when>
+									</c:choose>
+								</td>
 								<td><a href="#exampleModalLong" class="edit" data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
 								<td><a href="#delete" class="delete" data-bs-toggle="modal"><i data-feather="alert-circle"></i></a></td>
 							</tr>
@@ -142,6 +151,35 @@
 		</div>
 	</div>
 </div>
+
+<!--강등 modal -->
+<div class="modal fade text-left" id="down" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel130" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+		role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-info">
+				<h5 class="modal-title white" id="myModalLabel130">강등</h5>
+				<button type="button" class="close" data-bs-dismiss="modal"
+					aria-label="Close">
+					<i data-feather="x"></i>
+				</button>
+			</div>
+			<div class="modal-body">이 <span id="authDownSpan"></span>멘토를 회원으로 강등시키겠습니까?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+					<i class="bx bx-x d-block d-sm-none"></i> 
+					<span class="d-none d-sm-block">닫기</span>
+				</button>
+				<button type="button" class="btn btn-info ml-1" id="btnDownAuth" data-bs-dismiss="modal">
+					<i class="bx bx-check d-block d-sm-none"></i> 
+					<span class="d-none d-sm-block">승인</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </div>
 
 <!-- 회원정보 수정 modal -->
