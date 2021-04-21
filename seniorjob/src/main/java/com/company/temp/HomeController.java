@@ -41,8 +41,10 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		
 		return "home";
 	}
+	
 	
 	// 메인 페이지 호출
 	@RequestMapping("/getMain")

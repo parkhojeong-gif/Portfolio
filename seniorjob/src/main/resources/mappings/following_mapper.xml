@@ -48,4 +48,12 @@
 
 <!-- End of 김찬곤 ============================================================================  -->	
 
+	<!-- 송다희 추가 -->
+	<!-- 팔로우 전체 목록 -->
+	<select id="getMentorList" resultType="com.company.following.service.FollowingVO">
+		SELECT ID,
+			   MENTOR_ID
+		FROM   FOLLOWING	   
+	</select>
+	
 </mapper>

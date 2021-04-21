@@ -20,5 +20,4 @@ public class ShoppingVO { //주문정보
 	private String mentoring_photo;
 	private String mentoring_price;
 	
-
 }

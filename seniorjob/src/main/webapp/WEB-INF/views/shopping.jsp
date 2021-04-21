@@ -10,6 +10,7 @@
 <jsp:include page="topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
+
 	<!-- property area -->
 	<div class="properties-area recent-property" style="background-color: #FFF;">
 		<div class="container">
@@ -29,8 +30,7 @@
 							<span class="col-xs-6 col-sm-4 col-md-3 add-d-title">종료일자</span>
 							<span class="col-xs-6 col-sm-4 col-md-1 add-d-title">선택</span>
 						</li>
-						<li id="ul">
-						</li>
+
 					</ul>
 					</c:if>
 					<hr>

@@ -11,6 +11,8 @@ public interface CartMapper {
 	public int insertCart(CartVO vo);
 	//삭제
 	public void deleteCart(String no);
+	//개별삭제
+	public int deleteSub(CartVO vo);
 	//수정
 	public int updateCart(CartVO vo);
 	//단건

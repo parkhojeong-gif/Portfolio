@@ -48,7 +48,7 @@ public class ResumeController {
 	@RequestMapping("/getSearchResumeList")
 	public String getSearchResumeList(Model model, HttpServletRequest req, ResumeVO vo) {
 		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("users.id");
 		vo.setId(id);
 		model.addAttribute("list", resumemapper.getSearchResumeList(vo));
 		return "resume/resumeList";
@@ -203,5 +203,10 @@ public class ResumeController {
 		model.addAttribute("certivo", certimapper.getCerti(certivo));
 		model.addAttribute("portvo", portmapper.getPort(portvo));
 		return "resume/seeCkRe";
+	}
+	//영상통화
+	@RequestMapping("/videoIn")
+	public String videoIn() {
+		return "videoIn";
 	}
 }

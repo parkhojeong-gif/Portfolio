@@ -1,5 +1,7 @@
 package com.company.following.service.impl;
 
+import java.util.List;
+
 import com.company.following.service.FollowingVO;
 
 public interface FollowingMapper {
@@ -9,5 +11,7 @@ public interface FollowingMapper {
 	public int deleteMentorFollow(FollowingVO vo); // 멘토 팔로우 취소
 	public int getFollowCnt(FollowingVO vo); // 멘토 팔로우 카운트
 	
+	//송다희 추가
+	public List<FollowingVO> getMentorList(FollowingVO vo); //나의 팔로우 전체 목록
 	
 }

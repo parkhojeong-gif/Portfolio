@@ -23,8 +23,8 @@
 		 			  MENTOR_ID)
 	values		((SELECT NVL(MAX(CART_NO), 0) + 1 FROM CART),
 				#{mentoring_name},
-				TO_DATE(#{cart_start},'YYYY-MM-DD HH24:MI:SS'),
-				TO_DATE(#{cart_end},'YYYY-MM-DD HH24:MI:SS'),
+				#{cart_start},
+				#{cart_end},
 				#{cart_price},
 				#{id},
 				#{mentor_id}
@@ -35,6 +35,9 @@
  </delete>
   <delete id="deleteCartAll">
  	DELETE FROM CART WHERE ID = #{id}
+ </delete>
+ <delete id="deleteSub">
+ 	DELETE FROM CART WHERE CART_NO = ${cart_no}
  </delete>
  <update id="updateCart">
  	UPDATE SET MENTORING_NAME = #{mentoring_name},

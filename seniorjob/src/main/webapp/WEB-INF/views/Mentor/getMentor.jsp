@@ -122,6 +122,7 @@ function insertQueSom(id) {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <!-- <div class="section property-video"> 
                                 <h4 class="s-property-title">Property Video</h4> 
                                 <div class="video-thumb">
@@ -199,6 +200,8 @@ function insertQueSom(id) {
 	
 =======
 
+=======
+>>>>>>> branch '송다희' of https://github.com/aekgmla77/seniorjob.git
   <div class="about-section">
   <h1>${list.usersVO.name } 멘토님의 페이지</h1>
   <p>Some text about who we are and what we do.</p>
@@ -260,8 +263,8 @@ function insertQueSom(id) {
 		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
 		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
 		<!-- 송다희 추가 -->
-		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.mentoring_begin_date }">
-		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.mentoring_end_date }">
+		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.s_date }">
+		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.e_date }">
 		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
 		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
 		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
@@ -304,6 +307,10 @@ function insertQueSom(id) {
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
+<<<<<<< HEAD
+=======
+		/* getBasket(); */ // 장바구니 담기
+>>>>>>> branch '송다희' of https://github.com/aekgmla77/seniorjob.git
 		getFollow(); // 멘토팔로우
 		deleteFollow(); // 멘토팔로우 취소
 		getMentoringCnt(); // 진행중인 멘토링 개수
@@ -340,12 +347,44 @@ function insertQueSom(id) {
 					} 
 				}
 			});
+<<<<<<< HEAD
+		});
+	}); // end of function */
+	
+	
+	/* //장바구니로 이동
+	$(document).on("click", "#BasketBtn", function(){
+		alert("장바구니에 담았습니다.");
+		var yn = confirm("장바구니로 이동하시겠습니까?");
+		if(yn){
+			location.href="productAdd";
+		}
+	}) */
+	
+	//장바구니 localStorage
+	
+	
+	
+	$(function(){
+		var name = $('#mentoring_name').val();
+		var price = $("#mentoring_price").val();
+		var start = $("#men_start").val();
+		var end = $("#met_end").val();
+		var number = $("#mentoring_number").val();
+		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
+		var local = localStorage.setItem('products', item)
+		console.log(JSON.stringify(item));
+			$(document).on("click", "#BasketBtn", function(){
 		}); */
 		
 >>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
+					url: "cart",
+					data: JSON.stringify(local),
+					success: function(response){
+						console.log(response);
 					url: "mentorFollowCheck",
 					dataType: "json", 
 					data: { "id" : $('#id').val(),"mentor_id":$('#mentor_id').val() },
@@ -377,6 +416,7 @@ function insertQueSom(id) {
 			});
 		} // end of deleteFollow
 		
+<<<<<<< HEAD
 <<<<<<< HEAD
 		function getMentoringCnt(){ // 진행중인 멘토링 개수
 			$.ajax({
@@ -410,6 +450,8 @@ function insertQueSom(id) {
 =======
 		});
 	}); // end of function  */   
+=======
+>>>>>>> branch '송다희' of https://github.com/aekgmla77/seniorjob.git
 	
 	// 장바구니 담기
 	function insertC(){

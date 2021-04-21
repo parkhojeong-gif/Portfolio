@@ -22,6 +22,7 @@
 					return false;
 				}
 			});
+			//필수항목 기입 후 insert
 			if(yn){
 				frm.action = "resumeInsert";
 				frm.submit();
@@ -33,12 +34,23 @@
 </script>
 <!-- 글자수세기 -->
 <script>
-	var total = 2000;
+	/* var total = 2000;
 	function counter() {
 		var check = document.frm.self_content.value.length;
 		var cnt = 2000 - check;
 		document.frm.cnt.value = cnt;
-	}
+	} */
+	
+	$(document).ready(function(){
+		$("textarea").keyup(function(){
+			var inputLength = $(this).val().length;
+			if(inputLength > 2000) {
+				alert("입력 가능한 글자수를 초과 했습니다.");
+			}
+			var remain = 2000 - inputLength;
+			$("h5").html(remain + "자까지 입력 가능합니다.");
+		})
+	})
 </script>
 
 <script>
@@ -72,6 +84,11 @@
 		var openWin = window.open("preview",
                 "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
 	})
+	
+	$(document).on("click", "#video", function(){
+		window.open("https://192.168.0.56:85",
+                "영상", "width=900, height=900, resizable = no, scrollbars = no");
+	})
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
@@ -86,11 +103,9 @@
 				  + "<div class='col-sm-12'>" 
 				  + "<div class='form-group'>" 
 				  + "<label>내용</label>"
-				  + "<textarea id='self_content' name='slist[" + self_number + "].self_content' class='form-control' placeholder='내용을 입력하세요.' onkeyup='counter()'></textarea>"
+				  + "<textarea id='self_content' name='slist[" + self_number + "].self_content' class='form-control' placeholder='내용을 입력하세요.'></textarea>"
+				  + "<h5>2000자까지 입력 가능합니다.</h5>"
 				  + "</div>"
-				  + "</div>"
-				  + "<div class='col-sm-12'>" 
-				  + "<input type='text' id='cnt' name='cnt'>글자 입력이 가능합니다."
 				  + "</div>"
 				  + "<br><br><br><br><br><br>";
 				  
@@ -348,12 +363,9 @@
 										<div class="col-sm-12">
 											<div class="form-group">
 												<label for="message">내용</label>
-												<textarea id="self_content" name="slist[0].self_content" class="form-control" 
-												placeholder="내용을 입력하세요." onkeyup="counter()"></textarea>
+												<textarea id="self_content" name="slist[0].self_content" class="form-control" placeholder="내용을 입력하세요." cols="80"></textarea>  <!-- onkeyup="counter()" -->
+												<h5>2000자까지 입력 가능합니다.</h5>
 											</div>
-										</div>
-										<div class="col-sm-12">
-											<input type="text" id="cnt" name="cnt">글자 입력이 가능합니다.
 										</div>
 	                                    <div class="col-sm-12" align="right">
 	                                        <a href="#step4" data-toggle="tab">
@@ -371,6 +383,7 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
+									<button name="video" id="video">영상</button>
 								</div>
 								<br><br><br>
 						</form>

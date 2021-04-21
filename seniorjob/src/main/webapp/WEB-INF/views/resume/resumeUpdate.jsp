@@ -8,8 +8,8 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 프린트, PDF 저장 -->
 <script src="resources/json.min.js"></script>
+<!-- 프린트, PDF 저장 -->
 <script>
 	function divPrint(){
 		var initBody = document.body.innerHTML;
@@ -53,12 +53,23 @@
 	})
 	
 	/* 글자수세기 */
-	var total = 2000;
-	function counter() {
-		var check = document.frm.self_content.value.length;
-		var cnt = 2000 - check;
-		document.frm.cnt.value = cnt;
-	}
+// 	var total = 2000;
+// 	function counter() {
+// 		var check = document.frm.self_content.value.length;
+// 		var cnt = 2000 - check;
+// 		document.frm.cnt.value = cnt;
+// 	}
+	
+	$(document).ready(function(){
+		$("textarea").keyup(function(){
+			var inputLength = $(this).val().length;
+			if(inputLength > 2000) {
+				alert("입력 가능한 글자수를 초과 했습니다.");
+			}
+			var remain = 2000 - inputLength;
+			$("h5").html(remain + "자까지 입력 가능합니다.");
+		})
+	})
 	
 	/* 이미지 미리보기 */
 	function setImage(event) {
@@ -252,10 +263,11 @@
 										<c:forEach items="${slist }" var="self" varStatus="i">
 										<div class='self_this'>
 										<input type="hidden" id="self_no" name="slist[${i.index }].self_no" value="${self.self_no }">
-										<button type='button' id='selfDel' name='selfDel'>삭제</button>
+<!-- 										<button type='button' id='selfDel' name='selfDel'>삭제</button> -->
 										<div class="col-sm-10">
 											<div class="form-group">
 												<label for="subject">제목</label> 
+												<div align="right"><button type='button' id='selfDel' name='selfDel'>삭제</button></div>
 												<input type="text" class="form-control" id="self_name" name="slist[${i.index }].self_name" placeholder="자기소개서 제목" value=${self.self_name }>
 											</div>
 										</div>
@@ -264,6 +276,7 @@
 												<label for="message">내용</label>
 												<textarea id="self_content" name="slist[${i.index }].self_content" class="form-control" 
 												placeholder="내용을 입력하세요.">${self.self_content }</textarea>
+												<h5>2000자까지 입력 가능합니다.</h5>
 											</div>
 										</div>
 										</div>
@@ -347,9 +360,9 @@
                   <div style="display: none" class="self_temp">
 	                  <div class='self_this'>
 						 <input type="hidden" id="self_no" name="slist[${i.index }].self_no" value="${self.self_no }">
-						 <button type='button' id='selfDel' name='selfDel'>삭제</button>
 							 <div class="col-sm-10">
 								<div class="form-group">
+						 			<div align="right"><button type='button' id='selfDel' name='selfDel'>삭제</button></div>
 									<label for="subject">제목</label> 
 									<input type="text" class="form-control" id="self_name" name="slist[${i.index }].self_name" placeholder="자기소개서 제목" value=${self.self_name }>
 								</div>
@@ -359,6 +372,7 @@
 									<label for="message">내용</label>
 									<textarea id="self_content" name="slist[${i.index }].self_content" class="form-control" 
 									placeholder="내용을 입력하세요.">${self.self_content }</textarea>
+									<h5>2000자까지 입력 가능합니다.</h5>
 								</div>
 							</div>
 					 </div>
