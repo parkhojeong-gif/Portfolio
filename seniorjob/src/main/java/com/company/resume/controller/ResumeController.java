@@ -145,4 +145,10 @@ public class ResumeController {
 	public String videoIn() {
 		return "videoIn";
 	}
+	
+	//영상통화
+	@RequestMapping("/calleer")
+	public String calleer() {
+		return "videos/caller";
+	}
 }
