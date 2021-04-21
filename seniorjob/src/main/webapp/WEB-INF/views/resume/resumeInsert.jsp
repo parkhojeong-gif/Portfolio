@@ -90,6 +90,15 @@
 		window.name="parentForm"; //부모창 이름
 		window.open("popCertiSeeResume",
                 "자격증", "width=900, height=900, resizable = no, scrollbars = no");
+	
+	$(document).on("click", "#video", function(){
+		window.open("https://192.168.0.56:85",
+                "영상", "width=1000, height=1000, resizable = no, scrollbars = no");
+	})
+	
+	$(document).on("click", "#chatt", function(){
+		window.open("chat",
+                "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
 	})
 	
 </script>
@@ -387,6 +396,8 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
+									<button name="video" id="video">영상</button>
+									<button name="chatt" id="chatt">채팅</button>
 								</div>
 								<br><br><br>
 						</form>

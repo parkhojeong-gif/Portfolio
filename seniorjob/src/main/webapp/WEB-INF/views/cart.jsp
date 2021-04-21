@@ -112,7 +112,7 @@ function allDel(){
 	  }).iCheck();
       
     
-    /* 선택한 항목만 삭제 */
+    /* 선택한 항목(들) 삭제 */
     function deleteValue(){
     	var url = "deleteCart";
     	var valueArr = new Array();
@@ -171,16 +171,7 @@ function allDel(){
     }).iCheck();
 	
 	
-	//목록이 하나라도 풀릴 시, 전체선택 해제
-    /* $('input[name=del]').on('ifChanged', function(event){
-    	var count = $('input[name=del]').length;
-    	if($(this).is(":checked")==false){
-    		$('input[name=checkedAll]').iCheck('uncheck');
-    	}else if($('input[name=del]').is(":checked")){
-    		$('input[name=checkedAll]').iCheck('check');
-    	}
-    }) */
-    
+	//목록이 하나라도 풀릴 시, 전체선택 해제...인데 안 됨
     $('input[name=del]').on('ifChanged', function(event){
     	var count = $('input[name=del]').length;
     	for(var i = 0; i < count; i++){
@@ -212,6 +203,7 @@ function allDel(){
 			}else{
 				
 			} */
+			/* 결제하기와 동시에 장바구니 목록에서 해당내역 삭제(하는 중) */
 			location.href = "mentoringPayForm?mentor_id="+mentorId;
 // 			location.href = "deleteSub?cart_no="+cartNo;
 			/*  +"&cart_no="+ cartNo 
