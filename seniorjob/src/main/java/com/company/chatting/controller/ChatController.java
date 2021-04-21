@@ -31,6 +31,7 @@ public class ChatController {
 		return "chat";
 	}
 	
+	//대화 참여 누르면 열림.
 	@OnOpen
 	public void onOpen(Session session) {
 		logger.info("Open session id: " + session.getId());

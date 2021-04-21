@@ -16,9 +16,10 @@
 		<input type="text" id="sender" value="${sessionScope.id }" style="display: none">
 		<input type="text" id="messageinput">
 		<button type="button" onclick="send()">메세지 전송</button>
+		<!-- socket closed 됨 -->
 		<button type="button" onclick="clearText()">대화내용 지우기</button>	
 	</div>
-	
+	<br><br>
 	<div id="messages">
 	<!-- 메세지가 보이는 곳 -->
 	</div>

@@ -203,68 +203,10 @@ h1{text-align:center; padding: 20px}
 <script>
 
 	$(function() {
-		/* getBasket(); */ // 장바구니 담기
 		getFollow(); // 멘토팔로우
 		deleteFollow(); // 멘토팔로우 취소
 	}); // end of function
-	 /*  $(function() {
-		
-		function getBasket(){ // 장바구니 담기
-		
-		var formData = { 
-						 "mentoring_name":$('#mentoring_name').val(),
-						 "cart_start":$('#men_start').val(),
-						 "cart_end":$('#met_end').val(),
-						 "cart_price":$('#mentoring_price').val(),
-						 "id" : $('#user_id').val()
-						}
-						 
 
-		// 장바구니 담기
-		$('#BasketBtn').click(function() {
-			$.ajax({
-				url : "BasketChecks",
-				type : "post",
-				dataType : "json",
-				data : formData,
-				success : function(result) {
-					console.log(result);
-					  if (result != 0) {
-						alert("이미 장바구니에 담았습니다.");
-					} else {
-						alert("장바구니에 담았습니다.");
-					} 
-				}
-			});
-<<<<<<< HEAD
-		});
-	}); // end of function */
-	
-	
-	/* //장바구니로 이동
-	$(document).on("click", "#BasketBtn", function(){
-		alert("장바구니에 담았습니다.");
-		var yn = confirm("장바구니로 이동하시겠습니까?");
-		if(yn){
-			location.href="productAdd";
-		}
-	}) */
-	
-	//장바구니 localStorage
-	
-	
-	
-	$(function(){
-		var name = $('#mentoring_name').val();
-		var price = $("#mentoring_price").val();
-		var start = $("#men_start").val();
-		var end = $("#met_end").val();
-		var number = $("#mentoring_number").val();
-		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
-		var local = localStorage.setItem('products', item)
-		console.log(JSON.stringify(item));
-			$(document).on("click", "#BasketBtn", function(){
-		}); */
 		
 		function getFollow(){ // 멘토 팔로우
 			
@@ -272,10 +214,6 @@ h1{text-align:center; padding: 20px}
 			
 			$('#followBtn').click(function(){
 				$.ajax({
-					url: "cart",
-					data: JSON.stringify(local),
-					success: function(response){
-						console.log(response);
 					url: "mentorFollowCheck",
 					dataType: "json", 
 					data: formData1,
