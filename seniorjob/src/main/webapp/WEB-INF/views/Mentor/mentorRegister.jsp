@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>멘토링 등록 페이지</title>
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
 <style>
 * {
   box-sizing: border-box;
@@ -72,6 +73,29 @@ button:hover {
 }
 img{max-width:30%}!important;
 </style>
+<script type="text/javascript">
+function insertCerti() {
+	var url="popCerti";
+	window.open(url,"","width=500,height=600");
+	
+}
+
+function insertCareer() {
+	var url="popCareer";
+	window.open(url,"","width=500,height=600");
+}
+
+function popCertiSee() {
+	var url="popCertiSee";
+	window.open(url,"","width=500,height=600");
+}
+
+function popCareerSee() {
+	var url="popCareerSee";
+	window.open(url,"","width=500,height=600");
+}
+
+</script>
 <body>
 
 <!-- topHeader -->
@@ -154,10 +178,14 @@ img{max-width:30%}!important;
   	</div>
     <p />
     <p>자격증 선택</p>
-    <input placeholder="자격증" class="form-control" type="file" id="property-images" name="mentor_license_file">
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCertiSee()' value='조회' />
+   
     <p />
     <p>경력 증명서</p>
-    <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate_file">
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCareerSee()' value='조회' />
+    
   </div>
   
   <div style="overflow:auto;">

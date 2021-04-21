@@ -111,7 +111,7 @@ display:none;
 						<h3 class="panel-title"><span class="toggle-som" >개인정보 수정</span></h3>
 						<ul class="selfsub ul-none-som">
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="updateUsers?id=somTest"> <span class="txt">개인정보/경력 수정</span></a>
+								<a href="updateUsers"> <span class="txt">개인정보/경력 수정</span></a>
 							</li>
 							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
 								<a href="updateInfo"> <span class="txt">비밀번호 변경</span></a>
