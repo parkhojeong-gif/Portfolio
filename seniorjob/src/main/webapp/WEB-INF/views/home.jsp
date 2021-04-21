@@ -39,14 +39,17 @@
 <script>
 $(document).ready(function() {
 	$.ajax({
-		url:'/videoCallButton',
+		url:'videoCallButton',
 		success : function(result) {
 			
-			if(result == true) {
-				console.log("trueIf");
+			if(result != "false") {
+				console.log("success");
+				$("#numSom").attr('value',result);
 				var div = $('<div />').attr('id','slidemenu');
-				var a = $('<a />').attr('href','#').html('영상면접');
+				var a = $('<a />').attr('onclick','video()').html('영상면접');
+				var a2 = $('<a />').attr('onclick','resum()').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
 				$(div).append(a);
+				$(div).append(a2);
 				$("#slideDiv").append(div);
 				
 			} else {
@@ -63,6 +66,17 @@ $(document).ready(function() {
         $("#slidemenu").stop().animate({"top":position+currentPosition+"px"},1000);
     });
 });
+
+function video(){
+	window.open("https://192.168.0.56:85",
+            "영상", "width=900, height=900, resizable = no, scrollbars = no");
+}
+function resum(){
+	var num=$("#numSom").val();
+	//console.log(num)
+	window.open("popResumeGetForm?resume_no="+num,
+            "이력서", "width=900, height=900, resizable = no, scrollbars = no");
+}
 </script>
 
 </head>
@@ -73,7 +87,7 @@ $(document).ready(function() {
 	
 	</div>
 	<!-- topHeader -->
-	
+	<input type="hidden" id="numSom">
 	<!-- 검색 -->
         <div class="slider-area">
             <div class="slider">

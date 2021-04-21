@@ -38,7 +38,7 @@
                                     <c:forEach items="${list }" var = "resume">  
                                     <c:if test="${resume.id eq users.id }">
                                     	<ul>
-                                        <li><a>${resume.resume_title }</a></li> 
+                                        <li><a onclick="location.href='resumeGetForm?resume_no=${resume.resume_no}'">${resume.resume_title }</a></li> 
                                     	<li><a><button type="button" onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'">수정</button></a></li>
                                     	<li><a><button type="button" onclick="delRe('${resume.resume_no}')">삭제</button></a></li>
                                     	<!-- 인쇄랑 PDF 저장 같이 됨. -->

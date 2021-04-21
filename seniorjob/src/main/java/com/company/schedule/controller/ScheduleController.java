@@ -70,12 +70,18 @@ public class ScheduleController {
 	
 	//멘티가 멘토의 요청 승낙
 	@RequestMapping("/updateSchedule")
-	public String updateSchedule(String seq, ScheduleVO vo) {
+	public String updateSchedule(String seq, ScheduleVO vo, String resume_no, Model model) {
 		vo.setSeq(seq);
+		vo.setResume_no(resume_no);
+		System.out.println("updateSchedule:"+vo);
 		scService.updateSchedule(vo);
-		return "mypage/mypageHome";
+		model.addAttribute("msg", "요청이 승낙되었습니다.");
+		model.addAttribute("url", "throughCerti");
+		return "common/Success";
 		
 	}
+	
+	
 	
 	//멘티가 멘토의 요청 거절
 		@RequestMapping("/updateScheduleReject")
@@ -166,7 +172,7 @@ public class ScheduleController {
 	//영상통화 버튼
 	@RequestMapping("/videoCallButton")
 	@ResponseBody
-	public boolean videoCallButton(HttpServletRequest request, ScheduleVO vo) {
+	public String videoCallButton(HttpServletRequest request, ScheduleVO vo) {
 		//오늘 날짜 구하기
 		Date date = new Date();
 		SimpleDateFormat dF = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -181,33 +187,29 @@ public class ScheduleController {
 		
 		//id를 통회 스케줄 조회
 		List<Map> list = scService.getSearchMentoringDate(vo);
-		
-		
 		for(Map<String, Object> map:list) {
 			
-			 
 			for(String mapKey : map.keySet()) {
 				String start = (String) map.get("SCHEDULE_START");
 				String end = (String) map.get("SCHEDULE_END");
+				String resume_no = (String) map.get("RESUME_NO");
 				Long startInt = Long.parseLong(start);
 				Long endInt = Long.parseLong(end);
 				if(startInt <= inToday) {
-					System.out.println("startInt"+startInt);
 					  
 					  if(inToday <= endInt) {
-						  System.out.println("endInt"+endInt);
-						  return true;
+						  return resume_no;
 					  } else {continue;}
 					  
 					  
-				  } else {return false;}
+				  } else {return "false";}
 			}
 			  
 			 
 			
 			
 		} //end of for
-		return false;
+		return "false";
 		
 		
 	}

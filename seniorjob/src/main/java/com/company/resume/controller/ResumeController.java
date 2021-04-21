@@ -53,6 +53,47 @@ public class ResumeController {
 		model.addAttribute("list", resumemapper.getSearchResumeList(vo));
 		return "resume/resumeList";
 	}
+	
+	//이력서 전체조회 팝업(멘티가 멘토링 요청 승낙 시 선택하는 창)
+	@RequestMapping("/popResumeList")
+	public String popResumeList(Model model, HttpServletRequest req, ResumeVO vo, String seq) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("users.id");
+		vo.setId(id);
+		model.addAttribute("list", resumemapper.getSearchResumeList(vo));
+		model.addAttribute("seq", seq);
+		return "resume/popResumeList";
+	}
+	
+	//이력서 단건조회
+	@RequestMapping("/resumeGetForm")
+	public String resumeGetForm(Model model, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo,
+			PortfolioVO portvo) {
+		vo = resumemapper.getResume(vo);
+		model.addAttribute("resumeVO", vo);
+		selfvo.setResume_no(vo.getResume_no()); // resume 테이블의 resume_no라는 거 명시
+		model.addAttribute("slist", selfmapper.getSelf(selfvo));
+		certivo.setResume_no(vo.getResume_no());
+		model.addAttribute("clist", certimapper.getCerti(certivo));
+		portvo.setResume_no(vo.getResume_no());
+		model.addAttribute("plist", portmapper.getPort(portvo));
+		return "resume/resumeUpdate";
+	}
+	
+	//이력서 팝업조회
+		@RequestMapping("/popResumeGetForm")
+		public String popResumeGetForm(Model model, ResumeVO vo, Self_InfoVO selfvo, CertificateVO2 certivo,
+				PortfolioVO portvo) {
+			vo = resumemapper.getResume(vo);
+			model.addAttribute("resumeVO", vo);
+			selfvo.setResume_no(vo.getResume_no()); // resume 테이블의 resume_no라는 거 명시
+			model.addAttribute("slist", selfmapper.getSelf(selfvo));
+			certivo.setResume_no(vo.getResume_no());
+			model.addAttribute("clist", certimapper.getCerti(certivo));
+			portvo.setResume_no(vo.getResume_no());
+			model.addAttribute("plist", portmapper.getPort(portvo));
+			return "resume/popResumeGetForm";
+		}
 
 	// 이력서 등록폼
 	@RequestMapping("/resumeInsertForm")

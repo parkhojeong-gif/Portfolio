@@ -20,6 +20,8 @@
 		FROM 	 RESUME
 		ORDER BY RESUME_NO
 	</select>
+	
+	
 	<insert id="insertResume" parameterType="ResumeVO">
 	<selectKey keyProperty="resume_no" resultType="string" order="BEFORE">
 		SELECT NVL(MAX(RESUME_NO), 0) + 1 FROM RESUME

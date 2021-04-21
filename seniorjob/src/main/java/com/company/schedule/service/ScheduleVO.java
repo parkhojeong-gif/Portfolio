@@ -18,4 +18,5 @@ public class ScheduleVO {
 	private String schedule_end_time;		//종료시간
 	
 	private String reply; //답변
+	private String resume_no; //이력서 번호
 }
