@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!-- 아이디 찾기 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,7 +38,7 @@
   border-radius: 4px; 
   background: #212529;
   color: #fff;
-  margin-top: 20px;
+  margin-top: 40px;
   border: solid 2px #212529; 
   transition: all 0.5s ease-in-out 0s;
 }

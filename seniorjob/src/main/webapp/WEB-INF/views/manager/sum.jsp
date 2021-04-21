@@ -10,14 +10,14 @@
 	<div class="page-title">
 		<div class="row">
 			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>매출종합관리</h3>
-				<p class="text-subtitle text-muted">매출 종합관리 페이지</p>
+				<h3>매출 관리</h3>
+				<p class="text-subtitle text-muted">월 매출을 볼 수 있는 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
 				<nav aria-label="breadcrumb" class='breadcrumb-header'>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="managerMain">메인</a></li>
-						<li class="breadcrumb-item active" aria-current="page">매출종합관리</li>
+						<li class="breadcrumb-item active" aria-current="page">매출 관리</li>
 					</ol>
 				</nav>
 			</div>
@@ -39,7 +39,7 @@
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">매출 조회</h4>
+										<h4 class="card-title">월 매출 조회</h4>
 										<form action="summonth">
 											<div id="chart_div">
 											</div>
@@ -47,7 +47,7 @@
 										</form>
 									</div>
 									<div class="card-content">
-										<div class="card-body">
+										<div class="card-body" style=" width: 400px; float: right;">
 											<div class="dataTable-search">
 												<form role="form" method="get" action="sumList">
 													<div class="row">
@@ -55,7 +55,7 @@
 															<h6>년도</h6>
 
 															<fieldset class="form-group">
-																<select class="form-select" id="year" name="year" >
+																<select class="form-select" id="year" name="year">
 																	<option>2021</option>
 																</select>
 															</fieldset>
@@ -80,10 +80,14 @@
 																</select>
 															</fieldset>
 														</div>
-														<div class="col-md-6 mb-4" style="width:1500px; height:100px;">
-															<span style="float:right;">월 매출 합계 :$ ${monsum} 원 </span><br>
-															<button type="button" id="btn_submit" style="float:right;">검색</button>
+														<div class="input-group mb-3">
+															<span class="input-group-text" id="basic-addon1">월 매출 합계</span>
+															<input type="text" class="form-control"
+																placeholder="Addon to left" aria-label="Username"
+																aria-describedby="basic-addon1" value="${monsum} 원">
+															<button type="button" id="btn_submit" style="float:right;" class="btn btn-info">검색</button>
 														</div>
+													</div>
 													</div>
 												</form>
 											</div>

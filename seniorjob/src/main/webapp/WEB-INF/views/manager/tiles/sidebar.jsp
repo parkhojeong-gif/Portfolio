@@ -20,8 +20,8 @@
 						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>회원관리</span>
 					</a></li>
 
-					<li class="sidebar-item"><a href="#"
-						class='sidebar-link'> <i data-feather="user" width="20"></i> <span>멘토링관리</span>
+					<li class="sidebar-item"><a href="./mentoringList"
+						class='sidebar-link'> <i data-feather="file-text" width="20"></i> <span>멘토링관리</span>
 					</a></li>
 
 					<li class="sidebar-item"><a href="./sumList"

@@ -42,9 +42,9 @@ public class manUserController {
 		
 	// 검색
 	@RequestMapping("/ManSearchService")
-	public String searchService(Model model, @RequestParam("searchKeyword") String searchKeyword) {
-		List<userVO> viewAll = manusermapper.searchUser(searchKeyword);
-		model.addAttribute("viewAll", viewAll);
+	public String searchService(Model model, @RequestParam(value="searchKeyword", required=false) String searchKeyword) {
+		List<userVO> list = manusermapper.searchUser(searchKeyword);
+		model.addAttribute("list", list);
 		return "/manager/user";
 	
 	}
