@@ -131,7 +131,10 @@
 		WHERE RN BETWEEN #{start} AND #{end}
    		ORDER BY MENTOR_DATE DESC -->
    		
-   		SELECT * FROM MENTOR
+   		SELECT M.*, U.AUTH "usersVO.auth", U.NAME "usersVO.name"
+		FROM MENTOR M, USERS U
+		WHERE M.ID = U.ID
+		AND U.AUTH = 'MENTOR'
 		ORDER BY MENTOR_DATE
    		
 	</select>

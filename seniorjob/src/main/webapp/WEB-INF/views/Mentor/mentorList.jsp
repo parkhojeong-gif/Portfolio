@@ -89,8 +89,8 @@
 										</div>	
 
 										<div class="item-entry overflow">
-											<h5 id="mentor_company_name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
-											<h5 id="mentor_duty" ><b class="property-info-unit">직무</b>${mentor.mentor_duty }</h5>
+											<h5 id="name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
+											<h5 id="mentor_duty" >${mentor.mentor_duty }<b class="property-info-unit">직무</b></h5>
 											<div class="dot-hr"></div>
 											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit">멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
 											<span class="pull-left"><b id="mentoring_location" ><b class="property-info-unit">멘토링 지역:</b> ${mentor.mentoring_location }</b></span>
@@ -197,18 +197,18 @@
 				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-				
-				var div2 = $("<div>").attr({ id:"list-type",'class':"proerty-th" });
+				console.log(response[i]);
+				var div2 = $("<div>").attr({ 'id':"list-type",'class':"proerty-th" });
 				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");
 				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","image/"+response[i].mentor_photo));
 				
 				var div6 = $("<div>").attr("class","item-entry overflow");
 				
-					var h5_1 = $("<h5>").attr("id","mentor_company_name").text(response[i].usersVO.name));
-						var bh_1 = $('<b>').attr('class','property-info-unit').text("명");
+					var h5_1 = $("<h5>").attr("id","name").text(response[i].usersVO.name);
+						var bh_1 = $('<b>').attr('class','property-info-unit').text("멘토");
 					
-					var h5_2 = $("<h5>").attr("id","mentor_duty").text(response[i].mentor_duty));
+					var h5_2 = $("<h5>").attr("id","mentor_duty").text(response[i].mentor_duty);
 						var bh_2 = $('<b>').attr('class','property-info-unit').text("직무");
 					
 					var div7 = $("<div>").attr("class","dot-hr");
@@ -225,11 +225,13 @@
 						var sb_3 = $("<b>").attr("id","mentoring_age").text(response[i].mentoring_age);
 							var sb_13 = $("<b>").attr('class','property-info-unit').text("멘토링 연령:");
 				
+							
 				h5_1.append(bh_1);
 				h5_2.append(bh_2);
-				span_1.append(sb_1, sb_11);
-				span_2.append(sb_2, sb_12);
-				span_3.append(sb_3, sb_13);
+				
+				span_1.append(sb_11, sb_1);
+				span_2.append(sb_12, sb_2);
+				span_3.append(sb_13, sb_3);
 						
 				div6.append(h5_1, h5_2, div7, span_1, span_2, span_3);
 				div4.append(div5, div6);
