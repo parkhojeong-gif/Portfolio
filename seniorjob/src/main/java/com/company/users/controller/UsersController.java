@@ -136,10 +136,13 @@ public class UsersController {
 		UsersVO users = usersMapper.kakaoCheck(vo);
 		System.out.println(users);
 
+		session.setAttribute("accessToken", accessToken);
 		session.setAttribute("userInfo", userInfo);
 		
 		if (users == null) {
 			vo.setId((String) userInfo.get("kakaoId"));
+			vo.setEmail((String) userInfo.get("email"));
+			vo.setDistinction((String) userInfo.get("nickname"));
 			usersMapper.insertUsers(vo);
 		}
 		return "redirect:/";
@@ -181,6 +184,8 @@ public class UsersController {
 	// logout
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
+		String access_token = (String) session.getAttribute("access_Token");
+		kakaoapi.kakaoLogout(access_token);
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -205,7 +210,23 @@ public class UsersController {
 			return "success";
 		}
 	}
-
+	//아이디 찾기 페이지 이동
+	@RequestMapping("/findId")
+	public String findId(UsersVO vo){
+		
+		return "findId";
+	}
+	
+	// 아이디 찾기
+	@ResponseBody
+	@RequestMapping("/findIdProc")
+	public List<UsersVO> findIdCheck(UsersVO vo){
+		List<UsersVO> list = usersMapper.findId(vo);
+		System.out.println("asdf:" + list);
+			return list;
+	}
+	
+	
 	// 비밀번호 찾기
 	@RequestMapping(value = "/findpw", method = RequestMethod.GET)
 	public void findPwGET() throws Exception {

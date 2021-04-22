@@ -42,7 +42,7 @@ public class UsersServiceImpl implements UsersService {
 			msg += "<p>임시 비밀번호 : ";
 			msg += vo.getPassword() + "</p></div>";
 		}
-
+		
 		// 받는 사람 E-Mail 주소
 		String mail = vo.getEmail();
 		try {
@@ -101,6 +101,9 @@ public class UsersServiceImpl implements UsersService {
 		}
 	}
 
+	
+	
+	
 	@Override
 	public List<UsersVO> getUsersList() {
 		
@@ -175,10 +178,6 @@ public class UsersServiceImpl implements UsersService {
 	public List<Map> getCertiList(UsersVO vo) {
 		return usersmapper.getCertiList(vo);
 	}
-
-
-
-	
 	
 	// 김찬곤 / 단건 조회
 	public List<UsersVO> getUsersForPayment(Map<String, Object> map) {
@@ -211,4 +210,13 @@ public class UsersServiceImpl implements UsersService {
 	public UsersVO getCerti(UsersVO vo) {
 		return usersmapper.getCerti(vo);
 	}
+	//아이디 찾기(이메일, 전화번호)
+
+	@Override
+	public List<UsersVO> findId(UsersVO vo) {
+		
+		return usersmapper.findId(vo);
+	}
+	
+	
 }

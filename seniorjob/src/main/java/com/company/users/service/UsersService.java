@@ -3,6 +3,7 @@ package com.company.users.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface UsersService {
@@ -16,6 +17,10 @@ public interface UsersService {
 	public int idCheck(UsersVO vo); //아이디 중복체크
 	//이메일발송
 	public void sendEmail(UsersVO vo, String div) throws Exception;
+	
+	//아이디 찾기 (전화번호, 이메일) 
+	public List<UsersVO> findId(UsersVO vo);
+	
 	//비밀번호찾기
 	public void findPw(HttpServletResponse resp, UsersVO vo) throws Exception;
 
@@ -39,3 +44,4 @@ public interface UsersService {
 	public int updateCerti(UsersVO vo);		//수정
 	public int deleteCerti(UsersVO vo); //경력인증서 삭제
 }
+	

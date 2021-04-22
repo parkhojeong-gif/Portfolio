@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-12 col-md-6 order-md-1 order-last">
 				<h3>회원관리</h3>
-				<p class="text-subtitle text-muted">회원관리 목록을 보여줍니다.</p>
+				<p class="text-subtitle text-muted">전체 회원을 볼 수 있는 목록 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
 				<nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -33,50 +33,41 @@
 			<div class="card-body">
 				<div class="dataTable-search">
 				<form role="form" method="get">
-					<div class="col-xs-2">
-                         <div class="btn-group bootstrap-select show-tick form-control" style="width: 200px;">
+					<div class="col-xs-12">
+                         <div class="btn-group bootstrap-select show-tick form-control" style="width: 500px; ">
                          	 <div class="dropdown-menu open" style="max-height: 200px; overflow: hidden; min-height: 109px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 100px; overflow-y: auto; min-height: 98px;"><li data-original-index="0" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text"> -Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Rent </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">Boy</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">used</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div>
-                         <select id="basic" name="searchType" class="form-select" tabindex="-98">
-                             <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
+                         <select id="basic" name="searchType" class="form-select" style="width:200px;" tabindex="-98">
+                              <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
 						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
-                        </select></div>
-                        </div>
-                        <div class="col-xs-7">
+						      <option value="auth"<c:out value="${scri.searchType eq 'auth' ? 'selected' : ''}"/>>회원등급</option>
+                        </select>
 							<div class="input-group">
-                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 100px;" type="text" placeholder="내용 입력 ">
+                             <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 230px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
                              <span class="input-group-btn">
-                             	<button class="btn btn-primary subscribe" id="searchBtn" type="button"><i data-feather="edit"></i>검색</button>
+                             	<button class="btn btn-primary subscribe" id="searchBtn" style="" type="button"><i data-feather="edit"></i>검색</button>
 							 </span>
                     		</div>
+                        </div>
+                        </div>
+                        <div class="col-xs-7">
 						</div>
 				</form>
 						
 				<br>
-				<%-- <div id="outter">
-						<div style="float: right;">
-							<select id="cntPerPage" name="sel" onchange="selChange()">
-								<option value="5"
-									<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
-								<option value="10"
-									<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
-								<option value="15"
-									<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
-								<option value="20"
-									<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-							</select>
-						</div> --%>
+				
 				<table class='table table-striped' style="font-size: 11px;" id="table1">
 					<thead>
 						<tr>
 							<th>ID</th>
 							<th>회원 이름</th>
 							<th>회원 전화번호</th>
-							<th>회원 주소</th>
+							<!--<th>회원 주소</th>-->
 							<th>생일</th>
 							<th>회원 이메일</th>
 							<th>경력증명서</th>
-							<th>등급</th>
+							<th>회원등급</th>
+							<th>소셜닉네임</th>
 							<th>승급</th>
 							<th>수정</th>
 							<th>삭제</th>
@@ -88,12 +79,22 @@
 								<td>${users.id }</td>
 								<td>${users.name }</td>
 								<td>${users.phonenum }</td>
-								<td>${users.address }</td>
+								<!-- <td>${users.address }</td> -->
 								<td>${users.birth }</td>
 								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
 								<td>${users.auth}</td>
-								<td><span class="badge bg-success" href="#info" class="info" data-bs-toggle="modal">승급</span></td>
+								<td>${users.distinction}</td>
+								<td>
+									<c:choose>
+										<c:when test="${users.auth eq 'USER'}">
+											<span class="badge bg-success" href="#info" class="info" data-bs-toggle="modal">승급</span>
+										</c:when>
+										<c:when test="${users.auth eq 'MENTOR'}">
+											<span class="badge bg-danger" href="#down" class="down" data-bs-toggle="modal">강등</span>
+										</c:when>
+									</c:choose>
+								</td>
 								<td><a href="#exampleModalLong" class="edit" data-bs-toggle="modal"> <i data-feather="edit"></i></a></td>
 								<td><a href="#delete" class="delete" data-bs-toggle="modal"><i data-feather="alert-circle"></i></a></td>
 							</tr>
@@ -152,6 +153,35 @@
 		</div>
 	</div>
 </div>
+
+<!--강등 modal -->
+<div class="modal fade text-left" id="down" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel130" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+		role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-info">
+				<h5 class="modal-title white" id="myModalLabel130">강등</h5>
+				<button type="button" class="close" data-bs-dismiss="modal"
+					aria-label="Close">
+					<i data-feather="x"></i>
+				</button>
+			</div>
+			<div class="modal-body">이 <span id="authDownSpan"></span>멘토를 회원으로 강등시키겠습니까?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+					<i class="bx bx-x d-block d-sm-none"></i> 
+					<span class="d-none d-sm-block">닫기</span>
+				</button>
+				<button type="button" class="btn btn-info ml-1" id="btnDownAuth" data-bs-dismiss="modal">
+					<i class="bx bx-check d-block d-sm-none"></i> 
+					<span class="d-none d-sm-block">승인</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </div>
 
 <!-- 회원정보 수정 modal -->
@@ -222,7 +252,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<!-- <div class="col-md-4">
 							<label>Address</label>
 						</div>
 						<div class="col-md-8">
@@ -234,7 +264,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- 	<div class="card-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-12">
@@ -251,7 +281,7 @@
 							<button type="button" class="btn btn-light-secondary"
 								data-bs-dismiss="modal">
 								<i class="bx bx-x d-block d-sm-none"></i> 
-								<span class="d-none d-sm-block">닫기</span>
+								<span class="btn btn-warning">닫기</span>
 							</button>
 
 							<button type="submit" id="btnup" class="btn btn-primary ml-1" data-bs-dismiss="modal">
@@ -290,8 +320,7 @@
 							class="d-none d-sm-block">닫기</span>
 					</button>
 					<button type="button" class="btn btn-danger ml-1" id="btndel" data-bs-dismiss="modal">
-						<i class="bx bx-check d-block d-sm-none"></i> <span
-							class="d-none d-sm-block">확인</span>
+						<i class="bx bx-check d-block d-sm-none"></i> <span class="d-none d-sm-block">확인</span>
 					</button>
 				</div>
 			</form>
@@ -325,7 +354,7 @@ $(function(){
 	    					$("#exampleModalLong").find('[name=name]').val(name);
 	    					$("#exampleModalLong").find('[name=email]').val(email);
 	    					$("#exampleModalLong").find('[name=phonenum]').val(phonenum);
-	    					$("#exampleModalLong").find('[name=address]').val(address); 
+	    					//$("#exampleModalLong").find('[name=address]').val(address); 
 	    				
 	    			}
 				}
@@ -364,7 +393,6 @@ $(function(){
 		let idx = $(event.relatedTarget).closest('tr').find('td').eq(0).text();
 			console.log(idx);
 		$('#delspan').html(idx);
-		
 	});
 	
 	<!-- 삭제 modal 창 -->
@@ -401,12 +429,36 @@ $(function(){
 			dataType : 'text',
 			success : function(result){
 				location.reload();
-				
-			}, error : function(result){
-				//console.log(result);
-			}
+			
+			} 
+			
 		})
 	})
+	
+	<!--회원 강등 modal click-->
+	$("#down").on('show.bs.modal', function(event){
+		let idx = $(event.relatedTarget).closest('tr').find('td').eq(0).text();
+		console.log(idx);
+		$('#authDownSpan').html(idx);
+	});
+	
+	<!-- 회원 강등 modal 창-->
+	$("#btnDownAuth").on('click', function(event){
+		console.log(event);
+		let idx = $('#authDownSpan').html();
+		$.ajax({
+			url: 'authDownUser',
+			type : 'GET',
+			data : {"id":idx},
+			dataType : 'text',
+			success : function(result){
+				location.reload();
+			
+			} 
+			
+		})
+	})
+	
 });
 
 <!--검색-->
