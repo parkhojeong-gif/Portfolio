@@ -131,7 +131,7 @@
 							<label>멘토링 코스번호</label>
 						</div>
 						<div class="col-md-8">
-							<div class="form-group has-icon-left">
+							<div class="form-group">
 								<div class="position-relative">
 									<input type="text" class="form-control" id="mennum" name="mennum" readonly="readonly">
 								</div>
@@ -141,7 +141,7 @@
 							<label>멘토링 이름</label>
 						</div>
 						<div class="col-md-8">
-							<div class="form-group has-icon-left">
+							<div class="form-group">
 								<div class="position-relative">
 									<input type="text" class="form-control" id="menname" name="menname">
 								</div>
@@ -151,7 +151,7 @@
 							<label>멘토링 분야</label>
 						</div>
 						<div class="col-md-8">
-							<div class="form-group has-icon-left">
+							<div class="form-group">
 								<div class="position-relative">
 									<input type="text" class="form-control"  id="menkind" name="menkind">
 								</div>
@@ -161,7 +161,7 @@
 							<label>멘토링 소개</label>
 						</div>
 						<div class="col-md-8">
-							<div class="form-group has-icon-left">
+							<div class="form-group">
 								<div class="position-relative">
 									<input type="text" class="form-control" id="menintro" name="menintro">
 								</div>
@@ -171,7 +171,7 @@
 							<label>멘토링 내용</label>
 						</div>
 						<div class="col-md-8">
-							<div class="form-group has-icon-left">
+							<div class="form-group">
 								<div class="position-relative">
 									 <textarea class="form-control" id="mencontent" name="mencontent" rows="10"></textarea>
 								</div>
