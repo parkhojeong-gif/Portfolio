@@ -441,6 +441,21 @@ $(function(){
 	});
 	
 	<!-- 회원 강등 modal 창-->
+	$("#btnDownAuth").on('click', function(event){
+		console.log(event);
+		let idx = $('#authDownSpan').html();
+		$.ajax({
+			url: 'authDownUser',
+			type : 'GET',
+			data : {"id":idx},
+			dataType : 'text',
+			success : function(result){
+				location.reload();
+			
+			} 
+			
+		})
+	})
 	
 });
 

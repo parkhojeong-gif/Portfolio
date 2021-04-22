@@ -57,6 +57,13 @@ public class UserServiceImpl implements UserService {
 		return dao.searchUser(searchKeyword);
 	}
 
+	@Override
+	public void authDownUser(userVO vo) {
+		
+		dao.authDownUser(vo);
+	
+	}
+
 	
 
 	

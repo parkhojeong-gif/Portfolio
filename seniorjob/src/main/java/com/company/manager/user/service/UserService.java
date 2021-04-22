@@ -20,5 +20,7 @@ public interface UserService {
 		public int deleteUser(userVO vo);
 		//회원 승급
 		public void authUser(userVO vo);
+		//회원 강등
+		public void authDownUser(userVO vo);
 	
 }
