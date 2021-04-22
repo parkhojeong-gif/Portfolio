@@ -198,5 +198,11 @@ public class BusinessPlanAController {
 		model.addAttribute("bpp", vo);
 		return "business/seeCkBp";
 	}
+	
+	@RequestMapping("/previewBusiness") //미리보기
+	public String previewBusiness() {
+		return "business/previewBusiness";
+		
+	}
 
 }
