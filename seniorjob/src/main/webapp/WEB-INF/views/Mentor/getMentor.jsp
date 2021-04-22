@@ -121,8 +121,6 @@ function insertQueSom(id) {
                             </div>
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                             <!-- <div class="section property-video"> 
                                 <h4 class="s-property-title">Property Video</h4> 
                                 <div class="video-thumb">
@@ -168,15 +166,19 @@ function insertQueSom(id) {
                                 </div> --> 
                                 <div class="panel-body search-widget">
                                     <form action="" class=" form-inline"> 
-                                    	<input type="hidden" id="id" name="id" value="${mentor.id }">
+                                    	<input type="hidden" id="mentor_id" name="mentor_id" value="${mentor.mentor_id }">
+                                    	<input type="hidden" id="id" name="id" value="${users.id }">
                                         <fieldset >
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                 <c:if test="${empty users }">
-                                                	<input class="button btn largesearch-btn" value="멘토 팔로우" id="BasketBtn" type="button" onclick="loginCheck()">
+                                                	<input class="button btn largesearch-btn" value="멘토 팔로우" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>  
-                                                <c:if test="${not empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 팔로우" id="BasketBtn" type="button">
+                                                <c:if test="${empty following && not empty users}">
+                                                    <input class="button btn largesearch-btn" value="멘토 팔로우" id="followBtn" type="button">
+                                                </c:if>
+                                                <c:if test="${not empty following }">
+                                                    <input class="button btn largesearch-btn" value="멘토 팔로우 취소" id="followCancelBtn" type="button">
                                                 </c:if>
                                                     <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="insertQueSom('${mentor.mentor_id }')" type="button">
                                                 </div>  
@@ -193,15 +195,32 @@ function insertQueSom(id) {
 
             </div>
         </div>
+        
+        <!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					로그인 또는 회원가입이 필요한 항목입니다.
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-primary" style="display:none">로그인</button> <!-- 레이아웃 정렬용 태그(사용X) -->
+					<button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='insertUsers'">회원가입</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
-	
-=======
-
-=======
->>>>>>> branch '송다희' of https://github.com/aekgmla77/seniorjob.git
   <div class="about-section">
   <h1>${list.usersVO.name } 멘토님의 페이지</h1>
   <p>Some text about who we are and what we do.</p>
@@ -252,7 +271,6 @@ function insertQueSom(id) {
 		<p>
 		<hr>
 		<p>
-		
 		<!-- 멘토링 정보(멘토링 등록 정보가 있을 때만 출력 -->
 	<c:if test="${not empty mentoring.mentoring_number }">
 		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
@@ -303,14 +321,10 @@ function insertQueSom(id) {
 		<c:if test="${empty mentoring.mentoring_number }">
 			<h1 class="display-3">- 등록된 멘토링이 없습니다 -</h1>
 		</c:if>
->>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
-<<<<<<< HEAD
-=======
 		/* getBasket(); */ // 장바구니 담기
->>>>>>> branch '송다희' of https://github.com/aekgmla77/seniorjob.git
 		getFollow(); // 멘토팔로우
 		deleteFollow(); // 멘토팔로우 취소
 		getMentoringCnt(); // 진행중인 멘토링 개수
@@ -318,8 +332,6 @@ function insertQueSom(id) {
 	}); // end of function
 	 /*  $(function() {
 		
-<<<<<<< HEAD
-=======
 		function getBasket(){ // 장바구니 담기
 		
 		var formData = { 
@@ -372,52 +384,47 @@ function insertQueSom(id) {
 		var end = $("#met_end").val();
 		var number = $("#mentoring_number").val();
 		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
-		var local = localStorage.setItem('products', item)
+		var local = localStorage.setItem('products', item);
 		console.log(JSON.stringify(item));
 			$(document).on("click", "#BasketBtn", function(){
-		}); */
+		}); 
 		
->>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
-					url: "cart",
-					data: JSON.stringify(local),
-					success: function(response){
-						console.log(response);
 					url: "mentorFollowCheck",
 					dataType: "json", 
 					data: { "id" : $('#id').val(),"mentor_id":$('#mentor_id').val() },
 					success:function(result){
 						if(result == 0){
 							alert("팔로우 완료");
+							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
 						}else{
 							alert("이미 팔로우된 멘토입니다");
+							 }
 						}
-					}
+					});
 				});
-			});
-		} // end of getFollow
+		}
 		
 		function deleteFollow(){ // 멘토 팔로우 취소
 			$('#followCancelBtn').click(function(){
 				$.ajax({
 					url: "deleteMentorFollow",
 					dataType: "json", 
-					data: { "id" : $('#user_id').val(),"mentor_id":$('#mentor_id').val() },
+					data: { "id" : $('#id').val(),"mentor_id":$('#mentor_id').val() },
 					success:function(result){
 						if(result == 0){
 							alert("팔로우하지 않은 멘토입니다.");
 						}else{
 							alert("팔로우 취소 완료");
+							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
 						}
 					}
 				});
 			});
 		} // end of deleteFollow
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
 		function getMentoringCnt(){ // 진행중인 멘토링 개수
 			$.ajax({
 				url: "getMentoringCnt",
@@ -425,7 +432,7 @@ function insertQueSom(id) {
 				data: { "mentor_id": ${mentor.mentor_id} },
 				success:function(result){
 					var span = $('<span>').attr({ "id" : "mtCnt" , "class" : "property-info-value" });
-					var a = $('<a>').attr({'href' : '#' , "onclick" : "window.open('mentoringListWindow?mentor_id=${mentor.mentor_id}','멘토링 리스트',  'width=716px, height=278px, resizable = no')"}).text(result);
+					var a = $('<a>').attr({'href' : '#' , "onclick" : "window.open('mentoringListWindow?mentor_id=${mentor.mentor_id}','멘토링 리스트',  'width=680px, height=240px, resizable = no')"}).text(result);
 					var b = $('<b>').attr("class", "property-info-unit").text('건');
 					span.append(a, b);
 					$('#mentoringCnt').append(span);
@@ -441,17 +448,15 @@ function insertQueSom(id) {
 				success:function(result){
 					var span = $('<span>').attr("class", "property-info-value").text(result);
 					var b = $('<b>').attr("class", "property-info-unit").text('명');
+					
 					span.append(b);
 					$('#followCnt').append(span);
 				}
 			});
 		}
 		
-=======
 		});
 	}); // end of function  */   
-=======
->>>>>>> branch '송다희' of https://github.com/aekgmla77/seniorjob.git
 	
 	// 장바구니 담기
 	function insertC(){
@@ -463,8 +468,6 @@ function insertQueSom(id) {
 	}
 	
 
-
->>>>>>> branch '박호정' of https://github.com/aekgmla77/seniorjob.git
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){

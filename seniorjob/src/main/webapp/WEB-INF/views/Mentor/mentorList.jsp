@@ -26,6 +26,14 @@
 	font-family:'Spoqa Han Sans'; 
 	font-weight: 300;
 }
+/* 
+이미지 사이즈 손쉽게 맞추기
+참고: https://nykim.work/86 */
+#myPhoto{ 
+  width: 253px;
+  height: 253px;
+  object-fit: cover;
+}
 </style>
 <body>
 
@@ -36,6 +44,7 @@
 <!-- topHeader -->
 <div id="listResult"></div>
           <!-- property area -->
+          
         <div class="properties-area recent-property" style="background-color: #FFF;">
             <div class="container">   
                 <div class="row">
@@ -62,15 +71,17 @@
 					<!-- End of 멘토 세부검색(최신순/인기순) -->
 					
 					<!-- 멘토 리스트 출력 -->
+					<form name="mentorListFrm">
+					
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
 
 							<c:forEach var="mentor" items="${list }">
-								<div class="col-sm-6 col-md-4 p0" id="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
+								<div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" >
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
 										<c:if test="${not empty mentor.mentor_photo }">
-											<img src="image/${mentor.mentor_photo }">
+											<img src="image/${mentor.mentor_photo }" id="myPhoto">
 										</c:if>
 										<c:if test="${empty mentor.mentor_photo }">
 											<img src="resources/assets/img/mentor/photoDefault.jpg">
@@ -78,7 +89,8 @@
 										</div>	
 
 										<div class="item-entry overflow">
-											<h5 id="mentor_company_name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
+											<h5 id="name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
+											<h5 id="mentor_duty" >${mentor.mentor_duty }<b class="property-info-unit">직무</b></h5>
 											<div class="dot-hr"></div>
 											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit">멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
 											<span class="pull-left"><b id="mentoring_location" ><b class="property-info-unit">멘토링 지역:</b> ${mentor.mentoring_location }</b></span>
@@ -89,6 +101,7 @@
 							</c:forEach>
 						</div>
 					</div>
+					</form>
 					<!-- End of 멘토 리스트 출력 -->
 					
 				</div>
@@ -123,6 +136,7 @@
                 </div>           
             </div>
         </div>
+        
         <!-- TOP버튼 / https://seo6285.tistory.com/189-->
       	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
       	<!-- TOP버튼 -->
@@ -149,7 +163,6 @@
 			</div>
       	<!-- 모달 팝업 -->
 
-<div id="footerBottom">footer</div>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
@@ -184,19 +197,43 @@
 				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-				
-				var div2 = $("<div>").attr({ id:"list-type",'class':"proerty-th" });
+				console.log(response[i]);
+				var div2 = $("<div>").attr({ 'id':"list-type",'class':"proerty-th" });
 				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");
 				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","image/"+response[i].mentor_photo));
+				
 				var div6 = $("<div>").attr("class","item-entry overflow");
-					var h5 = $("<h5>").attr("id","mentor_company_name").text(response[i].mentor_company_name).append($("<br>"));
-					var a = $("<a>").attr("id","mentor_department_name").text(response[i].mentor_department_name);
-					var div7 = $("<div>").attr("class","dot-hr");
-					var span = $("<span>").attr("class","pull-left");
-					var b = $("<b>").attr("id","mentoring_kind").text(response[i].mentoring_kind);
+				
+					var h5_1 = $("<h5>").attr("id","name").text(response[i].usersVO.name);
+						var bh_1 = $('<b>').attr('class','property-info-unit').text("멘토");
 					
-				div6.append(h5, a, div7, span, b);
+					var h5_2 = $("<h5>").attr("id","mentor_duty").text(response[i].mentor_duty);
+						var bh_2 = $('<b>').attr('class','property-info-unit').text("직무");
+					
+					var div7 = $("<div>").attr("class","dot-hr");
+					
+					var span_1 = $("<span>").attr("class","pull-left");
+						var sb_1 = $("<b>").attr("id","mentoring_kind").text(response[i].mentoring_kind);
+							var sb_11 = $("<b>").attr('class','property-info-unit').text("멘토링 종류:");			
+					
+					var span_2 = $("<span>").attr("class","pull-left");
+						var sb_2 = $("<b>").attr("id","mentoring_location").text(response[i].mentoring_location);
+							var sb_12 = $('<b>').attr('class','property-info-unit').text("멘토링 지역:");				
+					
+					var span_3 = $("<span>").attr("class","pull-left");
+						var sb_3 = $("<b>").attr("id","mentoring_age").text(response[i].mentoring_age);
+							var sb_13 = $("<b>").attr('class','property-info-unit').text("멘토링 연령:");
+				
+							
+				h5_1.append(bh_1);
+				h5_2.append(bh_2);
+				
+				span_1.append(sb_11, sb_1);
+				span_2.append(sb_12, sb_2);
+				span_3.append(sb_13, sb_3);
+						
+				div6.append(h5_1, h5_2, div7, span_1, span_2, span_3);
 				div4.append(div5, div6);
 				div3.append(div4);
 				div2.append(div3);
@@ -210,7 +247,7 @@
 		location.href='getMentor?mentor_id='+param;
 	});
 		
-	}
+}
 	
 	/* 플로팅 배너 */
 	$(function() {
@@ -229,14 +266,4 @@
 		});
 	});
 	
-	// 모달 테스트
-	$(function(){ 
-		$("#modal_on").click(function(){ 
-			$(".modal").fadeIn(); 
-			}); 
-		$(".modal_content").click(function(){
-			$(".modal").fadeOut(); }); 
-		});
-
-	/* 플로팅 배너 */
 </script>

@@ -78,6 +78,12 @@ public class MentoringServiceImpl implements MentoringService {
 		return dao.getSearchMentoringChanGon(vo);
 	}
 	
+	// 멘토링 상세페이지_유사한 멘토링 출력
+	@Override
+	public List<MentoringVO> getRelatedMentoring(MentoringVO vo) {
+		return dao.getRelatedMentoring(vo);
+	}
+	
 //	-------------------------------------------------------- End of 김찬곤-----------------------------------------------------------------------------------------------------
 
 	@Override

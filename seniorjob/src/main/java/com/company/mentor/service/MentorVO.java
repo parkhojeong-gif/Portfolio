@@ -27,6 +27,8 @@ public class MentorVO { //멘토
 	private String mentor_confirm_status; //멘토링 승인여부
 	private String mentor_date; // 멘토 등록 일자
 	
+	private String[] mentor_dutyArr; // 메인페이지 멘토 직무 검색용
+	
 	private MultipartFile mentor_photo_file; // 멘토 사진 파일_김찬곤 추가
 	private MultipartFile mentor_license_file; // 멘토 자격증 파일_김찬곤 추가
 	private MultipartFile mentor_career_certificate_file; // 멘토 경력 증명서 파일_김찬곤 추가

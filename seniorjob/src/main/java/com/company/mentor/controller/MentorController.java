@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,17 +13,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.company.following.service.FollowService;
+import com.company.following.service.FollowingVO;
 import com.company.mentor.service.MentorSearchVO;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringService;
-import com.company.mentoring.service.MentoringVO;
 
 @Controller
 public class MentorController {
 	
 	@Autowired MentorService mentorService;
 	@Autowired MentoringService mentoringService;
+	@Autowired FollowService followService;
 	
 //	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	
@@ -40,9 +43,17 @@ public class MentorController {
 			return "Mentor/mentorList";
 		}
 		
+		// 메인페이지 키워드 검색
 		@RequestMapping("/getKeywordSearch")
 		public String getKeywordSearch(Model model, MentorVO vo) {
 			model.addAttribute("list", mentorService.getKeywordSearch(vo));
+			return "Mentor/mentorList";
+		}
+		
+		// 메인페이지 직무 검색
+		@RequestMapping("getSearchMentorDuty")
+		public String getSearchMentorDuty(MentorVO vo, Model model) {
+			model.addAttribute("list", mentorService.getSearchMentorDuty(vo));
 			return "Mentor/mentorList";
 		}
 		
@@ -82,9 +93,19 @@ public class MentorController {
 		
 		// 멘토 상세 페이지 호출
 		@RequestMapping("/getMentor")
-		public String getMentor(Model model, MentorVO mVo, MentoringVO mtrVo) {
-			model.addAttribute("mentor", mentorService.getMentor(mVo));
-			return "Mentor/getMentor";
+		public String getMentor(Model model, MentorVO mVo, FollowingVO fVo, HttpServletRequest req) {
+			HttpSession session = req.getSession();
+			String id = (String) session.getAttribute("id");
+			
+			if(id == null) {
+				model.addAttribute("mentor", mentorService.getMentor(mVo));
+				return "Mentor/getMentor";
+			}else {
+				fVo.setId(id);
+				model.addAttribute("following", followService.getMentorFollowing(fVo));
+				model.addAttribute("mentor", mentorService.getMentor(mVo));
+				return "Mentor/getMentor";
+			}
 		}
 		
 		// 멘토 세부검색(최신순, 인기순)

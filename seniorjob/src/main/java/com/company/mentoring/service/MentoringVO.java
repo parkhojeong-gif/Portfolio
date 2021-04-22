@@ -15,6 +15,7 @@ public class MentoringVO {  //멘토링 코스
 	private String mentoring_photo;	//멘토링 코스 이미지
 	//송다희 수정(string > int)
 	private int mentoring_price;	//멘토링 코스 금액
+	private String mentoring_introduce; 		//멘토링 코스 간단 소개(100자 이하)
 	private String mentoring_data;	//멘토링 코스 자료
 	private String mentor_id;	//멘토 id
 	private String mentoring_end_date;	//멘토링 코스 종료일

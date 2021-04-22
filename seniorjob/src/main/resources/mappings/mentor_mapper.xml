@@ -27,17 +27,26 @@
 	
 	<!-- 키워드 검색 -->
 	<select id="getKeywordSearch" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM MENTOR
-			WHERE MENTORING_LOCATION LIKE '%'||#{searchKeyword}||'%'
+		SELECT M.*, U.AUTH "usersVO.auth", U.NAME "usersVO.name"
+		FROM MENTOR M, USERS U
+		WHERE M.ID = U.ID
+		AND U.AUTH = 'MENTOR'
+			OR MENTORING_LOCATION LIKE '%'||#{searchKeyword}||'%'
 			OR MENTORING_AGE LIKE '%'||#{searchKeyword}||'%'
 			OR MENTOR_DUTY LIKE '%'||#{searchKeyword}||'%'
 		ORDER BY MENTOR_ID
 	</select>
 	
-	<!-- 연령 검색 -->	
-	<select id="getAgeSearch" resultType="com.company.mentor.service.MentorVO">
-		SELECT * FROM MENTOR
-				WHERE MENTORING_AGE = #{searchAge}			
+	<!-- 체크박스 검색 -->	
+	<select id="getSearchMentorDuty" resultType="com.company.mentor.service.MentorVO">
+	SELECT M.*, U.AUTH "usersVO.auth", U.NAME "usersVO.name"
+		FROM MENTOR M, USERS U
+		WHERE M.ID = U.ID
+		AND U.AUTH = 'MENTOR'
+		AND MENTOR_DUTY IN
+					<foreach collection="mentor_dutyArr" item="item" index="index" separator="," open="(" close=")">
+						#{item}
+					</foreach>
 	</select>
 	
 	<!-- 멘토 등록 -->
@@ -122,7 +131,10 @@
 		WHERE RN BETWEEN #{start} AND #{end}
    		ORDER BY MENTOR_DATE DESC -->
    		
-   		SELECT * FROM MENTOR
+   		SELECT M.*, U.AUTH "usersVO.auth", U.NAME "usersVO.name"
+		FROM MENTOR M, USERS U
+		WHERE M.ID = U.ID
+		AND U.AUTH = 'MENTOR'
 		ORDER BY MENTOR_DATE
    		
 	</select>
