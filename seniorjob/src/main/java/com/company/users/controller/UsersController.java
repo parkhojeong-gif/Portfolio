@@ -133,6 +133,7 @@ public class UsersController {
 		
 		if (users == null) {
 			vo.setId((String) userInfo.get("kakaoId"));
+			vo.setEmail((String) userInfo.get("email"));
 			usersMapper.insertUsers(vo);
 		}
 		return "redirect:/";
