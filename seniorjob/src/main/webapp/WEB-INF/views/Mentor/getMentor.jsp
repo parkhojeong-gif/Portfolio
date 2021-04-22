@@ -167,12 +167,10 @@
                                                 <c:if test="${empty users }">
                                                 	<input class="button btn largesearch-btn" value="멘토 팔로우" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>  
-                                                <c:if test="${empty following && not empty users}">
+                                                <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우" id="followBtn" type="button">
                                                 </c:if>
-                                                <c:if test="${not empty following }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우 취소" id="followCancelBtn" type="button">
-                                                </c:if>
                                                     <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="" type="button">
                                                 </div>  
                                             </div>
@@ -223,36 +221,6 @@
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
-	 /*  $(function() {
-		
-		function getBasket(){ // 장바구니 담기
-		
-		var formData = { 
-						 "mentoring_name":$('#mentoring_name').val(),
-						 "cart_start":$('#men_start').val(),
-						 "cart_end":$('#met_end').val(),
-						 "cart_price":$('#mentoring_price').val(),
-						 "id" : $('#user_id').val()
-						}
-						 
-
-		// 장바구니 담기
-		$('#BasketBtn').click(function() {
-			$.ajax({
-				url : "BasketChecks",
-				type : "post",
-				dataType : "json",
-				data : formData,
-				success : function(result) {
-					console.log(result);
-					  if (result != 0) {
-						alert("이미 장바구니에 담았습니다.");
-					} else {
-						alert("장바구니에 담았습니다.");
-					} 
-				}
-			});
-		}); */
 		
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
@@ -263,7 +231,7 @@
 					success:function(result){
 						if(result == 0){
 							alert("팔로우 완료");
-							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
+							location.reload();
 						}else{
 							alert("이미 팔로우된 멘토입니다");
 						}
@@ -283,7 +251,7 @@
 							alert("팔로우하지 않은 멘토입니다.");
 						}else{
 							alert("팔로우 취소 완료");
-							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
+							location.reload();
 						}
 					}
 				});

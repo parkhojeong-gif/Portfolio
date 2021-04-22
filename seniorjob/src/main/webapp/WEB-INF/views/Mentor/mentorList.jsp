@@ -71,13 +71,15 @@
 					<!-- End of 멘토 세부검색(최신순/인기순) -->
 					
 					<!-- 멘토 리스트 출력 -->
-					<form name="mentorListFrm">
+					
 					
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
 
 							<c:forEach var="mentor" items="${list }">
-								<div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" >
+							<form name="mentorListFrm">
+								<%-- <div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" > --%>
+								<div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" style="cursor:pointer" >
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
 										<c:if test="${not empty mentor.mentor_photo }">
@@ -98,10 +100,11 @@
 										</div>
 									</div>
 								</div>
+							</form>	
 							</c:forEach>
 						</div>
 					</div>
-					</form>
+					
 					<!-- End of 멘토 리스트 출력 -->
 					
 				</div>
@@ -170,6 +173,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
+
 	// 멘토 등록
 	function MentorRegister(){
 		var param = $('#id').val();
@@ -197,7 +201,6 @@
 				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-				console.log(response[i]);
 				var div2 = $("<div>").attr({ 'id':"list-type",'class':"proerty-th" });
 				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");

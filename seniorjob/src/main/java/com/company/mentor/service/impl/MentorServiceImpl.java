@@ -116,10 +116,21 @@ public class MentorServiceImpl implements MentorService {
 	public List<MentorVO> getMentorByFollow(MentorVO vo) {
 		return mentorMapper.getMentorByFollow(vo);
 	}
+	// 멘토 팔로우 클릭 시 멘토 팔로우 숫자 추가_김찬곤
+	@Override
+	public void getUpdateFNumPlus(MentorVO vo) {
+	}
+	// 멘토 팔로우 클릭 시 멘토 팔로우 숫자 제거_김찬곤
+	@Override
+	public void getUpdateFNumMinus(MentorVO vo) {
+	}
+	
 //	-------------------------------------------------------- End of 김찬곤-----------------------------------------------------------------------------------------------------
 
 	@Override
 	public String getMentorId(MentorVO vo) {
 		return mentorMapper.getMentorId(vo);
 	}
+
+	
 }
