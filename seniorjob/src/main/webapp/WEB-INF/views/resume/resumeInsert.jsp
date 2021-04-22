@@ -86,20 +86,11 @@
 	})
 	
 	//자격증 불러오기
-	/* $(document).on("click", "#certiSearchSom", function(){
+	 $(document).on("click", "#certiSearchSom", function(){
 		window.name="parentForm"; //부모창 이름
 		window.open("popCertiSeeResume",
-                "자격증", "width=900, height=900, resizable = no, scrollbars = no"); */
-	
-	$(document).on("click", "#video", function(){
-		window.open("https://192.168.0.56:85",
-                "영상", "width=1000, height=1000, resizable = no, scrollbars = no");
-	})
-	
-	$(document).on("click", "#chatt", function(){
-		window.open("chat",
-                "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
-	})
+                "자격증", "width=900, height=900, resizable = no, scrollbars = no"); 
+	 })
 	
 </script>
 <!-- 자기소개서 항목 추가 -->
@@ -129,7 +120,7 @@
 <!-- 자격증 항목 추가+ -->
 	var certi_number = 1;
 	$(document).on("click", "#certiAdd", function(){
-		var certi = "<div class='col-sm-6'>"
+		var certi = "<div class='col-sm-6 som_certi_group'>"
 				  + "<div class='form-group'>"
 				  + "<label>항목</label>"
 				  + "<input type='hidden' name='clist["+certi_number+"].certi_kind'>"
@@ -305,10 +296,10 @@
 								</div>
 							</div>
 							<br><br><br><br><br><br><br>
-							<div class="tab-content">
+							<div class="tab-content som_certi_search">
 								<div class="tab-pane" id="step1">
 									<h3>자격증</h3>
-									<div class="col-sm-6">
+									<div class="col-sm-6 som_certi_group">
 										<div class="form-group">
 											<label for="firstname">항목</label> 
 											<select id = "certi_kinds" name = "clist[0].certi_kinds">
@@ -396,8 +387,7 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
-									<button name="video" id="video">영상</button>
-									<button name="chatt" id="chatt">채팅</button>
+									
 								</div>
 								<br><br><br>
 						</form>
