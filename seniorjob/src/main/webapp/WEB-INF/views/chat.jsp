@@ -12,10 +12,9 @@
 		<button type="button" onclick="openSocket()">대화방 참여</button>
 		<button type="button" onclick="closeSocket()">대화방 나가기</button>
 		<br/><br/>
-			메세지 입력 :
+			
 		<input type="text" id="sender" value="${sessionScope.id }" style="display: none">
-		<input type="text" id="messageinput">
-		<button type="button" onclick="send()">메세지 전송</button>
+		
 		<!-- socket closed 됨 -->
 		<button type="button" onclick="clearText()">대화내용 지우기</button>	
 	</div>
@@ -25,7 +24,9 @@
 			<!-- 메세지가 보이는 곳 -->
 		</div>
 	</div>
-	
+		메세지 입력 :  <input type="text" id="messageinput">
+		<button type="button" onclick="send()">메세지 전송</button>
+			
 	<script>
 		//ws > websocket
 		var ws;

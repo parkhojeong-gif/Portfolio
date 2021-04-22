@@ -174,7 +174,7 @@
 	})
 	
 	
-	
+	/* 송다희 추가 */
 	/* 내 정보 불러오기 */
 	$(document).on("click", "#resume_in", function(){
 		$("#resume_name").val('${user.name}');
@@ -183,6 +183,7 @@
 		$("#resume_phone").val('${user.phonenum}')
 		$("#resume_address").val('${user.address}')
 	})
+	/* 송다희 추가 */
 	
 </script>
 
@@ -215,7 +216,9 @@
 						<div class="row">
 							<div><input type="hidden" value=${ResumeVO.resume_no } id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
+							<!-- 송다희 추가 -->
 							<div align="right"><button type="button" id="resume_in" name="resume_in">내 정보 불러오기</button></div>
+							<!-- 송다희 추가 -->
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>이력서 제목</label> 
