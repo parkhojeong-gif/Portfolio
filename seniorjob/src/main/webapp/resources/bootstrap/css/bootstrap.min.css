@@ -4152,7 +4152,10 @@ tbody.collapse.in {
 .input-group {
 	position: relative;
 	display: table;
-	border-collapse: separate
+	border-collapse: separate;
+	border: 1px solid grey; /* 김찬곤 */
+	margin: 20px; /* 김찬곤 */
+
 }
 
 .input-group[class*=col-] {

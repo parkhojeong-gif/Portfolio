@@ -75,13 +75,13 @@ input[name=m_numOfDays]{font-size:large; color:red}
 </head>
 <body>
 
-<form action="MentoringRegisterProc" method="post" onsubmit="mentoringCheck()">
+<form method="post" enctype="Multipart/form-data" name="frm" id="frm" action="mentoringRegisterCheck">
   <div class="container">
     <h1>멘토링 등록</h1>
     <p>모든 빈칸을 채워주세요</p>
     <hr>
     
-    <input type="hidden" name="mentor_id" value="${mentorInfo.mentor_id }">
+    <input type="hidden" name="mentor_id" id="mentor_id" value="${mentorInfo.mentor_id }">
 
     <label for="name"><b>멘토링 이름</b></label>
     <input type="text" placeholder="멘토링 이름" name="mentoring_name" id="name" required>
@@ -93,10 +93,36 @@ input[name=m_numOfDays]{font-size:large; color:red}
 	<input type="date" placeholder="Enter Date" name="mentoring_end_date" id="mentoring_end_date" required>
 	
 	<div id="m_numOfDays">
-		<label for="date"><b>총 멘토링 일수</b></label>
-		<input type="text" placeholder="총 멘토링 일수" name="m_numOfDays" id="m_numOfDays" required> 일간 진행
+		<label for="date"><b>멘토링 기간</b></label> 
+		<input name="m_numOfDays" id="m_numOfDays" value="">
 	</div>
-
+	
+	<label for="name"><b>멘토링 분야</b></label>
+    <select name="mentoring_kind" id="mentoring_kind" required>
+					<option value="">선택</option>
+					<option>IT</option>
+					<option>영업</option>
+					<option>인사</option>
+					<option>총무</option>
+					<option>마케팅</option>
+					<option>광고</option>
+					<option>회계</option>
+					<option>재무</option>
+					<option>해외</option>
+					<option>유통</option>
+					<option>무역</option>
+					<option>전략</option>
+					<option>기획</option>
+					<option>생산</option>
+					<option>공기업</option>
+					<option>디자인</option>
+					<option>교육</option>
+					<option>컨설팅</option>
+	</select>
+				
+	<br>
+	<p>	
+	
     <label for="psw-repeat"><b>정원</b></label>
     <input type="text" placeholder="멘토링 정원을 입력하세요" name="mentoring_limit" id="psw-repeat" required>
     <hr>
@@ -105,13 +131,12 @@ input[name=m_numOfDays]{font-size:large; color:red}
     <textarea id="content" name="mentoring_content" rows="10" cols="90" style="height:200px; display:block; margin:15px; width:1345px"></textarea>
     
     <label for="psw"><b>멘토링 코스 이미지</b></label>
-    <input type="file" placeholder="이미지를 등록하세요" name="mentoring_photo" id="psw" required>
+    <input type="file" placeholder="이미지를 등록하세요" name="mentoring_photo_file" id="psw" required>
     
     <label for="psw"><b>멘토링 금액</b></label>
     <input type="text" placeholder="금액을 입력하세요" name="mentoring_price" id="psw" required>
     
-    <button type="submit" class="registerbtn">멘토링 등록하기</button>
-    <button type="button" class="registerbtn" onclick="MentoringPreview()">미리보기</button>
+    <button type="submit" class="registerbtn" style="background:#FDC600">멘토링 등록하기</button>
   </div>
   
   <div class="container signin">
@@ -141,46 +166,48 @@ input[name=m_numOfDays]{font-size:large; color:red}
 			alert("종료날짜보다 시작날짜가 작아야 합니다.");
 			$( "input[name='mentoring_begin_date']" ).val(''); // 해당 태그 값 초기화
 			$( "input[name='mentoring_end_date']" ).val('');
+			$( "input[name='m_numOfDays']" ).val('');
 			return false;
 		}else if(startDate.getTime() == endDate.getTime()){
-			alert("멘토링 시작일-종료일이 같습니다.\n멘토링 코스 최소 기간은 일주일(7일) 입니다.");
+			alert("멘토링 시작일-종료일이 같습니다.");
 			$( "input[name='mentoring_begin_date']" ).val('');
 			$( "input[name='mentoring_end_date']" ).val('');
-			return false;
-		}else if(numOfDays <= 7){
-			alert("멘토링 코스 최소 기간은 일주일(7일) 입니다.\n기간을 재설정 해주세요.");
-			$( "input[name='mentoring_begin_date']" ).val('');
-			$( "input[name='mentoring_end_date']" ).val('');
+			$( "input[name='m_numOfDays']" ).val('');
 			return false;
 		}else{
-			$('input[name=m_numOfDays]').attr('value',parseInt(numOfDays/cDay));
+			$("input[name='m_numOfDays']").attr('value',parseInt(numOfDays/cDay));
 		}
 	});
 
 	// 미리보기
-	function MentoringPreview(){
-		alert("Mentoring Preview");
-	}
+	$(document).on("click", "#preview", function(){
+		window.name = "MentoringRegisterForm";
+		var openWin = window.open("mentoringPreview",
+                "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
+	});
 	
-	// 멘토링 등록 중복 체크
-	function mentoringCheck(){
+	// 멘토링 등록
+	/* function mentoringReg(){
 		var flag = true;
+		var param = $('#frm').serialize();
+		
 		$.ajax({
-			url: "MentoringRegisterCheck",
-			data: {"mentoring_begin_date" : $('#mentoring_begin_date').val()},		
+			url: "mentoringRegisterCheck",
+			data: param,		
 			dataType: "json",
 			success:function(result){
-				if(result == 1){
-					var msg = "해당 기간에 등록된 멘토링이 있습니다.";
-					alert(msg);
-					flag = false;
-				}else{
+					alert("성공" + result);
+					location.href ="getMentorList";
 					flag = true;
-				}
+			},error:function(response){
+				var msg = "해당 기간에 등록된 멘토링이 있습니다.";
+				var response = response.list;
+				$.each(response, function(i){ alert(response[i]); });
+				flag = false;
 			}
 		});
 		return flag;
-	}
+	} */
 </script>
 
 </body>

@@ -67,7 +67,6 @@
 		
 	}
 	
-	
 	$("image").change(function(){
 		if(this.files && this.files[0]){
 			var reader = new FileReader;
@@ -85,6 +84,23 @@
 		var openWin = window.open("preview",
                 "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
 	})
+	
+	//자격증 불러오기
+	/* $(document).on("click", "#certiSearchSom", function(){
+		window.name="parentForm"; //부모창 이름
+		window.open("popCertiSeeResume",
+                "자격증", "width=900, height=900, resizable = no, scrollbars = no"); */
+	
+	$(document).on("click", "#video", function(){
+		window.open("https://192.168.0.56:85",
+                "영상", "width=1000, height=1000, resizable = no, scrollbars = no");
+	})
+	
+	$(document).on("click", "#chatt", function(){
+		window.open("chat",
+                "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
+	})
+	
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
@@ -342,6 +358,7 @@
 									<div class="col-sm-12" align="right">
                                         <a href="#step4" data-toggle="tab">
                                         <button type="button" class="btn btn-primary" id="certiAdd" name="clist[0].certiAdd">자격증 항목 추가+</button></a>
+                                        <button type="button" class="btn btn-primary" id="certiSearchSom" name="certiSearchSom">자격증 불러오기</button></a>
                                     </div>
 								</div>
 							</div>
@@ -379,6 +396,8 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
+									<button name="video" id="video">영상</button>
+									<button name="chatt" id="chatt">채팅</button>
 								</div>
 								<br><br><br>
 						</form>

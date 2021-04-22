@@ -5,331 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>시니어잡/멘토</title>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </head>
 <style>
 	h3{text-align:left}
 	#clickMentor{cursor:pointer}
 	h1{text-align:center}
+	
+#sidebar { 
+	right: 0;
+	padding-top: 110px;
+}
+#sidebar ul { 
+	padding: 10px; 
+}
+#mainCopy{
+	font-size: 40px;
+	padding:30px; 
+	font-family:'Spoqa Han Sans'; 
+	font-weight: 300;
+}
 </style>
 <body>
 
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
+<h1 class="display-4" id="mainCopy">나에게 꼭 맞는 멘토를 찾아보세요!</h1>
+<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토 프로필 카드를 클릭하면 멘토의 상세 프로필 정보 확인이 가능합니다.</footer>
 <!-- topHeader -->
-<h1 class="display-4">멘토 리스트</h1>
 <div id="listResult"></div>
           <!-- property area -->
         <div class="properties-area recent-property" style="background-color: #FFF;">
             <div class="container">   
                 <div class="row">
-                
-                <!-- 리스트 상단 상세 검색 Bar -->
-                
-                <!-- 직무별 멘토찾기  -->
-                	<div class="col-md-12 padding-bottom-40 large-search"> 
-                        <div class="search-form wow pulse">
-                            <form action="" class=" form-inline" name="mtListFrm">
-                                <div class="col-md-12 ">
-                                    <div class="search-row">   
-                                        <div class="">
-                                            <label for="price-range">직무별 멘토찾기</label>
-                                        </div>
-                                        <!-- End of  -->  
-                                    </div>
-
-									<div class="search-row">
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="영업">
-												영업
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="인사">
-												인사
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="총무">
-												총무
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="마케팅">
-												마케팅
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="광고">
-												광고
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="회계">
-												회계
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-									
-									
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="재무">
-												재무
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="해외">
-												해외
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="유통">
-												유통
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-									</div>
-									
-									<div class="search-row">
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="무역">
-												무역
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="전략">
-												전략
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="기획">
-												기획
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-									
-									
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="생산">
-												생산
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="공기업">
-												공기업
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="IT">
-												IT
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="디자인">
-												디자인
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="교육">
-												교육
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-
-									<div class="form-group">
-										<div class="checkbox">
-											<label> <input type="checkbox" name="mentor_duty" id="mentor_duty" value="컨설팅">
-												컨설팅
-											</label>
-										</div>
-									</div>
-									<!-- End of  -->
-									<br>
-									<hr>
-								</div>
-                                     
-                                    <!-- End of 직무별 멘토찾기  -->
-                                     
-                                      <!-- 지역별 멘토찾기 -->
-                    						<div class="search-row">   
-                                        		<div class="col-sm-3">
-                                            		<label for="price-range">지역별 멘토찾기</label>
-                                        		</div>
-                                    		</div>
-                                    		
-                                    <div class="search-row">  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="서울특별시">서울특별시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="부산광역시">부산광역시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="대구광역시">대구광역시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="인천광역시">인천광역시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="광주광역시">광주광역시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="울산광역시">울산광역시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_location" id="mentoring_location" value="세종특별자치시"> 세종특별자치시
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        </div>
-                                        <!-- End of  --> 
-                   						<!-- End of 지역별 멘토찾기 -->
-                   						
-                   						<!-- 연령별 멘토찾기 -->
-                   						
-                   						<div class="search-row">   
-                                        		<div class="col-sm-3">
-                                            		<label for="price-range">연령별 멘토찾기</label>
-                                        		</div>
-                                    		</div>
-                                    	
-                                    	<div class="search-row">  
-                                    		<div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_age" id="mentoring_age" value="40대"> 40대
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  -->  
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_age" id="mentoring_age" value="50대"> 50대
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <!-- End of  --> 
-
-                                        <div class="col-sm-3">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="mentoring_age" id="mentoring_age" value="60대"> 60대
-                                                </label>
-                                            </div>
-                                        </div>
-                                       </div>
-                                        <!-- End of  -->
-                    					<!-- 연령별 멘토찾기 -->
-                                </div>  
-                            </form>
-                        </div>
-                    </div>
-                    
-                    <!-- 검색 결과 개수 -->
-                    <div id="searchCnt" name="searchCnt"></div>
-                    <!-- 검색 결과 개수 -->
                     
 				<div class="col-md-9 padding-top-40 properties-page" id="optionVal">
 
@@ -350,118 +59,97 @@
 							<!--/ .items-per-page-->
 						</div>
 					</div>
-					<!-- 멘토 세부검색(최신순/인기순) -->
+					<!-- End of 멘토 세부검색(최신순/인기순) -->
 					
-<!-- 멘토 리스트 출력 -->	
-	
-	
-	
-<!-- End of 멘토 리스트 출력 -->		
-			
 					<!-- 멘토 리스트 출력 -->
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
 
 							<c:forEach var="mentor" items="${list }">
-
 								<div class="col-sm-6 col-md-4 p0" id="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'">
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
-											<img src="../resources/assets/img/mentor/photoDefault.jpg">
-										</div>
+										<c:if test="${not empty mentor.mentor_photo }">
+											<img src="image/${mentor.mentor_photo }">
+										</c:if>
+										<c:if test="${empty mentor.mentor_photo }">
+											<img src="resources/assets/img/mentor/photoDefault.jpg">
+										</c:if>
+										</div>	
 
 										<div class="item-entry overflow">
-											<h5 id="mentor_company_name" >${mentor.mentor_company_name }</h5>
-											<br> <a id="mentor_department_name">${mentor.mentor_department_name } </a>
+											<h5 id="mentor_company_name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
 											<div class="dot-hr"></div>
-											<span class="pull-left"><b id="mentoring_kind" >${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit">멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_location" ><b class="property-info-unit">멘토링 지역:</b> ${mentor.mentoring_location }</b></span>
+											<span class="pull-left"><b id="mentoring_age" ><b class="property-info-unit">멘토링 연령:</b> ${mentor.mentoring_age }</b></span>
 										</div>
 									</div>
 								</div>
 							</c:forEach>
-
 						</div>
 					</div>
-					<!-- 멘토 리스트 출력 -->
-					
-					
-
-					<!-- 페이징 -->
-					<div id="paging"></div>
-					<%-- <div style="align: center">
-						<c:if test="${paging.startPage != 1 }">
-							<a
-								href="/MentorList?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-						</c:if>
-						<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-							var="p">
-							<c:choose>
-								<c:when test="${p == paging.nowPage }">
-									<b>${p }</b>
-								</c:when>
-								<c:when test="${p != paging.nowPage }">
-									<a
-										href="/MentorList?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-								</c:when>
-							</c:choose>
-						</c:forEach>
-						<c:if test="${paging.endPage != paging.lastPage}">
-							<a
-								href="/MentorList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-						</c:if>
-					</div> --%>
-					<!-- 페이징 -->
+					<!-- End of 멘토 리스트 출력 -->
 					
 				</div>
-				
-                    
                     <!-- 플로팅 배너 -->
-                    <div class="col-md-3 pl0 padding-top-40" id="">
-                        <div class="blog-asside-right pl0">
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">멘토등록 / 멘토링등록</h3>
-                                </div>
-                                <div class="panel-body search-widget">
-                                    <form name="mentorRegisterForm" class="form-inline">
-                                    <input type="hidden" name="id" value="${users.id }">
-                                   		<fieldset >
-                                            <div class="row">
-                                                <div class="col-xs-12">  
-                                                    <a href=""><img src="../resources/assets/img/mentor/mentoring.jpg"></a>
-                                                </div>  
-                                            </div>
-                                        </fieldset>
-
-                                        <fieldset >
-                                            <div class="row">
-                                                <div class="col-xs-12">  
-                                                <c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="loginCheck()">
+                    <div class="col-md-3 p0 padding-top-40" id="sidebar">
+					<div class="blog-asside-right">
+						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading">
+								<h3 class="panel-title">멘토 등록</h3>
+							</div>
+							<form name="mentorRegisterForm" class="form-inline">
+							<div class="panel-body search-widget">
+								<input type="hidden" name="id" id="id" value="${users.id }">
+								<div class="panel-body search-widget">
+									<div class="row">
+										<div class="col-xs-12">
+												<c:if test="${empty users }">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>
                                                 <c:if test="${not empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="location.href='MentorRegister'">
+                                                    <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" onclick="MentorRegister()" style="background:#FDC600; color:#fff">
                                                 </c:if>
-                                                <c:if test="${empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="loginCheck()">
-                                                </c:if>
-                                                <c:if test="${not empty users }">
-                                                    <input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()">
-                                                </c:if>
-                                                </div>  
-                                            </div>
-                                        </fieldset>                                     
-                                    </form>
-                                </div>
-                            </div>
-
-                            <!-- End of 플로팅 배너 -->
-                        </div>
-                    </div>
+										</div>
+									</div>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+                <!-- End of 플로팅 배너 -->
                 </div>           
             </div>
         </div>
+        <!-- TOP버튼 / https://seo6285.tistory.com/189-->
+      	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
+      	<!-- TOP버튼 -->
+      	
+      	<!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					로그인 또는 회원가입이 필요한 항목입니다.
+			      </div>
+			      <div class="modal-footer">
+			      	<button type="button" class="btn btn-primary" style="display:none">로그인</button> <!-- 레이아웃 정렬용 태그(사용X) -->
+					<button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='insertUsers'">회원가입</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->
 
+<div id="footerBottom">footer</div>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
@@ -469,19 +157,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 
-	// 로그아웃 상태에서 멘토 등록 클릭 시
-	function loginCheck(){
-		if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
-			location.href = "login"; // 로그인 페이지로 이동
-		}
-	}
-	
-	// 로그인 상태에서 멘토 등록 클릭 시
-	function MentoringRegister(){
+	// 멘토 등록
+	function MentorRegister(){
+		var param = $('#id').val();
 		var mentorRegisterForm = document.mentorRegisterForm;
-		mentorRegisterForm.action = "MentoringRegister";
+		mentorRegisterForm.action = "mentorRegisterCheck?id="+param;
 		mentorRegisterForm.submit();
 	}
+	
+	// 멘토링 등록
+		function MentoringRegister(){
+			var param = $('#id').val();
+			var mentorRegisterForm = document.mentorRegisterForm;
+			mentorRegisterForm.action = "MentoringRegister?id="+param;
+			mentorRegisterForm.submit();
+		}
 	
 	// 세부검색(최신순, 인기순)
 	function optionSelect(obj){
@@ -494,11 +184,11 @@
 				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-					
+				
 				var div2 = $("<div>").attr({ id:"list-type",'class':"proerty-th" });
-				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"  });
+				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");
-				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","../resources/assets/img/mentor/photoDefault.jpg"));
+				var div5 = $("<div>").attr("class","item-thumb").append($("<img>").attr("src","image/"+response[i].mentor_photo));
 				var div6 = $("<div>").attr("class","item-entry overflow");
 					var h5 = $("<h5>").attr("id","mentor_company_name").text(response[i].mentor_company_name).append($("<br>"));
 					var a = $("<a>").attr("id","mentor_department_name").text(response[i].mentor_department_name);
@@ -514,15 +204,39 @@
 				});
 			} // end of success
 		}); // end of ajax
+		
+		$('#mtList').on('click','#mentor_id',function(){
+		var param = $(event.target).closest('#mentor_id').data('id');
+		location.href='getMentor?mentor_id='+param;
+	});
+		
 	}
 	
-	// 세부검색 https://dlgkstjq623.tistory.com/356  
-	//https://taesikman1.tistory.com/78
-	var chkboxValues = [];
-	$("input:checkbox[name='mentoring_location']").each(function(){
-		if(this.checked){
-			chkboxValues.push($(this).val());
-		}
+	/* 플로팅 배너 */
+	$(function() {
+		var offset = $("#sidebar").offset(); // 선택요소 좌표 가져오기
+		var topPadding = 300; 
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > offset.top) { // 윈도우 스크롤바가 sidebar 보다 높이 위치한다면
+				$("#sidebar").stop().animate({ // 더이상 따라오지 않고 멈추기
+					marginTop: $(window).scrollTop() - offset.top + topPadding
+				});
+			} else{ // 윈도우 스크롤바가 sidebar 보다 낮게 위치한다면
+				$("#sidebar").stop().animate({
+					marginTop: 0
+				});
+			}; 
+		});
 	});
 	
+	// 모달 테스트
+	$(function(){ 
+		$("#modal_on").click(function(){ 
+			$(".modal").fadeIn(); 
+			}); 
+		$(".modal_content").click(function(){
+			$(".modal").fadeOut(); }); 
+		});
+
+	/* 플로팅 배너 */
 </script>

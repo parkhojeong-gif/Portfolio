@@ -9,126 +9,218 @@
 <title>시니어잡</title>
 <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
 <link href="resources/css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<!-- Icons font CSS-->
+    <link href="resources/mainSearchBar/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="resources/mainSearchBar/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="resources/mainSearchBar/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="resources/mainSearchBar/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="resources/mainSearchBar/css/main.css" rel="stylesheet" media="all">
+
+
+
+
+<style>
+
+#slidemenu{background:#12cf3d;position:absolute;width:100px;top:50px;right:10px;}
+
+
+.slider-content{position:absolute}
+.form-inline{margin:20px}
+#mentorSearchBtn{cursor:pointer}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$.ajax({
+		url:'videoCallButton',
+		success : function(result) {
+			
+			if(result != "false") {
+				console.log("success");
+				$("#numSom").attr('value',result);
+				var div = $('<div />').attr('id','slidemenu');
+				var a = $('<a />').attr('onclick','video()').html('영상면접');
+				var a2 = $('<a />').attr('onclick','resum()').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
+				var a3 = $('<a />').attr('onclick','chatt()').html('채팅'); //나중에 영상면접 화면에 붙일 것.
+				$(div).append(a);
+				$(div).append(a2);
+				$(div).append(a3);
+				$("#slideDiv").append(div);
+				
+			} else {
+				console.log("else");
+			}
+		},
+		error : function() {
+			console.log("error");
+		}
+	});
+	 var currentPosition = parseInt($("#slidemenu").css("top"));
+    $(window).scroll(function() {
+        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+        $("#slidemenu").stop().animate({"top":position+currentPosition+"px"},1000);
+    });
+});
+
+function video(){
+	window.open("https://192.168.0.56:85",
+            "영상", "width=900, height=900, resizable = no, scrollbars = no");
+}
+function resum(){
+	var num=$("#numSom").val();
+	//console.log(num)
+	window.open("popResumeGetForm?resume_no="+num,
+            "이력서", "width=900, height=900, resizable = no, scrollbars = no");
+}
+
+function chatt() {
+	window.open("chat",
+            "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
+}
+</script>
+
 </head>
 <body>
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
+	<div id="slideDiv">
+	
+	</div>
 	<!-- topHeader -->
-	 <div class="s009">
-      <form onsubmit="checkValueNull()" method="post" name="searchFrm">
-        <div class="inner-form">
-          <div class="basic-search">
-            <div class="input-field">
-              <input id="search" name="searchKeyword" type="text" value="" placeholder="키워드로 검색   ex)마케팅,경리,경영" />
-              <div class="icon-wrap">
-                <svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" onclick="checkKeywordNull()">
-                  <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                </svg>
-              </div>
+	<input type="hidden" id="numSom">
+	<!-- 검색 -->
+        <div class="slider-area">
+            <div class="slider">
+                <div id="bg-slider" class="owl-carousel owl-theme">
+                    <div class="item"><img src="resources/assets/img/slide1/slider-image-1.jpg" alt="Mirror Edge"></div> 
+                    <div class="item"><img src="resources/assets/img/slide1/slider-image-2.jpg" alt="The Last of us"></div> 
+                    <div class="item"><img src="resources/assets/img/slide1/slider-image-4.jpg" alt="GTA V"></div>   
+                </div>
             </div>
-          </div>
-          <div class="advance-search">
-            <span class="desc">상세검색</span>
-            <div class="row">
-              <div class="input-field">
-                <div class="input-select">
-                  <select data-trigger="" name="mentor_duty" id="choices-single-defaul">
-                    <option value="">직무</option>
-                    <option>IT</option>
-                    <option>영업</option>
-                    <option>인사</option>
-                    <option>총무</option>
-                    <option>마케팅</option>
-                    <option>광고</option>
-                    <option>회계</option>
-                    <option>재무</option>
-                    <option>해외</option>
-                    <option>유통</option>
-                    <option>무역</option>
-                    <option>전략</option>
-                    <option>기획</option>
-                    <option>생산</option>
-                    <option>공기업</option>
-                    <option>디자인</option>
-                    <option>교육</option>
-                    <option>컨설팅</option>
-                  </select>
+            <div class="container slider-content">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                        <h2>시니어잡에 오신것을 환영합니다.</h2>
+                        <p>업의 현장에 종사하는 분들의 지식과 전문성을 활용해 꿈을 이뤄 나가는 과정에서 즉시 가치가 창출 될 수 있도록 지원합니다.</p>
+                        <div class="search-form wow pulse" data-wow-delay="0.8s">
+                            <form class=" form-inline" name="searchFrm">
+                                    <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" name="searchKeyword" value="" placeholder="멘토 직무 검색 ex)마케팅,영업,IT">
+							<div class="form-group">
+								<div class="row row-space">
+									<div class="col-2"></div>
+									<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchBtn"></i>	
+								</div>
+							</div>
+							</form>
+                        </div>
+					
+					<!-- 멘토링 검색 -->
+					<div class="search-form wow pulse" data-wow-delay="0.8s">
+						<form class=" form-inline" method="POST" action="getMentoringList" onsubmit="return checkDateNull()">
+							<div class="row row-space">
+								<div class="col-4">
+									<div class="input-group">
+										<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required>
+									</div>
+								</div>
+								<div class="col-4">
+									<div class="input-group">
+										<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+							<div class="row row-space">
+								<div class="col-2"></div>
+								<button class="btn-submit m-t-0" type="submit">search</button>
+							</div>
+							</div>
+						</form>
+					</div>
+					<!-- End of 멘토링 검색 -->
+					
+				</div>
                 </div>
-              </div>
-              <div class="input-field">
-                <div class="input-select">
-                  <select data-trigger="" name="mentoring_location" id="choices-single-defaul">
-                    <option value="">지역</option>
-					<option>서울특별시</option>
-					<option>부산광역시</option>
-					<option>대구광역시</option>
-					<option>인천광역시</option>
-					<option>광주광역시</option>
-					<option>대전광역시</option>
-					<option>울산광역시</option>
-					<option>세종특별자치시</option>
-				</select>
-                </div>
-              </div>
-              <div class="input-field">
-                <div class="input-select">
-                  <select data-trigger="" name="mentoring_age" id="choices-single-defaul">
-                    <option value="">연령</option>
-                    <option>40대</option>
-                    <option>50대</option>
-                    <option>60대</option>
-                  </select>
-                </div>
-              </div>
             </div>
-            <div class="row third">
-              <div class="input-field">
-                <div class="result-count">
-                  <span></span></div>
-                <div class="group-btn">
-                  <button class="btn-delete" id="delete">RESET</button>
-                  <button type="submit" class="btn-search">검색</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </form>
-    </div>
+      <!-- End of 검색 -->
+      
+      <!-- 모달 팝업 -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Alert</h4>
+			      </div>
+			      <div class="modal-body">
+					검색 키워드를 입력하세요.
+			      </div>
+			      <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+      	<!-- 모달 팝업 -->
 
-	<!-- 지역별 검색 -->
-
-<!-- End of 지역별 검색 -->
-<script src="resources/js/extention/choices.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
-
+	
+	$('#mentorSearchBtn').click(function(){
+		// 멘토 상세검색 값 체크 및 검색 구현
+			var keywordChk = $("[name='searchKeyword']").val();
+			if(keywordChk==""){
+				$('#myModal').modal().show();
+				return false;
+			}else{
+				alert(keywordChk + "직무를 가진 멘토를 검색합니다.");
+				searchFrm.action = "getKeywordSearch";
+				searchFrm.submit();
+			}
+	});
+	
+	// 멘토링 날짜 검색 유효성 체크
+	function checkDateNull(){
+		var s_date = $('#s_date').val();
+		var e_date = $('#e_date').val();
+		var s_dateArr = s_date.split("-");
+		var e_dateArr = e_date.split("-");
+		var startDate = new Date(s_dateArr[0], s_dateArr[1], s_dateArr[2]);
+		var endDate = new Date(e_dateArr[0], e_dateArr[1], e_dateArr[2]);
+		var today = new Date().getFullYear() + _pad(new String(new Date().getMonth() + 1), 2) + _pad(new String(new Date().getDate()), 2);
+		
+		if(startDate > endDate){
+			alert("날짜 설정이 잘못되었습니다");
+			return false;
+		}else if(startDate < today){
+			alert("과거 날짜를 시작일로 설정 불가능");
+			return false;
+		}else if(endDate < e_date){
+			alert("과거 날짜를 종료일로 설정 불가능");
+			return false;
+		}
+	}
+	
 	// 키워드 검색 값 체크
-	function checkKeywordNull() {
+	/* function checkKeywordNull() {
 		var str = document.getElementsByName("searchKeyword");
 		var searchFrm = document.searchFrm;
 		if (str[0].value == '' || str[0].value == null) { // 값이 NodeList, 배열로 넘어오기 때문에 [0]번쨰로 값을 확실히 지정헤야 한다.
 			alert("키워드를 입력하세요.");
 			return false;
 		}else {
-			searchFrm.action = "getKeywordSearch";
-			searchFrm.submit();
+			searchDateFrm.action = "getKeywordSearch";
+			searchDateFrm.submit();
 		}
-	}
-	
-	// 상세검색 값 체크
-	function checkValueNull(){
-		var dutyChk = $("[name='mentor_duty']").val();
-		var locationChk = $("[name='mentoring_location']").val();
-		var ageChk = $("[name='mentoring_age']").val();
-		if(dutyChk=="" && locationChk=="" && ageChk==""){
-			alert("검색 조건을 하나 또는 여러개 선택하세요");
-			return false;
-		}else{
-			searchFrm.action = "getMentorList";
-			searchFrm.submit();
-		}
-		
-	}
+	} */
 	
 	// 연령 검색 값 체크
 	/* function checkAgeNull() {
@@ -150,45 +242,20 @@
 		}
 	} */
 	
-
-	
-	 const customSelects = document.querySelectorAll("select");
-     const deleteBtn = document.getElementById('delete')
-     const choices = new Choices('#choices-single-defaul',
-     {
-       searchEnabled: false,
-       removeItemButton: true,
-       itemSelectText: '',
-     });
-     for (let i = 0; i < customSelects.length; i++)
-     {
-       customSelects[i].addEventListener('addItem', function(event)
-       {
-         if (event.detail.value)
-         {
-           let parent = this.parentNode.parentNode
-           parent.classList.add('valid')
-           parent.classList.remove('invalid')
-         }
-         else
-         {
-           let parent = this.parentNode.parentNode
-           parent.classList.add('invalid')
-           parent.classList.remove('valid')
-         }
-       }, false);
-     }
-     deleteBtn.addEventListener("click", function(e)
-     {
-       e.preventDefault()
-       const deleteAll = document.querySelectorAll('.choices__button')
-       for (let i = 0; i < deleteAll.length; i++)
-       {
-         deleteAll[i].click();
-       }
-     });
-
 </script>
+
+	 <!-- Jquery JS-->
+    <script src="resources/mainSearchBar/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="resources/mainSearchBar/vendor/select2/select2.min.js"></script>
+    <script src="resources/mainSearchBar/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script src="resources/mainSearchBar/vendor/bootstrap-wizard/bootstrap.min.js"></script>
+    <script src="resources/mainSearchBar/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="resources/mainSearchBar/vendor/datepicker/moment.min.js"></script>
+    <script src="resources/mainSearchBar/vendor/datepicker/daterangepicker.js"></script>
+    <!-- Main JS-->
+    <script src="resources/mainSearchBar/js/global.js"></script>
+
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>

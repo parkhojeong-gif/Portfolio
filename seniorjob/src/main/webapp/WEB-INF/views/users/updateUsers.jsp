@@ -256,8 +256,8 @@ function showContents(result) {
                                 		<th>발행처</th>
                                 		<th>자격증번호</th>
                                 		<th>취득일자</th>
-						<th>수정</th>
-						<th>삭제</th>
+										<th>수정</th>
+										<th>삭제</th>
                                 	</tr>
                                 	</thead>
                                 	<tbody id="certi">

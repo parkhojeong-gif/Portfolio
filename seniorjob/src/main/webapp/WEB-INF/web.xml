@@ -28,6 +28,10 @@
 			</param-value>			
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 송다희 추가 -->
+		<!-- 웹소켓을 위한 설정(비동기지원) -->
+		<async-supported>true</async-supported>
+		<!-- 송다희 추가 -->
 	</servlet>
 		
 	<servlet-mapping>

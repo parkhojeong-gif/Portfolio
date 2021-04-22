@@ -59,7 +59,7 @@ public class CartController {
 		for(int i = 0; i < size; i++) {
 			cartservice.deleteCart(ajaxMsg[i]);
 		}
-		return "redirect:/cart";
+		return "cart";
 	}
 	
 	@RequestMapping("/getCart")
@@ -86,4 +86,5 @@ public class CartController {
 		model.addAttribute("cartlist", cartservice.deleteSub(vo));
 		return "redirect:/cart";
 	}
+	
 }

@@ -6,8 +6,14 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
 <html class="no-js"> <!--<![endif]-->
+
+
+
 <jsp:include page="../topHeader.jsp"></jsp:include>
+
     <body>
+    <form action="colReUpdate" method="post" name="frm">
+    <input type="hidden" id="resume_no" name="resume_no" value="${resumeVO.resume_no }">
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
             <div class="container">  
                 <div class="row">
@@ -183,7 +189,7 @@
 									<br><br><br><br>
                                     <div class="col-sm-12 text-center">
                                         <button type="button" class="btn btn-primary" onclick="location='resumeList'"><i class="fa fa-envelope-o"></i>목록으로</button>
-                                        <button type="button" class="btn btn-primary"><i class="fa fa-envelope-o"></i>첨삭하기</button>
+                                        <button type="submit" class="btn btn-primary" ><i class="fa fa-envelope-o"></i>첨삭하기</button>
                                     </div>
                                 </div>
                                 </div>
@@ -194,7 +200,7 @@
                 </div>
             </div>
         </div>
-
+		</form>
         </div>
 		<jsp:include page="../footer.jsp"></jsp:include>
     </body>

@@ -258,6 +258,24 @@ public class UsersController {
 		return "/users/popCareer";
 	}
 	
+	@GetMapping("/popCertiSee")  //
+	public String popCertiSee() {
+		return "/users/popCertiSee";
+	}
+	
+	@GetMapping("/popCareerSee")  //
+	public String popCareerSee() {
+		return "/users/popCareerSee";
+	}
+	
+	@GetMapping("/popCertiSeeResume")  //
+	public String popCertiSeeResume() {
+		return "/users/popCertiSeeResume";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping("/insertCerti") //자격증/경력인증서 등록 처리
 	public String insertCerti(UsersVO vo, HttpServletRequest request) {
@@ -340,12 +358,15 @@ public class UsersController {
 	
 	//마이페이지에서 경력증명서 삭제
 	@RequestMapping("/delCareer")
-	public String certiDelete(UsersVO vo) {
+	public String certiDelete(UsersVO vo, Model model) {
 		UsersVO usersVo =  usersService.selCareer(vo);
 		String fileName = usersVo.getCarrer_certi();
 		new File("C:\\upload\\"+(fileName)).delete();  // 삭제
 		usersService.delCareer(vo);
-		return "redirect:/updateUsers";
+		model.addAttribute("msg", "삭제되었습니다.");
+		model.addAttribute("url", "throughSom");
+		
+		return "common/Success";
 		
 	}
 	
@@ -368,9 +389,11 @@ public class UsersController {
 	
 	//마이페이지에서 자격증 삭제
 		@RequestMapping("/deleteCerti")
-		public String deleteCerti(UsersVO vo) {
+		public String deleteCerti(UsersVO vo, Model model) {
 			usersService.delCareer(vo);
-			return "redirect:/updateUsers";
+			model.addAttribute("msg", "삭제되었습니다.");
+			model.addAttribute("url", "throughSom");
+			return "common/Success";
 			
 		}
 				

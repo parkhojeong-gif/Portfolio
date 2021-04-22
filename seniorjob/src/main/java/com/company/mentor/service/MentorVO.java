@@ -27,12 +27,11 @@ public class MentorVO { //멘토
 	private String mentor_confirm_status; //멘토링 승인여부
 	private String mentor_date; // 멘토 등록 일자
 	
-	private MultipartFile mentor_photo_file; // 멘토 사진 파일
-	private MultipartFile mentor_license_file; // 멘토 자격증 파일
-	private MultipartFile mentor_career_certificate_file; // 멘토 경력 증명서 파일
+	private MultipartFile mentor_photo_file; // 멘토 사진 파일_김찬곤 추가
+	private MultipartFile mentor_license_file; // 멘토 자격증 파일_김찬곤 추가
+	private MultipartFile mentor_career_certificate_file; // 멘토 경력 증명서 파일_김찬곤 추가
 	
-	private UsersVO usersVO; // Users/Mentor 테이블 조인구문 사용 시 필요
-	private FollowingVO followingVO; // 멘토리스트 세부검색:인기순 쿼리 시 필요
-	private String searchKeyword;
-	
+	private UsersVO usersVO; // Users/Mentor 테이블 조인구문 사용 시 필요_김찬곤 추가
+	private FollowingVO followingVO; // 멘토리스트 세부검색:인기순 쿼리 시 필요_김찬곤 추가
+	private String searchKeyword; // 키워드 검색 파라미터_김찬곤 추가
 }

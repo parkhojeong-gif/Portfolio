@@ -1,20 +1,27 @@
 package com.company.mentoring.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.company.users.service.UsersVO;
+
 import lombok.Data;
 
 @Data
 public class MentoringVO {  //멘토링 코스
-	private String mentoring_number;  	//멘토링 코스 번호
+	private int mentoring_number;  	//멘토링 코스 번호
 	private String mentoring_name; 	//멘토링 코스 이름
 	private String mentoring_limit; 	//멘토링 코스 정원
 	private String mentoring_content; 		//멘토링 코스 내용
 	private String mentoring_photo;	//멘토링 코스 이미지
-	private String mentoring_price;	//멘토링 코스 금액
+	//송다희 수정(string > int)
+	private int mentoring_price;	//멘토링 코스 금액
 	private String mentoring_data;	//멘토링 코스 자료
-	private String mentoring_request;	//멘토링 코스 요청사항
 	private String mentor_id;	//멘토 id
 	private String mentoring_end_date;	//멘토링 코스 종료일
 	private String mentoring_begin_date;	//멘토링 코스 시작일
+	private String mentoring_kind; // 멘토링 분류
+	
+	private MultipartFile mentoring_photo_file; // 멘토링 사진 파일_김찬곤 추가
 	
 	private String s_date; // 멘토링 시작일 alias
 	private String e_date; // 멘토링 종료일 alias

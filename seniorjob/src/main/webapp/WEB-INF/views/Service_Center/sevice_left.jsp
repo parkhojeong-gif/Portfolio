@@ -10,17 +10,9 @@
 <!--<![endif]-->
 
 <body>
-
-
-
-
 	<!-- property area -->
-
-			
-
 				<div class="col-md-2 p0 padding-top-40">
 					<div class="blog-asside-right pr0">
-					
 					
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='#'">
@@ -33,6 +25,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+							<div class="panel-heading" onclick="location.href='mentoringReviews'">
 							<div class="panel-heading" onclick="location.href='#'">
 								<h3 class="panel-title">멘토링 후기</h3>
 							</div>
@@ -45,5 +38,6 @@
 						
 					</div>
 				</div>
+			</div>
 </body>
 </html>

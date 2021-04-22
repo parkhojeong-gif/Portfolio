@@ -1,6 +1,7 @@
 package com.company.mentoring.controller;
 
 
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,8 @@ public class MentoringController {
 	@Autowired MentoringService mtService;
 	@Autowired UsersService usersService;
 	@Autowired ShoppingService shoppingService;
+	
+//	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	@Autowired CartService cartservice;
 
 	// 멘토링 검색
@@ -46,10 +49,18 @@ public class MentoringController {
 		return "Mentoring/mentoringList";
 	}
 	
+	// 멘토링 키워드 검색
+	@RequestMapping("/getKeywordMentoring")
+	public String getKeywordMentoring(Model model, MentoringVO vo) {
+		model.addAttribute("list", mtService.getKeywordMentoring(vo));
+		return "Mentoring/mentoringList"; 
+	}
+	
 	// 멘토링 단건조회
-	@RequestMapping("/getMentoring")
-	public String getMentoring(Model model, MentoringVO vo) {
-		model.addAttribute("list", mtService.getMentoring(vo));
+	@RequestMapping("/getMentoringChanGon")
+	public String getMentoring(Model model, MentoringVO mtVo, MentorVO mVo) {
+		model.addAttribute("mentoring", mtService.getMentoring(mtVo));
+		model.addAttribute("mentor",mentorService.getMentor(mVo));
 		return "Mentoring/getMentoring";
 	}
 	
@@ -67,6 +78,27 @@ public class MentoringController {
 		}
 	}
 	
+	// 멘토링 등록 처리
+	@RequestMapping("/mentoringRegisterCheck")
+	public String mentoringRegisterCheck(Model model, MentoringVO vo, HttpServletRequest request) throws IllegalStateException, IOException {
+			mtService.insertMentoring(vo, request);
+			model.addAttribute("msg", "멘토링 등록 완료");
+			model.addAttribute("url", "getMentorList");
+			return "common/Success";
+	}
+	
+	// 멘토링 미리보기 페이지 호출
+	@RequestMapping("/mentoringPreview")
+	public String mentoringPreviewForm() {
+		return "Mentoring/mentoringPreview";
+	}
+	
+	// 멘토링 미리보기 페이지 호출용
+	@RequestMapping("/MentoringRegisterForm")
+	public String MentoringRegisterForm() {
+		return "Mentoring/MentoringRegister";
+	}
+	
 	// 멘토링 결제페이지
 	@RequestMapping("/mentoringPayForm")
 	public String mentoringPayForm(Model model, MentoringVO mtrVo, MentorVO mVo, ShoppingVO sVo, CartVO cvo, HttpServletRequest request) {
@@ -82,7 +114,7 @@ public class MentoringController {
 		
 		if(users != null) {
 			model.addAttribute("users",users); // 세션 정보
-			model.addAttribute("mentoring", mtService.getMentoring(mtrVo)); // 멘토링 정보
+			model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtrVo)); // 멘토링 정보
 			model.addAttribute("mentor", mentorService.getMentor(mVo)); // 멘토 정보
 		}else {
 			model.addAttribute("msg", "로그인한 사용자만 이용가능합니다.");
@@ -108,7 +140,8 @@ public class MentoringController {
 			 
 			return result;
 		}else { // 테이블에 값이 있으면(장바구니에 있으면)
-			shoppingService.mentoringPayProcBasket(vo); // Update
+			// Cart 삭제
+			shoppingService.mentoringPayProc(vo); // Insert
 			return result;
 		}
 	}
@@ -120,13 +153,39 @@ public class MentoringController {
 		return "Mentoring/PaymentSuccess";
 	}
 	
+	// 멘토링 개수
+	@ResponseBody
+	@RequestMapping("getMentoringCnt")
+	public int getMentoringCnt(MentoringVO vo) {
+		int result = mtService.getMentoringCnt(vo);
+		return result;
+	}
+	
+	// 멘토링 리스트 윈도우
+	@RequestMapping("/mentoringListWindow")
+	public String mentoringListWindow(MentoringVO mtVo, MentorVO mVo, Model model) {
+		model.addAttribute("mentoring", mtService.getMentoring(mtVo));
+		model.addAttribute("mentor",mentorService.getMentor(mVo));
+		return "Mentoring/mentoringListWindow";
+	}
+	
+	// 멘토링 단건 조회_김찬곤
+	@RequestMapping("/getSearchMentoringChanGon")
+	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model) {
+		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo));
+		model.addAttribute("mentor",mentorService.getMentor(mVo));
+		return "Mentoring/getMentoring";
+	}
+	
+//	--------------------------------------------------------End of 김찬곤-----------------------------------------------------------------------------------------------------
+	
 	//양소민 추가
-	@GetMapping("/getSearchMentoring")   //마이페이지_내가 만든 멘토링
+	@GetMapping("/getMyMentoringListSom")   //마이페이지_내가 만든 멘토링
 	public String getSearchMentoring(MentoringVO vo, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
 		vo.setId(id);									
-		model.addAttribute("list", mtService.getSearchMentoring(vo)); 
+		model.addAttribute("list", mtService.getMyMentoringListSom(vo)); 
 		return "mypage/mentoringCourse";
 	}
 	
@@ -163,8 +222,17 @@ public class MentoringController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
 		vo.setId(id);
-		return "redirect:/getSearchMentoring";
+		return "redirect:/getMyMentoringListSom";
 		
+	}
+	
+	@GetMapping("/menteeList")
+	public String menteeList(MentoringVO vo, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		vo.setId(id);
+		model.addAttribute("list", mtService.getSearchMentoring(vo));
+		return "/Mentoring/menteeList";
 	}
 	
 	
