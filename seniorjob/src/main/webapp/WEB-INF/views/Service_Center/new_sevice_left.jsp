@@ -14,19 +14,25 @@
 	height: 1px;
 	background: #ccc;
 }
-
 .my-hr2 {
 	border: 0;
 	height: 2px;
 	background: #ccc;
 }
-
 .my-hr3 {
 	border: 0;
 	height: 3px;
 	background: #ccc;
 }
-.
+#hideBtn{
+	width: 180px;
+}
+#hideBtnSub{
+	width: 180px;
+}
+a.dropdown-item {
+    padding: 39px;
+}
 </style>
 
 <body>
@@ -35,50 +41,20 @@
 	<div class="col-md-2 p0 padding-top-40">
 		<div class="blog-asside-right pr0">
 			<hr class="my-hr3">
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='serviceCenter'">
+			<div
+				class="panel panel-default sidebar-menu wow fadeInRight animated ">
+				<div class="panel-heading " onclick="location.href='serviceCenter'">
 					<h3 class="panel-title">공지사항</h3>
 				</div>
 			</div>
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading"
-					onclick="location.href='#'">
-					<h3 class="panel-title">서식자료실</h3>
-				</div>
-			</div>
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='serviceCenter'">
-								<h3 class="panel-title">커뮤니티</h3>
-							</div>
-						</div>
-			
 			<hr class="my-hr3">
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='#'">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading" onclick="location.href='serviceCenterQna'">
-					<h3 class="panel-title">자주하는 질문</h3>
+					<h3 class="panel-title">FAQ</h3>
 				</div>
 			</div>
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='#'">
-								<h3 class="panel-title">멘토링 후기</h3>
-							</div>
-						</div>
-			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='seniorTimes'">
-								<h3 class="panel-title">시니어타임즈</h3>
-							</div>
-						</div>			
 			<hr class="my-hr3">
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='#'">
-					<h3 class="panel-title">문의 게시판</h3>
-				</div>
-			</div>
 			<c:if test="${empty users }">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -95,6 +71,7 @@
 				</div>
 			</div>
 			</c:if>
+			
 			<c:if test="${empty users }">
 			<div
 				class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -111,27 +88,32 @@
 				</div>
 			</div>
 			</c:if>
-			<c:if test="${users.auth eq 'ADMIN' }">
-			<div
-				class="panel panel-default sidebar-menu wow fadeInRight animated">
-				<div class="panel-heading" onclick="location.href='getInquireList'">
-					<h3 class="panel-title">목록전체조회</h3><!--문의 전체조회  -->
+			<hr class="my-hr3">
+			<c:if test="${users.auth eq 'ADMIN'}">
+			<div class="dropdown">
+
+				<button class="btn  btn-primary  dropdown-toggle"
+					data-toggle="dropdown" id="hideBtn">관리자 기능</button>
+
+				<div class="dropdown-menu" id="hideBtnSub">
+
+					<a class="dropdown-item" onclick="location.href='insertService_CenterForm'">공지사항 등록</a><hr> 
+					<a class="dropdown-item" onclick="location.href='insertService_CenterFormQna'">FAQ 등록</a><hr>
+					<a class="dropdown-item" onclick="location.href='getInquireList'">문의전체조회</a>
+
 				</div>
 			</div>
-			</c:if>
 			<hr class="my-hr3">
+			</c:if>
+
 		</div>
 	</div>
-</div>	
-</div>
-</div>
 	<script>
-	function loginCheck(){
-		if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
-			location.href = "login"; // 로그인 페이지로 이동
+		function loginCheck() {
+			if (confirm("로그인 또는 회원가입이 필요한 항목입니다.")) {
+				location.href = "login"; // 로그인 페이지로 이동
+			}
 		}
-	}
-	
 	</script>
 	
 </body>

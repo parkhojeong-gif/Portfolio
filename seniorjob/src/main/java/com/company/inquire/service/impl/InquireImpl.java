@@ -89,4 +89,64 @@ public class InquireImpl implements InquireService{
 		return dao.getInquireList(scri);
 	}
 
+	@Override
+	public List<InquireVO> getInquireList2(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireList2(scri);
+	}
+
+	@Override
+	public List<InquireVO> getInquireList3(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireList3(scri);
+	}
+
+	@Override
+	public List<InquireVO> getInquireList4(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireList4(scri);
+	}
+
+	@Override
+	public List<InquireVO> getInquireList5(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireList5(scri);
+	}
+
+	@Override
+	public List<InquireVO> getInquireList6(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireList6(scri);
+	}
+
+	@Override
+	public int inquireCount2(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.inquireCount2(scri);
+	}
+
+	@Override
+	public List<InquireVO> getInquireListY(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireListY(scri);
+	}
+
+	@Override
+	public List<InquireVO> getInquireListN(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireListN(scri);
+	}
+
+	@Override
+	public int inquireCountY(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.inquireCountY(scri);
+	}
+
+	@Override
+	public int inquireCountN(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.inquireCountN(scri);
+	}
+
 }

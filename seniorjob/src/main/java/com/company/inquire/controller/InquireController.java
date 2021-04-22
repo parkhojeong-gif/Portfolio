@@ -24,10 +24,7 @@ import com.company.service_center.SearchCriteria;
 @Controller
 public class InquireController {
 	@Autowired InquireMapper inquireMapper;
-	@RequestMapping("/inquire")
-	public String inquire() {
-		return "inquire";		  			
-	}
+
 	
 	@RequestMapping("/insertInquireForm") //문의 등록 폼
 	public String insertInquire(InquireVO vo) {
@@ -36,13 +33,97 @@ public class InquireController {
 	
 	@RequestMapping("/getInquireList")	//문의 목록 전체조회
 	public String getInquireList(Model model, @ModelAttribute("scri") SearchCriteria scri) {
-		model.addAttribute("list", inquireMapper.getInquireList(scri));
 		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+		if(scri.getOptionValue()==null || scri.getOptionValue()=="") {
+			
+			if(scri.getOptionValue2()==null || scri.getOptionValue2()=="") {
+				model.addAttribute("list", inquireMapper.getInquireList(scri));
+				PageMaker pageMaker = new PageMaker();
+				pageMaker.setCri(scri);
+				pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+				model.addAttribute("pageMaker", pageMaker);
+			}else if (scri.getOptionValue2().equals("답변완료")) {
+				model.addAttribute("list", inquireMapper.getInquireListY(scri));
+				PageMaker pageMaker = new PageMaker();
+				pageMaker.setCri(scri);
+				pageMaker.setTotalCount(inquireMapper.inquireCountY(scri));
+				model.addAttribute("pageMaker", pageMaker);
+			}else if (scri.getOptionValue2().equals("미답변")) {
+				model.addAttribute("list", inquireMapper.getInquireListN(scri));
+				PageMaker pageMaker = new PageMaker();
+				pageMaker.setCri(scri);
+				pageMaker.setTotalCount(inquireMapper.inquireCountN(scri));
+				model.addAttribute("pageMaker", pageMaker);
+			}
+			
+		}else if(scri.getOptionValue().equals("결제")) {
+			if(scri.getOptionValue2()==null || scri.getOptionValue2()=="") {
+				System.out.println("============================ssqq1===========================");
+				model.addAttribute("list", inquireMapper.getInquireList2(scri));
+				System.out.println(scri.getOptionValue());
+				PageMaker pageMaker = new PageMaker();
+				pageMaker.setCri(scri);
+				pageMaker.setTotalCount(inquireMapper.inquireCount2(scri));
+				model.addAttribute("pageMaker", pageMaker);
+			}else if (scri.getOptionValue2().equals("답변완료")) {
+				model.addAttribute("list", inquireMapper.getInquireListY(scri));
+				PageMaker pageMaker = new PageMaker();
+				pageMaker.setCri(scri);
+				pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+				model.addAttribute("pageMaker", pageMaker);
+			}else if (scri.getOptionValue2().equals("미답변")) {
+				model.addAttribute("list", inquireMapper.getInquireListN(scri));
+				PageMaker pageMaker = new PageMaker();
+				pageMaker.setCri(scri);
+				pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+				model.addAttribute("pageMaker", pageMaker);
+			}
+			
+			
+			
+			
+			
+			
+			
+		}else if(scri.getOptionValue().equals("환불")) {
+			System.out.println("============================ssqq2===========================");
+			model.addAttribute("list", inquireMapper.getInquireList3(scri));
+			System.out.println(scri.getOptionValue());
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+		}else if(scri.getOptionValue().equals("신청")) {
+			System.out.println("============================ssqq2===========================");
+			model.addAttribute("list", inquireMapper.getInquireList4(scri));
+			System.out.println(scri.getOptionValue());
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+		}else if(scri.getOptionValue().equals("취소")) {
+			System.out.println("============================ssqq2===========================");
+			model.addAttribute("list", inquireMapper.getInquireList5(scri));
+			System.out.println(scri.getOptionValue());
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+		}else if(scri.getOptionValue().equals("기타")) {
+			System.out.println("============================ssqq2===========================");
+			model.addAttribute("list", inquireMapper.getInquireList6(scri));
+			System.out.println(scri.getOptionValue());
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+		}
 		
-		model.addAttribute("pageMaker", pageMaker);
+		
 		
 		return "/inquire/getInquireList";
 	}
@@ -58,12 +139,17 @@ public class InquireController {
 		String id = (String) session.getAttribute("id");	//연결된 세션 id값 vo에 담기
 		vo.setId(id);
 		inquireMapper.insertInquire(vo);
-		return "redirect:/getInquireList";
+		return "redirect:/userInquireList";
 	}
 
 
 	@RequestMapping("/deleteInquire")	//문의 삭제
 	public String deleteInquire(InquireVO vo) {
+		inquireMapper.deleteInquire(vo);
+		return "redirect:/userInquireList";
+	}
+	@RequestMapping("/deleteInquireAdmin")	//관리자가 문의 삭제
+	public String deleteInquireAdmin(InquireVO vo) {
 		inquireMapper.deleteInquire(vo);
 		return "redirect:/getInquireList";
 	}

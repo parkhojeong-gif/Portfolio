@@ -9,6 +9,60 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <style>
+thead.thead-dark {
+	color: white;
+	background-color: gray;
+}
+
+div#cateView {
+	margin-top: 71px;
+	padding: 31px;
+	padding-bottom: 36px;
+	border: 1px solid #e0e0e0;
+	background-color: #fafafa;
+}
+
+.btn-group>.btn:first-child {
+	margin-left: 0;
+	height: 45px;
+}
+
+input#keywordInput {
+	width: 600px;
+}
+
+button#cs_biz_form {
+	margin-right: 50px;
+	color: #FFF;
+    background-color: #64CD3C;
+    border-color: #64CD3C;
+}
+
+#cs_biz_form1 {
+	color: #FFF;
+	background-color: #64CD3C;
+	border-color: #64CD3C;
+	margin-left: 30px;
+	margin-right: 50px;
+}
+.col-xs-7 {
+    margin-left: -23px;
+}
+.box-white.v2 {
+    padding: 25px;
+    border: 5px solid #ecf0f3;
+    background-color: #fff;
+    margin-bottom: -48px;
+}
+div#buttonView {
+    top: -14px;
+    right: -21px;
+}
+#pagi {
+    height: 40px;
+    margin: 20px 10px;
+    margin-left: 323px;
+}
 </style>
 <jsp:include page="../../topHeader.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -21,66 +75,97 @@
 		style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
-				<div id="div1"
-					class="col-md-12 pr-30 padding-top-40 properties-page user-properties">
-
-				</div>
-
+					
 				<jsp:include page="../new_sevice_left.jsp"></jsp:include>
-				<div
-					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
-					<div class="section additional-details">
-						<h4 class="s-property-title">자주 묻는 질문</h4>
-						<div class="col-md-12 pr-30">
-							<h5>카테고리 설정</h5>
-							<form  id="sddw">
-							<label>전체<input type="checkbox" id="cs_biz_form"
-								name="cs_biz_form" value="" ></label>
-							<label >결제<input type="checkbox" id="cs_biz_form"
-								name="cs_biz_form" value="결제" ></label>
-							<label>환불<input type="checkbox" id="cs_biz_form"
-								name="cs_biz_form" value="환불" ></label>
-							<label>신청<input type="checkbox" id="cs_biz_form"
-								name="cs_biz_form" value="신청" ></label>
-							<label>취소<input type="checkbox" id="cs_biz_form"
-								name="cs_biz_form" value="취소" ></label>
-							<label>기타<input type="checkbox" id="cs_biz_form"
-								name="cs_biz_form" value="기타" ></label>
-								<input type="hidden" id="sebubtn">
-							</form>	
-						</div>
-
-
-						<ul>
-							<li><span class="col-xs-6 col-sm-4 col-md-2 add-d-title">카테고리</span>
-								<span class="col-xs-6 col-sm-4 col-md-4 add-d-title">제목</span> <span
-								class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성자</span> <span
-								class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span> <span
-								class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span></li>
-							<c:forEach items="${list }" var="gongji">
-								<span
-									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
-									class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.category_b }</span>
-								<span
-									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
-									class="col-xs-6 col-sm-8 col-md-4 add-d-entry">${gongji.title }</span>
-								<span
-									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
-									class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.id }</span>
-								<span
-									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
-									class="col-xs-6 col-sm-8 col-md-2 add-d-entry"><fmt:formatDate
-										value="${gongji.w_date }" pattern="yyyy-MM-dd" /></span>
-								<span
-									onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"
-									class="col-xs-6 col-sm-8 col-md-2 add-d-entry">${gongji.click }</span>
-							</c:forEach>
+				<div class="col-md-1 pr-30 padding-top-40 properties-page user-properties">
+				</div>
+				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+					<div class="box-white v2 mb40">
+						<ul class="dot-list v1">
+							<li>FAQ(자주하는 질문)를 이용하시면 빠르게 궁금증을 해결하실 수 있습니다.</li>
+							<li>원하시는 내용을 얻지 못하시면 문의하기를 이용하시기 바랍니다.</li>
 						</ul>
+					</div>
+				</div>
+				<div class="col-md-1 pr-30  properties-page user-properties">
+				</div>
+				
+				<div class="col-md-9 pr-30 properties-page user-properties" id="cateView">
+					<div class="col-md-12 pr-30" id="buttonView">
+							<button type="button" id="cs_biz_form1" name="cs_biz_form"  class="btn btn-default" value="">전체</button>
+							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="결제">결제</button>
+							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="환불">환불</button>
+							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="신청">신청</button>
+							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="취소">취소</button>
+							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="기타">기타</button>	
+					</div>
+					<br>
+					<hr>
+					<div class="col-md-12 pr-30" id="searchView">
+							<div class="col-xs-2">
+								<div class="btn-group bootstrap-select show-tick form-control">
+									<select id="basic" name="searchType"
+										class="selectpicker show-tick form-control" tabindex="-98">
+										<option value="t"
+											<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+										<option value="c"
+											<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+										<option value="tc"
+											<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-xs-7">
+								<div class="input-group">
+									<input class="form-control" name="keyword" id="keywordInput"
+										value="${scri.keyword}"
+										style="text-align: center; height: 45px;" type="text"
+										placeholder="내용 입력 "> <span class="input-group-btn">
+										<button class="btn btn-primary subscribe" id="searchBtn"
+											type="button">
+											<i class="pe-7s-paper-plane pe-2x"></i>
+										</button>
+				
+									</span>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-1 pr-30 padding-top-40 properties-page user-properties">
+				
+				</div>
+				
+				<div
+					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+					<div class="section additional-details">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">카테고리</th>
+									<th scope="col">제목</th>
+									<th scope="col">작성일자</th>
+									<th scope="col">조회수</th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach items="${list }" var="gongji">
+								<tr>
+									<th scope="row" onclick="location.href='getService_CenterQna?seq=${gongji.seq }'">
+									${gongji.category_b }</th>
+									<td onclick="location.href='getService_CenterQna?seq=${gongji.seq }'">${gongji.title }</td>
+									<td onclick="location.href='getService_CenterQna?seq=${gongji.seq }'"><fmt:formatDate
+										value="${gongji.w_date }" pattern="yyyy-MM-dd" /></td>
+									<td onclick="location.href='getService_CenterQna?seq=${gongji.seq }'">${gongji.click }</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+
 					</div>
 
 					<div
-						class="col-md-9 pr-50 padding-top-40 properties-page user-properties">
-						<div class="pagination">
+						class="col-md-12 pr-50 padding-top-40 properties-page user-properties">
+						<div class="pagination" id="pagi">
 							<ul>
 								<c:if test="${pageMaker.prev}">
 									<li><a
@@ -106,65 +191,7 @@
 							<div class="search">
 								<br>
 							</div>
-							<div class="col-xs-2">
-								<div class="btn-group bootstrap-select show-tick form-control">
-									<div class="dropdown-menu open"
-										style="max-height: 640.781px; overflow: hidden; min-height: 109px;">
-										<ul class="dropdown-menu inner" role="menu"
-											style="max-height: 629.781px; overflow-y: auto; min-height: 98px;">
-											<li data-original-index="0" class=""><a tabindex="0"
-												class="" style="" data-tokens="null"><span class="text">
-														-Status- </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-											<li data-original-index="1" class=""><a tabindex="0"
-												class="" style="" data-tokens="null"><span class="text">Rent
-												</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-											<li data-original-index="2" class="selected"><a
-												tabindex="0" class="" style="" data-tokens="null"><span
-													class="text">Boy</span><span
-													class="glyphicon glyphicon-ok check-mark"></span></a></li>
-											<li data-original-index="3"><a tabindex="0" class=""
-												style="" data-tokens="null"><span class="text">used</span><span
-													class="glyphicon glyphicon-ok check-mark"></span></a></li>
-										</ul>
-									</div>
-									<select id="basic" name="searchType"
-										class="selectpicker show-tick form-control" tabindex="-98">
-										<option value="n"
-											<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
-										<option value="t"
-											<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-										<option value="c"
-											<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-										<option value="w"
-											<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-										<option value="tc"
-											<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-7">
-								<div class="input-group">
-									<input class="form-control" name="keyword" id="keywordInput"
-										value="${scri.keyword}"
-										style="text-align: center; height: 45px;" type="text"
-										placeholder="내용 입력 "> <span class="input-group-btn">
-										<button class="btn btn-primary subscribe" id="searchBtn"
-											type="button">
-											<i class="pe-7s-paper-plane pe-2x"></i>
-										</button>
-										<button class="btn btn-primary subscribe" id="searchBtn"
-											type="button"
-											onclick="location.href='insertService_CenterFormQna'">등록</button>
-										<script>
-			      $(function(){
-			        $('#searchBtn').click(function() {
-			          self.location = "serviceCenterQna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-			        });
-			      });   
-			    </script>
-									</span>
-								</div>
-							</div>
+							
 						</form>
 					</div>
 				</div>
@@ -181,15 +208,25 @@
 
 $(function(){
 	//체크 초기화
-	$('[value=${param.optionValue}]').iCheck('check');
+	/* $('[value=${param.optionValue}]').iCheck('check');
 	
 	//체크 검색
 	$('[name="cs_biz_form"]').on('ifClicked', function(){
 		var param = 'optionValue='+$(this).val();
 		location.href='serviceCenterQna?'+param;
+	}); */
+	
+	$('[name="cs_biz_form"]').on("click", function(){
+		var param = 'optionValue='+$(this).val();
+		location.href='serviceCenterQna?'+param;
 	});
 	
 });	
+$(function(){
+  $('#searchBtn').click(function() {
+    self.location = "serviceCenterQna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+  });
+});   
 
 </script>
 <script>

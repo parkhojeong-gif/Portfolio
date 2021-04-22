@@ -27,14 +27,9 @@
 
 
 <style>
-
-#slidemenu{background:#12cf3d;position:absolute;width:100px;top:50px;right:10px;}
-
-
 .slider-content{position:absolute}
 .form-inline{margin:20px}
 #mentorSearchBtn{cursor:pointer}
-
 #searchKeywordTitle{
 	position: relative;
     right: 60px;
@@ -79,66 +74,12 @@
 	z-index:1; /* 배치 순서 결정 https://aboooks.tistory.com/83 */
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-	$.ajax({
-		url:'videoCallButton',
-		success : function(result) {
-			
-			if(result != "false") {
-				console.log("success");
-				$("#numSom").attr('value',result);
-				var div = $('<div />').attr('id','slidemenu');
-				var a = $('<a />').attr('onclick','video()').html('영상면접');
-				var a2 = $('<a />').attr('onclick','resum()').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
-				var a3 = $('<a />').attr('onclick','chatt()').html('채팅'); //나중에 영상면접 화면에 붙일 것.
-				$(div).append(a);
-				$(div).append(a2);
-				$(div).append(a3);
-				$("#slideDiv").append(div);
-				
-			} else {
-				console.log("else");
-			}
-		},
-		error : function() {
-			console.log("error");
-		}
-	});
-	 var currentPosition = parseInt($("#slidemenu").css("top"));
-    $(window).scroll(function() {
-        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-        $("#slidemenu").stop().animate({"top":position+currentPosition+"px"},1000);
-    });
-});
-
-function video(){
-	window.open("https://192.168.0.56:85",
-            "영상", "width=900, height=900, resizable = no, scrollbars = no");
-}
-function resum(){
-	var num=$("#numSom").val();
-	//console.log(num)
-	window.open("popResumeGetForm?resume_no="+num,
-            "이력서", "width=900, height=900, resizable = no, scrollbars = no");
-}
-
-function chatt() {
-	window.open("chat",
-            "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
-}
-</script>
-
 </head>
 <body>
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
-	<div id="slideDiv">
-	
-	</div>
 	<!-- topHeader -->
-	<input type="hidden" id="numSom">
+	
 	<!-- 검색 -->
         <div class="slider-area">
             <div class="slider">
