@@ -175,7 +175,6 @@ public class BusinessPlanAController {
 		String mId = mtService.getMentorId(mvo);
 		vo.setMentorId(mId);
 		model.addAttribute("list", bpService.checkP(vo));
-		System.out.println("model:"+model);
 		return "/Mentor/checkP";
 	}
 	

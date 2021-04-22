@@ -55,7 +55,8 @@
 	<update id="updateSchedule" parameterType="ScheduleVO">
 		UPDATE SCHEDULE 
 		SET 
-		STATE='accept' 
+		STATE='accept',
+		RESUME_NO=#{resume_no} 
 		WHERE 
 		SEQ=#{seq}
 	</update>
@@ -115,6 +116,28 @@
 		FROM SCHEDULE 
 		WHERE 
 		SEQ=#{seq}
+	</select>
+	
+	<!-- 답변 내용 목록조회 -->
+	<select id="replyQuestFormSom" resultType="ScheduleVO">
+	SELECT * 
+	FROM SCHEDULE 
+	WHERE STATE='REPLY' 
+	AND MENTEEID=#{menteeid}
+	</select>
+	
+	
+	<select id="getSearchMentoringDate" parameterType="ScheduleVO" resultType="map">
+		SELECT TO_CHAR(SCHEDULE_START,'YYYYMMDD')||REPLACE(SCHEDULE_START_TIME,':','')||'00' AS "SCHEDULE_START",
+  				TO_CHAR(SCHEDULE_END,'YYYYMMDD')||REPLACE(SCHEDULE_END_TIME,':','')||'59' AS "SCHEDULE_END",
+  				RESUME_NO AS "RESUME_NO"
+  		FROM SCHEDULE 
+  		WHERE
+			(MENTORID=#{mentorid} OR
+			MENTEEID=#{menteeid}) 
+		AND 
+		STATE='accept'
+		AND RESUME_NO IS NOT NULL
 	</select>
 	
 </mapper>

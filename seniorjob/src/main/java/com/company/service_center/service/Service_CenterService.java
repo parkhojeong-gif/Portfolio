@@ -22,10 +22,10 @@ public interface Service_CenterService {
 	// 조회수 증가
 	public boolean updateClick(Service_CenterVO vo);
 
-	// 게시물 총 갯수
+	// 게시물 총 갯수 사용안함
 	public int countBoard();
 
-	// 페이징 처리 게시글 조회
+	// 페이징 처리 게시글 조회 사용안함
 	public List<Service_CenterVO> selectBoard(PagingVO vo);
 
 	// 게시글 검색
@@ -86,6 +86,6 @@ public interface Service_CenterService {
 	public int insertService_CenterQna2(Service_CenterVO vo);
 	// 신청취소 수정
 	public void updateService_CenterQna2(Service_CenterVO vo);
-	//=====================================================================
 	
-}
+	//=====================================================================
+}	

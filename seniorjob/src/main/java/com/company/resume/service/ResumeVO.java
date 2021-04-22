@@ -22,4 +22,7 @@ public class ResumeVO {					//이력서필수
 	private MultipartFile uploadFile;	//이미지 업로드
 	private String resume_title;		//이력서 제목
 	private String resume_major; 		//전공
+	
+	//양소민 추가
+	private String mentorId;			//멘토아이디
 }

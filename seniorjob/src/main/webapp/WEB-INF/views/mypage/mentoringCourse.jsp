@@ -18,6 +18,11 @@ function detail(id) {
 function update(num) {
 	location.href="updateMentoringForm?mentoring_number="+num //
 }
+
+function menteeList(num) {
+	var url="menteeList?mentoring_number="+num;
+	window.open(url,"","width=500, height=600");
+}
 </script>
  <jsp:include page="../topHeader.jsp"></jsp:include>
     <body>
@@ -51,42 +56,25 @@ function update(num) {
                                         <div class="item-thumb">
                                             <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
                                         </div>
-                                        <form name="requestForm" action="requestMentoring"  method="post">
-                                        <input type="hidden" name="mentorid" value="${list.id }">
-                                        <input type="hidden" name="menteeid" value="${list.menteeId }">
-                                        <input type="hidden" name="schedule_name" value="${list.mentoring_name }">
                                         
                                         <div class="item-entry overflow">
                                             <h5><span onclick="detail('${list.mentor_id}')">${list.mentoring_name }</span></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>${list.mentoring_begin_date } - ${list.mentoring_end_date }</b></span>
-                                            <span class="proerty-price pull-right" > 멘티 : ${list.name }</span>
-                                            <p style="display: none;">수강기간:${list.men_start }-${list.met_end }/멘토링횟수:3회</p>
+                                            <span class="proerty-price pull-right" > 금액 : ${list.mentoring_price }</span><br>
+                                            <p style="display: none;">정원 : ${list.mentoring_limit  }</p>
 
                                         </div>
-                                         <button type="submit" class="btn btn-primary">멘토링 요청</button>
+                                         <a onclick="menteeList('${list.mentoring_number }')" class="btn btn-default btn-border">멘티목록</a>
                                          <a onclick="update('${list.mentoring_number }')" class="btn btn-default btn-border">수정</a>
-                                        </form>
+                                        
                                     </div>
                                 </div>                             
                                                                                       
                             </div>
                         </div>
 						</c:forEach>
-                        <div class="section"> 
-                            <div class="pull-right">
-                                <div class="pagination">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>                
-                        </div>
+                        
 
                     </div>       
 

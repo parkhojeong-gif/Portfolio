@@ -390,12 +390,12 @@ $(document).ready(function(){
 
 				</ul>
 			</div>
-			<div class="area_btn col-sm-12 text-center">
+			<!--<div class="area_btn col-sm-12 text-center">
 				<button type="" class="btn btn-primary">미리보기</button>
 			</div>
 			<div class="area_btn col-sm-12 text-center">
 				<button type="" class="btn btn-primary">중간저장</button>
-			</div>
+			</div>-->
 			<div class="area_btn col-sm-12 text-center">
 				<button type="submit" class="btn btn-primary">작성완료</button>
 			</div>

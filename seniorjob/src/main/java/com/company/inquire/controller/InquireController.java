@@ -11,12 +11,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 import com.company.inquire.service.InquireVO;
 import com.company.inquire.service.Inquire_AnswerVO;
 import com.company.inquire.service.impl.InquireMapper;
+import com.company.service_center.PageMaker;
+import com.company.service_center.SearchCriteria;
 
 @Controller
 public class InquireController {
@@ -32,8 +35,15 @@ public class InquireController {
 	}
 	
 	@RequestMapping("/getInquireList")	//문의 목록 전체조회
-	public String getInquireList(Model model) {
-		model.addAttribute("list", inquireMapper.getInquireList());
+	public String getInquireList(Model model, @ModelAttribute("scri") SearchCriteria scri) {
+		model.addAttribute("list", inquireMapper.getInquireList(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(inquireMapper.inquireCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
 		return "/inquire/getInquireList";
 	}
 	

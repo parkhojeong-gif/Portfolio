@@ -45,11 +45,9 @@ function detail(num) {
                             <!--  -->
                                 <div class="col-md-4 p0">
                                     <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                                        </div>
+                                        
                                         <div class="item-entry overflow">
-                                            <h5><span onclick="detail('${list.mentoring_number}')"> ${list.mentoring_name } </span></h5>
+                                            <h5><span> ${list.mentoring_name } </span></h5>
                                             <div class="dot-hr">${list.s_date }</div>
                                             <span class="pull-left"><b> 결제완료</b></span>
                                             <span class="proerty-price pull-right"> ${list.mentoring_price }</span>
@@ -67,20 +65,7 @@ function detail(num) {
                         </div>
 
 						</c:forEach>
-                        <div class="section"> 
-                            <div class="pull-right">
-                                <div class="pagination">
-                                    <ul>
-                                        <li><a href="#">Prev</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>                
-                        </div>
+                        
 
                     </div>       
 

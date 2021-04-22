@@ -33,7 +33,7 @@
 							</div>
 						</div>
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='resumeInsertForm'">
+							<div class="panel-heading" onclick="location.href='impression'">
 								<h3 class="panel-title">화상면접 사용법</h3>
 							</div>
 						</div>

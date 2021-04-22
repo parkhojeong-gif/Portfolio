@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.company.inquire.service.InquireService;
 import com.company.inquire.service.InquireVO;
 import com.company.inquire.service.Inquire_AnswerVO;
+import com.company.service_center.SearchCriteria;
 
 @Service
 public class InquireImpl implements InquireService{
@@ -38,11 +39,7 @@ public class InquireImpl implements InquireService{
 		return dao.getInquire(vo);
 	}
 
-	@Override
-	public List<InquireVO> getInquireList() {
-		// TODO 문의 전체조회
-		return dao.getInquireList();
-	}
+
 
 	@Override
 	public List<InquireVO> userInquireList(Map<String, Object> map) {
@@ -72,6 +69,24 @@ public class InquireImpl implements InquireService{
 	public List<Inquire_AnswerVO> userAnswerList(Inquire_AnswerVO avo) {
 		// TODO Auto-generated method stub
 		return dao.userAnswerList(avo);
+	}
+
+	@Override
+	public int inquireCount(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.inquireCount(scri);
+	}
+
+	@Override
+	public List<InquireVO> searchInquire(String searchKeyword) {
+		// TODO Auto-generated method stub
+		return dao.searchInquire(searchKeyword);
+	}
+
+	@Override
+	public List<InquireVO> getInquireList(SearchCriteria scri) {
+		// TODO Auto-generated method stub
+		return dao.getInquireList(scri);
 	}
 
 }

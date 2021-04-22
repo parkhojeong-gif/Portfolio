@@ -9,6 +9,46 @@
 <html class="no-js">
 <!--<![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	//공백 제거
+	function noSpace(obj){
+		var space = /\s/; //공백을 체크한다. 
+		var foun = space.exec(obj.value);
+		if(space.exec(obj.value)){ 
+			
+			alert("공백을 사용할 수 없습니다.");
+			obj.focus();
+			obj.value = obj.value.replace(/(\s*)/g, "") //공백 제거
+			return false;
+		}
+	}
+	
+	function checkPwPattern(str) {
+		var pattern1 = /^[A-za-z0-9]/g; //여러개의 문자가 모두 영문자나 숫자여야 함.
+		var pattern2 = /[~!@#$%^&*()_+-|<>?]/g; //[]안의 문자 중 하나특수문자
+		
+		var found = pattern1.exec(str.value);
+		console.log(found);
+
+		/* if() {
+			
+			alert("비밀번호는 8자리 이상 문자, 숫자, 특수문자로 구성하여야 합니다.");
+			return false;
+		} else {
+			return true;
+		} */
+	}
+	
+	$(document).ready(function(){
+		
+		console.log("open");
+		//input:password 공백 제거 설정	
+		$("#password").on("change", function(){
+			noSpace(this);
+			checkPwPattern(this);
+		});
+	})
+</script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
 
 
@@ -42,7 +82,7 @@
 							</div>
 							<div class="form-group">
 								<label>새로운 비밀번호 <small></small></label> <input
-									name="password" type="password" class="form-control" >
+									id="password" name="password" type="text" class="form-control" >
 							</div>
 							<div class="form-group">
 								<label>새로운 비밀번호 확인<small></small></label> <input

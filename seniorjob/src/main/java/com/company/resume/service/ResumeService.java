@@ -20,4 +20,10 @@ public interface ResumeService {
 	public int deleteResume(ResumeVO vo);
 	//이력서 단건 조회
 	public ResumeVO getResume(ResumeVO vo);
+	
+	public int ckReUpdateSom(ResumeVO vo);
+	
+	public List<ResumeVO> checkR(ResumeVO vo);
+	
+	public int colReUpdate(ResumeVO vo);
 }

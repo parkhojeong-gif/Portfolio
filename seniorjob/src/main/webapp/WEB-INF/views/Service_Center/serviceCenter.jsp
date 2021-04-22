@@ -28,13 +28,12 @@ $(function(){
 
 <body>
 	<!-- property area -->
-	<div class="content-area recent-property"
-		style="background-color: #FFF;">
+	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
-
-
+			
 				<jsp:include page="new_sevice_left.jsp"></jsp:include>
+				
 				<div
 					class="col-md-1 pr-30 padding-top-40 properties-page user-properties">
 				</div>

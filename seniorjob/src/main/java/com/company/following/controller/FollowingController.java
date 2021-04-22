@@ -16,7 +16,8 @@ import com.company.following.service.FollowingVO;
 public class FollowingController {
 
 	@Autowired FollowService followService;
-	
+
+//	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	//팔로우 목록
 	@RequestMapping("/following")
 	public String following(HttpServletRequest req, FollowingVO vo, Model model) {
@@ -39,7 +40,6 @@ public class FollowingController {
 			return result;
 		}
 	}
-	
 	// 멘토 팔로우 취소
 	@ResponseBody
 	@RequestMapping("/deleteMentorFollow")
@@ -48,6 +48,14 @@ public class FollowingController {
 		return result;
 	}
 	
+	// 멘토 팔로우 카운트
+	@ResponseBody
+	@RequestMapping("getFollowCnt")
+	public int getFollowCnt(FollowingVO vo) {
+		int result = followService.getFollowCnt(vo);
+		return result;
+	}
+//	--------------------------------------------------------End of 김찬곤-----------------------------------------------------------------------------------------------------	
 	
 	
 }

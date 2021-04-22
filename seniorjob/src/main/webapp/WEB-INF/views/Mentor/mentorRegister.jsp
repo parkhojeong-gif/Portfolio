@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>멘토링 등록 페이지</title>
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
 <style>
 * {
   box-sizing: border-box;
@@ -70,12 +71,31 @@ button:hover {
 .step.finish {
   background-color: #4CAF50;
 }
-#profilePhoto {
-  width: 300px;
-  height: 150px;
-  object-fit: cover;
-}
+img{max-width:30%}!important;
 </style>
+<script type="text/javascript">
+function insertCerti() {
+	var url="popCerti";
+	window.open(url,"","width=500,height=600");
+	
+}
+
+function insertCareer() {
+	var url="popCareer";
+	window.open(url,"","width=500,height=600");
+}
+
+function popCertiSee() {
+	var url="popCertiSee";
+	window.open(url,"","width=500,height=600");
+}
+
+function popCareerSee() {
+	var url="popCareerSee";
+	window.open(url,"","width=500,height=600");
+}
+
+</script>
 <body>
 
 <!-- topHeader -->
@@ -150,15 +170,22 @@ button:hover {
   	<p />
   	<div>
   	<p>프로필 사진</p>
-  		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image" id="profilePhoto">
-    	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file">
+  		<div id="profilePhoto">
+  		<img src="../resources/assets/img/mentor/photoDefault.jpg" alt="No Image">
+  		</div>
+    	<input placeholder="프로필사진" class="form-control" type="file" id="property-images" name="mentor_photo_file" onchange="setImage(event)">
+  		<div id="image_container" name="image_container" class="select_img"></div>
   	</div>
     <p />
     <p>자격증 선택</p>
-    <input placeholder="자격증" class="form-control" type="file" id="property-images" name="mentor_license_file">
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCertiSee()' value='조회' />
+   
     <p />
     <p>경력 증명서</p>
-    <input placeholder="경력증명서" class="form-control" type="file" id="property-images" name="mentor_career_certificate_file">
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCareerSee()' value='조회' />
+    
   </div>
   
   <div style="overflow:auto;">
@@ -197,7 +224,9 @@ function LoadingWithMask() {
   $('#regForm').append(loadingImg)
   //로딩중 이미지 표시
   $('#loadingImg').show();
-}
+}// End of 로딩 이미지 출력
+
+
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 function showTab(n) {
@@ -281,6 +310,29 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+/* 이미지 미리보기 */
+function setImage(event) {
+	var reader = new FileReader();
+
+	reader.onload = function(event){
+		$('#profilePhoto').empty();
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		document.querySelector("#profilePhoto").appendChild(img);
+	}
+	reader.readAsDataURL(event.target.files[0]);
+	
+}
+
+$("image").change(function(){
+	if(this.files && this.files[0]){
+		var reader = new FileReader;
+		reader.onload = function(data){
+			$(".select_img").attr("src", data.target.result).width(500);
+		}
+	}
+})
 </script>
 
 

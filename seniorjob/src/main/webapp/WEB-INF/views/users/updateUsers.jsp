@@ -22,6 +22,43 @@
         	error : showErrors
     	})
     }); 
+    
+    $(document).ready( function () {
+    	$.ajax({
+    		url : "getCarList",
+        	success : function (result) {
+        		var list = result;
+        		for(certi of list ) {
+        			
+        			
+        			let tr2 = $('<tr />');
+        			let td5 = $('<td />').html(certi.CARRER_CERTI);
+        			let td6 = $('<td />');
+        			
+        			let inp1 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
+        			//let no = certi.NO;
+        			$(inp1).on('click', function() {
+        				console.log(this);
+        				var no = this.title;
+        				location.href="delCareer?no="+no;
+        			})
+        			$(td6).append(inp1);
+        			
+        			$(tr2).append(td5);
+        			$(tr2).append(td6);
+        			$('#career').append(tr2);
+        			
+        			
+        			
+        		}
+        		
+        		
+        	},
+        	error : function() {
+        		console.log("error입니다.");
+        	}
+    	})
+    }); 
 
 
 function showErrors(result) {
@@ -34,25 +71,45 @@ function showContents(result) {
 		
 		let tr = $('<tr />');
 		let td1 = $('<td />').html(certi.CERTI_NAME);
-		let td2 = $('<td />').html(certi.CERTI_NO);
-		let td3 = $('<td />').html(certi.CERTI_DATE);
-		let td4 = $('<td />').html(certi.CERTI_PLACE);
+		let td2 = $('<td />').html(certi.CERTI_PLACE);
+		let td3 = $('<td />').html(certi.CERTI_NO);
+		let td4 = $('<td />').html(certi.CERTI_DATE);
+		let td5 = $('<td />');
+		let td6 = $('<td />');
+		let inp1 = $('<input />').attr('type','button').attr('value',"수정").attr('title',certi.NO);
+		let inp2 = $('<input />').attr('type','button').attr('value',"삭제").attr('title',certi.NO);
+		
+		$(inp1).on('click', function() {
+        				var no = this.title;
+        				var url="updateCertiForm?no="+no;
+        		    	window.open(url,"","width=500,height=600");
+        			});
+		$(inp2).on('click', function() {
+        				console.log(this);
+        				var no = this.title;
+        				location.href="deleteCerti?no="+no;
+        			});
+        $(td5).append(inp1);
+		$(td6).append(inp2);
 		
 		$(tr).append(td1);
 		$(tr).append(td2);
 		$(tr).append(td3);
 		$(tr).append(td4);
+		$(tr).append(td5);
+		$(tr).append(td6);
 		$('#certi').append(tr);
 		
-		let tr2 = $('<tr />');
-		let td5 = $('<td />').html(certi.CARRER_CERTI);
-		$(tr2).append(td5);
-		$('#career').append(tr2);
-		
-		
+	
 		
 	}
+	
+	
 }
+
+
+
+
 
     function DaumPostcode() {
         new daum.Postcode({
@@ -106,6 +163,7 @@ function showContents(result) {
     	window.open(url,"","width=500,height=600");
     }
     
+    
 
 </script>
 <body>
@@ -130,15 +188,7 @@ function showContents(result) {
                             </div>
 
                             <div class="clear">
-                                <div class="col-sm-3 col-sm-offset-1">
-                                    <div class="picture-container">
-                                        <div class="picture">
-                                            <img src="assets/img/avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                            <input type="file" id="wizard-picture">
-                                        </div>
-                                        <h6>Choose Picture</h6>
-                                    </div>
-                                </div>
+                          
 
                                 <div class="col-sm-10 padding-top-25">
 
@@ -206,6 +256,8 @@ function showContents(result) {
                                 		<th>발행처</th>
                                 		<th>자격증번호</th>
                                 		<th>취득일자</th>
+										<th>수정</th>
+										<th>삭제</th>
                                 	</tr>
                                 	</thead>
                                 	<tbody id="certi">
@@ -238,10 +290,12 @@ function showContents(result) {
                                 	<thead>
                                 	<tr>
                                 		<th>경력인증서</th>
+                                		<th>삭제</th>
                                 		
                                 	</tr>
                                 	</thead>
                                 	<tbody id="career">
+                                	
                                 	</tbody>
                                 
                                 </table>
@@ -265,7 +319,7 @@ function showContents(result) {
                             
                             	<hr>
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' value='회원탈퇴' />
+                                <!-- <input type='button' class='btn btn-finish btn-primary' name='finish' value='회원탈퇴' /> -->
                             </div>
                     </form>
 

@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <!DOCTYPE html>
-<html class="no-js"> <!--<![endif]-->
+<html>
+<head>
  <jsp:include page="topHeader.jsp"></jsp:include>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -18,6 +19,7 @@ $(function(){
 .error {color: red;}
 .login-blocks form input{border-bottom: 3px solid #fbb530;}
 </style>  
+</head>
     <body>
 
 <div class="content-area error-page" style="background-color: #FCFCFC; padding-bottom: 55px;">
