@@ -10,7 +10,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	window.onload = function(){
-		document.getElementById('image_container').value = opener.document.getElementById('image_container').value;
+		/* 이미지 미리보기 */
+		var img = document.createElement("img");
+		img.setAttribute("src", opener.document.getElementById('image_container').childNodes[0].src);
+		document.querySelector("div#image_container").appendChild(img);
+		/* 필수기입 항목 */
 		document.getElementById('resume_name').value = opener.document.getElementById('resume_name').value;
 		document.getElementById('resume_birth').value = opener.document.getElementById('resume_birth').value;
 		document.getElementById('resume_phone').value = opener.document.getElementById('resume_phone').value;
@@ -23,7 +27,13 @@
 		document.getElementById('resume_end').value = opener.document.getElementById('resume_end').value;
 		document.getElementById('resume_title').value = opener.document.getElementById('resume_title').value;
 		};
+		
+
 </script>
+<!-- 이미지 미리보기 스타일 적용 -->
+<style>
+	.select_img img{width: 90px; height:90px; margin:20px 0;}
+</style>
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,10 +85,9 @@
 											<input type="text" class="form-control" name="resume_title" id="resume_title">
 										</div>
 									</div>
-                           		   <div class="col-sm-6">
+                           		    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">사진</label>
-                                            <input type="file" class="form-control" id="image" name="image">
                                             <div id="image_container" name="image_container" class="select_img"></div>
                                         </div>
                                     </div>

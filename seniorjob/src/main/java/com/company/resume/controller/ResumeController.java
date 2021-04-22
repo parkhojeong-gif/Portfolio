@@ -19,6 +19,8 @@ import com.company.resume.service.ResumeVO;
 import com.company.resume.service.impl.ResumeMapper;
 import com.company.self_info.service.Self_InfoVO;
 import com.company.self_info.service.impl.Self_InfoMapper;
+import com.company.users.service.UsersVO;
+import com.company.users.service.impl.UsersMapper;
 
 @Controller
 public class ResumeController {
@@ -33,13 +35,15 @@ public class ResumeController {
 	PortfolioMapper portmapper;
 	@Autowired
 	CertificateMapper certimapper;
+	@Autowired
+	UsersMapper usersmapper;
 
 	
 	// 이력서 전체조회
 	@RequestMapping("/getSearchResumeList")
 	public String getSearchResumeList(Model model, HttpServletRequest req, ResumeVO vo) {
 		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("users.id");
+		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		model.addAttribute("list", resumemapper.getSearchResumeList(vo));
 		return "resume/resumeList";
@@ -47,12 +51,16 @@ public class ResumeController {
 
 	// 이력서 등록폼
 	@RequestMapping("/resumeInsertForm")
-	public String resumeInsertForm() {
+	public String resumeInsertForm(UsersVO uservo, Model model, ResumeVO vo, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		uservo.setId(id);
+		model.addAttribute("user", usersmapper.getUsers(uservo));
 		return "resume/resumeInsert";
 	}
 
 	// 이력서 등록
-	@RequestMapping("/resumeInsert")
+	@PostMapping("/resumeInsert")
 	public String resumeInsert(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo, 
 			PortfolioVO portvo) throws Exception {
 		HttpSession session = req.getSession();
@@ -60,7 +68,7 @@ public class ResumeController {
 		System.out.println(id);
 		vo.setId(id);
 		resumeservice.insertResume(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
-		return "resume/resumeList";
+		return "redirect:resumeList";
 	}
 	
 	// 이력서 수정
