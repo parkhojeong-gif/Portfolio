@@ -30,7 +30,7 @@
 <select id="userList" resultType="com.company.manager.user.userVO" parameterType="com.company.manager.user.userVO">
 	SELECT *
 	FROM (SELECT id, address, phonenum, email, birth, auth, name, log_date,
-	mentor_career_certificate,
+	mentor_career_certificate,  distinction,
 	ROW_NUMBER() OVER(ORDER BY id DESC) AS RNUM
 	FROM V_USERS where 1=1 <include refid="search"></include>)
 	V_USERS WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 

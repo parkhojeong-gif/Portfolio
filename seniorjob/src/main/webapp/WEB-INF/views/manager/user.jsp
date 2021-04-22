@@ -67,6 +67,7 @@
 							<th>회원 이메일</th>
 							<th>경력증명서</th>
 							<th>회원등급</th>
+							<th>소셜닉네임</th>
 							<th>승급</th>
 							<th>수정</th>
 							<th>삭제</th>
@@ -83,6 +84,7 @@
 								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
 								<td>${users.auth}</td>
+								<td>${users.distinction}</td>
 								<td>
 									<c:choose>
 										<c:when test="${users.auth eq 'USER'}">
