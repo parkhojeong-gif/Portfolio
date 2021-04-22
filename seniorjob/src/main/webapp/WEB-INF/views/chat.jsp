@@ -8,32 +8,37 @@
 <link rel="stylesheet" href="resources/chat/chat.css">
 </head>
 <body>
-	<div>
+	<div id="frm">
 		<button type="button" onclick="openSocket()">대화방 참여</button>
 		<button type="button" onclick="closeSocket()">대화방 나가기</button>
 		<br/><br/>
-			메세지 입력 :
+			
 		<input type="text" id="sender" value="${sessionScope.id }" style="display: none">
-		<input type="text" id="messageinput">
-		<button type="button" onclick="send()">메세지 전송</button>
+		
 		<!-- socket closed 됨 -->
 		<button type="button" onclick="clearText()">대화내용 지우기</button>	
 	</div>
 	<br><br>
 	<div id="messages">
-	<!-- 메세지가 보이는 곳 -->
+		<div id="realM">
+			<!-- 메세지가 보이는 곳 -->
+		</div>
 	</div>
-	
+		메세지 입력 :  <input type="text" id="messageinput">
+		<button type="button" onclick="send()">메세지 전송</button>
+			
 	<script>
 		//ws > websocket
 		var ws;
 		var message = document.getElementById("message");
 		
+		/* 소켓이 열려 있으면(대화 종료 x) 해당 내용 나옴 */
 		function openSocket(){
 			if(ws != undefined && ws.readyState !== WebSocket.CLOSED){
 				writeResponse("WebSocket is already opened");
 				return;
 			}
+			
 			
 			//웹소켓 객체 만드는 코드
 			ws = new WebSocket("ws://192.168.0.56/echo");
@@ -62,17 +67,21 @@
 			text = "";
 		}
 		
+		/* 대화 종료 */
 		function closeSocket(){
 			ws.close();
 		}
 		
+		/* 대화 입력 */
 		function writeResponse(text){
-			messages.innerHTML += "<br/>" + text;
+			realM.innerHTML += "<br/>" + text;
 		}
 		
+		/* 대화내용 지우기 */
 		function clearText(){
 			console.log(messages.parentNode);
-			messages.parentNode.removeChild(messages)
+			realM.innerHTML = '';
+// 			messages.parentNode.removeChild(messages);
 		}
 	</script>
 </body>
