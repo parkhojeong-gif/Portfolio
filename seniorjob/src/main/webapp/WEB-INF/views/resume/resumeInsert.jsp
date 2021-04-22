@@ -198,7 +198,6 @@
 			<div class="row">
 				<jsp:include page="../mypage.jsp"></jsp:include>
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties" id="d">
-				<input type="text" id="id" name="id" value="${users.id }">
 					<!--                      <div class="" id="contact1">                         -->
 					<!-- /.row -->
 					<div align="center">
@@ -397,12 +396,12 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
-									<button name="video" id="video">영상</button>
-									<!-- 채팅 -->
-									<button name="chatt" id="chatt">채팅</button>
 								</div>
 								<br><br><br>
 						</form>
+									<button name="video" id="video">영상</button>
+									<!-- 채팅 -->
+									<button name="chatt" id="chatt">채팅</button>
 					</div>
 					<!-- /.row -->
 				</div>

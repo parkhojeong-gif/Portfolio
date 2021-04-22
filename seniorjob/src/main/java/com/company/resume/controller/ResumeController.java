@@ -60,7 +60,7 @@ public class ResumeController {
 	}
 
 	// 이력서 등록
-	@PostMapping("/resumeInsert")
+	@RequestMapping("/resumeInsert")
 	public String resumeInsert(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo, 
 			PortfolioVO portvo) throws Exception {
 		HttpSession session = req.getSession();
@@ -68,7 +68,7 @@ public class ResumeController {
 		System.out.println(id);
 		vo.setId(id);
 		resumeservice.insertResume(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
-		return "redirect:resumeList";
+		return "redirect:/getSearchResumeList";
 	}
 	
 	// 이력서 수정
