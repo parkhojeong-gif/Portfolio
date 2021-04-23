@@ -42,9 +42,9 @@ public class manUserController {
 		
 	// 검색
 	@RequestMapping("/ManSearchService")
-	public String searchService(Model model, @RequestParam("searchKeyword") String searchKeyword) {
-		List<userVO> searchlist = manusermapper.searchUser(searchKeyword);
-		model.addAttribute("searchlist", searchlist);
+	public String searchService(Model model, @RequestParam(value="searchKeyword", required=false) String searchKeyword) {
+		List<userVO> list = manusermapper.searchUser(searchKeyword);
+		model.addAttribute("list", list);
 		return "/manager/user";
 	
 	}
@@ -79,7 +79,16 @@ public class manUserController {
 	@RequestMapping("/authUser")
 	public String authUser(userVO vo) {
 		manusermapper.authUser(vo);
-		 return "manager/user";
+		return "manager/user";
+
+	}
+	
+	//회원 강등
+	
+	@RequestMapping("/authDownUser")
+	public String authDownUser(userVO vo) {
+		manusermapper.authDownUser(vo);
+		return "manager/user";
 
 	}
 	

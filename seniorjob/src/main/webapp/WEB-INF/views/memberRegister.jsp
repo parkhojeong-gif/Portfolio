@@ -352,7 +352,7 @@
 								<div class="form-group">
 									<label for="password">비밀번호</label>
 									<form:password path="password" id="password" name="password" 
-										maxlength="10" class="pw" placeholder="최소 4자리 이상 영문 대,소문자와 숫자, 특수기호가 적어도 한 개 이상 포함 되도록 입력." />
+									 maxlength="10" class="pw" placeholder="4자리 이상 영문 대,소문자와 숫자, 특수기호가 적어도 한 개 포함." />
 									<form:errors path="password" cssClass="error" />
 								</div>
 								<div class="form-group">

@@ -13,49 +13,40 @@
 </head>
 <body>
 
-<div id="container">
-				<div class="freshdesignweb-top"><h1><a href="http://www.freshdesignweb.com">${mentor.usersVO.name}멘토님의 멘토링 목록</a></h1></div><div class="clr"></div>
+<div class="freshdesignweb-top"><h1><a href="http://www.freshdesignweb.com">${mentor.usersVO.name}멘토님의 멘토링 목록</a></h1></div><div class="clr"></div>
 <div class="freshdesignweb">    
-      <!-- css list sprites background -->
-    <!--End list sprites background -->
-    
 <div class="clr"></div><br><br>
 
-
-<!--CSS list style with number cicles background -->
+<!-- 멘토링 출력 -->
 <div class="numberlist">
 	 <form name="submitFrm" action="getSearchMentoringChanGon">
 	 <ol>
 	 <c:forEach var="mt" items="${mentoring }">
 	 <input type="hidden" id="mentor_id" name="mentor_id" value="${mt.mentor_id }">
 	 <input type="hidden" id="mentoring_number" name="mentoring_number" value="${mt.mentoring_number }">
+	 <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mt.mentoring_kind }">
 	  	<li><a href="#" onclick="getMentoring()">${mt.mentoring_name }</a></li>
 	 </c:forEach>
 	 </ol>
 	 </form>
 </div>
-
-<!--CSS list style with arrow images -->
+<!-- End of 멘토링 출력 -->
 
 </div><br>
 <div class="clr"></div>
-            <!-- freshdesignweb top bar -->
             <div class="freshdesignweb-buttom">
-                <a href="#" target="_blank" onclick="getMain()">Home</a>
                 <span class="right">
                     <a href="#" onclick="closeWindow()">닫기</a>
                 </span>
                 <div class="clr"></div>
-            </div><!--/ freshdesignweb top bar -->
-            
+            </div>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 var get_height = window.innerHeight; 
 var get_height1 =  get_height - 0;
 var get_container = document.getElementById('container');
 get_container.style.height =  get_height1 + 'px';
-</script>
 
-<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(["_setAccount", "UA-10146041-18"]);
   _gaq.push(["_trackPageview"]);
@@ -69,13 +60,13 @@ get_container.style.height =  get_height1 + 'px';
 function closeWindow(){
 	window.close();
 }
-function getMain(){
-	opener.document.location.href = "getMain";
-	window.close();
-}
 function getMentoring(){
+	var mentor_id = $('input[name=mentor_id]').val();
+	var mentoring_number = $('#mentoring_number').val();
+	var mentoring_kind = $('#mentoring_kind').val();
 	if(confirm("해당 멘토링 페이지로 이동하시겠습니까?")){
-		document.submitFrm.submit();
+		opener.location.href = "getSearchMentoringChanGon?mentor_id="+mentor_id+"&mentoring_number="+mentoring_number+"&mentoring_kind="+mentoring_kind;
+		window.close();
 	}
 }
 </script>

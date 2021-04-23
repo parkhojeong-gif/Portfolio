@@ -79,6 +79,13 @@
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
 			document.querySelector("div#image_container").appendChild(img);
+			/* 사진을 바꾸면 기존 이미지 삭제 후, 다시 append */
+			if(img.src != img){
+				/* 화면에 보이는 이미지 삭제 */
+				$('.select_img').find('img').remove()
+	 			$('#image_container').find('img').remove();
+	 			document.querySelector("div#image_container").append(img);			
+			}
 		}
 		reader.readAsDataURL(event.target.files[0]);
 		
@@ -112,9 +119,9 @@
                                         <div class="form-group">
                                             <label>사진</label>
                                             <div class="select_img">
-	                                            <input type="file" multiple="multiple" name="uploadFile"  multiple="multiple" onchange="setImage(event)"> 
+	                                            <input type="file" multiple="multiple" name="uploadFile" id="uploadFile"  multiple="multiple" onchange="setImage(event)"> 
 	                                            <img src="image/${resumeVO.image }">
-	                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }">
+<%-- 	                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }"> --%>
 	                                            <div id="image_container" name="image_container" class="select_img"></div>
                                             </div>
                                         </div>

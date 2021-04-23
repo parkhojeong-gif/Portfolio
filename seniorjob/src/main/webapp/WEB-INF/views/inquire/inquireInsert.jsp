@@ -18,24 +18,27 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 	
+<style>
+div#optionVal {
+    top: -44px;
+}
+
+</style>	
 <body>
 	<!-- property area -->
 	<div class="content-area recent-property"
 		style="background-color: #FFF;">
 		<div class="container">
-			<div class="col-md-12 single-property-content ">
-				<div>
-					<h5>사이트맵 적는 부분</h5>
-				</div>
-			</div>
 			<div class="row">
 				<div
 					class="col-md-12 pr-30 padding-top-40 properties-page user-properties"></div>
 				<!--왼쪽 -->
 				<jsp:include page="../Service_Center/new_sevice_left.jsp"></jsp:include>
 				<!--왼쪽  -->
+				<div class="col-md-1 pr-30 padding-top-40 properties-page user-properties">
+				</div>
 				<div id="optionVal"
-					class="col-md-10 pr-30 padding-top-40 properties-page user-properties">
+					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 
 					<!--작성부분  -->
 
@@ -50,7 +53,7 @@
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label>제목</label> <input type="text" class="form-control"
-									id="title" name="title" size=10>
+									id="title" name="title" size=10 required="required">
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -82,7 +85,7 @@
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label>내용</label>
-								<textarea id="summernote" name="content"></textarea>
+								<textarea id="summernote" name="content" required="required"></textarea>
 								<script>
 									$('#summernote').summernote({
 										placeholder : 'Hello stand alone ui',
@@ -100,10 +103,12 @@
 							</button>
 						</div>
 						<div class="col-sm-6 text-left">
-							<button class="btn btn-primary">
+							<a href="serviceCenterQna" onclick="return confirm('목록으로 돌아가시겠습니까?');">
+							<button type="button"class="btn btn-primary" >
 								<i class="fa fa-reply"></i>
-								 <a href="#" onclick="return confirm('목록으로 돌아가시겠습니까?');">목록으로</a>
+								 FAQ
 							</button>
+							</a>
 						</div>
 						<br> <br> <br> <br> <br>
 						<br>

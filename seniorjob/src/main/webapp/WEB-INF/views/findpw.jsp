@@ -15,7 +15,7 @@
 				url : "findpw",
 				type : "POST",
 				data : {
-					id : $("#id").val(),
+					name : $("#name").val(),
 					email : $("#email").val()
 				},
 				success : function(result) {

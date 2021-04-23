@@ -54,28 +54,24 @@
 </script>
 
 <script>
-	/* 이미지 미리보기 */
-	function setImage(event) {
-		var reader = new FileReader();
-
-		reader.onload = function(event){
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			document.querySelector("div#image_container").appendChild(img);
-		}
-		reader.readAsDataURL(event.target.files[0]);
-		
-	}
+	
 	
 	$("image").change(function(){
 		if(this.files && this.files[0]){
 			var reader = new FileReader;
 			reader.onload = function(data){
 				$(".select_img").attr("src", data.target.result).width(500);
+			document.querySelector("div#image_container").append(img);
+			/* 사진을 바꾸면 기존 이미지 삭제 후, 다시 append */
+			if(img.src != img){
+	 			$('#image_container').find('img').remove();
+	 			document.querySelector("div#image_container").append(img);			
 			}
 		}
-	})
-	
+			reader.readAsDataURL(event.target.files[0]);
+	}
+
+
 </script>
 <!-- 미리보기(preview) -->
 <script>
@@ -91,6 +87,7 @@
 		window.open("popCertiSeeResume",
                 "자격증", "width=900, height=900, resizable = no, scrollbars = no"); 
 	 })
+	
 	
 </script>
 <!-- 자기소개서 항목 추가 -->
@@ -174,6 +171,17 @@
 	})
 	
 	
+	/* 송다희 추가 */
+	/* 내 정보 불러오기 */
+	$(document).on("click", "#resume_in", function(){
+		$("#resume_name").val('${user.name}');
+		$("#resume_birth").val('${user.birth}')
+		$("#resume_email").val('${user.email}')
+		$("#resume_phone").val('${user.phonenum}')
+		$("#resume_address").val('${user.address}')
+	})
+	/* 송다희 추가 */
+	
 </script>
 
 <!-- 이미지 미리보기 스타일 적용 -->
@@ -193,7 +201,6 @@
 					<div align="center">
 						<h2>이력서 등록</h2>
 					</div>
-					<input type="hidden" name="id" id="id" value="${user }">
 					<h5>이력서 항목</h5>
 					<a href="">자격증</a> 
 					<a href="#step1" data-toggle="tab"><button type="button">보기+</button></a> &nbsp;&nbsp; 
@@ -206,6 +213,9 @@
 						<div class="row">
 							<div><input type="hidden" value=${ResumeVO.resume_no } id="resume_no" name="resume_no"></div>
 							<h3>필수기입 항목</h3>
+							<!-- 송다희 추가 -->
+							<div align="right"><button type="button" id="resume_in" name="resume_in">내 정보 불러오기</button></div>
+							<!-- 송다희 추가 -->
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>이력서 제목</label> 
@@ -387,10 +397,12 @@
 									<button type="button" class="btn btn-primary" name="preview" id="preview">
 										<i class="fa fa-envelope-o"></i>미리보기
 									</button>
-									
 								</div>
 								<br><br><br>
 						</form>
+									<button name="video" id="video">영상</button>
+									<!-- 채팅 -->
+									<button name="chatt" id="chatt">채팅</button>
 					</div>
 					<!-- /.row -->
 				</div>

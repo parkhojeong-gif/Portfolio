@@ -48,7 +48,7 @@ public class CartController {
 		}
 	}
 	
-	//cart에서 배열로 받아온 값을 넘겨서 삭제
+	//cart에서 배열로 받아온 값을 넘겨서 삭제 
 	@RequestMapping("/deleteCart")
 	public String deleteCart(CartVO vo, HttpServletRequest req) {
 		HttpSession session = req.getSession();

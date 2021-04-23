@@ -18,23 +18,28 @@
 	font-weight: 300;
 }
 h1{text-align:center}
-#contentArea{
+#reviewTitle{
 	margin-left:40px;
 	border: 1px solid black;
 	border-radius: 8px;
 	padding: 10px;
 }
-.text-muted {
-  padding: 3px;
-  float:left;
-	-webkit-transition: margin 0.5s ease-out;
-    -moz-transition: margin 0.5s ease-out;
-    -o-transition: margin 0.5s ease-out;
+.text-muted{
+  -moz-transition: background, 0.5s;
+  -o-transition: background, 0.5s;
+  -webkit-transition: background, 0.5s;
+  transition: background, 0.5s;
 }
-
 .text-muted:hover {
-	cursor:pointer;
-    margin-top: 5px;
+  background: #FDC600;
+  cursor:pointer;
+}
+#reviewContent{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 160px;
+  height: 20px;
 }
 </style>
 <body>
@@ -71,7 +76,7 @@ h1{text-align:center}
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
 						</li>
-						<c:forEach items="${list }" var="rev">
+						<c:forEach items= "${list }" var="rev">
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-4 add-d-entry">${rev.category_a }</span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.title }</span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.id }</span>
@@ -134,8 +139,6 @@ h1{text-align:center}
                 </form>
                 </div>
                 </div>
-					
-					
 		</div>
 		</div>
 </div>
@@ -154,16 +157,25 @@ h1{text-align:center}
 			url: "getPopularArticleList",
 			dataType: "json", 
 			success:function(result){
-				console.log(result);
 				for(i=0; i<result.length; i++){
-					var div = $('<div>').attr('class', 'col-sm-4');
-					var p = $('<p>').attr( {'class' : 'text-muted', 'id' : 'contentArea'} ).text("No."+ i + ' ' + result[i].content);
-					div.append(p);
+					var div = $('<div>').attr({'class':'col-sm-4', 'id':'mainDiv'}).text("#" + (i+1));
+					var p1 = $('<p>').attr( {'class' : 'text-muted', 'id' : 'reviewTitle'} ).text("제목: " + result[i].title);
+					var p2 = $('<p>').attr( 'class' , 'text-muted' ).text("조회수: " + result[i].click);
+					var p3 = $('<p>').attr( {'class':'text-muted', 'id':'reviewContent' }).text((result[i].content));
+					var input = $('<input>').attr({ 'type':'hidden', 'name':'seq', 'id':'seq', 'value':result[i].seq});
+					p1.append(p2,p3, input);
+					div.append(p1);
 					$('#popArticles').append(div);
 				}
 			}
 		});
+		// 해당 글 클릭 시 상세 페이지 이동 이벤트
+		$(document).on('click','#reviewTitle',function(){
+			var param = $(this).find('#seq').val(); // 선택 객체 하위 요소 검색
+			location.href = "getSearchMenReview?seq="+param;
+		});
 	}
+	
 </script>
 </body>
 </html>

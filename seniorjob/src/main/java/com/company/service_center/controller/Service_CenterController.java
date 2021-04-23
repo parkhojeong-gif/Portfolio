@@ -2,6 +2,9 @@ package com.company.service_center.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +28,7 @@ public class Service_CenterController {
 	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		
 		
-		if(scri.getOptionValue()==null) {
+		if(scri.getOptionValue()!="최신순" && scri.getOptionValue()!="인기순") {
 			model.addAttribute("list", service_CenterMapper.list(scri));
 			System.out.println("============================ssqq===========================");
 			System.out.println(scri.getOptionValue());
@@ -72,7 +75,10 @@ public class Service_CenterController {
 	}
 
 	@RequestMapping("/insertService_Center") // 공지사항 등록
-	public String insertService_CenterProc(Service_CenterVO vo) {
+	public String insertService_CenterProc(Service_CenterVO vo,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		service_CenterMapper.insertService_Center(vo);
 		return "redirect:/serviceCenter";
 	}
@@ -95,11 +101,11 @@ public class Service_CenterController {
 		return "redirect:/serviceCenter";
 	}
 
-//	--------------------------------------------------------결제환불-----------------------------------------------------------------------------------------------------
+//	--------------------------------------------------------faq-----------------------------------------------------------------------------------------------------
 	@RequestMapping("serviceCenterQna") // 결제/환불 목록 조회
 	public String listQna(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 
-		if(scri.getOptionValue()==null) {
+		if(scri.getOptionValue()==null || scri.getOptionValue()=="" ) {
 			model.addAttribute("list", service_CenterMapper.listQna(scri));
 			System.out.println("============================ssqq===========================");
 			System.out.println(scri.getOptionValue());
@@ -150,7 +156,10 @@ public class Service_CenterController {
 	}
 
 	@RequestMapping("/insertService_CenterQna") // 결제환불 등록
-	public String insertService_CenterProcQna(Service_CenterVO vo) {
+	public String insertService_CenterProcQna(Service_CenterVO vo,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		service_CenterMapper.insertService_CenterQna(vo);
 		return "redirect:/serviceCenterQna";
 	}
@@ -175,10 +184,10 @@ public class Service_CenterController {
 
 
 	// ==================================고객센터 main=============================
-	@RequestMapping("/serviceCenterMain")
+	@RequestMapping("/inquire")
 	public String serviceCenterMain(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		
-		return "/Service_Center/qna/serviceCenterMain";
+		return "/inquire";
 	}
 	@RequestMapping("/serviceCenterMain2")
 	public String serviceCenterMain2() {

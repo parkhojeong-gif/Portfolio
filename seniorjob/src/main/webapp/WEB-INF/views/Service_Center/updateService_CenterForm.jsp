@@ -84,8 +84,10 @@
 							<div class="col-sm-6 text-right">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-bars"></i> 등록하기</button>
                             </div>
-                            <div class="col-sm-6 text-left" onclick="return confirm('목록으로 돌아가시겠습니까?');">
-                                   <button class="btn btn-primary"><i class="fa fa-reply"></i> <a href="serviceCenter" >목록으로</a></button>
+                            <div class="col-sm-6 text-left" >
+                            <a href="serviceCenter" onclick="return confirm('목록으로 돌아가시겠습니까?');">
+                                   <button type="button"class="btn btn-primary"><i class="fa fa-reply"></i> 목록으로</button>
+                            </a>       
                             </div>
 							<br> <br> <br> <br>
 								<br><br><br>

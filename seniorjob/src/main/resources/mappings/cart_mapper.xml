@@ -3,15 +3,21 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.company.cart.service.impl.CartMapper">
  <select id="getSearchCartList" resultType="com.company.cart.service.CartVO">
- 	SELECT CART_NO, 
- 		   MENTORING_NAME, 
- 		   CART_START, 
- 		   CART_END, 
- 		   CART_PRICE, 
- 		   ID,
- 		   MENTOR_ID
-	FROM   CART
-	ORDER BY CART_NO	
+ 	SELECT 
+ 		   C.CART_NO, 
+ 		   C.MENTORING_NAME, 
+ 		   C.CART_START, 
+ 		   C.CART_END, 
+ 		   C.CART_PRICE, 
+ 		   C.ID,
+ 		   C.MENTOR_ID,
+ 		   M.MENTORING_NUMBER "mtNum.mentoring_number"
+	FROM   
+		   CART C, MENTORING M
+	WHERE
+		   C.MENTOR_ID = M.MENTOR_ID 
+	ORDER BY 
+		   C.CART_NO	
  </select>
  <insert id="insertCart">
  	INSERT INTO CART (CART_NO, 

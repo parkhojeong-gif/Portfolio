@@ -5,7 +5,19 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <!-- session 유지시간지정(분) 시작 -->
+  <session-config>
+  	<session-timeout>60</session-timeout>
+  </session-config>
+  <!-- session 유지시간 종료 -->
   
+  <!-- 로그인 후 새로고침 로그아웃 현상 해결 -->
+  <listener>
+  <listener-class>
+     org.springframework.security.web.session.HttpSessionEventPublisher
+  </listener-class>
+  </listener>
+
   <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

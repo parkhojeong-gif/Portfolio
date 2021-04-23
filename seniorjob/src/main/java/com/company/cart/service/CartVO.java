@@ -1,5 +1,7 @@
 package com.company.cart.service;
 
+import com.company.mentoring.service.MentoringVO;
+
 import lombok.Data;
 
 @Data
@@ -11,5 +13,7 @@ public class CartVO {
 	private String cart_end;		//주문 만료일
 	private String id;				//아이디
 	private String mentor_id;		//멘토 아이디   
+	
+	private MentoringVO mtNum; // Mentoring 테이블 조인 용도
 	
 }
