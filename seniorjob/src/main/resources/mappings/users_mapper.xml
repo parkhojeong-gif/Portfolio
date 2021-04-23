@@ -60,6 +60,14 @@
 	WHERE ID = #{id}
 	</select>
 	
+	<!-- 아이디 찾기(전화번호, 이메일로 비교) -->
+	<select id="findId" resultType="String">
+	SELECT ID 
+	FROM USERS 
+	<if test="name != null">WHERE NAME = #{name}</if>
+	<if test="email != null">AND EMAIL = #{email}</if>
+	</select> 
+	
 	<!-- 패스워드 체크 -->
 	<select id ="passCheck" resultType="int">
 	SELECT COUNT(*) FROM USERS
@@ -81,14 +89,16 @@
 					<if test="phonenum != null and phonenum !=''">,PHONENUM</if>
 					<if test="email != null and email !=''">,EMAIL</if>
 					<if test="birth != null and birth !=''">,BIRTH</if>
-					<if test="name != null and name !=''">,NAME</if>)
+					<if test="name != null and name !=''">,NAME</if>
+					<if test="distinction != null and distinction !=''">,Distinction</if>)
 	VALUES(			<if test="id != null and id !=''">#{id}</if>
 					<if test="password != null and password !=''">,#{password}</if>
 					<if test="address != null and address !=''">,#{address}</if>
 					<if test="phonenum != null and phonenum !=''">,#{phonenum}</if>
 					<if test="email != null and email !=''">,#{email}</if>
 					<if test="birth != null and birth !=''">,#{birth}</if>
-					<if test="name != null and name !=''">,#{name}</if>)
+					<if test="name != null and name !=''">,#{name}</if>
+					<if test="distinction != null and distinction !=''">,#{distinction}</if>)
 	</insert>
 	
 	<!-- 패스워드 변경 -->

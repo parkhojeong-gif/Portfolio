@@ -107,17 +107,17 @@
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'USER'}">
-									<li style="width: 250px; height: 40px"><a href="#">${sessionScope.users.id}님
+									<li style="width: 300px; height: 40px"><a href="#">${sessionScope.users.id}님
 											환영합니다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li><li></li>
 								</c:when>
 								<c:when test="${not empty userInfo}">
-									<li style="width: 250px; height: 40px"><a href="#">${sessionScope.userInfo.kakaoId}님
+									<li style="width: 300px; height: 40px"><a href="#">${sessionScope.userInfo.kakaoId}님
 											환영합니다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'MENTOR'}">
-									<li style="width: 250px; height: 40px"><a href="#">${sessionScope.users.id}님
+									<li style="width: 300px; height: 40px"><a href="#">${sessionScope.users.id}님
 											환영합니다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
@@ -154,16 +154,18 @@
 			<div class="collapse navbar-collapse yamm" id="navigation">
 
 
-				<c:if test="${users.auth eq null}">
+				<c:if test="${users.auth eq null and empty userInfo}">
 					<div class="button navbar-right">
 						<button class="navbar-btn nav-button wow bounceInRight login"
-							style="height: 50px; width: 104px"
+							style="height: 50px; width: 130px"
 							onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>
 						<button class="navbar-btn nav-button wow fadeInRight"
 							style="height: 50px; width: 104px"
 							onclick="location.href='insertUsers'" data-wow-delay="0.48s">회원가입</button>
 					</div>
 				</c:if>
+				
+				
 
 				<ul class="main-nav nav navbar-nav navbar-right">
 					<li class="wow fadeInDown" data-wow-delay="0.3s"

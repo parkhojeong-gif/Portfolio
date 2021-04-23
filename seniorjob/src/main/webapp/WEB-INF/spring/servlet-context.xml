@@ -37,7 +37,6 @@
 	</beans:bean>
 	
 
-	
 	<!-- @Component, @Comtroller, @Service, @Repository -->
 	<context:component-scan base-package="com.company" />
 	

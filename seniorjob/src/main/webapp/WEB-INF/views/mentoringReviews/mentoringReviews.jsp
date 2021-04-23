@@ -76,7 +76,7 @@ h1{text-align:center}
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">작성일자</span>
 							<span class="col-xs-6 col-sm-4 col-md-2 add-d-title">조회수</span>
 						</li>
-						<c:forEach items="${list }" var="rev">
+						<c:forEach items= "${list }" var="rev">
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-4 add-d-entry">${rev.category_a }</span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.title }</span>
 							<span onclick="location.href='getSearchMenReview?seq=${rev.seq }'" class="col-xs-6 col-sm-4 col-md-2 add-d-entry">${rev.id }</span>

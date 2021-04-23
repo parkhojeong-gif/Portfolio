@@ -8,11 +8,11 @@ import com.company.manager.utils.ManSearchCriteria;
 
 public interface manUserMapper {
 	
-	// 페이징 처리 및 결제환불 전체 조회
+	// 페이징 처리 및 회원 전체 조회
 	public List<userVO> userList(ManSearchCriteria scri);
-	// 결제환불 게시물 총갯수
+	// 회원 게시물 총갯수
 	public int userCount(ManSearchCriteria scri);
-	// 결제환불 게시글 검색
+	// 회원 게시글 검색
 	public List<userVO> searchUser(String searchKeyword);	
 	//회원 단건조회
 	public List<userVO> getUserList(userVO vo);	
@@ -22,5 +22,8 @@ public interface manUserMapper {
 	public int deleteUser(userVO vo);
 	//회원 승급
 	public void authUser(userVO vo);
+	//회원 강등
+	public void authDownUser(userVO vo);
+	
 	
 }
