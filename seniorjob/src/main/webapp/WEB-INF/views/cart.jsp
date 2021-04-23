@@ -23,7 +23,6 @@ function allDel(){
 					<h4 class="s-property-title">${sessionScope.users.id}님의 장바구니</h4>
 					<hr>
 					<form id="form" name="form" method="post">
-					
 					<div align="right">
 						<button class="btn btn-primary" type="submit" id="allCheck" name="allCheck" onclick="allDel()">비우기</button>
 						<button class="btn btn-primary" type="submit" id="delCheck" name="delCheck" onclick="deleteValue()">선택삭제</button>
@@ -45,15 +44,16 @@ function allDel(){
 					  </thead>
 					  <tbody>
 					  <c:forEach items="${list }" var="cart">
-					  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${cart.mtNum.mentoring_number }">
 					  <c:choose>
 					  <c:when test="${cart.id eq users.id }">
 				        <tr>
 				        	<th>
 				        		<div class="chBox">
 				        			<input type="checkbox" id="del" name="del" value="${cart.cart_no }" >
+				        			
 				        		</div>
 				        	</th>
+				        	<input type="hidden" id="mentoring_number" name="mentoring_number" value="${cart.mtNum.mentoring_number }">
 				        	<td><input type="text" id="mentor_id" name="mentor_id" value="${cart.mentor_id }"></td>
 				            <td><a href="getMentor?mentor_id=${cart.mentor_id }">${cart.mentoring_name }</a></td>
 				            <td>${cart.cart_start }</td>
@@ -184,37 +184,11 @@ function allDel(){
     		}
     	}
     })
-    // 결제하기(선택한 체크박스의 아이디 값 찾기)
-	function mentoringPayForm(){
-		var mentorId;
-		var del;
-		var chk = $("input[name=del]:checked");
-		var checked = $(this).iCheck('checked');
-		var yn = confirm("결제 하시겠습니까?");
-		// 상품 선택 안 하고 결제하기 누를 때 발생.
-		if(chk.length == 0){
-			alert("상품을 선택해주세요.");
-			return;
-		}
-		if(yn){
-			mentorId = $("input[name=del]:checked").closest("tr").find("#mentor_id").val();
-			del = $("input[name=del]:checked").val()
-			/* if(checked){
-				$("input[name=del]:checked").iCheck("disabled", true);
-			}else{
-				
-			} */
-			/* 결제하기와 동시에 장바구니 목록에서 해당내역 삭제(하는 중) */
-			location.href = "mentoringPayForm?mentor_id="+mentorId;
-// 			location.href = "deleteSub?cart_no="+cartNo;
-			/*  +"&cart_no="+ cartNo 
-				+"&deleteSub?cart_no="+cartNo
-			*/
-		}
-	}
+
      // 결제하기(선택한 체크박스의 아이디 값 찾기)
 	function mentoringPayForm(){
-		var mentorId;
+		var menNo;
+		var mentor_id;
 		var del;
 		var chk = $("input[name=del]:checked");
 		var checked = $(this).iCheck('checked');
@@ -225,14 +199,15 @@ function allDel(){
 			return;
 		}
 		if(yn){
-			/* mentorId = $("input[name=del]:checked").closest("tr").find("#mentor_id").val();
-			del = $("input[name=del]:checked").val() */
+			menNo = $("input[name=del]:checked").closest("tr").find("#mentoring_number").val();
+			mentor_id = $("input[name=del]:checked").closest("tr").find("#mentor_id").val();
+			/*del = $("input[name=del]:checked").val() */
 			/* if(checked){
 				$("input[name=del]:checked").iCheck("disabled", true);
 			}else{
 				
 			} */
-			location.href = "mentoringPayForm?mentoring_number="+mentorId;
+			location.href = "mentoringPayForm?mentoring_number="+menNo +"&mentor_id=" + mentor_id;
 // 			location.href = "deleteSub?cart_no="+cartNo;
 			/*  +"&cart_no="+ cartNo 
 				+"&deleteSub?cart_no="+cartNo

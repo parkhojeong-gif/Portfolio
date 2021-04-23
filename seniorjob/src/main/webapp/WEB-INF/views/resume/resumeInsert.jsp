@@ -54,13 +54,12 @@
 </script>
 
 <script>
-	
-	
-	$("image").change(function(){
-		if(this.files && this.files[0]){
-			var reader = new FileReader;
-			reader.onload = function(data){
-				$(".select_img").attr("src", data.target.result).width(500);
+	/* 이미지 미리보기 */
+	function setImage(event) {
+		var reader = new FileReader();
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
 			document.querySelector("div#image_container").append(img);
 			/* 사진을 바꾸면 기존 이미지 삭제 후, 다시 append */
 			if(img.src != img){
@@ -70,8 +69,6 @@
 		}
 			reader.readAsDataURL(event.target.files[0]);
 	}
-
-
 </script>
 <!-- 미리보기(preview) -->
 <script>
@@ -81,14 +78,17 @@
                 "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
 	})
 	
-	//자격증 불러오기
-	 $(document).on("click", "#certiSearchSom", function(){
-		window.name="parentForm"; //부모창 이름
-		window.open("popCertiSeeResume",
-                "자격증", "width=900, height=900, resizable = no, scrollbars = no"); 
-	 })
+	/* 영상 */
+	$(document).on("click", "#video", function(){
+		window.open("https://192.168.0.56:85",
+                "영상", "width=1000, height=1000, resizable = no, scrollbars = no");
+	})
 	
-	
+	/* 채팅 */
+	$(document).on("click", "#chatt", function(){
+		window.open("chat",
+                "채팅", "width=1000, height=1000, resizable = no, scrollbars = yes");
+	})
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
@@ -113,11 +113,10 @@
 			    	self_number++;
 	})	 
 				 
-
 <!-- 자격증 항목 추가+ -->
 	var certi_number = 1;
 	$(document).on("click", "#certiAdd", function(){
-		var certi = "<div class='col-sm-6 som_certi_group'>"
+		var certi = "<div class='col-sm-6'>"
 				  + "<div class='form-group'>"
 				  + "<label>항목</label>"
 				  + "<input type='hidden' name='clist["+certi_number+"].certi_kind'>"

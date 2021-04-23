@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +61,7 @@ public class MentoringController {
 	
 	// 멘토링 단건조회
 	@RequestMapping("/getMentoringChanGon")
-	public String getMentoring(Model model, MentoringVO mtVo, MentorVO mVo) {
+	public String getMentoring(@RequestParam String bizno, Model model, MentoringVO mtVo, MentorVO mVo) throws IOException {
 		model.addAttribute("mentoring", mtService.getMentoring(mtVo));
 		model.addAttribute("mentor",mentorService.getMentor(mVo));
 		return "Mentoring/getMentoring";
@@ -170,11 +173,21 @@ public class MentoringController {
 	}
 	
 	// 멘토링 단건 조회_김찬곤
+	// 송다희 추가
 	@RequestMapping("/getSearchMentoringChanGon")
-	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model) {
+	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model) throws IOException {
 		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo)); // 멘토링 정보
 		model.addAttribute("mentor",mentorService.getMentor(mVo)); // 멘토 정보
 		model.addAttribute("relatedMentoring", mtService.getRelatedMentoring(mtVo)); // 유사한 멘토링
+		
+		//크롤링
+		String uri = "https://comento.kr/edu/learn/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C-G165";
+		Document doc = Jsoup.connect(uri).get();
+		Elements element = doc.select(".edu-detail--summary");
+		
+		System.out.println(doc.toString());
+		model.addAttribute("biz", element);
+
 		return "Mentoring/getMentoring";
 	}
 	
