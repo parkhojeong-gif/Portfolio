@@ -6,8 +6,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <jsp:include page="../topHeader.jsp" />
  <head>
-    <link href='../../../resources/fullcalendar/lib/main.css' rel='stylesheet' />
-    <script src='../../../resources/fullcalendar/lib/main.js'></script>
+    <link href='/resources/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='/resources/fullcalendar/lib/main.js'></script>
     
     <script>
 
