@@ -167,7 +167,6 @@ input[type="search"]::-webkit-search-decoration {
     font-weight: 400;
     opacity: 0.8;
     padding: 8px 16px;
-    margin: 5px;
 }
 .btn-round{
     border-width: 1px;
@@ -301,18 +300,20 @@ input[type="search"]::-webkit-search-decoration {
     padding: 10px 20px;
     border: 1px solid #FDC600;
     color: #000;
+    background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
     color: #000;
+    background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
 }
 .search-form {
     background-color: #fff;
     border-radius: 5px;
-    /* padding: 20px 0; */
+    padding: 20px 0;
     border: 1px solid #E6E6E6;
     box-sizing: border-box;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -325,17 +326,15 @@ input[type="search"]::-webkit-search-decoration {
 
 .form-inline .form-control, .form-inline .form-control {
     background: rgba(252, 252, 252, 0.35);
-    border-radius: 10px;
+    border-radius: 1px;
     color: #ADADAD;
-    height: 60px;
+    height: 40px;
     margin-right: 10px;
-    width: 700px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 195px;
 }
 .form-control {
     display: block;
-    width: 50%;
+    width: 100%;
     height: 34px;
     padding: 6px 12px;
     font-size: 13px;
@@ -397,7 +396,7 @@ input[type="search"]::-webkit-search-decoration {
     transition: all 300ms linear;
 } 
 /* Inputs               */
-/* .form-control {
+.form-control {
     display: block;
     width: 100%;
     height: 44px;
@@ -411,7 +410,7 @@ input[type="search"]::-webkit-search-decoration {
     border-radius: 0px;
     box-shadow: 0px 1px 1px rgba(179, 179, 179, 0.1) inset;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-} */
+}
 
 .form-control:focus {
     background-color: #FFFFFF;
@@ -1013,13 +1012,14 @@ label small{
 }
 #bg-slider .item img{
     width: 100%;
-    height: 816px
+    height: 630px
 }
 
 .slider-content{
-    /* position: absolute; */
+    position: absolute;
     top: 20%;
     text-align: center;
+    color: #FFF;
     width: 100%;
 }
 .slider-content h2 {
@@ -1088,7 +1088,7 @@ font-weight: 500;
 page-header
 ======================================================*/
 .page-head{
-    background: #494C53 url("../../assets/img/mentor/mentoringImg.png") 
+    background: #494C53 url("../../assets/img/page-header.jpg") 
         no-repeat scroll center top / cover;
     color:#FFF;
     position: relative;
@@ -1107,7 +1107,7 @@ page-header
     letter-spacing: 2px;
 }
 .content-area{
-    padding-bottom: 55px;
+    background-color: #FCFCFC; padding-bottom: 55px;
 }
 .layout-switcher a{
     font-size: 25px;
@@ -1190,7 +1190,7 @@ Asside widgets CSS
 }
 .panel.sidebar-menu .panel-body {
     padding: 0;
- /*    margin-top: 25px; */
+    margin-top: 25px;
 }
 .panel.sidebar-menu .panel-body span.colour {
     display: inline-block;
@@ -1567,8 +1567,8 @@ padding: 0 0 0.5em;
 .box-two {
     background: #FFF none repeat scroll 0% 0%;
 
-    border: 1px solid #1f1f2e;
-    box-sizing: border-box;	
+    border: 1px solid #E6E6E6;
+    box-sizing: border-box;
 
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -1600,12 +1600,12 @@ padding: 0 0 0.5em;
 .pr0 {
     padding-right: 0px !important;
 }
-/* .pl0 {
+.pl0 {
     padding-left:0px !important;
-} */
-/* .pl-10 {
+}
+.pl-10 {
     padding-left: 10px !important;
-} */
+}
 .pr-10 {
     padding-right: 10px !important;
 }
@@ -1821,7 +1821,6 @@ proerty-th-list
 }
 .properties-page .box-two { 
     overflow: hidden !important; 
-    margin: 15px;
 } 
 .proerty-th-list  .proerty-item .item-entry h5 {
     text-transform: uppercase;
@@ -1844,7 +1843,7 @@ proerty-th-list
     clear: both;
     padding: 5px 0px;
     margin-top: 15px;
-    /* background-color: #EDEDED; */
+    background-color: #EDEDED;
     color: #555;
 }
 .property-icon img{
@@ -2054,7 +2053,6 @@ single property page
     display: block;
     line-height: 15px;
     text-transform: uppercase;
-    padding-bottom:10px; /* --> 김찬곤 수정 */
 }
 .property-info-entry .property-info-value {
     font-size: 18px;    
@@ -2486,14 +2484,9 @@ count-area
     padding: 15px;
 }
 .search-form .form-inline .form-group { 
-   	width: 50px;
+    width: 235px;
     text-align: left;
     letter-spacing: 0.5px;
-}
-
-.form-search-location{
-	width:235px;
-	text-align: left;
 }
 .slider-selection { 
     background: #FDC600;
@@ -2612,11 +2605,11 @@ padding-bottom: 15px;
     display: inline-block;
     width: 100%;
 }
-/* .large-search .search-form .form-inline .form-control, .form-inline .form-control,
+.large-search .search-form .form-inline .form-control, .form-inline .form-control,
 .large-search .search-form .bootstrap-select button.dropdown-toggle ,
 .large-search .search-form .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
     width:100%;
-} */
+}
 .large-search .search-row{
     overflow: hidden;
 }
@@ -2703,7 +2696,7 @@ padding-bottom: 15px;
     float: left;
     width: 24px;
     height: 24px;
-    content: "�겎";
+    content: "";
     color: #FDC600;
     font-size: 16px;
     line-height: 24px;
@@ -3051,146 +3044,3 @@ padding: 10px;
 #map {
     height: 300px;
 }
-
-
-
-
-
-/* somin */
-
-#nudge_wrap {
-    width: 260px;
-    position: fixed;
-    top: 96px;
-    left: 50%;
-    margin-left: 370px;
-}
-
-.btn_check {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    padding: 0 0 0 12px;
-    width: 62px;
-    height: 30px;
-    border: 1px solid #dfdfdf;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: #222;
-    font-size: 13px;
-    font-weight: normal;
-    letter-spacing: -1px;
-    background-color: #fff;
-}
-
-.btn_check:after {
-    display: inline-block;
-    position: absolute;
-    top: 9px;
-    right: 11px;
-    width: 9px;
-    height: 9px;
-    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
-    content: "";
-}
-
-
-.tabWrap .tab .badge {
-    display: inline-block;
-    margin: 0 0 0 8px;
-    padding: 0 12px 0 13px;
-    min-width: 36px;
-    height: 28px;
-    border-radius: 14px;
-    box-sizing: border-box;
-    color: #fff;
-    font-size: 18px;
-    letter-spacing: 0;
-    vertical-align: top;
-    background: #afbac8;
-}
-
-.tabWrap:after {
-    display: table;
-    clear: both;
-    content: "";
-    table-layout: fixed;
-}
-
-.my_notification .sliders .bx-viewport {
-    overflow: visible !important;
-}
-
-.bx-viewport {
-    -webkit-transform: translatez(0);
-}
-
-.my_notification .slider .link:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    content: "";
-    display: block;
-    background: #fff;
-    opacity: 0;
-}
-
-.my_notification .slider.my li:nth-of-type(4n+1), .my_notification .slider.apply li {
-    border-color: #5189fa;
-    background: #5189fa;
-}
-
-
-.my_notification .slider.my li:nth-of-type(4n+2), .my_notification .slider.request li {
-    border-color: #00cba4;
-    background: #00cba4;
-}
-
-.my_notification .slider.my li:nth-of-type(4n+3), .my_notification .slider.jobs li {
-    border-color: #00beea;
-    background: #00beea;
-}
-
-.my_notification .slider.my li:nth-of-type(4n+4), .my_notification .slider.company li {
-    border-color: #a574ee;
-    background: #a574ee;
-}
-
-.my_notification .slider li {
-    float: left;
-    position: relative;
-    width: 300px;
-    height: 190px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 16px;
-    box-sizing: border-box;
-    letter-spacing: -1px;
-}
-
-.my_notification .slider .title {
-    overflow: hidden;
-    margin-bottom: 12px;
-    width: 100%;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 24px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.my_notification .slider.my li .inner {
-    padding: 31px 23px 23px 23px;
-}
-
-.my_notification .slider .inner {
-    position: relative;
-    z-index: 1;
-    padding: 23px;
-    height: 100%;
-    box-sizing: border-box;
-}
-

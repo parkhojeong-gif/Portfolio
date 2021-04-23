@@ -90,8 +90,6 @@
             <div class="container slider-content">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-1 col-sm-12">
-                        <!-- <h2>시니어잡에 오신것을 환영합니다.</h2>
-                        <p>업의 현장에 종사하는 분들의 지식과 전문성을 활용해 꿈을 이뤄 나가는 과정에서 즉시 가치가 창출 될 수 있도록 지원합니다.</p> -->
                         <div class="search-form wow pulse" data-wow-delay="0.8s">
                             <form class=" form-inline" name="searchFrm">
                             
@@ -109,7 +107,7 @@
 									</div>
 							</div>
 							
-                            <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" name="searchKeyword" value="" placeholder="멘토 직무 검색 ex)마케팅,영업,IT">
+                            <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" placeholder="멘토 직무 / 멘토링 지역 / 연령을 입력하세요.">
 							<div class="form-group">
 								<div class="row row-space">
 									<div class="col-2"></div>
@@ -342,7 +340,7 @@
 				$('#myModal').modal().show();
 				return false;
 			}else if(keywordChk.indexOf('서울') >= 0 || keywordChk.indexOf('부산') >= 0|| keywordChk.indexOf('대구') >= 0 || keywordChk.indexOf('인천') >= 0 || keywordChk.indexOf('광주') >= 0 || keywordChk.indexOf('대전') >= 0 || keywordChk.indexOf('울산') >= 0 || keywordChk.indexOf('세종') >= 0){
-				alert(keywordChk + "지역 멘토를 검색합니다.");
+				alert(keywordChk + " 지역 멘토를 검색합니다.");
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}else if(keywordChk.indexOf('40') >= 0 || keywordChk.indexOf('50') >= 0 || keywordChk.indexOf('60') >= 0){
@@ -350,7 +348,7 @@
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}else{
-				alert(keywordChk + "직무 멘토를 검색합니다.");
+				alert(keywordChk + " 직무 멘토를 검색합니다.");
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}
