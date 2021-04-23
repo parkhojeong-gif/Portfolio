@@ -10,7 +10,8 @@
 	<select id="getMentorFollowing" resultType="com.company.following.service.FollowingVO">
 		SELECT ID, MENTOR_ID
 		FROM FOLLOWING
-		WHERE ID = #{id}	
+		WHERE ID = #{id}
+		AND MENTOR_ID = #{mentor_id}	
 	</select>
 	
 	<!-- 김찬곤 추가 -->

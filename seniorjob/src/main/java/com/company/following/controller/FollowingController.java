@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.following.service.FollowService;
 import com.company.following.service.FollowingVO;
+import com.company.mentor.service.MentorService;
+import com.company.mentor.service.MentorVO;
 
 @Controller
 public class FollowingController {
 
 	@Autowired FollowService followService;
+	@Autowired MentorService mentorService;
 
 //	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	//팔로우 목록
@@ -31,10 +34,13 @@ public class FollowingController {
 	// 멘토 팔로우
 	@ResponseBody
 	@RequestMapping("/mentorFollowCheck")
-	public int mentorFollowCheck(FollowingVO vo) {
-		int result = followService.mentorFollowCheck(vo);
+	public int mentorFollowCheck(FollowingVO fVo, MentorVO mVo) {
+		int result = followService.mentorFollowCheck(fVo);
 		if(result == 0) {
-			followService.MentorFollow(vo);
+			followService.MentorFollow(fVo);
+			String mentor_id = "41";
+			mVo.setMentor_id(mentor_id);
+			mentorService.getUpdateFNumPlus(mVo); // 멘토 테이블 멘토 팔로우 숫자 증가
 			return result;
 		}else {
 			return result;
@@ -43,8 +49,9 @@ public class FollowingController {
 	// 멘토 팔로우 취소
 	@ResponseBody
 	@RequestMapping("/deleteMentorFollow")
-	public int deleteMentorFollow(FollowingVO vo) {
-		int result = followService.deleteMentorFollow(vo);
+	public int deleteMentorFollow(FollowingVO fVo, MentorVO mVo) {
+		int result = followService.deleteMentorFollow(fVo);
+		mentorService.getUpdateFNumMinus(mVo); // 멘토 테이블 멘토 팔로우 숫자 차감
 		return result;
 	}
 	
