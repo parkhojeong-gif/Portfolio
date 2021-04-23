@@ -1,4 +1,4 @@
-package com.company.mentoring_reviews.service;
+package com.company.mentoring_reviews;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

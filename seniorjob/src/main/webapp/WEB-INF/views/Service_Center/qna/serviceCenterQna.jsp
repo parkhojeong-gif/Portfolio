@@ -28,7 +28,8 @@ div#cateView {
 }
 
 input#keywordInput {
-	width: 600px;
+    width: 606px;
+    margin-top: -21px;
 }
 
 button#cs_biz_form {
@@ -62,6 +63,17 @@ div#buttonView {
     height: 40px;
     margin: 20px 10px;
     margin-left: 323px;
+}
+button#searchBtn {
+    margin-top: -25px;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    border: 0px solid grey !important;
+    margin: 20px;
 }
 </style>
 <jsp:include page="../../topHeader.jsp"></jsp:include>
@@ -116,7 +128,7 @@ div#buttonView {
 								</div>
 							</div>
 							<div class="col-xs-7">
-								<div class="input-group">
+								<div class="input-group" id="input-group">
 									<input class="form-control" name="keyword" id="keywordInput"
 										value="${scri.keyword}"
 										style="text-align: center; height: 45px;" type="text"
