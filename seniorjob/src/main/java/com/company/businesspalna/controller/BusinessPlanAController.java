@@ -55,7 +55,7 @@ public class BusinessPlanAController {
 	}
 	
 	@PostMapping("/insertBusinessPlanA") //사업계획서 등록 처리
-	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request ) {
+	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request, Model model ) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id"); //login할 때 session에 저장해둔 id 값을 꺼내씀.
 		int seq = bpService.getSeq();
@@ -73,9 +73,10 @@ public class BusinessPlanAController {
 			bpService.insertBusinessPlanD(vo);
 		};
 		
+		model.addAttribute("msg", "등록완료");
+		model.addAttribute("url", "throughCerti");
 		
-		
-		return "redirect:/getSearchBusinessPlanA";
+		return "common/Success";
 	}
 	
 	@GetMapping("/updateBusinessPlanA")			//수정페이지로

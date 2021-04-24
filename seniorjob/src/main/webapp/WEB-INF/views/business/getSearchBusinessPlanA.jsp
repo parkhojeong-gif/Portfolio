@@ -15,7 +15,13 @@ function detail(seq) {
 }
 
 function deleteBp(seq) {
-	location.href="deleteBusinessPlanA?seq="+seq //
+	var cfirm = confirm("정말 삭제하시겠습니까?");
+	if(cfirm) {
+		location.href="deleteBusinessPlanA?seq="+seq; 
+	} else{
+		alert("취소되었습니다.");
+	}
+	
 }
 
 function updateBp(seq) {
@@ -43,9 +49,13 @@ function ckBp(seq) {
 
 function seeCkBp(seq) {
 	var url = "seeCkBp?seq="+seq;
-	window.open(url);
+	window.open(url,"","width=1400,height=900");
 }
 
+function insertBp() {
+	var url = "insertBusinessPlanA";
+	window.open(url,"","width=1400,height=900");
+}
 
 </script>
 <jsp:include page="../topHeader.jsp"></jsp:include>
@@ -62,15 +72,9 @@ function seeCkBp(seq) {
 			<div class="row">
 
 				<jsp:include page="../mypage.jsp" />
-				<%-- <c:forEach items="${bb}" var="bb">
 				
-				</c:forEach>
-				<c:forEach items="${bc}" var="bc">
-					<input type="hidden" name="mHidden" id="mHidden" value="${bc.mHidden }">
-				</c:forEach>
-				<c:forEach items="${bd}" var="bd">
-					<input type="hidden" name="sHidden" id="sHidden" value="${bd.sHidden }">
-				</c:forEach> --%>
+				<button type="button" onclick="insertBp()">사업계획서 등록</button>
+				
 				<c:forEach  var="list" items="${list}">
 				
 					

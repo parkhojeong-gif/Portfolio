@@ -10,7 +10,7 @@
 <script>
     function detail(seq){
     var url ="checkBusinessPlan?seq="+seq;
-    window.open(url);
+    window.open(url, "", "width=1400,height=900");
     }
 </script>
     </head>

@@ -62,16 +62,9 @@ display:none;
 			</div>
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading">
-					<div class="busiMenu" id="busiM">
-						<h3 class="panel-title"><span class="toggle-som" >사업계획서</span></h3>
-						<ul class="busisub ul-none-som">
-							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="insertBusinessPlanA"> <span class="txt">사업계획서 등록</span></a>
-							</li>
-							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="getSearchBusinessPlanA"> <span class="txt">사업계획서 관리</span></a>
-							</li>
-						</ul>
+					<div class="busiMenu" id="busiM" >
+						<h3 class="panel-title" ><a href="getSearchBusinessPlanA"><span class="toggle-som"  >사업계획서</span></a></h3>
+						
 					</div>	
 				</div>
 			</div>
