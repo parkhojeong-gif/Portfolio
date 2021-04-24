@@ -174,12 +174,10 @@ function insertQueSom(id) {
                                                 <c:if test="${empty users }">
                                                 	<input class="button btn largesearch-btn" value="멘토 팔로우" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>  
-                                                <c:if test="${empty following && not empty users}">
+                                                <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우" id="followBtn" type="button">
                                                 </c:if>
-                                                <c:if test="${not empty following }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우 취소" id="followCancelBtn" type="button">
-                                                </c:if>
                                                     <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="insertQueSom('${mentor.mentor_id }')" type="button">
                                                 </div>  
                                             </div>
@@ -330,6 +328,7 @@ function insertQueSom(id) {
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
+<<<<<<< HEAD
 	 /*  $(function() {
 		
 		function getBasket(){ // 장바구니 담기
@@ -388,6 +387,8 @@ function insertQueSom(id) {
 		console.log(JSON.stringify(item));
 			$(document).on("click", "#BasketBtn", function(){
 		}); 
+=======
+>>>>>>> branch '김찬곤3' of https://github.com/aekgmla77/seniorjob.git
 		
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
@@ -398,7 +399,7 @@ function insertQueSom(id) {
 					success:function(result){
 						if(result == 0){
 							alert("팔로우 완료");
-							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
+							location.reload();
 						}else{
 							alert("이미 팔로우된 멘토입니다");
 							 }
@@ -418,7 +419,7 @@ function insertQueSom(id) {
 							alert("팔로우하지 않은 멘토입니다.");
 						}else{
 							alert("팔로우 취소 완료");
-							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
+							location.reload();
 						}
 					}
 				});

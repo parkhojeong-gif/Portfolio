@@ -16,7 +16,7 @@
 			<if test="mentoring_end_date != null and mentoring_end_date != ''">
 				AND mentoring_end_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
 			</if>
- 		ORDER BY MENTORING_NUMBER
+ 		ORDER BY MENTORING_BEGIN_DATE
  	</select>
  	
  	<!-- 김찬곤 -->

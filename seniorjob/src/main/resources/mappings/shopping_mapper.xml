@@ -17,7 +17,7 @@
 	<!-- 양소민 추가 -->
  	<!-- 마이페이지_결제내역 -->
 	<select id="getSearchPay" resultType="ShoppingVO">
-		SELECT * FROM MENTORINGVU 
+		SELECT * FROM SHOPPING 
 		WHERE ID=#{id}
 	</select>
 	

@@ -113,8 +113,8 @@ function popCareerSee() {
     <p><input placeholder="부서" oninput="this.className = ''" name="mentor_department_name"></p>
     <p><input placeholder="직급" oninput="this.className = ''" name="mentor_job_id"></p>
     <p>직무유형 선택</p>
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="영업">영업
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="인사">인사
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="영업">영업
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="총무">총무
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="마케팅">마케팅
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="광고">광고
