@@ -29,7 +29,23 @@ h1{text-align:center}
 	font-weight: 300;
 }
 
+input#searchKeyword {
+    margin: 30px;
+    height: 60px;
+}
+
+select#mentoring_option {
+    height: 31px;
+    width: 132px;
+}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$('#mentoringDateBtn').click(function(){
+	dateF.action = "getMentoringList";
+	dateF.submit();
+});
+</script>
 </head>
 <body>
 <!-- topHeader -->
@@ -44,6 +60,39 @@ h1{text-align:center}
 	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
 </c:if>
 	<!-- 멘토링 리스트 출력 -->
+	<br>
+	<div align="center">
+		분야: <select id = "mentoring_option">
+			<option value="IT">IT</option>
+			<option value="직무">직무</option>
+			<option value="회사생활">회사생활</option>
+			<option value="이직">이직</option>
+			<option value="면접">면접</option>
+			<option value="자소서">자소서</option>
+			<option value="스펙">스펙</option>
+			<option value="진로">진로</option>
+		</select>
+	</div>
+	<form id="dateF" name="dateF">
+	<div class="row row-space">
+		<div class="col-4">
+			<div class="input-group" id="mtStartDate">
+				<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required="">
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="input-group" id="mtEndDate">
+				<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required="">
+			</div>
+		</div>
+	</div>
+	</form>
+	<div class="form-group">
+		<div class="col-2"></div>
+		<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentoringDateBtn"></i>	
+	</div>
+	
+	
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
@@ -57,6 +106,8 @@ h1{text-align:center}
 							<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
 							<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 							<input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mentoring.mentoring_kind }">
+							<input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${mentoring.mentoring_begin_date }">
+							<input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${mentoring.mentoring_end_date }">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
 									
