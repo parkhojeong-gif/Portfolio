@@ -8,9 +8,7 @@
  	<sql id="search">
 		<if test="searchType != null">
 				<if test="searchType == 't'.toString()">
-					<if test="optionValue != null">
-					AND TITLE LIKE '%' || #{keyword} || '%' and category_a = #{optionValue}
-					</if>
+					<if test="optionValue != null">AND TITLE LIKE '%' || #{keyword} || '%' and category_a = #{optionValue}</if>
 					AND TITLE LIKE '%' || #{keyword} || '%' 
 				</if>
 				<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
@@ -191,6 +189,33 @@
 	<delete id="deleteInquire" parameterType="InquireVO">
 	DELETE FROM inquire 
 	WHERE SEQ=#{seq}
+	</delete>
+	
+	<!--관리자 답변 수정  -->
+	<update id="updateAnswer" parameterType="Inquire_AnswerVO">
+	UPDATE INQUIRY_ANSWER
+	<set>
+	TITLE = #{title},
+	CONTENT = #{content},
+	W_DATE = sysdate
+	</set>
+	WHERE I_SEQ=#{i_seq} 
+	</update>
+	
+	
+	<!--관리자 답변 삭제  -->	
+	<delete id="deleteAnswer" parameterType="Inquire_AnswerVO">
+	DELETE FROM INQUIRY_ANSWER 
+	WHERE I_SEQ=#{i_seq} 
+	</delete>
+	<!--관리자 답변 삭제시 미답변 상태변화  -->
+	<update id="updateAnswerStatus" parameterType="InquireVO">
+  		UPDATE inquire SET status = '미답변' WHERE SEQ = #{seq}
+	</update>
+	<!--관리자 답변 삭제 (seq기준) -->	
+	<delete id="deleteAnswer2" parameterType="Inquire_AnswerVO">
+	DELETE FROM INQUIRY_ANSWER 
+	WHERE SEQ=#{seq} 
 	</delete>
 	
  </mapper>

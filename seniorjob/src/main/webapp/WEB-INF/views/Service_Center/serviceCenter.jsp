@@ -58,6 +58,15 @@ button#searchBtn {
 div#img1 {
     bottom: 10px;
 }
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    border: 0px solid grey;
+    margin: 20px;
+        top: -19px;
+    left: -18px;
+}
 </style>
 
 <body>

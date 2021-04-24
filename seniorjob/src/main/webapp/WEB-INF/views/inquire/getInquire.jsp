@@ -12,7 +12,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	$(document).ready(function(){ 
+/* 	$(document).ready(function(){ 
 		$('#btnUpd').click(function() { 
 			var result = confirm('답변작성하시겠습니까?');
 			if(result) { 
@@ -22,12 +22,56 @@
 				//no 
 				}
 	});
-});
+}); */
 	function deleteConfirm(){
-		var delCon = confirm("삭제하시겠습니까?");
+		var delCon = confirm("질문 및 답변을 삭제하시겠습니까?");
 		if(delCon == true){
-			location.href='deleteInquireAdmin?seq=${list.seq}';
+			$(function(){
+				var seqValue= $('#seqHidden').val();
+				
+				$.ajax({
+					url:"/deleteAdmin",
+					type: "POST",
+					data :{seq : seqValue},
+					success: function(result){
+						location.href="/getInquireList";
+						window.alert("질문 및 답변이 삭제되었습니다.");
+					}
+				});
+			});
 		}else if(delCon == false){
+		}
+	}	
+	function insertAnswer(){
+		var insCon = confirm("답변을 등록하시겠습니까?");
+		var str = document.getElementById('title1');
+		var str2 = document.getElementById('content1');
+		
+		if(insCon == true){
+			
+			if(str.value == '' || str.value == null || str2.value == '' || str2.value == null){
+				window.alert("내용을 입력해주세요.");
+				return false;
+			}else{
+			$(function(){
+				var titleValue =$('#title1').val();
+				var contentValue = $("textarea#content1").val();
+				var seqValue = $('#seqHidden').val();
+				var idValue = $('#idHidden').val();
+				
+				$.ajax({
+					url:"/insertAnswer",
+					type: "POST",
+					data :{seq : seqValue, title : titleValue, content : contentValue, id: idValue },
+					success: function(result){
+						location.href="/getInquireList";
+						window.alert("답변이 등록되었습니다.");
+					}
+				});
+				
+			});
+			}	
+		}else if(insCon ==false){
 			
 		}
 		
@@ -52,6 +96,16 @@ div#col2 {
 }
 div#optionVal {
     top: -18px;
+}
+h4#modalTitle {
+    text-align: center;
+    margin-top: -26px;
+}
+button#answerBtn1 {
+    margin-right: 98px;
+}
+button.btn.btn-default.answer {
+    margin-right: 151px;
 }
 </style>
 <body>
@@ -97,6 +151,8 @@ div#optionVal {
 										<td rowspan="10" id="content1">내용</td>
 										<td rowspan="10" id="content2">${list.content }</td>
 									</tr>
+									<input type="hidden" value="${list.seq }" id="seqHidden"> <!-- 글번호 -->
+									<input type="hidden" value="${id }" id="idHidden"> <!-- 관리자 id -->
 								</table>
 							</div>
 
@@ -110,11 +166,11 @@ div#optionVal {
 								style="visibility: visible;">
 								<!-- 수정/삭제-->
 								<div class="button navbar-right">
-									<button
-										class="navbar-btn nav-button wow bounceInRight login animated"
-										data-wow-delay="0.45s"
+								   <c:if test="${list.status  ne '답변완료' }">
+									<button class="navbar-btn nav-button wow bounceInRight login animated" data-wow-delay="0.45s"
 										style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"
-										id="btnUpd">답변 등록</button>
+										id="btnUpd" data-toggle="modal" data-target="#myModal">답변 등록</button>
+									</c:if>	
 									<button class="navbar-btn nav-button wow fadeInRight animated"
 										onclick="deleteConfirm()"
 										data-wow-delay="0.48s"
@@ -132,7 +188,43 @@ div#optionVal {
 						</div>
 					</div>
 
-
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="myModalLabel"></h4>
+								</div>
+								<div class="modal-body" id="table_body">
+								<!--실제 내용 부분  -->
+								<h4 id="modalTitle"><strong>답변 등록하기</strong></h4>
+								<table class="table table-hover" id="modal-body">
+												<tr>
+														<td>제목</td>
+														<td><input type="text" id="title1" required="required"></td>							
+												</tr>
+												<tr>
+														<td>내용</td>
+														<td><textarea id="content1"style="resize: none; width:500px; height:350px; " required="required"></textarea></td>							
+												</tr>									
+								</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default answer"  id="answerBtn1"name="answerButton"  onclick="insertAnswer()">작성완료</button>
+									<button type="button" class="btn btn-default answer" name="answerButton" data-dismiss="modal">취소</button>
+									
+										
+								</div>
+								
+								
+							</div>
+						</div>
+					</div>
 
 
 

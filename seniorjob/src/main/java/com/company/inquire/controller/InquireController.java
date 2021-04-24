@@ -1,6 +1,5 @@
 package com.company.inquire.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -203,11 +201,7 @@ public class InquireController {
 		return "/inquire/answer/insertAnswerPorm";
 	}
 	@RequestMapping("/insertAnswer") //답변작성 
-	public String insertAnswer(InquireVO vo, String seq, Inquire_AnswerVO avo, Model model, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");	//연결된 세션 id값 vo에 담기
-		
-		avo.setId(id);
+	public String insertAnswer(InquireVO vo, String seq, Inquire_AnswerVO avo) {
 		inquireMapper.insertAnswer(avo); 						//전체문의목록에서 단건조회 후 답변등록버튼
 		inquireMapper.updateConfirm(vo);
 															     //누를시 질문 단건 조회 및 답변작성까지
@@ -223,7 +217,33 @@ public class InquireController {
 		return map;
 	}
 	
+	@RequestMapping("/updateAnswer") // 답변 수정
+	public String updateAnswerProc(Inquire_AnswerVO avo) {
+		inquireMapper.updateAnswer(avo);
+		return "redirect:/getInquireList";
+	}
 	
+	@RequestMapping("/deleteAnswer") // 답변 삭제 및 답변 상태변경
+	public String deleteAnswerProc(Inquire_AnswerVO avo,InquireVO vo) {
+		inquireMapper.deleteAnswer(avo);
+		inquireMapper.updateAnswerStatus(vo);
+		
+		return "redirect:/getInquireList";
+	}
+	
+	@RequestMapping("/deleteAdmin") // 질문 및 답변 동시 삭제(관리자기능)
+	public String deleteAdmin(Inquire_AnswerVO avo,InquireVO vo) {
+		try {
+			inquireMapper.deleteAnswer2(avo);
+		} catch (Exception e) {
+		
+		}
+		finally {
+			inquireMapper.deleteInquire(vo);
+		}
+		
+		return "redirect:/getInquireList";
+	}
 	
 	
 	
