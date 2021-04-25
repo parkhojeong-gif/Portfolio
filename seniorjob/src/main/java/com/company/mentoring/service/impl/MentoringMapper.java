@@ -3,6 +3,7 @@ package com.company.mentoring.service.impl;
 import java.util.List;
 
 import com.company.mentoring.service.MentoringVO;
+import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
 
 public interface MentoringMapper {
 	
@@ -26,4 +27,10 @@ public interface MentoringMapper {
 	
 	//양소민----------------------------------------------------------
 	public List<MentoringVO> getMyMentoringListSom(MentoringVO vo); 
+
+	//송다희 추가
+	//검색&페이징
+	
+	public int getMcount(MentoringVO vo);
+
 }

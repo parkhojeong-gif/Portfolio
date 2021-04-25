@@ -87,4 +87,9 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 		return dao.getPopularArticleList(vo);
 	}
 
+	@Override
+	public List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo) {
+		return dao.getReviewsList(vo);
+	}
+
 }

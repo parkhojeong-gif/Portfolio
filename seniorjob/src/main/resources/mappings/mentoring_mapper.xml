@@ -8,15 +8,38 @@
  
  	<!-- 김찬곤 -->
  	<!-- 멘토링 리스트 호출 -->
- 	<select id="getMentoringList" resultType="com.company.mentoring.service.MentoringVO">
- 		SELECT * FROM MENTORING
-			<if test="mentoring_begin_date != null and mentoring_begin_date != '' and mentoring_end_date != null and mentoring_end_date != ''">
-				WHERE mentoring_begin_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+ 	<!-- 송다희 수정(검색, 페이징) -->
+ 	<select id="getMentoringList" resultType="com.company.mentoring.service.MentoringVO" parameterType="com.company.mentoring.service.MentoringVO">
+ 		SELECT B.* FROM(SELECT ROWNUM RN, A.*   FROM(
+ 		SELECT  MENTORING_NUMBER,
+ 				MENTORING_NAME,
+ 				MENTORING_LIMIT,
+ 				MENTORING_INTRODUCE
+ 				MENTORING_PHOTO,
+ 				MENTORING_PRICE,
+ 				MENTORING_DATA,
+ 				MENTOR_ID,
+ 				MENTORING_BEGIN_DATE,
+ 				MENTORING_END_DATE,
+ 				MENTORING_CLICK,
+ 				MENTORING_OPEN_DATE,
+ 				MENTORING_KIND,
+ 				MENTORING_CONTENT,
+ 				MENTORING_REQUEST
+ 		FROM 	MENTORING
+ 		<where>
+			<if test="mentoring_kind != null and mentoring_kind != ''">
+				UPPER(MENTORING_KIND) LIKE '%'|| UPPER(#{mentoring_kind}) || '%'
 			</if>
-			<if test="mentoring_end_date != null and mentoring_end_date != ''">
-				AND mentoring_end_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
-			</if>
- 		ORDER BY MENTORING_NUMBER
+			<if test="mentoring_begin_date != null and mentoring_begin_date != ''">
+	            AND mentoring_begin_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	         </if>
+	         <if test="mentoring_end_date != null and mentoring_end_date != ''">
+	            AND mentoring_end_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	         </if>
+		</where>
+ 		ORDER BY MENTORING_BEGIN_DATE
+ 		) A   ) B  WHERE RN BETWEEN #{start} AND #{end}
  	</select>
  	
  	<!-- 김찬곤 -->
@@ -207,5 +230,38 @@
 	 FROM MENTORING
 	 WHERE MENTORING_NUMBER = #{mentoring_number}
 	</select>
-
+	
+	<!-- 송다희 추가 -->
+	<!-- 페이징&검색 -->
+	<select id="getMcount" resultType="int">
+		SELECT COUNT(*)
+		FROM MENTORING
+		<where>
+			<if test="mentoring_kind != null and mentoring_kind != ''">
+				UPPER(MENTORING_KIND) LIKE '%'|| UPPER(#{mentoring_kind}) || '%'
+			</if>
+			<if test="mentoring_begin_date != null and mentoring_begin_date != ''">
+	            AND mentoring_begin_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	         </if>
+	         <if test="mentoring_end_date != null and mentoring_end_date != ''">
+	            AND mentoring_end_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	         </if>
+		</where>
+	</select>
+	
+	<!-- 정원수 -->
+	<select id="getLimit" resultType="MentoringVO">
+		SELECT MENTORING_LIMIT 
+		FROM MENTORING
+		WHERE MENTORING_NUMBER = #{mentoring_number}
+	</select>
+	
+	<!-- 결제내역 정원수 -->
+	<select id="getNumberLimit" resultType="MentoringVO">
+		SELECT COUNT(*)
+		FROM MENTORING MENTORING, SHOPPING SHOPPING
+		WHERE MENTORING.MENTORING_NUMBER = SHOPPING.MENTORING_NUMBER
+		AND SHOPPING.ID = #{id}
+	</select>
+	<!-- 송다희 추가 -->
 </mapper>

@@ -40,4 +40,9 @@ public interface MentoringService {
 //------------양소민-------------------//
 	public List<MentoringVO> getMyMentoringListSom(MentoringVO vo); 
 //-----------------------------------//
+	
+	//송다희 추가
+	//검색&페이징
+	
+	public int getMcount(MentoringVO vo);
 }

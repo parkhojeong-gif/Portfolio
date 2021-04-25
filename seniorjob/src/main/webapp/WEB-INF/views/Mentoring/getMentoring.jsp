@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -259,15 +259,13 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 </div>
                             </div> -->
                             <!-- End video area  -->
-
                             <div class="section property-features">    
                                 <h4 class="s-property-title">멘토링 후기</h4>   
+                                <c:forEach items="${reviewList }" var="review">
                                  <ul>
-                                    <li><a href="properties.html">Swimming Pool</a></li>   
+                                    <li><a href="properties.html">${review.seq }</a></li>   
                                 </ul>
-                                <ul>
-                                    <li><a href="properties.html">Swimming Pool</a></li>   
-                                </ul>
+                                </c:forEach>
 							</div>
                             <!-- End features area  -->
                             
@@ -316,7 +314,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                             <div class="row">
                                                 <div class="col-xs-12">  
                                                     <input class="button btn largesearch-btn" value="장바구니 담기" id="BasketBtn" type="button" onclick="insertC()">
-                                                    <input class="button btn largesearch-btn" value="바로구매" onclick="mentoringPayForm()" type="button">
+                                                    <input class="button btn largesearch-btn" value="바로구매" onclick="mentoringPayForm()" type="button" id="pushB">
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
@@ -324,7 +322,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                             </div>
 							<!-- End of 장바구니담기/결제하기  -->
 
-                            <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+                            <%-- <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">유사한 멘토링</h3>
                                 </div>
@@ -344,7 +342,7 @@ s                                        </li>
 s                                     </c:forEach>  
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --%>
 
                         </aside>
                     </div>
@@ -374,6 +372,7 @@ function mentoringPayForm(){
 			Frm.submit();
 		}
 	}
+	
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />

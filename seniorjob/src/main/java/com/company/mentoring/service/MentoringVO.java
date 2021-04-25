@@ -33,4 +33,9 @@ public class MentoringVO {  //멘토링 코스
 	private String met_end; //멘티가 멘토링을 끝내는 날짜
 	private String id; //멘토의 회원 id
 	private String menteeId; //멘티의 회원 id
+	
+	//paging
+	Integer page = 1;
+	int start = 1;
+	int end = 10;
 }
