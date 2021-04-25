@@ -17,12 +17,15 @@ import com.company.manager.user.userVO;
 import com.company.manager.user.service.impl.manUserMapper;
 import com.company.manager.utils.ManPageMaker;
 import com.company.manager.utils.ManSearchCriteria;
+import com.company.mentor.service.MentorVO;
+import com.company.mentor.service.impl.MentorMapper;
 
 
 @Controller
 public class manUserController {
 	
 	@Autowired manUserMapper manusermapper;
+	@Autowired MentorMapper mentormapper;
 	
 	// 게시판 목록 조회(페이징)
 		@RequestMapping("/userList")
@@ -76,20 +79,29 @@ public class manUserController {
 	
 	//회원 승급
 	
-	@RequestMapping("/authUser")
-	public String authUser(userVO vo) {
+	@RequestMapping(value={"/authUser","/authMento"})
+	public String authUser(userVO vo,MentorVO mvo) {
 		manusermapper.authUser(vo);
+		mentormapper.authMento(mvo);
 		return "manager/user";
 
 	}
 	
 	//회원 강등
 	
-	@RequestMapping("/authDownUser")
-	public String authDownUser(userVO vo) {
+	@RequestMapping(value={"/authDownUser", "authDownMentor"})
+	public String authDownUser(userVO vo, MentorVO mvo) {
 		manusermapper.authDownUser(vo);
+		mentormapper.authDownMento(mvo);
 		return "manager/user";
 
 	}
+	//mentor 신청 대기자 수
+	@ResponseBody
+	@RequestMapping("/mentorSys")
+	public List<Map<String,Object>> mentorSys(){
+		return manusermapper.mentorSys();
+	}
+	
 	
 }

@@ -1,6 +1,7 @@
 package com.company.manager.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.company.manager.user.userVO;
 import com.company.manager.utils.ManSearchCriteria;
@@ -22,5 +23,7 @@ public interface UserService {
 		public void authUser(userVO vo);
 		//회원 강등
 		public void authDownUser(userVO vo);
+		//mentor 신청 대기자 수 
+		public List<Map<String, Object>> mentorSys();
 	
 }

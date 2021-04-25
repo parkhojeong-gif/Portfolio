@@ -23,6 +23,7 @@
 				<if test="searchType == 'name'.toString()">AND LOWER(NAME) LIKE LOWER('%' || #{keyword} || '%')</if>
 				<if test="searchType == 'id'.toString()">AND LOWER(ID) LIKE LOWER('%' || #{keyword} || '%')</if>
 				<if test="searchType == 'auth'.toString()">AND LOWER(AUTH) LIKE LOWER('%' || #{keyword} || '%')</if>
+				<if test="searchType == 'mentor_confirm_status'.toString()">AND MENTOR_CONFIRM_STATUS LIKE ('%' || #{keyword} || '%')</if>
 		</if>
 	</sql>
 	
@@ -30,7 +31,7 @@
 <select id="userList" resultType="com.company.manager.user.userVO" parameterType="com.company.manager.user.userVO">
 	SELECT *
 	FROM (SELECT id, address, phonenum, email, birth, auth, name, log_date,
-	mentor_career_certificate,  distinction,
+	mentor_career_certificate,  distinction, mentor_date, mentor_confirm_status,
 	ROW_NUMBER() OVER(ORDER BY id DESC) AS RNUM
 	FROM V_USERS where 1=1 <include refid="search"></include>)
 	V_USERS WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 
@@ -40,9 +41,9 @@
   
  <!-- 회원 단건 조회 -->
  <select id="getUserList" parameterType="com.company.manager.user.userVO" resultType="com.company.manager.user.userVO">
- 	SELECT USERS.*, MENTOR.MENTOR_CAREER_CERTIFICATE
-	FROM USERS LEFT OUTER JOIN MENTOR 
-	ON USERS.ID = MENTOR.ID
+ 	SELECT USERS.*, M.MENTOR_CAREER_CERTIFICATE, M.MENTOR_DATE, M.MENTOR_CONFIRM_STATUS
+	FROM USERS LEFT OUTER JOIN MENTOR M
+	ON USERS.ID = M.ID
 	WHERE USERS.ID = #{id}
  </select>
  
@@ -73,5 +74,10 @@
  	UPDATE USERS SET AUTH = 'USER' 
  	WHERE ID = #{id}
  </update>
+ 
+ <!-- mentor 신청 대기자 수 -->
+ <select id="mentorSys" resultType="map">
+	 SELECT * FROM V_COUNTS
+ </select>
  
  </mapper>

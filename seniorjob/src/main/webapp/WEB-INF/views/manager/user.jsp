@@ -2,6 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<style>
+.table-striped > thead > tr > th{
+
+word-break : keep-all;
+text-align : center;
+
+}
+
+.badge {
+
+cursor : pointer;
+
+}
+</style>
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -30,6 +45,9 @@
 	<section class="section">
 		<div class="card">
 			<div class="card-header">회원 데이터 테이블</div>
+			<div id ="countmentor">
+				<span id ="mensyscount" style="float:right;"></span>
+			</div>
 			<div class="card-body">
 				<div class="dataTable-search">
 				<form role="form" method="get">
@@ -41,6 +59,7 @@
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
 						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
 						      <option value="auth"<c:out value="${scri.searchType eq 'auth' ? 'selected' : ''}"/>>회원등급</option>
+						      <option value="mentor_confirm_status"<c:out value="${scri.searchType eq 'mentor_confirm_status' ? 'selected' : ''}"/>>승인대기</option>
                         </select>
 							<div class="input-group">
                              <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 230px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
@@ -56,16 +75,14 @@
 						
 				<br>
 				
-				<table class='table table-striped' style="font-size: 11px;" id="table1">
+				<table class='table table-striped' style="font-size: 10px;" id="table1">
 					<thead>
 						<tr>
 							<th>ID</th>
 							<th>회원 이름</th>
-							<th>회원 전화번호</th>
-							<!--<th>회원 주소</th>-->
-							<th>생일</th>
-							<th>회원 이메일</th>
 							<th>경력증명서</th>
+							<th>멘토<br/>신청일자</th>
+							<th>멘토<br/>신청상태</th>
 							<th>회원등급</th>
 							<th>소셜닉네임</th>
 							<th>승급</th>
@@ -78,11 +95,9 @@
 							<tr>
 								<td>${users.id }</td>
 								<td>${users.name }</td>
-								<td>${users.phonenum }</td>
-								<!-- <td>${users.address }</td> -->
-								<td>${users.birth }</td>
-								<td>${users.email }</td>
 								<td>${users.mentor_career_certificate}</td>
+								<td><fmt:formatDate value="${users.mentor_date}" pattern="yy/MM/dd"/></td>
+								<td>${users.mentor_confirm_status}</td>								
 								<td>${users.auth}</td>
 								<td>${users.distinction}</td>
 								<td>
@@ -422,18 +437,31 @@ $(function(){
 	$("#btnAuth").on('click', function(event){
 		console.log(event);
 		let idx = $('#authSpan').html();
-		$.ajax({
-			url: 'authUser',
-			type : 'GET',
-			data : {"id":idx},
-			dataType : 'text',
-			success : function(result){
-				location.reload();
+		
+		var makeAjax = function(url, result){
 			
-			} 
-			
-		})
-	})
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : {"id":idx},
+				dataType : 'text',
+				success : function(result){
+					location.reload();
+				
+				} 
+				
+			});
+		
+		};
+				makeAjax(
+					'authUser',
+					makeAjax(
+						'authMento',
+						function(){}
+					)
+				);	
+		
+	});
 	
 	<!--회원 강등 modal click-->
 	$("#down").on('show.bs.modal', function(event){
@@ -446,19 +474,52 @@ $(function(){
 	$("#btnDownAuth").on('click', function(event){
 		console.log(event);
 		let idx = $('#authDownSpan').html();
-		$.ajax({
-			url: 'authDownUser',
-			type : 'GET',
-			data : {"id":idx},
-			dataType : 'text',
-			success : function(result){
-				location.reload();
-			
-			} 
-			
-		})
-	})
+		
+		var makeAjax = function(url, result){
+		
+			$.ajax({
+				url: 'authDownUser',
+				type : 'GET',
+				data : {"id":idx},
+				dataType : 'text',
+				success : function(result){
+					location.reload();
+				
+				} 
+				
+			});
+		};
+		
+				makeAjax(
+					'authDownUser',
+					makeAjax(
+						'authDownMento',
+						function(){}
+							)
+				);
+	});
 	
+	<!--이력서를 냈으나 USER 등급인 유저-->
+	$("#mensyscount").ready(function(){
+			
+		$.ajax({
+			url : 'mentorSys',
+			async : false,
+			type : 'get',
+			dataType : 'json',
+			success : function(response){
+				console.log(response[0].COUNTAUTH);
+				var scount = response[0].COUNTAUTH;
+				if(scount != 0){
+					$('#mensyscount').text("현재 멘토 승급 대기 인원수:" + response[0].COUNTAUTH + "명");
+				}else{
+					$('#mensyscount').text("현재 신청한 사람이 없습니다.");
+				}
+			}
+		
+		});
+	});
+
 });
 
 <!--검색-->

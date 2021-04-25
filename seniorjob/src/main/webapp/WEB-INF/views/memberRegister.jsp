@@ -53,9 +53,11 @@
 				
 			if(!id.match(idReg)){
 				$("#idregexp").show();
+				$("#inputbutton").attr("disabled", true);
 				return;
 			}else{
 				$("#idregexp").hide();
+				$("#inputbutton").attr("disabled", false);	
 			}
 			
 			$.ajax({
@@ -92,8 +94,10 @@
 
 			if(!phonenum.match(phoneReg)){
 				$("#phoneregexp").show();
+				$("#inputbutton").attr("disabled", true);
 			}else{
 				$("#phoneregexp").hide();
+				$("#inputbutton").attr("disabled", false);	
 			}
 		})
 	
@@ -111,8 +115,10 @@
 
 			if(!birth.match(birthReg)){
 				$("#birthregexp").show();
+				$("#inputbutton").attr("disabled", true);
 			}else{
 				$("#birthregexp").hide();
+				$("#inputbutton").attr("disabled", false);	
 			}
 		})
 
@@ -137,14 +143,16 @@
 			var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-z])*@[0-9a-z]([-_.]?[0-9a-z])*.[a-z]{2,3}$/i;
 			
 			$("#inputemail").on("keyup", function(){
-				$(this).val($(this).val().toUpperCase());
+				$(this).val($(this).val());
 			})
 				
 			if(!email.match(emailReg)){
 				$("#emailregexp").show();
+				$("#inputbutton").attr("disabled", true);
 				
 			}else{
 				$("#emailregexp").hide();
+				$("#inputbutton").attr("disabled", false);	
 				
 			}
 			
@@ -160,11 +168,11 @@
 						console.log(result);
 						$("#emailsuccess").show();
 						$("#emailfail").hide();
-						$("#inputbutton").attr("disabled", false);
+						
 					}else{
 						$("#emailsuccess").hide();
 						$("#emailfail").show();
-						$("#inputbutton").attr("disabled", true);
+						
 					} 
 				}	
 			})
@@ -400,7 +408,7 @@
 								<div class="form-group">
 									<label for="email">Email</label>
 									<!-- style에 uppercase를 줘서 대문자로 입력되도록 한다. -->
-									<form:input path="email" id="inputemail" class="email" style="text-transform:uppercase;" placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email" />
+									<form:input path="email" id="inputemail" class="email" placeholder="이메일 예제(ex:USER1@NAVER.COM)" name="email" />
 									<form:errors path="email" cssClass="error"/>
 										<div class="text" id="emailsuccess" style="color: green;">※중복되지 않는 이메일입니다.</div>
 										<div class="text" id="emailfail" style="color: red;">※중복된 이메일입니다.</div>
