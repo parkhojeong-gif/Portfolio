@@ -32,7 +32,7 @@ public class InquireController {
 	@RequestMapping("/getInquireList")	//문의 목록 전체조회
 	public String getInquireList(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		
-		if(scri.getOptionValue()==null || scri.getOptionValue()=="") {
+		if(scri.getOptionValue()==null || scri.getOptionValue()=="" ) {
 			
 			if(scri.getOptionValue2()==null || scri.getOptionValue2()=="") {
 				model.addAttribute("list", inquireMapper.getInquireList(scri));
@@ -46,6 +46,7 @@ public class InquireController {
 				pageMaker.setCri(scri);
 				pageMaker.setTotalCount(inquireMapper.inquireCountY(scri));
 				model.addAttribute("pageMaker", pageMaker);
+				
 			}else if (scri.getOptionValue2().equals("미답변")) {
 				model.addAttribute("list", inquireMapper.getInquireListN(scri));
 				PageMaker pageMaker = new PageMaker();

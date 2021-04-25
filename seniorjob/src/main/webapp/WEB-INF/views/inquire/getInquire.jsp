@@ -89,7 +89,7 @@ div#col1 {
     
 }
 button#btnUpd {
-    margin-left: 610px;
+    margin-left: -1px;
 }
 div#col2 {
     top: 25px;
@@ -165,7 +165,11 @@ button.btn.btn-default.answer {
 								class="post-footer single wow fadeInBottum animated animated"
 								style="visibility: visible;">
 								<!-- 수정/삭제-->
+								<div class="button navbar-left">
+								<button class="navbar-btn nav-button wow bounceInRight login animated" onclick="location.href='getInquireList?optionValue='" data-wow-delay="0.45s" style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;">목록</button>
+								</div>
 								<div class="button navbar-right">
+								      
 								   <c:if test="${list.status  ne '답변완료' }">
 									<button class="navbar-btn nav-button wow bounceInRight login animated" data-wow-delay="0.45s"
 										style="visibility: visible; animation-delay: 0.45s; animation-name: bounceInRight;"

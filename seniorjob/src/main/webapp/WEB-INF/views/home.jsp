@@ -459,3 +459,6 @@
 	<script src="resources/assets/js/icheck.min.js"></script>
 	<script src="resources/assets/js/price-range.js"></script>
 	<script src="resources/assets/js/main.js"></script>
+	
+	
+	

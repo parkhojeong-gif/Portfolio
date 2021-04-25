@@ -152,7 +152,33 @@ textarea#td3_2textarea {
     height: 305px;
     resize: none;
 }
-
+.col-xs-2.selectO {
+    margin-left: -28px;
+    margin-right: -26px;
+}
+.col-xs-6.selectS {
+    right: 36px;
+    top: -21px;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    border: 1px solid bisque;
+    margin: 20px;
+}
+.col-md-6.padding-top-40.properties-page.user-properties {
+    top: -60px;
+    right: -245px;
+}
+button.btn.btn-primary.blue {
+    margin-left: 631px;
+    margin-top: -49px;
+}
+button.btn.btn-primary.green {
+    margin-top: -48px;
+    margin-left: 9px;
+}
 </style>
 <body>
 	<!-- property area -->
@@ -170,10 +196,12 @@ textarea#td3_2textarea {
 					class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 
 					
-				<h5 style="text-align: center;">전체 문의 목록</h5>
+				<h4 style="text-align: center;"><strong>회원 전체 문의 목록</strong></h4>
 				<br>
-
-
+					<div id="btn123">
+							<button  class="btn btn-primary blue" type="button"  onclick="optionSelect2()" value="답변완료">답변완료</button>
+							<button class="btn btn-primary green" type="button"onclick="optionSelect3()" value="미답변">미답변</button>
+					</div>
 					<!--목록 게시판  -->
 					<table class="table table-striped" id="example">
 						<tr>
@@ -202,40 +230,34 @@ textarea#td3_2textarea {
 							</tr>
 						</c:forEach>
 					</table>
-					<!--카테고리 설정  -->
-					<div class="col-md-12 pr-30">
-							<h5>카테고리 설정</h5>
-							<select id="items_per_page" onchange="optionSelect(this)"class="selectpicker show-tick form-control" tabindex="-98">
-								<option value="">선택</option>
+						
+						
+						
+	<!--검색기능  -->
+				<div
+					class="col-md-12  properties-page user-properties">
+					<form role="form" method="get">
+						<div class="search">
+							<br>
+						</div>
+						<div class="col-xs-2 selectO">
+						<select id="items_per_page" onchange="optionSelect(this)"class="selectpicker show-tick form-control" tabindex="-98">
+								<option value="" id="select0">전체</option>
 								<option value="결제" id="select1">결제</option>
 								<option value="환불" id="select2">환불</option>
 								<option value="신청" id="select3">신청</option>
 								<option value="취소" id="select4">취소</option>
 								<option value="기타" id="select5">기타</option>
 							</select>
-							<select id="items_per_page2" onchange="optionSelect2(this)"class="selectpicker show-tick form-control" tabindex="-98">
-								<option value="">선택</option>
-								<option value="답변완료" id="answerY">답변완료</option>
-								<option value="미답변" id="answerN">미답변</option>
-								
-							</select>	
 						</div>
-	<!--검색기능  -->
-				<div
-					class="col-md-10  properties-page user-properties">
-					<form role="form" method="get">
-						<div class="search">
-							<br>
-						</div>
-						<div class="col-xs-2">
+						
+						<div class="col-xs-2 selectT">
 							<div class="btn-group bootstrap-select show-tick form-control">
 								<div class="dropdown-menu open"
 									style="max-height: 640.781px; overflow: hidden; min-height: 109px;">
 								</div>
 								<select id="basic" name="searchType"
 									class="selectpicker show-tick form-control" tabindex="-98">
-									<option value="n"
-										<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>------</option>
 									<option value="t"
 										<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 									<option value="c"
@@ -247,8 +269,8 @@ textarea#td3_2textarea {
 								</select>
 							</div>
 						</div>
-						<div class="col-xs-7">
-							<div class="input-group">
+						<div class="col-xs-6 selectS">
+							<div class="input-group" id="input-group">
 								<input class="form-control" name="keyword" id="keywordInput"
 									value="${scri.keyword}"
 									style="text-align: center; height: 45px; width: 500px"
@@ -264,11 +286,21 @@ function optionSelect(obj){
 	var param = 'optionValue='+$('#items_per_page').val();
 	location.href='getInquireList?'+(obj==""?"":param);
 	}
-function optionSelect2(obj, obj2){
-	var param2 = 'optionValue2='+$('#items_per_page2').val();
-	var param3 = '&optionValue='+$('#items_per_page').val();
-	location.href='getInquireList?'+(obj==""?"":param2)+(obj2==""?"":param3);
+function optionSelect2(){
+	location.href='getInquireList?optionValue2=답변완료';			
 	}    
+function optionSelect3(){
+	location.href='getInquireList?optionValue2=미답변';			
+	}    
+	
+/* function valueO(){
+	var gup = getURLParams(location.search).optionValue;
+	var gup2;
+	if(typeof gup == 'undefined'){
+		gup2
+	}
+
+} */	
 $(function() {
 	$('#searchBtn').click(
 		function() {		self.location = "getInquireList"
@@ -306,6 +338,11 @@ function getURLParams(url) {
 		$('#select4').attr('selected','selected')
 	}else if(getURLParams(location.search).optionValue == '기타'){
 		$('#select5').attr('selected','selected')
+	}else if(getURLParams(location.search).optionValue2 == '미답변' ){
+		$('#select0').attr('selected','selected')
+		
+	}else if(getURLParams(location.search).optionValue2 == '답변완료'){
+		$('#select0').attr('selected','selected')
 	}
 }); 	
 

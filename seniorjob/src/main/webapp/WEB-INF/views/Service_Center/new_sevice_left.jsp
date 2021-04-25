@@ -99,7 +99,7 @@ a.dropdown-item {
 
 					<a class="dropdown-item" onclick="location.href='insertService_CenterForm'">공지사항 등록</a><hr> 
 					<a class="dropdown-item" onclick="location.href='insertService_CenterFormQna'">FAQ 등록</a><hr>
-					<a class="dropdown-item" onclick="location.href='getInquireList'">문의전체조회</a>
+					<a class="dropdown-item" onclick="location.href='getInquireList?optionValue='">문의전체조회</a>
 
 				</div>
 			</div>

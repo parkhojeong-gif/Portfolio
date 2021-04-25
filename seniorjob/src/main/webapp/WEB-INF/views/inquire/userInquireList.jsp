@@ -107,6 +107,7 @@ tr#trSub {
 
 					<!--목록 게시판  -->
 					<input type="hidden" id="id" name="id" value="${id }">
+					<c:if test="${not empty list}">
 					<table class="table table-striped" id="example">
 						<tr id="trMain">
 							<th>글번호<th>
@@ -117,6 +118,8 @@ tr#trSub {
 							<th>답변 상태</th>
 							<th>답변 확인</th>
 						</tr>
+						
+						
 						<c:forEach items="${list }" var="b">
 							<input type="hidden" id="seq" name="seq" value="${b.seq }">
 							<tr id="trSub">
@@ -134,8 +137,12 @@ tr#trSub {
 								
 							</tr>
 						</c:forEach>
+						
 					</table>
-
+					</c:if>
+					<c:if test="${empty list}">
+					<h3 style="text-align: center;"><strong>문의 내역이 없습니다.</strong></h3>
+					</c:if>
 
 					<!-- Modal -->
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
