@@ -7,6 +7,9 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
+<style>
+
+</style>
 <!--<![endif]-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -14,6 +17,7 @@
 .ul-none-som {
 display:none;
 }
+
 </style>
 <script>
 	$(document).on("click",".toggle-som",function() {
@@ -30,10 +34,9 @@ display:none;
 
 	<!-- property area -->
 
-
-	<div class="col-md-3 p0 padding-top-40">
+	 <div class="col-md-3 p0 padding-top-40">
 		<div class="blog-asside-right pr0">
-
+ 
 
 			<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 				<div class="panel-heading" onclick="location.href='mypageHome'">
@@ -45,18 +48,9 @@ display:none;
 				<div class="panel-heading">
 					<div class="resumeMenu" id="resM">
 						<h3 class="panel-title" >
-							<span class="toggle-som" >이력서</span>
+							<a href="getSearchResumeList"> <span class="toggle-som">이력서</span></a>
 						</h3>
-						<ul class="resumesub ul-none-som" id="resumesub">
-							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="resumeInsertForm"> <span class="txt">이력서 등록</span>
-							</a>
-							</li>
-							<li class="panel panel-default sidebar-menu wow fadeInRight animated">
-								<a href="getSearchResumeList"> <span class="txt">이력서 관리</span>
-							</a>
-							</li>
-						</ul>
+						
 					</div>
 				</div>
 			</div>
@@ -118,5 +112,7 @@ display:none;
 			</div>
 		</div>
 	</div>
+	
+	
 </body>
 </html>

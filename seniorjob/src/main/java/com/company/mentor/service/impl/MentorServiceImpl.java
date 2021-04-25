@@ -51,17 +51,18 @@ public class MentorServiceImpl implements MentorService {
 	public void MentorRegisterProc(MentorVO vo, HttpServletRequest request) throws IllegalStateException, IOException {
 		// 이미지 업로드
 		MultipartFile photoFile = vo.getMentor_photo_file(); // 멘토 사진 파일
-		MultipartFile licenseFile = vo.getMentor_license_file(); // 멘토 자격증 파일
-		MultipartFile careerFile = vo.getMentor_career_certificate_file(); // 멘토 경력 인증 파일
+		//MultipartFile licenseFile = vo.getMentor_license_file(); // 멘토 자격증 파일
+		//MultipartFile careerFile = vo.getMentor_career_certificate_file(); // 멘토 경력 인증 파일
 		
 		if( photoFile != null && !photoFile.isEmpty() && photoFile.getSize() > 0
-		    && licenseFile != null && !licenseFile.isEmpty() && licenseFile.getSize() > 0
-		    && careerFile != null && !careerFile.isEmpty() && careerFile.getSize() > 0 ) {
+		   // && licenseFile != null && !licenseFile.isEmpty() && licenseFile.getSize() > 0
+		   // && careerFile != null && !careerFile.isEmpty() && careerFile.getSize() > 0 
+				) {
 			
 			// 파일 이름만 추출
 			String photoFileName = photoFile.getOriginalFilename();
-			String licenseFileName = licenseFile.getOriginalFilename();
-			String careerFileName = careerFile.getOriginalFilename();
+			//String licenseFileName = licenseFile.getOriginalFilename();
+			//String careerFileName = careerFile.getOriginalFilename();
 			
 			// 파일 저장소 경로 확인
 			String path = request.getServletContext().getRealPath("image");
@@ -70,18 +71,18 @@ public class MentorServiceImpl implements MentorService {
 			// 파일 이름 중복 처리
 			// 동일 파일 처리 시 파일 이름 뒤에 숫자 삽입
 			File photoRename = FileRenamePolicy.rename(new File(path, photoFileName));
-			File licenseRename = FileRenamePolicy.rename(new File(path, licenseFileName));
-			File careerRename = FileRenamePolicy.rename(new File(path, careerFileName));
+			//File licenseRename = FileRenamePolicy.rename(new File(path, licenseFileName));
+			//File careerRename = FileRenamePolicy.rename(new File(path, careerFileName));
 			
 			// 저장소에 파일 저장
 			photoFile.transferTo(new File(path, photoRename.getName()));
-			licenseFile.transferTo(new File(path, licenseRename.getName()));
-			careerFile.transferTo(new File(path, careerRename.getName()));
+			//licenseFile.transferTo(new File(path, licenseRename.getName()));
+			//careerFile.transferTo(new File(path, careerRename.getName()));
 			
 			// DB에 파일 이름만 저장
 			vo.setMentor_photo(photoFileName);
-			vo.setMentor_license(licenseFileName);
-			vo.setMentor_career_certificate(careerFileName);
+			//vo.setMentor_license(licenseFileName);
+			//vo.setMentor_career_certificate(careerFileName);
 			
 			mentorMapper.MentorRegisterProc(vo);
 		}

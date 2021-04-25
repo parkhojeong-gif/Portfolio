@@ -40,6 +40,115 @@
 <link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/responsive.css">
+<style>
+element.style {
+    transform: translateX(406px);
+}
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 96px;
+    left: 50%;
+    margin-left: 370px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
+    margin: 0;
+    padding: 0;
+    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: none;
+}
+html {
+    color: #000;
+    background: #fff;
+}
+
+element.style {
+}
+.box_change_order .list_change li .link_change .btn_check {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 0 0 0 12px;
+    width: 62px;
+    height: 30px;
+    border: 1px solid #dfdfdf;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    background-color: #fff;
+}
+.box_change_order .list_change li .link_change {
+    display: block;
+    position: relative;
+    max-width: 240px;
+    color: #222;
+    line-height: 26px;
+}
+.box_change_order .list_change li a {
+    color: #444;
+}
+a {
+    color: #444;
+    text-decoration: none;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+.box_change_order .list_change li {
+    padding: 7px 10px 0;
+    color: #888;
+    font-size: 16px;
+    line-height: 26px;
+}
+ol, ul, li {
+    list-style: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
+    margin: 0;
+    padding: 0;
+    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: none;
+}
+html {
+    color: #000;
+    background: #fff;
+}
+.box_change_order .list_change li .link_change .btn_check:after {
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    right: 11px;
+    width: 9px;
+    height: 9px;
+    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
+    content: "";
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function prodAdd() {

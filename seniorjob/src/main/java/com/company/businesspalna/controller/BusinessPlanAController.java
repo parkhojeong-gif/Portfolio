@@ -31,6 +31,12 @@ public class BusinessPlanAController {
 	@Autowired MentorService mtService;
 
 	
+	@RequestMapping("/testmyhome")			//사업계획서 하나만 조회. 
+	public String testmyhome() {
+		return "mypage/testmyhome";
+	}
+	
+	
 	@GetMapping("/getSearchBusinessPlanA") //사업계획서 리스트 
 	public String getSearchBusinessPlanA(BusinessPalnAVO vo, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();

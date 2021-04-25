@@ -128,8 +128,7 @@ function reply() {
 				<jsp:include page="../mypage.jsp" />
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-				<div class="section" id='calendar'>
-				</div>
+				
 				
 				
 					<div class="section">
@@ -193,6 +192,8 @@ function reply() {
 						</div>
 
 					</div> <!-- section -->
+					
+					<div class="section" id='calendar'></div>
 				</div>
 			</div>
 		</div>

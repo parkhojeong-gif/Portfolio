@@ -16,7 +16,7 @@ function submit() {
 </head>
 <body>
 <form action="insertCerti" method="post" name="frm">
-
+<input type="hidden" id="valSom" name="valSom" value="${valSom}">
     <div class="clear">
                                 
                                 <hr>
