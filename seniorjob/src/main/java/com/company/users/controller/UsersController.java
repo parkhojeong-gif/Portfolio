@@ -84,7 +84,7 @@ public class UsersController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/login";
+		return "memregSuccess";
 	}
 
 	@RequestMapping("/updateUsers") // 유저 정보 수정폼
@@ -160,6 +160,7 @@ public class UsersController {
 			return "login";
 		}
 		UsersVO users = usersMapper.logCheck(vo);
+		
 		if (users != null) {
 			boolean psMatch = pwdEncoder.matches(vo.getPassword(), users.getPassword()); //
 			if (psMatch == true) {

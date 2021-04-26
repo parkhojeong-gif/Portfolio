@@ -202,6 +202,9 @@
 	 			}
 	 		}); 
 	 	 	 
+				 	
+	 	 	 
+	 	 	 
 	 /* 	 //전체 disable button 
 	 		if($("input:text") != ''){
 	 			$("#inputbutton").attr("disabled", true);
