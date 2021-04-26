@@ -263,6 +263,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 <h4 class="s-property-title">멘토링 후기</h4> 
                                 <div id="reviewss" style="display:none">
                                 <div class="score_reple" >
+                                <input type="hidden" id="seq" name="seq">
 									<p>
 										<span class="ico_viewer">(구매자)</span>
 									</p>
@@ -279,12 +280,13 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 											<em id="reviews_wDate"></em>
 										</dt>
 									</dl>
-									<button type="button" onclick="">삭제</button><br>
-									<button type="button" onclick="">수정</button>
+									<button type="button" id="delR">삭제</button><br>
+									<button type="button" id="upR">수정</button>
 								</div>
 								<hr>
 								</div>
 							</div>
+<%-- 							<button type="button" id="paging" name="paging">${paging }</button> --%>
                             <!-- End features area  -->
 		                    <div class="input_request">
 		                    <h3>구매평 등록</h3>
@@ -425,7 +427,36 @@ $.ajax({
 			list.find("#review_content").html(response[i].content);
 			list.find("#review_id").html(response[i].id);
 			list.find("#reviews_wDate").html(response[i].w_date);
+			list.find("#seq").html(response[i].seq);
 			$("#reviewsList").append(list);
+			
+			
+			//paging버튼
+            /* $("#paging").empty();
+            var totalRecord = response.paging.totalRecord;
+            var lastPage = response.paging.lastPage;
+            var page = response.paging.page;
+            var pageSize = response.paging.pageSize;
+            var endPage = response.paging.endPage;
+            var startPage = response.paging.startPage;
+            if (startPage > 1) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (startPage - 1) + ")'>" + "&laquo;"
+                           + "</a>");
+            }
+            for (i = startPage; i <= endPage; i++) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList(" + (i)
+                           + ")'>" + i + "</a>");
+            }
+            if (lastPage > endPage) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (endPage + 1) + ")'>" + "&raquo;"
+                           + "</a>");
+            } */
+
 		}
 	}
 })
@@ -451,7 +482,7 @@ $("#submitReview").on("click", function(){
 	})
 })
 
-	
+
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />

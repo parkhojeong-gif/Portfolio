@@ -117,7 +117,19 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 	public int getReviewOne(Mentoring_ReviewsVO vo) {
 		return dao.getReviewOne(vo);
 	}
+	
+	@Override
+	public String getOneReviews(Mentoring_ReviewsVO vo) {
+		return dao.getOneReviews(vo);
+	}
+	
+	@Override
+	public int getRcount(Mentoring_ReviewsVO vo) {
+		return dao.getRcount(vo);
+	}
 	//========================================================================
+
+
 
 
 }

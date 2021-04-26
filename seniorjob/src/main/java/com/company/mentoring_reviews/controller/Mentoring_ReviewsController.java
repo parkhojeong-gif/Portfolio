@@ -96,6 +96,7 @@ public class Mentoring_ReviewsController {
 	}
 
 	// 송다희 추가
+	// 멘토링 후기 등록
 	@RequestMapping("/searchShopping")
 	public @ResponseBody int searchShopping(Mentoring_ReviewsVO vo, HttpServletRequest req) {
 		HttpSession session = req.getSession();
@@ -110,5 +111,18 @@ public class Mentoring_ReviewsController {
 		} 
 	}
 	
+	@RequestMapping("/deleteReviews")
+	@ResponseBody
+	public String deleteReviews(Mentoring_ReviewsVO vo) {
+		mentoring_ReviewsMapper.deleteReviews(vo);
+		return "redirect:/getSearchMentoringChanGon";
+	}
+	
+	@RequestMapping("/updateReviews")
+	@ResponseBody
+	public String updateReviews(Mentoring_ReviewsVO vo) {
+		mentoring_ReviewsMapper.updateReviews(vo);
+		return "redirect:/getSearchMentoringChanGon";
+	}
 
 }
