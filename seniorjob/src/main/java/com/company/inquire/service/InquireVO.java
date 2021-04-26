@@ -2,6 +2,8 @@ package com.company.inquire.service;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -9,6 +11,7 @@ public class InquireVO {  //문의하기
 	private String seq; 	//글번호
 	private String category_a;		//대분류
 	private String category_b;		//중분류
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date w_date;		//작성일자
 	private String click;		//조회수
 	private String content;		//글내용

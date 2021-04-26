@@ -7,8 +7,6 @@ import com.company.service_center.SearchCriteria;
 
 public interface Mentoring_ReviewsService {
 	
-	// 페이징 처리 게시글 조회
-			public List<Mentoring_ReviewsVO> selectBoard(MenPagingVO vo);
 
 			// 페이징 처리 및 후기 전체 조회
 			public List<Mentoring_ReviewsVO> list(MenSearchCriteria scri);
@@ -45,4 +43,20 @@ public interface Mentoring_ReviewsService {
 			//송다희 추가
 			//후기
 			public List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo);
+			// 구매내역 조회
+			public int searchShopping(Mentoring_ReviewsVO vo);
+			// 입력
+			public int insertReviewsMen(Mentoring_ReviewsVO vo);
+			// 삭제
+			public int deleteReviews(Mentoring_ReviewsVO vo);
+			// 수정
+			public int updateReviews(Mentoring_ReviewsVO vo);
+			// 후기글 한 번만 작성
+			public int getReviewOne(Mentoring_ReviewsVO vo);
+			// 후기글 단건 조회
+			public String getOneReviews(Mentoring_ReviewsVO vo);
+			// 페이징
+			public int getRcount(Mentoring_ReviewsVO vo);
+			
+			public Mentoring_ReviewsVO getReviewsUp(Mentoring_ReviewsVO vo);
 }

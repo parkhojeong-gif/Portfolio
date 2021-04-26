@@ -47,8 +47,8 @@ function detail(num) {
                                     <div class="box-two proerty-item">
                                         
                                         <div class="item-entry overflow">
-                                            <h5><span> ${list.mentoring_name } </span></h5>
-                                            <div class="dot-hr">${list.s_date }</div>
+                                            <div class="dot-hr"><h5><span> ${list.mentoring_name } </span></h5></div>
+                                            <div>${list.s_date }</div>
                                             <span class="pull-left"><b> 결제완료</b></span>
                                             <span class="proerty-price pull-right"> ${list.mentoring_price }</span>
                                             <p style="display: none;"></p>

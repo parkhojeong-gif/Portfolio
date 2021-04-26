@@ -40,125 +40,10 @@
 <link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/responsive.css">
-<style>
-element.style {
-    transform: translateX(406px);
-}
-#nudge_wrap {
-    width: 260px;
-    position: fixed;
-    top: 96px;
-    left: 50%;
-    margin-left: 370px;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-
-element.style {
-}
-.box_change_order .list_change li .link_change .btn_check {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    padding: 0 0 0 12px;
-    width: 62px;
-    height: 30px;
-    border: 1px solid #dfdfdf;
-    border-radius: 15px;
-    box-sizing: border-box;
-    color: #222;
-    font-size: 13px;
-    font-weight: normal;
-    letter-spacing: -1px;
-    background-color: #fff;
-}
-.box_change_order .list_change li .link_change {
-    display: block;
-    position: relative;
-    max-width: 240px;
-    color: #222;
-    line-height: 26px;
-}
-.box_change_order .list_change li a {
-    color: #444;
-}
-a {
-    color: #444;
-    text-decoration: none;
-}
-user agent stylesheet
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
-}
-.box_change_order .list_change li {
-    padding: 7px 10px 0;
-    color: #888;
-    font-size: 16px;
-    line-height: 26px;
-}
-ol, ul, li {
-    list-style: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-li {
-    text-align: -webkit-match-parent;
-}
-user agent stylesheet
-ul {
-    list-style-type: disc;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.box_change_order .list_change li .link_change .btn_check:after {
-    display: inline-block;
-    position: absolute;
-    top: 9px;
-    right: 11px;
-    width: 9px;
-    height: 9px;
-    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
-    content: "";
-}
-</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function prodAdd() {
 	
-	var prodLen = $("#prodDiv").length; //prodDiv가 있는지 찾는다.
-	
-	
-	if(prodLen > 0) {  //prodDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
 	
 	var prodDiv = $('<div />').attr("class", "row").attr("id", "prodDiv");
 	var hidden = $('<input />').attr("type","hidden").attr("id","phidden").attr("name","phidden").attr("value","1");
@@ -197,7 +82,7 @@ function prodAdd() {
 	
 	$("#businessDiv").eq(-1).after(prodDiv);
 	
-	}
+	
 }
 
 
@@ -328,13 +213,45 @@ function sellAdd() {
 	
 }
 
+$(document).ready(function(){ 
+	//var tar = event.target;
+	//var count = $(".som_certi_group",opener.document).length;
+	//var count = count-1;
+	
+	$("#title").val($("#title",opener.document).val());
+	$("#business_a").val($("#business_a",opener.document).val());
+	$("#business_b").val($("#business_b",opener.document).val());
+	$("#business_c").val($("#business_c",opener.document).val());
+	
+	var prodLen = $("#prodDiv",opener.document).length; //prodDiv가 있는지 찾는다.
+	var marketLen = $("#marketDiv",opener.document).length; //marketDiv가 있는지 찾는다.
+	var sellingLen = $("#sellingDiv",opener.document).length; //sellingDiv가 있는지 찾는다.
+	if(prodLen > 0) {  //prodDiv가 있다면
+		prodAdd();
+		$("#prod_a").val($("#prod_a",opener.document).val());
+		$("#prod_b").val($("#prod_b",opener.document).val());
+		$("#prod_c").val($("#prod_c",opener.document).val());
+	}
+	if(marketLen > 0) {  //marketDiv가 있다면
+		marketAdd();
+		$("#market_a").val($("#market_a",opener.document).val());
+		$("#market_b").val($("#market_b",opener.document).val());
+		$("#market_c").val($("#market_c",opener.document).val());
+		$("#market_d").val($("#market_d",opener.document).val());
+	}
+	if(sellingLen > 0) {  //sellingDiv가 있다면
+	
+		sellAdd();
+	
+	$("#selling_a").val($("#selling_a",opener.document).val());
+	$("#selling_b").val($("#selling_b",opener.document).val());
+	$("#selling_c").val($("#selling_c",opener.document).val());
+	
+	}
+	
+});
 
 
-$(document).on("click", "#previewBusiness", function(){
-	window.name = "previewBusiness";
-	var openWin = window.open("previewBusiness",
-            "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
-})
 
 </script>
 </head>
@@ -416,15 +333,7 @@ $(document).on("click", "#previewBusiness", function(){
 
 				</ul>
 			</div>
-			<div class="area_btn col-sm-12 text-center">
-				<button type="button" class="btn btn-primary" name="previewBusiness" id="previewBusiness">미리보기</button>
-			</div>
-			<!--<div class="area_btn col-sm-12 text-center">
-				<button type="" class="btn btn-primary">중간저장</button>
-			</div>-->
-			<div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">작성완료</button>
-			</div>
+		
 			
 
 		</div>

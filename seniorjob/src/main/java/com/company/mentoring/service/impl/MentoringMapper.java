@@ -32,5 +32,7 @@ public interface MentoringMapper {
 	//검색&페이징
 	
 	public int getMcount(MentoringVO vo);
+	//이미지 랜덤
+	public List<MentoringVO> getRandomImage(MentoringVO vo);
 
 }

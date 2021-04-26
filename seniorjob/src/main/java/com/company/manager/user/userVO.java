@@ -22,7 +22,8 @@ public class userVO {
 	private String detailaddress;
 	private String extraaddress;
 	
-	private String mentor_career_certificate;
-	
+	private String mentor_career_certificate; //멘토 경력증명서
+	private Date mentor_date; //멘토 등록일
+	private String mentor_confirm_status; //멘토 신청상태
 	
 }

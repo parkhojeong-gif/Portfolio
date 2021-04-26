@@ -44,6 +44,7 @@ for(certi of list ) {
     				$("input[name='clist["+count+"].certi_place']",opener.document).val($(tar).parent().parent().children('#certiPlace').html());
     				$("input[name='clist["+count+"].certi_date']",opener.document).val($(tar).parent().parent().children('#certiDate').html());
     				console.log($(tar).parent().parent().children('#certiName').html());
+    				window.open('','_self').close();
     			});
 	
     $(td5).append(inp1);

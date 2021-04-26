@@ -8,6 +8,7 @@
 </head>
 <body>
 <form action="certiUpload" method="post" name="frm" enctype="multipart/form-data">
+<input type="hidden" id="valSom" name="valSom" value="${valSom}">
             <div class="clear">
                                 <hr>
                                 <br>

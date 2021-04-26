@@ -48,6 +48,15 @@ public interface InquireMapper {
 	public int insertAnswer(Inquire_AnswerVO avo);
 	//관리자 답변작성시 미답변->답변완료
 	public boolean updateConfirm(InquireVO vo);
+	//관리자 답변작성시 답변완료->미답변
+	public boolean updateAnswerStatus(InquireVO vo);	
 	//답변 작성 리스트 조회
 	public List<Inquire_AnswerVO> userAnswerList(Inquire_AnswerVO avo);
+	//답변 수정
+	public int updateAnswer(Inquire_AnswerVO avo);
+	//답변 삭제
+	public int deleteAnswer(Inquire_AnswerVO avo);		
+	//답변 삭제(i_seq가 아닌seq기준)
+	public int deleteAnswer2(Inquire_AnswerVO avo);
+	
 }

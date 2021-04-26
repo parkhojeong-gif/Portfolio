@@ -2,6 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<style>
+.table-striped > thead > tr > th{
+
+word-break : keep-all;
+text-align : center;
+
+}
+
+.badge {
+
+cursor : pointer;
+
+}
+</style>
 <script>
 	function selChange() {
 		var sel = document.getElementById('cntPerPage').value;
@@ -14,8 +29,8 @@
 	<div class="page-title">
 		<div class="row">
 			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>회원관리</h3>
-				<p class="text-subtitle text-muted">전체 회원을 볼 수 있는 목록 페이지입니다.</p>
+				<h3>회원 관리</h3>
+				<p class="text-subtitle text-muted">전체 회원 목록 조회 또는 멘토 승급 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
 				<nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -29,7 +44,10 @@
 	</div>
 	<section class="section">
 		<div class="card">
-			<div class="card-header">회원 데이터 테이블</div>
+			<div class="card-header">전체 회원 데이터 테이블</div>
+			<div id ="countmentor">
+				<span id ="mensyscount" style="float:right; text-family:monospace;"></span>
+			</div>
 			<div class="card-body">
 				<div class="dataTable-search">
 				<form role="form" method="get">
@@ -41,6 +59,7 @@
 						      <option value="name"<c:out value="${scri.searchType eq 'name' ? 'selected' : ''}"/>>이름</option>
 						      <option value="id"<c:out value="${scri.searchType eq 'id' ? 'selected' : ''}"/>>ID</option>
 						      <option value="auth"<c:out value="${scri.searchType eq 'auth' ? 'selected' : ''}"/>>회원등급</option>
+						      <option value="mentor_confirm_status"<c:out value="${scri.searchType eq 'mentor_confirm_status' ? 'selected' : ''}"/>>승인대기</option>
                         </select>
 							<div class="input-group">
                              <input class="form-control"  name="keyword" id="keywordInput" value="${scri.keyword}" style="text-align:center; height:45px; width: 230px; flex:unset;" type="text" placeholder="내용 입력 ">&nbsp;
@@ -56,33 +75,31 @@
 						
 				<br>
 				
-				<table class='table table-striped' style="font-size: 11px;" id="table1">
+				<table class='table table-striped' style="font-size: 10px;" id="table1">
 					<thead>
 						<tr>
 							<th>ID</th>
 							<th>회원 이름</th>
-							<th>회원 전화번호</th>
-							<!--<th>회원 주소</th>-->
-							<th>생일</th>
-							<th>회원 이메일</th>
-							<th>경력증명서</th>
+							<!-- 양소민 수정 -->
+							<th>자격증/<br/>경력증명서</th>
+							<th>멘토<br/>신청일자</th>
+							<th>멘토<br/>신청상태</th>
 							<th>회원등급</th>
 							<th>소셜닉네임</th>
 							<th>승급</th>
-							<th>수정</th>
+							<th>상세보기 및<br/>수정</th>
 							<th>삭제</th>
 						</tr>
 					</thead>
-					<tbody id="tbody">
+					<tbody id="tbody" style="text-align:center;">
 						<c:forEach items="${viewAll}" var="users">
 							<tr>
 								<td>${users.id }</td>
 								<td>${users.name }</td>
-								<td>${users.phonenum }</td>
-								<!-- <td>${users.address }</td> -->
-								<td>${users.birth }</td>
-								<td>${users.email }</td>
-								<td>${users.mentor_career_certificate}</td>
+								<!-- 양소민 수정(자격증, 경력증명서 조회) -->
+								<td><a href="#getCertiModal" class="edit" data-bs-toggle="modal"><i data-feather="external-link"></i></a></td>
+								<td><fmt:formatDate value="${users.mentor_date}" pattern="yy/MM/dd"/></td>
+								<td>${users.mentor_confirm_status}</td>								
 								<td>${users.auth}</td>
 								<td>${users.distinction}</td>
 								<td>
@@ -182,7 +199,6 @@
 	</div>
 </div>
 
-</div>
 
 <!-- 회원정보 수정 modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1"
@@ -192,7 +208,7 @@
 		<div class="modal-content">
 			<form action="updateUserProc" method="post">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle"><span id="userSpan"></span>회원 정보 수정</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle"><span id="userSpan"></span>회원 정보 상세 및 수정</h5>
 					<button type="button" class="close" data-bs-dismiss="modal"
 						aria-label="Close">
 						<i data-feather="x"></i>
@@ -253,18 +269,18 @@
 							</div>
 						</div>
 						<!-- <div class="col-md-4">
-							<label>Address</label>
+							<label>auth</label>
 						</div>
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="text" class="form-control" placeholder="Address" id="address" name="address">
+									<input type="text" class="form-control" placeholder="Auth" id="auth" name="auth" readonly="readonly">
 									<div class="form-control-icon">
 										<i data-feather="file"></i>
 									</div>
 								</div>
 							</div>
-						</div> -->
+						</div>  -->
 						<!-- 	<div class="card-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-12">
@@ -295,6 +311,86 @@
 		</div>
 	</div>
 </div>
+
+<!-- 자격증, 경력증명서 조회(양소민 수정) -->
+<div class="modal fade" id="getCertiModal" tabindex="-1"
+	role="dialog" aria-labelledby="exampleModalLongTitle"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form action="#" method="post">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle"><span id="certiModalSom"></span>자격증/경력증명서조회</h5>
+					<button type="button" class="close" data-bs-dismiss="modal"
+						aria-label="Close">
+						<i data-feather="x"></i>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						 <div class="profiel-header">
+                                <h3>
+                                    <b>자격증 목록</b>
+                                </h3>
+                                <table border="1" align="center">
+                                	<thead>
+                                	<tr>
+                                		<th>자격증이름</th>
+                                		<th>발행처</th>
+                                		<th>자격증번호</th>
+                                		<th>취득일자</th>
+                                	</tr>
+                                	</thead>
+                                	<tbody id="certi">
+                                	
+                                
+                                	</tbody>
+                                		
+                                </table>
+                                
+                                
+                            </div>
+						<div class="profiel-header">
+                                <br />
+                                <br />
+                                <br />
+                                <h3>
+                                    <b>경력인증서 목록</b>
+                                </h3>
+                                <table border="1" align="center">
+                                	<thead>
+                                	<tr>
+                                		<th>경력인증서</th>
+                                		
+                                	</tr>
+                                	</thead>
+                                	<tbody id="career">
+                                	
+                                	</tbody>
+                                
+                                </table>
+                            </div>
+						
+						
+						
+						
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-light-secondary"
+								data-bs-dismiss="modal">
+								<i class="bx bx-x d-block d-sm-none"></i> 
+								<span class="btn btn-warning">닫기</span>
+							</button>
+
+							
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 
 
 
@@ -348,19 +444,104 @@ $(function(){
 	    				var name = result[0].name;
 	    				var email = result[0].email;
 	    				var phonenum = result[0].phonenum;
-	    				var address = result[0].address;	
+	    				/* var auth = result[0].auth;	 */
 	    		
 	    					$("#exampleModalLong").find('[name=id]').val(id);
 	    					$("#exampleModalLong").find('[name=name]').val(name);
 	    					$("#exampleModalLong").find('[name=email]').val(email);
 	    					$("#exampleModalLong").find('[name=phonenum]').val(phonenum);
-	    					//$("#exampleModalLong").find('[name=address]').val(address); 
+	    					/* $("#exampleModalLong").find('[name=auth]').val(auth);  */
 	    				
 	    			}
 				}
 			})
 			
 	});
+	
+	<!--양소민 수정. 자격증, 경력증명서 조회-->
+	$("#getCertiModal").on('show.bs.modal', function(event){
+		let idx = $(event.relatedTarget).closest('tr').find('td').eq(0).text();
+		
+		let condi = "manUser";
+		$('#certiModalSom').html(idx);
+		
+		var sendData = "idx="+idx+'&condi='+condi;
+		
+		$(document).ready( function () {
+	    	$.ajax({
+	    		url : "getCertiList",
+	    		method:'POST',
+	    		data : sendData,
+	        	success : showContents,
+	        	error : showErrors
+	    	})
+	    }); 
+   		
+		function showErrors(result) {
+			console.log("error");
+		}
+
+		function showContents(result) {
+			var list = result;
+			for(certi of list ) {
+				
+				let tr = $('<tr />');
+				let td1 = $('<td />').html(certi.CERTI_NAME);
+				let td2 = $('<td />').html(certi.CERTI_PLACE);
+				let td3 = $('<td />').html(certi.CERTI_NO);
+				let td4 = $('<td />').html(certi.CERTI_DATE);
+				let td5 = $('<td />');
+				let td6 = $('<td />');
+				
+				$(tr).append(td1);
+				$(tr).append(td2);
+				$(tr).append(td3);
+				$(tr).append(td4);
+				$(tr).append(td5);
+				$(tr).append(td6);
+				$('#certi').append(tr);
+				
+			
+				
+			}
+			
+			
+		}
+		
+		
+		$(document).ready( function () {
+	    	$.ajax({
+	    		url : "getCarList",
+	    		method:'POST',
+	    		data : sendData,
+	        	success : function (result) {
+	        		var list = result;
+	        		for(certi of list ) {
+	        			
+	        			
+	        			let tr2 = $('<tr />');
+	        			let td5 = $('<td />').html(certi.CARRER_CERTI);
+	        			let td6 = $('<td />');
+	        			
+	        			
+	        			$(tr2).append(td5);
+	        			$(tr2).append(td6);
+	        			$('#career').append(tr2);
+	        			
+	        			
+	        			
+	        		}
+	        		
+	        		
+	        	},
+	        	error : function() {
+	        		console.log("error입니다.");
+	        	}
+	    	})
+	    }); 
+	
+});
+	
 	
 	<!--회원 정보 수정-->
 	$("#btnup").on("click", function(event){
@@ -422,18 +603,31 @@ $(function(){
 	$("#btnAuth").on('click', function(event){
 		console.log(event);
 		let idx = $('#authSpan').html();
-		$.ajax({
-			url: 'authUser',
-			type : 'GET',
-			data : {"id":idx},
-			dataType : 'text',
-			success : function(result){
-				location.reload();
+		
+		var makeAjax = function(url, result){
 			
-			} 
-			
-		})
-	})
+			$.ajax({
+				url : url,
+				type : 'POST',
+				data : {"id":idx},
+				dataType : 'text',
+				success : function(result){
+					location.reload();
+				
+				} 
+				
+			});
+		
+		};
+				makeAjax(
+					'authUser',
+					makeAjax(
+						'authMento',
+						function(){}
+					)
+				);	
+		
+	});
 	
 	<!--회원 강등 modal click-->
 	$("#down").on('show.bs.modal', function(event){
@@ -446,19 +640,52 @@ $(function(){
 	$("#btnDownAuth").on('click', function(event){
 		console.log(event);
 		let idx = $('#authDownSpan').html();
-		$.ajax({
-			url: 'authDownUser',
-			type : 'GET',
-			data : {"id":idx},
-			dataType : 'text',
-			success : function(result){
-				location.reload();
-			
-			} 
-			
-		})
-	})
+		
+		var makeAjax = function(url, result){
+		
+			$.ajax({
+				url: 'authDownUser',
+				type : 'GET',
+				data : {"id":idx},
+				dataType : 'text',
+				success : function(result){
+					location.reload();
+				
+				} 
+				
+			});
+		};
+		
+				makeAjax(
+					'authDownUser',
+					makeAjax(
+						'authDownMento',
+						function(){}
+							)
+				);
+	});
 	
+	<!--이력서를 냈으나 USER 등급인 유저-->
+	$("#mensyscount").ready(function(){
+			
+		$.ajax({
+			url : 'mentorSys',
+			async : false,
+			type : 'get',
+			dataType : 'json',
+			success : function(response){
+				console.log(response[0].COUNTAUTH);
+				var scount = response[0].COUNTAUTH;
+				if(scount != 0){
+					$('#mensyscount').text("현재 멘토 승급 대기 인원수:" + response[0].COUNTAUTH + "명");
+				}else{
+					$('#mensyscount').text("현재 신청한 사람이 없습니다.");
+				}
+			}
+		
+		});
+	});
+
 });
 
 <!--검색-->

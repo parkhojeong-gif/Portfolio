@@ -174,12 +174,10 @@ function insertQueSom(id) {
                                                 <c:if test="${empty users }">
                                                 	<input class="button btn largesearch-btn" value="멘토 팔로우" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
                                                 </c:if>  
-                                                <c:if test="${empty following && not empty users}">
+                                                <c:if test="${not empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우" id="followBtn" type="button">
                                                 </c:if>
-                                                <c:if test="${not empty following }">
                                                     <input class="button btn largesearch-btn" value="멘토 팔로우 취소" id="followCancelBtn" type="button">
-                                                </c:if>
                                                     <input class="button btn largesearch-btn" value="멘토에게 질문하기" onclick="insertQueSom('${mentor.mentor_id }')" type="button">
                                                 </div>  
                                             </div>
@@ -220,161 +218,16 @@ function insertQueSom(id) {
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
-<!-- Footer area-->
-  <div class="about-section">
-  <h1>${list.usersVO.name } 멘토님의 페이지</h1>
-  <p>Some text about who we are and what we do.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
-</div>
-<h2 style="text-align:center">Our Team</h2>
-<form name="getMentorInfo" method="post">
-<input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
-<input type="hidden" name="id" id="id" value="${list.id }">
-	<div class="row">
-		<div class="column">
-			<div class="card">
-				<div style="width: 200px; height: 150px; display:block">
-					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
-				</div>
-				<div class="container">
-					<p>
-						이름: <b>${list.usersVO.name }</b>
-					</p>
-					<p class="title">
-						멘토링 분야: <b>${list.mentoring_kind }</b>
-					</p>
-					<p>
-						회사 이름: <b>${list.mentor_company_name }</b>
-					</p>
-					<p>
-						부서 이름: <b>${list.mentor_department_name }</b>
-					</p>
-					<div style="border:1px solid black; padding-bottom:20px;">
-						<div style="float:left; margin-right:30px;">진행중인 멘토링: </div>
-						<div style="float:left; margin-left:30px;">팔로워 숫자: </div>
-					</div>
-					<p>
-					<c:if test="${empty users }">
-						<button class="button" type="button" onclick="loginCheck()">팔로우</button>
-					</c:if>
-					<c:if test="${not empty users }">
-						<button class="button" type="button" id="followBtn">팔로우</button>
-					</c:if>
-					<c:if test="${not empty users }">
-						<button class="button" type="button" id="followCancelBtn">팔로우 취소</button>
-					</c:if>
-					</div>
-				</div>
-			</div>
-		</div>
-		</form>
-		<p>
-		<hr>
-		<p>
-		<!-- 멘토링 정보(멘토링 등록 정보가 있을 때만 출력 -->
-	<c:if test="${not empty mentoring.mentoring_number }">
-		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
-		<input type="hidden" id="id" name="id" value="${list.mentor_id }">
-		<input type="hidden" id="user_id" name="user_id" value="${users.id }">
-		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
-		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
-		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
-		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
-		<!-- 송다희 추가 -->
-		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.s_date }">
-		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.e_date }">
-		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
-		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
-		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
-		<div class="column2">
-			<div class="card">
-				<div style="width: 200px; height: 150px; float: left;">
-					<img src="../resources/assets/img/mentor/mentoringCourse.jpg" id="mentoringCourse" style="width:100%">
-				</div>
-				<div class="container">
-					<p>
-						멘토링 제목: <b>${mentoring.mentoring_name }</b>
-					</p>
-					<p class="title">
-						멘토링 코스 시작일: <b>${mentoring.s_date }</b>
-					</p>
-					<p class="title">
-						멘토링 코스 종료일: <b>${mentoring.e_date }</b>
-					</p>
-					<p>
-						정원: <b>${mentoring.mentoring_limit }</b>
-					</p>
-					<br>	
-						<b>멘토링 코스 내용</b>
-					<br>
-						<textarea style="margin: 0px; width: 1019px; height: 143px;" readonly>${mentoring.mentoring_content }</textarea>
-					<p>
-					<div>
-						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button" onclick="insertC()">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
-					</div>
-					</div>
-				</div>
-			</div>
-			</form>
-		</c:if>
-		<c:if test="${empty mentoring.mentoring_number }">
-			<h1 class="display-3">- 등록된 멘토링이 없습니다 -</h1>
-		</c:if>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
-		/* getBasket(); */ // 장바구니 담기
 		getFollow(); // 멘토팔로우
 		deleteFollow(); // 멘토팔로우 취소
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
-	 /*  $(function() {
-		
-		function getBasket(){ // 장바구니 담기
-		
-		var formData = { 
-						 "mentoring_name":$('#mentoring_name').val(),
-						 "cart_start":$('#men_start').val(),
-						 "cart_end":$('#met_end').val(),
-						 "cart_price":$('#mentoring_price').val(),
-						 "id" : $('#user_id').val()
-						}
-						 
 
-		// 장바구니 담기
-		$('#BasketBtn').click(function() {
-			$.ajax({
-				url : "BasketChecks",
-				type : "post",
-				dataType : "json",
-				data : formData,
-				success : function(result) {
-					console.log(result);
-					  if (result != 0) {
-						alert("이미 장바구니에 담았습니다.");
-					} else {
-						alert("장바구니에 담았습니다.");
-					} 
-				}
-			});
-<<<<<<< HEAD
-		});
-	}); // end of function */
-	
-	
-	/* //장바구니로 이동
-	$(document).on("click", "#BasketBtn", function(){
-		alert("장바구니에 담았습니다.");
-		var yn = confirm("장바구니로 이동하시겠습니까?");
-		if(yn){
-			location.href="productAdd";
-		}
-	}) */
-	
-	//장바구니 localStorage
-	
 	
 	
 	$(function(){
@@ -398,7 +251,7 @@ function insertQueSom(id) {
 					success:function(result){
 						if(result == 0){
 							alert("팔로우 완료");
-							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
+							location.reload();
 						}else{
 							alert("이미 팔로우된 멘토입니다");
 							 }
@@ -418,7 +271,7 @@ function insertQueSom(id) {
 							alert("팔로우하지 않은 멘토입니다.");
 						}else{
 							alert("팔로우 취소 완료");
-							location.href = "getMentor?mentor_id="+$('#mentor_id').val();
+							location.reload();
 						}
 					}
 				});
@@ -456,7 +309,6 @@ function insertQueSom(id) {
 		}
 		
 		});
-	}); // end of function  */   
 	
 	// 장바구니 담기
 	function insertC(){

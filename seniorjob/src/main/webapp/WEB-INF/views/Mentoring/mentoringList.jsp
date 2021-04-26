@@ -20,15 +20,16 @@ h1{text-align:center}
 	right: 0;
 	padding-top: 110px;
 }
-#sidebar ul { 
-	padding: 10px; 
-}
+/* #sidebar ul {  */
+/* 	padding: 10px;  */
+/* } */
 #mainCopy{
 	font-size: 40px;
 	padding:30px; 
 	font-family:'Spoqa Han Sans'; 
 	font-weight: 300;
 }
+
 input#searchKeyword {
     margin: 30px;
     height: 60px;
@@ -41,7 +42,7 @@ input#searchKeyword {
 /* Slideshow container */
 .slideshow-container {
   max-width: 700px;
-  max-height: 300px;
+  max-height: 500px;
   position: relative;
   margin: auto;
 }
@@ -134,7 +135,20 @@ input#searchKeyword {
   from {opacity: .4}
   to {opacity: 1}
 }
-
+input#mentoring_kind {
+    width: 700px;
+}
+div#mtStartDate {
+    position: absolute;
+    left: 400px;
+}
+#mtEndDate{
+	position:absolute;
+	right:400px;
+}
+#search {
+    margin: 110px;
+}
 /* 이미지 슬라이드 */
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -143,16 +157,22 @@ input#searchKeyword {
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
+<c:if test="${not empty list }">
 	<h1 class="display-4" id="mainCopy">현직자 멘토와 함께 직무경험을 쌓아보세요!</h1>
 	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토링을 클릭하면 해당 멘토링 상세 정보 확인이 가능합니다.</footer>
+</c:if>
+<c:if test="${empty list }">
+	<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
+	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
+</c:if>
 	<!-- 멘토링 리스트 출력 -->
 	<br>
 	<!-- 페이징 & 검색 -->
-	<form method="POST" action="getMentoringList" id="searchDateFrm" name="searchDateFrm" onsubmit="return checkDateNull()">
+	<form method="POST" action="getMentoringList" id="searchDateFrm" name="searchDateFrm">
 		<input type="hidden" name="page" value="1">
 		<div class="row row-space" align="center">
 		<h2>멘토링을 검색하세요!</h2>
-		<input id="mentoring_kind" name="mentoring_kind" class="form-control" type="text" value="" placeholder="멘토 직무 검색 ex)마케팅,영업,IT" value="${MentoringVO.mentoring_kind }">
+		<input id="mentoring_kind" name="mentoring_kind" class="form-control" type="text" placeholder="멘토 직무 검색 ex)마케팅,영업,IT" value="${MentoringVO.mentoring_kind }">
 			<div class="col-4">
 				<div class="input-group" id="mtStartDate">
 					<label class="label">멘토링 시작일</label> 
@@ -164,49 +184,66 @@ input#searchKeyword {
 					<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" value="${MentoringVO.mentoring_end_date }">
 				</div>
 			</div>
-			<button>검색</button>
+			<button id="search">검색</button>
 		</div>
 	</form>
 	<br>	
 	<!-- 이미지 슬라이드 -->
 	<div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
+      <c:forEach items="${random }" var="random">
+      <input type="hidden" id="mentor_id" name="mentor_id" value="${random.mentor_id }">
+	  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${random.mentoring_number }">
+	  <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${random.mentoring_kind }">
+	  <input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${random.mentoring_begin_date }">
+	  <input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${random.mentoring_end_date }">
       <div class="mySlides fade">
         <div class="numbertext">1 / 6</div>
-        <img src="image/${MentoringVO.mentoring_photo }" style="width:100%">
+        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
         <div class="text">ACNE STUDIO</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">2 / 6</div>
-        <img src="image/${MentoringVO.mentoring_photo }" style="width:100%">
+        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+        <div class="text">ACNE STUDIO</div>
         <div class="text">ACNE STUDIO</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">3 / 6</div>
-        <img src="image/${MentoringVO.mentoring_photo }" style="width:100%">
+        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+        <div class="text">ACNE STUDIO</div>
         <div class="text">ACNE STUDIO</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">4 / 6</div>
-        <img src="image/${MentoringVO.mentoring_photo }" style="width:100%">
+        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+        <div class="text">ACNE STUDIO</div>
         <div class="text">ACNE STUDIO</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">5 / 6</div>
-        <img src="image/${MentoringVO.mentoring_photo }" style="width:100%">
+        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+        <div class="text">ACNE STUDIO</div>
         <div class="text">ACNE STUDIO</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">6 / 6</div>
-        <img src="image/${MentoringVO.mentoring_photo }" style="width:100%">
+        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+        <div class="text">ACNE STUDIO</div>
         <div class="text">ACNE STUDIO</div>
       </div>
-
+	</c:forEach>
       <!-- Next and previous buttons -->
       <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
       <a class="next" onclick="moveSlides(1)">&#10095;</a>
@@ -222,7 +259,7 @@ input#searchKeyword {
       <span class="dot" onclick="currentSlide(4)"></span>
       <span class="dot" onclick="currentSlide(5)"></span>
     </div>
-	
+
 	<!-- 이미지 슬라이드 -->
 	
 	
@@ -253,8 +290,9 @@ input#searchKeyword {
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
+										<p style="display: none;">${mentoring.mentoring_begin_date }</p>
 										<p style="display: none;">${mentoring.mentoring_introduce }</p>
-											<div class="dealer-action pull-right">
+											<div class="dealer-action p	ull-right">
 												<input type="submit" value="상세보기">
 											</div>
 									</div>
@@ -279,6 +317,7 @@ input#searchKeyword {
 								<input type="hidden" name="id" id="id" value="${users.id }">
 								<div class="panel-body search-widget">
 									<div class="row">
+									
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
@@ -287,6 +326,7 @@ input#searchKeyword {
 													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()" style="background:#FDC600; color:#fff">
                                                 </c:if>
 										</div>
+										
 									</div>
 								</div>
 								</div>

@@ -34,6 +34,7 @@ public class MentoringVO {  //멘토링 코스
 	private String id; //멘토의 회원 id
 	private String menteeId; //멘티의 회원 id
 	
+	//송다희 추가
 	//paging
 	Integer page = 1;
 	int start = 1;

@@ -53,7 +53,7 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
-									<<label>작성일자</label> <input type="date" class="form-control"
+									<label>작성일자</label> <input type="date" class="form-control"
 									id='currentDate' name="resume_email" readonly="readonly">
 								</div>
 							</div>

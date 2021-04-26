@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.mentoring_reviews.service.MenPagingVO;
 import com.company.mentoring_reviews.service.MenSearchCriteria;
 import com.company.mentoring_reviews.service.Mentoring_ReviewsService;
 import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
@@ -15,11 +14,6 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 
 	@Autowired Mentoring_ReviewsMapper dao;
 	
-	@Override
-	public List<Mentoring_ReviewsVO> selectBoard(MenPagingVO vo) {
-		// TODO Auto-generated method stub
-		return dao.selectBoard(vo);
-	}
 
 	@Override
 	public List<Mentoring_ReviewsVO> list(MenSearchCriteria scri) {
@@ -87,9 +81,54 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 		return dao.getPopularArticleList(vo);
 	}
 
+	//송다희 추가=================================================================
 	@Override
 	public List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo) {
 		return dao.getReviewsList(vo);
 	}
+
+	@Override
+	public int searchShopping(Mentoring_ReviewsVO vo) {
+		return dao.searchShopping(vo);
+	}
+
+	@Override
+	public int insertReviewsMen(Mentoring_ReviewsVO vo) {
+		return dao.insertReviewsMen(vo);
+	}
+
+	@Override
+	public int deleteReviews(Mentoring_ReviewsVO vo) {
+		return dao.deleteReviews(vo);
+	}
+
+	@Override
+	public int updateReviews(Mentoring_ReviewsVO vo) {
+		return dao.updateReviews(vo);
+	}
+	
+	@Override
+	public int getReviewOne(Mentoring_ReviewsVO vo) {
+		return dao.getReviewOne(vo);
+	}
+	
+	@Override
+	public String getOneReviews(Mentoring_ReviewsVO vo) {
+		return dao.getOneReviews(vo);
+	}
+	
+	@Override
+	public int getRcount(Mentoring_ReviewsVO vo) {
+		return dao.getRcount(vo);
+	}
+	//========================================================================
+
+	@Override
+	public Mentoring_ReviewsVO getReviewsUp(Mentoring_ReviewsVO vo) {
+		return dao.getReviewsUp(vo);
+	}
+
+
+
 
 }

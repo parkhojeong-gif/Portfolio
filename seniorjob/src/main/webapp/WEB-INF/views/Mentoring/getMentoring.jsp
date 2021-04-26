@@ -259,18 +259,53 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 </div>
                             </div> -->
                             <!-- End video area  -->
-                            <div class="section property-features">    
-                                <h4 class="s-property-title">멘토링 후기</h4>   
-                                <c:forEach items="${reviewList }" var="review">
-                                 <ul>
-                                    <li><a href="properties.html">${review.seq }</a></li>   
-                                </ul>
-                                </c:forEach>
+                            <div class="section property-features" id="reviewsList">    
+                                <h4 class="s-property-title">멘토링 후기</h4> 
+                                <div id="reviewss" style="display:none">
+                                <div class="score_reple" >
+                                <div align="right" class="checke">
+                                	<input type="checkbox" id="che">
+                                </div>
+                                <span id="seq"></span>
+									<p>
+										<span class="ico_viewer">(구매자)</span>
+									</p>
+									<p>	
+										<span id="review_content"></span>
+									</p>
+									<dl>
+										<dt>
+											<em>
+												<a href="#">
+													<span id="review_id"></span>
+												</a>
+											</em>
+											<em id="reviews_wDate"></em>
+										</dt>
+									</dl>
+									
+									<div align="right">
+									<a id="delR">삭제</a>
+									<a id="upR" onclick="upR()">수정</a>
+									</div>
+								</div>
+								<hr>
+								</div>
 							</div>
+<%-- 							<button type="button" id="paging" name="paging">${paging }</button> --%>
                             <!-- End features area  -->
-                            
+		                    <div class="input_request">
+		                    <h3>구매평 등록</h3>
+		                    <br>
+								<textarea id="content" row="8" cols="50" rows="8" class="input_textarea" placeholder="후기를 작성하세요."></textarea>
+								<p class="text_length"><h6 id="ment_cnt">0</h6> / 1000</p>
+							</div>
+							<div align="right"><button type="button" id="submitReview" name="submitReview">등록</button></div>	
                         </div>
                     </div>
+                    
+                    
+                    
 
                     <div class="col-md-4 p0">
                         <aside class="sidebar sidebar-property blog-asside-right">
@@ -373,6 +408,113 @@ function mentoringPayForm(){
 		}
 	}
 	
+/* 글자수 제한 */	
+$(document).ready(function(){
+	$("textarea").keyup(function(){
+		var inputLength = $(this).val().length;
+		if(inputLength > 1000) {
+			alert("입력 가능한 글자수를 초과 했습니다.");
+		}
+		var remain = inputLength;
+		$("h6").html(remain);
+	})
+})	
+
+
+
+/* 댓글 조회 */
+
+$.ajax({
+	url: "getReviewsList",
+	data : { mentoring_number : ${mentoring.mentoring_number }},
+	dataType: "json",
+	success: function(response){
+		for(i=0; i < response.length; i++){
+			var list = $($("#reviewss").html());
+			if(response[i].id != '${users.id}'){
+				list.find("#delR").remove();
+				list.find("#upR").remove();
+			}
+			list.find("#seq").html(response[i].seq);
+			list.find("#review_content").html(response[i].content);
+			list.find("#review_id").html(response[i].id);
+			list.find("#reviews_wDate").html(response[i].w_date);
+			$("#reviewsList").append(list);
+			
+			
+			//paging버튼
+            /* $("#paging").empty();
+            var totalRecord = response.paging.totalRecord;
+            var lastPage = response.paging.lastPage;
+            var page = response.paging.page;
+            var pageSize = response.paging.pageSize;
+            var endPage = response.paging.endPage;
+            var startPage = response.paging.startPage;
+            if (startPage > 1) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (startPage - 1) + ")'>" + "&laquo;"
+                           + "</a>");
+            }
+            for (i = startPage; i <= endPage; i++) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList(" + (i)
+                           + ")'>" + i + "</a>");
+            }
+            if (lastPage > endPage) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (endPage + 1) + ")'>" + "&raquo;"
+                           + "</a>");
+            } */
+
+		}
+	}
+})
+
+// 댓글 등록(구매 안 하면 alert)
+$("#submitReview").on("click", function(){
+	$.ajax({
+		url: "searchShopping",
+		data: { mentoring_number : ${mentoring.mentoring_number }, content:$("#content").val()},
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			if(result == 1){
+				var list = $($("#reviewss").html());
+				list.find("#review_content").html(result.content);
+				list.find("#review_id").html(result.id);
+				list.find("#reviews_wDate").html(result.w_date);
+				$("#reviewsList").append(list);
+			}else{
+				alert("구매하신 상품이 아닙니다.");
+			}
+		}
+	})
+})
+
+// 삭제
+$(document).on("click", "#delR", function(){
+	var seq = $(this).parent().parent().children().closest('#seq').html();
+	$.ajax({
+		url: "deleteReviews",
+		data:{ "seq" : seq },
+		dataType: "json",
+		success: function(response){
+			location.reload();
+		}
+	})
+})
+
+
+function upR(){
+	$(document).on("click", "#upR", function(){
+		var seq = $(this).parent().parent().children().closest('#seq').html();
+		console.log(seq)
+		window.open("getReviewsUp?seq=" + seq,
+	                "수정", "width=500, height=500, resizable = no");
+	})
+}
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />

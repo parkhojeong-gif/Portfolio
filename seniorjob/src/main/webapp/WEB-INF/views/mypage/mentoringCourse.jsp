@@ -48,7 +48,11 @@ function menteeList(num) {
                             </div>
 
                         </div>
+                        <c:if test="${empty list }">
+                        <h5>등록된 멘토링이 없습니다.</h5>
+                        </c:if>
                         <c:forEach items="${list }" var="list">
+                        
                         <div class="section"> 
                             <div id="list-type" class="proerty-th-list">
                                 <div class="col-md-4 p0">
