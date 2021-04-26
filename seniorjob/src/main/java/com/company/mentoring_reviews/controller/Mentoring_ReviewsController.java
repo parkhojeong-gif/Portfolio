@@ -116,7 +116,7 @@ public class Mentoring_ReviewsController {
 	@ResponseBody
 	public String deleteReviews(Mentoring_ReviewsVO vo) {
 		mentoring_ReviewsMapper.deleteReviews(vo);
-		return "redirect:/getSearchMentoringChanGon";
+		return "성공";
 	}
 	
 	@RequestMapping("/updateReviews")

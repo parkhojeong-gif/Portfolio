@@ -263,7 +263,10 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 <h4 class="s-property-title">멘토링 후기</h4> 
                                 <div id="reviewss" style="display:none">
                                 <div class="score_reple" >
-                                <input type="hidden" id="seq" name="seq">
+                                <div align="right" class="checke">
+                                	<input type="checkbox" id="che">
+                                </div>
+                                <span id="seq"></span>
 									<p>
 										<span class="ico_viewer">(구매자)</span>
 									</p>
@@ -280,8 +283,11 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 											<em id="reviews_wDate"></em>
 										</dt>
 									</dl>
-									<button type="button" id="delR">삭제</button><br>
+									
+									<div align="right">
+									<button type="button" id="delR" name="delR">삭제</button>
 									<button type="button" id="upR">수정</button>
+									</div>
 								</div>
 								<hr>
 								</div>
@@ -417,6 +423,7 @@ $(document).ready(function(){
 
 
 /* 댓글 조회 */
+
 $.ajax({
 	url: "getReviewsList",
 	data : { mentoring_number : ${mentoring.mentoring_number }},
@@ -424,10 +431,14 @@ $.ajax({
 	success: function(response){
 		for(i=0; i < response.length; i++){
 			var list = $($("#reviewss").html());
+			if(response[i].id != '${users.id}'){
+				list.find("#delR").remove();
+				list.find("#upR").remove();
+			}
+			list.find("#seq").html(response[i].seq);
 			list.find("#review_content").html(response[i].content);
 			list.find("#review_id").html(response[i].id);
 			list.find("#reviews_wDate").html(response[i].w_date);
-			list.find("#seq").html(response[i].seq);
 			$("#reviewsList").append(list);
 			
 			
@@ -481,6 +492,19 @@ $("#submitReview").on("click", function(){
 		}
 	})
 })
+
+	$(document).on("click", "#delR", function(){
+		var seq = $(this).parent().parent().children().closest('#seq').html();
+		$.ajax({
+			url: "deleteReviews",
+			data:{ "seq" : seq },
+			dataType: "json",
+			success: function(response){
+				location.reload();
+			}
+		})
+	})
+
 
 
 </script>

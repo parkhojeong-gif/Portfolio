@@ -206,8 +206,7 @@ public class MentoringController {
 		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
 		reviewvo.setId(id);
 		model.addAttribute("reviewList", mentorservice.getReviewsList(reviewvo));
-		model.addAttribute("reviews", mentorservice.getOneReviews(reviewvo));
-		System.out.println(mentorservice.getOneReviews(reviewvo));
+		System.out.println(reviewvo);
 		//크롤링
 		String uri = "https://comento.kr/edu/learn/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C-G165";
 		Document doc = Jsoup.connect(uri).get();
