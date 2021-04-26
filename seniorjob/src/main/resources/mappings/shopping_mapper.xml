@@ -17,7 +17,10 @@
 	<!-- 양소민 추가 -->
  	<!-- 마이페이지_결제내역 -->
 	<select id="getSearchPay" resultType="ShoppingVO">
-		SELECT * FROM SHOPPING 
+		SELECT *
+		FROM SHOPPING S
+		JOIN MENTORING M
+		ON S.MENTORING_NUMBER = M.MENTORING_NUMBER
 		WHERE ID=#{id}
 	</select>
 	

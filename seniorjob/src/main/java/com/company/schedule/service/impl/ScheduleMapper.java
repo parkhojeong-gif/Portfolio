@@ -35,4 +35,6 @@ public interface ScheduleMapper {
 	public List<ScheduleVO> replyQuestFormSom(ScheduleVO vo);
 	
 	public String replyQuestBadge(ScheduleVO vo);
+	
+	public int renameResumeNo(ScheduleVO vo);
 }

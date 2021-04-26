@@ -147,4 +147,12 @@
 		AND RESUME_NO IS NOT NULL
 	</select>
 	
+	
+	<!-- 이력서 수정되면 스케줄에 있는 이력서 번호도 같이 수정 -->
+	<update id="renameResumeNo" parameterType="ScheduleVO">
+	UPDATE SCHEDULE 
+	SET RESUME_NO=#{resume_no} 
+	WHERE RESUME_NO=#{oldResumeNo}
+	</update>
+	
 </mapper>

@@ -42,7 +42,7 @@
 				
 				<button type="button" class="btn btn-primary" onclick="resumeSom()">이력서 등록</button>
 				
-						
+						<form action="" method="post" name="frm">  
 				
 				<c:forEach  var="resume" items="${list}">
 				
@@ -79,6 +79,7 @@
 					</div>
 					</c:if>
 				</c:forEach>
+                            </form>
 				
 			</div>
 			<!-- row end -->

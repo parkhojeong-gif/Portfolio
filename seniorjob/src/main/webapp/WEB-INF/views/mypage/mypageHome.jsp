@@ -6,14 +6,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <jsp:include page="../topHeader.jsp" />
  <head>
-    <!-- <link href='/resources/fullcalendar/lib/main.css' rel='stylesheet' />
+   <link href='/resources/fullcalendar/lib/main.css' rel='stylesheet' />
     <script src='/resources/fullcalendar/lib/main.js'></script>
-     -->
-    <link href='fullcalendar/core/main.css' rel='stylesheet' />
-    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
-
-    <script src='fullcalendar/core/main.js'></script>
-    <script src='fullcalendar/daygrid/main.js'></script>
+     
     
     
     <script>
@@ -152,223 +147,45 @@ function reply() {
 
     </script>
     <style>
+/* somin */
 
-element.style {
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-element.style {
-}
-.wrap_my_home .my_notification {
-    padding: 0 0 12px;
-    width: 100%;
-    border-bottom: 1px solid #eaedf4;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 96px;
+    left: 50%;
+    margin-left: 370px;
 }
 
-element.style {
-}
-.my_notification .tabWrap {
-    padding: 54px 0 22px;
-}
-.tabWrap {
-    padding: 50px 0 20px;
-}
-ol, ul, li {
-    list-style: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.tabWrap:after {
-    display: table;
-    clear: both;
-    content: "";
-    table-layout: fixed;
-}
-
-element.style {
-}
-.my_notification .tabWrap {
-    padding: 54px 0 22px;
-}
-.tabWrap {
-    padding: 50px 0 20px;
-}
-ol, ul, li {
-    list-style: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.tabWrap:after {
-    display: table;
-    clear: both;
-    content: "";
-    table-layout: fixed;
-}
-element.style {
-}
-.tabWrap .select .tab {
-    color: #373f57;
-}
-.tabWrap .tab {
-    display: block;
-    padding: 10px 20px 10px 0;
-    color: #96a0b5;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 27px;
-}
-button, label {
-    cursor: pointer;
-}
-button {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-}
-input, button, textarea, select {
-    line-height: normal;
-}
-input, button, textarea, select, optgroup, option {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-style: inherit;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-button {
-    appearance: auto;
-    -webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
+.btn_check {
     display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    cursor: default;
-    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    position: absolute;
+    right: 0;
+    padding: 0 0 0 12px;
+    width: 62px;
+    height: 30px;
+    border: 1px solid #dfdfdf;
+    border-radius: 15px;
     box-sizing: border-box;
-    margin: 0em;
-    font: 400 13.3333px Arial;
-    padding: 1px 6px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-image: initial;
-}
-ol, ul, li {
-    list-style: none;
-}
-user agent stylesheet
-li {
-    text-align: -webkit-match-parent;
-}
-user agent stylesheet
-ul {
-    list-style-type: disc;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
+    color: #222;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    background-color: #fff;
 }
 
-element.style {
+.btn_check:after {
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    right: 11px;
+    width: 9px;
+    height: 9px;
+    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
+    content: "";
 }
-.tabWrap .select .badge, .tabWrap .select:hover .badge {
-    background: #373f57;
-}
+
+
 .tabWrap .tab .badge {
     display: inline-block;
     margin: 0 0 0 8px;
@@ -383,74 +200,7 @@ element.style {
     vertical-align: top;
     background: #afbac8;
 }
-.tabWrap .select .tab {
-    color: #373f57;
-}
-.tabWrap .tab {
-    display: block;
-    padding: 10px 20px 10px 0;
-    color: #96a0b5;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 27px;
-}
-button, label {
-    cursor: pointer;
-}
-button {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-}
-input, button, textarea, select {
-    line-height: normal;
-}
-input, button, textarea, select, optgroup, option {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-style: inherit;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-button {
-    -webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    text-align: center;
-    cursor: default;
-    font: 400 13.3333px Arial;
-}
-ol, ul, li {
-    list-style: none;
-}
-user agent stylesheet
-li {
-    text-align: -webkit-match-parent;
-}
-user agent stylesheet
-ul {
-    list-style-type: disc;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
+
 .tabWrap:after {
     display: table;
     clear: both;
@@ -458,176 +208,47 @@ html {
     table-layout: fixed;
 }
 
-element.style {
-}
-.my_notification .wrap_cards {
-    position: relative;
-    height: 234px;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-
-element.style {
-}
-.my_notification .sliders {
-    overflow: hidden;
-    position: relative;
-    width: 1264px;
-    height: 234px;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.my_notification.complete .sliders:before {
-    display: none;
-}
-.my_notification .sliders:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    content: "";
-}
-
-element.style {
-    max-width: 1248px;
-    display: block;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-
-element.style {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    height: 191px;
-}
 .my_notification .sliders .bx-viewport {
     overflow: visible !important;
 }
+
 .bx-viewport {
     -webkit-transform: translatez(0);
 }
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
 
-element.style {
-    width: 5215%;
-    position: relative;
-    transition-duration: 0s;
-    transform: translate3d(0px, 0px, 0px);
-}
-ol, ul, li {
-    list-style: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.my_notification .slider:after {
-    display: table;
-    clear: both;
+.my_notification .slider .link:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     content: "";
-    table-layout: fixed;
+    display: block;
+    background: #fff;
+    opacity: 0;
 }
 
-element.style {
-    float: left;
-    list-style: none;
-    position: relative;
-    width: 300px;
-    margin-right: 16px;
-}
 .my_notification .slider.my li:nth-of-type(4n+1), .my_notification .slider.apply li {
     border-color: #5189fa;
     background: #5189fa;
 }
+
+
+.my_notification .slider.my li:nth-of-type(4n+2), .my_notification .slider.request li {
+    border-color: #00cba4;
+    background: #00cba4;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+3), .my_notification .slider.jobs li {
+    border-color: #00beea;
+    background: #00beea;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+4), .my_notification .slider.company li {
+    border-color: #a574ee;
+    background: #a574ee;
+}
+
 .my_notification .slider li {
     float: left;
     position: relative;
@@ -639,249 +260,29 @@ element.style {
     box-sizing: border-box;
     letter-spacing: -1px;
 }
-ol, ul, li {
-    list-style: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
-user agent stylesheet
-ul {
-    list-style-type: disc;
-}
-html, body {
+
+.my_notification .slider .title {
+    overflow: hidden;
+    margin-bottom: 12px;
     width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-element.style {
+.my_notification .slider.my li .inner {
+    padding: 31px 23px 23px 23px;
 }
-.my_notification .slider .link {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-}
-a {
-    color: #444;
-    text-decoration: none;
-}
-user agent stylesheet
-a:-webkit-any-link {
-    color: -webkit-link;
-    cursor: pointer;
-    text-decoration: underline;
-}
-Style Attribute {
-    float: left;
-    list-style: none;
+
+.my_notification .slider .inner {
     position: relative;
-    width: 300px;
-    margin-right: 16px;
-}
-.my_notification .slider li {
-    float: left;
-    position: relative;
-    width: 300px;
-    height: 190px;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 16px;
+    z-index: 1;
+    padding: 23px;
+    height: 100%;
     box-sizing: border-box;
-    letter-spacing: -1px;
-}
-ol, ul, li {
-    list-style: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-li {
-    text-align: -webkit-match-parent;
-}
-user agent stylesheet
-ul {
-    list-style-type: disc;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.my_notification .slider .link:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    content: "";
-    display: block;
-    background: #fff;
-    opacity: 0;
-}
-
-.my_notification .slider .link:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    content: "";
-    display: block;
-    background: #fff;
-    opacity: 0;
-}
-
-element.style {
-}
-.my_notification .btn_slider:disabled {
-    background: #fff;
-    cursor: default;
-}
-.my_notification .btn_slider.btn_prev {
-    right: 40px;
-}
-.my_notification .btn_slider {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    width: 32px;
-    height: 32px;
-    border: 1px solid #eaedf4;
-    border-radius: 16px;
-    background: #fff;
-}
-button, label {
-    cursor: pointer;
-}
-button {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-}
-input, button, textarea, select {
-    line-height: normal;
-}
-input, button, textarea, select, optgroup, option {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    font-style: inherit;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-user agent stylesheet
-button:disabled {
-    color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
-    background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
-    border-color: -internal-light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
-}
-user agent stylesheet
-button {
-    appearance: auto;
-    -webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: -internal-light-dark(black, white);
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-    cursor: default;
-    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
-    box-sizing: border-box;
-    margin: 0em;
-    font: 400 13.3333px Arial;
-    padding: 1px 6px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-image: initial;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
-.my_notification .btn_slider.btn_prev:after {
-    margin-left: 2px;
-    border-width: 0 0 2px 2px;
-}
-.my_notification .btn_slider:disabled:after {
-    border-color: #afbac8;
-}
-.my_notification .btn_slider:after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 7px;
-    height: 7px;
-    border-style: solid;
-    border-color: #5c667b;
-    -webkit-transform: translate(-50%, -50%) rotate(
-45deg
-);
-    -ms-transform: translate(-50%, -50%) rotate(45deg);
-    transform: translate(-50%, -50%) rotate(
-45deg
-);
-    content: "";
-}
-
-element.style {
-}
-user agent stylesheet
-script {
-    display: none;
-}
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
-    margin: 0;
-    padding: 0;
-    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: none;
-}
-html {
-    color: #000;
-    background: #fff;
-}
 
 
 </style>

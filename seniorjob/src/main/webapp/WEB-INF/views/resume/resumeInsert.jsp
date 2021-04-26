@@ -175,6 +175,8 @@ html {
 				frm.action = "resumeInsert";
 				frm.submit();
 				return true;
+				
+				 
 			}
 		})
 		
@@ -226,17 +228,12 @@ html {
                 "미리보기", "width=900, height=900, resizable = no, scrollbars = no");
 	})
 	
-	/* 영상 */
-	$(document).on("click", "#video", function(){
-		window.open("https://192.168.0.56:85",
-                "영상", "width=1000, height=1000, resizable = no, scrollbars = no");
-	})
-	
-	/* 채팅 */
-	$(document).on("click", "#chatt", function(){
-		window.open("chat",
-                "채팅", "width=1000, height=1000, resizable = no, scrollbars = yes");
-	})
+	//자격증 불러오기
+	 $(document).on("click", "#certiSearchSom", function(){
+		window.name="parentForm"; //부모창 이름
+		window.open("popCertiSeeResume",
+                "자격증", "width=900, height=900, resizable = no, scrollbars = no"); 
+	 })
 </script>
 <!-- 자기소개서 항목 추가 -->
 <script>
@@ -264,7 +261,7 @@ html {
 <!-- 자격증 항목 추가+ -->
 	var certi_number = 1;
 	$(document).on("click", "#certiAdd", function(){
-		var certi = "<div class='col-sm-12'>"
+		var certi = "<div class='col-sm-12 som_certi_group'>"
 				  + "<div class='form-group'>"
 				  + "<label>항목&nbsp;</label>"
 				  + "<input type='hidden' name='clist["+certi_number+"].certi_kind'>"
@@ -333,7 +330,7 @@ html {
 <div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
-	<form action="resumeInsert" method="post" name="frm" encType="multipart/form-data" target="openWin">
+	<form action="resumeInsert" method="post" id="frm" name="frm" encType="multipart/form-data" target="openWin">
 	<div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
@@ -609,10 +606,10 @@ html {
 			<br />
 			
 			<div class="area_btn col-sm-12 text-center">
-				<button type="button" class="btn btn-primary" name="previewBusiness" id="previewBusiness">미리보기</button>
+				<button type="button" class="btn btn-primary" name="preview" id="preview">미리보기</button>
 			</div>
 			<div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">작성완료</button>
+				<button type="button" class="btn btn-primary" name="addForm" id="addForm">작성완료</button>
 			</div>
 			
 
