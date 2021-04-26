@@ -2,10 +2,7 @@ package com.company.mentoring.controller;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,10 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.cart.service.CartService;
 import com.company.cart.service.CartVO;
+import com.company.mentor.common.Paging;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringService;
 import com.company.mentoring.service.MentoringVO;
+import com.company.mentoring_reviews.service.Mentoring_ReviewsService;
+import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
 import com.company.shopping.service.ShoppingService;
 import com.company.shopping.service.ShoppingVO;
 import com.company.users.service.UsersService;
@@ -45,11 +45,32 @@ public class MentoringController {
 //	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	@Autowired CartService cartservice;
 
+	//송다희 추가=========================================
+	@Autowired Mentoring_ReviewsService mentorservice; 
+	//=================================================
+	
 	// 멘토링 검색
 	@RequestMapping("/getMentoringList")
-	public String getMentorList(Model model, MentoringVO vo) {
+	public String getMentorList(MentoringVO vo, Paging paging, Model model) {
+		paging.setPageUnit(5);
+		paging.setPageSize(3);
+		
+		if(vo.getPage() == null) {
+			vo.setPage(1);
+		}
+		vo.setStart(paging.getFirst());
+		vo.setEnd(paging.getLast());
+		paging.setTotalRecord(mtService.getMcount(vo));
+		model.addAttribute("paging", paging);
 		model.addAttribute("list", mtService.getMentoringList(vo));
+		model.addAttribute("random", mtService.getRandomImage(vo));
 		return "Mentoring/mentoringList";
+	}
+	
+	//송다희 추가=============================
+	@RequestMapping("/getReviewsList")
+	public @ResponseBody List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo, Model model) {
+		return mentorservice.getReviewsList(vo);
 	}
 	
 	// 멘토링 키워드 검색
@@ -175,11 +196,16 @@ public class MentoringController {
 	// 멘토링 단건 조회_김찬곤
 	// 송다희 추가
 	@RequestMapping("/getSearchMentoringChanGon")
-	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model) throws IOException {
+	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model, Mentoring_ReviewsVO reviewvo, HttpServletRequest req) throws IOException {
 		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo)); // 멘토링 정보
 		model.addAttribute("mentor",mentorService.getMentor(mVo)); // 멘토 정보
 		model.addAttribute("relatedMentoring", mtService.getRelatedMentoring(mtVo)); // 유사한 멘토링
 		
+		//송다희 추가====================================================================
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		reviewvo.setId(id);
+		model.addAttribute("reviewList", mentorservice.getReviewsList(reviewvo));
 		//크롤링
 		String uri = "https://comento.kr/edu/learn/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C-G165";
 		Document doc = Jsoup.connect(uri).get();

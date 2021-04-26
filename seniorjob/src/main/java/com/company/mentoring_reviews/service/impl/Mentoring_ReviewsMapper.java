@@ -43,4 +43,18 @@ public interface Mentoring_ReviewsMapper {
 		
 		public List<Mentoring_ReviewsVO> getPopularArticleList(Mentoring_ReviewsVO vo); // 인기 조회수 후기 페이지 띄우기_김찬곤
 		
+		
+		//송다희 추가
+		//후기
+		public List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo);
+		
+		public int searchShopping(Mentoring_ReviewsVO vo);
+		
+		public int insertReviewsMen(Mentoring_ReviewsVO vo);
+		
+		public int deleteReviews(Mentoring_ReviewsVO vo);
+		
+		public int updateReviews(Mentoring_ReviewsVO vo);
+		
+		public int getReviewOne(Mentoring_ReviewsVO vo);
 }
