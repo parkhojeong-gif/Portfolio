@@ -149,4 +149,28 @@ public class InquireImpl implements InquireService{
 		return dao.inquireCountN(scri);
 	}
 
+	@Override
+	public int updateAnswer(Inquire_AnswerVO avo) {
+		// TODO Auto-generated method stub
+		return dao.updateAnswer(avo);
+	}
+
+	@Override
+	public int deleteAnswer(Inquire_AnswerVO avo) {
+		// TODO Auto-generated method stub
+		return dao.deleteAnswer(avo);
+	}
+
+	@Override
+	public boolean updateAnswerStatus(InquireVO vo) {
+		// TODO Auto-generated method stub
+		return dao.updateAnswerStatus(vo);
+	}
+
+	@Override
+	public int deleteAnswer2(Inquire_AnswerVO avo) {
+		// TODO Auto-generated method stub
+		return dao.deleteAnswer2(avo);
+	}
+
 }

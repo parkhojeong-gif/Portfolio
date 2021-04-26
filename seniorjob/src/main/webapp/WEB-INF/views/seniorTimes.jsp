@@ -91,12 +91,21 @@ height: 41px !important;
     background-color: #64CD3C;
     border-color: #64CD3C;
 }
-.btn-primary{
+div#btnList .btn-primary{
     color: #FFF;
     background-color: #64CD3C;
     border-color: #64CD3C;
     border-radius: 1px;
     padding: 10px 20px;
+    font-weight: 600;
+}
+div#btnList .btn-default{
+	border-radius: 1px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    color: #000;
+    background-color: white;
+    border-color: #F0F0F0;
     font-weight: 600;
 }
 </style>
@@ -113,7 +122,7 @@ height: 41px !important;
 				
 				<div
 					class="col-md-10 pr-40 padding-top-40 properties-page user-properties">
-					<div class="section additional-details">
+					<div class="section additional-details" id="btnList">
 						<form action="seniorTimes">
 							<!-- <input type="text" name="keyword" value=""><br> <input
 								type="submit" name="검색" value="검색"> -->

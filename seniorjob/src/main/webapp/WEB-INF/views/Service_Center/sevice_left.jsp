@@ -14,22 +14,14 @@
 				<div class="col-md-2 p0 padding-top-40">
 					<div class="blog-asside-right pr0">
 					
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='#'">
-								<h3 class="panel-title">정보공유</h3>
-							</div>
-						</div>
+						
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='job?cd=11'">
 								<h3 class="panel-title">지역별 채용 공고</h3>
 							</div>
 						</div>
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
-							<div class="panel-heading" onclick="location.href='mentoringReviews'">
-							<div class="panel-heading" onclick="location.href='#'">
-								<h3 class="panel-title">멘토링 후기</h3>
-							</div>
-						</div>
+						
+						
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
 							<div class="panel-heading" onclick="location.href='seniorTimes?keyword=고용정책'">
 								<h3 class="panel-title">시니어타임즈</h3>
@@ -38,6 +30,5 @@
 						
 					</div>
 				</div>
-			</div>
 </body>
 </html>

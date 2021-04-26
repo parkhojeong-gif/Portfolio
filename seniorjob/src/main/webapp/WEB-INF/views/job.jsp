@@ -92,7 +92,19 @@ function getURLParams(url) {
 #cd26{
  margin-left:35px;
 }
+div#btnList .btn-primary{
 
+}
+div#btnList .btn-default{
+	border-radius: 1px;
+    padding: 10px 20px;
+    border: 1px solid gray;
+    color: #000;
+    background-color: white;
+    border-color: 1px solid #F0F0F0;
+    font-weight: 600;
+
+}
 </style>
 <body>
 	<!-- property area -->
@@ -105,7 +117,7 @@ function getURLParams(url) {
 				
 
 				<div class="col-md-10 pr-40  properties-page user-properties">
-				<div class="section additional-details">
+				<div class="section additional-details" id="btnList">
 				<h4><strong>지역 선택</strong></h4>
 				<hr>
 				<form action="job">
