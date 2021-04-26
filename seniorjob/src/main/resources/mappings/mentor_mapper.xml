@@ -187,4 +187,18 @@
 	ON U.ID = M.ID 
 	WHERE MENTOR_ID=#{menId}
 	</select>
+	
+<!-- 정병기 -->	
+<!-- 멘토 상태 승급 -->	
+<update id="authMento"	parameterType="com.company.mentor.service.MentorVO">
+	UPDATE MENTOR SET MENTOR_CONFIRM_STATUS ='승인완료'
+	WHERE ID = #{id}
+</update>
+
+<!-- 멘토 상태 강등 -->
+<update id="authDownMento" parameterType="com.company.mentor.service.MentorVO">
+	UPDATE MENTOR SET MENTOR_CONFIRM_STATUS ='승인해제'
+	WHERE ID = #{id}
+</update>
+		
  </mapper>	
