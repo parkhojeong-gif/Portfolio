@@ -23,9 +23,6 @@
     <!-- Main CSS-->
     <link href="resources/mainSearchBar/css/main.css" rel="stylesheet" media="all">
 
-
-
-
 <style>
 .slider-content{position:absolute}
 .form-inline{margin:20px}
@@ -372,41 +369,7 @@
 		}
 	}
 	
-	// 키워드 검색 값 체크
-	/* function checkKeywordNull() {
-		var str = document.getElementsByName("searchKeyword");
-		var searchFrm = document.searchFrm;
-		if (str[0].value == '' || str[0].value == null) { // 값이 NodeList, 배열로 넘어오기 때문에 [0]번쨰로 값을 확실히 지정헤야 한다.
-			alert("키워드를 입력하세요.");
-			return false;
-		}else {
-			searchDateFrm.action = "getKeywordSearch";
-			searchDateFrm.submit();
-		}
-	} */
-	
-	// 연령 검색 값 체크
-	/* function checkAgeNull() {
-		var chk_radio = document.getElementsByName("searchAge");
-		var ageForm = document.ageSearchForm;
-		
-		for (var i=0; i < chk_radio.length; i++) {
-			if(chk_radio[i].checked.length<1) { // 해당 인덱스에 체크된 값의 길이가 0일 때 = 체크되지 않았을 때
-				return false;
-			}
-			else if(chk_radio[0].checked==false && chk_radio[1].checked==false && chk_radio[2].checked==false){ // 모든 인덱스에 체크된 값이 없을 때
-				alert("연령을 선택하세요");
-				return false;
-			}else{
-				ageForm.action = "getAgeSearch";
-				ageForm.submit();
-				return true;
-			}
-		}
-	} */
-	
 </script>
-
 	 <!-- Jquery JS-->
     <script src="resources/mainSearchBar/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
@@ -431,3 +394,6 @@
 	<script src="resources/assets/js/icheck.min.js"></script>
 	<script src="resources/assets/js/price-range.js"></script>
 	<script src="resources/assets/js/main.js"></script>
+	
+</body>	
+</html>
