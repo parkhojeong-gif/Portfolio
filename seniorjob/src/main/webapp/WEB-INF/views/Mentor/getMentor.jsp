@@ -8,13 +8,6 @@
 <title>멘토 상세 페이지</title>
 <!-- fontawesome cdn -->
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<script>
-//멘토에게 질문하기
-function insertQueSom(id) {
-	var url="insertQuest?mentorid="+id;
-	window.open(url,"","width=500,height=600");
-}
-</script>
 </head>
 <body>
 <!-- topHeader -->
@@ -269,127 +262,15 @@ function insertQueSom(id) {
 		<p>
 		<hr>
 		<p>
-		<!-- 멘토링 정보(멘토링 등록 정보가 있을 때만 출력 -->
-	<c:if test="${not empty mentoring.mentoring_number }">
-		<form id="mentoringForm" name="mentoringForm" action="insertCart" method="post">
-		<input type="hidden" id="id" name="id" value="${list.mentor_id }">
-		<input type="hidden" id="user_id" name="user_id" value="${users.id }">
-		<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
-		<input type="hidden" id="men_start" name="men_start" value="${mentoring.mentoring_begin_date }">
-		<input type="hidden" id="met_end" name="met_end" value="${mentoring.mentoring_end_date }">
-		<input type="hidden" id="mentoring_price" name="mentoring_price" value="${mentoring.mentoring_price }">
-		<!-- 송다희 추가 -->
-		<input type="hidden" id="cart_start" name="cart_start" value="${mentoring.s_date }">
-		<input type="hidden" id="cart_end" name="cart_end" value="${mentoring.e_date }">
-		<input type="hidden" id="cart_price" name="cart_price" value="${mentoring.mentoring_price }">
-		<input type="hidden" id="mentoring_name" name="mentoring_name" value="${mentoring.mentoring_name }">
-		<input type="hidden" id="mentor_id" name="mentor_id" value="${list.mentor_id }">
-		<div class="column2">
-			<div class="card">
-				<div style="width: 200px; height: 150px; float: left;">
-					<img src="../resources/assets/img/mentor/mentoringCourse.jpg" id="mentoringCourse" style="width:100%">
-				</div>
-				<div class="container">
-					<p>
-						멘토링 제목: <b>${mentoring.mentoring_name }</b>
-					</p>
-					<p class="title">
-						멘토링 코스 시작일: <b>${mentoring.s_date }</b>
-					</p>
-					<p class="title">
-						멘토링 코스 종료일: <b>${mentoring.e_date }</b>
-					</p>
-					<p>
-						정원: <b>${mentoring.mentoring_limit }</b>
-					</p>
-					<br>	
-						<b>멘토링 코스 내용</b>
-					<br>
-						<textarea style="margin: 0px; width: 1019px; height: 143px;" readonly>${mentoring.mentoring_content }</textarea>
-					<p>
-					<div>
-						<button class="button" style="float:left; width:200px;" id="BasketBtn" type="button" onclick="insertC()">장바구니 담기</button>
-						<button class="button" style="display:inline-block; width:200px; margin-left:10px;" id=PayBtn type="button">멘토링 신청하기</button>
-					</div>
-					</div>
-				</div>
-			</div>
-			</form>
-		</c:if>
-		<c:if test="${empty mentoring.mentoring_number }">
-			<h1 class="display-3">- 등록된 멘토링이 없습니다 -</h1>
-		</c:if>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
-		/* getBasket(); */ // 장바구니 담기
 		getFollow(); // 멘토팔로우
 		deleteFollow(); // 멘토팔로우 취소
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
-<<<<<<< HEAD
-	 /*  $(function() {
-		
-		function getBasket(){ // 장바구니 담기
-		
-		var formData = { 
-						 "mentoring_name":$('#mentoring_name').val(),
-						 "cart_start":$('#men_start').val(),
-						 "cart_end":$('#met_end').val(),
-						 "cart_price":$('#mentoring_price').val(),
-						 "id" : $('#user_id').val()
-						}
-						 
-
-		// 장바구니 담기
-		$('#BasketBtn').click(function() {
-			$.ajax({
-				url : "BasketChecks",
-				type : "post",
-				dataType : "json",
-				data : formData,
-				success : function(result) {
-					console.log(result);
-					  if (result != 0) {
-						alert("이미 장바구니에 담았습니다.");
-					} else {
-						alert("장바구니에 담았습니다.");
-					} 
-				}
-			});
-<<<<<<< HEAD
-		});
-	}); // end of function */
 	
-	
-	/* //장바구니로 이동
-	$(document).on("click", "#BasketBtn", function(){
-		alert("장바구니에 담았습니다.");
-		var yn = confirm("장바구니로 이동하시겠습니까?");
-		if(yn){
-			location.href="productAdd";
-		}
-	}) */
-	
-	//장바구니 localStorage
-	
-	
-	
-	$(function(){
-		var name = $('#mentoring_name').val();
-		var price = $("#mentoring_price").val();
-		var start = $("#men_start").val();
-		var end = $("#met_end").val();
-		var number = $("#mentoring_number").val();
-		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
-		var local = localStorage.setItem('products', item);
-		console.log(JSON.stringify(item));
-			$(document).on("click", "#BasketBtn", function(){
-		}); 
-=======
->>>>>>> branch '김찬곤3' of https://github.com/aekgmla77/seniorjob.git
-		
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
@@ -406,7 +287,7 @@ function insertQueSom(id) {
 						}
 					});
 				});
-		}
+		} // end of getFollow
 		
 		function deleteFollow(){ // 멘토 팔로우 취소
 			$('#followCancelBtn').click(function(){
@@ -456,19 +337,8 @@ function insertQueSom(id) {
 			});
 		}
 		
-		});
-	}); // end of function  */   
-	
-	// 장바구니 담기
-	function insertC(){
-		var yn = confirm("장바구니에 담으시겠습니까?");
-		if(yn){
-			mentoringForm.action = "insertCart";
-			mentoringForm.submit();
-		}
-	}
-	
 
+	
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
@@ -493,9 +363,11 @@ function insertQueSom(id) {
 				location.href = "mentoringPayForm?mentor_id=${list.mentor_id}";
 			}
 		}
-	
-	
-	
+	//멘토에게 질문하기
+	function insertQueSom(id) {
+		var url="insertQuest?mentorid="+id;
+		window.open(url,"","width=500,height=600");
+	}
 </script>
 
 </body>
