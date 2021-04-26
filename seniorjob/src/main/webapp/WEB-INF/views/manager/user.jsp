@@ -29,8 +29,8 @@ cursor : pointer;
 	<div class="page-title">
 		<div class="row">
 			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>회원관리</h3>
-				<p class="text-subtitle text-muted">전체 회원을 볼 수 있는 목록 페이지입니다.</p>
+				<h3>회원 관리</h3>
+				<p class="text-subtitle text-muted">전체 회원 목록 조회 또는 멘토 승급 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
 				<nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -44,9 +44,9 @@ cursor : pointer;
 	</div>
 	<section class="section">
 		<div class="card">
-			<div class="card-header">회원 데이터 테이블</div>
+			<div class="card-header">전체 회원 데이터 테이블</div>
 			<div id ="countmentor">
-				<span id ="mensyscount" style="float:right;"></span>
+				<span id ="mensyscount" style="float:right; text-family:monospace;"></span>
 			</div>
 			<div class="card-body">
 				<div class="dataTable-search">
@@ -86,11 +86,11 @@ cursor : pointer;
 							<th>회원등급</th>
 							<th>소셜닉네임</th>
 							<th>승급</th>
-							<th>수정</th>
+							<th>상세보기 및<br/>수정</th>
 							<th>삭제</th>
 						</tr>
 					</thead>
-					<tbody id="tbody">
+					<tbody id="tbody" style="text-align:center;">
 						<c:forEach items="${viewAll}" var="users">
 							<tr>
 								<td>${users.id }</td>
@@ -207,7 +207,7 @@ cursor : pointer;
 		<div class="modal-content">
 			<form action="updateUserProc" method="post">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle"><span id="userSpan"></span>회원 정보 수정</h5>
+					<h5 class="modal-title" id="exampleModalLongTitle"><span id="userSpan"></span>회원 정보 상세 및 수정</h5>
 					<button type="button" class="close" data-bs-dismiss="modal"
 						aria-label="Close">
 						<i data-feather="x"></i>
@@ -268,18 +268,18 @@ cursor : pointer;
 							</div>
 						</div>
 						<!-- <div class="col-md-4">
-							<label>Address</label>
+							<label>auth</label>
 						</div>
 						<div class="col-md-8">
 							<div class="form-group has-icon-left">
 								<div class="position-relative">
-									<input type="text" class="form-control" placeholder="Address" id="address" name="address">
+									<input type="text" class="form-control" placeholder="Auth" id="auth" name="auth" readonly="readonly">
 									<div class="form-control-icon">
 										<i data-feather="file"></i>
 									</div>
 								</div>
 							</div>
-						</div> -->
+						</div>  -->
 						<!-- 	<div class="card-body">
 								<div class="row">
 									<div class="col-lg-6 col-md-12">
@@ -363,13 +363,13 @@ $(function(){
 	    				var name = result[0].name;
 	    				var email = result[0].email;
 	    				var phonenum = result[0].phonenum;
-	    				var address = result[0].address;	
+	    				/* var auth = result[0].auth;	 */
 	    		
 	    					$("#exampleModalLong").find('[name=id]').val(id);
 	    					$("#exampleModalLong").find('[name=name]').val(name);
 	    					$("#exampleModalLong").find('[name=email]').val(email);
 	    					$("#exampleModalLong").find('[name=phonenum]').val(phonenum);
-	    					//$("#exampleModalLong").find('[name=address]').val(address); 
+	    					/* $("#exampleModalLong").find('[name=auth]').val(auth);  */
 	    				
 	    			}
 				}
