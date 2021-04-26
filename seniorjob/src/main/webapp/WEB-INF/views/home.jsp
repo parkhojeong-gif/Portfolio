@@ -150,7 +150,7 @@ form#searchDateFrm {
     height: 550px;
 }
 div#mtStartDate {
-    top: -62px;
+    top:-37px;
     left: -12px;
 }
 div#mtEndDate {
