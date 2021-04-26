@@ -66,9 +66,10 @@ public class ResumeController {
 	@RequestMapping("/popResumeList")
 	public String popResumeList(Model model, HttpServletRequest req, ResumeVO vo, String seq) {
 		HttpSession session = req.getSession();
-		String id = (String) session.getAttribute("users.id");
+		String id = (String) session.getAttribute("id");
 		vo.setId(id);
-		model.addAttribute("list", resumemapper.getSearchResumeList(vo));
+		System.out.println("popResume"+id+","+vo.getId());
+		model.addAttribute("list", resumemapper.getSearchResumeListSom(vo));
 		model.addAttribute("seq", seq);
 		return "resume/popResumeList";
 	}
