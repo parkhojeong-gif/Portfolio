@@ -6,8 +6,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <jsp:include page="../topHeader.jsp" />
  <head>
-    <link href='../../../resources/fullcalendar/lib/main.css' rel='stylesheet' />
-    <script src='../../../resources/fullcalendar/lib/main.js'></script>
+   <link href='/resources/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='/resources/fullcalendar/lib/main.js'></script>
+     
+    
     
     <script>
 
@@ -43,8 +45,35 @@ $(document).ready(function() {
         	error : showErrors
         })
         
+    $.ajax({
+    	url : "replyQuestBadge",
+    	success : function(result) {
+    		var badge = result;
+    		$("#reQBadge").html(badge);
+    	},
+    	error : function() {
+    		console.log("error");
+    	}
+    })
+    
+    
+    
+        
  
 });	  
+
+$(document).ready(function() {
+	$.ajax({
+    	url : "checkPBadge",
+    	success : function(result) {
+    		var badge = result;
+    		$("#cpBadge").html(badge);
+    	},
+    	error : function() {
+    		console.log("error");
+    	}
+    })
+});
 
 $(document).ready(function() {
 $.ajax({
@@ -117,6 +146,146 @@ function reply() {
 
 
     </script>
+    <style>
+/* somin */
+
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 96px;
+    left: 50%;
+    margin-left: 370px;
+}
+
+.btn_check {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 0 0 0 12px;
+    width: 62px;
+    height: 30px;
+    border: 1px solid #dfdfdf;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    background-color: #fff;
+}
+
+.btn_check:after {
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    right: 11px;
+    width: 9px;
+    height: 9px;
+    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
+    content: "";
+}
+
+
+.tabWrap .tab .badge {
+    display: inline-block;
+    margin: 0 0 0 8px;
+    padding: 0 12px 0 13px;
+    min-width: 36px;
+    height: 28px;
+    border-radius: 14px;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0;
+    vertical-align: top;
+    background: #afbac8;
+}
+
+.tabWrap:after {
+    display: table;
+    clear: both;
+    content: "";
+    table-layout: fixed;
+}
+
+.my_notification .sliders .bx-viewport {
+    overflow: visible !important;
+}
+
+.bx-viewport {
+    -webkit-transform: translatez(0);
+}
+
+.my_notification .slider .link:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "";
+    display: block;
+    background: #fff;
+    opacity: 0;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+1), .my_notification .slider.apply li {
+    border-color: #5189fa;
+    background: #5189fa;
+}
+
+
+.my_notification .slider.my li:nth-of-type(4n+2), .my_notification .slider.request li {
+    border-color: #00cba4;
+    background: #00cba4;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+3), .my_notification .slider.jobs li {
+    border-color: #00beea;
+    background: #00beea;
+}
+
+.my_notification .slider.my li:nth-of-type(4n+4), .my_notification .slider.company li {
+    border-color: #a574ee;
+    background: #a574ee;
+}
+
+.my_notification .slider li {
+    float: left;
+    position: relative;
+    width: 300px;
+    height: 190px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 16px;
+    box-sizing: border-box;
+    letter-spacing: -1px;
+}
+
+.my_notification .slider .title {
+    overflow: hidden;
+    margin-bottom: 12px;
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my_notification .slider.my li .inner {
+    padding: 31px 23px 23px 23px;
+}
+
+.my_notification .slider .inner {
+    position: relative;
+    z-index: 1;
+    padding: 23px;
+    height: 100%;
+    box-sizing: border-box;
+
+
+</style>
   </head>
 <body>
 
@@ -144,7 +313,7 @@ function reply() {
 										</button>
 										<c:if test="${auth eq 'MENTOR' }">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="checkP()">
-											첨삭 요청<span class="badge">6</span>
+											사업계획서 첨삭 요청<span class="badge" id="cpBadge"></span>
 										</button>
 										</c:if>
 										<c:if test="${auth eq 'MENTOR' }">
@@ -153,7 +322,7 @@ function reply() {
 										</button>
 										</c:if>
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="reply()">
-											답변 목록<span class="badge">6</span>
+											답변 목록<span class="badge" id="reQBadge"></span>
 										</button>
 									</li>
 								</ul>

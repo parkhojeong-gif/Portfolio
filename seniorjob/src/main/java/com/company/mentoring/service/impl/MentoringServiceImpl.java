@@ -128,4 +128,16 @@ public class MentoringServiceImpl implements MentoringService {
 		return dao.getMyMentoringListSom(vo);
 	}
 
+	//송다희 추가
+
+	@Override
+	public int getMcount(MentoringVO vo) {
+		return dao.getMcount(vo);
+	}
+
+	@Override
+	public List<MentoringVO> getRandomImage(MentoringVO vo) {
+		return dao.getRandomImage(vo);
+	}
+
 }

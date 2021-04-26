@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +13,87 @@
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
+
+<style>
+
+element.style {
+}
+.edu-detail--summary[data-v-0d9114a3] {
+    position: relative;
+    padding: 32px 0 48px;
+    overflow: visible; 
+}
+article, aside, body, div, footer, header, section {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+article, aside, footer, header, nav, section {
+    display: block;
+}
+
+user agent stylesheet
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+body ::selection {
+    color: inherit;
+    background-color: #e6e6e6;
+    background-color: fade(#000,10);
+    cursor: text;
+}
+img.edu-detail--summary-define-img {
+    width: 387px;
+    margin-left: 162px;
+}
+h3.c-application.c-typography.edu-detail--summary-title.c_headline5 {
+    margin: 70px;
+    font-size: 17px;
+}
+h4.c-application.c-typography.edu-detail--summary-define-title.c_headline6 {
+    margin: 35px;
+}
+p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
+    margin: 25px;
+}    
+
+.c-application.c-box.edu-detail--content {
+    border: 2px solid darkgrey;
+}
+</style>
+
 <form id="submitFrm" name="submitFrm" method="post">
 	<input type="hidden" id="id" name="id" value="${mentor.mentor_id }">
 	<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
@@ -100,6 +181,19 @@
                                     </span>
                                 </div>
                                 
+                               <hr>
+                               <br>
+                               <!-- 크롤링 -->
+                               <div>
+	                            	${biz }
+	                            	<img src="image/코멘토.JPG">
+                                </div>
+                                <br>
+                                
+                                
+                                
+
+                                
                                 <!-- <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-bed">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
@@ -141,17 +235,17 @@
 
                             <div class="section">
                                 <h4 class="s-property-title">멘토링 소개</h4>
-                                <div class="s-property-content">
-                                    <p>${mentoring.mentoring_introduce} </p>
-                                </div>
+                                <div class="c-application c-box edu-detail--content" style="background-color:#FFFFFF;padding:48px 40px 48px 40px;" data-v-5e54bd97="" data-v-6e8598a8="" data-v-1430fc45="">
+                                <p data-v-dbf069b8="" data-v-1430fc45="" class="c-application c-typography edu-detail--introduce-content-msg c_headline6" data-v-5e54bd97="" style="color: rgb(33, 40, 47);">
+                                <strong>${mentoring.mentoring_introduce}</strong><br></div>
                             </div>
                             <!-- End description area  -->
 
                             <div class="section">
                                 <h4 class="s-property-title">멘토링 내용</h4>
-                                <div class="s-property-content">
-                                    <p>${mentoring.mentoring_content} </p>
-                                </div>
+                                <div class="c-application c-box edu-detail--content" style="background-color:#FFFFFF;padding:48px 40px 48px 40px;" data-v-5e54bd97="" data-v-6e8598a8="" data-v-1430fc45="">
+                                <p data-v-dbf069b8="" data-v-1430fc45="" class="c-application c-typography edu-detail--introduce-content-msg c_headline6" data-v-5e54bd97="" style="color: rgb(33, 40, 47);">
+                                <strong>${mentoring.mentoring_content}</strong><br></div>
                             </div>
                             <!-- End description area  -->
                             <!-- End additional-details area  -->
@@ -165,20 +259,45 @@
                                 </div>
                             </div> -->
                             <!-- End video area  -->
-
-                            <div class="section property-features">    
-                                <h4 class="s-property-title">멘토링 후기</h4>   
-                                 <ul>
-                                    <li><a href="properties.html">Swimming Pool</a></li>   
-                                </ul>
-                                <ul>
-                                    <li><a href="properties.html">Swimming Pool</a></li>   
-                                </ul>
+                            <div class="section property-features" id="reviewsList">    
+                                <h4 class="s-property-title">멘토링 후기</h4> 
+                                <div id="reviewss" style="display:none">
+                                <div class="score_reple" >
+									<p>
+										<span class="ico_viewer">(구매자)</span>
+									</p>
+									<p>	
+										<span id="review_content"></span>
+									</p>
+									<dl>
+										<dt>
+											<em>
+												<a href="#">
+													<span id="review_id"></span>
+												</a>
+											</em>
+											<em id="reviews_wDate"></em>
+										</dt>
+									</dl>
+									<button type="button" onclick="">삭제</button><br>
+									<button type="button" onclick="">수정</button>
+								</div>
+								<hr>
+								</div>
 							</div>
                             <!-- End features area  -->
-                            
+		                    <div class="input_request">
+		                    <h3>구매평 등록</h3>
+		                    <br>
+								<textarea id="content" row="8" cols="50" rows="8" class="input_textarea" placeholder="후기를 작성하세요."></textarea>
+								<p class="text_length"><h6 id="ment_cnt">0</h6> / 1000</p>
+							</div>
+							<div align="right"><button type="button" id="submitReview" name="submitReview">등록</button></div>	
                         </div>
                     </div>
+                    
+                    
+                    
 
                     <div class="col-md-4 p0">
                         <aside class="sidebar sidebar-property blog-asside-right">
@@ -222,7 +341,7 @@
                                             <div class="row">
                                                 <div class="col-xs-12">  
                                                     <input class="button btn largesearch-btn" value="장바구니 담기" id="BasketBtn" type="button" onclick="insertC()">
-                                                    <input class="button btn largesearch-btn" value="바로구매" onclick="mentoringPayForm()" type="button">
+                                                    <input class="button btn largesearch-btn" value="바로구매" onclick="mentoringPayForm()" type="button" id="pushB">
                                                 </div>  
                                             </div>
                                         </fieldset>                                     
@@ -230,7 +349,7 @@
                             </div>
 							<!-- End of 장바구니담기/결제하기  -->
 
-                            <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+                            <%-- <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">유사한 멘토링</h3>
                                 </div>
@@ -250,7 +369,7 @@ s                                        </li>
 s                                     </c:forEach>  
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --%>
 
                         </aside>
                     </div>
@@ -280,6 +399,59 @@ function mentoringPayForm(){
 			Frm.submit();
 		}
 	}
+	
+/* 글자수 제한 */	
+$(document).ready(function(){
+	$("textarea").keyup(function(){
+		var inputLength = $(this).val().length;
+		if(inputLength > 1000) {
+			alert("입력 가능한 글자수를 초과 했습니다.");
+		}
+		var remain = inputLength;
+		$("h6").html(remain);
+	})
+})	
+
+
+
+/* 댓글 조회 */
+$.ajax({
+	url: "getReviewsList",
+	data : { mentoring_number : ${mentoring.mentoring_number }},
+	dataType: "json",
+	success: function(response){
+		for(i=0; i < response.length; i++){
+			var list = $($("#reviewss").html());
+			list.find("#review_content").html(response[i].content);
+			list.find("#review_id").html(response[i].id);
+			list.find("#reviews_wDate").html(response[i].w_date);
+			$("#reviewsList").append(list);
+		}
+	}
+})
+
+// 댓글 등록(구매 안 하면 alert)
+$("#submitReview").on("click", function(){
+	$.ajax({
+		url: "searchShopping",
+		data: { mentoring_number : ${mentoring.mentoring_number }, content:$("#content").val()},
+		dataType: "json",
+		success: function(result){
+			console.log(result);
+			if(result == 1){
+				var list = $($("#reviewss").html());
+				list.find("#review_content").html(result.content);
+				list.find("#review_id").html(result.id);
+				list.find("#reviews_wDate").html(result.w_date);
+				$("#reviewsList").append(list);
+			}else{
+				alert("구매하신 상품이 아닙니다.");
+			}
+		}
+	})
+})
+
+	
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />

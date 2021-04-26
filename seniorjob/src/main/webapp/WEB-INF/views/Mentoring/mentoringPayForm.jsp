@@ -346,6 +346,8 @@ h1{text-align:center}
             <form name="paymentFrm" id="paymentFrm" method="post">
             <input type="hidden" name="mentoring_number" id="mentoring_number" value="${mentoring.mentoring_number }">
             <input type="hidden"  name="mentoring_price" id="mentoring_price" value="${mentoring.mentoring_price }">
+            <!-- 송다희 추가 -->
+            <input type="hidden" name="mentor_id" id="mentor_id" value="${mentoring.mentor_id }">
             
             <!-- 송다희 추가 -->
             <input type="text"  name="cart_no" id="cart_no" value="${cart }">

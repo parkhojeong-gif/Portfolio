@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -11,6 +13,7 @@ public class Mentoring_ReviewsVO { //멘토링 후기
 	private int seq; // 글번호
 	private String category_a; //대분류
 	private String category_b; //중분류
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date w_date; //작성일자
 	private int click; //조회수
 	private String content; //글내용
@@ -27,4 +30,9 @@ public class Mentoring_ReviewsVO { //멘토링 후기
 	private int menNext; //다음글의 글번호를 담을 필드
 	private String menNext_title; //다음글의 글제목을 담을 필드
 	
+	//송다희 추가
+	//paging
+	Integer page = 1;
+	int start = 1;
+	int end = 10;
 }

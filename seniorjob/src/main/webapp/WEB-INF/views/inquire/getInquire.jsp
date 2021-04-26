@@ -45,11 +45,11 @@
 	function insertAnswer(){
 		var insCon = confirm("답변을 등록하시겠습니까?");
 		var str = document.getElementById('title1');
-		var str2 = document.getElementById('content1');
+		var str2 = $('textarea#content1');
 		
 		if(insCon == true){
 			
-			if(str.value == '' || str.value == null || str2.value == '' || str2.value == null){
+			if( str.value == null || str.value=="" || str2.val() == null ||  str2.val()==""){
 				window.alert("내용을 입력해주세요.");
 				return false;
 			}else{
@@ -210,11 +210,11 @@ button.btn.btn-default.answer {
 								<table class="table table-hover" id="modal-body">
 												<tr>
 														<td>제목</td>
-														<td><input type="text" id="title1" required="required"></td>							
+														<td><input type="text" id="title1"></td>							
 												</tr>
 												<tr>
 														<td>내용</td>
-														<td><textarea id="content1"style="resize: none; width:500px; height:350px; " required="required"></textarea></td>							
+														<td><textarea id="content1"style="resize: none; width:500px; height:350px; "></textarea></td>							
 												</tr>									
 								</table>
 								</div>

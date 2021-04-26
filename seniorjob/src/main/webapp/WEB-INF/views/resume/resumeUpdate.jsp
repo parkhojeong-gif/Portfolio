@@ -74,7 +74,6 @@
 	/* 이미지 미리보기 */
 	function setImage(event) {
 		var reader = new FileReader();
-
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);

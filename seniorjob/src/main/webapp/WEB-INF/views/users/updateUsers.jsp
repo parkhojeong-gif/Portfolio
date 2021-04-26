@@ -166,6 +166,14 @@ function showContents(result) {
     
 
 </script>
+<style>
+th {
+    text-align: center;
+  }
+  td {
+    text-align: center;
+  }
+</style>
 <body>
   
 
@@ -190,7 +198,7 @@ function showContents(result) {
                             <div class="clear">
                           
 
-                                <div class="col-sm-10 padding-top-25">
+                                <div class="col-sm-12 padding-top-25 ">
 
                                     <div class="form-group">
                                         <label>이름 <small>(read only)</small></label>
@@ -243,19 +251,31 @@ function showContents(result) {
 
                             </div>
                             
-                            <div class="profiel-header">
-                                
+                           <div class="profiel-header">
                                 <hr>
+                                <div class="col-sm-6">
+                               
                                 <h3>
                                     <b>자격증 목록</b>
+                                    
+                                    <br>
                                 </h3>
+                                </div> 
+                                 <div class="col-sm-3  col-sm-offset-4">
+                                <br>
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+                                <br>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col-sm-12">
                                 <table border="1" align="center">
                                 	<thead>
                                 	<tr>
-                                		<th>자격증이름</th>
-                                		<th>발행처</th>
-                                		<th>자격증번호</th>
-                                		<th>취득일자</th>
+                                		<th width="200px">자격증이름</th>
+                                		<th width="200px">발행처</th>
+                                		<th width="200px">자격증번호</th>
+                                		<th width="100px">취득일자</th>
 										<th>수정</th>
 										<th>삭제</th>
                                 	</tr>
@@ -266,30 +286,42 @@ function showContents(result) {
                                 	</tbody>
                                 		
                                 </table>
-                                
-                                
-                            </div>
-
-                            
-                    
-                            <div class="col-sm-5 col-sm-offset-1">
-                                <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
-                                
+                              </div>  
                                 
                             </div>
+							
+							
+							<div class="profiel-header">
+                            <div class="col-sm-12">
                             <br>
-                            <br><br>
+                            
+                            <hr>
+                            </div>
+                    		</div>
+                    		
+                            
                                <div class="profiel-header">
                                 
-                                <hr>
+                                <div class="col-sm-6">
+                               
                                 <h3>
                                     <b>경력인증서 목록</b>
+                                    
+                                    <br>
                                 </h3>
+                                </div> 
+                                 <div class="col-sm-3  col-sm-offset-4">
+                                <br>
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+                                <br>
+                                <br>
+                            </div>
+                            <br>
+                            <div class="col-sm-12">
                                 <table border="1" align="center">
                                 	<thead>
                                 	<tr>
-                                		<th>경력인증서</th>
+                                		<th width="700px">경력인증서</th>
                                 		<th>삭제</th>
                                 		
                                 	</tr>
@@ -299,15 +331,11 @@ function showContents(result) {
                                 	</tbody>
                                 
                                 </table>
+                                </div>
                             </div>
                           
                           
-                            <div class="col-sm-5 col-sm-offset-1">
-                                <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
-                                <br>
-                                <br>
-                            </div>
+                           
                             
                             
                             

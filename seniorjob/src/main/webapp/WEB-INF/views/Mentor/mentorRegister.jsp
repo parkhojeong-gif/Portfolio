@@ -74,14 +74,14 @@ button:hover {
 img{max-width:30%}!important;
 </style>
 <script type="text/javascript">
-function insertCerti() {
-	var url="popCerti";
+function insertCerti(valSom) {
+	var url="popCerti?valSom="+valSom;
 	window.open(url,"","width=500,height=600");
 	
 }
 
-function insertCareer() {
-	var url="popCareer";
+function insertCareer(valSom) {
+	var url="popCareer?valSom="+valSom;
 	window.open(url,"","width=500,height=600");
 }
 
@@ -178,12 +178,12 @@ function popCareerSee() {
   	</div>
     <p />
     <p>자격증 선택</p>
-    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti("mRegi")' value='추가' />
     <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCertiSee()' value='조회' />
    
     <p />
     <p>경력 증명서</p>
-    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer("mRegi")' value='추가' />
     <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCareerSee()' value='조회' />
     
   </div>
