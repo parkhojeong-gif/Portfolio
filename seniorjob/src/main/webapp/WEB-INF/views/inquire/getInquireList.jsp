@@ -212,6 +212,7 @@ button.btn.btn-primary.green {
 							<th>작성일</th>
 							<th>상태</th>
 						</tr>
+						<c:if test="${not empty list}">
 						<c:forEach items="${list }" var="b">
 							<tr>
 								<td onclick="location.href='getInquire?seq=${b.seq}'">${b.seq}</td>
@@ -229,7 +230,11 @@ button.btn.btn-primary.green {
 								</td>
 							</tr>
 						</c:forEach>
+						</c:if>
 					</table>
+							<c:if test="${empty list}">
+							<h3 style="text-align: center;"><strong>검색한 키워드에 맞는 게시글이 존재하지 않습니다.</strong></h3>
+							</c:if>
 						
 						
 						

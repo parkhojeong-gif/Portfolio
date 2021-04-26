@@ -160,6 +160,7 @@ div#img1 {
 								<th>등록일</th>
 								<th>조회</th>
 							</tr>
+							<c:if test="${not empty list}">
 							<c:forEach items="${list }" var="gongji">
 								<tr>
 									<td onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.category_b }</td>
@@ -169,7 +170,11 @@ div#img1 {
 									<td onclick="location.href='getService_Center?seq=${gongji.seq }'">${gongji.click }</td>
 								</tr>
 							</c:forEach>
+							</c:if>
 						</table>
+							<c:if test="${empty list}">
+							<h3 style="text-align: center;"><strong>검색한 키워드에 맞는 게시글이 존재하지 않습니다.</strong></h3>
+							</c:if>
 					</div>
 					
 
