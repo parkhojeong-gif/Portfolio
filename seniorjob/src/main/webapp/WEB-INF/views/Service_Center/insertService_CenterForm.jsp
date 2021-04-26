@@ -86,7 +86,7 @@
 						</div>
 						<br> <br> <br> <br> <br> <br> <br>
 						<div class="col-sm-6 text-right">
-							<button class="btn btn-primary" type="submit">
+							<button class="btn btn-primary" type="submit" >
 								<i class="fa fa-bars"></i> 등록하기
 							</button>
 						</div>
@@ -124,6 +124,14 @@
 
 			});
 		});
+/* 		function btn2323(){
+			var insCon = confirm("공지사항을 작성하시겠습니까?");
+			if (insCon == true) {
+				return true
+			}else if(insCon == false){
+				return false
+			}
+		} */
 	</script>
 	<!--         </div> -->
 	<jsp:include page="../footer.jsp"></jsp:include>

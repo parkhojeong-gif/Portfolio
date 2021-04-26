@@ -50,4 +50,7 @@ public interface BusinessPlanAMapper {
 		//멘토가 첨삭내용 입력
 		public int collectionUpdate(BusinessPalnAVO vo);
 		
+		//사업계획서 첨삭요청 count
+		public String checkPBadge(BusinessPalnAVO vo);
+		
 }

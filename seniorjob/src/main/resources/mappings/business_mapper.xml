@@ -7,6 +7,7 @@
 	<select id="getSearchBusinessPlanA" resultType="BusinessPalnAVO">
 		SELECT * FROM BUSINESSPLANA
 		WHERE ID=#{id}
+		ORDER BY WRITEDATE DESC
 	</select>
 	
 	
@@ -73,13 +74,15 @@
 							BUSINESS_B,
 							BUSINESS_C,
 							ID,
-							TITLE)
+							TITLE,
+							WRITEDATE)
 					VALUES(#{seq},
 							#{business_a},
 							#{business_b},
 							#{business_c},
 							#{id},
-							#{title}
+							#{title},
+							SYSDATE
 							) 
 	</insert>
 	
@@ -223,6 +226,12 @@
 	WHERE SEQ=#{seq}
 	</update>
 	
+	<!-- 사업계획서 첨삭 요청 count -->
+	<select id="checkPBadge" resultType="String">
+	SELECT COUNT(*) 
+	FROM BUSINESSPLANA 
+	WHERE MENTORID=#{mentorId}
+	</select>
 	
 	
 </mapper>

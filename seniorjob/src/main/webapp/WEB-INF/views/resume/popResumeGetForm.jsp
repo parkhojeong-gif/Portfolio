@@ -5,8 +5,47 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
-<html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>businessPlanInsert.jsp</title>
+<meta name="description" content="company is a real-estate template">
+<meta name="author" content="Kimarotec">
+<meta name="keyword"
+	content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800'
+	rel='stylesheet' type='text/css'>
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" href="resources/assets/css/normalize.css">
+<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/assets/css/fontello.css">
+<link
+	href="resources/assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css"
+	rel="stylesheet">
+<link href="resources/assets/fonts/icon-7-stroke/css/helper.css"
+	rel="stylesheet">
+<link href="resources/assets/css/animate.css" rel="stylesheet"
+	media="screen">
+<link rel="stylesheet"
+	href="resources/assets/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/assets/css/icheck.min_all.css">
+<link rel="stylesheet" href="resources/assets/css/price-range.css">
+<link rel="stylesheet" href="resources/assets/css/owl.carousel.css">
+<link rel="stylesheet" href="resources/assets/css/owl.theme.css">
+<link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
+<link rel="stylesheet" href="resources/assets/css/style.css">
+<link rel="stylesheet" href="resources/assets/css/responsive.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="resources/json.min.js"></script>
 <!-- 프린트, PDF 저장 -->
@@ -52,13 +91,7 @@
 		self.remove();
 	})
 	
-	/* 글자수세기 */
-// 	var total = 2000;
-// 	function counter() {
-// 		var check = document.frm.self_content.value.length;
-// 		var cnt = 2000 - check;
-// 		document.frm.cnt.value = cnt;
-// 	}
+	
 	
 	$(document).ready(function(){
 		$("textarea").keyup(function(){
@@ -74,11 +107,17 @@
 	/* 이미지 미리보기 */
 	function setImage(event) {
 		var reader = new FileReader();
-
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
 			document.querySelector("div#image_container").appendChild(img);
+			/* 사진을 바꾸면 기존 이미지 삭제 후, 다시 append */
+			if(img.src != img){
+				/* 화면에 보이는 이미지 삭제 */
+				$('.select_img').find('img').remove()
+	 			$('#image_container').find('img').remove();
+	 			document.querySelector("div#image_container").append(img);			
+			}
 		}
 		reader.readAsDataURL(event.target.files[0]);
 		
@@ -111,9 +150,8 @@
                                         <div class="form-group">
                                             <label>사진</label>
                                             <div class="select_img">
-	                                            <input type="file" multiple="multiple" name="uploadFile"  multiple="multiple" onchange="setImage(event)"> 
 	                                            <img src="image/${resumeVO.image }">
-	                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }">
+<%-- 	                                            <input type="hidden" name="image" id="image" value="${resumeVO.image }"> --%>
 	                                            <div id="image_container" name="image_container" class="select_img"></div>
                                             </div>
                                         </div>
@@ -150,6 +188,9 @@
                                         </div>
                                     </div>
 									<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+									<div class="col-sm-12">
+									<hr>
+									</div>
                                     <h3>학력사항</h3>
 
                                     <div class="col-sm-6">
@@ -183,13 +224,14 @@
                                         </div>
                                     </div>
                                     <br><br><br><br><br><br><br><br><br>
+                                    <div class="col-sm-12">
+									<hr>
+									</div>
                                     <div id="certi_ad">
                                     <h3>자격증</h3>
-                                    <button type='button' id='certiPl' name='certiPl'>추가</button>
                                     <c:forEach items="${clist}" var="certi" varStatus="i"> 
                                     <div class='certi_this'>
                                     <input type="hidden" id="certi_no" name="clist[${i.index }].certi_no" value=${certi.certi_no }>
-                                    <button type='button' id='certiDel' name='certiDel'>삭제</button>
 									<br><br>
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -242,31 +284,31 @@
                                     </div>
                                     </c:forEach> 
                                     </div> 
+                                    <div class="col-sm-12">
+									<hr>
+									</div>
 										<div id="port_ad">
 											<h3>포트폴리오</h3>
 											<div class="col-sm-6">
 												<div class="form-group">
-													<label for="subject">포트폴리오 및 기타문서</label> <br>
 													<c:forEach items="${plist }" var="port">
 													<input type="hidden" name="portfolio" id="portfolio" value="${port.portfolio }">${port.portfolio }<br>
 													</c:forEach>
-													<input type="file" class="form-control" name="portFile" multiple="multiple">
 												</div>
 											</div>
-											<br><br><br><br><br><br>
 										</div>
 									<br><br><br><br><br><br><br><br>
+									<div class="col-sm-12">
+									<hr>
+									</div>
 									<div id="self_ad">
 										<h3>자기소개서</h3>
-										<button type="button" id="selfPl" name="selfPl">추가</button>
 										<c:forEach items="${slist }" var="self" varStatus="i">
 										<div class='self_this'>
 										<input type="hidden" id="self_no" name="slist[${i.index }].self_no" value="${self.self_no }">
-<!-- 										<button type='button' id='selfDel' name='selfDel'>삭제</button> -->
 										<div class="col-sm-10">
 											<div class="form-group">
 												<label for="subject">제목</label> 
-												<div align="right"><button type='button' id='selfDel' name='selfDel'>삭제</button></div>
 												<input type="text" class="form-control" id="self_name" name="slist[${i.index }].self_name" placeholder="자기소개서 제목" value=${self.self_name }>
 											</div>
 										</div>
@@ -275,7 +317,6 @@
 												<label for="message">내용</label>
 												<textarea id="self_content" name="slist[${i.index }].self_content" class="form-control" 
 												placeholder="내용을 입력하세요.">${self.self_content }</textarea>
-												<h5>2000자까지 입력 가능합니다.</h5>
 											</div>
 										</div>
 										</div>
@@ -284,24 +325,18 @@
                                 </div>
                                 <!-- /.row -->
 								<br><br><br><br>
-                                 <div class="col-sm-12 text-center">
-                                     <button type="button" class="btn btn-primary" onclick="location='getSearchResumeList'"><i class="fa"></i>목록으로</button>
-<!--                                      <i class="fa"><input type="button" id="resumeUp" name="resumeUp" class="btn btn-primary" value="수정하기"></i>  -->
-                                     <button type="submit" class="btn btn-primary" onclick="divPrint()"><i class="fa"></i>인쇄(PDF 저장)</button>
-                                 </div>
+                                 
                             </form>
                         </div>
                     </div>    
                 </div>
             </div>
         </div>
-		<jsp:include page="../footer.jsp"></jsp:include>
 		
 		<!-- 자격증 추가(숨겨둔 자격증을 추가) -->
 		<div style="display: none" class="certi_temp"> 
 		  <div class='certi_this'>
               <input type="hidden" name="clist[${i.index }].certi_no" value=${certi.certi_no }><br><br>
-              <button type='button' id='certiDel' name='certiDel'>삭제</button>
                 <div class="col-sm-6">
                   <div class="form-group">
                      <label>자격증 항목</label>
@@ -360,7 +395,6 @@
 						 <input type="hidden" id="self_no" name="slist[${i.index }].self_no" value="${self.self_no }">
 							 <div class="col-sm-10">
 								<div class="form-group">
-						 			<div align="right"><button type='button' id='selfDel' name='selfDel'>삭제</button></div>
 									<label for="subject">제목</label> 
 									<input type="text" class="form-control" id="self_name" name="slist[${i.index }].self_name" placeholder="자기소개서 제목" value=${self.self_name }>
 								</div>
@@ -375,5 +409,26 @@
 							</div>
 					 </div>
 				</div>
+				<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
+	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/assets/js/bootstrap-select.min.js"></script>
+	<script src="resources/assets/js/bootstrap-hover-dropdown.js"></script>
+
+	<script src="resources/assets/js/easypiechart.min.js"></script>
+	<script src="resources/assets/js/jquery.easypiechart.min.js"></script>
+
+	<script src="resources/assets/js/owl.carousel.min.js"></script>
+	<script src="resources/assets/js/wow.js"></script>
+
+	<script src="resources/assets/js/icheck.min.js"></script>
+	<script src="resources/assets/js/price-range.js"></script>
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+	<script src="resources/assets/js/gmaps.js"></script>
+	<script src="resources/assets/js/gmaps.init.js"></script>
+
+	<script src="resources/assets/js/main.js"></script>
     </body>
 </html>

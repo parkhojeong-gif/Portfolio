@@ -31,6 +31,7 @@
 			<if test="mentoring_kind != null and mentoring_kind != ''">
 				UPPER(MENTORING_KIND) LIKE '%'|| UPPER(#{mentoring_kind}) || '%'
 			</if>
+
 			<if test="mentoring_begin_date != null and mentoring_begin_date != ''">
 	            AND mentoring_begin_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
 	         </if>

@@ -23,7 +23,26 @@ div#optionVal {
     top: -44px;
 }
 
-</style>	
+</style>
+<script >
+	function submitBtn(){
+		var insCon = confirm("문의를 등록하시겠습니까?");
+		var str = document.getElementById('title');
+		var str2 = document.getElementById('category_a');
+		var str3 = document.getElementById('summernote');
+		
+		if(insCon == true){
+			if(str.value == '' || str.value == null || str2.value == '' || str2.value == null || str3.value == null || str3.value == '' ){
+				window.alert("내용을 입력해주세요.");
+				return false;
+		}else{
+			document.getElementById('frm').submit();
+		}
+	}else if(insCon ==false){
+		
+	}
+}		
+</script>	
 <body>
 	<!-- property area -->
 	<div class="content-area recent-property"
@@ -72,7 +91,7 @@ div#optionVal {
 							value="없음">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<select name="category_a" id="category_a">
+								<select name="category_a" id="category_a" required="required">
 									<option value="">카테고리</option>
 									<option value="결제">결제</option>
 									<option value="환불">환불</option>
@@ -98,7 +117,7 @@ div#optionVal {
 						</div>
 						<br> <br> <br> <br> <br> <br> <br>
 						<div class="col-sm-6 text-right">
-							<button class="btn btn-primary" type="submit">
+							<button class="btn btn-primary" type="button" onclick="submitBtn()">
 								<i class="fa fa-bars"></i> 등록하기
 							</button>
 						</div>

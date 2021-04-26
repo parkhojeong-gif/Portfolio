@@ -84,7 +84,7 @@ public class UsersController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/login";
+		return "memregSuccess";
 	}
 
 	@RequestMapping("/updateUsers") // 유저 정보 수정폼
@@ -160,6 +160,7 @@ public class UsersController {
 			return "login";
 		}
 		UsersVO users = usersMapper.logCheck(vo);
+		
 		if (users != null) {
 			boolean psMatch = pwdEncoder.matches(vo.getPassword(), users.getPassword()); //
 			if (psMatch == true) {
@@ -270,12 +271,14 @@ public class UsersController {
 	} //비밀번호 수정 처리 끝
 	
 	@GetMapping("/popCerti")  //자격증 등록 폼으로 이동
-	public String popCerti() {
+	public String popCerti(String valSom, Model model) {
+		model.addAttribute("valSom", valSom);
 		return "/users/popCerti";
 	}
 	
 	@GetMapping("/popCareer")  //경력인증서 등록 폼으로 이동
-	public String popCareer() {
+	public String popCareer(String valSom, Model model) {
+		model.addAttribute("valSom", valSom);
 		return "/users/popCareer";
 	}
 	
@@ -299,22 +302,31 @@ public class UsersController {
 	
 	
 	@RequestMapping("/insertCerti") //자격증/경력인증서 등록 처리
-	public String insertCerti(UsersVO vo, HttpServletRequest request) {
+	public String insertCerti(UsersVO vo, HttpServletRequest request, String valSom) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		usersService.insertCerti(vo);
-		return "/users/throughCerti";
-		
+		if("mRegi".equals(valSom)) {
+			return "/users/throughSom";
+		} else {
+			return "/users/throughCerti";
+		}
 		
 	}
 	
 	@RequestMapping("/getCertiList") //자격증, 경력인증서 조회
 	@ResponseBody
-	public List<Map> getCertiList(UsersVO vo, HttpServletRequest request, Model model) {
+	public List<Map> getCertiList(UsersVO vo, HttpServletRequest request, Model model, String idx, String condi ) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		vo.setId(id);
+		
+		if("manUser".equals(condi)) {
+			vo.setId(idx);
+		} else {
+			vo.setId(id);
+		}
+		
 		List<Map> list = usersService.getCertiList(vo);
 		System.out.println("getCertiList:"+list);
 		
@@ -323,10 +335,14 @@ public class UsersController {
 	
 	@RequestMapping("/getCarList") //자격증, 경력인증서 조회
 	@ResponseBody
-	public List<Map> getCarList(UsersVO vo, HttpServletRequest request, Model model) {
+	public List<Map> getCarList(UsersVO vo, HttpServletRequest request, Model model, String idx, String condi ) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		vo.setId(id);
+		if("manUser".equals(condi)) {
+			vo.setId(idx);
+		} else {
+			vo.setId(id);
+		}
 		List<Map> list = usersService.getCarList(vo);
 		return list;
 	}
@@ -334,7 +350,7 @@ public class UsersController {
 	//마이페이지에서 경력증명서 등록
 	@RequestMapping("/certiUpload")
 	public String certiUpload(
-		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request,Model model,UsersVO vo) throws Exception
+		@RequestParam("uploadFile") MultipartFile[] files ,HttpServletRequest request,Model model,UsersVO vo, String valSom) throws Exception
 	{	
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
@@ -363,18 +379,20 @@ public class UsersController {
 			
 			
 			} else {
+				
 			         model.addAttribute("msg", "Please select at least one mediaFile..");
 			         return "/users/popCareer";
 			      }
-			   }
-				System.out.println("2:"+filenames);
+			   } //end of for
 				vo.setCarrer_certi(filenames);   //vo에 업로드된 파일명을 담아서 DB에 파일이름만 저장할 것
-				System.out.println("3:"+vo.getCarrer_certi());
 				usersService.insertCerti(vo);
-			   model.addAttribute("msg", "Multiple files uploaded successfully.");
+				model.addAttribute("msg", "Multiple files uploaded successfully.");
 				
-		
-		return "/users/throughCerti";	
+			   if("mRegi".equals(valSom)) {
+					return "/users/throughSom";
+				} else {
+					return "/users/throughCerti";
+				}
 	}
 	
 	//마이페이지에서 경력증명서 삭제

@@ -7,7 +7,26 @@
 <title>Insert title here</title>
 </head>
 <style>
-
+.footer {
+    padding: 0px 0px 60px;
+    background: rgba(255, 255, 255, 0.89) none repeat scroll 0% 0%;
+    background-color: white;
+        height: 139px;
+}
+img#footerId {
+    width: 200px;
+    height: 70px;
+}
+p#p_f1 {
+    padding-top: 16px;
+    padding-bottom: 0px;
+}
+p#p_f2 {
+    padding-bottom: 1px;
+}
+.col-md-2.col-sm-12.wow.fadeInRight.animated.fooder22.animated {
+    margin-left: 45px;
+}
 </style>
 <body>
 
@@ -18,48 +37,18 @@
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>About us </h4>
-                                <div class="footer-title-line"></div>
-
-                                <img src="assets/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
-                            </div>
+                        <div class="col-md-2 col-sm-12 wow fadeInRight animated">
+                        
+                        	<a class="navbar-brand" href="getMain"><img id="footerId"
+							src="resources/assets/img/logo.png" 
+							alt="클릭 시 메인페이지로 이동"></a>
                         </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Quick links </h4>
-                                <div class="footer-title-line"></div>
-                            </div>
+                         <div class="col-md-2 col-sm-12 wow fadeInRight animated fooder22">
+                        		<p id="p_f1" style="width: 800px"><strong>사업자번호 : 231-23-24230    |     대표자 : 시니어    |     e-mail  : seniorJob@senior.Job    |     전화 : 010-1234-1234    |     FAX : 02-1234-1234</strong></p>
+                        		<p id="p_f2"style="width: 800px"><strong>주소 : 대구 중구 국채보상로 537 5층 예담직업전문학교    |     537, Gukchaebosang-ro, Jung-gu, Daegu, Republic of Korea </strong></p>
+                        		<p id="p_f3"style="width: 800px">	<strong>ⓒ 2021. SENIORJOB Co., Ltd. </strong></p>
+                        	
                         </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer">
-                                <h4>Last News</h4>
-                                <div class="footer-title-line"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 wow fadeInRight animated">
-                            <div class="single-footer news-letter">
-                                <h4>Stay in touch</h4>
-                                <div class="footer-title-line"></div>
-                                <p>Lorem ipsum dolor sit amet, nulla  suscipit similique quisquam molestias. Vel unde, blanditiis.</p>
-
-                                <form>
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="E-mail ... ">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary subscribe" type="button"><i class="pe-7s-paper-plane pe-2x"></i></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </form> 
-
-                                <div class="social pull-right"> 
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

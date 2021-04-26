@@ -7,8 +7,6 @@ import com.company.service_center.SearchCriteria;
 
 public interface Mentoring_ReviewsService {
 	
-	// 페이징 처리 게시글 조회
-			public List<Mentoring_ReviewsVO> selectBoard(MenPagingVO vo);
 
 			// 페이징 처리 및 후기 전체 조회
 			public List<Mentoring_ReviewsVO> list(MenSearchCriteria scri);

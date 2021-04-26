@@ -28,20 +28,13 @@ div#cateView {
 }
 
 input#keywordInput {
-	width: 600px;
+    width: 606px;
+    margin-top: -21px;
 }
 
-button#cs_biz_form {
-	margin-right: 50px;
-	color: #FFF;
-    background-color: #64CD3C;
-    border-color: #64CD3C;
-}
+
 
 #cs_biz_form1 {
-	color: #FFF;
-	background-color: #64CD3C;
-	border-color: #64CD3C;
 	margin-left: 30px;
 	margin-right: 50px;
 }
@@ -62,6 +55,50 @@ div#buttonView {
     height: 40px;
     margin: 20px 10px;
     margin-left: 323px;
+}
+button#searchBtn {
+    margin-top: -25px;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    border: 0px solid grey !important;
+    margin: 20px;
+}
+
+button#cs_biz_form2 {
+    margin-right: 50px;
+}
+button#cs_biz_form3 {
+    margin-right: 50px;
+}
+button#cs_biz_form4 {
+    margin-right: 50px;
+}
+button#cs_biz_form5 {
+    margin-right: 50px;
+}
+button#cs_biz_form6 {
+    margin-right: 49px;
+}
+div#buttonView .btn-primary{
+    color: #FFF;
+    background-color: #52E252;
+    border-color: #52E252;
+    border-radius: 1px;
+    padding: 10px 20px;
+    font-weight: 600;
+}
+div#buttonView .btn-default{
+border-radius: 1px;
+    padding: 10px 20px;
+    border: 1px solid #FDC600;
+    color: #000;
+    border-color: #F0F0F0;
+    font-weight: 600;
+    background-color: white;
 }
 </style>
 <jsp:include page="../../topHeader.jsp"></jsp:include>
@@ -92,12 +129,12 @@ div#buttonView {
 				
 				<div class="col-md-9 pr-30 properties-page user-properties" id="cateView">
 					<div class="col-md-12 pr-30" id="buttonView">
-							<button type="button" id="cs_biz_form1" name="cs_biz_form"  class="btn btn-default" value="">전체</button>
-							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="결제">결제</button>
-							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="환불">환불</button>
-							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="신청">신청</button>
-							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="취소">취소</button>
-							<button type="button" id="cs_biz_form" name="cs_biz_form" class="btn btn-default" value="기타">기타</button>	
+							<button type="button" id="cs_biz_form1" name="cs_biz_form" class="btn btn-primary" value="">전체</button>
+							<button type="button" id="cs_biz_form2" name="cs_biz_form" class="btn btn-default " value="결제">결제</button>
+							<button type="button" id="cs_biz_form3" name="cs_biz_form" class="btn btn-default " value="환불">환불</button>
+							<button type="button" id="cs_biz_form4" name="cs_biz_form" class="btn btn-default " value="신청">신청</button>
+							<button type="button" id="cs_biz_form5" name="cs_biz_form" class="btn btn-default " value="취소">취소</button>
+							<button type="button" id="cs_biz_form6" name="cs_biz_form" class="btn btn-default " value="기타">기타</button>	
 					</div>
 					<br>
 					<hr>
@@ -116,7 +153,7 @@ div#buttonView {
 								</div>
 							</div>
 							<div class="col-xs-7">
-								<div class="input-group">
+								<div class="input-group" id="input-group">
 									<input class="form-control" name="keyword" id="keywordInput"
 										value="${scri.keyword}"
 										style="text-align: center; height: 45px;" type="text"
@@ -148,6 +185,7 @@ div#buttonView {
 								</tr>
 							</thead>
 							<tbody>
+							<c:if test="${not empty list}">
 							<c:forEach items="${list }" var="gongji">
 								<tr>
 									<th scope="row" onclick="location.href='getService_CenterQna?seq=${gongji.seq }'">
@@ -158,8 +196,12 @@ div#buttonView {
 									<td onclick="location.href='getService_CenterQna?seq=${gongji.seq }'">${gongji.click }</td>
 								</tr>
 							</c:forEach>
+							</c:if>
 							</tbody>
 						</table>
+							<c:if test="${empty list}">
+							<h3 style="text-align: center;"><strong>검색한 키워드에 맞는 게시글이 존재하지 않습니다.</strong></h3>
+							</c:if>
 
 					</div>
 
@@ -226,7 +268,61 @@ $(function(){
   $('#searchBtn').click(function() {
     self.location = "serviceCenterQna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
   });
-});   
+});  
+
+function getURLParams(url) {
+    var result = {};
+    url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function(s, k, v) { result[k] = decodeURIComponent(v); });
+    return result;
+}
+
+$(function(){
+	if(getURLParams(location.search).optionValue == '결제'){
+		$('#cs_biz_form1').attr('class','btn btn-default') //전체
+		$('#cs_biz_form2').attr('class','btn btn-primary') //결제
+		$('#cs_biz_form3').attr('class','btn btn-default') //환불
+		$('#cs_biz_form4').attr('class','btn btn-default') //신청
+		$('#cs_biz_form5').attr('class','btn btn-default') //취소
+		$('#cs_biz_form6').attr('class','btn btn-default') //기타
+	}else if(getURLParams(location.search).optionValue == '환불'){
+		$('#cs_biz_form1').attr('class','btn btn-default') //전체
+		$('#cs_biz_form2').attr('class','btn btn-default') //결제
+		$('#cs_biz_form3').attr('class','btn btn-primary') //환불
+		$('#cs_biz_form4').attr('class','btn btn-default') //신청
+		$('#cs_biz_form5').attr('class','btn btn-default') //취소
+		$('#cs_biz_form6').attr('class','btn btn-default') //기타
+	}else if(getURLParams(location.search).optionValue == '신청'){
+		$('#cs_biz_form1').attr('class','btn btn-default') //전체
+		$('#cs_biz_form2').attr('class','btn btn-default') //결제
+		$('#cs_biz_form3').attr('class','btn btn-default') //환불
+		$('#cs_biz_form4').attr('class','btn btn-primary') //신청
+		$('#cs_biz_form5').attr('class','btn btn-default') //취소
+		$('#cs_biz_form6').attr('class','btn btn-default') //기타
+	}else if(getURLParams(location.search).optionValue == '취소'){
+		$('#cs_biz_form1').attr('class','btn btn-default') //전체
+		$('#cs_biz_form2').attr('class','btn btn-default') //결제
+		$('#cs_biz_form3').attr('class','btn btn-default') //환불
+		$('#cs_biz_form4').attr('class','btn btn-default') //신청
+		$('#cs_biz_form5').attr('class','btn btn-primary') //취소
+		$('#cs_biz_form6').attr('class','btn btn-default') //기타
+	}else if(getURLParams(location.search).optionValue == '기타'){
+		$('#cs_biz_form1').attr('class','btn btn-default') //전체
+		$('#cs_biz_form2').attr('class','btn btn-default') //결제
+		$('#cs_biz_form3').attr('class','btn btn-default') //환불
+		$('#cs_biz_form4').attr('class','btn btn-default') //신청
+		$('#cs_biz_form5').attr('class','btn btn-default') //취소
+		$('#cs_biz_form6').attr('class','btn btn-primary') //기타
+	}else if(getURLParams(location.search).optionValue != '해당없음'){
+		$('#cs_biz_form1').attr('class','btn btn-primary') //전체
+		$('#cs_biz_form2').attr('class','btn btn-default') //결제
+		$('#cs_biz_form3').attr('class','btn btn-default') //환불
+		$('#cs_biz_form4').attr('class','btn btn-default') //신청
+		$('#cs_biz_form5').attr('class','btn btn-default') //취소
+		$('#cs_biz_form6').attr('class','btn btn-default') //기타
+	}
+	
+	
+});
 
 </script>
 <script>

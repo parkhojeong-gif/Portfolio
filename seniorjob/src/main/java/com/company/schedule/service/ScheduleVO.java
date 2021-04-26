@@ -19,4 +19,6 @@ public class ScheduleVO {
 	
 	private String reply; //답변
 	private String resume_no; //이력서 번호
+	private String oldResumeNo; //옛날이력서 번호
+	
 }

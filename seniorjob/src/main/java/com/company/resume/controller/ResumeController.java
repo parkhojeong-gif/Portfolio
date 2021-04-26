@@ -23,6 +23,8 @@ import com.company.resume.service.ResumeRequestVO;
 import com.company.resume.service.ResumeService;
 import com.company.resume.service.ResumeVO;
 import com.company.resume.service.impl.ResumeMapper;
+import com.company.schedule.service.ScheduleVO;
+import com.company.schedule.service.impl.ScheduleMapper;
 import com.company.self_info.service.Self_InfoVO;
 import com.company.self_info.service.impl.Self_InfoMapper;
 import com.company.users.service.UsersVO;
@@ -47,6 +49,7 @@ public class ResumeController {
 	MentorService mtService;
 	@Autowired
 	UsersMapper usersmapper;
+	@Autowired ScheduleMapper sdMapper;
 
 	
 	// 이력서 전체조회
@@ -113,25 +116,30 @@ public class ResumeController {
 	// 이력서 등록
 	@RequestMapping("/resumeInsert")
 	public String resumeInsert(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo, 
-			PortfolioVO portvo) throws Exception {
+			PortfolioVO portvo, Model model) throws Exception {
 		HttpSession session = req.getSession();
 		String id = (String) session.getAttribute("id");
-		System.out.println(id);
 		vo.setId(id);
 		resumeservice.insertResume(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
-		return "redirect:/getSearchResumeList";
+		model.addAttribute("msg", "등록완료");
+		model.addAttribute("url", "throughCerti");
+		return "common/Success";
 	}
 	
 	// 이력서 수정
 	@PostMapping("/resumeUpdate")
 	public String resumeUpdate(HttpServletRequest req, ResumeVO vo, ResumeRequestVO reqvo,
-			PortfolioVO portvo) throws Exception {
+			PortfolioVO portvo, ScheduleVO sVo) throws Exception {
 	HttpSession session = req.getSession();
 	String id = (String) session.getAttribute("id");
-	System.out.println(id);
 	vo.setId(id);
-	System.out.println(vo);
+	sVo.setOldResumeNo(vo.getResume_no());
+	System.out.println("resumeUpdate:"+sVo.getOldResumeNo());
 	resumeservice.updateResuem(vo, reqvo.getClist(), reqvo.getSlist(), portvo, req);
+	sVo.setResume_no(vo.getResume_no());
+	System.out.println("resumeUpdate:"+sVo.getResume_no());
+	sdMapper.renameResumeNo(sVo);
+	System.out.println("resumeUpdate:"+sVo);
 	return "redirect:/getSearchResumeList";
 	}
 

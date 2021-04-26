@@ -76,6 +76,20 @@
 
 <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 <!--summernote  -->
+<style>
+.col-md-2.col-md-offset-5.col-sm-3.col-sm-offset-1.col-xs-12.topHeader {
+    right: -409px;
+}
+li#li22 {
+    width: 470px;
+}
+ul.list-inline.topHeader {
+    height: 51px;
+}
+li#topHeaderLi {
+    bottom: -18px;
+}
+</style>
 </head>
 <body>
 
@@ -86,43 +100,35 @@
 
 	<div class="header-connect">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-5 col-sm-8  col-xs-12">
-					<div class="header-half header-call">
-						<p>
-							<span><i class="pe-7s-call"></i> +1 234 567 7890</span> <span><i
-								class="pe-7s-mail"></i> your@company.com</span>
-						</p>
-					</div>
-				</div>
+			<div class="row topHeader">
 				<div
-					class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-12">
+					class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-12 topHeader">
 					<div class="header-half header-social">
-						<ul class="list-inline">
+						<ul class="list-inline topHeader">
 							<c:choose>
 								<c:when test="${users.auth eq 'ADMIN'}">
-									<li style="width: 450px; height: 40px">
+									<li  id="li22">
 									<a href="#">${sessionScope.users.id} 관리자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="managerMain">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'USER'}">
-									<li style="width: 300px; height: 40px"><a href="#">${sessionScope.users.id}님
+									<li id="li22"><a href="#">${sessionScope.users.id}님
 											환영합니다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li><li></li>
 								</c:when>
 								<c:when test="${not empty userInfo}">
-									<li style="width: 300px; height: 40px"><a href="#">${sessionScope.userInfo.kakaoId}님
+									<li id="li22"><a href="#">${sessionScope.userInfo.kakaoId}님
 											환영합니다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'MENTOR'}">
-									<li style="width: 300px; height: 40px"><a href="#">${sessionScope.users.id}님
+									<li id="li22"><a href="#">${sessionScope.users.id}님
 											환영합니다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq null}">
-									<li style="width: 250px; height: 40px"><a href="#"></a></li>
+									<li id="li22"><a href="#">SeniorJob 사이트 방문을 환영합니다.</a></li>
 								</c:when>
 							</c:choose>
 						</ul>
@@ -168,27 +174,27 @@
 				
 
 				<ul class="main-nav nav navbar-nav navbar-right">
-					<li class="wow fadeInDown" data-wow-delay="0.3s"
-						style="width: 150px; height: 100px"><a class=""
-						href="getMentorList" style="text-align: center"><strong><h4>멘토</h4></strong></a></li>
-					<li class="wow fadeInDown" data-wow-delay="0.3s"
-						style="width: 150px; height: 100px"><a class=""
-						href="getMentoringList" style="text-align: center"><strong><h4>멘토링</h4></strong></a></li>
-					<li class="wow fadeInDown" data-wow-delay="0.3s"
-						style="width: 150px; height: 100px"><a class=""
-						href="job?cd=12" style="text-align: center"><strong><h4>정보공유</h4></strong></a></li>
-					<li class="wow fadeInDown" data-wow-delay="0.3s"
-						style="width: 150px; height: 100px"><a class=""
-						href="inquire" style="text-align: center"><strong><h4>고객센터</h4></strong></a></li>
+					<li id="topHeaderLi"class="wow fadeInDown" data-wow-delay="0.3s"
+						style="width: 150px; height: 100px"><h4><a class=""
+						href="getMentorList" style="text-align: center"><strong>멘토</strong></a></h4></li>
+					<li id="topHeaderLi" class="wow fadeInDown" data-wow-delay="0.3s"
+						style="width: 150px; height: 100px"><h4><a class=""
+						href="getMentoringList" style="text-align: center"><strong>멘토링</strong></a></h4></li>
+					<li  id="topHeaderLi"class="wow fadeInDown" data-wow-delay="0.3s"
+						style="width: 150px; height: 100px"><h4><a class=""
+						href="job?cd=11" style="text-align: center"><strong>정보공유</strong></a></h4></li>
+					<li id="topHeaderLi" class="wow fadeInDown" data-wow-delay="0.3s"
+						style="width: 150px; height: 100px"><h4><a class=""
+						href="inquire" style="text-align: center"><strong>고객센터</strong></a></h4></li>
 					<c:if test="${not empty users }">
-						<li class="wow fadeInDown" data-wow-delay="0.3s"
-						style="width: 150px; height: 100px"><a
-							href="mypageHome"><strong><h4>마이페이지</h4></strong></a></li>
+						<li  id="topHeaderLi"class="wow fadeInDown" data-wow-delay="0.3s"
+						style="width: 150px; height: 100px"><h4><a
+							href="mypageHome"><strong>마이페이지</strong></a></h4></li>
 					</c:if>
 					<c:if test="${not empty userInfo }">
-						<li class="wow fadeInDown" data-wow-delay="0.3s"
-						style="width: 150px; height: 100px"><a
-							href="mypageHome"><strong><h4>마이페이지</h4></strong></a></li>
+						<li  id="topHeaderLi"class="wow fadeInDown" data-wow-delay="0.3s"
+						style="width: 150px; height: 100px"><h4><a
+							href="mypageHome"><strong>마이페이지</strong></a></h4></li>
 					</c:if>
 					
 					

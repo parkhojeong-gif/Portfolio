@@ -11,10 +11,10 @@
 function mentor(mentorId) {
 	var frm = document.frm;
 	var menId = mentorId;
-	console.log(menId);
 	$('#mentorId').attr("value", menId);
 	
 	frm.submit();
+	alert("첨삭요청이 완료되었습니다.");
 }
 </script>
 </head>

@@ -367,42 +367,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 
-	<!-- 우측 사이드 -->
-	<div id="nudge_wrap" style="transform: translateX(42px);">
-		<div class="inner">
-			<div id="order_list" class="box_change_order">
-				<h4 class="title_tip">사업계획서 항목</h4>
-				<ul class="list_change">
-					<li><a class="link_change" href="##"
-						data-order_item="activity">계획사업의 개요<span class="btn_check">추가</span></a></li>
-					<li><a class="link_change" href="##" data-order_item="license">생산제품의
-							소개<span class="btn_check" onclick="prodAdd()">추가</span>
-					</a></li>
-					<li><a class="link_change" href="##" data-order_item="skill">시장현황
-							및 전망<span class="btn_check" onclick="marketAdd()">추가</span>
-					</a></li>
-					<li><a class="link_change" href="##"
-						data-order_item="personal">판매계획
-						<span class="btn_check" onclick="sellAdd()">
-						추가
-						
-						</span></a></li>
 
-				</ul>
-			</div>
-			<div class="area_btn col-sm-12 text-center">
-				<button type="" class="btn btn-primary">미리보기</button>
-			</div>
-			<div class="area_btn col-sm-12 text-center">
-				<button type="" class="btn btn-primary">중간저장</button>
-			</div>
-			<div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">작성완료</button>
-			</div>
-			
-
-		</div>
-	</div>
 </form>
 
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>

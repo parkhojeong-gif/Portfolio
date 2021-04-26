@@ -29,6 +29,7 @@ h1{text-align:center}
 	font-family:'Spoqa Han Sans'; 
 	font-weight: 300;
 }
+
 input#searchKeyword {
     margin: 30px;
     height: 60px;
@@ -143,8 +144,14 @@ input#searchKeyword {
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
+<c:if test="${not empty list }">
 	<h1 class="display-4" id="mainCopy">현직자 멘토와 함께 직무경험을 쌓아보세요!</h1>
 	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토링을 클릭하면 해당 멘토링 상세 정보 확인이 가능합니다.</footer>
+</c:if>
+<c:if test="${empty list }">
+	<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
+	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
+</c:if>
 	<!-- 멘토링 리스트 출력 -->
 	<br>
 	<!-- 페이징 & 검색 -->
@@ -270,8 +277,9 @@ input#searchKeyword {
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
+										<p style="display: none;">${mentoring.mentoring_begin_date }</p>
 										<p style="display: none;">${mentoring.mentoring_introduce }</p>
-											<div class="dealer-action pull-right">
+											<div class="dealer-action p	ull-right">
 												<input type="submit" value="상세보기">
 											</div>
 									</div>
@@ -296,6 +304,7 @@ input#searchKeyword {
 								<input type="hidden" name="id" id="id" value="${users.id }">
 								<div class="panel-body search-widget">
 									<div class="row">
+									
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
@@ -304,6 +313,7 @@ input#searchKeyword {
 													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()" style="background:#FDC600; color:#fff">
                                                 </c:if>
 										</div>
+										
 									</div>
 								</div>
 								</div>

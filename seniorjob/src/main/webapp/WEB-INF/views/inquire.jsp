@@ -31,6 +31,13 @@
     width: 100%;
     height: 44px;
 }
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    border: 0px solid grey;
+    margin: 20px;
+}
 </style>
 <body>
 
@@ -43,7 +50,7 @@
 				<br>
 				<form>
 					<div align="center">
-						<h3>무엇을 도와드릴까요?</h3>
+						<h3><strong>무엇을 도와드릴까요?</strong></h3>
 						<br><br>
 					</div>
 					<div class="input-group" align="center">

@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
+
+import com.company.mentoring_reviews.service.MenSearchCriteria;
 import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
 import com.company.mentoring_reviews.service.PagingMaker;
-import com.company.mentoring_reviews.service.MenSearchCriteria;
 import com.company.mentoring_reviews.service.impl.Mentoring_ReviewsMapper;
 
 @Controller

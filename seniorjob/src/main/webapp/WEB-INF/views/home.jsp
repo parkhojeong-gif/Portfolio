@@ -25,10 +25,12 @@
 
 
 
-
+<!-- #slidemenu는 영상통화 구현. 절대 지우지 마세요 . 양소민-->
 <style>
+
+#slidemenu{background:#12cf3d;position:absolute;width:100px;top:50px;right:10px;}
 .slider-content{position:absolute}
-.form-inline{margin:20px}
+
 #mentorSearchBtn{cursor:pointer}
 #searchKeywordTitle{
 	position: relative;
@@ -39,10 +41,7 @@
 	right: 115px;
     top: 110px;
 }
-#chkBox{
-	position:relative;
-	left: 220px;
-}
+
 #dateChkTitle{
 	position:relative;
 	right: 930px;
@@ -73,13 +72,158 @@
 	right: 100px;
 	z-index:1; /* 배치 순서 결정 https://aboooks.tistory.com/83 */
 }
+div#homeDiv2 {
+    top: -106px;
+    width: 1150px;
+    right: -42px;
+    height: 560px;
+}
+input#searchKeyword {
+    margin-top: -163px;
+    width: 1000px;
+    top: ;
+}
+p#ptag1 {
+    margin-bottom: 83px;
+}
+div#homeDiv3 {
+}
+i#mentorSearchBtn {
+   margin-top: 40px;
+   margin-left: 92px;
+    
+}
+hr#homeHr1 {
+    margin-top: -54px;
+}
+div#homeDiv4 {
+    width: 600px;
+}
+div#chkBox{
+       margin-top: -103px;
+       width: 900px;
+}
+div#chkBox1{
+       width: 900px;
+}
+label#labelList1 {
+    margin-right: 92px;
+}
+label#labelList2 {
+    margin-right: 75px;
+}
+label#labelList2_1 {
+    margin-right: 92px;
+}
+label#labelList2_2 {
+    margin-right: 94px;
+}
+label#labelList2_3 {
+    margin-right: 90px;
+}
+label#labelList2_4 {
+    margin-right: 107px;
+}
+label#labelList3 {
+    margin-right: 75px;
+}
+label#labelList3_1 {
+    margin-right: 93px;
+}
+label#labelList3_2 {
+    margin-right: 80px;
+}
+label#labelList3_3 {
+    margin-right: 76px;
+}
+label#labelList3_4 {
+    margin-right: 106px;
+}
+i#mentorSearchChkBoxBtn {
+    right: -44px;
+    top: 88px;
+}
+div#hr1Keyword {
+    margin-top: -51px;
+}
+form#searchDateFrm {
+    height: 550px;
+}
+div#mtStartDate {
+    top:-37px;
+    left: -12px;
+}
+div#mtEndDate {
+    top: 37px;
+    right: -7px;
+}
+i#mentoringDateBtn {
+    top: 91px;
+    right: -56px;
+}
 </style>
+<!-- 영상통화 구현. 절대 지우지 마세요 . 양소민-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$.ajax({
+		url:'videoCallButton',
+		success : function(result) {
+			
+			if(result != "false") {
+				$("#numSom").attr('value',result);
+				var auth = $('#authSom').val();
+				var div = $('<div />').attr('id','slidemenu');
+				var a = $('<a />').attr('onclick','video()').html('영상면접');
+				var a2 = $('<a />').attr('onclick','resum()').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
+				var a3 = $('<a />').attr('onclick','chatt()').html('채팅'); //나중에 영상면접 화면에 붙일 것.
+				$(div).append(a);
+				if(auth == "MENTOR") {
+					$(div).append(a2);
+					} else {
+						console.log("USER");
+					}
+				
+				$(div).append(a3);
+				$("#slidemenu").append(div);
+				
+			} else {
+				console.log("else");
+			}
+		},
+		error : function() {
+			console.log("error");
+		}
+	});
+	 var currentPosition = parseInt($("#slidemenu").css("top"));
+    $(window).scroll(function() {
+        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+        $("#slidemenu").stop().animate({"top":position+currentPosition+"px"},1000);
+    });
+});
+function video(){
+	window.open("https://192.168.0.56:85",
+            "영상", "width=900, height=900, resizable = no, scrollbars = no");
+}
+function resum(){
+	var num=$("#numSom").val();
+	//console.log(num)
+	window.open("popResumeGetForm?resume_no="+num,
+            "이력서", "width=900, height=900, resizable = no, scrollbars = no");
+}
+function chatt() {
+	window.open("chat",
+            "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
+}
+</script>
 </head>
 <body>
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
-	<!-- topHeader -->
-	
+	<!-- 영상통화 구현. 절대 지우지 마세요 . 양소민-->
+	<div id="slidemenu" ></div>
+	<input type="hidden" id="numSom">
+	<input type="hidden" id="authSom" value="${users.auth }">
 	<!-- 검색 -->
         <div class="slider-area">
             <div class="slider">
@@ -89,226 +233,157 @@
                     <div class="item"><img src="resources/assets/img/slide1/slider-image-4.jpg" alt="GTA V"></div>   
                 </div>
             </div>
-            <div class="container slider-content">
+            <div class="container slider-content"> <!--이미지 움직이는 div -->
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-1 col-sm-12">
-                        <!-- <h2>시니어잡에 오신것을 환영합니다.</h2>
-                        <p>업의 현장에 종사하는 분들의 지식과 전문성을 활용해 꿈을 이뤄 나가는 과정에서 즉시 가치가 창출 될 수 있도록 지원합니다.</p> -->
-                        <div class="search-form wow pulse" data-wow-delay="0.8s">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-1 col-sm-12" id="homeDiv1"> <!-- 키워드 체크박스 검색 전체 div -->
+                        <div class="search-form wow pulse" data-wow-delay="0.8s" id="homeDiv2">
                             <form class=" form-inline" name="searchFrm">
-                            
-                            <div class="form-group" >
-								<div class="row row-space">
-									<div class="col-2"></div>
-										<b id="searchKeywordTitle">키워드 검색</b>	
-									</div>
-							</div>
-							
-							<div class="form-group" >
-								<div class="row row-space">
-									<div class="col-2"></div>
-										<b id="chkBoxTitle">직무 검색</b>	
-									</div>
-							</div>
-							
-                            <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" name="searchKeyword" value="" placeholder="멘토 직무 검색 ex)마케팅,영업,IT">
-							<div class="form-group">
-								<div class="row row-space">
-									<div class="col-2"></div>
-									<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchBtn"></i>	
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<div class="row row-space">
-									<div class="col-2"></div>
-									<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchChkBoxBtn"></i>	
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<div class="row row-space">
-									<div class="col-2"></div>
-									<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentoringDateBtn"></i>	
-								</div>
-							</div>
-							
-							<div class="search-row" id="chkBox" name="chkBox" align="left">  
+                        
+                        <div class="col-md-10">
+                        	<p id="ptag1" style="text-align: left"><strong>키워드 검색</strong></p>
+                        	<div id="homeDiv3">
+                            <input id="searchKeyword" name="searchKeyword" class="form-control" type="text" placeholder="멘토링 검색: 원하는 직무, 지역 또는 연령을 입력하세요.">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                        	<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchBtn"></i>
+                        </div>
+                        <div class="col-md-12" id="hr1Keyword">
+                         	<hr>
+                         </div>
+                        <div class="col-md-10">
+                        	<p id="ptag1" style="text-align: left"><strong>직무 검색</strong></p>
+                        	<div id="homeDiv4">
+                        	<!--줄바꿈  -->   
+                        	<div class="search-row" id="chkBox" name="chkBox" align="left">  
                                             <div class="checkbox">
-                                                <label>
+                                                <label id="labelList1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="IT"> IT
                                                 </label>
                                             </div>
-                                        <!-- End of  --> 
                                             <div class="checkbox">
-                                                <label>
+                                                <label id="labelList1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="영업"> 영업
                                                 </label>
                                             </div>
-                                        <!-- End of  --> 
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="인사"> 인사
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="총무"> 총무
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="마케팅"> 마케팅
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="광고"> 광고
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                      </div>
+                             <div class="search-row" id="chkBox1" name="chkBox" align="left">
+                             	 			<div class="checkbox">
+                                                <label id="labelList2">
                                                     <input type="checkbox" name="mentor_dutyArr" value="회계"> 회계
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                       		 <div class="checkbox">
+                                                <label id="labelList2_1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="재무"> 재무
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList2_2">
                                                     <input type="checkbox" name="mentor_dutyArr" value="해외"> 해외
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList2_3">
                                                     <input type="checkbox" name="mentor_dutyArr" value="유통"> 유통
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                      </div>
-                                     <div class="search-row" id="chkBox" name="chkBox" align="left">
-                                        <div class="checkbox">
-                                                <label>
+                               				<div class="checkbox">
+                                                <label id="labelList2_4">
                                                     <input type="checkbox" name="mentor_dutyArr" value="무역"> 무역
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList2_5">
                                                     <input type="checkbox" name="mentor_dutyArr" value="전략"> 전략
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                             </div>         
+ 							<!--줄바꿈  -->                                     
+                        	<div class="search-row" id="chkBox1" name="chkBox" align="left">
+                                        	<div class="checkbox">
+                                                <label id="labelList3">
                                                     <input type="checkbox" name="mentor_dutyArr" value="기획"> 기획
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList3_1">
                                                     <input type="checkbox" name="mentor_dutyArr" value="생산"> 생산
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList3_2">
                                                     <input type="checkbox" name="mentor_dutyArr" value="공기업"> 공기업
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList3_3">
                                                     <input type="checkbox" name="mentor_dutyArr" value="디자인"> 디자인
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList3_4">
                                                     <input type="checkbox" name="mentor_dutyArr" value="교육"> 교육
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
-                                        <div class="checkbox">
-                                                <label>
+                                        	<div class="checkbox">
+                                                <label id="labelList3_5">
                                                     <input type="checkbox" name="mentor_dutyArr" value="컨설팅"> 컨설팅
                                                 </label>
                                             </div>
-                                        <!-- End of  -->
                                     </div>
-							</form>
-							<div class="form-group" >
-								<div class="row row-space">
-									<div class="col-2"></div>
-										<b id="dateChkTitle">멘토링 날짜</b>	
-									</div>
-							</div>
-							<hr>
-							
-							<form class=" form-inline" method="POST" action="getMentoringList" id="searchDateFrm" onsubmit="return checkDateNull()">
-							
-							
-							
-							<div class="row row-space">
-								<div class="col-4">
-									<div class="input-group" id="mtStartDate">
-										<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required>
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="input-group" id="mtEndDate">
-										<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
-									</div>
-								</div>
-							</div>
-						</form>
-							
-							
+                            </div>
                         </div>
-					
-					<!-- 멘토링 검색 -->
-					<!-- <div class="search-form wow pulse" data-wow-delay="0.8s">
-						
-						<form class=" form-inline" method="POST" action="getMentoringList" onsubmit="return checkDateNull()">
-							
-							<div class="form-group" >
-								<div class="row row-space">
-									<div class="col-2"></div>
-										<b id="dateChkTitle">멘토링 날짜</b>	
-									</div>
+                         <div class="col-md-2">
+                         	<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchChkBoxBtn"></i>
+                         	
+                         </div>
+                         <div class="col-md-12">
+                         	<hr>
+                         </div>
+                         </form>
+						<form method="POST" action="getMentoringList" id="searchDateFrm" onsubmit="return checkDateNull()">
+                        <div class="col-md-12" id="mentorBoxDiv">    
+                         
+                        <div class="col-md-5" id="mentorDateBox1">
+                        <p id="ptag2" style="text-align: left"><strong>멘토링 날짜 검색</strong></p>
+                        	<div class="input-group" id="mtStartDate">
+								<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required>
 							</div>
-							
-							<div class="row row-space">
-								<div class="col-4">
-									<div class="input-group" id="mtStartDate">
-										<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required>
-									</div>
-								</div>
-								<div class="col-4">
-									<div class="input-group" id="mtEndDate">
-										<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
-									</div>
-								</div>
+                        	
+                        </div>		
+						<div class="col-md-5" id="mentorDateBox2">
+							<div class="input-group" id="mtEndDate">
+								<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required>
 							</div>
-							<div class="form-group">
-							<div class="row row-space">
-								<div class="col-2"></div>
-								<button class="btn-submit m-t-0" type="submit">search</button>
-							</div>
-							</div>
+						</div>	
+						<div class="col-md-2">
+                        	
+                        	<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentoringDateBtn"></i>
+                        </div>	
+						</div>
 						</form>
-					</div> -->
-					<!-- End of 멘토링 검색 -->
-					
+                        </div>
 				</div>
                 </div>
             </div>
@@ -344,7 +419,7 @@
 				$('#myModal').modal().show();
 				return false;
 			}else if(keywordChk.indexOf('서울') >= 0 || keywordChk.indexOf('부산') >= 0|| keywordChk.indexOf('대구') >= 0 || keywordChk.indexOf('인천') >= 0 || keywordChk.indexOf('광주') >= 0 || keywordChk.indexOf('대전') >= 0 || keywordChk.indexOf('울산') >= 0 || keywordChk.indexOf('세종') >= 0){
-				alert(keywordChk + "지역 멘토를 검색합니다.");
+				alert(keywordChk + " 지역 멘토를 검색합니다.");
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}else if(keywordChk.indexOf('40') >= 0 || keywordChk.indexOf('50') >= 0 || keywordChk.indexOf('60') >= 0){
@@ -352,7 +427,7 @@
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}else{
-				alert(keywordChk + "직무 멘토를 검색합니다.");
+				alert(keywordChk + " 직무 멘토를 검색합니다.");
 				searchFrm.action = "getKeywordSearch";
 				searchFrm.submit();
 			}
@@ -374,8 +449,19 @@
 	
 	// 멘토링 날짜 검색
 	$('#mentoringDateBtn').click(function(){
-		searchDateFrm.action = "getMentoringList";
-		searchDateFrm.submit();
+		var s_date = $('#mentoring_begin_date').val();
+		var e_date = $('#mentoring_end_date').val();
+		if(s_date==""){
+			alert("시작일을 선택해주세요.");
+			return false;
+		}else if(e_date==""){
+			alert("종료일을 선택해주세요.");
+			return false;
+			
+		}else{
+			searchDateFrm.action = "getMentoringList";
+			searchDateFrm.submit();
+		}
 	});
 	
 	// 멘토링 날짜 검색 유효성 체크
@@ -400,41 +486,7 @@
 		}
 	}
 	
-	// 키워드 검색 값 체크
-	/* function checkKeywordNull() {
-		var str = document.getElementsByName("searchKeyword");
-		var searchFrm = document.searchFrm;
-		if (str[0].value == '' || str[0].value == null) { // 값이 NodeList, 배열로 넘어오기 때문에 [0]번쨰로 값을 확실히 지정헤야 한다.
-			alert("키워드를 입력하세요.");
-			return false;
-		}else {
-			searchDateFrm.action = "getKeywordSearch";
-			searchDateFrm.submit();
-		}
-	} */
-	
-	// 연령 검색 값 체크
-	/* function checkAgeNull() {
-		var chk_radio = document.getElementsByName("searchAge");
-		var ageForm = document.ageSearchForm;
-		
-		for (var i=0; i < chk_radio.length; i++) {
-			if(chk_radio[i].checked.length<1) { // 해당 인덱스에 체크된 값의 길이가 0일 때 = 체크되지 않았을 때
-				return false;
-			}
-			else if(chk_radio[0].checked==false && chk_radio[1].checked==false && chk_radio[2].checked==false){ // 모든 인덱스에 체크된 값이 없을 때
-				alert("연령을 선택하세요");
-				return false;
-			}else{
-				ageForm.action = "getAgeSearch";
-				ageForm.submit();
-				return true;
-			}
-		}
-	} */
-	
 </script>
-
 	 <!-- Jquery JS-->
     <script src="resources/mainSearchBar/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
@@ -459,3 +511,8 @@
 	<script src="resources/assets/js/icheck.min.js"></script>
 	<script src="resources/assets/js/price-range.js"></script>
 	<script src="resources/assets/js/main.js"></script>
+	
+	
+	<jsp:include page="footer.jsp"></jsp:include>
+</body>	
+</html>

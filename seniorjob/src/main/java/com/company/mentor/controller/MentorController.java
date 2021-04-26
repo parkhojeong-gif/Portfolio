@@ -78,7 +78,9 @@ public class MentorController {
 				model.addAttribute("url", "getMentorList");
 				return "common/Fail"; // 이미 멘토 등록되어 있으면 해당 주소로 리턴
 			}else if(mentorCheck == null) {
+				System.out.println("MentorRegisterProc:"+vo);
 					mentorService.MentorRegisterProc(vo, request);
+					System.out.println("MentorRegisterProc2:"+vo);
 					model.addAttribute("msg", "멘토 등록 완료");
 					model.addAttribute("url", "getMentorList");
 					return "common/Success";

@@ -37,6 +37,7 @@ public class ShoppingController {
 		String id = (String) session.getAttribute("id");
 		vo.setId(id);
 		model.addAttribute("list", spService.getSearchPay(vo));
+		System.out.println("getSearchPay:" + model);
 		return "mypage/payDetail";
 	}
 	
