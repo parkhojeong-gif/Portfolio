@@ -1,4 +1,4 @@
-package com.company.mentoring_reviews;
+package com.company.mentoring_reviews.service;
 
 import java.util.Date;
 

@@ -2,8 +2,6 @@ package com.company.mentoring_reviews.service;
 
 import java.util.List;
 
-import com.company.mentoring_reviews.MenSearchCriteria;
-import com.company.mentoring_reviews.Mentoring_ReviewsVO;
 import com.company.service_center.PagingVO;
 import com.company.service_center.SearchCriteria;
 

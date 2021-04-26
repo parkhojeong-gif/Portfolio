@@ -2,8 +2,8 @@ package com.company.mentoring_reviews.service.impl;
 
 import java.util.List;
 
-import com.company.mentoring_reviews.MenSearchCriteria;
-import com.company.mentoring_reviews.Mentoring_ReviewsVO;
+import com.company.mentoring_reviews.service.MenSearchCriteria;
+import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
 
 public interface Mentoring_ReviewsMapper {
 	

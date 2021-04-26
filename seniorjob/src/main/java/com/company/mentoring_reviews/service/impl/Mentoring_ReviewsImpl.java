@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.company.mentoring_reviews.MenSearchCriteria;
-import com.company.mentoring_reviews.Mentoring_ReviewsVO;
+import com.company.mentoring_reviews.service.MenSearchCriteria;
 import com.company.mentoring_reviews.service.Mentoring_ReviewsService;
+import com.company.mentoring_reviews.service.Mentoring_ReviewsVO;
 
 @Service
 public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
