@@ -15,7 +15,6 @@
 <thead>
 <tr>
 <th>멘티</th>
-<th>멘토링 기간</th>
 <th>멘토링 요청</th>
 </tr>
 </thead>
@@ -26,7 +25,6 @@
 <input type="hidden" name="mentorid" value="${list.id }">
   <input type="hidden" name="menteeid" value="${list.menteeId }">
 </td>
-<td>${list.men_start }-${list.met_end }</td>
 <td><button type="submit" class="btn btn-primary">멘토링 요청 test</button></td>
 </tr>
 

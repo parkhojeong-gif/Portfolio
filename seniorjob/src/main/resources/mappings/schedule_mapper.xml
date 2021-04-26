@@ -126,6 +126,13 @@
 	AND MENTEEID=#{menteeid}
 	</select>
 	
+	<!-- 답변 목록 count -->
+	<select id="replyQuestBadge" resultType="String">
+	SELECT COUNT(*) 
+	FROM SCHEDULE 
+	WHERE STATE='REPLY' 
+	AND MENTEEID=#{menteeid}
+	</select>
 	
 	<select id="getSearchMentoringDate" parameterType="ScheduleVO" resultType="map">
 		SELECT TO_CHAR(SCHEDULE_START,'YYYYMMDD')||REPLACE(SCHEDULE_START_TIME,':','')||'00' AS "SCHEDULE_START",

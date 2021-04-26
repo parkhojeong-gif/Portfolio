@@ -13,6 +13,87 @@
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
+
+<style>
+
+element.style {
+}
+.edu-detail--summary[data-v-0d9114a3] {
+    position: relative;
+    padding: 32px 0 48px;
+    overflow: visible; 
+}
+article, aside, body, div, footer, header, section {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+article, aside, footer, header, nav, section {
+    display: block;
+}
+
+user agent stylesheet
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+body ::selection {
+    color: inherit;
+    background-color: #e6e6e6;
+    background-color: fade(#000,10);
+    cursor: text;
+}
+img.edu-detail--summary-define-img {
+    width: 387px;
+    margin-left: 162px;
+}
+h3.c-application.c-typography.edu-detail--summary-title.c_headline5 {
+    margin: 70px;
+    font-size: 17px;
+}
+h4.c-application.c-typography.edu-detail--summary-define-title.c_headline6 {
+    margin: 35px;
+}
+p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
+    margin: 25px;
+}    
+
+.c-application.c-box.edu-detail--content {
+    border: 2px solid darkgrey;
+}
+</style>
+
 <form id="submitFrm" name="submitFrm" method="post">
 	<input type="hidden" id="id" name="id" value="${mentor.mentor_id }">
 	<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
@@ -100,6 +181,19 @@
                                     </span>
                                 </div>
                                 
+                               <hr>
+                               <br>
+                               <!-- 크롤링 -->
+                               <div>
+	                            	${biz }
+	                            	<img src="image/코멘토.JPG">
+                                </div>
+                                <br>
+                                
+                                
+                                
+
+                                
                                 <!-- <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-bed">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
@@ -141,17 +235,17 @@
 
                             <div class="section">
                                 <h4 class="s-property-title">멘토링 소개</h4>
-                                <div class="s-property-content">
-                                    <p>${mentoring.mentoring_introduce} </p>
-                                </div>
+                                <div class="c-application c-box edu-detail--content" style="background-color:#FFFFFF;padding:48px 40px 48px 40px;" data-v-5e54bd97="" data-v-6e8598a8="" data-v-1430fc45="">
+                                <p data-v-dbf069b8="" data-v-1430fc45="" class="c-application c-typography edu-detail--introduce-content-msg c_headline6" data-v-5e54bd97="" style="color: rgb(33, 40, 47);">
+                                <strong>${mentoring.mentoring_introduce}</strong><br></div>
                             </div>
                             <!-- End description area  -->
 
                             <div class="section">
                                 <h4 class="s-property-title">멘토링 내용</h4>
-                                <div class="s-property-content">
-                                    <p>${mentoring.mentoring_content} </p>
-                                </div>
+                                <div class="c-application c-box edu-detail--content" style="background-color:#FFFFFF;padding:48px 40px 48px 40px;" data-v-5e54bd97="" data-v-6e8598a8="" data-v-1430fc45="">
+                                <p data-v-dbf069b8="" data-v-1430fc45="" class="c-application c-typography edu-detail--introduce-content-msg c_headline6" data-v-5e54bd97="" style="color: rgb(33, 40, 47);">
+                                <strong>${mentoring.mentoring_content}</strong><br></div>
                             </div>
                             <!-- End description area  -->
                             <!-- End additional-details area  -->

@@ -28,15 +28,71 @@ h1{text-align:center}
 	font-family:'Spoqa Han Sans'; 
 	font-weight: 300;
 }
+
+input#searchKeyword {
+    margin: 30px;
+    height: 60px;
+}
+
+select#mentoring_option {
+    height: 31px;
+    width: 132px;
+}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$('#mentoringDateBtn').click(function(){
+	dateF.action = "getMentoringList";
+	dateF.submit();
+});
+</script>
 </head>
 <body>
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
+<c:if test="${not empty list }">
 	<h1 class="display-4" id="mainCopy">현직자 멘토와 함께 직무경험을 쌓아보세요!</h1>
 	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토링을 클릭하면 해당 멘토링 상세 정보 확인이 가능합니다.</footer>
+</c:if>
+<c:if test="${empty list }">
+	<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
+	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
+</c:if>
 	<!-- 멘토링 리스트 출력 -->
+	<br>
+	<div align="center">
+		분야: <select id = "mentoring_option">
+			<option value="IT">IT</option>
+			<option value="직무">직무</option>
+			<option value="회사생활">회사생활</option>
+			<option value="이직">이직</option>
+			<option value="면접">면접</option>
+			<option value="자소서">자소서</option>
+			<option value="스펙">스펙</option>
+			<option value="진로">진로</option>
+		</select>
+	</div>
+	<form id="dateF" name="dateF">
+	<div class="row row-space">
+		<div class="col-4">
+			<div class="input-group" id="mtStartDate">
+				<label class="label">멘토링 시작일</label> <input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" required="">
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="input-group" id="mtEndDate">
+				<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" required="">
+			</div>
+		</div>
+	</div>
+	</form>
+	<div class="form-group">
+		<div class="col-2"></div>
+		<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentoringDateBtn"></i>	
+	</div>
+	
+	
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
 			<div class="row">
@@ -44,11 +100,14 @@ h1{text-align:center}
 					<div class="section">
 						<div id="list-type" class="proerty-th-list">
 							<div class="col-md-4 p0">
+						<c:if test="${not empty list }">
 							<c:forEach var="mentoring" items="${list }">
-							<form action="getSearchMentoringChanGon">
+							<form action="getSearchMentoringChanGon"	>
 							<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
 							<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 							<input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mentoring.mentoring_kind }">
+							<input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${mentoring.mentoring_begin_date }">
+							<input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${mentoring.mentoring_end_date }">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
 									
@@ -61,19 +120,22 @@ h1{text-align:center}
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
+										<p style="display: none;">${mentoring.mentoring_begin_date }</p>
 										<p style="display: none;">${mentoring.mentoring_introduce }</p>
-											<div class="dealer-action pull-right">
+											<div class="dealer-action p	ull-right">
 												<input type="submit" value="상세보기">
 											</div>
 									</div>
 								</div>
 								</form>
 							</c:forEach>	
+						</c:if>	
 							</div>
 						</div>
 					</div>
 				</div>
 				
+			<c:if test="${not empty list }">	
 				<!-- 플로팅 배너 -->
 				<div class="col-md-3 p0 padding-top-40" id="sidebar">
 					<div class="blog-asside-right">
@@ -86,6 +148,7 @@ h1{text-align:center}
 								<input type="hidden" name="id" id="id" value="${users.id }">
 								<div class="panel-body search-widget">
 									<div class="row">
+									
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
                                                     <input class="button btn largesearch-btn" value="멘토 등록하기" type="button" style="background:#FDC600; color:#fff" data-toggle="modal" data-target="#myModal">
@@ -94,6 +157,7 @@ h1{text-align:center}
 													<input class="button btn largesearch-btn" value="멘토링 등록하기" type="button" onclick="MentoringRegister()" style="background:#FDC600; color:#fff">
                                                 </c:if>
 										</div>
+										
 									</div>
 								</div>
 								</div>
@@ -102,7 +166,7 @@ h1{text-align:center}
 					</div>
 				</div>
 				<!-- End of 플로팅 배너 -->
-				
+			</c:if>	
 			</div>
 		</div>
 	</div>

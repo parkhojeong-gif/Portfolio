@@ -16,9 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.company.businesspalna.service.BusinessPlanAService;
+import com.company.businesspalna.service.impl.BusinessPlanAMapper;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringVO;
@@ -29,7 +31,14 @@ public class BusinessPlanAController {
 
 	@Autowired BusinessPlanAService bpService;
 	@Autowired MentorService mtService;
+	@Autowired BusinessPlanAMapper bpMapper;
 
+	
+	@RequestMapping("/testmyhome")			//사업계획서 하나만 조회. 
+	public String testmyhome() {
+		return "mypage/testmyhome";
+	}
+	
 	
 	@GetMapping("/getSearchBusinessPlanA") //사업계획서 리스트 
 	public String getSearchBusinessPlanA(BusinessPalnAVO vo, Model model, HttpServletRequest request) {
@@ -55,7 +64,7 @@ public class BusinessPlanAController {
 	}
 	
 	@PostMapping("/insertBusinessPlanA") //사업계획서 등록 처리
-	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request ) {
+	public String insertBusinessPlanAProc(BusinessPalnAVO vo, HttpServletRequest request, Model model ) {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id"); //login할 때 session에 저장해둔 id 값을 꺼내씀.
 		int seq = bpService.getSeq();
@@ -73,9 +82,10 @@ public class BusinessPlanAController {
 			bpService.insertBusinessPlanD(vo);
 		};
 		
+		model.addAttribute("msg", "등록완료");
+		model.addAttribute("url", "throughCerti");
 		
-		
-		return "redirect:/getSearchBusinessPlanA";
+		return "common/Success";
 	}
 	
 	@GetMapping("/updateBusinessPlanA")			//수정페이지로
@@ -203,6 +213,21 @@ public class BusinessPlanAController {
 	public String previewBusiness() {
 		return "business/previewBusiness";
 		
+	}
+	
+	@RequestMapping("/checkPBadge")
+	@ResponseBody
+	public String checkPBadge(BusinessPalnAVO vo, MentorVO mvo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		mvo.setId(id);
+		String mId = mtService.getMentorId(mvo);
+		vo.setMentorId(mId);
+		System.out.println("mId:"+mId);
+		String cpBadge = bpMapper.checkPBadge(vo);
+		System.out.println("cpBadge:"+cpBadge);
+		
+		return cpBadge;
 	}
 
 }

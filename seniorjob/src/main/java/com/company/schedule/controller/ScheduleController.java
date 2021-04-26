@@ -22,12 +22,14 @@ import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.schedule.service.ScheduleService;
 import com.company.schedule.service.ScheduleVO;
+import com.company.schedule.service.impl.ScheduleMapper;
 
 @Controller
 public class ScheduleController {
 	
 	@Autowired ScheduleService scService;
 	@Autowired MentorService mtService;
+	@Autowired ScheduleMapper scMapper;
 	
 	
 	//마이홈페이지에 있는 calendar에서 일정이 보이는데, mentor와 mentee가 일정을 공유. mentorid와 menteeid에 각각 로그인된 아이디를 넣으면 조회가 가능하다고 생각했으나, mentor가 mentee일 수도 있다는 경우를 고려하지 않아 수정 필요.
@@ -155,6 +157,17 @@ public class ScheduleController {
 		vo.setMenteeid(id);
 		model.addAttribute("list", scService.replyQuestFormSom(vo));
 		return "mypage/replyQuestFormSom";
+	}
+	
+	//답변목록뱃지
+	@RequestMapping("/replyQuestBadge")
+	@ResponseBody
+	public String replyQuestBadge(ScheduleVO vo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		vo.setMenteeid(id);
+		String requBadge = scMapper.replyQuestBadge(vo);
+		return requBadge;
 	}
 	
 	//답변 상세보기

@@ -74,14 +74,14 @@ button:hover {
 img{max-width:30%}!important;
 </style>
 <script type="text/javascript">
-function insertCerti() {
-	var url="popCerti";
+function insertCerti(valSom) {
+	var url="popCerti?valSom="+valSom;
 	window.open(url,"","width=500,height=600");
 	
 }
 
-function insertCareer() {
-	var url="popCareer";
+function insertCareer(valSom) {
+	var url="popCareer?valSom="+valSom;
 	window.open(url,"","width=500,height=600");
 }
 
@@ -113,8 +113,8 @@ function popCareerSee() {
     <p><input placeholder="부서" oninput="this.className = ''" name="mentor_department_name"></p>
     <p><input placeholder="직급" oninput="this.className = ''" name="mentor_job_id"></p>
     <p>직무유형 선택</p>
-    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="영업">영업
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="인사">인사
+    <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="영업">영업
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="총무">총무
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="마케팅">마케팅
     <input placeholder="직무유형" oninput="this.className = ''" name="mentor_duty" type="radio" value="광고">광고
@@ -178,12 +178,12 @@ function popCareerSee() {
   	</div>
     <p />
     <p>자격증 선택</p>
-    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti("mRegi")' value='추가' />
     <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCertiSee()' value='조회' />
    
     <p />
     <p>경력 증명서</p>
-    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+    <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer("mRegi")' value='추가' />
     <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='popCareerSee()' value='조회' />
     
   </div>

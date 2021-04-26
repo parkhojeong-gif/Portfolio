@@ -30,17 +30,31 @@
 이미지 사이즈 손쉽게 맞추기
 참고: https://nykim.work/86 */
 #myPhoto{ 
-  width: 253px;
-  height: 253px;
   object-fit: cover;
+}
+#mentor_id{
+  width: 285px;
+  height: 395px;
+}
+.proerty-th .proerty-item .item-entry h5 {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #9B9B9B;
+    letter-spacing: 2px;
 }
 </style>
 <body>
 
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
-<h1 class="display-4" id="mainCopy">나에게 꼭 맞는 멘토를 찾아보세요!</h1>
-<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토 프로필 카드를 클릭하면 멘토의 상세 프로필 정보 확인이 가능합니다.</footer>
+<c:if test="${not empty list }">
+	<h1 class="display-4" id="mainCopy">나에게 꼭 맞는 멘토를 찾아보세요!</h1>
+	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토 프로필 카드를 클릭하면 멘토의 상세 프로필 정보 확인이 가능합니다.</footer>
+</c:if>
+<c:if test="${empty list }">
+	<h1 class="display-4" id="mainCopy">찾으시는 멘토 정보가 없습니다.</h1>
+	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
+</c:if>
 <!-- topHeader -->
 <div id="listResult"></div>
           <!-- property area -->
@@ -49,12 +63,12 @@
             <div class="container">   
                 <div class="row">
                     
+<!-- 멘토 세부검색(최신순/인기순)_값(list)이 있을 때만 출력 ----------------------------------------------------------------------------------------------------->
 				<div class="col-md-9 padding-top-40 properties-page" id="optionVal">
-
-                <!-- 멘토 세부검색(최신순/인기순) -->
 					<div class="section clear">
 						<div class="col-xs-10 page-subheader sorting pl0">
 							<div class="items-per-page">
+							<c:if test="${not empty list }">
 								<label for="items_per_page"><b>세부검색 :</b></label>
 								<div class="sel">
 									<select id="items_per_page" name="per_page" onchange="optionSelect(this)">
@@ -63,21 +77,21 @@
 										<option value="인기순">인기순</option>
 									</select>
 								</div>
-								<!--/ .sel-->
+							 </c:if>	
 							</div>
 							<!--/ .items-per-page-->
 						</div>
 					</div>
 					<!-- End of 멘토 세부검색(최신순/인기순) -->
-					
+				
 					<!-- 멘토 리스트 출력 -->
-					<form name="mentorListFrm">
-					
 					<div class="section clear" id="mtList">
 						<div id="list-type" class="proerty-th">
-
+						<c:if test="${not empty list }">
 							<c:forEach var="mentor" items="${list }">
-								<div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" >
+							<form name="mentorListFrm">
+								<%-- <div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" > --%>
+								<div class="col-sm-6 col-md-4 p0" id="mentor_id" name="mentor_id" onclick="location.href='getMentor?mentor_id=${mentor.mentor_id}'" style="cursor:pointer" >
 									<div class="box-two proerty-item">
 										<div class="item-thumb">
 										<c:if test="${not empty mentor.mentor_photo }">
@@ -98,14 +112,16 @@
 										</div>
 									</div>
 								</div>
+							</form>	
 							</c:forEach>
+						</c:if>	
 						</div>
 					</div>
-					</form>
-					<!-- End of 멘토 리스트 출력 -->
-					
 				</div>
-                    <!-- 플로팅 배너 -->
+<!-- End of 멘토 리스트 출력 ----------------------------------------------------------------------------------------------------->
+
+<!-- 플로팅 배너_값(list)이 있을 때만 출력-->
+					<c:if test="${not empty list }">
                     <div class="col-md-3 p0 padding-top-40" id="sidebar">
 					<div class="blog-asside-right">
 						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
@@ -116,6 +132,7 @@
 							<div class="panel-body search-widget">
 								<input type="hidden" name="id" id="id" value="${users.id }">
 								<div class="panel-body search-widget">
+								
 									<div class="row">
 										<div class="col-xs-12">
 												<c:if test="${empty users }">
@@ -126,22 +143,24 @@
                                                 </c:if>
 										</div>
 									</div>
+								
 								</div>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-                <!-- End of 플로팅 배너 -->
+                </c:if>
+<!-- End of 플로팅 배너 ----------------------------------------------------------------------------------------------------->
                 </div>           
             </div>
         </div>
         
-        <!-- TOP버튼 / https://seo6285.tistory.com/189-->
+<!-- TOP버튼 / https://seo6285.tistory.com/189 ----------------------------------------------------------------------------------------------------->
       	<a style="display:scroll;position:fixed;bottom:20px;right:20px;" href="#" title=”맨 위로">맨 위로<i class="fas fa-arrow-up"></i></a> 
-      	<!-- TOP버튼 -->
+<!-- End of TOP버튼 ----------------------------------------------------------------------------------------------------->
       	
-      	<!-- 모달 팝업 -->
+<!-- 모달 팝업 ----------------------------------------------------------------------------------------------------->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 			  <div class="modal-dialog">
 			    <div class="modal-content">
@@ -161,7 +180,7 @@
 			    </div>
 			  </div>
 			</div>
-      	<!-- 모달 팝업 -->
+<!-- End of 모달 팝업 ----------------------------------------------------------------------------------------------------->
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
@@ -169,6 +188,7 @@
 	
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
+
 
 	// 멘토 등록
 	function MentorRegister(){
@@ -197,7 +217,6 @@
 				$('#mtList').empty(); // 태그 내부 내용 삭제
 				var response = result.list;
 				$.each(response, function(i){
-				console.log(response[i]);
 				var div2 = $("<div>").attr({ 'id':"list-type",'class':"proerty-th" });
 				var div3 = $("<div>").attr({ 'class':"col-sm-6 col-md-4 p0",id:"mentor_id"}).data('id',response[i].mentor_id);
 				var div4 = $("<div>").attr("class", "box-two proerty-item");

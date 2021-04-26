@@ -300,11 +300,13 @@ input[type="search"]::-webkit-search-decoration {
     padding: 10px 20px;
     border: 1px solid #FDC600;
     color: #000;
+    background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
     color: #000;
+    background-color: #FDC600;
     border-color: #F0F0F0;
     font-weight: 600;
 }
@@ -332,7 +334,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 .form-control {
     display: block;
-    width: 50%;
+    width: 100%;
     height: 34px;
     padding: 6px 12px;
     font-size: 13px;
@@ -394,7 +396,7 @@ input[type="search"]::-webkit-search-decoration {
     transition: all 300ms linear;
 } 
 /* Inputs               */
-/* .form-control {
+.form-control {
     display: block;
     width: 100%;
     height: 44px;
@@ -408,7 +410,7 @@ input[type="search"]::-webkit-search-decoration {
     border-radius: 0px;
     box-shadow: 0px 1px 1px rgba(179, 179, 179, 0.1) inset;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-} */
+}
 
 .form-control:focus {
     background-color: #FFFFFF;
@@ -1014,9 +1016,10 @@ label small{
 }
 
 .slider-content{
-    /* position: absolute; */
+    position: absolute;
     top: 20%;
     text-align: center;
+    color: #FFF;
     width: 100%;
 }
 .slider-content h2 {
@@ -1104,7 +1107,7 @@ page-header
     letter-spacing: 2px;
 }
 .content-area{
-    padding-bottom: 55px;
+    background-color: #FCFCFC; padding-bottom: 55px;
 }
 .layout-switcher a{
     font-size: 25px;
@@ -2481,14 +2484,9 @@ count-area
     padding: 15px;
 }
 .search-form .form-inline .form-group { 
-   	width: 50px;
+    width: 235px;
     text-align: left;
     letter-spacing: 0.5px;
-}
-
-.form-search-location{
-	width:235px;
-	text-align: left;
 }
 .slider-selection { 
     background: #FDC600;
@@ -2698,7 +2696,7 @@ padding-bottom: 15px;
     float: left;
     width: 24px;
     height: 24px;
-    content: "�겎";
+    content: "";
     color: #FDC600;
     font-size: 16px;
     line-height: 24px;
@@ -3046,11 +3044,3 @@ padding: 10px;
 #map {
     height: 300px;
 }
-
-
-
-
-
-
-
-
