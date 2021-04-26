@@ -42,6 +42,29 @@
  		) A   ) B  WHERE RN BETWEEN #{start} AND #{end}
  	</select>
  	
+ 	
+ 	<select id="getRandomImage" resultType="com.company.mentoring.service.MentoringVO">
+ 		SELECT  MENTORING_NUMBER,
+ 				MENTORING_NAME,
+ 				MENTORING_LIMIT,
+ 				MENTORING_INTRODUCE
+ 				MENTORING_PHOTO,
+ 				MENTORING_PRICE,
+ 				MENTORING_DATA,
+ 				MENTOR_ID,
+ 				MENTORING_BEGIN_DATE,
+ 				MENTORING_END_DATE,
+ 				MENTORING_CLICK,
+ 				MENTORING_OPEN_DATE,
+ 				MENTORING_KIND,
+ 				MENTORING_CONTENT,
+ 				MENTORING_REQUEST,
+ 				DBMS_RANDOM.VALUE(1000, 10000) as rand
+ 		FROM 	MENTORING
+ 		ORDER BY RAND
+ 	</select>
+ 	
+ 	
  	<!-- 김찬곤 -->
  	<!-- 키워드 검색 -->
  	<select id="getKeywordMentoring" resultType="com.company.mentoring.service.MentoringVO">

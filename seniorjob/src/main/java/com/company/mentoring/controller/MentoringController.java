@@ -2,6 +2,7 @@ package com.company.mentoring.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -62,7 +63,14 @@ public class MentoringController {
 		paging.setTotalRecord(mtService.getMcount(vo));
 		model.addAttribute("paging", paging);
 		model.addAttribute("list", mtService.getMentoringList(vo));
+		model.addAttribute("random", mtService.getRandomImage(vo));
 		return "Mentoring/mentoringList";
+	}
+	
+	//송다희 추가=============================
+	@RequestMapping("/getReviewsList")
+	public @ResponseBody List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo, Model model) {
+		return mentorservice.getReviewsList(vo);
 	}
 	
 	// 멘토링 키워드 검색
@@ -188,14 +196,16 @@ public class MentoringController {
 	// 멘토링 단건 조회_김찬곤
 	// 송다희 추가
 	@RequestMapping("/getSearchMentoringChanGon")
-	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model, Mentoring_ReviewsVO reviewvo) throws IOException {
+	public String getSearchMentoringChanGon(MentoringVO mtVo,MentorVO mVo, Model model, Mentoring_ReviewsVO reviewvo, HttpServletRequest req) throws IOException {
 		model.addAttribute("mentoring", mtService.getSearchMentoringChanGon(mtVo)); // 멘토링 정보
 		model.addAttribute("mentor",mentorService.getMentor(mVo)); // 멘토 정보
 		model.addAttribute("relatedMentoring", mtService.getRelatedMentoring(mtVo)); // 유사한 멘토링
 		
 		//송다희 추가====================================================================
-		model.addAttribute("reviewList", mentorservice.getSearchMenReview(reviewvo));
-		
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
+		reviewvo.setId(id);
+		model.addAttribute("reviewList", mentorservice.getReviewsList(reviewvo));
 		//크롤링
 		String uri = "https://comento.kr/edu/learn/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C-G165";
 		Document doc = Jsoup.connect(uri).get();

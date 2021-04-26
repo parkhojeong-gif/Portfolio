@@ -135,4 +135,9 @@ public class MentoringServiceImpl implements MentoringService {
 		return dao.getMcount(vo);
 	}
 
+	@Override
+	public List<MentoringVO> getRandomImage(MentoringVO vo) {
+		return dao.getRandomImage(vo);
+	}
+
 }

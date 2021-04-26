@@ -176,4 +176,39 @@
 	AND MENTORING_REVIEWS.MENTORING_NUMBER = #{mentoring_number}
 	ORDER BY MENTORING_REVIEWS.SEQ
 	</select>
+	<!-- 구매내역 조회 -->
+	<select id="searchShopping" resultType="int" >
+	SELECT COUNT(*)
+	FROM MENTORING MENTORING, SHOPPING SHOPPING
+	WHERE MENTORING.MENTORING_NUMBER = SHOPPING.MENTORING_NUMBER
+  	AND SHOPPING.ID=#{id}
+	</select>
+	
+	<insert id="insertReviewsMen">
+	INSERT INTO MENTORING_REVIEWS(SEQ, 
+								  W_DATE, 
+								  CONTENT, 
+								  ID, 
+								  MENTORING_NUMBER)
+	VALUES	(( SELECT NVL(MAX(SEQ), 0) +1 FROM MENTORING_REVIEWS  ),
+			 SYSDATE,
+			 #{content},
+			 #{id},
+			 #{mentoring_number})
+	</insert>
+	
+	<delete id="deleteReviews">
+	DELETE FROM MENTORING_REVIEWS WHERE SEQ = #{seq}
+	</delete>
+	
+	<update id="updateReviews">
+	UPDATE mentoring_reviews set content = #{content} where seq = #{seq}
+	</update>
+	
+	<select id="getReviewOne" resultType="int">
+	  SELECT COUNT(*)
+	  FROM MENTORING_REVIEWS
+	  WHERE ID = #{id}
+	  AND MENTORING_NUMBER = #{mentoring_number}
+	</select>
  </mapper>

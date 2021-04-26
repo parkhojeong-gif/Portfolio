@@ -87,9 +87,37 @@ public class Mentoring_ReviewsImpl implements Mentoring_ReviewsService {
 		return dao.getPopularArticleList(vo);
 	}
 
+	//송다희 추가=================================================================
 	@Override
 	public List<Mentoring_ReviewsVO> getReviewsList(Mentoring_ReviewsVO vo) {
 		return dao.getReviewsList(vo);
 	}
+
+	@Override
+	public int searchShopping(Mentoring_ReviewsVO vo) {
+		return dao.searchShopping(vo);
+	}
+
+	@Override
+	public int insertReviewsMen(Mentoring_ReviewsVO vo) {
+		return dao.insertReviewsMen(vo);
+	}
+
+	@Override
+	public int deleteReviews(Mentoring_ReviewsVO vo) {
+		return dao.deleteReviews(vo);
+	}
+
+	@Override
+	public int updateReviews(Mentoring_ReviewsVO vo) {
+		return dao.updateReviews(vo);
+	}
+	
+	@Override
+	public int getReviewOne(Mentoring_ReviewsVO vo) {
+		return dao.getReviewOne(vo);
+	}
+	//========================================================================
+
 
 }
