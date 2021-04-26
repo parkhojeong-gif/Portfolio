@@ -344,6 +344,9 @@ html {
 					<hr>
 					<h2>기본정보</h2>
 					<br>
+					<!-- 송다희 추가 -->
+							<div align="right"><button type="button" class="btn btn-primary" id="resume_in" name="resume_in">내 정보 불러오기</button></div>
+							<!-- 송다희 추가 -->
 					
 							<div class="col-sm-12">
 								<div class="form-group">
@@ -527,8 +530,57 @@ html {
 							</div>
 					</div>
 					
+					<div class="row" id="#">
 					
 					
+					
+					<div class="tab-content">
+					<br/>
+					<hr />
+								<div class="tab-pane" id="step2">
+									<h3>포트폴리오</h3>
+									<div class="col-sm-6">
+										<div class="form-group">
+										<br>
+										<br>
+											<input type="file" class="form-control" name="portFile" multiple="multiple">
+										</div>
+									</div>
+								</div>
+							</div>
+					
+					</div>
+					
+					
+					<div class="row" id="#">
+					<br/>
+					<hr />
+					<div class="tab-content">
+									<div class="tab-pane" id="step3" name="step3">
+										<h3>자기소개서</h3>
+										<div class="col-sm-12" align="right">
+	                                        <a href="#step4" data-toggle="tab">
+	                                        <button type="button" class="btn btn-primary" id="selfAdd" name="selfAdd">자기소개서 항목 추가+</button></a>
+	                                    </div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<br />
+												<label for="subject">제목</label> 
+												<input type="text" class="form-control" id="self_name" name="slist[0].self_name" placeholder="자기소개서 제목">
+											</div>
+										</div>
+										<div class="col-sm-12">
+											<div class="form-group">
+												<label for="message">내용</label>
+												<textarea id="self_content" name="slist[0].self_content" class="form-control" placeholder="내용을 입력하세요." cols="80"></textarea>  <!-- onkeyup="counter()" -->
+												<h5>2000자까지 입력 가능합니다.</h5>
+											</div>
+										</div>
+	                                    
+										</div>
+									</div> 
+									<br><br><br><br><br><br>
+								</div>
 					
 					
 					</div>

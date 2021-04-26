@@ -42,7 +42,10 @@
 				
 				<button type="button" class="btn btn-primary" onclick="resumeSom()">이력서 등록</button>
 				
+						
+				
 				<c:forEach  var="resume" items="${list}">
+				
 				<c:if test="${resume.id eq users.id }">	
 					<div
 						class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
@@ -79,6 +82,9 @@
 				
 			</div>
 			<!-- row end -->
+			<c:if test="${empty list}">
+                        <h5>등록된 이력서가 없습니다.</h5>
+                        </c:if>
             </div>
         </div>
 

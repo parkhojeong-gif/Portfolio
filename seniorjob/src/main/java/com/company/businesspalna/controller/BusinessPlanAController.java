@@ -16,9 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.company.businesspalna.service.BusinessPlanAService;
+import com.company.businesspalna.service.impl.BusinessPlanAMapper;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringVO;
@@ -29,6 +31,7 @@ public class BusinessPlanAController {
 
 	@Autowired BusinessPlanAService bpService;
 	@Autowired MentorService mtService;
+	@Autowired BusinessPlanAMapper bpMapper;
 
 	
 	@RequestMapping("/testmyhome")			//사업계획서 하나만 조회. 
@@ -210,6 +213,21 @@ public class BusinessPlanAController {
 	public String previewBusiness() {
 		return "business/previewBusiness";
 		
+	}
+	
+	@RequestMapping("/checkPBadge")
+	@ResponseBody
+	public String checkPBadge(BusinessPalnAVO vo, MentorVO mvo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		mvo.setId(id);
+		String mId = mtService.getMentorId(mvo);
+		vo.setMentorId(mId);
+		System.out.println("mId:"+mId);
+		String cpBadge = bpMapper.checkPBadge(vo);
+		System.out.println("cpBadge:"+cpBadge);
+		
+		return cpBadge;
 	}
 
 }

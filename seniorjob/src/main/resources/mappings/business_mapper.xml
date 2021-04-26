@@ -226,6 +226,12 @@
 	WHERE SEQ=#{seq}
 	</update>
 	
+	<!-- 사업계획서 첨삭 요청 count -->
+	<select id="checkPBadge" resultType="String">
+	SELECT COUNT(*) 
+	FROM BUSINESSPLANA 
+	WHERE MENTORID=#{mentorId}
+	</select>
 	
 	
 </mapper>
