@@ -88,6 +88,12 @@ function resumeList(seq) {
 		window.open(url,"","width=500,height=600");
 	//location.href='updateSchedule?seq='+seq;
 }
+
+function updateQuest(seq) {
+	var url="updateQuest?seq="+seq;
+		window.open(url,"","width=500,height=600");
+	//location.href='updateSchedule?seq='+seq;
+}
   
 function showErrors(result) {
 	   console.log("error")
@@ -106,7 +112,7 @@ function showContents(result) {
 		dt=$('<dt />').attr("class","title").html(list.MENTORID+"가 <br />"+"다음 요청을 보냈습니다. <br />"+list.SCHEDULE_NAME+"<br />");
 		but=$('<button />').attr("type","button").attr("onclick","resumeList("+list.SEQ+")").html("승낙<br />");
 		but2=$('<button />').attr("type","button").attr("onclick","location.href='updateScheduleReject?seq="+list.SEQ+"'").html("거절<br />");
-		but3=$('<button />').attr("type","button").attr("onclick","location.href='updateQuest?seq="+list.SEQ+"'").html("답변<br />");
+		but3=$('<button />').attr("type","button").attr("onclick","updateQuest("+list.SEQ+")").html("답변<br />");
 		
 		if(list.STATE == 'request'){
 		$(dt).append(but);
@@ -318,9 +324,11 @@ function reply() {
 											이력서 첨삭 요청<span class="badge">6</span>
 										</button>
 										</c:if>
+										<c:if test="${auth eq 'USER' }">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="reply()">
 											답변 목록<span class="badge" id="reQBadge"></span>
 										</button>
+										</c:if>
 									</li>
 								</ul>
 								<div class="wrap_cards">

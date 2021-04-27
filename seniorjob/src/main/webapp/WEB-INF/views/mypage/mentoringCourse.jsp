@@ -58,7 +58,7 @@ function menteeList(num) {
                                 <div class="col-md-4 p0">
                                     <div class="box-two proerty-item">
                                         <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
+                                            <a href="property-1.html" ><img src="image/${list.mentoring_photo }"></a>
                                         </div>
                                         
                                         <div class="item-entry overflow">

@@ -12,7 +12,7 @@
 //멘토에게 질문하기
 function insertQueSom(id) {
 	var url="insertQuest?mentorid="+id;
-	window.open(url,"","width=500,height=600");
+	window.open(url,"","width=300,height=400");
 }
 </script>
 </head>
