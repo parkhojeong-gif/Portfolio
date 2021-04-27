@@ -41,19 +41,6 @@ public class ShoppingController {
 		return "mypage/payDetail";
 	}
 	
-	// 김찬곤 추가
-	// 멘토 상세페이지_장바구니 중복 체크&장바구니 담기
-	@ResponseBody
-	@RequestMapping(value="BasketCheck")
-	public int BasketCheck(ShoppingVO vo, Model model) {
-		int result = spService.BasketCheck(vo);
-		if(result==0) { // 테이블에 값이 없으면
-			spService.insertMentoringBasket(vo); // 장바구니에 담기
-			return result;
-		}else {
-			return result;
-		}
-	}
 	
 	// 김찬곤 추가
 	// 멘토 상세페이지_장바구니 중복 체크&장바구니 담기

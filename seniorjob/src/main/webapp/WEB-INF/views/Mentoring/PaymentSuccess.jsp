@@ -111,6 +111,7 @@ h1, h2, h3 {
 h1 {
     font-size: 32px;
     font-weight: 500;
+    text-align:center;
 }
 
 h2 {
@@ -302,7 +303,7 @@ a {
                                                         <tbody>
                                                         <tr class="total">
                                                             <td class="alignright" width="80%">결제금액</td>
-                                                            <td class="alignright">${shopping.mentoring_price }원</td>
+                                                            <td class="alignright">${shopping.men_price }원</td>
                                                         </tr>
                                                     </tbody></table>
                                                 </td>
@@ -312,7 +313,7 @@ a {
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <a href="getMain">메인페이지로 이동</a>
+                                        <a href="getMain">메인페이지로 이동</a><br>
                                         <a href="mypageHome">마이페이지로 이동</a>
                                     </td>
                                 </tr>
