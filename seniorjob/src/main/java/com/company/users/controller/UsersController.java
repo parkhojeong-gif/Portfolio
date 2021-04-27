@@ -362,7 +362,7 @@ public class UsersController {
 			if(file != null && ! file.isEmpty() && file.getSize() > 0) {
 				String filename = file.getOriginalFilename();    //업로드 된 파일의 파일명
 				//파일명 중복체크 -> rename
-				File rename = FileRenamePolicy.rename(new File("C:/upload", filename)); //transfer 하기 전에 이 파일이 있는지 검사
+				File rename = FileRenamePolicy.rename(new File("/upload", filename)); //transfer 하기 전에 이 파일이 있는지 검사
 				  
 				if(! start ) {
 					
@@ -400,7 +400,7 @@ public class UsersController {
 	public String certiDelete(UsersVO vo, Model model) {
 		UsersVO usersVo =  usersService.selCareer(vo);
 		String fileName = usersVo.getCarrer_certi();
-		new File("C:\\upload\\"+(fileName)).delete();  // 삭제
+		new File("/upload/"+(fileName)).delete();  // 삭제
 		usersService.delCareer(vo);
 		model.addAttribute("msg", "삭제되었습니다.");
 		model.addAttribute("url", "throughSom");

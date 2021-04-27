@@ -61,12 +61,12 @@ function allDel(){
 				        </tr>
 				      </c:when>
 				      </c:choose>  
-				     <%--  <c:if test="${cart eq null or empty cart}">
+				      </c:forEach>
+				      <c:if test="${empty list}">
 				      	<tr>
 				      		<th>장바구니가 텅 비었습니다.</th>
 				      	</tr>
-				      </c:if> --%>
-				      </c:forEach>
+				      </c:if>
 					  </tbody>
 					  <tfoot>
 					    <tr align="right">

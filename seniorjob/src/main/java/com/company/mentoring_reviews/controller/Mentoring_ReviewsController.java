@@ -125,7 +125,7 @@ public class Mentoring_ReviewsController {
 		return "redirect:/getSearchMentoringChanGon";
 	}
 	
-	//단건조회
+	//단건조회(수정폼 호출)
 	@RequestMapping("/getReviewsUp")
 	public String getReviewsUp(Mentoring_ReviewsVO vo, Model model) {
 		model.addAttribute("review", mentoring_ReviewsMapper.getReviewsUp(vo));

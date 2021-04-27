@@ -84,14 +84,16 @@
 		</div>
 	</div>
 <script>
+// 수정 action
 function updateR(str){
 	var yn = confirm("수정하시겠습니까?");
 	if(yn){
 		frm.action = "updateReviews?seq="+ str;
 		frm.submit();
 		alert("수정 완료!")
+		// 부모창 새로고침
+		opener.parent.location.reload();
 	}
-// 	window.close();
 }
 </script>
 	<!--         </div> -->

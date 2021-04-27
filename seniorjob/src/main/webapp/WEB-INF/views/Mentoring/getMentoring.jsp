@@ -263,6 +263,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 </div>
                             </div> -->
                             <!-- End video area  -->
+                            <!-- =================================멘토링 후기=================================================== -->
                             <div class="section property-features" id="reviewsList">    
                                 <h4 class="s-property-title">멘토링 후기</h4> 
                                 <div id="reviewss" style="display:none">
@@ -293,6 +294,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 								<hr>
 								</div>
 							</div>
+							<!-- =======================================멘토링 후기=============================================== -->
 <%-- 							<button type="button" id="paging" name="paging">${paging }</button> --%>
                             <!-- End features area  -->
 		                    <div class="input_request">
@@ -409,7 +411,7 @@ function mentoringPayForm(){
 		}
 	}
 	
-/* 글자수 제한 */	
+/* 글자수 제한(구매평) */	
 $(document).ready(function(){
 	$("textarea").keyup(function(){
 		var inputLength = $(this).val().length;
@@ -424,7 +426,6 @@ $(document).ready(function(){
 
 
 /* 댓글 조회 */
-
 $.ajax({
 	url: "getReviewsList",
 	data : { mentoring_number : ${mentoring.mentoring_number }},
@@ -504,14 +505,12 @@ $(document).on("click", "#delR", function(){
 		data:{ "seq" : seq },
 		dataType: "json",
 		success: function(response){
-			if(yn){
-				location.reload();
-			}
+			location.reload();
 		}
 	})
 })
 
-//수정
+//수정 페이지 window로 열기
 function upR(){
 	$(document).on("click", "#upR", function(){
 		var seq = $(this).parent().parent().children().closest("#seq").html();
