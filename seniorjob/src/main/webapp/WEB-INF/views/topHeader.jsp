@@ -92,6 +92,13 @@ li#topHeaderLi {
 div#btnNav {
     padding-top: 18px;
 }
+.proerty-th .proerty-item .item-entry h5 {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #9B9B9B;
+    letter-spacing: 2px;
+    position: initial;
+}
 </style>
 </head>
 <body>

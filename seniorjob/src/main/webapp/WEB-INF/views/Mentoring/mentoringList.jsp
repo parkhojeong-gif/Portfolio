@@ -138,17 +138,17 @@ input#searchKeyword {
 input#mentoring_kind {
     width: 700px;
 }
-div#mtStartDate {
+/* div#mtStartDate {
     position: absolute;
     left: 600px;
 }
 #mtEndDate{
 	position:absolute;
 	right:600px;
-}
-#search {
+} */
+/* #search {
     margin: 110px;
-}
+} */
 
 element.style {
     transform: translateX(406px);
@@ -172,6 +172,54 @@ element.style {
 .col-md-9.pr-30.padding-top-40.properties-page.user-properties {
     left: 123px;
 }
+.active, .dot:hover {
+    background-color: white;
+}
+li {
+    display: inline-block;
+    margin: 5px;
+    font-size: 25px;
+}
+div#mtStartDate {
+    left: 5px;
+    width: 350px;
+}
+div#mtEndDate {
+    width: 350px;
+    left: -33px;
+}
+input#mentoring_kind {
+    height: 64px;
+}
+button#search {
+    width: 146px;
+    height: 61px;
+}
+div#searchBox5 {
+    left: -21px;
+    top: -20px;
+}
+div#searchbox123 {
+    top: -23px;
+    right: -23px;
+}
+div#searchbox12344 {
+    margin-bottom: -85px;
+}
+p#intro123 {
+    width: 387px;
+    padding: 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+div#overflow123 {
+    height: 230px;
+}
+div#intro154w {
+    bottom: -39px;
+    left: -30px;
+}
 /* 이미지 슬라이드 */
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -191,20 +239,45 @@ element.style {
 	<form method="POST" action="getMentoringList" id="searchDateFrm" name="searchDateFrm">
 		<input type="hidden" name="page" value="1">
 		<div class="row row-space" align="center">
-		<h2>멘토링을 검색하세요!</h2>
-		<input id="mentoring_kind" name="mentoring_kind" class="form-control" type="text" placeholder="멘토 직무 검색 ex)마케팅,영업,IT" value="${MentoringVO.mentoring_kind }">
-			<div class="col-4">
+		
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-6" id="searchBox1">
+			<br>
+			<div class="col-lg-3" id="searchbox123"> 
+			<h4><strong>멘토링 검색</strong></h4>
+			<hr>
+			</div>
+			<br>
+			<div class="col-lg-10" id="searchBox2">
+				<input id="mentoring_kind" name="mentoring_kind" class="form-control" type="text" placeholder="멘토 직무 검색 ex)마케팅,영업,IT" value="${MentoringVO.mentoring_kind }">
+			</div>
+			<div class="col-lg-2">
+			</div>
+			<div class="col-lg-5" id="searchBox3">
 				<div class="input-group" id="mtStartDate">
 					<label class="label">멘토링 시작일</label> 
 					<input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" value="${MentoringVO.mentoring_begin_date }">
 				</div>
 			</div>
-			<div class="col-4">
+			<div class="col-lg-5" id="searchBox4">
 				<div class="input-group" id="mtEndDate">
 					<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" value="${MentoringVO.mentoring_end_date }">
 				</div>
 			</div>
-			<button id="search">검색</button>
+			<div class="col-lg-2" id="searchBox5">
+					<button class="btn btn-primary"id="search">검색</button>
+			</div>			
+			<div class="col-lg-12" id="searchbox12344">
+				<hr>
+			</div>	
+				
+		
+		</div>
+		<div class="col-lg-3">
+		</div>	
+			
+			
 		</div>
 	</form>
 	<br>	
@@ -274,15 +347,26 @@ element.style {
 									<div class="item-thumb">
 										<img src="image/${mentoring.mentoring_photo }" id="imgd">
 									</div>
-									<div class="item-entry overflow">
+									<div class="item-entry overflow" id="overflow123">
 										<h5>	
 											<a href="property-1.html">${mentoring.mentoring_name }</a>
 										</h5>
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span
-											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
-										<p style="display: none;">${mentoring.mentoring_begin_date }</p>
-										<p style="display: none;">${mentoring.mentoring_introduce }</p>
+											class="proerty-price pull-right" id="priceM">멘토링 가격: ${mentoring.mentoring_price }원</span>
+										<div class="col-lg-12"></div>	
+										<div class="col-lg-5">	
+										<p style="display: none;">${mentoring.mentoring_begin_date.substring(0,10) }</p>
+										</div>
+										<div class="col-lg-2">
+										<p><strong>~</strong></p>
+										</div>
+										<div class="col-lg-5">
+										<p style="display: none;">${mentoring.mentoring_end_date.substring(0,10) }</p>
+										</div>
+										<div class="col-lg-12" id="intro154w">
+										<p style="display: none;" id="intro123">${mentoring.mentoring_introduce }</p>
+										</div>
 									</div>
 								</div>
 								</div>
@@ -297,7 +381,7 @@ element.style {
 				<div id="nudge_wrap2" style="transform: traslateX(42px);">
 					<div id="order_list2" class="box_change_order2">
 							<div class="panel-heading">
-								<h3 class="panel-title">멘토링 등록</h3>
+								<h3 class="panel-title"><strong>멘토링 등록</strong></h3>
 							</div>
 							<form name="mentorRegisterForm" class="form-inline">
 							<div class="panel-body search-widget">

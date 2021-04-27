@@ -37,28 +37,14 @@
 #mentor_id{
   width: 285px;
 }
-.proerty-th .proerty-item .item-entry h5 {
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #9B9B9B;
-    letter-spacing: 2px;
-}
-.proerty-th .proerty-item .item-entry h5::after {
-    background: white;
-    width: 15px;
-    left: 20px;
-    height: 7px;
-    content: "";
-    position: absolute;
-    bottom: -16px;
-    display: block;
-}
+
 #mainContents{
 	padding-left:10px;
 }
 #mentoring_kind{
 	width:70px; padding:0 5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
 }
+
 </style>
 <body>
 
