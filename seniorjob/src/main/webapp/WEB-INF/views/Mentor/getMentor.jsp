@@ -8,13 +8,6 @@
 <title>멘토 상세 페이지</title>
 <!-- fontawesome cdn -->
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<script>
-//멘토에게 질문하기
-function insertQueSom(id) {
-	var url="insertQuest?mentorid="+id;
-	window.open(url,"","width=500,height=600");
-}
-</script>
 </head>
 <body>
 <!-- topHeader -->
@@ -218,7 +211,61 @@ function insertQueSom(id) {
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
+<<<<<<< HEAD
 
+=======
+<!-- Footer area-->
+  <div class="about-section">
+  <h1>${list.usersVO.name } 멘토님의 페이지</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
+<h2 style="text-align:center">Our Team</h2>
+<form name="getMentorInfo" method="post">
+<input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
+<input type="hidden" name="id" id="id" value="${list.id }">
+	<div class="row">
+		<div class="column">
+			<div class="card">
+				<div style="width: 200px; height: 150px; display:block">
+					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
+				</div>
+				<div class="container">
+					<p>
+						이름: <b>${list.usersVO.name }</b>
+					</p>
+					<p class="title">
+						멘토링 분야: <b>${list.mentoring_kind }</b>
+					</p>
+					<p>
+						회사 이름: <b>${list.mentor_company_name }</b>
+					</p>
+					<p>
+						부서 이름: <b>${list.mentor_department_name }</b>
+					</p>
+					<div style="border:1px solid black; padding-bottom:20px;">
+						<div style="float:left; margin-right:30px;">진행중인 멘토링: </div>
+						<div style="float:left; margin-left:30px;">팔로워 숫자: </div>
+					</div>
+					<p>
+					<c:if test="${empty users }">
+						<button class="button" type="button" onclick="loginCheck()">팔로우</button>
+					</c:if>
+					<c:if test="${not empty users }">
+						<button class="button" type="button" id="followBtn">팔로우</button>
+					</c:if>
+					<c:if test="${not empty users }">
+						<button class="button" type="button" id="followCancelBtn">팔로우 취소</button>
+					</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+		<p>
+		<hr>
+		<p>
+>>>>>>> branch '김찬곤4' of https://github.com/aekgmla77/seniorjob.git
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
@@ -227,6 +274,7 @@ function insertQueSom(id) {
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
+<<<<<<< HEAD
 
 	
 	
@@ -242,6 +290,9 @@ function insertQueSom(id) {
 			$(document).on("click", "#BasketBtn", function(){
 		}); 
 		
+=======
+	
+>>>>>>> branch '김찬곤4' of https://github.com/aekgmla77/seniorjob.git
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
@@ -258,7 +309,7 @@ function insertQueSom(id) {
 						}
 					});
 				});
-		}
+		} // end of getFollow
 		
 		function deleteFollow(){ // 멘토 팔로우 취소
 			$('#followCancelBtn').click(function(){
@@ -308,6 +359,7 @@ function insertQueSom(id) {
 			});
 		}
 		
+<<<<<<< HEAD
 		});
 	
 	// 장바구니 담기
@@ -319,7 +371,10 @@ function insertQueSom(id) {
 		}
 	}
 	
+=======
+>>>>>>> branch '김찬곤4' of https://github.com/aekgmla77/seniorjob.git
 
+	
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
@@ -344,9 +399,11 @@ function insertQueSom(id) {
 				location.href = "mentoringPayForm?mentor_id=${list.mentor_id}";
 			}
 		}
-	
-	
-	
+	//멘토에게 질문하기
+	function insertQueSom(id) {
+		var url="insertQuest?mentorid="+id;
+		window.open(url,"","width=500,height=600");
+	}
 </script>
 
 </body>

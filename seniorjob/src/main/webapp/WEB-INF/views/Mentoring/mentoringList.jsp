@@ -204,45 +204,6 @@ div#mtStartDate {
         <div class="text">ACNE STUDIO</div>
       </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">4 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">5 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">6 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-        <div class="text">ACNE STUDIO</div>
-      </div>
 	</c:forEach>
       <!-- Next and previous buttons -->
       <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
