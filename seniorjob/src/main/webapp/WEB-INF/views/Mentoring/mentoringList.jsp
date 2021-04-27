@@ -20,9 +20,9 @@ h1{text-align:center}
 	right: 0;
 	padding-top: 110px;
 }
-#sidebar ul { 
-	padding: 10px; 
-}
+/* #sidebar ul {  */
+/* 	padding: 10px;  */
+/* } */
 #mainCopy{
 	font-size: 40px;
 	padding:30px; 
@@ -42,7 +42,7 @@ input#searchKeyword {
 /* Slideshow container */
 .slideshow-container {
   max-width: 700px;
-  max-height: 300px;
+  max-height: 500px;
   position: relative;
   margin: auto;
 }
@@ -135,7 +135,20 @@ input#searchKeyword {
   from {opacity: .4}
   to {opacity: 1}
 }
-
+input#mentoring_kind {
+    width: 700px;
+}
+div#mtStartDate {
+    position: absolute;
+    left: 600px;
+}
+#mtEndDate{
+	position:absolute;
+	right:600px;
+}
+#search {
+    margin: 110px;
+}
 /* 이미지 슬라이드 */
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -159,7 +172,7 @@ input#searchKeyword {
 		<input type="hidden" name="page" value="1">
 		<div class="row row-space" align="center">
 		<h2>멘토링을 검색하세요!</h2>
-		<input id="mentoring_kind" name="mentoring_kind" class="form-control" type="text" value="" placeholder="멘토 직무 검색 ex)마케팅,영업,IT" value="${MentoringVO.mentoring_kind }">
+		<input id="mentoring_kind" name="mentoring_kind" class="form-control" type="text" placeholder="멘토 직무 검색 ex)마케팅,영업,IT" value="${MentoringVO.mentoring_kind }">
 			<div class="col-4">
 				<div class="input-group" id="mtStartDate">
 					<label class="label">멘토링 시작일</label> 
@@ -171,7 +184,7 @@ input#searchKeyword {
 					<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" value="${MentoringVO.mentoring_end_date }">
 				</div>
 			</div>
-			<button>검색</button>
+			<button id="search">검색</button>
 		</div>
 	</form>
 	<br>	

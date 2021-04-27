@@ -108,11 +108,17 @@
 	<!-- 송다희 추가 -->
 	<!-- 멘토링 댓글 단건조회 -->
 	<select id="getReviewsList" resultType="Mentoring_ReviewsVO">
-	SELECT MENTORING_REVIEWS.SEQ, MENTORING_REVIEWS.W_DATE, MENTORING_REVIEWS.CONTENT, MENTORING_REVIEWS.ID, MENTORING_REVIEWS.MENTORING_NUMBER
-	FROM MENTORING_REVIEWS MENTORING_REVIEWS, MENTORING MENTORING
-	WHERE MENTORING_REVIEWS.MENTORING_NUMBER = MENTORING.MENTORING_NUMBER
-	AND MENTORING_REVIEWS.MENTORING_NUMBER = #{mentoring_number}
+<!-- 	SELECT B.* FROM(SELECT ROWNUM RN, A.*   FROM( -->
+	SELECT	 MENTORING_REVIEWS.SEQ, 
+	  		 MENTORING_REVIEWS.W_DATE, 
+	  		 MENTORING_REVIEWS.CONTENT, 
+	  		 MENTORING_REVIEWS.ID, 
+	  		 MENTORING_REVIEWS.MENTORING_NUMBER
+	FROM 	 MENTORING_REVIEWS MENTORING_REVIEWS, MENTORING MENTORING
+	WHERE	 MENTORING_REVIEWS.MENTORING_NUMBER = MENTORING.MENTORING_NUMBER
+	AND 	 MENTORING_REVIEWS.MENTORING_NUMBER = #{mentoring_number}
 	ORDER BY MENTORING_REVIEWS.SEQ
+<!-- 	) A   ) B  WHERE RN BETWEEN #{start} AND #{end} -->
 	</select>
 	<!-- 구매내역 조회 -->
 	<select id="searchShopping" resultType="int" >
@@ -120,8 +126,9 @@
 	FROM MENTORING MENTORING, SHOPPING SHOPPING
 	WHERE MENTORING.MENTORING_NUMBER = SHOPPING.MENTORING_NUMBER
   	AND SHOPPING.ID=#{id}
+  	AND SHOPPING.MENTORING_NUMBER =#{mentoring_number}
 	</select>
-	
+	<!-- 등록 -->
 	<insert id="insertReviewsMen">
 	INSERT INTO MENTORING_REVIEWS(SEQ, 
 								  W_DATE, 
@@ -134,19 +141,47 @@
 			 #{id},
 			 #{mentoring_number})
 	</insert>
-	
+	<!-- 삭제 -->
 	<delete id="deleteReviews">
 	DELETE FROM MENTORING_REVIEWS WHERE SEQ = #{seq}
 	</delete>
-	
+	<!-- 수정 -->
 	<update id="updateReviews">
-	UPDATE mentoring_reviews set content = #{content} where seq = #{seq}
+	UPDATE MENTORING_REVIEWS SET CONTENT = #{content} WHERE SEQ = #{seq}
 	</update>
-	
+	<!-- 후기글 작성은 한번만 하는 쿼리 -->
 	<select id="getReviewOne" resultType="int">
 	  SELECT COUNT(*)
 	  FROM MENTORING_REVIEWS
 	  WHERE ID = #{id}
 	  AND MENTORING_NUMBER = #{mentoring_number}
+	</select>
+	
+	<select id="getOneReviews" resultType="Mentoring_ReviewsVO">
+		SELECT	 MENTORING_REVIEWS.SEQ, 
+		  		 MENTORING_REVIEWS.W_DATE, 
+		  		 MENTORING_REVIEWS.CONTENT, 
+		  		 MENTORING_REVIEWS.ID, 
+		  		 MENTORING_REVIEWS.MENTORING_NUMBER
+		FROM 	 MENTORING_REVIEWS MENTORING_REVIEWS, MENTORING MENTORING
+		WHERE	 MENTORING_REVIEWS.MENTORING_NUMBER = MENTORING.MENTORING_NUMBER
+		AND 	 MENTORING_REVIEWS.MENTORING_NUMBER = #{mentoring_number}
+	  	AND 	 MENTORING_REVIEWS.SEQ = #{seq}
+		ORDER BY MENTORING_REVIEWS.SEQ
+	</select>
+	<!-- 페이징 -->
+	<select id="getRcount" resultType="int">
+		SELECT COUNT(*)
+		FROM MENTORING_REVIEWS
+	</select>
+	<!-- 후기 단건조회 -->
+	<select id="getReviewsUp" resultType="Mentoring_ReviewsVO">
+	SELECT SEQ,
+		   W_DATE,
+		   CONTENT,
+		   ID,
+		   MENTORING_NUMBER
+	FROM   MENTORING_REVIEWS
+	WHERE  SEQ = #{seq}	   
 	</select>
  </mapper>

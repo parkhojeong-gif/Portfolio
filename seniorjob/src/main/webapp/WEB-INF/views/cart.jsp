@@ -50,7 +50,6 @@ function allDel(){
 				        	<th>
 				        		<div class="chBox">
 				        			<input type="checkbox" id="del" name="del" value="${cart.cart_no }" >
-				        			
 				        		</div>
 				        	</th>
 				        	<input type="hidden" id="mentoring_number" name="mentoring_number" value="${cart.mtNum.mentoring_number }">

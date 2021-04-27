@@ -263,6 +263,10 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 <h4 class="s-property-title">멘토링 후기</h4> 
                                 <div id="reviewss" style="display:none">
                                 <div class="score_reple" >
+                                <div align="right" class="checke">
+                                	<input type="checkbox" id="che">
+                                </div>
+                                <span id="seq"></span>
 									<p>
 										<span class="ico_viewer">(구매자)</span>
 									</p>
@@ -279,12 +283,16 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 											<em id="reviews_wDate"></em>
 										</dt>
 									</dl>
-									<button type="button" onclick="">삭제</button><br>
-									<button type="button" onclick="">수정</button>
+									
+									<div align="right">
+									<a id="delR">삭제</a>
+									<a id="upR" onclick="upR()">수정</a>
+									</div>
 								</div>
 								<hr>
 								</div>
 							</div>
+<%-- 							<button type="button" id="paging" name="paging">${paging }</button> --%>
                             <!-- End features area  -->
 		                    <div class="input_request">
 		                    <h3>구매평 등록</h3>
@@ -415,6 +423,7 @@ $(document).ready(function(){
 
 
 /* 댓글 조회 */
+
 $.ajax({
 	url: "getReviewsList",
 	data : { mentoring_number : ${mentoring.mentoring_number }},
@@ -422,10 +431,43 @@ $.ajax({
 	success: function(response){
 		for(i=0; i < response.length; i++){
 			var list = $($("#reviewss").html());
+			if(response[i].id != '${users.id}'){
+				list.find("#delR").remove();
+				list.find("#upR").remove();
+			}
+			list.find("#seq").html(response[i].seq);
 			list.find("#review_content").html(response[i].content);
 			list.find("#review_id").html(response[i].id);
 			list.find("#reviews_wDate").html(response[i].w_date);
 			$("#reviewsList").append(list);
+			
+			
+			//paging버튼
+            /* $("#paging").empty();
+            var totalRecord = response.paging.totalRecord;
+            var lastPage = response.paging.lastPage;
+            var page = response.paging.page;
+            var pageSize = response.paging.pageSize;
+            var endPage = response.paging.endPage;
+            var startPage = response.paging.startPage;
+            if (startPage > 1) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (startPage - 1) + ")'>" + "&laquo;"
+                           + "</a>");
+            }
+            for (i = startPage; i <= endPage; i++) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList(" + (i)
+                           + ")'>" + i + "</a>");
+            }
+            if (lastPage > endPage) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (endPage + 1) + ")'>" + "&raquo;"
+                           + "</a>");
+            } */
+
 		}
 	}
 })
@@ -447,11 +489,48 @@ $("#submitReview").on("click", function(){
 			}else{
 				alert("구매하신 상품이 아닙니다.");
 			}
+			location.reload();
 		}
 	})
 })
 
-	
+// 삭제
+$(document).on("click", "#delR", function(){
+	var seq = $(this).parent().parent().children().closest('#seq').html();
+	$.ajax({
+		url: "deleteReviews",
+		data:{ "seq" : seq },
+		dataType: "json",
+		success: function(response){
+			confirm("삭제 하시겠습니까?");
+			location.reload();
+		}
+	})
+})
+
+//수정
+function upR(){
+	$(document).on("click", "#upR", function(){
+		var seq = $(this).parent().parent().children().closest('#seq').html();
+		console.log(seq)
+		window.open("getReviewsUp?seq=" + seq,
+	                "수정", "width=500, height=500, resizable = no");
+	})
+}
+
+/* 후기글 한 번 이상 작성하지 못하게 하는 거 */
+$(document).on("click", "#content", function(){
+	$.ajax({
+		url: "getReviewOne",
+		data : { mentoring_number : ${mentoring.mentoring_number }},
+		dataType: "json",
+		success: function(result){
+			if(result >= 1){
+				alert("이미 작성하신 후기글이 존재합니다.")
+			}
+		}
+	})
+})
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
