@@ -89,6 +89,9 @@ ul.list-inline.topHeader {
 li#topHeaderLi {
     bottom: -18px;
 }
+div#btnNav {
+    padding-top: 18px;
+}
 </style>
 </head>
 <body>
@@ -161,7 +164,7 @@ li#topHeaderLi {
 
 
 				<c:if test="${users.auth eq null and empty userInfo}">
-					<div class="button navbar-right">
+					<div class="button navbar-right" id="btnNav">
 						<button class="navbar-btn nav-button wow bounceInRight login"
 							style="height: 50px; width: 130px"
 							onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>

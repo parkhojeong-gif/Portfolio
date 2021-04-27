@@ -209,57 +209,6 @@
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
-<!-- Footer area-->
-  <div class="about-section">
-  <h1>${list.usersVO.name } 멘토님의 페이지</h1>
-  <p>Some text about who we are and what we do.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
-</div>
-<h2 style="text-align:center">Our Team</h2>
-<form name="getMentorInfo" method="post">
-<input type="hidden" name="mentor_id" id="mentor_id" value="${list.mentor_id }">
-<input type="hidden" name="id" id="id" value="${list.id }">
-	<div class="row">
-		<div class="column">
-			<div class="card">
-				<div style="width: 200px; height: 150px; display:block">
-					<img src="../resources/assets/img/mentor/photoDefault.jpg" style="width: 70%">
-				</div>
-				<div class="container">
-					<p>
-						이름: <b>${list.usersVO.name }</b>
-					</p>
-					<p class="title">
-						멘토링 분야: <b>${list.mentoring_kind }</b>
-					</p>
-					<p>
-						회사 이름: <b>${list.mentor_company_name }</b>
-					</p>
-					<p>
-						부서 이름: <b>${list.mentor_department_name }</b>
-					</p>
-					<div style="border:1px solid black; padding-bottom:20px;">
-						<div style="float:left; margin-right:30px;">진행중인 멘토링: </div>
-						<div style="float:left; margin-left:30px;">팔로워 숫자: </div>
-					</div>
-					<p>
-					<c:if test="${empty users }">
-						<button class="button" type="button" onclick="loginCheck()">팔로우</button>
-					</c:if>
-					<c:if test="${not empty users }">
-						<button class="button" type="button" id="followBtn">팔로우</button>
-					</c:if>
-					<c:if test="${not empty users }">
-						<button class="button" type="button" id="followCancelBtn">팔로우 취소</button>
-					</c:if>
-					</div>
-				</div>
-			</div>
-		</div>
-		</form>
-		<p>
-		<hr>
-		<p>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
