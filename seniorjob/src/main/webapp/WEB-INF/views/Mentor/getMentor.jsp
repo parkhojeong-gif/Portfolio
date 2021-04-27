@@ -65,7 +65,6 @@
                                         <span class="property-info-value">3</span>
                                     </span>
                                 </div>
-
                                 <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-bath">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
@@ -77,7 +76,6 @@
                                         <span class="property-info-value">3.5</span>
                                     </span>
                                 </div>
-
                                 <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
                                     <span class="property-info-icon icon-garage">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
@@ -211,9 +209,6 @@
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
-<<<<<<< HEAD
-
-=======
 <!-- Footer area-->
   <div class="about-section">
   <h1>${list.usersVO.name } 멘토님의 페이지</h1>
@@ -265,7 +260,6 @@
 		<p>
 		<hr>
 		<p>
->>>>>>> branch '김찬곤4' of https://github.com/aekgmla77/seniorjob.git
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
@@ -274,25 +268,7 @@
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
-<<<<<<< HEAD
-
 	
-	
-	$(function(){
-		var name = $('#mentoring_name').val();
-		var price = $("#mentoring_price").val();
-		var start = $("#men_start").val();
-		var end = $("#met_end").val();
-		var number = $("#mentoring_number").val();
-		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
-		var local = localStorage.setItem('products', item);
-		console.log(JSON.stringify(item));
-			$(document).on("click", "#BasketBtn", function(){
-		}); 
-		
-=======
-	
->>>>>>> branch '김찬곤4' of https://github.com/aekgmla77/seniorjob.git
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
@@ -358,23 +334,6 @@
 				}
 			});
 		}
-		
-<<<<<<< HEAD
-		});
-	
-	// 장바구니 담기
-	function insertC(){
-		var yn = confirm("장바구니에 담으시겠습니까?");
-		if(yn){
-			mentoringForm.action = "insertCart";
-			mentoringForm.submit();
-		}
-	}
-	
-=======
->>>>>>> branch '김찬곤4' of https://github.com/aekgmla77/seniorjob.git
-
-	
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){

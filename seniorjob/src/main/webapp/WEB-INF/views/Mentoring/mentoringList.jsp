@@ -41,8 +41,8 @@ input#searchKeyword {
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 700px;
-  max-height: 500px;
+  max-width: 260px;
+  max-height: 200px;
   position: relative;
   margin: auto;
 }
@@ -149,6 +149,29 @@ div#mtStartDate {
 #search {
     margin: 110px;
 }
+
+element.style {
+    transform: translateX(406px);
+}
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 250px;
+    right: 80%;
+    margin-left: 100px;
+}
+
+#nudge_wrap2 {
+    width: 260px;
+    position: fixed;
+    top: 350px;
+    left: 70%;
+    margin-left: 100px;
+}
+
+.col-md-9.pr-30.padding-top-40.properties-page.user-properties {
+    left: 123px;
+}
 /* 이미지 슬라이드 */
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -157,14 +180,11 @@ div#mtStartDate {
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
 <!-- topHeader -->
-<c:if test="${not empty list }">
+<%-- <c:if test="${not empty list }">
 	<h1 class="display-4" id="mainCopy">현직자 멘토와 함께 직무경험을 쌓아보세요!</h1>
 	<footer class="blockquote-footer" style="text-align:center">아래 원하는 멘토링을 클릭하면 해당 멘토링 상세 정보 확인이 가능합니다.</footer>
-</c:if>
-<c:if test="${empty list }">
-	<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
-	<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
-</c:if>
+</c:if> --%>
+
 	<!-- 멘토링 리스트 출력 -->
 	<br>
 	<!-- 페이징 & 검색 -->
@@ -189,45 +209,55 @@ div#mtStartDate {
 	</form>
 	<br>	
 	<!-- 이미지 슬라이드 -->
-	<div class="slideshow-container">
-      <!-- Full-width images with number and caption text -->
-      <c:forEach items="${random }" var="random">
-      <input type="hidden" id="mentor_id" name="mentor_id" value="${random.mentor_id }">
-	  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${random.mentoring_number }">
-	  <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${random.mentoring_kind }">
-	  <input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${random.mentoring_begin_date }">
-	  <input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${random.mentoring_end_date }">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 6</div>
-        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
-        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-        <div class="text">ACNE STUDIO</div>
-      </div>
-
-	</c:forEach>
-      <!-- Next and previous buttons -->
-      <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
-      <a class="next" onclick="moveSlides(1)">&#10095;</a>
-    </div>
-    <br/>
-
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-      <span class="dot" onclick="currentSlide(5)"></span>
-    </div>
+	<div id="nudge_wrap" style="transform: traslateX(42px);">
+		<div class="inner">
+			<div id="order_list" class="box_change_order">
+			<div class="slideshow-container">
+		      <!-- Full-width images with number and caption text -->
+		      <c:forEach items="${random }" var="random">
+		      <input type="hidden" id="mentor_id" name="mentor_id" value="${random.mentor_id }">
+			  <input type="hidden" id="mentoring_number" name="mentoring_number" value="${random.mentoring_number }">
+			  <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${random.mentoring_kind }">
+			  <input type="hidden" id="mentoring_begin_date" name="mentoring_begin_date" value="${random.mentoring_begin_date }">
+			  <input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${random.mentoring_end_date }">
+		      <div class="mySlides fade">
+		        <div class="numbertext">1 / 6</div>
+		        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
+		        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
+		        <div class="text">ACNE STUDIO</div>
+		      </div>
+		
+			</c:forEach>
+		      <!-- Next and previous buttons -->
+		      <a class="prev" onclick="moveSlides(-1)">&#10094;</a>
+		      <a class="next" onclick="moveSlides(1)">&#10095;</a>
+		    </div>
+		    <br/>
+		
+		    <!-- The dots/circles -->
+		    <div style="text-align:center">
+		      <span class="dot" onclick="currentSlide(0)"></span>
+		      <span class="dot" onclick="currentSlide(1)"></span>
+		      <span class="dot" onclick="currentSlide(2)"></span>
+		      <span class="dot" onclick="currentSlide(3)"></span>
+		      <span class="dot" onclick="currentSlide(4)"></span>
+		      <span class="dot" onclick="currentSlide(5)"></span>
+		    </div>
+		    </div>
+	    </div>
+	</div>
 
 	<!-- 이미지 슬라이드 -->
 	
+	<c:if test="${empty list }">
+		<h1 class="display-4" id="mainCopy">찾으시는 멘토링 정보가 없습니다.</h1>
+		<button class="btn btn-primary" onclick="history.back(-1)" style="margin:auto; display:block;">뒤로가기</button>
+	</c:if>
 	
 	
 	<div class="content-area recent-property" style="background-color: #FFF;">
 		<div class="container">
-			<div class="row">
+			<div class="row" align="center">
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
 					<div class="section">
 						<div id="list-type" class="proerty-th-list">
@@ -264,9 +294,8 @@ div#mtStartDate {
 					</div>
 				</div>
 				<!-- 플로팅 배너 -->
-				<div class="col-md-3 p0 padding-top-40" id="sidebar">
-					<div class="blog-asside-right">
-						<div class="panel panel-default sidebar-menu wow fadeInRight animated">
+				<div id="nudge_wrap2" style="transform: traslateX(42px);">
+					<div id="order_list2" class="box_change_order2">
 							<div class="panel-heading">
 								<h3 class="panel-title">멘토링 등록</h3>
 							</div>
@@ -287,12 +316,12 @@ div#mtStartDate {
 										
 									</div>
 								</div>
-								</div>
 							</form>
 						</div>
 					</div>
 				</div>
 				<!-- End of 플로팅 배너 -->
+				
 			</div>
 		</div>
 	</div>
@@ -348,7 +377,7 @@ function MentoringRegister(){
 
 
 /* 플로팅 배너 */
-$(function() {
+/* $(function() {
 	var offset = $("#sidebar").offset();
 	var topPadding = 300;
 	$(window).scroll(function() {
@@ -362,7 +391,7 @@ $(function() {
 			});
 		};
 	});
-});
+}); */
 /* 플로팅 배너 */
 
 //송다희 추가
