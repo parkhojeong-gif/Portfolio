@@ -14,20 +14,16 @@
 <div class="main-content container-fluid">
 	<div class="page-title">
 		<div class="row">
-			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>멘토링 관리</h3>
+			<div class="col-12 col-md-6 order-md-1 order-last" style="text-align: center; width: 1300px; font-family:monospace;">
+				<h1>멘토링 관리</h1><br/>
 				<p class="text-subtitle text-muted">전체 멘토링을 볼 수 있는 목록 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
-				<nav aria-label="breadcrumb" class='breadcrumb-header'>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="managerMain">메인</a></li>
-						<li class="breadcrumb-item active" aria-current="page">멘토링 관리</li>
-					</ol>
-				</nav>
+				
 			</div>
 		</div>
 	</div>
+
 	<section class="section">
 		<div class="card">
 			<div class="card-header">멘토링 데이터 테이블</div>

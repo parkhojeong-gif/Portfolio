@@ -112,7 +112,7 @@ div#btnNav {
 								<c:when test="${users.auth eq 'ADMIN'}">
 									<li  id="li22">
 									<a href="#">${sessionScope.users.id} 관리자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="managerMain">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="userList">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'USER'}">
