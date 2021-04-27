@@ -92,6 +92,10 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 .c-application.c-box.edu-detail--content {
     border: 2px solid darkgrey;
 }
+
+#imggg{
+	width: 200px;
+}
 </style>
 
 <form id="submitFrm" name="submitFrm" method="post">
@@ -129,7 +133,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                             <i class="fa fa-print"></i> 
                                         </a>
                                     </div> 
-                                            <img src="image/${mentoring.mentoring_photo }" />
+                                   <img src="image/${mentoring.mentoring_photo }" id="imggg" />
                                 </div>
                             </div>
                         </div>
@@ -263,9 +267,6 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 <h4 class="s-property-title">멘토링 후기</h4> 
                                 <div id="reviewss" style="display:none">
                                 <div class="score_reple" >
-                                <div align="right" class="checke">
-                                	<input type="checkbox" id="che">
-                                </div>
                                 <span id="seq"></span>
 									<p>
 										<span class="ico_viewer">(구매자)</span>
@@ -297,7 +298,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 		                    <div class="input_request">
 		                    <h3>구매평 등록</h3>
 		                    <br>
-								<textarea id="content" row="8" cols="50" rows="8" class="input_textarea" placeholder="후기를 작성하세요."></textarea>
+								<textarea id="content" row="8" cols="100" rows="8" class="input_textarea" placeholder="후기를 작성하세요." style="resize: none"></textarea>
 								<p class="text_length"><h6 id="ment_cnt">0</h6> / 1000</p>
 							</div>
 							<div align="right"><button type="button" id="submitReview" name="submitReview">등록</button></div>	
@@ -486,24 +487,26 @@ $("#submitReview").on("click", function(){
 				list.find("#review_id").html(result.id);
 				list.find("#reviews_wDate").html(result.w_date);
 				$("#reviewsList").append(list);
+				location.reload();
 			}else{
 				alert("구매하신 상품이 아닙니다.");
 			}
-			location.reload();
 		}
 	})
 })
 
 // 삭제
 $(document).on("click", "#delR", function(){
+	var yn = confirm("삭제 하시겠습니까?");
 	var seq = $(this).parent().parent().children().closest('#seq').html();
 	$.ajax({
 		url: "deleteReviews",
 		data:{ "seq" : seq },
 		dataType: "json",
 		success: function(response){
-			confirm("삭제 하시겠습니까?");
-			location.reload();
+			if(yn){
+				location.reload();
+			}
 		}
 	})
 })
@@ -511,7 +514,7 @@ $(document).on("click", "#delR", function(){
 //수정
 function upR(){
 	$(document).on("click", "#upR", function(){
-		var seq = $(this).parent().parent().children().closest('#seq').html();
+		var seq = $(this).parent().parent().children().closest("#seq").html();
 		console.log(seq)
 		window.open("getReviewsUp?seq=" + seq,
 	                "수정", "width=500, height=500, resizable = no");

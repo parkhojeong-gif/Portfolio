@@ -122,7 +122,7 @@ public class Mentoring_ReviewsController {
 	@RequestMapping("/updateReviews")
 	public String updateReviews(Mentoring_ReviewsVO vo) {
 		mentoring_ReviewsMapper.updateReviews(vo);
-		return "redirect:/getSearchResumeList";
+		return "redirect:/getSearchMentoringChanGon";
 	}
 	
 	//단건조회
@@ -132,6 +132,7 @@ public class Mentoring_ReviewsController {
 		return "mentoringReviews/updateMenReviews";
 	}
 	
+	//후기글 하나 이상 못 올리게 확인
 	@RequestMapping("/getReviewOne")
 	public @ResponseBody int getReviewOne(Mentoring_ReviewsVO vo, HttpServletRequest req) {
 		HttpSession session = req.getSession();

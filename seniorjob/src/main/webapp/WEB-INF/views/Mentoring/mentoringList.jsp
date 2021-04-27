@@ -273,7 +273,7 @@ div#mtStartDate {
 							<div class="col-md-4 p0">
 							<c:forEach var="mentoring" items="${list }">
 							<form id="frm" name="frm" action="getSearchMentoringChanGon">
-							<div id="mentorList">
+							<div id="mentorList" onclick="location.href='getSearchMentoringChanGon?mentor_id=${mentoring.mentor_id }&mentoring_number=${mentoring.mentoring_number }&mentoring_kind=${mentoring.mentoring_kind }&mentoring_begin_date=${mentoring.mentoring_begin_date }&mentoring_end_date=${mentoring.mentoring_end_date }'">
 							<input type="hidden" id="mentor_id" name="mentor_id" value="${mentoring.mentor_id }">
 							<input type="hidden" id="mentoring_number" name="mentoring_number" value="${mentoring.mentoring_number }">
 							<input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mentoring.mentoring_kind }">
@@ -281,7 +281,7 @@ div#mtStartDate {
 							<input type="hidden" id="mentoring_end_date" name="mentoring_end_date" value="${mentoring.mentoring_end_date }">
 								<div class="box-two proerty-item">
 									<div class="item-thumb">
-										<img src="image/${mentoring.mentoring_photo }">
+										<img src="image/${mentoring.mentoring_photo }" id="imgd">
 									</div>
 									<div class="item-entry overflow">
 										<h5>	
@@ -292,9 +292,6 @@ div#mtStartDate {
 											class="proerty-price pull-right">멘토링 가격: ${mentoring.mentoring_price }원</span>
 										<p style="display: none;">${mentoring.mentoring_begin_date }</p>
 										<p style="display: none;">${mentoring.mentoring_introduce }</p>
-											<div class="dealer-action p	ull-right">
-												<input type="submit" value="상세보기">
-											</div>
 									</div>
 								</div>
 								</div>

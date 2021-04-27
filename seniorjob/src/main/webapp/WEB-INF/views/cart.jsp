@@ -79,8 +79,8 @@ function allDel(){
 					</table>
 					<div align="right">
 						<button type="button" class="btn btn-primary" onclick="mentoringPayForm()">결제하기</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='getMentorList'">상품 둘러보기</button>
-						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='getMentoringList'">상품 둘러보기</button>
+<!-- 						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button> -->
 					</div>
 					</form>
 					</div>
