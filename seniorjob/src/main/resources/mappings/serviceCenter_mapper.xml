@@ -99,6 +99,8 @@
 	UPDATE service_center 
 	<set>
 	title = #{title},
+	CATEGORY_B = #{category_b},
+	W_DATE = sysdate,
 	content = #{content}
 	</set>
 					where SEQ = #{seq}
