@@ -336,9 +336,7 @@
 				}
 			});
 		}
-		
 
-	
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
