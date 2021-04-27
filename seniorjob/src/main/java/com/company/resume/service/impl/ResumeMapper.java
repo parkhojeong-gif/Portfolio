@@ -21,4 +21,7 @@ public interface ResumeMapper {
 	public List<ResumeVO> checkR(ResumeVO vo);
 	
 	public int colReUpdate(ResumeVO vo);
+	
+	//이력서 개인 목록 조회
+	public List<ResumeVO> getSearchResumeListSom(ResumeVO vo);
 }

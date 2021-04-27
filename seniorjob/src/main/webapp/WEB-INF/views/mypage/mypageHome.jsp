@@ -6,10 +6,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <jsp:include page="../topHeader.jsp" />
  <head>
-   <link href='/resources/fullcalendar/lib/main.css' rel='stylesheet' />
-    <script src='/resources/fullcalendar/lib/main.js'></script>
+   <link href='resources/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='resources/fullcalendar/lib/main.js'></script>
      
-    
+     
     
     <script>
 
@@ -297,11 +297,8 @@ function reply() {
 				<jsp:include page="../mypage.jsp" />
 
 				<div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
-				<div class="section" id='calendar'>
-				</div>
 				
-				
-					<div class="section">
+								<div class="section">
 						<h3>열정적인 멘토, ${name } 님</h3>
 
 						<div id="wrap_notification">
@@ -333,16 +330,7 @@ function reply() {
 											<div class="bx-viewport" aria-live="polite"
 												style="width: 100%; overflow: hidden; position: relative; height: 190px;">
 												<ul class="slider my" id="ulId" style="width: 6215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-													<li aria-hidden="false" style="float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;">
-													<a href="/zf_user/company-review-qst-and-ans" target="_blank" onclick="" class="link my_notification_card_link" data-gtm_creative="card_main" data-gtm_position="d15"></a>
-														<div class="inner">
-															<dl>
-																<dt class="title">
-																	홍길동 멘티가<br>이력서를 보냈어요!<br>첨삭해주세요!
-																</dt>
-															</dl>
-														</div>
-													</li>
+													
 												
 												</ul>
 											</div>
@@ -362,6 +350,14 @@ function reply() {
 						</div>
 
 					</div> <!-- section -->
+				
+				
+				
+				<div class="section" id='calendar'>
+				</div>
+				
+				
+	
 				</div>
 			</div>
 		</div>
