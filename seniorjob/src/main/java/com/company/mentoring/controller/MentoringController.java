@@ -41,6 +41,7 @@ public class MentoringController {
 	@Autowired MentoringService mtService;
 	@Autowired UsersService usersService;
 	@Autowired ShoppingService shoppingService;
+	@Autowired CartService cartService;
 	
 //	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	@Autowired CartService cartservice;
@@ -153,7 +154,7 @@ public class MentoringController {
 	@ResponseBody
 	@RequestMapping("/mentoringPayProc")
 	public int mentoringPayProc(ShoppingVO vo, CartVO cvo) {
-		int result = shoppingService.BasketCheck(vo);
+		int result = shoppingService.paymentChk(vo);
 		if(result==0) { // 테이블에 값이 없으면(장바구니에 없으면)
 			shoppingService.mentoringPayProc(vo); // Insert
 			

@@ -9,6 +9,11 @@
 <!-- fontawesome cdn -->
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
+<style>
+#mentorCareerTxt{
+	width:220px;  white-space:normal;
+}
+</style>
 <body>
 <!-- topHeader -->
 <jsp:include page="../topHeader.jsp" />
@@ -109,7 +114,7 @@
                             <div class="section">
                                 <h4 class="s-property-title">주요 경력</h4>
                                 <div class="s-property-content">
-                                    <p>${mentor.mentor_career }</p>
+                                    <p id="mentorCareerTxt">${mentor.mentor_career }</p>
                                 </div>	
                             </div>
 

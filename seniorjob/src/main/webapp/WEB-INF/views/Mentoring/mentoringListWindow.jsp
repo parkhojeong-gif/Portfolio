@@ -21,12 +21,18 @@
 <div class="numberlist">
 	 <form name="submitFrm" action="getSearchMentoringChanGon">
 	 <ol>
+	 <c:if test="${not empty mentoring }">
 	 <c:forEach var="mt" items="${mentoring }">
 	 <input type="hidden" id="mentor_id" name="mentor_id" value="${mt.mentor_id }">
 	 <input type="hidden" id="mentoring_number" name="mentoring_number" value="${mt.mentoring_number }">
 	 <input type="hidden" id="mentoring_kind" name="mentoring_kind" value="${mt.mentoring_kind }">
 	  	<li><a href="#" onclick="getMentoring()">${mt.mentoring_name }</a></li>
 	 </c:forEach>
+	 </c:if>
+	 
+	 <c:if test="${empty mentoring }">
+	 	<h3 style="text-align:center">- 등록된 멘토링이 없습니다 -</h3>
+	 </c:if>
 	 </ol>
 	 </form>
 </div>
