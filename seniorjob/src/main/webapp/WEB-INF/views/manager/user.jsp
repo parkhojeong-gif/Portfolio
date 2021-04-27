@@ -28,17 +28,13 @@ cursor : pointer;
 <div class="main-content container-fluid">
 	<div class="page-title">
 		<div class="row">
-			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>회원 관리</h3>
+			<div class="col-12 col-md-6 order-md-1 order-last" style="text-align: center; width: 1300px; font-family:monospace;">
+				<h1>회원 관리</h1><br/>
 				<p class="text-subtitle text-muted">전체 회원 목록 조회 또는 멘토 승급 페이지입니다.</p>
 			</div>
+			<br/>
 			<div class="col-12 col-md-6 order-md-2 order-first">
-				<nav aria-label="breadcrumb" class='breadcrumb-header'>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="managerMain">메인</a></li>
-						<li class="breadcrumb-item active" aria-current="page">회원관리</li>
-					</ol>
-				</nav>
+				
 			</div>
 		</div>
 	</div>
