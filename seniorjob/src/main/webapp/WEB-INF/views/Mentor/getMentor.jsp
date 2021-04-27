@@ -8,13 +8,6 @@
 <title>멘토 상세 페이지</title>
 <!-- fontawesome cdn -->
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<script>
-//멘토에게 질문하기
-function insertQueSom(id) {
-	var url="insertQuest?mentorid="+id;
-	window.open(url,"","width=500,height=600");
-}
-</script>
 </head>
 <body>
 <!-- topHeader -->
@@ -218,7 +211,6 @@ function insertQueSom(id) {
 
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
-
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
 	$(function() {
@@ -227,21 +219,7 @@ function insertQueSom(id) {
 		getMentoringCnt(); // 진행중인 멘토링 개수
 		getFollowCnt(); // 팔로우 숫자
 	}); // end of function
-
 	
-	
-	$(function(){
-		var name = $('#mentoring_name').val();
-		var price = $("#mentoring_price").val();
-		var start = $("#men_start").val();
-		var end = $("#met_end").val();
-		var number = $("#mentoring_number").val();
-		var item = [{'product' : number, name : name, price : price, start : start, end: end}];
-		var local = localStorage.setItem('products', item);
-		console.log(JSON.stringify(item));
-			$(document).on("click", "#BasketBtn", function(){
-		}); 
-		
 		function getFollow(){ // 멘토 팔로우
 			$('#followBtn').click(function(){
 				$.ajax({
@@ -258,7 +236,7 @@ function insertQueSom(id) {
 						}
 					});
 				});
-		}
+		} // end of getFollow
 		
 		function deleteFollow(){ // 멘토 팔로우 취소
 			$('#followCancelBtn').click(function(){
@@ -308,18 +286,8 @@ function insertQueSom(id) {
 			});
 		}
 		
-		});
-	
-	// 장바구니 담기
-	function insertC(){
-		var yn = confirm("장바구니에 담으시겠습니까?");
-		if(yn){
-			mentoringForm.action = "insertCart";
-			mentoringForm.submit();
-		}
-	}
-	
 
+	
 	// 로그인 여부 확인
 	function loginCheck(){
 			if(confirm("로그인 또는 회원가입이 필요한 항목입니다.")){
@@ -344,9 +312,11 @@ function insertQueSom(id) {
 				location.href = "mentoringPayForm?mentor_id=${list.mentor_id}";
 			}
 		}
-	
-	
-	
+	//멘토에게 질문하기
+	function insertQueSom(id) {
+		var url="insertQuest?mentorid="+id;
+		window.open(url,"","width=500,height=600");
+	}
 </script>
 
 </body>
