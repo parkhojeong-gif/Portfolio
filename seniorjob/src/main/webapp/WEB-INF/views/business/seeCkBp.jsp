@@ -45,6 +45,11 @@
 <script>
 //A $( document ).ready() block.
 $( document ).ready(function() {
+	 $("#printHTML").load("/resources/upload", function() {
+		 console.log("success");
+	 });
+	 
+	 
     var frm = document.frm;
     var phidden = frm.phidden.value;
     var mhidden = frm.mhidden.value;
@@ -292,83 +297,23 @@ $(document).ready(function(){
     console.log(txt);   
 	});
 });
+
+$(document).ready(function(){
+  
+  /* id 지정을 통해서도 가능합니다. 
+   $("#header").load("header.html #navbar")
+   */       
+});
+</script>    
+
+
 </script>
+
 </head>
 <body>
-
-	<div id="preloader">
-		<div id="status">&nbsp;</div>
-	</div>
-	<!-- Body content -->
-
-<form action="collectionUpdate" method="post" name="frm">
-<input type="hidden" id="phidden" name="phidden" value="${bpp.phidden}">
-<input type="hidden" id="mhidden" name="mhidden" value="${bpp.mhidden}">
-<input type="hidden" id="shidden" name="shidden" value="${bpp.shidden}">
-<input type="hidden" id="seq" name="seq" value="${bpp.seq}">
-
-
-	<!-- property area -->
-	<div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2" id="allDiv">
-					<input id="console">
-					<div class="row" id="businessDiv">
-					<hr>
-					<h2>계획사업의 개요</h2>
-					<br>
-					
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label for="title">제목</label>
-									<textarea name="title" id="title" readonly="readonly" class="form-control">${bpp.title }</textarea>
-								</div>
-							</div>
-						
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label for="business_a">사업의 배경과 필요성</label>
-									<textarea name="business_a" id="business_a" class="form-control" readonly="readonly">${bpp.business_a }</textarea>
-								</div>
-							</div>
-
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label for="business_b">사업의 목적</label>
-									<textarea name="business_b" id="business_b" class="form-control" readonly="readonly">${bpp.business_b }</textarea>
-								</div>
-							</div>
-
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label for="business_c">사업 기대효과</label>
-									<textarea name="business_c" id="business_c" class="form-control" readonly="readonly">${bpp.business_c }</textarea>
-								</div>
-							</div>
-					</div>
-					
-					<div class="row" id="checkDiv">
-					<hr>
-					<h2>첨삭</h2>
-					<br>
-					
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label for="title">지도내용</label>
-									<textarea name="collection" id="collection" class="form-control" readonly="readonly">${bpp.collection }</textarea>
-								</div>
-							</div>
-					</div>	
-				
-				</div>
-				
-			</div>
-		</div>
-	</div>
-
-
-</form>
+<div id="printHTML">
+</div>
+	
 
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>

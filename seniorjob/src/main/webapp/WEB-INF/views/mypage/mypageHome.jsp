@@ -99,7 +99,7 @@ function showContents(result) {
 	for(list of result) {
 		console.log(list.STATE);
 		let li,a,div,dl,dt, but, but2, but3;
-		li=$('<li />').attr("aria-hidden", "false").attr("style","float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;");
+		li=$('<li />').attr("aria-hidden", "false").attr("style","float: left; list-style: none; position: relative; width: 300px; margin-right: 16px;").attr("class","somLi");
 		a=$('<a />').attr("href","/zf_user/company-review-qst-and-ans").attr("target","_blank").attr("onclick","#").attr("class","link my_notification_card_link").attr("data-gtm_creative","card_main").attr("data-gtm_position","d15");
 		div=$('<div />').attr("class","inner");
 		dl=$('<dl />');
@@ -124,7 +124,9 @@ function showContents(result) {
 		
 		$('#ulId').append(li);
 		
-		
+		var somLiCount = $(".somLi").length;
+		console.log(somLiCount);
+		$("#somLiBadge").html(somLiCount);
 		
 	}
 }
@@ -144,6 +146,7 @@ function reply() {
 	window.open(url,"","width=500,height=600");
 }
 
+	
 
     </script>
     <style>
@@ -306,7 +309,7 @@ function reply() {
 								<ul class="tabWrap">
 									<li class="select">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')">
-											나의 알림<span class="badge">6</span>
+											나의 알림<span class="badge" id="somLiBadge"></span>
 										</button>
 										<c:if test="${auth eq 'MENTOR' }">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="checkP()">
@@ -327,8 +330,7 @@ function reply() {
 									<div class="sliders">
 										<!-- 나의 알림 -->
 										<div class="wrap_slider" style="max-width: 1248px; display: block;">
-											<div class="bx-viewport" aria-live="polite"
-												style="width: 100%; overflow: hidden; position: relative; height: 190px;">
+											<div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 190px;">
 												<ul class="slider my" id="ulId" style="width: 6215%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
 													
 												

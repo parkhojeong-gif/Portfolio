@@ -1,7 +1,16 @@
 package com.company.businesspalna.controller;
 
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,13 +19,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.company.businesspalna.service.BusinessPlanAService;
@@ -24,6 +37,7 @@ import com.company.businesspalna.service.impl.BusinessPlanAMapper;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringVO;
+import com.company.portfolio.service.FileRenamePolicy;
 import com.company.businesspalna.service.BusinessPalnAVO;
 
 @Controller
@@ -229,5 +243,49 @@ public class BusinessPlanAController {
 		
 		return cpBadge;
 	}
+	
+	@RequestMapping("/htmlSaveSom")
+	public String htmlSaveSom(@RequestParam(value="contents") String contents,@RequestParam(value="seq") int seq, Model model, BusinessPalnAVO vo, HttpServletRequest req) throws IOException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date time = new Date();
+		String sTime = format.format(time);
+		System.out.println("htmlSaveSom:"+sTime);
+		String filenames = sTime;
+		
+		 if (contents != null ||! "".equals(contents)) {
+			//파일명 중복체크 -> rename
+				File rename = FileRenamePolicy.rename(new File("C:/upload", filenames)); //transfer 하기 전에 이 파일이 있는지 검사
+				
+				BufferedWriter writer = new BufferedWriter(new FileWriter(rename));
+				writer.write(contents);
+				writer.close();
+				
+				String path = req.getServletContext().getRealPath("resources/upload");
+				
+			    FileInputStream input = new FileInputStream(rename);
+			    MultipartFile multipartFile = new MockMultipartFile(rename+".html", input);
+			    
+			    multipartFile.transferTo(new File(path));
+			    
+				 vo.setCollection(filenames);
+				 vo.setSeq(seq);
+				 System.out.println("htmlSaveSom:"+vo.getCollection());
+				 System.out.println("htmlSaveSom:"+vo.getSeq());
+				 bpService.collectionUpdate(vo);
+			 
+		}
+		 else{
+				 
+				 model.addAttribute("msg", "Please select at least one mediaFile..");
+				 return "common/Fail";
+			 
+		 }
+		
+
+		
+		return null;
+	}
+	
+	
 
 }

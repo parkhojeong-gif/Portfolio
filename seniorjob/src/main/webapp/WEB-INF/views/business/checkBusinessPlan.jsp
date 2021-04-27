@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ 
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -99,9 +100,6 @@ function prodAdd() {
 	var prodLen = $("#prodDiv").length; //prodDiv가 있는지 찾는다.
 	
 	
-	if(prodLen > 0) {  //prodDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
 	
 	var prodDiv = $('<div />').attr("class", "row").attr("id", "prodDiv");
 	var hidden = $('<input />').attr("type","hidden").attr("id","pHidden").attr("name","pHidden").attr("value","1");
@@ -140,16 +138,13 @@ function prodAdd() {
 	
 	$("#businessDiv").eq(-1).after(prodDiv);
 	
-	}
+	
 }
 
 
 function marketAdd() {
 	
 	var marketLen = $("#marketDiv").length; //marketDiv가 있는지 찾는다.
-	if(marketLen > 0) {  //marketDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
 	
 	
 	var marketDiv = $('<div />').attr("class", "row").attr("id", "marketDiv");
@@ -202,16 +197,12 @@ function marketAdd() {
 		$("#businessDiv").eq(-1).after(marketDiv); //businessDiv 뒤에 찰싹 붙음
 	}
 	
-	}
+	
 }
 
 function sellAdd() {
 	
 	var sellingLen = $("#sellingDiv").length; //sellingDiv가 있는지 찾는다.
-	if(sellingLen > 0) {  //sellingDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
-	
 	
 	var sellingDiv = $('<div />').attr("class", "row").attr("id", "sellingDiv");
 	var hidden = $('<input />').attr("type","hidden").attr("id","sHidden").attr("name","sHidden").attr("value","1");
@@ -267,41 +258,94 @@ function sellAdd() {
 		}
 	}
 	
-	}
+	
 	
 } // end of sellAdd
 
-
 $(document).ready(function(){
-	$('textarea').mouseup(function(){
-   var txt = '';
-   var sp = document.createElement('span');
-   if (window.getSelection) {
-    txt = window.getSelection();
-	       } else if (document.getSelection) {
-    txt = document.getSelection();
-   } else if (document.selection) {
-    txt = document.selection.createRange().text;
-   } else {
-    return;
-   }
-
-   var range = txt.getRangeAt(0);
-   range.surroundContents(sp)
-   //txt = String(txt); // Type Casting	
-    console.log(txt);   
+	$('.highLightSom').mouseup(function(){
+		var txt = '';
+		if (window.getSelection) {
+		    txt = window.getSelection();
+       	       } else if (document.getSelection) {
+		    txt = document.getSelection();
+	       } else if (document.selection) {
+		    txt = document.selection.createRange().text;
+	       } else {
+		    return;
+	       }
+		
+		txt = String(txt); // Type Casting
+		console.log(txt);
+		var htm = $('.highLightSom').html();
+		console.log(htm);
+		var ind = htm.indexOf(txt);
+		var indLa = htm.lastIndexOf(txt);
+		console.log(ind,indLa);
+		console.log(htm.split(txt,2));
+		var arr = htm.split(txt,2);
+		$('.highLightSom').html("");
+		var spa ='<span>'+arr[0]+'</span>'
+		+'<span style=" background: linear-gradient(to top, #FFE400 50%, transparent 50%)">'+txt+'</span>' 
+		+'<span>'+arr[1]+'</span>';
+		
+		var inp = $('<input />').attr("onkeyup","printName()").attr("style","color:red").attr("id","somSom");
+		var diviv = $('<div />').attr("id","resultsoM");
+		
+		$('.highLightSom').append(spa);
+		
+		var tar = event.target;
+		console.log(tar);
+		$(tar).after(inp);
+		$(tar).after(diviv);
+		
+		
+		
 	});
 });
+
+function printName()  {
+	  const name = document.getElementById('somSom').value;
+	  document.getElementById("resultsoM").innerText = name;
+}
+
+function saveHtml() {
+	var editor;
+	var path;
+	editor = $("#printHTML").html();
+	//path = ($("#depth_container").text()).replace("/" + g_htmlFileName, "");
+	var type = "html";
+	var seq = $("#seq").val();
+	//const element = document.getElementById('printHTML');
+	console.log(editor);
+	
+	// console.log dirbti saveHtml1th
+
+	$.ajax({
+		url: 'htmlSaveSom',
+		type: 'POST',
+		async: false,
+		cache:false,
+		data: {
+			//contents:window.btoa(unescape(encodeURIComponent(editor))),
+			contents:editor,
+			seq:seq,
+			//path: path, 
+			//file: strFile,
+			type: type
+		}
+	});
+};
+
 </script>
 </head>
-<body>
-
+<body >
+<div id="printHTML">
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
 	<!-- Body content -->
-
-<form action="collectionUpdate" method="post" name="frm">
+<form id="frm" name="frm">
 <input type="hidden" id="phidden" name="phidden" value="${bpp.phidden}">
 <input type="hidden" id="mhidden" name="mhidden" value="${bpp.mhidden}">
 <input type="hidden" id="shidden" name="shidden" value="${bpp.shidden}">
@@ -322,7 +366,8 @@ $(document).ready(function(){
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="title">제목</label>
-									<textarea name="title" id="title" readonly="readonly" class="form-control">${bpp.title }</textarea>
+									<%-- <textarea name="title" id="title" readonly="readonly" class="form-control">${bpp.title }</textarea> --%>
+									<div class="highLightSom">${bpp.title }</div>
 								</div>
 							</div>
 						
@@ -366,18 +411,18 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-
+	</form>
+</div>
 	<!-- 우측 사이드 -->
 	<div id="nudge_wrap" style="transform: translateX(42px);">
 		<div class="inner">
 			<div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">작성완료</button>
+				<button type="button" id="btnSaveHtml" onclick="saveHtml()" class="btn btn-primary">작성완료</button>
 			</div>
 			
 
 		</div>
 	</div>
-</form>
 
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>
