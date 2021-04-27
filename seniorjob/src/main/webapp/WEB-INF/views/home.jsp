@@ -213,7 +213,7 @@ function resum(){
 }
 function chatt() {
 	window.open("chat",
-            "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
+            "채팅", "width=500, height=600, resizable = no, scrollbars = no");
 }
 </script>
 </head>

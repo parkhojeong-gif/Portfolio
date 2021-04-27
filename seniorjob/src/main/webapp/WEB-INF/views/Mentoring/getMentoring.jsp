@@ -489,6 +489,7 @@ $("#submitReview").on("click", function(){
 			}else{
 				alert("구매하신 상품이 아닙니다.");
 			}
+			location.reload();
 		}
 	})
 })
@@ -501,12 +502,13 @@ $(document).on("click", "#delR", function(){
 		data:{ "seq" : seq },
 		dataType: "json",
 		success: function(response){
+			confirm("삭제 하시겠습니까?");
 			location.reload();
 		}
 	})
 })
 
-
+//수정
 function upR(){
 	$(document).on("click", "#upR", function(){
 		var seq = $(this).parent().parent().children().closest('#seq').html();
@@ -515,6 +517,20 @@ function upR(){
 	                "수정", "width=500, height=500, resizable = no");
 	})
 }
+
+/* 후기글 한 번 이상 작성하지 못하게 하는 거 */
+$(document).on("click", "#content", function(){
+	$.ajax({
+		url: "getReviewOne",
+		data : { mentoring_number : ${mentoring.mentoring_number }},
+		dataType: "json",
+		success: function(result){
+			if(result >= 1){
+				alert("이미 작성하신 후기글이 존재합니다.")
+			}
+		}
+	})
+})
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />

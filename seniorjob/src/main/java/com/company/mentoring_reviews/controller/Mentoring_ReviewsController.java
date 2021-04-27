@@ -111,23 +111,37 @@ public class Mentoring_ReviewsController {
 			return  result; 
 		} 
 	}
-	
+	//후기 삭제
 	@RequestMapping("/deleteReviews")
 	@ResponseBody
 	public String deleteReviews(Mentoring_ReviewsVO vo) {
 		mentoring_ReviewsMapper.deleteReviews(vo);
 		return "redirect:/getSearchMentoringChanGon";
 	}
-	
+	//후기 수정
 	@RequestMapping("/updateReviews")
-	public int updateReviews(Mentoring_ReviewsVO vo) {
-		return mentoring_ReviewsMapper.updateReviews(vo);
+	public String updateReviews(Mentoring_ReviewsVO vo) {
+		mentoring_ReviewsMapper.updateReviews(vo);
+		return "redirect:/getSearchResumeList";
 	}
+	
 	//단건조회
 	@RequestMapping("/getReviewsUp")
 	public String getReviewsUp(Mentoring_ReviewsVO vo, Model model) {
 		model.addAttribute("review", mentoring_ReviewsMapper.getReviewsUp(vo));
 		return "mentoringReviews/updateMenReviews";
+	}
+	
+	@RequestMapping("/getReviewOne")
+	public @ResponseBody int getReviewOne(Mentoring_ReviewsVO vo, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		int result = mentoring_ReviewsMapper.getReviewOne(vo);
+		if (result >= 1) {  
+			return result; 
+		}
+		return result;
 	}
 
 }

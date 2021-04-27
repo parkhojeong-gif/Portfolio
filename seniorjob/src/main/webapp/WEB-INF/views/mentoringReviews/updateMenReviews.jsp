@@ -90,9 +90,8 @@ function updateR(str){
 		frm.action = "updateReviews?seq="+ str;
 		frm.submit();
 		alert("수정 완료!")
-		window.reload();
 	}
-		window.close();
+// 	window.close();
 }
 </script>
 	<!--         </div> -->

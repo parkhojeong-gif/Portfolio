@@ -140,11 +140,11 @@ input#mentoring_kind {
 }
 div#mtStartDate {
     position: absolute;
-    left: 400px;
+    left: 600px;
 }
 #mtEndDate{
 	position:absolute;
-	right:400px;
+	right:600px;
 }
 #search {
     margin: 110px;
