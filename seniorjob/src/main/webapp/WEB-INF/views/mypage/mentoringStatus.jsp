@@ -51,6 +51,9 @@ function detail(id) {
                             <div id="list-type" class="proerty-th-list">
                                 <div class="col-md-4 p0">
                                     <div class="box-two proerty-item">
+                                    <div class="item-thumb">
+                                            <a href="property-1.html" ><img src="image/${list.mentoring_photo }"></a>
+                                        </div>
                                         <div class="item-entry overflow">
                                             <h5><span onclick="detail('${list.mentor_id}')">${list.mentoring_name } </span></h5>
                                             <div class="dot-hr"></div>
