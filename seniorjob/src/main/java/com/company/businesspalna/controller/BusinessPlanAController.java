@@ -1,7 +1,18 @@
 package com.company.businesspalna.controller;
 
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,13 +21,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.company.businesspalna.service.BusinessPlanAService;
@@ -24,6 +39,7 @@ import com.company.businesspalna.service.impl.BusinessPlanAMapper;
 import com.company.mentor.service.MentorService;
 import com.company.mentor.service.MentorVO;
 import com.company.mentoring.service.MentoringVO;
+import com.company.portfolio.service.FileRenamePolicy;
 import com.company.businesspalna.service.BusinessPalnAVO;
 
 @Controller
@@ -53,7 +69,7 @@ public class BusinessPlanAController {
 	@RequestMapping("/getBusinessPlanA")			//사업계획서 하나만 조회. 
 	public String getBusinessPlanA(BusinessPalnAVO vo, Model model) {
 		bpService.getBusinessPlanA(vo);
-		model.addAttribute("bp", vo);
+		model.addAttribute("bpp", vo);
 		return "business/getBusinessPlanA";
 	}
 	
@@ -205,7 +221,9 @@ public class BusinessPlanAController {
 	@GetMapping("/seeCkBp") //첨삭받은 거 확인
 	public String seeCkBp(BusinessPalnAVO vo, Model model) {
 		bpService.getBusinessPlanA(vo);
+		String col = bpMapper.getCollection(vo);
 		model.addAttribute("bpp", vo);
+		model.addAttribute("col", col);
 		return "business/seeCkBp";
 	}
 	
@@ -229,5 +247,60 @@ public class BusinessPlanAController {
 		
 		return cpBadge;
 	}
+	
+	@RequestMapping("/htmlSaveSom")
+	public String htmlSaveSom(@RequestParam(value="contents") String contents   //ajax로 넘어온 param contents를 String contents 변수로 받아줌
+							, @RequestParam(value="seq") int seq				//ajax로 넘어온 param seq를 int seq로 받아줌.
+							, Model model										//model 객체 생성
+							, BusinessPalnAVO vo								//BusinessPalnAVO 객체 생성
+							, HttpServletRequest req) 							//HttpServletRequest 객체 생성
+									throws IOException {						//예외처리
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");		//포맷형식을 "yyyyMMddHHmmss"형태로 정해줌.
+		Date time = new Date();													//날짜 객체 생성.
+		String filename = format.format(time);									//생성한 날짜를 위에서 지정한 포맷형식에 맞게 변환해서 filename으로 사용.
+
+		
+		if (contents != null ||! "".equals(contents)) {							//contents가 null이거나 공백이 아니라면 실행
+			//String -> file
+			File file = new File(filename+".html");								//html 확장자명을 가진 file 생성
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));   //생성된 file에 contents 입력하고 fileDescriptor 닫아주기
+			writer.write(contents);
+			writer.close();
+			
+			//file -> MultiPartFile
+			FileInputStream input = new FileInputStream(file);
+			MultipartFile multipartFile = new MockMultipartFile("file", 						//name
+																file.getName(), 				//originalFileName
+																"text/html",					//contentType 
+																IOUtils.toByteArray(input));	//content
+			//파일 저장소 경로 확인
+			String path = req.getServletContext().getRealPath("resources/upload");
+			//String path="C:\\Users\\beom\\git\\seniorjob\\seniorjob\\src\\main\\webapp\\resources\\upload";
+			System.out.println("htmlSaveSom:"+path);
+			
+			//새로운 파일 이름
+			String newFname = filename+seq+".html";
+			//저장소에 파일 저장
+			multipartFile.transferTo(new File(path, newFname));
+			
+			vo.setCollection(newFname);			//BusinessPlanAVO의 collection에 파일이름저장
+			vo.setSeq(seq);						//BusinessPlanAVO의 seq에 사업계획서 번호 저장
+			
+			bpService.collectionUpdate(vo);     //BusinessPlanA 테이블 update함.
+			
+			model.addAttribute("msg", "첨삭을 완료하였습니다.");			//알림 창에 보여질 메시지
+			model.addAttribute("url", "throughCerti");				//최종 이동할 페이지(현재 팝업 창 닫아주고, 부모창 reload하는 페이지로 이동)
+			return "common/Success";								//거쳐가는 페이지
+			
+		}
+		 else{
+				 model.addAttribute("msg", "파일이 없습니다.");			//contents가 null일 경우 반환되는 메시지
+				 return "common/Fail";
+		 }
+		
+	}
+	
+	
 
 }
