@@ -41,6 +41,115 @@
 <link rel="stylesheet" href="resources/assets/css/owl.transitions.css">
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/responsive.css">
+<style>
+element.style {
+    transform: translateX(406px);
+}
+#nudge_wrap {
+    width: 260px;
+    position: fixed;
+    top: 96px;
+    left: 50%;
+    margin-left: 370px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
+    margin: 0;
+    padding: 0;
+    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: none;
+}
+html {
+    color: #000;
+    background: #fff;
+}
+
+element.style {
+}
+.box_change_order .list_change li .link_change .btn_check {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    padding: 0 0 0 12px;
+    width: 62px;
+    height: 30px;
+    border: 1px solid #dfdfdf;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    background-color: #fff;
+}
+.box_change_order .list_change li .link_change {
+    display: block;
+    position: relative;
+    max-width: 240px;
+    color: #222;
+    line-height: 26px;
+}
+.box_change_order .list_change li a {
+    color: #444;
+}
+a {
+    color: #444;
+    text-decoration: none;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+.box_change_order .list_change li {
+    padding: 7px 10px 0;
+    color: #888;
+    font-size: 16px;
+    line-height: 26px;
+}
+ol, ul, li {
+    list-style: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, button {
+    margin: 0;
+    padding: 0;
+    font-family: "Malgun Gothic",dotum,gulim,sans-serif;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: none;
+}
+html {
+    color: #000;
+    background: #fff;
+}
+.box_change_order .list_change li .link_change .btn_check:after {
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    right: 11px;
+    width: 9px;
+    height: 9px;
+    background: url(//www.saraminimage.co.kr/sri/person/resume/ico_check.png) no-repeat -7px -7px;
+    content: "";
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 //A $( document ).ready() block.
@@ -361,12 +470,7 @@ function sellAdd() {
 
 				</ul>
 			</div>
-			<div class="area_btn col-sm-12 text-center">
-				<button type="" class="btn btn-primary">미리보기</button>
-			</div>
-			<!--<div class="area_btn col-sm-12 text-center">
-				<button type="" class="btn btn-primary">중간저장</button>
-			</div>-->
+			
 			<div class="area_btn col-sm-12 text-center">
 				<button type="submit" class="btn btn-primary">수정완료</button>
 			</div>
@@ -376,35 +480,6 @@ function sellAdd() {
 	</div>
 </form>
 
-				<button id="testBtn" class="btn"  data-toggle="modal" data-target="#testModal" >모달 테스트</button>
-				
-				
-				
-				<!-- modal test -->
-				<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">모달테스트</h5>
-									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">X</span>
-									</button>
-							</div>
-							<div class="modal-body">
-								
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				
-				<script>
-				$('#testModal').on('show.bs.modal', function (event) {
-					var modal = $(this);
-					var title = modal.find('#title').val();
-					$('.modal-body').append(title);
-				})
-	</script>
 
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>
