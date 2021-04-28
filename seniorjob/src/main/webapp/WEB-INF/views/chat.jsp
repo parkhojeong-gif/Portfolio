@@ -41,7 +41,7 @@
 			
 			
 			//웹소켓 객체 만드는 코드
-			ws = new WebSocket("ws://192.168.0.56/tenp/echo");
+			ws = new WebSocket("ws://192.168.0.56/echo");
 			
 			ws.onopen = function(event){
 				if(event.data === undefined){

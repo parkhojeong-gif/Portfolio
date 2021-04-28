@@ -288,9 +288,9 @@ $(document).ready(function(){
 		+'<span style=" background: linear-gradient(to top, #FFE400 50%, transparent 50%)">'+txt+'</span>'  //txt에 highlight 효과
 		+'<span>'+arr[1]+'</span>';
 		
-		var idNum = $('#idNum').val();
-		var inp = $('<input />').attr("onkeyup","printName()").attr("id","somSom"+idNum);
-		var diviv = $('<div />').attr("id","resultsoM"+idNum).attr("style","color:red");
+		//var idNum = $('#idNum').val();
+		var inp = $('<input />').attr("onkeyup","printName()").attr("id","somSom");
+		var diviv = $('<div />').attr("id","resultsoM").attr("style","color:red");
 		
 		$('#'+ tarId).append(spa);
 		
@@ -304,12 +304,12 @@ $(document).ready(function(){
 });
 
 function printName()  {
-	  const name = document.getElementById("somSom"+idNum);
+	  const name = document.getElementById("somSom").value;
 	  console.log(name);
 	  //var name = $('#somSom'+ idNum).val();
-	  document.getElementById("resultsoM"+idNum).innerText = name;
-	  var newIdNum = idNum + 1;
-		$('#idNum').val(newIdNum);
+	  document.getElementById("resultsoM").innerText = name;
+	  //var newIdNum = idNum + 1;
+	//	$('#idNum').val(newIdNum);
 		
 	  
 }
