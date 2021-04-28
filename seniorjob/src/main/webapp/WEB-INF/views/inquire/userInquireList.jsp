@@ -21,7 +21,7 @@ function click_seq(obj){
 		var no1 = td.eq(3).text();
 	
 	$.ajax({
-		url:"/getAnswer",
+		url:"getAnswer",
 		data :{seq : no},
 		dataType : "json",
 		success: function(result){
