@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ 
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -58,7 +59,7 @@ $( document ).ready(function() {
     		marketAdd();
     		if(shidden == 1) {
     			console.log("3");
-    			//sellAdd();
+    			sellAdd();
     		} //end of shidden
     		
     		else {
@@ -99,9 +100,6 @@ function prodAdd() {
 	var prodLen = $("#prodDiv").length; //prodDiv가 있는지 찾는다.
 	
 	
-	if(prodLen > 0) {  //prodDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
 	
 	var prodDiv = $('<div />').attr("class", "row").attr("id", "prodDiv");
 	var hidden = $('<input />').attr("type","hidden").attr("id","pHidden").attr("name","pHidden").attr("value","1");
@@ -111,11 +109,11 @@ function prodAdd() {
 	var colSmDiv = $('<div />').attr("class", "col-sm-12");
 	var formGDiv = $('<div />').attr("class", "form-group");
 	var labelA = $('<label />').attr("for","prod_a").html("제품(서비스)명");
-	var textAreaA = $('<textarea />').attr("name","prod_a").attr("id", "prod_a").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.prod_a}");
+	var textAreaA = $('<div />').attr("name","prod_a").attr("id", "prod_a").attr("class", "highLightSom").html("${bpp.prod_a}");
 	var labelB = $('<label />').attr("for","prod_b").html("제품(서비스)소개");
-	var textAreaB = $('<textarea />').attr("name","prod_b").attr("id", "prod_b").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.prod_b}");
+	var textAreaB = $('<div />').attr("name","prod_b").attr("id", "prod_b").attr("class", "highLightSom").html("${bpp.prod_b}");
 	var labelC = $('<label />').attr("for","prod_c").html("제품(서비스)차별성");
-	var textAreaC = $('<textarea />').attr("name","prod_c").attr("id", "prod_c").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.prod_c}");
+	var textAreaC = $('<div />').attr("name","prod_c").attr("id", "prod_c").attr("class", "highLightSom").html("${bpp.prod_c}");
 	
 	
 	$(prodDiv).append(hidden);
@@ -140,16 +138,13 @@ function prodAdd() {
 	
 	$("#businessDiv").eq(-1).after(prodDiv);
 	
-	}
+	
 }
 
 
 function marketAdd() {
 	
 	var marketLen = $("#marketDiv").length; //marketDiv가 있는지 찾는다.
-	if(marketLen > 0) {  //marketDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
 	
 	
 	var marketDiv = $('<div />').attr("class", "row").attr("id", "marketDiv");
@@ -160,13 +155,13 @@ function marketAdd() {
 	var colSmDiv = $('<div />').attr("class", "col-sm-12");
 	var formGDiv = $('<div />').attr("class", "form-group");
 	var labelA = $('<label />').attr("for","market_a").html("국내외 목표시장");
-	var textAreaA = $('<textarea />').attr("name","market_a").attr("id", "market_a").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.market_a}");
+	var textAreaA = $('<div />').attr("name","market_a").attr("id", "market_a").attr("class", "highLightSom").html("${bpp.market_a}");
 	var labelB = $('<label />').attr("for","market_b").html("국내외 관련기술(제품) 동향");
-	var textAreaB = $('<textarea />').attr("name","market_b").attr("id", "market_b").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.market_b}");
+	var textAreaB = $('<div />').attr("name","market_b").attr("id", "market_b").attr("class", "highLightSom").html("${bpp.market_b}");
 	var labelC = $('<label />').attr("for","market_c").html("경쟁사 현황");
-	var textAreaC = $('<textarea />').attr("name","market_c").attr("id", "market_c").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.market_c}");
+	var textAreaC = $('<div />').attr("name","market_c").attr("id", "market_c").attr("class", "highLightSom").html("${bpp.market_c}");
 	var labelD = $('<label />').attr("for","market_d").html("시장창출 가능성");
-	var textAreaD = $('<textarea />').attr("name","market_d").attr("id", "market_d").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.market_d}");
+	var textAreaD = $('<div />').attr("name","market_d").attr("id", "market_d").attr("class", "highLightSom").html("${bpp.market_d}");
 	
 	$(marketDiv).append(hidden);
 	
@@ -202,16 +197,12 @@ function marketAdd() {
 		$("#businessDiv").eq(-1).after(marketDiv); //businessDiv 뒤에 찰싹 붙음
 	}
 	
-	}
+	
 }
 
 function sellAdd() {
 	
 	var sellingLen = $("#sellingDiv").length; //sellingDiv가 있는지 찾는다.
-	if(sellingLen > 0) {  //sellingDiv가 있다면
-		alert("이미 추가된 항목입니다.");
-	} else {
-	
 	
 	var sellingDiv = $('<div />').attr("class", "row").attr("id", "sellingDiv");
 	var hidden = $('<input />').attr("type","hidden").attr("id","sHidden").attr("name","sHidden").attr("value","1");
@@ -221,11 +212,11 @@ function sellAdd() {
 	var colSmDiv = $('<div />').attr("class", "col-sm-12");
 	var formGDiv = $('<div />').attr("class", "form-group");
 	var labelA = $('<label />').attr("for","selling_a").html("제품홍보방법");
-	var textAreaA = $('<textarea />').attr("name","selling_a").attr("id", "selling_a").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.selling_a}");
+	var textAreaA = $('<div />').attr("id", "selling_a").attr("class", "highLightSom").html("${bpp.selling_a}");
 	var labelB = $('<label />').attr("for","selling_b").html("수익창출방안");
-	var textAreaB = $('<textarea />').attr("name","selling_b").attr("id", "selling_b").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.selling_b}");
+	var textAreaB = $('<div />').attr("id", "selling_b").attr("class", "highLightSom").html("${bpp.selling_b}");
 	var labelC = $('<label />').attr("for","selling_c").html("시장성공요인");
-	var textAreaC = $('<textarea />').attr("name","selling_c").attr("id", "selling_c").attr("class", "form-control").attr("readonly", "readonly").html("${bpp.selling_c}");
+	var textAreaC = $('<div />').attr("id", "selling_c").attr("class", "highLightSom").html("${bpp.selling_c}");
 	
 	$(sellingDiv).append(hidden);
 	
@@ -267,45 +258,106 @@ function sellAdd() {
 		}
 	}
 	
-	}
+	
 	
 } // end of sellAdd
 
 
+//드래그한 텍스트 highlight효과 주고 첨삭 달기
 $(document).ready(function(){
-	$('textarea').mouseup(function(){
-   var txt = '';
-   var sp = document.createElement('span');
-   if (window.getSelection) {
-    txt = window.getSelection();
-	       } else if (document.getSelection) {
-    txt = document.getSelection();
-   } else if (document.selection) {
-    txt = document.selection.createRange().text;
-   } else {
-    return;
-   }
-
-   var range = txt.getRangeAt(0);
-   range.surroundContents(sp)
-   //txt = String(txt); // Type Casting	
-    console.log(txt);   
+	
+	$('.highLightSom').mouseup(function(){				//highLightSom이라는 클래스에 마우스
+		var txt = '';									//txt라는 변수 선언
+		if (window.getSelection) {
+		    txt = window.getSelection();
+       	} else if (document.getSelection) {
+		    txt = document.getSelection();
+	    } else if (document.selection) {
+		    txt = document.selection.createRange().text;
+	    } else {
+		    return;
+	    }												//txt에 드래그로 선택한 값 담기
+		
+		txt = String(txt); 								//Type Casting
+		var tarId = event.target.id;					//클릭한 곳의 div id 얻기
+		
+		var htm = $('#'+ tarId).html();					//id값으로 div의 값(문자열) 얻기
+		var arr = htm.split(txt,2);						//txt를 기준으로 문자열을 2개로 쪼개서 배열에 담음
+		$('#'+ tarId).html("");							//div 공백으로 만들어주기
+		var spa ='<span>'+arr[0]+'</span>'				
+		+'<span style=" background: linear-gradient(to top, #FFE400 50%, transparent 50%)">'+txt+'</span>'  //txt에 highlight 효과
+		+'<span>'+arr[1]+'</span>';
+		
+		//var idNum = $('#idNum').val();
+		var inp = $('<input />').attr("onkeyup","printName()").attr("id","somSom");
+		var diviv = $('<div />').attr("id","resultsoM").attr("style","color:red");
+		
+		$('#'+ tarId).append(spa);
+		
+		var tar = event.target;
+		$(tar).after(inp);
+		$(tar).after(diviv);
+		
+		
+		
 	});
 });
+
+function printName()  {
+	  const name = document.getElementById("somSom").value;
+	  console.log(name);
+	  //var name = $('#somSom'+ idNum).val();
+	  document.getElementById("resultsoM").innerText = name;
+	  //var newIdNum = idNum + 1;
+	//	$('#idNum').val(newIdNum);
+		
+	  
+}
+
+
+
+function saveHtml() {
+	var editor;
+	var path;
+	editor = $("#printHTML").html();
+	//path = ($("#depth_container").text()).replace("/" + g_htmlFileName, "");
+	var type = "html";
+	var seq = $("#seq").val();
+	//const element = document.getElementById('printHTML');
+	console.log(editor);
+	
+	// console.log dirbti saveHtml1th
+
+	$.ajax({
+		url: 'htmlSaveSom',
+		type: 'POST',
+		async: false,
+		cache:false,
+		data: {
+			//contents:window.btoa(unescape(encodeURIComponent(editor))),
+			contents:editor,
+			seq:seq,
+			//path: path, 
+			//file: strFile,
+			type: type
+		}
+	});
+};
+
 </script>
 </head>
-<body>
-
+<body >
+<div id="printHTML">
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
 	<!-- Body content -->
-
-<form action="collectionUpdate" method="post" name="frm">
+<form id="frm" name="frm">
 <input type="hidden" id="phidden" name="phidden" value="${bpp.phidden}">
 <input type="hidden" id="mhidden" name="mhidden" value="${bpp.mhidden}">
 <input type="hidden" id="shidden" name="shidden" value="${bpp.shidden}">
 <input type="hidden" id="seq" name="seq" value="${bpp.seq}">
+<input type="hidden" id="idNum" name="idNum" value="1">
 
 
 	<!-- property area -->
@@ -322,62 +374,49 @@ $(document).ready(function(){
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="title">제목</label>
-									<textarea name="title" id="title" readonly="readonly" class="form-control">${bpp.title }</textarea>
+									<div class="highLightSom" id="title">${bpp.title }</div>
 								</div>
 							</div>
 						
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="business_a">사업의 배경과 필요성</label>
-									<textarea name="business_a" id="business_a" class="form-control" readonly="readonly">${bpp.business_a }</textarea>
+									<div class="highLightSom" id="business_a">${bpp.business_a }</div>
 								</div>
 							</div>
 
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="business_b">사업의 목적</label>
-									<textarea name="business_b" id="business_b" class="form-control" readonly="readonly">${bpp.business_b }</textarea>
+									<div class="highLightSom" id="business_b">${bpp.business_b }</div>
 								</div>
 							</div>
 
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label for="business_c">사업 기대효과</label>
-									<textarea name="business_c" id="business_c" class="form-control" readonly="readonly">${bpp.business_c }</textarea>
+									<div class="highLightSom" id="business_c">${bpp.business_c }</div>
 								</div>
 							</div>
 					</div>
 					
-					<div class="row" id="checkDiv">
-					<hr>
-					<h2>첨삭</h2>
-					<br>
-					
-							<div class="col-sm-12">
-								<div class="form-group">
-									<label for="title">지도내용</label>
-									<textarea name="collection" id="collection" class="form-control"></textarea>
-								</div>
-							</div>
-					</div>	
-				
 				</div>
 				
 			</div>
 		</div>
 	</div>
-
+	</form>
+</div>
 	<!-- 우측 사이드 -->
 	<div id="nudge_wrap" style="transform: translateX(42px);">
 		<div class="inner">
 			<div class="area_btn col-sm-12 text-center">
-				<button type="submit" class="btn btn-primary">작성완료</button>
+				<button type="button" id="btnSaveHtml" onclick="saveHtml()" class="btn btn-primary">작성완료</button>
 			</div>
 			
 
 		</div>
 	</div>
-</form>
 
 	<script src="resources/assets/js/modernizr-2.6.2.min.js"></script>
 	<script src="resources/assets/js/jquery-1.10.2.min.js"></script>
