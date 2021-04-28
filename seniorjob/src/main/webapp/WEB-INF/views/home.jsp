@@ -401,7 +401,7 @@ function chatt() {
                          	<hr>
                          </div>
                          </form>
-						<form method="POST" action="getMentoringList" id="searchDateFrm" onsubmit="return checkDateNull()">
+						<form method="POST" action="getMentoringList" id="searchDateFrm">
                         <div class="col-md-12" id="mentorBoxDiv">    
                          
                         <div class="col-md-5" id="mentorDateBox1">
@@ -488,8 +488,15 @@ function chatt() {
 	
 	// 멘토링 날짜 검색
 	$('#mentoringDateBtn').click(function(){
+		
 		var s_date = $('#mentoring_begin_date').val();
 		var e_date = $('#mentoring_end_date').val();
+		
+		var s_dateArr = s_date.split("-");
+		var e_dateArr = e_date.split("-");
+		var startDate = new Date(s_dateArr[0], s_dateArr[1], s_dateArr[2]);
+		var endDate = new Date(e_dateArr[0], e_dateArr[1], e_dateArr[2]);
+		
 		if(s_date==""){
 			alert("시작일을 선택해주세요.");
 			return false;
@@ -497,33 +504,14 @@ function chatt() {
 			alert("종료일을 선택해주세요.");
 			return false;
 			
+		}else if(startDate > endDate){
+			alert("날짜 설정이 잘못되었습니다");
+			return false;
 		}else{
 			searchDateFrm.action = "getMentoringList";
 			searchDateFrm.submit();
 		}
 	});
-	
-	// 멘토링 날짜 검색 유효성 체크
-	function checkDateNull(){
-		var s_date = $('#s_date').val();
-		var e_date = $('#e_date').val();
-		var s_dateArr = s_date.split("-");
-		var e_dateArr = e_date.split("-");
-		var startDate = new Date(s_dateArr[0], s_dateArr[1], s_dateArr[2]);
-		var endDate = new Date(e_dateArr[0], e_dateArr[1], e_dateArr[2]);
-		var today = new Date().getFullYear() + _pad(new String(new Date().getMonth() + 1), 2) + _pad(new String(new Date().getDate()), 2);
-		
-		if(startDate > endDate){
-			alert("날짜 설정이 잘못되었습니다");
-			return false;
-		}else if(startDate < today){
-			alert("과거 날짜를 시작일로 설정 불가능");
-			return false;
-		}else if(endDate < e_date){
-			alert("과거 날짜를 종료일로 설정 불가능");
-			return false;
-		}
-	}
 	
 </script>
 	 <!-- Jquery JS-->
