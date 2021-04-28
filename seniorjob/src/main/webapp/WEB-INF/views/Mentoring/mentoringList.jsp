@@ -257,12 +257,12 @@ div#intro154w {
 			<div class="col-lg-5" id="searchBox3">
 				<div class="input-group" id="mtStartDate">
 					<label class="label">멘토링 시작일</label> 
-					<input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date" value="${MentoringVO.mentoring_begin_date }">
+					<input class="input--style-1" type="date" name="mentoring_begin_date" placeholder="mm/dd/yyyy" id="mentoring_begin_date">
 				</div>
 			</div>
 			<div class="col-lg-5" id="searchBox4">
 				<div class="input-group" id="mtEndDate">
-					<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date" value="${MentoringVO.mentoring_end_date }">
+					<label class="label">멘토링 종료일</label> <input class="input--style-1" type="date" name="mentoring_end_date" placeholder="mm/dd/yyyy" id="mentoring_end_date">
 				</div>
 			</div>
 			<div class="col-lg-2" id="searchBox5">
