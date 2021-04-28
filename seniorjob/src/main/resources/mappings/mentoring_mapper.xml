@@ -14,7 +14,7 @@
  		SELECT  MENTORING_NUMBER,
  				MENTORING_NAME,
  				MENTORING_LIMIT,
- 				MENTORING_INTRODUCE
+ 				MENTORING_INTRODUCE,
  				MENTORING_PHOTO,
  				MENTORING_PRICE,
  				MENTORING_DATA,
@@ -33,10 +33,10 @@
 			</if>
 
 			<if test="mentoring_begin_date != null and mentoring_begin_date != ''">
-	            AND mentoring_begin_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	            AND mentoring_begin_date BETWEEN TO_CHAR(#{mentoring_begin_date},'yyyy-MM-dd') AND TO_CAHR(#{mentoring_end_date},'yyyy-MM-dd')
 	         </if>
 	         <if test="mentoring_end_date != null and mentoring_end_date != ''">
-	            AND mentoring_end_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	            AND mentoring_end_date BETWEEN TO_CHAR(#{mentoring_begin_date},'yyyy-MM-dd') AND TO_CAHR(#{mentoring_end_date},'yyyy-MM-dd')
 	         </if>
 		</where>
  		ORDER BY MENTORING_BEGIN_DATE
@@ -48,7 +48,7 @@
  		SELECT  MENTORING_NUMBER,
  				MENTORING_NAME,
  				MENTORING_LIMIT,
- 				MENTORING_INTRODUCE
+ 				MENTORING_INTRODUCE,
  				MENTORING_PHOTO,
  				MENTORING_PRICE,
  				MENTORING_DATA,
@@ -101,8 +101,8 @@
 		#{mentoring_photo},
 		#{mentoring_price},
 		#{mentor_id},
-		#{mentoring_begin_date},
-		#{mentoring_end_date},
+		to_date(#{mentoring_begin_date}, 'yyyy-MM-dd'),
+		to_date(#{mentoring_end_date}, 'yyyy-MM-dd'),
 		#{mentoring_kind}
 		)
 		

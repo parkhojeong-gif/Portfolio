@@ -72,8 +72,8 @@
 							 #{resume_address}, 
 							 #{resume_school}, 
 							 #{resume_area}, 
-							 #{resume_start}, 
-							 #{resume_end},
+							 TO_DATE(#{resume_start}, 'yyyy-MM-dd'), 
+							 TO_DATE(#{resume_end}, 'yyyy-MM-dd'), 
 							 #{resume_title},
 							 #{id},
 							 #{resume_major}
@@ -90,8 +90,8 @@
 						  RESUME_ADDRESS=#{resume_address}, 
 						  RESUME_SCHOOL=#{resume_school}, 
 						  RESUME_AREA=#{resume_area}, 
-						  RESUME_START=#{resume_start}, 
-						  RESUME_END=#{resume_end},
+						  RESUME_START=TO_DATE(#{resume_start}, 'yyyy-MM-dd'), 
+						  RESUME_END=TO_DATE(#{resume_end}, 'yyyy-MM-dd'),
 						  IMAGE = #{image},
 						  RESUME_TITLE=#{resume_title},
 						  RESUME_MAJOR=#{resume_major}

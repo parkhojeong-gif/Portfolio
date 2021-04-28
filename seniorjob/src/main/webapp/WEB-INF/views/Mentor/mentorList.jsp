@@ -30,18 +30,21 @@
 이미지 사이즈 손쉽게 맞추기
 참고: https://nykim.work/86 */
 #myPhoto{ 
+  width: 263px;
+  height: 265px;
   object-fit: cover;
 }
 #mentor_id{
   width: 285px;
-  height: 395px;
 }
-.proerty-th .proerty-item .item-entry h5 {
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #9B9B9B;
-    letter-spacing: 2px;
+
+#mainContents{
+	padding-left:10px;
 }
+#mentoring_kind{
+	width:70px; padding:0 5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+
 </style>
 <body>
 
@@ -102,12 +105,16 @@
 										</c:if>
 										</div>	
 
-										<div class="item-entry overflow">
+										<div class="item-entry overflow" id="mainContents">
 											<h5 id="name" >${mentor.usersVO.name }<b class="property-info-unit">멘토</b></h5>
 											<h5 id="mentor_duty" >${mentor.mentor_duty }<b class="property-info-unit">직무</b></h5>
 											<div class="dot-hr"></div>
-											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit">멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
+											<span class="pull-left"><b id="mentoring_kind" ><b class="property-info-unit" >멘토링 종류:</b> ${mentor.mentoring_kind }</b></span>
+										</div>
+										<div class="item-entry overflow">
 											<span class="pull-left"><b id="mentoring_location" ><b class="property-info-unit">멘토링 지역:</b> ${mentor.mentoring_location }</b></span>
+										</div>
+										<div class="item-entry overflow">
 											<span class="pull-left"><b id="mentoring_age" ><b class="property-info-unit">멘토링 연령:</b> ${mentor.mentoring_age }</b></span>
 										</div>
 									</div>

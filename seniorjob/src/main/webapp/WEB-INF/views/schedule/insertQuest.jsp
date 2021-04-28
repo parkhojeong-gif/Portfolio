@@ -125,4 +125,5 @@
 	<script src="resources/assets/js/gmaps.init.js"></script>
 
 	<script src="resources/assets/js/main.js"></script>
+
 </html>

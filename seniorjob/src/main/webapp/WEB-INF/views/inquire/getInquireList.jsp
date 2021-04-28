@@ -30,7 +30,7 @@ function click_seq(obj){
 	console.log(no);
 	
  	$.ajax({
-		url:"/getAnswer",
+		url:"getAnswer",
 		data :{seq : no},
 		dataType : "json",
 		success: function(result){
@@ -411,7 +411,6 @@ function getURLParams(url) {
 							</div>
 						</div>
 					</div>
-
 
 				</div>
 			</div>

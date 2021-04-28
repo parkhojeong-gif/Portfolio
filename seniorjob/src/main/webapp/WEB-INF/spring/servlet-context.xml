@@ -51,7 +51,7 @@
 	</beans:bean>
 	
 	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/image/**" location="c:/upload" />
+	<resources mapping="/image/**" location="/upload" />
 	
 	
 	<!-- multipart 설정 -->

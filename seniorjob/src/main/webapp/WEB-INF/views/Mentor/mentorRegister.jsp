@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>멘토링 등록 페이지</title>
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
 <style>
 * {
   box-sizing: border-box;
@@ -94,7 +93,6 @@ function popCareerSee() {
 	var url="popCareerSee";
 	window.open(url,"","width=500,height=600");
 }
-
 </script>
 <body>
 
@@ -134,7 +132,7 @@ function popCareerSee() {
     
   </div>
   <div class="tab">멘토링 정보
-  	<p>대표 멘토링 분야(최대 5개 선택)</p>
+  	<p>대표 멘토링 분야(최대 3개 선택)</p>
     <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="해외취업">해외취업
     <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="직무">직무
     <input placeholder="직무유형" oninput="this.className = ''" name="mentoring_kind" type="checkbox" value="진로">진로
@@ -206,7 +204,6 @@ function popCareerSee() {
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />
 <!-- Footer area-->
-
 <script>
 //로딩 이미지 출력
 //출처: https://kkamikoon.tistory.com/168 [컴퓨터를 다루다]
@@ -333,6 +330,8 @@ $("image").change(function(){
 		}
 	}
 })
+
+
 </script>
 
 

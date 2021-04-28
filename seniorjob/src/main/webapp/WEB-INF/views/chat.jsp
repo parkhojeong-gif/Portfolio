@@ -6,17 +6,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="resources/chat/chat.css">
+<style>
+button {
+	    background: papayawhip;
+	    cursor: pointer;
+	    box-sizing: border-box;
+	    border: 2px solid #34495e;
+	    position: relative;
+	    overflow: hidden;
+	}
+</style>
 </head>
 <body>
 	<div id="frm">
 		<button type="button" onclick="openSocket()">대화방 참여</button>
 		<button type="button" onclick="closeSocket()">대화방 나가기</button>
+		<button type="button" onclick="clearText()">대화내용 지우기</button>	
 		<br/><br/>
 			
 		<input type="text" id="sender" value="${sessionScope.id }" style="display: none">
 		
 		<!-- socket closed 됨 -->
-		<button type="button" onclick="clearText()">대화내용 지우기</button>	
 	</div>
 	<br><br>
 	<div id="messages">
@@ -24,6 +34,7 @@
 			<!-- 메세지가 보이는 곳 -->
 		</div>
 	</div>
+	<br>
 		메세지 입력 :  <input type="text" id="messageinput">
 		<button type="button" onclick="send()">메세지 전송</button>
 			
@@ -74,7 +85,7 @@
 		
 		/* 대화 입력 */
 		function writeResponse(text){
-			realM.innerHTML += "<br/>" + text;
+			realM.innerHTML += "<hr/>" + text;
 		}
 		
 		/* 대화내용 지우기 */

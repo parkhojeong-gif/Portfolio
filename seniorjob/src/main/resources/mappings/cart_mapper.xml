@@ -29,8 +29,8 @@
 		 			  MENTOR_ID)
 	values		((SELECT NVL(MAX(CART_NO), 0) + 1 FROM CART),
 				#{mentoring_name},
-				#{cart_start},
-				#{cart_end},
+				TO_DATE(#{cart_start}, 'yyyy-MM-dd'),
+				TO_DATE(#{cart_end}, 'yyyy-MM-dd'),
 				#{cart_price},
 				#{id},
 				#{mentor_id}
