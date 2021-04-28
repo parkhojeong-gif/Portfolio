@@ -412,7 +412,6 @@ function getURLParams(url) {
 						</div>
 					</div>
 
-
 				</div>
 			</div>
 		</div>
