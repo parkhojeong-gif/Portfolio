@@ -53,4 +53,7 @@ public interface BusinessPlanAMapper {
 		//사업계획서 첨삭요청 count
 		public String checkPBadge(BusinessPalnAVO vo);
 		
+		//사업계획서 collection 가져오기
+		public String getCollection(BusinessPalnAVO vo);
+		
 }

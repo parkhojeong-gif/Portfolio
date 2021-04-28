@@ -233,5 +233,12 @@
 	WHERE MENTORID=#{mentorId}
 	</select>
 	
+	<!-- collection 값 가져오기 -->
+	<select id="getCollection" parameterType="BusinessPalnAVO" resultType="String">
+	SELECT COLLECTION 
+	FROM BUSINESSPLANA 
+	WHERE SEQ=#{seq}
+	</select>
+	
 	
 </mapper>
