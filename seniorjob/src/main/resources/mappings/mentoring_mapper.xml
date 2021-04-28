@@ -27,9 +27,19 @@
  				MENTORING_CONTENT,
  				MENTORING_REQUEST
  		FROM 	MENTORING
-		WHERE mentoring_begin_date BETWEEN to_date('2021/01/01','yyyy-MM-dd') AND to_date('2021/04/30','yyyy-MM-dd')
-		AND mentoring_end_date BETWEEN to_date('2021/01/01','yyyy-MM-dd') AND to_date('2021/04/30','yyyy-MM-dd')
-		ORDER BY MENTORING_BEGIN_DATE
+ 		<where>
+			<if test="mentoring_kind != null and mentoring_kind != ''">
+				UPPER(MENTORING_KIND) LIKE '%'|| UPPER(#{mentoring_kind}) || '%'
+			</if>
+
+			<if test="mentoring_begin_date != null and mentoring_begin_date != ''">
+	            AND mentoring_begin_date BETWEEN TO_DATE(#{mentoring_begin_date}, 'yyyy-MM-dd') AND TO_DATE(#{mentoring_end_date}, 'yyyy-MM-dd')
+	         </if>
+	         <if test="mentoring_end_date != null and mentoring_end_date != ''">
+	            AND mentoring_end_date BETWEEN TO_DATE(#{mentoring_begin_date}, 'yyyy-MM-dd') AND TO_DATE(#{mentoring_end_date}, 'yyyy-MM-dd')
+	         </if>
+		</where>
+ 		ORDER BY MENTORING_BEGIN_DATE
  		) A   ) B  WHERE RN BETWEEN #{start} AND #{end}
  	</select>
  	
