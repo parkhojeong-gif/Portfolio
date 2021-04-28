@@ -297,7 +297,7 @@ div#intro154w {
 		        <div class="numbertext">1 / 6</div>
 		        <a href="getSearchMentoringChanGon?mentor_id=${random.mentor_id }&mentoring_number=${random.mentoring_number }&mentoring_kind=${random.mentoring_kind }&mentoring_begin_date=${random.mentoring_begin_date }&mentoring_end_date=${random.mentoring_end_date }">
 		        <img src="image/${random.mentoring_photo }" style="width:100%"></a>
-		        <div class="text">ACNE STUDIO</div>
+		        <div class="text"></div>
 		      </div>
 		
 			</c:forEach>
@@ -349,7 +349,7 @@ div#intro154w {
 									</div>
 									<div class="item-entry overflow" id="overflow123">
 										<h5>	
-											<a href="property-1.html">${mentoring.mentoring_name }</a>
+											<a href="#">${mentoring.mentoring_name }</a>
 										</h5>
 										<div class="dot-hr"></div>
 										<span class="pull-left"><b style="color:#64C03C">${mentoring.mentoring_kind }</b></span> <span
