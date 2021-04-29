@@ -241,11 +241,22 @@ public class BusinessPlanAController {
 		mvo.setId(id);
 		String mId = mtService.getMentorId(mvo);
 		vo.setMentorId(mId);
-		System.out.println("mId:"+mId);
 		String cpBadge = bpMapper.checkPBadge(vo);
-		System.out.println("cpBadge:"+cpBadge);
 		
 		return cpBadge;
+	}
+	
+	@RequestMapping("/checkRBadge")//<!-- 수정 -->
+	@ResponseBody
+	public String checkRBadge(BusinessPalnAVO vo, MentorVO mvo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		mvo.setId(id);
+		String mId = mtService.getMentorId(mvo);
+		vo.setMentorId(mId);
+		String crBadge = bpMapper.checkRBadge(vo);
+		System.out.println("crBadge:"+crBadge);
+		return crBadge;
 	}
 	
 	@RequestMapping("/htmlSaveSom")

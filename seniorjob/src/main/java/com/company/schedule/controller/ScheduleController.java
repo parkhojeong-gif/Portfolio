@@ -63,6 +63,7 @@ public class ScheduleController {
 	//멘토가 멘티에게 멘토링 요청
 	@RequestMapping("/insertSchedule") 
 	public String insertScheduleProc(ScheduleVO vo, Model model) {
+		System.out.println("insertSchedule:" + vo);
 		model.addAttribute("msg", "요청이 완료되었습니다.");
 		model.addAttribute("url", "throughCerti");
 		scService.insertSchedule(vo);

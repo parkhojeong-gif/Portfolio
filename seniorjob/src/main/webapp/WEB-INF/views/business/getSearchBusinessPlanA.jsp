@@ -98,10 +98,10 @@ function insertBp() {
 									<a onclick="updateBp('${list.seq }')" class="btn btn-default btn-border">수정</a>
 									<a onclick="deleteBp('${list.seq }')" class="btn btn-default btn-border">삭제</a>
 									<a onclick="printBp('${list.seq }')" class="btn btn-default btn-border">인쇄</a>
-									<!-- <a onclick="excelBp('${list.seq }')" class="btn btn-default btn-border">엑셀저장</a>-->
-									<%-- <a onclick="wordBp('${list.seq }')" class="btn btn-default btn-border">워드저장</a> --%>
 									<a onclick="ckBp('${list.seq }')" class="btn btn-default btn-border">첨삭요청</a>
+									<c:if test="${not empty list.collection }">
 									<a onclick="seeCkBp('${list.seq }')" class="btn btn-default btn-border">첨삭보기</a>
+									</c:if>
 								</p>
 							</section>
 							<hr>

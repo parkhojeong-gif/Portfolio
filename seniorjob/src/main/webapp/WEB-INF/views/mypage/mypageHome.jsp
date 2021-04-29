@@ -73,6 +73,17 @@ $(document).ready(function() {
     		console.log("error");
     	}
     })
+    
+    $.ajax({ //<!-- 수정 -->
+    	url : "checkRBadge",
+    	success : function(result) {
+    		var badge = result;
+    		$("#cRBadge").html(badge);
+    	},
+    	error : function() {
+    		console.log("error");
+    	}
+    })
 });
 
 $(document).ready(function() {
@@ -324,7 +335,7 @@ function reply() {
 										</c:if>
 										<c:if test="${auth eq 'MENTOR' }">
 										<button type="button" class="tab" onmousedown="MYHOME.Myhome.gaEvent('dashboard_1', '')" onclick="checkR()">
-											이력서 첨삭 요청<span class="badge">6</span>
+											이력서 첨삭 요청<span class="badge" id="cRBadge"></span>
 										</button>
 										</c:if>
 										<c:if test="${auth eq 'USER' }">

@@ -231,9 +231,6 @@ public class MentoringController {
 	
 	@RequestMapping("/requestMentoring")   //멘토링 일정 요청 
 	public String requestMentoring(String mentorid, String menteeid, String schedule_name, Model model) {
-		System.out.println(mentorid);
-		System.out.println(menteeid);
-		System.out.println(schedule_name);
 		model.addAttribute("mentorid", mentorid);
 		model.addAttribute("menteeid", menteeid);
 		model.addAttribute("schedule_name", schedule_name);

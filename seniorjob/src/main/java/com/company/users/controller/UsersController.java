@@ -384,14 +384,19 @@ public class UsersController {
 			         return "/users/popCareer";
 			      }
 			   } //end of for
+		System.out.println("valSom:"+valSom);
 				vo.setCarrer_certi(filenames);   //vo에 업로드된 파일명을 담아서 DB에 파일이름만 저장할 것
 				usersService.insertCerti(vo);
 				model.addAttribute("msg", "Multiple files uploaded successfully.");
-				
+				System.out.println("valSom:"+valSom);
 			   if("mRegi".equals(valSom)) {
+				   System.out.println("valSom:"+valSom);
 					return "/users/throughSom";
-				} else {
+				} else if("".equals(valSom)) {
+					System.out.println("valSom3:"+valSom);
 					return "/users/throughCerti";
+				} else {
+					return null;
 				}
 	}
 	
