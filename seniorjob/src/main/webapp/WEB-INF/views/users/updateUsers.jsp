@@ -263,7 +263,7 @@ th {
                                 </div> 
                                  <div class="col-sm-3  col-sm-offset-4">
                                 <br>
-                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCareer()' value='추가' />
+                                <input type='button' class='btn btn-finish btn-primary' name='finish' onclick='insertCerti()' value='추가' />
                                 <br>
                                 <br>
                             </div>

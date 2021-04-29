@@ -62,8 +62,9 @@ public class MentoringController {
 		vo.setStart(paging.getFirst());
 		vo.setEnd(paging.getLast());
 		paging.setTotalRecord(mtService.getMcount(vo));
-		model.addAttribute("paging", paging);
+		System.out.println("종료일: " + vo.getMentoring_end_date() + "시작일:" + vo.getMentoring_begin_date());
 		model.addAttribute("list", mtService.getMentoringList(vo));
+		System.out.println("종료일: " + vo.getMentoring_end_date() + "시작일:" + vo.getMentoring_begin_date());
 		model.addAttribute("random", mtService.getRandomImage(vo));
 		return "Mentoring/mentoringList";
 	}
@@ -233,9 +234,6 @@ public class MentoringController {
 	
 	@RequestMapping("/requestMentoring")   //멘토링 일정 요청 
 	public String requestMentoring(String mentorid, String menteeid, String schedule_name, Model model) {
-		System.out.println(mentorid);
-		System.out.println(menteeid);
-		System.out.println(schedule_name);
 		model.addAttribute("mentorid", mentorid);
 		model.addAttribute("menteeid", menteeid);
 		model.addAttribute("schedule_name", schedule_name);

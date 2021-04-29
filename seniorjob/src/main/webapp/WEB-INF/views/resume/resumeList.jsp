@@ -66,7 +66,6 @@
 									<a onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">수정</a>
 									<a onclick="delRe('${resume.resume_no}')" class="btn btn-default btn-border">삭제</a>
 									<a onclick="location.href='resumeUpdateForm?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">인쇄/PDF</a>
-									<a onclick="location.href='resumeWord?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">WORD 변환</a> 
 									<a onclick="ckRe('${resume.resume_no}')" class="btn btn-default btn-border">첨삭요청</a>
 									<a onclick="location.href='seeCkRe?resume_no=${resume.resume_no}'" class="btn btn-default btn-border">첨삭보기</a>
 								</p>

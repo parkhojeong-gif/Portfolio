@@ -150,7 +150,7 @@
 		}		
 		var eDate = year+''+fillZero(month);
 		
-		location.href = "/sumList?" + "sDate=" + sDate + "&eDate=" + eDate;
+		location.href = "sumList?" + "sDate=" + sDate + "&eDate=" + eDate;
 	});
 	
 	function fillZero(_val){
