@@ -264,10 +264,10 @@
 				UPPER(MENTORING_KIND) LIKE '%'|| UPPER(#{mentoring_kind}) || '%'
 			</if>
 			<if test="mentoring_begin_date != null and mentoring_begin_date != ''">
-	            AND mentoring_begin_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	            AND mentoring_begin_date BETWEEN TO_DATE(#{mentoring_begin_date}, 'yyyy-MM-dd') AND TO_DATE(#{mentoring_end_date}, 'yyyy-MM-dd')
 	         </if>
 	         <if test="mentoring_end_date != null and mentoring_end_date != ''">
-	            AND mentoring_end_date BETWEEN #{mentoring_begin_date} AND #{mentoring_end_date}
+	            AND mentoring_end_date BETWEEN TO_DATE(#{mentoring_begin_date}, 'yyyy-MM-dd') AND TO_DATE(#{mentoring_end_date}, 'yyyy-MM-dd')
 	         </if>
 		</where>
 	</select>
