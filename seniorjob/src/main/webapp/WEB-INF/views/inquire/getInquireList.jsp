@@ -90,7 +90,7 @@ function answerUpdate(){
 		var updateContent =  $('#td3_2textarea').val();
 		
 		$.ajax({
-			url:"/updateAnswer",
+			url:"updateAnswer",
 			type: "POST",
 			data :{title : updateTitle, content : updateContent, i_seq : seq},
 			success: function(result){
@@ -113,7 +113,7 @@ function answerDelete(){
 			var inquireSeq = $('#input_seq2').val();
 			
 			$.ajax({
-				url:"/deleteAnswer",
+				url:"deleteAnswer",
 				type: "POST",
 				data :{i_seq : answerSeq, seq : inquireSeq},
 				success: function(result){
