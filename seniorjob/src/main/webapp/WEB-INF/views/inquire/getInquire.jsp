@@ -64,7 +64,7 @@
 					type: "POST",
 					data :{seq : seqValue, title : titleValue, content : contentValue, id: idValue },
 					success: function(result){
-						location.href="/getInquireList";
+						location.href="getInquireList";
 						window.alert("답변이 등록되었습니다.");
 					}
 				});
