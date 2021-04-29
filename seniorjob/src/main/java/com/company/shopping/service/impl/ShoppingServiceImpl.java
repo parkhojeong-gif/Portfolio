@@ -58,11 +58,6 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return result;
 	}
 	@Override
-	public int BasketCheck(ShoppingVO vo) { // 멘토 상세페이지_장바구니 중복 체크
-		int result = dao.BasketCheck(vo);
-		return result;
-	}
-	@Override
 	public ShoppingVO getSearchBasket(ShoppingVO vo) { // 멘토 상세페이지_장바구니 단건 조회
 		return dao.getSearchBasket(vo);
 	}

@@ -69,7 +69,7 @@ public class BusinessPlanAController {
 	@RequestMapping("/getBusinessPlanA")			//사업계획서 하나만 조회. 
 	public String getBusinessPlanA(BusinessPalnAVO vo, Model model) {
 		bpService.getBusinessPlanA(vo);
-		model.addAttribute("bp", vo);
+		model.addAttribute("bpp", vo);
 		return "business/getBusinessPlanA";
 	}
 	
@@ -286,8 +286,8 @@ public class BusinessPlanAController {
 																"text/html",					//contentType 
 																IOUtils.toByteArray(input));	//content
 			//파일 저장소 경로 확인
-			//String path = req.getServletContext().getRealPath("resources/upload");
-			String path="C:\\Users\\beom\\git\\seniorjob\\seniorjob\\src\\main\\webapp\\resources\\upload";
+			String path = req.getServletContext().getRealPath("resources/upload");
+			//String path="C:\\Users\\beom\\git\\seniorjob\\seniorjob\\src\\main\\webapp\\resources\\upload";
 			System.out.println("htmlSaveSom:"+path);
 			
 			//새로운 파일 이름

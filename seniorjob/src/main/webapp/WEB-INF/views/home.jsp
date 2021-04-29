@@ -28,7 +28,14 @@
 <!-- #slidemenu는 영상통화 구현. 절대 지우지 마세요 . 양소민-->
 <style>
 
-#slidemenu{background:#12cf3d;position:absolute;width:100px;top:50px;right:10px;}
+#slidemenu{
+position: absolute;
+    top: 5px;
+    right: 79px;;
+}
+button#hideBtn {
+    width: 157px;
+}
 .slider-content{position:absolute}
 
 #mentorSearchBtn{cursor:pointer}
@@ -161,6 +168,15 @@ i#mentoringDateBtn {
     top: 91px;
     right: -56px;
 }
+a#aTag1 {
+    margin-left: 48px;
+}
+a#aTag2 {
+    margin-left: 43px;
+}
+a#aTag3 {
+    margin-left: 62px;
+}
 </style>
 <!-- 영상통화 구현. 절대 지우지 마세요 . 양소민-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -170,26 +186,41 @@ $(document).ready(function() {
 		url:'videoCallButton',
 		success : function(result) {
 			
-			if(result != "false") {
+			//if(result != "false") {
 				$("#numSom").attr('value',result);
 				var auth = $('#authSom').val();
 				var div = $('<div />').attr('id','slidemenu');
-				var a = $('<a />').attr('onclick','video()').html('영상면접');
-				var a2 = $('<a />').attr('onclick','resum()').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
-				var a3 = $('<a />').attr('onclick','chatt()').html('채팅'); //나중에 영상면접 화면에 붙일 것.
-				$(div).append(a);
+				
+				var btn111 = $('<button />').attr('class','btn  btn-primary  dropdown-toggle')
+											.attr('data-toggle', 'dropdown')
+											.attr('id', 'hideBtn').html('멘토링 기능');
+				var div2 = $('<div />').attr('class','dropdown-menu')
+									   .attr('id', 'hideBtnSub');
+				
+				var hr1 = $('<hr />');
+				var hr2 = $('<hr />');
+				var hr3 = $('<hr />');
+				
+				
+				
+				
+				var a = $('<a />').attr('id','aTag1').attr('onclick','video()').attr('class','dropdown-item').html('영상면접');
+				var a2 = $('<a />').attr('id','aTag2').attr('onclick','resum()').attr('class','dropdown-item').html('이력서보기'); //나중에 영상면접 화면에 붙일 것.
+				var a3 = $('<a />').attr('id','aTag3').attr('onclick','chatt()').attr('class','dropdown-item').html('채팅'); //나중에 영상면접 화면에 붙일 것.
+				$(div).append(btn111, div2);
+				$(div2).append(a,hr1);
 				if(auth == "MENTOR") {
-					$(div).append(a2);
+					$(div2).append(a2, hr2);
 					} else {
 						console.log("USER");
 					}
 				
-				$(div).append(a3);
+				$(div2).append(a3);
 				$("#slidemenu").append(div);
 				
-			} else {
-				console.log("else");
-			}
+			//} else {
+			//	console.log("else");
+			//}
 		},
 		error : function() {
 			console.log("error");
@@ -213,7 +244,7 @@ function resum(){
 }
 function chatt() {
 	window.open("chat",
-            "채팅", "width=1000, height=1000, resizable = no, scrollbars = no");
+            "채팅", "width=500, height=600, resizable = no, scrollbars = no");
 }
 </script>
 </head>
@@ -221,7 +252,12 @@ function chatt() {
 	<!-- topHeader -->
 	<jsp:include page="topHeader.jsp" />
 	<!-- 영상통화 구현. 절대 지우지 마세요 . 양소민-->
-	<div id="slidemenu" ></div>
+	<div class="dropdown" id="slidemenu" ></div>
+	
+	
+	
+	
+	
 	<input type="hidden" id="numSom">
 	<input type="hidden" id="authSom" value="${users.auth }">
 	<!-- 검색 -->
@@ -233,6 +269,7 @@ function chatt() {
                     <div class="item"><img src="resources/assets/img/slide1/slider-image-4.jpg" alt="GTA V"></div>   
                 </div>
             </div>
+            
             <div class="container slider-content"> <!--이미지 움직이는 div -->
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-12 col-md-offset-1 col-sm-12" id="homeDiv1"> <!-- 키워드 체크박스 검색 전체 div -->
@@ -249,8 +286,10 @@ function chatt() {
                         	<i class="fas fa-search fa-2x" style="color:#FFA500" id="mentorSearchBtn"></i>
                         </div>
                         <div class="col-md-12" id="hr1Keyword">
+                        
                          	<hr>
                          </div>
+                         
                         <div class="col-md-10">
                         	<p id="ptag1" style="text-align: left"><strong>직무 검색</strong></p>
                         	<div id="homeDiv4">
@@ -362,7 +401,7 @@ function chatt() {
                          	<hr>
                          </div>
                          </form>
-						<form method="POST" action="getMentoringList" id="searchDateFrm" onsubmit="return checkDateNull()">
+						<form method="POST" action="getMentoringList" id="searchDateFrm">
                         <div class="col-md-12" id="mentorBoxDiv">    
                          
                         <div class="col-md-5" id="mentorDateBox1">
@@ -449,8 +488,15 @@ function chatt() {
 	
 	// 멘토링 날짜 검색
 	$('#mentoringDateBtn').click(function(){
+		
 		var s_date = $('#mentoring_begin_date').val();
 		var e_date = $('#mentoring_end_date').val();
+		
+		var s_dateArr = s_date.split("-");
+		var e_dateArr = e_date.split("-");
+		var startDate = new Date(s_dateArr[0], s_dateArr[1], s_dateArr[2]);
+		var endDate = new Date(e_dateArr[0], e_dateArr[1], e_dateArr[2]);
+		
 		if(s_date==""){
 			alert("시작일을 선택해주세요.");
 			return false;
@@ -458,33 +504,14 @@ function chatt() {
 			alert("종료일을 선택해주세요.");
 			return false;
 			
+		}else if(startDate > endDate){
+			alert("날짜 설정이 잘못되었습니다");
+			return false;
 		}else{
 			searchDateFrm.action = "getMentoringList";
 			searchDateFrm.submit();
 		}
 	});
-	
-	// 멘토링 날짜 검색 유효성 체크
-	function checkDateNull(){
-		var s_date = $('#s_date').val();
-		var e_date = $('#e_date').val();
-		var s_dateArr = s_date.split("-");
-		var e_dateArr = e_date.split("-");
-		var startDate = new Date(s_dateArr[0], s_dateArr[1], s_dateArr[2]);
-		var endDate = new Date(e_dateArr[0], e_dateArr[1], e_dateArr[2]);
-		var today = new Date().getFullYear() + _pad(new String(new Date().getMonth() + 1), 2) + _pad(new String(new Date().getDate()), 2);
-		
-		if(startDate > endDate){
-			alert("날짜 설정이 잘못되었습니다");
-			return false;
-		}else if(startDate < today){
-			alert("과거 날짜를 시작일로 설정 불가능");
-			return false;
-		}else if(endDate < e_date){
-			alert("과거 날짜를 종료일로 설정 불가능");
-			return false;
-		}
-	}
 	
 </script>
 	 <!-- Jquery JS-->

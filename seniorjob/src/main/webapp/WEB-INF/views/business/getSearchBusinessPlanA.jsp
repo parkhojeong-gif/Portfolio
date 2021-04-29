@@ -8,10 +8,13 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 function detail(seq) {
-	location.href="getBusinessPlanA?seq="+seq //
+	
+	var url = "getBusinessPlanA?seq="+seq;
+	window.open(url,"","width=1400,height=900");
 }
 
 function deleteBp(seq) {
@@ -25,7 +28,8 @@ function deleteBp(seq) {
 }
 
 function updateBp(seq) {
-	location.href="updateBusinessPlanA?seq="+seq //
+	var url ="updateBusinessPlanA?seq="+seq //
+	window.open(url,"","width=1400,height=900");
 }
 
 function printBp(seq) {

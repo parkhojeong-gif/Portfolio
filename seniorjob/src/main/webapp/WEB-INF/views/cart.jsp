@@ -50,7 +50,6 @@ function allDel(){
 				        	<th>
 				        		<div class="chBox">
 				        			<input type="checkbox" id="del" name="del" value="${cart.cart_no }" >
-				        			
 				        		</div>
 				        	</th>
 				        	<input type="hidden" id="mentoring_number" name="mentoring_number" value="${cart.mtNum.mentoring_number }">
@@ -62,12 +61,12 @@ function allDel(){
 				        </tr>
 				      </c:when>
 				      </c:choose>  
-				     <%--  <c:if test="${cart eq null or empty cart}">
+				      </c:forEach>
+				      <c:if test="${empty list}">
 				      	<tr>
 				      		<th>장바구니가 텅 비었습니다.</th>
 				      	</tr>
-				      </c:if> --%>
-				      </c:forEach>
+				      </c:if>
 					  </tbody>
 					  <tfoot>
 					    <tr align="right">
@@ -80,8 +79,8 @@ function allDel(){
 					</table>
 					<div align="right">
 						<button type="button" class="btn btn-primary" onclick="mentoringPayForm()">결제하기</button>
-						<button type="button" class="btn btn-primary" onclick="location.href='getMentorList'">상품 둘러보기</button>
-						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='getMentoringList'">상품 둘러보기</button>
+<!-- 						<button type="button" class="btn btn-primary" onclick = "location.href='MentorListForm'">상품 둘러보기</button> -->
 					</div>
 					</form>
 					</div>

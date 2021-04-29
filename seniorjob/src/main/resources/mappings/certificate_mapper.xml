@@ -26,14 +26,14 @@
 								 #{certi_name}, 
 								 #{certi_place}, 
 								 #{accept}, 
-								 #{certi_date})
+								 TO_DATE(#{certi_date}, 'yyyy-MM-dd'))
 	</insert>
 	<update id="updateCerti">
 		UPDATE CERTIFICATE SET CERTI_KINDS=#{certi_kinds}, 
 							   CERTI_NAME=#{certi_name}, 
 							   CERTI_PLACE=#{certi_place}, 
 							   ACCEPT=#{accept}, 
-							   CERTI_DATE=#{certi_date}
+							   CERTI_DATE=TO_DATE(#{certi_date}, 'yyyy-MM-dd')
 		WHERE 				   CERTI_NO=#{certi_no}
 	</update>
 	<delete id="deleteCerti">

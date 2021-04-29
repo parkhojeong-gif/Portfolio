@@ -97,6 +97,7 @@ public class Mentoring_ReviewsController {
 	}
 
 	// 송다희 추가
+	// 멘토링 후기 등록
 	@RequestMapping("/searchShopping")
 	public @ResponseBody int searchShopping(Mentoring_ReviewsVO vo, HttpServletRequest req) {
 		HttpSession session = req.getSession();
@@ -110,6 +111,38 @@ public class Mentoring_ReviewsController {
 			return  result; 
 		} 
 	}
+	//후기 삭제
+	@RequestMapping("/deleteReviews")
+	@ResponseBody
+	public String deleteReviews(Mentoring_ReviewsVO vo) {
+		mentoring_ReviewsMapper.deleteReviews(vo);
+		return "redirect:/getSearchMentoringChanGon";
+	}
+	//후기 수정
+	@RequestMapping("/updateReviews")
+	public String updateReviews(Mentoring_ReviewsVO vo) {
+		mentoring_ReviewsMapper.updateReviews(vo);
+		return "redirect:/getSearchMentoringChanGon";
+	}
 	
+	//단건조회(수정폼 호출)
+	@RequestMapping("/getReviewsUp")
+	public String getReviewsUp(Mentoring_ReviewsVO vo, Model model) {
+		model.addAttribute("review", mentoring_ReviewsMapper.getReviewsUp(vo));
+		return "mentoringReviews/updateMenReviews";
+	}
+	
+	//후기글 하나 이상 못 올리게 확인
+	@RequestMapping("/getReviewOne")
+	public @ResponseBody int getReviewOne(Mentoring_ReviewsVO vo, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		int result = mentoring_ReviewsMapper.getReviewOne(vo);
+		if (result >= 1) {  
+			return result; 
+		}
+		return result;
+	}
 
 }

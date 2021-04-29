@@ -92,6 +92,10 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 .c-application.c-box.edu-detail--content {
     border: 2px solid darkgrey;
 }
+
+#imggg{
+	width: 200px;
+}
 </style>
 
 <form id="submitFrm" name="submitFrm" method="post">
@@ -129,7 +133,7 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                             <i class="fa fa-print"></i> 
                                         </a>
                                     </div> 
-                                            <img src="image/${mentoring.mentoring_photo }" />
+                                   <img src="image/${mentoring.mentoring_photo }" id="imggg" />
                                 </div>
                             </div>
                         </div>
@@ -259,10 +263,12 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
                                 </div>
                             </div> -->
                             <!-- End video area  -->
+                            <!-- =================================멘토링 후기=================================================== -->
                             <div class="section property-features" id="reviewsList">    
                                 <h4 class="s-property-title">멘토링 후기</h4> 
                                 <div id="reviewss" style="display:none">
                                 <div class="score_reple" >
+                                <span id="seq"></span>
 									<p>
 										<span class="ico_viewer">(구매자)</span>
 									</p>
@@ -279,17 +285,22 @@ p.c-application.c-typography.edu-detail--summary-define-text.c_body1 {
 											<em id="reviews_wDate"></em>
 										</dt>
 									</dl>
-									<button type="button" onclick="">삭제</button><br>
-									<button type="button" onclick="">수정</button>
+									
+									<div align="right">
+									<a id="delR">삭제</a>
+									<a id="upR" onclick="upR()">수정</a>
+									</div>
 								</div>
 								<hr>
 								</div>
 							</div>
+							<!-- =======================================멘토링 후기=============================================== -->
+<%-- 							<button type="button" id="paging" name="paging">${paging }</button> --%>
                             <!-- End features area  -->
 		                    <div class="input_request">
 		                    <h3>구매평 등록</h3>
 		                    <br>
-								<textarea id="content" row="8" cols="50" rows="8" class="input_textarea" placeholder="후기를 작성하세요."></textarea>
+								<textarea id="content" row="8" cols="100" rows="8" class="input_textarea" placeholder="후기를 작성하세요." style="resize: none"></textarea>
 								<p class="text_length"><h6 id="ment_cnt">0</h6> / 1000</p>
 							</div>
 							<div align="right"><button type="button" id="submitReview" name="submitReview">등록</button></div>	
@@ -400,7 +411,7 @@ function mentoringPayForm(){
 		}
 	}
 	
-/* 글자수 제한 */	
+/* 글자수 제한(구매평) */	
 $(document).ready(function(){
 	$("textarea").keyup(function(){
 		var inputLength = $(this).val().length;
@@ -422,10 +433,43 @@ $.ajax({
 	success: function(response){
 		for(i=0; i < response.length; i++){
 			var list = $($("#reviewss").html());
+			if(response[i].id != '${users.id}'){
+				list.find("#delR").remove();
+				list.find("#upR").remove();
+			}
+			list.find("#seq").html(response[i].seq);
 			list.find("#review_content").html(response[i].content);
 			list.find("#review_id").html(response[i].id);
 			list.find("#reviews_wDate").html(response[i].w_date);
 			$("#reviewsList").append(list);
+			
+			
+			//paging버튼
+            /* $("#paging").empty();
+            var totalRecord = response.paging.totalRecord;
+            var lastPage = response.paging.lastPage;
+            var page = response.paging.page;
+            var pageSize = response.paging.pageSize;
+            var endPage = response.paging.endPage;
+            var startPage = response.paging.startPage;
+            if (startPage > 1) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (startPage - 1) + ")'>" + "&laquo;"
+                           + "</a>");
+            }
+            for (i = startPage; i <= endPage; i++) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList(" + (i)
+                           + ")'>" + i + "</a>");
+            }
+            if (lastPage > endPage) {
+               $("#paging").append(
+                     "<a href='#' onclick='getReviewsList("
+                           + (endPage + 1) + ")'>" + "&raquo;"
+                           + "</a>");
+            } */
+
 		}
 	}
 })
@@ -444,6 +488,7 @@ $("#submitReview").on("click", function(){
 				list.find("#review_id").html(result.id);
 				list.find("#reviews_wDate").html(result.w_date);
 				$("#reviewsList").append(list);
+				location.reload();
 			}else{
 				alert("구매하신 상품이 아닙니다.");
 			}
@@ -451,7 +496,43 @@ $("#submitReview").on("click", function(){
 	})
 })
 
-	
+// 삭제
+$(document).on("click", "#delR", function(){
+	var yn = confirm("삭제 하시겠습니까?");
+	var seq = $(this).parent().parent().children().closest('#seq').html();
+	$.ajax({
+		url: "deleteReviews",
+		data:{ "seq" : seq },
+		dataType: "json",
+		success: function(response){
+			location.reload();
+		}
+	})
+})
+
+//수정 페이지 window로 열기
+function upR(){
+	$(document).on("click", "#upR", function(){
+		var seq = $(this).parent().parent().children().closest("#seq").html();
+		console.log(seq)
+		window.open("getReviewsUp?seq=" + seq,
+	                "수정", "width=500, height=500, resizable = no");
+	})
+}
+
+/* 후기글 한 번 이상 작성하지 못하게 하는 거 */
+$(document).on("click", "#content", function(){
+	$.ajax({
+		url: "getReviewOne",
+		data : { mentoring_number : ${mentoring.mentoring_number }},
+		dataType: "json",
+		success: function(result){
+			if(result >= 1){
+				alert("이미 작성하신 후기글이 존재합니다.")
+			}
+		}
+	})
+})
 </script>
 <!-- Footer area-->
 <jsp:include page="../footer.jsp" />

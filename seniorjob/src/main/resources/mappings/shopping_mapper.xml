@@ -11,9 +11,6 @@
 		WHERE ID=#{id}
 	</select>
 	
-	
-	
-	
 	<!-- 양소민 추가 -->
  	<!-- 마이페이지_결제내역 -->
 	<select id="getSearchPay" resultType="ShoppingVO">
@@ -64,6 +61,7 @@
  	<select id="paymentChk" resultType="int" >
  		SELECT COUNT(*) FROM SHOPPING
  		WHERE ID = #{id}
+ 		AND MENTORING_NUMBER = #{mentoring_number}
  		AND S_STATE = '구매완료'
  	</select>
  	

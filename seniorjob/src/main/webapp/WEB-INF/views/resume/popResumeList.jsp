@@ -42,7 +42,17 @@
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/responsive.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script>
+        	function sub(str){
+        			var frm = document.frm;
+        			var str = str;
+        			$('#resume_no').attr("value",str);
+        			frm.submit();
+        		}
+        	
+        	
+        	
+        </script>
 <style>
 th {
     text-align: center;
@@ -53,7 +63,10 @@ th {
 </style>
     </head>
 <body>
-
+<form action="updateSchedule" method="post" name="frm">
+<input type="hidden" id="seq" name="seq" value="${seq}"> 
+<input type="hidden" id="resume_no" name="resume_no">
+<input type="hidden" name="id" id="id" value=${users.id }>
 					<h2>이력서 리스트</h2>
 					<hr>
 					<br>
@@ -73,7 +86,7 @@ th {
 			</c:forEach>
 		</tbody>
 	</table>  
-
+ </form>
 
 
 </body>

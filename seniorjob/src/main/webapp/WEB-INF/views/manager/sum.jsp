@@ -9,17 +9,12 @@
 <div class="main-content container-fluid">
 	<div class="page-title">
 		<div class="row">
-			<div class="col-12 col-md-6 order-md-1 order-last">
-				<h3>매출 관리</h3>
+			<div class="col-12 col-md-6 order-md-1 order-last" style="text-align: center; width: 1300px; font-family:monospace;">
+				<h1>매출 관리</h1><br/>
 				<p class="text-subtitle text-muted">월 매출을 볼 수 있는 페이지입니다.</p>
 			</div>
 			<div class="col-12 col-md-6 order-md-2 order-first">
-				<nav aria-label="breadcrumb" class='breadcrumb-header'>
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="managerMain">메인</a></li>
-						<li class="breadcrumb-item active" aria-current="page">매출 관리</li>
-					</ol>
-				</nav>
+				
 			</div>
 		</div>
 	</div>
@@ -155,7 +150,7 @@
 		}		
 		var eDate = year+''+fillZero(month);
 		
-		location.href = "/sumList?" + "sDate=" + sDate + "&eDate=" + eDate;
+		location.href = "sumList?" + "sDate=" + sDate + "&eDate=" + eDate;
 	});
 	
 	function fillZero(_val){

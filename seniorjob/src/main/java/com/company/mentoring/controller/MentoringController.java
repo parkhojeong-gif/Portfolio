@@ -41,6 +41,7 @@ public class MentoringController {
 	@Autowired MentoringService mtService;
 	@Autowired UsersService usersService;
 	@Autowired ShoppingService shoppingService;
+	@Autowired CartService cartService;
 	
 //	--------------------------------------------------------김찬곤-----------------------------------------------------------------------------------------------------
 	@Autowired CartService cartservice;
@@ -61,8 +62,9 @@ public class MentoringController {
 		vo.setStart(paging.getFirst());
 		vo.setEnd(paging.getLast());
 		paging.setTotalRecord(mtService.getMcount(vo));
-		model.addAttribute("paging", paging);
+		System.out.println("종료일: " + vo.getMentoring_end_date() + "시작일:" + vo.getMentoring_begin_date());
 		model.addAttribute("list", mtService.getMentoringList(vo));
+		System.out.println("종료일: " + vo.getMentoring_end_date() + "시작일:" + vo.getMentoring_begin_date());
 		model.addAttribute("random", mtService.getRandomImage(vo));
 		return "Mentoring/mentoringList";
 	}
@@ -153,7 +155,7 @@ public class MentoringController {
 	@ResponseBody
 	@RequestMapping("/mentoringPayProc")
 	public int mentoringPayProc(ShoppingVO vo, CartVO cvo) {
-		int result = shoppingService.BasketCheck(vo);
+		int result = shoppingService.paymentChk(vo);
 		if(result==0) { // 테이블에 값이 없으면(장바구니에 없으면)
 			shoppingService.mentoringPayProc(vo); // Insert
 			
@@ -206,6 +208,7 @@ public class MentoringController {
 		String id = (String) session.getAttribute("id");  //로그인 시 session에 저장된 id값을 꺼내옴.
 		reviewvo.setId(id);
 		model.addAttribute("reviewList", mentorservice.getReviewsList(reviewvo));
+		System.out.println(reviewvo);
 		//크롤링
 		String uri = "https://comento.kr/edu/learn/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C/%EC%97%B0%EA%B5%AC%EA%B0%9C%EB%B0%9C-G165";
 		Document doc = Jsoup.connect(uri).get();

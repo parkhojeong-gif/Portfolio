@@ -12,7 +12,7 @@
 	window.onload = function(){
 		/* 이미지 미리보기 */
 		var img = document.createElement("img");
-		img.setAttribute("src", opener.document.getElementById('image_container').childNodes[0].src);
+		img.setAttribute("src", opener.document.getElementById('image_container').childNodes[1].src);
 		document.querySelector("div#image_container").appendChild(img);
 		/* 필수기입 항목 */
 		document.getElementById('resume_name').value = opener.document.getElementById('resume_name').value;

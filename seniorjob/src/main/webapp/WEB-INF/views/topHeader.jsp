@@ -89,6 +89,16 @@ ul.list-inline.topHeader {
 li#topHeaderLi {
     bottom: -18px;
 }
+div#btnNav {
+    padding-top: 18px;
+}
+.proerty-th .proerty-item .item-entry h5 {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #9B9B9B;
+    letter-spacing: 2px;
+    position: initial;
+}
 </style>
 </head>
 <body>
@@ -109,7 +119,7 @@ li#topHeaderLi {
 								<c:when test="${users.auth eq 'ADMIN'}">
 									<li  id="li22">
 									<a href="#">${sessionScope.users.id} 관리자</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="managerMain">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="userList">관리자 페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<a href="logout">로그아웃</a></li>
 								</c:when>
 								<c:when test="${users.auth eq 'USER'}">
@@ -161,7 +171,7 @@ li#topHeaderLi {
 
 
 				<c:if test="${users.auth eq null and empty userInfo}">
-					<div class="button navbar-right">
+					<div class="button navbar-right" id="btnNav">
 						<button class="navbar-btn nav-button wow bounceInRight login"
 							style="height: 50px; width: 130px"
 							onclick="location.href='login'" data-wow-delay="0.45s">로그인</button>
