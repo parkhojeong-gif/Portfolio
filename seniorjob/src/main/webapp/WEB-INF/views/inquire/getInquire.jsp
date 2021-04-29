@@ -30,7 +30,7 @@
 				var seqValue= $('#seqHidden').val();
 				
 				$.ajax({
-					url:"/deleteAdmin",
+					url:"deleteAdmin",
 					type: "POST",
 					data :{seq : seqValue},
 					success: function(result){
@@ -60,7 +60,7 @@
 				var idValue = $('#idHidden').val();
 				
 				$.ajax({
-					url:"/insertAnswer",
+					url:"insertAnswer",
 					type: "POST",
 					data :{seq : seqValue, title : titleValue, content : contentValue, id: idValue },
 					success: function(result){
